@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="uz" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yo‘ldosh — qo‘shma safar | Ridesharing</title>
+  <meta name="description" content="Yo‘ldosh — qo‘shma safar: tez, xavfsiz va qulay sayohatlar. Haydovchi va yo‘lovchilarni birlashtiramiz." />
+  <meta name="theme-color" content="#10b981" />
+  <meta property="og:title" content="Yo‘ldosh — qo‘shma safar" />
+  <meta property="og:description" content="Tez, xavfsiz va qulay sayohatlar. Haydovchi va yo‘lovchilarni birlashtiramiz." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yoldosh.uz" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2310b981'/%3E%3Cpath d='M26 66c0-13 11-24 24-24s24 11 24 24h-8c0-8.8-7.2-16-16-16s-16 7.2-16 16H26zM50 22c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12z' fill='white'/%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth gradient background */
+    .hero-grad{background:radial-gradient(80% 80% at 20% 0%,rgba(16,185,129,.25),transparent 60%),radial-gradient(70% 70% at 100% 0%,rgba(56,189,248,.25),transparent 60%),linear-gradient(180deg,rgba(240,253,244,.9),#fff)}
+  </style>
+</head>
+<body class="h-full antialiased text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 backdrop-blur-lg bg-white/70 border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3 font-semibold">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500 text-white">Y</span>
+        <span class="text-lg">Yo‘ldosh</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#features" class="hover:text-emerald-600">Imkoniyatlar</a>
+        <a href="#how" class="hover:text-emerald-600">Qanday ishlaydi</a>
+        <a href="#drivers" class="hover:text-emerald-600">Haydovchilar</a>
+        <a href="#contact" class="hover:text-emerald-600">Aloqa</a>
+      </nav>
+      <a href="#download" class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-white text-sm shadow-sm hover:bg-emerald-700">Yuklab olish</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero-grad">
+    <div class="mx-auto max-w-6xl px-4 py-20 lg:py-28 grid lg:grid-cols-2 items-center gap-12">
+      <div>
+        <h1 class="text-4xl/tight md:text-5xl/tight font-bold text-slate-900">Yo‘ldosh — qo‘shma safar: <span class="text-emerald-600">tez</span>, <span class="text-emerald-600">xavfsiz</span>, <span class="text-emerald-600">arzon</span>.</h1>
+        <p class="mt-5 text-lg text-slate-600">Shahar bo‘ylab yoki shaharlararo yo‘lda hamroh toping. Haydovchi va yo‘lovchilarni ishonchli platformada birlashtiramiz.</p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#download" class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-3 text-white font-medium shadow-sm hover:bg-emerald-700">Ilovani yuklab oling</a>
+          <a href="#drivers" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-3 hover:border-emerald-500 hover:text-emerald-600">Haydovchi bo‘lish</a>
+        </div>
+        <div class="mt-6 flex items-center gap-6 text-sm text-slate-500">
+          <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> 24/7 qo‘llab-quvvatlash</div>
+          <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> To‘lovlarhimoyasi</div>
+        </div>
+      </div>
+      <div class="relative">
+        <!-- App mock (placeholder) -->
+        <div class="mx-auto w-[320px] h-[640px] rounded-[32px] border bg-white shadow-xl overflow-hidden">
+          <div class="h-10 bg-slate-50 flex items-center justify-center text-xs text-slate-400">App preview</div>
+          <div class="p-4 space-y-4">
+            <div class="h-10 w-2/3 bg-slate-200 rounded"></div>
+            <div class="h-3 w-5/6 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="h-24 bg-slate-100 rounded"></div>
+              <div class="h-24 bg-slate-100 rounded"></div>
+            </div>
+            <div class="h-36 bg-slate-100 rounded"></div>
+          </div>
+        </div>
+        <span class="absolute -top-3 -left-3 rounded-full bg-white border border-slate-200 shadow px-3 py-1 text-xs">Beta</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold">Nega Yo‘ldosh?</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <article class="rounded-2xl border p-6 shadow-sm hover:shadow-md transition">
+          <div class="h-10 w-10 rounded-lg bg-emerald-50 text-emerald-700 grid place-items-center">✓</div>
+          <h3 class="mt-4 font-semibold">Xavfsizlik</h3>
+          <p class="mt-2 text-sm text-slate-600">Profil verifikatsiyasi, reytinglar, real-vaqtli kuzatuv va qo‘llab-quvvatlash.</p>
+        </article>
+        <article class="rounded-2xl border p-6 shadow-sm hover:shadow-md transition">
+          <div class="h-10 w-10 rounded-lg bg-sky-50 text-sky-700 grid place-items-center">⚡</div>
+          <h3 class="mt-4 font-semibold">Tez moslashtirish</h3>
+          <p class="mt-2 text-sm text-slate-600">Yo‘nalish va vaqtga mos hamrohlarni oniy qidirish.</p>
+        </article>
+        <article class="rounded-2xl border p-6 shadow-sm hover:shadow-md transition">
+          <div class="h-10 w-10 rounded-lg bg-amber-50 text-amber-700 grid place-items-center">₮</div>
+          <h3 class="mt-4 font-semibold">Tejamkor</h3>
+          <p class="mt-2 text-sm text-slate-600">Benzin va vaqt xarajatlarini bo‘lishib, yo‘lni arzonlashtiring.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="py-20 bg-slate-50">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold">Qanday ishlaydi</h2>
+      <ol class="mt-8 grid md:grid-cols-3 gap-6">
+        <li class="rounded-2xl border bg-white p-6">
+          <div class="text-sm text-slate-500">1-qadam</div>
+          <h3 class="mt-1 font-semibold">Marshrut tanlang</h3>
+          <p class="mt-2 text-sm text-slate-600">Qayerdan — qayergacha va vaqtni belgilang.</p>
+        </li>
+        <li class="rounded-2xl border bg-white p-6">
+          <div class="text-sm text-slate-500">2-qadam</div>
+          <h3 class="mt-1 font-semibold">Hamroh toping</h3>
+          <p class="mt-2 text-sm text-slate-600">Haydovchi yoki yo‘lovchi bilan mos tushish.</p>
+        </li>
+        <li class="rounded-2xl border bg-white p-6">
+          <div class="text-sm text-slate-500">3-qadam</div>
+          <h3 class="mt-1 font-semibold">Yo‘lga chiqing</h3>
+          <p class="mt-2 text-sm text-slate-600">Ilova orqali bog‘laning, to‘lovni xavfsiz amalga oshiring.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Drivers CTA -->
+  <section id="drivers" class="py-20">
+    <div class="mx-auto max-w-6xl px-4 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold">Haydovchimisiz? Daromadni oshiring</h2>
+        <p class="mt-3 text-slate-600">Bo‘sh o‘rinlaringizni to‘ldiring, xarajatlarni qoplang va yangi tanishlar orttiring.</p>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600 list-disc list-inside">
+          <li>Qulay jadval, shaffof to‘lovlar</li>
+          <li>Reyting va qo‘llab-quvvatlash</li>
+          <li>Zero komissiya *beta davrida</li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-white hover:bg-slate-800">Ariza qoldirish</a>
+      </div>
+      <div class="rounded-2xl border p-6 bg-slate-50">
+        <form id="waitlist" class="space-y-3">
+          <label class="block">
+            <span class="text-sm">Ismingiz</span>
+            <input required name="name" class="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ali Valiyev" />
+          </label>
+          <label class="block">
+            <span class="text-sm">Telefon</span>
+            <input required name="phone" type="tel" pattern="\+?\d[\d\s\-]{7,}" class="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="+998 90 123 45 67" />
+          </label>
+          <label class="block">
+            <span class="text-sm">Shahar</span>
+            <input name="city" class="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Toshkent" />
+          </label>
+          <button class="w-full rounded-xl bg-emerald-600 px-4 py-3 text-white font-medium hover:bg-emerald-700">Ro‘yxatdan o‘tish</button>
+          <p id="formMsg" class="text-sm text-slate-600"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download" class="py-16 bg-slate-50">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold">Ilovani yuklab oling</h2>
+      <p class="mt-2 text-slate-600">Tez orada App Store va Google Play’da. Hozircha — beta-versiya.</p>
+      <div class="mt-6 flex justify-center gap-3">
+        <a class="rounded-xl border px-4 py-2 hover:border-emerald-500" href="#">App Store (tez orada)</a>
+        <a class="rounded-xl border px-4 py-2 hover:border-emerald-500" href="#">Google Play (tez orada)</a>
+        <a class="rounded-xl border px-4 py-2 hover:border-emerald-500" href="#">APK yuklab olish</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="border-t">
+    <div class="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500 text-white">Y</span>
+          <span class="font-semibold">Yo‘ldosh</span>
+        </div>
+        <p class="mt-3 text-sm text-slate-600">Savollar bormi? Bizga yozing: <a class="text-emerald-600 hover:underline" href="mailto:hello@yoldosh.uz">hello@yoldosh.uz</a></p>
+        <p class="mt-1 text-xs text-slate-500">© <span id="year"></span> Yo‘ldosh. Barcha huquqlar himoyalangan.</p>
+      </div>
+      <div class="justify-self-end text-sm text-slate-600 flex flex-col gap-2">
+        <a href="#" class="hover:text-emerald-600">Maxfiylik siyosati</a>
+        <a href="#" class="hover:text-emerald-600">Foydalanish shartlari</a>
+        <a href="#" class="hover:text-emerald-600">PDn reestri ma’lumotlari</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mailto handler for driver waitlist
+    const form = document.getElementById('waitlist');
+    const msg = document.getElementById('formMsg');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const body = `Ism: ${data.get('name')}%0ATelefon: ${data.get('phone')||''}%0AShahar: ${data.get('city')||''}`;
+      window.location.href = `mailto:hello@yoldosh.uz?subject=Haydovchi%20ro'yxati&body=${body}`;
+      msg.textContent = 'Rahmat! Xabaringiz pochta mijozida ochildi — tasdiqlab yuboring.';
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
