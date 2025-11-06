@@ -1,0 +1,94 @@
+{
+    "Pages": {
+        "Home": {
+            "Title": "Rides at your choice at low prices",
+            "Subtitle": "Find passengers or become a driver with",
+            "From": "From",
+            "To": "To",
+            "Passengers": {
+                "Title": "Passengers",
+                "1": "1 passenger",
+                "2": "2 passengers",
+                "3": "3 passengers",
+                "4": "4 passengers"
+            },
+            "Search": "Search",
+            "Trips": "Trips",
+            "Drivers": "Drivers",
+            "Rating": "Rating",
+            "Support": "Support"
+        },
+        "HowItWorks": {
+            "Title": "How it works",
+            "Subtitle": "Getting started is easy — follow a few simple steps and start your journey with Yo'ldosh.",
+            "Features": {
+                "1": {
+                    "Title": "🎯 Your perfect ride at the right price",
+                    "Description": "Choose from a wide range of affordable rides that fit your schedule and budget perfectly."
+                },
+                "2": {
+                    "Title": "💰 Trust who you travel with",
+                    "Description": "All drivers are verified with their passport and profile check, so your rides are safe and worry-free."
+                },
+                "3": {
+                    "Title": "⚡ Scroll, click, tap — and go!",
+                    "Description": "Book your ride in seconds through our simple and fast app."
+                },
+                "Button": "Read more"
+            }
+        },
+        "Help": {
+            "Title": "Help us protect you from fraudsters",
+            "Subtitle": "At Yo'ldosh, we do everything to ensure your trips are safe. But sometimes scammers try to take advantage of users' trust.",
+            "Protect": {
+                "Title": "To protect yourself:",
+                "1": "Communicate and pay for trips only through the Yo'ldosh app.",
+                "2": "Do not share SMS codes, PINs, or bank card information with anyone.",
+                "3": "Check driver and passenger ratings and reviews.",
+                "4": "If you notice anything suspicious, report it to us and we will deal with it immediately."
+            },
+            "Security": "Safety is our shared responsibility.",
+            "BeCareful": "Be careful, and every trip with Yo'ldosh will be calm and reliable."
+        },
+        "Popular": {
+            "Title": "Popular routes"
+        },
+        "Travel": {
+            "Title": "Travel more conveniently with the app Yo'ldosh",
+            "Description": "Install the Yo'ldosh mobile app to find passengers. With it, you will always be up to date on your trips. Chat with passengers, receive ride reminders, view purchased bus tickets, and use other useful features right on your smartphone",
+            "Subtitle": "With the Yo'ldosh app, your trip history is always at hand!",
+            "AppStore": "Download on the App Store",
+            "GooglePlay": "Download on the Google Play"
+        }
+    },
+    "Components": {
+        "Header": {
+            "Features": "Features",
+            "HowItWorks": "How it works",
+            "Contacts": "Contacts",
+            "DownloadApp": "Download app"
+        },
+        "Calendar": "dd.mm.yyyy",
+        "Footer": {
+            "Product": {
+                "Title": "Product",
+                "1": "For passengers",
+                "2": "For drivers",
+                "3": "Prices"
+            },
+            "Company": {
+                "Title": "Product",
+                "1": "About us",
+                "2": "Career",
+                "3": "Blog"
+            },
+            "Support": {
+                "Title": "Product",
+                "1": "Help",
+                "2": "Contacts",
+                "3": "Safety"
+            },
+            "Rights": "All Rights Reserved"
+        }
+    }
+}
