@@ -1,94 +1,131 @@
 {
     "Pages": {
         "Home": {
-            "Title": "Rides at your choice at low prices",
-            "Subtitle": "Find passengers or become a driver with",
-            "From": "From",
-            "To": "To",
+            "Title": "Arzon narxlarda siz tanlagan yo‘nalishlar",
+            "Subtitle": "Yo‘lovchilarni toping yoki haydovchi bo‘ling",
+            "From": "Qayerdan",
+            "To": "Qayerga",
             "Passengers": {
-                "Title": "Passengers",
-                "1": "1 passenger",
-                "2": "2 passengers",
-                "3": "3 passengers",
-                "4": "4 passengers"
+                "Title": "Yo‘lovchilar",
+                "1": "1 yo‘lovchi",
+                "2": "2 yo‘lovchi",
+                "3": "3 yo‘lovchi",
+                "4": "4 yo‘lovchi",
+                "5": "5 yo‘lovchi",
+                "6": "6 yo‘lovchi"
             },
-            "Search": "Search",
-            "Trips": "Trips",
-            "Drivers": "Drivers",
-            "Rating": "Rating",
-            "Support": "Support"
+            "Search": "Qidirish",
+            "Trips": "Safarlar",
+            "Drivers": "Haydovchilar",
+            "Rating": "Reyting",
+            "Support": "Yordam"
         },
         "HowItWorks": {
-            "Title": "How it works",
-            "Subtitle": "Getting started is easy — follow a few simple steps and start your journey with Yo'ldosh.",
+            "Title": "Qanday ishlaydi",
+            "Subtitle": "Boshlash juda oson — bir nechta oddiy qadamni bajaring va Yo‘ldosh bilan safaringizni boshlang.",
             "Features": {
                 "1": {
-                    "Title": "🎯 Your perfect ride at the right price",
-                    "Description": "Choose from a wide range of affordable rides that fit your schedule and budget perfectly."
+                    "Title": "🎯 To‘g‘ri narxda ideal safar",
+                    "Description": "Jadvalingiz va byudjetingizga mos keladigan arzon safarlardan o‘zingizga mosini tanlang."
                 },
                 "2": {
-                    "Title": "💰 Trust who you travel with",
-                    "Description": "All drivers are verified with their passport and profile check, so your rides are safe and worry-free."
+                    "Title": "💰 Kim bilan ketayotganingizga ishonch hosil qiling",
+                    "Description": "Barcha haydovchilar pasport va profil orqali tasdiqlangan, shuning uchun safarlaringiz xavfsiz va ishonchli."
                 },
                 "3": {
-                    "Title": "⚡ Scroll, click, tap — and go!",
-                    "Description": "Book your ride in seconds through our simple and fast app."
+                    "Title": "⚡ Aylantiring, bosing va yo‘lga chiqing!",
+                    "Description": "Oddiy va tezkor ilova orqali safarni soniyalar ichida bron qiling."
                 },
-                "Button": "Read more"
+                "Button": "Batafsil"
             }
         },
         "Help": {
-            "Title": "Help us protect you from fraudsters",
-            "Subtitle": "At Yo'ldosh, we do everything to ensure your trips are safe. But sometimes scammers try to take advantage of users' trust.",
+            "Title": "Firibgarlardan himoyalanishda bizga yordam bering",
+            "Subtitle": "Yo‘ldosh jamoasi sizning safarlaringiz xavfsiz bo‘lishi uchun hamma narsani qiladi. Biroq ba’zida firibgarlar foydalanuvchilarning ishonchidan foydalanishga urinadi.",
             "Protect": {
-                "Title": "To protect yourself:",
-                "1": "Communicate and pay for trips only through the Yo'ldosh app.",
-                "2": "Do not share SMS codes, PINs, or bank card information with anyone.",
-                "3": "Check driver and passenger ratings and reviews.",
-                "4": "If you notice anything suspicious, report it to us and we will deal with it immediately."
+                "Title": "O‘zingizni himoya qilish uchun:",
+                "1": "Faqat Yo‘ldosh ilovasi orqali muloqot qiling va to‘lov qiling.",
+                "2": "Hech kimga SMS kodlar, PIN-kodlar yoki bank karta ma’lumotlarini bermang.",
+                "3": "Haydovchi va yo‘lovchi reytinglarini hamda sharhlarini tekshirib chiqing.",
+                "4": "Agar shubhali holatni sezsangiz, darhol bizga xabar bering — biz darhol choralar ko‘ramiz."
             },
-            "Security": "Safety is our shared responsibility.",
-            "BeCareful": "Be careful, and every trip with Yo'ldosh will be calm and reliable."
+            "Security": "Xavfsizlik — bu umumiy mas’uliyat.",
+            "BeCareful": "Ehtiyot bo‘ling, shunda har bir Yo‘ldosh safaringiz tinch va ishonchli bo‘ladi."
+        },
+        "WhyUs": {
+            "Title": "Nega bizni tanlaysiz",
+            "Subtitle": "Oʻzbekiston boʻylab uzoq masofali sayohatlar uchun ishonchli sherigingiz.",
+            "Cards": {
+                "title1": "Ishonchlilik",
+                "description1": "Har bir haydovchi va yoʻlovchi tekshiriladi — xavfsiz va ishonchli safarlar uchun.",
+                "title2": "Tezlik",
+                "description2": "Safarni toping va joyingizni bir necha soniyada bron qiling.",
+                "title3": "Shaffof narxlar",
+                "description3": "Hech qanday yashirin toʻlovlarsiz — siz har doim qancha toʻlayotganingizni bilasiz.",
+                "title4": "Qulaylik",
+                "description4": "Oʻzingizga mos safarlarni tanlang va yoʻlda qulaylikdan bahramand boʻling.",
+                "title5": "Hamjamiyat",
+                "description5": "Yoʻlni siz bilan boʻlishadigan haydovchi va yoʻlovchilar jamiyatiga qoʻshiling.",
+                "title6": "24/7 Yordam",
+                "description6": "Bizning yordam jamoamiz siz uchun har doim mavjud.",
+                "title7": "Moslashuvchanlik",
+                "description7": "Sayohatlaringizni qulay rejalashtiring — oson bron qiling, oʻzgartiring yoki bekor qiling.",
+                "title8": "Ekologik tozalik",
+                "description8": "Birgalikda safar qilib, havoga chiqadigan zararli moddalarni kamaytiring."
+            }
         },
         "Popular": {
-            "Title": "Popular routes"
+            "Title": "Ommabop yo‘nalishlar",
+            "From": "Dan",
+            "Sum": "Som",
+            "Andijan": "Andijon",
+            "Fergana": "Farg'ona",
+            "Namangan": "Namangan",
+            "Tashkent": "Toshkent",
+            "Bukhara": "Buxoro",
+            "Jizzah": "Jizzax",
+            "Navoiy": "Navoiy",
+            "Samarkand": "Samarqand",
+            "Sirdarya": "Sirdaryo",
+            "Xorezm": "Xorazm",
+            "Nukus": "Nukus"
         },
         "Travel": {
-            "Title": "Travel more conveniently with the app Yo'ldosh",
-            "Description": "Install the Yo'ldosh mobile app to find passengers. With it, you will always be up to date on your trips. Chat with passengers, receive ride reminders, view purchased bus tickets, and use other useful features right on your smartphone",
-            "Subtitle": "With the Yo'ldosh app, your trip history is always at hand!",
-            "AppStore": "Download on the App Store",
-            "GooglePlay": "Download on the Google Play"
+            "Title": "Yo‘ldosh ilovasi bilan yanada qulay sayohat qiling",
+            "Description": "Yo‘ldosh mobil ilovasini o‘rnating va yo‘lovchilarni toping. Ilova orqali safarlaringiz haqida ma’lumot oling, yo‘lovchilar bilan yozishing, eslatmalarni oling, chipta va boshqa foydali funksiyalardan foydalaning.",
+            "Subtitle": "Yo‘ldosh ilovasi bilan safarlaringiz tarixi doimo qo‘lingizda!",
+            "AppStore": "App Store’dan yuklab oling",
+            "GooglePlay": "Google Play’dan yuklab oling"
         }
     },
     "Components": {
         "Header": {
-            "Features": "Features",
-            "HowItWorks": "How it works",
-            "Contacts": "Contacts",
-            "DownloadApp": "Download app"
+            "Features": "Imkoniyatlar",
+            "HowItWorks": "Qanday ishlaydi",
+            "Contacts": "Aloqa",
+            "DownloadApp": "Yuklab olish"
         },
-        "Calendar": "dd.mm.yyyy",
+        "Calendar": "kk.oo.yyyy",
         "Footer": {
             "Product": {
-                "Title": "Product",
-                "1": "For passengers",
-                "2": "For drivers",
-                "3": "Prices"
+                "Title": "Mahsulot",
+                "1": "Yo‘lovchilar uchun",
+                "2": "Haydovchilar uchun",
+                "3": "Narxlar"
             },
             "Company": {
-                "Title": "Product",
-                "1": "About us",
-                "2": "Career",
+                "Title": "Kompaniya",
+                "1": "Biz haqimizda",
+                "2": "Karyera",
                 "3": "Blog"
             },
             "Support": {
-                "Title": "Product",
-                "1": "Help",
-                "2": "Contacts",
-                "3": "Safety"
+                "Title": "Yordam",
+                "1": "Yordam markazi",
+                "2": "Aloqa",
+                "3": "Xavfsizlik"
             },
-            "Rights": "All Rights Reserved"
+            "Rights": "Barcha huquqlar himoyalangan"
         }
     }
 }

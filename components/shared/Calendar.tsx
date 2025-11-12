@@ -12,7 +12,11 @@ import {
 } from "@/components/ui/popover";
 import { useTranslations } from "next-intl";
 
-export const CalendarSelect = () => {
+export const CalendarSelect = ({
+  onDateChange,
+}: {
+  onDateChange?: React.Dispatch<React.SetStateAction<Date | undefined>>;
+}) => {
   const t = useTranslations("Components");
 
   const [open, setOpen] = React.useState(false)
@@ -20,11 +24,11 @@ export const CalendarSelect = () => {
   return (
     <div className="flex flex-col items-start justify-start w-full">
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild className="bg-none hover:bg-transparent">
           <Button
             variant="ghost"
             id="date"
-            className="w-48 justify-start font-normal gap-4 px-0! cursor-pointer text-muted-foreground"
+            className="w-48 justify-start font-normal gap-4 px-0! cursor-pointer text-muted-foreground bg-none hover:bg-transparent"
           >
             <Calendar1 className="size-6" />
             {date ? date.toLocaleDateString() : t("Calendar")}
@@ -37,6 +41,8 @@ export const CalendarSelect = () => {
             captionLayout="dropdown"
             onSelect={(date) => {
               setDate(date)
+              // notify parent if handler provided
+              if (onDateChange) onDateChange(date)
               setOpen(false)
             }}
           />
