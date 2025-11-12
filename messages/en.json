@@ -10,7 +10,9 @@
                 "1": "1 passenger",
                 "2": "2 passengers",
                 "3": "3 passengers",
-                "4": "4 passengers"
+                "4": "4 passengers",
+                "5": "5 passengers",
+                "6": "6 passengers"
             },
             "Search": "Search",
             "Trips": "Trips",
@@ -50,8 +52,43 @@
             "Security": "Safety is our shared responsibility.",
             "BeCareful": "Be careful, and every trip with Yo'ldosh will be calm and reliable."
         },
+        "WhyUs": {
+            "Title": "Why Choose Us",
+            "Subtitle": "Your reliable companion for long-distance ride sharing across Uzbekistan.",
+            "Cards": {
+                "title1": "Reliability",
+                "description1": "We verify every driver and passenger to make your trip safe and worry-free.",
+                "title2": "Speed",
+                "description2": "Find a trip and book your seat in seconds. No long waiting times.",
+                "title3": "Transparent Pricing",
+                "description3": "No hidden fees — you always know exactly what you pay for.",
+                "title4": "Comfort",
+                "description4": "Choose rides that fit your preferences and travel comfortably.",
+                "title5": "Community",
+                "description5": "Join a friendly community of drivers and passengers who share your route.",
+                "title6": "24/7 Support",
+                "description6": "Our support team is always here to help, any time, any day.",
+                "title7": "Flexibility",
+                "description7": "Plan trips on your schedule — book, change or cancel with ease.",
+                "title8": "Eco-Friendly",
+                "description8": "Reduce your carbon footprint by sharing rides instead of driving alone."
+            }
+        },
         "Popular": {
-            "Title": "Popular routes"
+            "Title": "Popular routes",
+            "From": "From",
+            "Sum": "Sum",
+            "Andijan": "Andijan",
+            "Fergana": "Fergana",
+            "Namangan": "Namangan",
+            "Tashkent": "Tashkent",
+            "Bukhara": "Bukhara",
+            "Jizzah": "Jizzah",
+            "Navoiy": "Navoiy",
+            "Samarkand": "Samarkand",
+            "Sirdarya": "Sirdarya",
+            "Xorezm": "Xorezm",
+            "Nukus": "Nukus"
         },
         "Travel": {
             "Title": "Travel more conveniently with the app Yo'ldosh",
@@ -66,7 +103,7 @@
             "Features": "Features",
             "HowItWorks": "How it works",
             "Contacts": "Contacts",
-            "DownloadApp": "Download app"
+            "DownloadApp": "Download"
         },
         "Calendar": "dd.mm.yyyy",
         "Footer": {
@@ -77,13 +114,13 @@
                 "3": "Prices"
             },
             "Company": {
-                "Title": "Product",
+                "Title": "Company",
                 "1": "About us",
                 "2": "Career",
                 "3": "Blog"
             },
             "Support": {
-                "Title": "Product",
+                "Title": "Support",
                 "1": "Help",
                 "2": "Contacts",
                 "3": "Safety"

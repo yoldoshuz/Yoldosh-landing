@@ -4,6 +4,7 @@ import { Help } from "@/components/pages/Help";
 import { Popular } from "@/components/pages/Popular";
 import { Travel } from "@/components/pages/Travel";
 import { Footer } from "@/components/shared/Footer";
+import { WhyUs } from "@/components/pages/WhyUs";
 
 const Page = () => {
   return (
@@ -11,6 +12,7 @@ const Page = () => {
       <Home />
       <HowItWorks />
       <Help />
+      <WhyUs />
       <Popular />
       <Travel />
       <Footer />

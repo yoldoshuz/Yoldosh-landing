@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { LanguageSwitcher } from "@/app/providers/LanguageSwitcher";
+import { LanguageSwitcher } from "../shared/LanguageSwitcher";
 import { navLinks } from "@/constants";
 import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
@@ -16,7 +16,7 @@ export const Navbar = () => {
           <div>
             <Link href="/" className="flex flex-row gap-2 items-center">
               <Image src="logo.svg" alt="logo" width={48} height={48} />
-              <h1 className="text-2xl font-bold">Yoldosh</h1>
+              <h1 className="text-2xl font-bold hidden md:flex">Yoldosh</h1>
             </Link>
           </div>
 
@@ -34,7 +34,7 @@ export const Navbar = () => {
 
           <div className="flex items-center justify-center gap-2">
             <LanguageSwitcher />
-            <div className="hidden md:flex">
+            <div>
               <Button className="btn-primary">
                 {t("DownloadApp")}
               </Button>
