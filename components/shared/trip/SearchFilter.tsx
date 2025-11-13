@@ -1,39 +1,45 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+
+import { REGIONS } from "@/constants";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar as CalendarIcon, Users } from "lucide-react";
+import {
+    Calendar as CalendarIcon,
+    Search,
+    Users
+} from "lucide-react";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger
+} from "@/components/ui/popover";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select";
 
 interface SearchFiltersProps {
     onSearch: (filters: any) => void;
     initialFilters?: any;
-}
-
-// Простой список регионов (можно заменить на API)
-const REGIONS = [
-    { id: 1, name: "Andijan" },
-    { id: 3, name: "Bukhara" },
-    { id: 6, name: "Fergana" },
-    { id: 7, name: "Jizzakh" },
-    { id: 9, name: "Namangan" },
-    { id: 10, name: "Navoiy" },
-    { id: 12, name: "Samarkand" },
-    { id: 13, name: "Tashkent" },
-    { id: 8, name: "Xorezm" },
-    { id: 14, name: "Karakalpakstan" },
-];
+};
 
 export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) => {
+    const t = useTranslations("Components.Search");
     const [fromRegion, setFromRegion] = useState(initialFilters?.from_region_id?.toString() || "");
     const [toRegion, setToRegion] = useState(initialFilters?.to_region_id?.toString() || "");
     const [date, setDate] = useState<Date | undefined>(
         initialFilters?.departure_date ? new Date(initialFilters.departure_date) : undefined
     );
     const [seats, setSeats] = useState(initialFilters?.seats?.toString() || "1");
+    const router = useRouter();
 
     const handleSearch = () => {
         onSearch({
@@ -42,20 +48,31 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
             departure_date: date?.toISOString().split('T')[0],
             seats: parseInt(seats),
         });
+
+        const params = new URLSearchParams({
+            from: fromRegion,
+            to: toRegion,
+            seats: seats,
+        });
+
+        if (date) {
+            params.append("date", date.toISOString().split('T')[0]);
+        }
+
+        router.push(`/trips/search?${params.toString()}`);
     };
 
     return (
-        <Card className="p-6">
+        <Card className="p-6 shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                {/* From */}
                 <div>
-                    <label className="text-sm font-medium mb-2 block">From</label>
+                    <label className="text-sm font-medium mb-2 block">{t("From")}</label>
                     <Select value={fromRegion} onValueChange={setFromRegion}>
-                        <SelectTrigger>
+                        <SelectTrigger className="w-full cursor-pointer">
                             <SelectValue placeholder="Select region" />
                         </SelectTrigger>
                         <SelectContent>
-                            {REGIONS.map((region) => (
+                            {REGIONS().map((region) => (
                                 <SelectItem key={region.id} value={region.id.toString()}>
                                     {region.name}
                                 </SelectItem>
@@ -63,16 +80,14 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                         </SelectContent>
                     </Select>
                 </div>
-
-                {/* To */}
                 <div>
-                    <label className="text-sm font-medium mb-2 block">To</label>
+                    <label className="text-sm font-medium mb-2 block">{t("To")}</label>
                     <Select value={toRegion} onValueChange={setToRegion}>
-                        <SelectTrigger>
+                        <SelectTrigger className="w-full cursor-pointer">
                             <SelectValue placeholder="Select region" />
                         </SelectTrigger>
                         <SelectContent>
-                            {REGIONS.map((region) => (
+                            {REGIONS().map((region) => (
                                 <SelectItem key={region.id} value={region.id.toString()}>
                                     {region.name}
                                 </SelectItem>
@@ -80,15 +95,13 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                         </SelectContent>
                     </Select>
                 </div>
-
-                {/* Date */}
                 <div>
-                    <label className="text-sm font-medium mb-2 block">Date</label>
+                    <label className="text-sm font-medium mb-2 block">{t("Date")}</label>
                     <Popover>
-                        <PopoverTrigger asChild>
+                        <PopoverTrigger asChild className="w-full cursor-pointer">
                             <Button variant="outline" className="w-full justify-start">
                                 <CalendarIcon className="mr-2 size-4" />
-                                {date ? date.toLocaleDateString() : "Pick a date"}
+                                {date ? date.toLocaleDateString() : t("PickDate")}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0">
@@ -101,12 +114,10 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                         </PopoverContent>
                     </Popover>
                 </div>
-
-                {/* Seats */}
                 <div>
-                    <label className="text-sm font-medium mb-2 block">Passengers</label>
+                    <label className="text-sm font-medium mb-2 block">{t("Passengers.Title")}</label>
                     <Select value={seats} onValueChange={setSeats}>
-                        <SelectTrigger>
+                        <SelectTrigger className="w-full cursor-pointer">
                             <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -121,15 +132,14 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                         </SelectContent>
                     </Select>
                 </div>
-
-                {/* Search Button */}
                 <div className="flex items-end">
                     <Button
                         onClick={handleSearch}
                         className="w-full btn-primary"
                         disabled={!fromRegion || !toRegion}
                     >
-                        Search
+                        <Search />
+                        {t("Search")}
                     </Button>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 export const Travel = () => {
     const t = useTranslations("Pages.Travel")

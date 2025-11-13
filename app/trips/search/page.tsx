@@ -1,15 +1,19 @@
 "use client";
 
 import { useState, Suspense } from "react";
+import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useSearchTrips } from "@/hooks/useTrips";
-import { TripCard } from "@/components/shared/TripCard";
-import { SearchFilters } from "@/components/shared/SearchFilter";
-import { Loader2 } from "lucide-react";
 
-function TripsSearchContent() {
+import { Loader2 } from "lucide-react";
+import { PopularTripCard, TripCard } from "@/components/shared/trip/TripCard";
+import { SearchFilters } from "@/components/shared/trip/SearchFilter";
+import { useTranslations } from "next-intl";
+
+const SearchPage = () => {
+    const t = useTranslations();
     const router = useRouter();
     const searchParams = useSearchParams();
+    const { data: popularTrips } = usePopularTrips();
     const [filters, setFilters] = useState({
         from_region_id: parseInt(searchParams.get("from") || "0"),
         to_region_id: parseInt(searchParams.get("to") || "0"),
@@ -54,14 +58,19 @@ function TripsSearchContent() {
             <SearchFilters onSearch={handleSearch} initialFilters={filters} />
 
             <div className="mt-8">
-                {!hasFilters ? (
-                    <div className="text-center text-muted-foreground py-12">
-                        Please select departure and arrival locations to search for trips.
-                    </div>
-                ) : trips.length === 0 ? (
-                    <div className="text-center text-muted-foreground py-12">
-                        No trips found. Try adjusting your search criteria.
-                    </div>
+                {!hasFilters || trips.length === 0 ? (
+                    <>
+                        {/* <h2 className="text-xl font-semibold mb-4">{t("PopularTitle")}</h2> */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {popularTrips?.data.trips.map((trip) => (
+                                <PopularTripCard
+                                    key={trip.id}
+                                    trip={trip}
+                                    onClick={() => router.push(`/trips/${trip.id}`)}
+                                />
+                            ))}
+                        </div>
+                    </>
                 ) : (
                     <>
                         <div className="mb-6 text-lg font-semibold">
@@ -102,14 +111,16 @@ function TripsSearchContent() {
     );
 }
 
-export default function TripsSearchPage() {
+const Page = () => {
     return (
         <Suspense fallback={
             <div className="flex items-center justify-center min-h-[50vh]">
                 <Loader2 className="size-8 animate-spin text-teal-500" />
             </div>
         }>
-            <TripsSearchContent />
+            <SearchPage />
         </Suspense>
     );
-}
+};
+
+export default Page;

@@ -2,7 +2,7 @@
 
 import { use } from "react";
 import { useTripDetails } from "@/hooks/useTrips";
-import { TripDetails } from "@/components/shared/TripDetails";
+import { TripDetails } from "@/components/shared/trip/TripDetails";
 import { Loader2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";

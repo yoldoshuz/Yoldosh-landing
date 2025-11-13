@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
+import { Separator } from "../../ui/separator";
+import { Button } from "../../ui/button";
 import { ChevronRight } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import {

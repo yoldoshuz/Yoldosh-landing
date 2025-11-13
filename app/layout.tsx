@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 
 import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { Navbar } from "@/components/shared/Navbar";
+import { Navbar } from "@/components/shared/widgets/Navbar";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
 

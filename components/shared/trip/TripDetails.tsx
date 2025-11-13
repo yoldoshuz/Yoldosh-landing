@@ -1,8 +1,15 @@
-import { Trip } from "@/lib/api";
-import { Calendar, Users, Star, Car, Clock, MapPin } from "lucide-react";
+import { Trip } from "@/types/";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+    Calendar,
+    Users,
+    Star,
+    Car,
+    Clock,
+    MapPin
+} from "lucide-react";
 
 interface TripDetailsProps {
     trip: Trip;
@@ -46,10 +53,10 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                             </div>
                             <div>
                                 <p className="font-semibold text-lg">
-                                    {trip.from_location.address}
+                                    {trip.from_region_id}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    {trip.from_location.region.nameRu}
+                                    {trip.from_region_id}
                                 </p>
                             </div>
                         </div>
@@ -151,7 +158,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                         <Car className="size-5 text-teal-500" />
                         <div>
                             <p className="font-medium">
-                                {trip.car.modelDetails.make} {trip.car.modelDetails.model}
+                                {trip.car.make} {trip.car.model}
                             </p>
                             <p className="text-sm text-muted-foreground">
                                 {trip.car.color}

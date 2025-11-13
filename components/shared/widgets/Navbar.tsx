@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { LanguageSwitcher } from "../shared/LanguageSwitcher";
 import { navLinks } from "@/constants";
 import { useTranslations } from "next-intl";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/functional/LanguageSwitcher";
 
 export const Navbar = () => {
   const t = useTranslations("Components.Header");
@@ -15,7 +15,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div>
             <Link href="/" className="flex flex-row gap-2 items-center">
-              <Image src="logo.svg" alt="logo" width={48} height={48} />
+              <Image src="/logo.svg" alt="logo" width={48} height={48} />
               <h1 className="text-2xl font-bold hidden md:flex">Yoldosh</h1>
             </Link>
           </div>

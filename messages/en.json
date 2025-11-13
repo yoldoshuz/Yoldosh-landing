@@ -22,7 +22,7 @@
         },
         "HowItWorks": {
             "Title": "How it works",
-            "Subtitle": "Getting started is easy — follow a few simple steps and start your journey with Yo'ldosh.",
+            "Subtitle": "Getting started is easy - follow a few simple steps and start your journey with Yo'ldosh.",
             "Features": {
                 "1": {
                     "Title": "🎯 Your perfect ride at the right price",
@@ -33,7 +33,7 @@
                     "Description": "All drivers are verified with their passport and profile check, so your rides are safe and worry-free."
                 },
                 "3": {
-                    "Title": "⚡ Scroll, click, tap — and go!",
+                    "Title": "⚡ Scroll, click, tap and go!",
                     "Description": "Book your ride in seconds through our simple and fast app."
                 },
                 "Button": "Read more"
@@ -105,6 +105,22 @@
             "Contacts": "Contacts",
             "DownloadApp": "Download"
         },
+        "Search": {
+            "From": "From",
+            "To": "To",
+            "Date": "Date",
+            "PickDate": "Pick a date",
+            "Passengers": {
+                "Title": "Passengers",
+                "1": "1 passenger",
+                "2": "2 passengers",
+                "3": "3 passengers",
+                "4": "4 passengers",
+                "5": "5 passengers",
+                "6": "6 passengers"
+            },
+            "Search": "Search"
+        },
         "Calendar": "dd.mm.yyyy",
         "Footer": {
             "Product": {
@@ -126,6 +142,22 @@
                 "3": "Safety"
             },
             "Rights": "All Rights Reserved"
+        },
+        "Regions": {
+            "Andijan": "Andijan",
+            "Bukhara": "Bukhara",
+            "Jizzakh": "Jizzakh",
+            "Qashqadarya": "Qashqadarya",
+            "Navoiy": "Navoiy",
+            "Namangan": "Namangan",
+            "Samarkand": "Samarkand",
+            "Sirdarya": "Sirdarya",
+            "TashkentCity": "Tashkent city",
+            "Tashkent": "Tashkent",
+            "Fergana": "Fergana",
+            "Khorezm": "Khorezm",
+            "Karakalpakstan": "Karakalpakstan",
+            "Surkhandarya": "Surkhandarya"
         }
     }
 }

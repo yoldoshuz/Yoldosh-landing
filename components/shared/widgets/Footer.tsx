@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Separator } from "../ui/separator";
 import { useTranslations } from "next-intl";
+import { Separator } from "@/components/ui/separator";
 
 export const Footer = () => {
     const t = useTranslations("Components.Footer");

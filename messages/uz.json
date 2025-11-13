@@ -22,7 +22,7 @@
         },
         "HowItWorks": {
             "Title": "Qanday ishlaydi",
-            "Subtitle": "Boshlash juda oson — bir nechta oddiy qadamni bajaring va Yo‘ldosh bilan safaringizni boshlang.",
+            "Subtitle": "Boshlash juda oson - bir nechta oddiy qadamni bajaring va Yo‘ldosh bilan safaringizni boshlang.",
             "Features": {
                 "1": {
                     "Title": "🎯 To‘g‘ri narxda ideal safar",
@@ -105,6 +105,22 @@
             "Contacts": "Aloqa",
             "DownloadApp": "Yuklab olish"
         },
+        "Search": {
+            "From": "Qayerdan",
+            "To": "Qayerga",
+            "Date": "Sana",
+            "PickDate": "Sana tanlash",
+            "Passengers": {
+                "Title": "Yo‘lovchilar",
+                "1": "1 yo‘lovchi",
+                "2": "2 yo‘lovchi",
+                "3": "3 yo‘lovchi",
+                "4": "4 yo‘lovchi",
+                "5": "5 yo‘lovchi",
+                "6": "6 yo‘lovchi"
+            },
+            "Search": "Qidirish"
+        },
         "Calendar": "kk.oo.yyyy",
         "Footer": {
             "Product": {
@@ -126,6 +142,22 @@
                 "3": "Xavfsizlik"
             },
             "Rights": "Barcha huquqlar himoyalangan"
+        },
+        "Regions": {
+            "Andijan": "Andijon",
+            "Bukhara": "Buxoro",
+            "Jizzakh": "Jizzax",
+            "Qashqadarya": "Qashqadaryo",
+            "Navoiy": "Navoiy",
+            "Namangan": "Namangan",
+            "Samarkand": "Samarqand",
+            "Sirdarya": "Sirdaryo",
+            "TashkentCity": "Toshkent shahar",
+            "Tashkent": "Toshkent",
+            "Fergana": "Farg'ona",
+            "Khorezm": "Xorazm",
+            "Karakalpakstan": "Qoraqalpog'iston",
+            "Surkhandarya": "Surxondaryo"
         }
     }
 }
