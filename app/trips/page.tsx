@@ -10,7 +10,7 @@ import { SearchFilters } from "@/components/shared/trip/SearchFilter";
 import { useTranslations } from "next-intl";
 
 const SearchPage = () => {
-    const t = useTranslations();
+    const t = useTranslations("Pages.Trips");
     const router = useRouter();
     const searchParams = useSearchParams();
     const { data: popularTrips } = usePopularTrips();
@@ -23,9 +23,11 @@ const SearchPage = () => {
         limit: 12,
     });
 
+    const hasFilters = filters.from_region_id > 0 && filters.to_region_id > 0;
+
     const { data, isLoading, error } = useSearchTrips(
         filters,
-        filters.from_region_id > 0 && filters.to_region_id > 0
+        hasFilters
     );
 
     const handleSearch = (newFilters: Partial<typeof filters>) => {
@@ -44,23 +46,22 @@ const SearchPage = () => {
         return (
             <div className="container mx-auto px-4 py-8">
                 <div className="text-center text-red-500">
-                    Error loading trips. Please try again.
+                    {t("Error")}
                 </div>
             </div>
         );
     }
 
     const trips = data?.data?.trips || [];
-    const hasFilters = filters.from_region_id > 0 && filters.to_region_id > 0;
 
     return (
         <div className="container mx-auto px-4 py-8">
             <SearchFilters onSearch={handleSearch} initialFilters={filters} />
 
             <div className="mt-8">
-                {!hasFilters || trips.length === 0 ? (
+                {!hasFilters ? (
                     <>
-                        {/* <h2 className="text-xl font-semibold mb-4">{t("PopularTitle")}</h2> */}
+                        <h2 className="text-xl font-semibold mb-4">{t("PopularTrips")}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {popularTrips?.data.trips.map((trip) => (
                                 <PopularTripCard
@@ -71,10 +72,16 @@ const SearchPage = () => {
                             ))}
                         </div>
                     </>
+                ) : trips.length === 0 ? (
+                    <div className="text-center py-12">
+                        <p className="text-lg text-muted-foreground">
+                            {t("NotFound")}
+                        </p>
+                    </div>
                 ) : (
                     <>
                         <div className="mb-6 text-lg font-semibold">
-                            Found {data?.data.total} trips
+                            {data?.data.total} {t("Found")}
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {trips.map((trip) => (

@@ -96,13 +96,34 @@
             "Subtitle": "With the Yo'ldosh app, your trip history is always at hand!",
             "AppStore": "Download on the App Store",
             "GooglePlay": "Download on the Google Play"
+        },
+        "Trips": {
+            "Title": "Trips",
+            "PopularTrips": "Popular trips",
+            "Found": "trips was found",
+            "From": "From",
+            "NotFound": "Trips was not found",
+            "Error": "Error loading trips. Please try again.",
+            "Details": {
+                "Back": "Back",
+                "Title": "Trip Details",
+                "Description": "Review the trip information before booking",
+                "Route": "Route",
+                "Information": "Trip information",
+                "Departure": "Departure",
+                "Seats": "Available seats",
+                "Driver": "Driver",
+                "Vehicle": "Vehicle",
+                "AdditionalInformation": "AdditionalInformation",
+                "Price": "Price per person",
+                "Book": "Book"
+            }
         }
     },
     "Components": {
         "Header": {
-            "Features": "Features",
-            "HowItWorks": "How it works",
-            "Contacts": "Contacts",
+            "About": "About",
+            "Trips": "Trips",
             "DownloadApp": "Download"
         },
         "Search": {
@@ -119,7 +140,8 @@
                 "5": "5 passengers",
                 "6": "6 passengers"
             },
-            "Search": "Search"
+            "Search": "Search",
+            "SelectRegion": "Select region"
         },
         "Calendar": "dd.mm.yyyy",
         "Footer": {

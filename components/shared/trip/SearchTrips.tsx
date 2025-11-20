@@ -39,7 +39,7 @@ export const SearchTrips = () => {
             params.append("date", date.toISOString().split('T')[0]);
         }
 
-        router.push(`/trips/search?${params.toString()}`);
+        router.push(`/trips?${params.toString()}`);
     };
 
     return (

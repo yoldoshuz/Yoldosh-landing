@@ -59,7 +59,7 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
             params.append("date", date.toISOString().split('T')[0]);
         }
 
-        router.push(`/trips/search?${params.toString()}`);
+        router.push(`/trips?${params.toString()}`);
     };
 
     return (
@@ -69,7 +69,7 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                     <label className="text-sm font-medium mb-2 block">{t("From")}</label>
                     <Select value={fromRegion} onValueChange={setFromRegion}>
                         <SelectTrigger className="w-full cursor-pointer">
-                            <SelectValue placeholder="Select region" />
+                            <SelectValue placeholder={t("SelectRegion")} />
                         </SelectTrigger>
                         <SelectContent>
                             {REGIONS().map((region) => (
@@ -84,7 +84,7 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                     <label className="text-sm font-medium mb-2 block">{t("To")}</label>
                     <Select value={toRegion} onValueChange={setToRegion}>
                         <SelectTrigger className="w-full cursor-pointer">
-                            <SelectValue placeholder="Select region" />
+                            <SelectValue placeholder={t("SelectRegion")} />
                         </SelectTrigger>
                         <SelectContent>
                             {REGIONS().map((region) => (

@@ -26,7 +26,7 @@ export default function TripDetailsPage({
 
     if (error || !data?.data?.trip) {
         return (
-            <div className="container mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto">
                 <Button
                     variant="ghost"
                     onClick={() => router.back()}
@@ -44,14 +44,6 @@ export default function TripDetailsPage({
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <Button
-                variant="ghost"
-                onClick={() => router.back()}
-                className="mb-6"
-            >
-                <ArrowLeft className="mr-2 size-4" />
-                Back
-            </Button>
             <TripDetails trip={data.data.trip} />
         </div>
     );

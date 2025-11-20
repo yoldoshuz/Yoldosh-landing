@@ -1,6 +1,7 @@
 import { Trip } from "@/types/";
 import { Card } from "@/components/ui/card";
-import { Calendar, Users, Star } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Calendar, Users, Star, Car } from "lucide-react";
 
 interface TripCardProps {
     trip: Trip;
@@ -8,9 +9,11 @@ interface TripCardProps {
 }
 
 export const TripCard = ({ trip, onClick }: TripCardProps) => {
+    const t = useTranslations("Pages.Trips");
+
     const departureDate = new Date(trip.departure_ts);
     const locale = localStorage.getItem("locale") === "uz" ? "uz-UZ" : localStorage.getItem("locale") === "ru" ? "ru-RU" : "en-US";
-    
+
     const formattedDate = departureDate.toLocaleDateString(locale, {
         day: "2-digit",
         month: "short",
@@ -77,8 +80,8 @@ export const TripCard = ({ trip, onClick }: TripCardProps) => {
                         </div>
                     </div>
                     <div className="text-right">
-                        <p className="text-xs text-muted-foreground">From</p>
-                        <p className="text-xl font-bold">
+                        <p className="text-xs text-muted-foreground">{t("From")}</p>
+                        <p className="text-lg sm:text-xl font-bold">
                             {trip.price.amount.toLocaleString()}
                             <span className="text-sm font-normal text-muted-foreground ml-1">
                                 UZS
@@ -92,9 +95,11 @@ export const TripCard = ({ trip, onClick }: TripCardProps) => {
 };
 
 export const PopularTripCard = ({ trip, onClick }: any) => {
+    const t = useTranslations("Pages.Trips");
+
     const departureDate = new Date(trip.departure_ts);
     const locale = localStorage.getItem("locale") === "uz" ? "uz-UZ" : localStorage.getItem("locale") === "ru" ? "ru-RU" : "en-US";
-    
+
     const formattedDate = departureDate.toLocaleDateString(locale, {
         day: "2-digit",
         month: "short",
@@ -128,7 +133,7 @@ export const PopularTripCard = ({ trip, onClick }: any) => {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex flex-col md:flex-row items-start gap-2 md:gap-4 text-sm text-muted-foreground mt-2">
                     <div className="flex items-center gap-1">
                         <Calendar className="size-4" />
                         <span>
@@ -138,6 +143,10 @@ export const PopularTripCard = ({ trip, onClick }: any) => {
                     <div className="flex items-center gap-1">
                         <Users className="size-4" />
                         <span>{trip.seats_available}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                        <Car className="size-4" />
+                        <span>{trip.car.make} {trip.car.model}</span>
                     </div>
                 </div>
 
@@ -161,7 +170,7 @@ export const PopularTripCard = ({ trip, onClick }: any) => {
                         </div>
                     </div>
                     <div className="text-right">
-                        <p className="text-xs text-muted-foreground">From</p>
+                        <p className="text-xs text-muted-foreground">{t("From")}</p>
                         <p className="text-xl font-bold">
                             {trip.price.toLocaleString()}
                             <span className="text-sm font-normal text-muted-foreground ml-1">

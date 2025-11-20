@@ -96,13 +96,34 @@
             "Subtitle": "Yo‘ldosh ilovasi bilan safarlaringiz tarixi doimo qo‘lingizda!",
             "AppStore": "App Store’dan yuklab oling",
             "GooglePlay": "Google Play’dan yuklab oling"
+        },
+        "Trips": {
+            "Title": "Safarlar",
+            "PopularTrips": "Mashxur safarlar",
+            "Found": "safar topildi",
+            "From": "Dan",
+            "NotFound": "Safarlar topilmadi",
+            "Error": "Sayohatlarni yuklashda xatolik yuz berdi. Iltimos, qayta urinib koʻring.",
+            "Details": {
+                "Back": "Orqaga qaytish",
+                "Title": "Safar haqida",
+                "Description": "Sahar haqida ma'lumotni band qilishdan k'orib chiqin",
+                "Route": "Yo'nalish",
+                "Information": "Safar ma’lumot",
+                "Departure": "Kelish sanasi",
+                "Seats": "Bosh joylar",
+                "Driver": "Xaydovchi",
+                "Vehicle": "Moshina",
+                "AdditionalInformation": "Qoshimcha ma’lumot",
+                "Price": "Bir odam uchun narx",
+                "Book": "Band qilish"
+            }
         }
     },
     "Components": {
         "Header": {
-            "Features": "Imkoniyatlar",
-            "HowItWorks": "Qanday ishlaydi",
-            "Contacts": "Aloqa",
+            "About": "Biz haqimizda",
+            "Trips": "Safarlar",
             "DownloadApp": "Yuklab olish"
         },
         "Search": {
@@ -119,7 +140,8 @@
                 "5": "5 yo‘lovchi",
                 "6": "6 yo‘lovchi"
             },
-            "Search": "Qidirish"
+            "Search": "Qidirish",
+            "SelectRegion": "Viloyat tanlash"
         },
         "Calendar": "kk.oo.yyyy",
         "Footer": {

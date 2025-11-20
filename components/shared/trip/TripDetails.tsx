@@ -1,5 +1,7 @@
 import { Trip } from "@/types/";
 import { Card } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -8,7 +10,8 @@ import {
     Star,
     Car,
     Clock,
-    MapPin
+    MapPin,
+    ArrowLeft
 } from "lucide-react";
 
 interface TripDetailsProps {
@@ -16,6 +19,10 @@ interface TripDetailsProps {
 }
 
 export const TripDetails = ({ trip }: TripDetailsProps) => {
+    const t = useTranslations("Pages.Trips.Details")
+    const router = useRouter();
+
+    const locale = localStorage.getItem("locale");
     const departureDate = new Date(trip.departure_ts);
     const formattedDate = departureDate.toLocaleDateString("ru-RU", {
         weekday: "long",
@@ -30,14 +37,24 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
     return (
         <div className="max-w-4xl mx-auto">
+            <Button
+                variant="ghost"
+                onClick={() => router.back()}
+                className="mb-2"
+            >
+                <ArrowLeft className="size-4" />
+                {t("Back")}
+            </Button>
             <Card className="p-6 md:p-8">
                 {/* Header */}
                 <div className="mb-6">
                     <h1 className="text-2xl md:text-3xl font-bold mb-2">
-                        Trip Details
+                        {t("Title")}
+
                     </h1>
                     <p className="text-muted-foreground">
-                        Review the trip information before booking
+                        {t("Description")}
+
                     </p>
                 </div>
 
@@ -45,7 +62,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
                 {/* Route */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">Route</h2>
+                    <h2 className="text-xl font-semibold mb-4">{t("Route")}</h2>
                     <div className="flex flex-col gap-3">
                         <div className="flex items-start gap-3">
                             <div className="mt-1">
@@ -53,10 +70,11 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                             </div>
                             <div>
                                 <p className="font-semibold text-lg">
-                                    {trip.from_region_id}
+                                    {trip.from_location.address}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    {trip.from_region_id}
+                                    {locale === "uz" && trip.from_location.region.nameUz}
+                                    {locale === "ru" && trip.from_location.region.nameRu}
                                 </p>
                             </div>
                         </div>
@@ -70,7 +88,8 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                                     {trip.to_location.address}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    {trip.to_location.region.nameRu}
+                                    {locale === "uz" && trip.to_location.region.nameUz}
+                                    {locale === "ru" && trip.to_location.region.nameRu}
                                 </p>
                             </div>
                         </div>
@@ -81,12 +100,12 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
                 {/* Trip Info */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">Trip Information</h2>
+                    <h2 className="text-xl font-semibold mb-4">{t("Information")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="flex items-center gap-3">
                             <Calendar className="size-5 text-teal-500" />
                             <div>
-                                <p className="text-sm text-muted-foreground">Departure</p>
+                                <p className="text-sm text-muted-foreground">{t("Departure")}</p>
                                 <p className="font-medium">
                                     {formattedDate} at {formattedTime}
                                 </p>
@@ -96,7 +115,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                             <Users className="size-5 text-teal-500" />
                             <div>
                                 <p className="text-sm text-muted-foreground">
-                                    Available Seats
+                                   {t("Seats")}
                                 </p>
                                 <p className="font-medium">{trip.seats_available}</p>
                             </div>
@@ -128,7 +147,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
                 {/* Driver Info */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">Driver</h2>
+                    <h2 className="text-xl font-semibold mb-4">{t("Driver")}</h2>
                     <div className="flex items-center gap-4">
                         <div className="size-16 rounded-full bg-teal-100 flex items-center justify-center">
                             <span className="text-teal-600 font-bold text-2xl">
@@ -153,7 +172,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
                 {/* Car Info */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">Vehicle</h2>
+                    <h2 className="text-xl font-semibold mb-4">{t("Vehicle")}</h2>
                     <div className="flex items-center gap-3">
                         <Car className="size-5 text-teal-500" />
                         <div>
@@ -172,7 +191,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                         <Separator className="my-6" />
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-4">
-                                Additional Information
+                                {t("AdditionalInformation")}
                             </h2>
                             <p className="text-muted-foreground">{trip.comment}</p>
                         </div>
@@ -184,7 +203,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 {/* Price & Action */}
                 <div className="flex items-center justify-between">
                     <div>
-                        <p className="text-sm text-muted-foreground">Price per person</p>
+                        <p className="text-sm text-muted-foreground">{t("Price")}</p>
                         <p className="text-3xl font-bold">
                             {trip.price.amount.toLocaleString()}
                             <span className="text-lg font-normal text-muted-foreground ml-2">
@@ -193,7 +212,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                         </p>
                     </div>
                     <Button size="lg" className="btn-primary">
-                        Book Now
+                        {t("Book")}
                     </Button>
                 </div>
             </Card>
