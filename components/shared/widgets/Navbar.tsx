@@ -25,7 +25,7 @@ export const Navbar = () => {
               <Link
                 href={link.href}
                 key={link.id}
-                className="px-3 py-2 text-sm hover:text-teal-600 smooth"
+                className="px-3 py-2 text-sm hover:text-green-600 smooth"
               >
                 {link.title}
               </Link>

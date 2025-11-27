@@ -19,6 +19,13 @@ export interface Trip {
         lastName: string,
         avatar: string,
         rating: number,
+        preferences: {
+            smoking_allowed?: boolean;
+            pets_allowed?: boolean;
+            music_allowed?: boolean;
+            talkative?: boolean;
+            conditioner?: boolean;
+        }
     },
     car: {
         id: string,

@@ -4,6 +4,7 @@ import { Help } from "@/components/sections/home/Help";
 import { Popular } from "@/components/sections/home/Popular";
 import { Travel } from "@/components/sections/home/Travel";
 import { WhyUs } from "@/components/sections/home/WhyUs";
+import { Footer } from "../shared/widgets/Footer";
 
 export const HomePage = () => {
     return (
@@ -14,6 +15,7 @@ export const HomePage = () => {
             <WhyUs />
             <Popular />
             <Travel />
+            <Footer />
         </>
     );
 };

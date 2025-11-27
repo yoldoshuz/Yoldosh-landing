@@ -6,11 +6,16 @@ export const navLinks = () => {
     const links = [
         {
             id: 1,
-            title: t("About"),
-            href: "/about",
+            title: t("Home"),
+            href: "/",
         },
         {
             id: 2,
+            title: t("About"),
+            href: "/about-us",
+        },
+        {
+            id: 3,
             title: t("Trips"),
             href: "/trips",
         },

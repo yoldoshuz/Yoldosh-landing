@@ -19,7 +19,7 @@ export default function TripDetailsPage({
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-[50vh]">
-                <Loader2 className="size-8 animate-spin text-teal-500" />
+                <Loader2 className="size-8 animate-spin text-green-500-500" />
             </div>
         );
     }

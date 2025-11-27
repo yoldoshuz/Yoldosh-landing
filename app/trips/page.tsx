@@ -3,17 +3,21 @@
 import { useState, Suspense } from "react";
 import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
 import { useSearchParams, useRouter } from "next/navigation";
-
-import { Loader2 } from "lucide-react";
+import { Loader2, LayoutGrid, List, AlertCircle } from "lucide-react";
 import { PopularTripCard, TripCard } from "@/components/shared/trip/TripCard";
 import { SearchFilters } from "@/components/shared/trip/SearchFilter";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const SearchPage = () => {
     const t = useTranslations("Pages.Trips");
     const router = useRouter();
     const searchParams = useSearchParams();
-    const { data: popularTrips } = usePopularTrips();
+    const { data: popularTrips, isLoading: popularLoading, error: popularError } = usePopularTrips();
+    
+    const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
     const [filters, setFilters] = useState({
         from_region_id: parseInt(searchParams.get("from") || "0"),
         to_region_id: parseInt(searchParams.get("to") || "0"),
@@ -36,8 +40,15 @@ const SearchPage = () => {
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center min-h-[50vh]">
-                <Loader2 className="size-8 animate-spin text-teal-500" />
+            <div className="container mx-auto px-4 py-8">
+                <div className="mb-8">
+                    <Skeleton className="h-48 w-full rounded-xl" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[...Array(6)].map((_, i) => (
+                        <Skeleton key={i} className="h-72 w-full rounded-xl" />
+                    ))}
+                </div>
             </div>
         );
     }
@@ -45,9 +56,12 @@ const SearchPage = () => {
     if (error) {
         return (
             <div className="container mx-auto px-4 py-8">
-                <div className="text-center text-red-500">
-                    {t("Error")}
-                </div>
+                <Alert variant="destructive">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertDescription>
+                        {t("Error")}
+                    </AlertDescription>
+                </Alert>
             </div>
         );
     }
@@ -61,16 +75,57 @@ const SearchPage = () => {
             <div className="mt-8">
                 {!hasFilters ? (
                     <>
-                        <h2 className="text-xl font-semibold mb-4">{t("PopularTrips")}</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {popularTrips?.data.trips.map((trip) => (
-                                <PopularTripCard
-                                    key={trip.id}
-                                    trip={trip}
-                                    onClick={() => router.push(`/trips/${trip.id}`)}
-                                />
-                            ))}
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-semibold">{t("PopularTrips")}</h2>
+                            <div className="flex gap-2">
+                                <Button
+                                    variant={viewMode === "grid" ? "default" : "outline"}
+                                    size="icon-sm"
+                                    onClick={() => setViewMode("grid")}
+                                >
+                                    <LayoutGrid className="size-4" />
+                                </Button>
+                                <Button
+                                    variant={viewMode === "list" ? "default" : "outline"}
+                                    size="icon-sm"
+                                    onClick={() => setViewMode("list")}
+                                >
+                                    <List className="size-4" />
+                                </Button>
+                            </div>
                         </div>
+                        
+                        {popularLoading ? (
+                            <div className={viewMode === "grid" 
+                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+                                : "flex flex-col gap-4"
+                            }>
+                                {[...Array(6)].map((_, i) => (
+                                    <Skeleton key={i} className="h-64 w-full rounded-xl" />
+                                ))}
+                            </div>
+                        ) : popularError ? (
+                            <Alert variant="destructive">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>
+                                    {t("Error")}
+                                </AlertDescription>
+                            </Alert>
+                        ) : (
+                            <div className={viewMode === "grid" 
+                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+                                : "flex flex-col gap-4"
+                            }>
+                                {popularTrips?.data.trips.map((trip) => (
+                                    <PopularTripCard
+                                        key={trip.id}
+                                        trip={trip}
+                                        onClick={() => router.push(`/trips/${trip.id}`)}
+                                        viewMode={viewMode}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </>
                 ) : trips.length === 0 ? (
                     <div className="text-center py-12">
@@ -80,15 +135,38 @@ const SearchPage = () => {
                     </div>
                 ) : (
                     <>
-                        <div className="mb-6 text-lg font-semibold">
-                            {data?.data.total} {t("Found")}
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="text-lg font-semibold">
+                                {data?.data.total} {t("Found")}
+                            </div>
+                            <div className="flex gap-2">
+                                <Button
+                                    variant={viewMode === "grid" ? "default" : "outline"}
+                                    size="icon-sm"
+                                    onClick={() => setViewMode("grid")}
+                                >
+                                    <LayoutGrid className="size-4" />
+                                </Button>
+                                <Button
+                                    variant={viewMode === "list" ? "default" : "outline"}
+                                    size="icon-sm"
+                                    onClick={() => setViewMode("list")}
+                                >
+                                    <List className="size-4" />
+                                </Button>
+                            </div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <div className={viewMode === "grid" 
+                            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+                            : "flex flex-col gap-4"
+                        }>
                             {trips.map((trip) => (
                                 <TripCard
                                     key={trip.id}
                                     trip={trip}
                                     onClick={() => router.push(`/trips/${trip.id}`)}
+                                    viewMode={viewMode}
                                 />
                             ))}
                         </div>
@@ -102,7 +180,7 @@ const SearchPage = () => {
                                             setFilters((prev) => ({ ...prev, page: i + 1 }))
                                         }
                                         className={`px-4 py-2 rounded ${filters.page === i + 1
-                                            ? "bg-teal-500 text-white"
+                                            ? "bg-green-500 text-white"
                                             : "bg-gray-200"
                                             }`}
                                     >
@@ -122,7 +200,7 @@ const Page = () => {
     return (
         <Suspense fallback={
             <div className="flex items-center justify-center min-h-[50vh]">
-                <Loader2 className="size-8 animate-spin text-teal-500" />
+                <Loader2 className="size-8 animate-spin text-green-500" />
             </div>
         }>
             <SearchPage />

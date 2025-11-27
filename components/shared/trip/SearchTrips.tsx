@@ -46,8 +46,8 @@ export const SearchTrips = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-2 shadow-2xl border p-6 md:py-2 md:pl-8 md:pr-2 rounded-3xl md:rounded-full">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-4">
                 <div className="flex items-center justify-start gap-2 w-full border-b md:border-b-0 md:border-r py-1">
-                    <div className="flex items-center justify-center size-6 border-2 border-teal-500 rounded-full p-2">
-                        <span className="bg-teal-500 rounded-full p-1" />
+                    <div className="flex items-center justify-center size-6 border-2 border-green-500 rounded-full p-2">
+                        <span className="bg-green-500 rounded-full p-1" />
                     </div>
                     <Select value={fromRegion} onValueChange={setFromRegion}>
                         <SelectTrigger className="border-none shadow-none text-muted-foreground cursor-pointer">
