@@ -16,7 +16,7 @@ const SearchPage = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { data: popularTrips, isLoading: popularLoading, error: popularError } = usePopularTrips();
-    
+
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
     const [filters, setFilters] = useState({
         from_region_id: parseInt(searchParams.get("from") || "0"),
@@ -79,14 +79,14 @@ const SearchPage = () => {
                             <h2 className="text-xl font-semibold">{t("PopularTrips")}</h2>
                             <div className="flex gap-2">
                                 <Button
-                                    variant={viewMode === "grid" ? "default" : "outline"}
+                                    className={viewMode === "grid" ? "btn-primary" : "bg-transparent hover:bg-emerald-500 cursor-pointer text-black hover:text-white"}
                                     size="icon-sm"
                                     onClick={() => setViewMode("grid")}
                                 >
                                     <LayoutGrid className="size-4" />
                                 </Button>
                                 <Button
-                                    variant={viewMode === "list" ? "default" : "outline"}
+                                    className={viewMode === "list" ? "btn-primary" : "bg-transparent hover:bg-emerald-500 cursor-pointer text-black hover:text-white"}
                                     size="icon-sm"
                                     onClick={() => setViewMode("list")}
                                 >
@@ -94,10 +94,10 @@ const SearchPage = () => {
                                 </Button>
                             </div>
                         </div>
-                        
+
                         {popularLoading ? (
-                            <div className={viewMode === "grid" 
-                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+                            <div className={viewMode === "grid"
+                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                                 : "flex flex-col gap-4"
                             }>
                                 {[...Array(6)].map((_, i) => (
@@ -112,8 +112,8 @@ const SearchPage = () => {
                                 </AlertDescription>
                             </Alert>
                         ) : (
-                            <div className={viewMode === "grid" 
-                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+                            <div className={viewMode === "grid"
+                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                                 : "flex flex-col gap-4"
                             }>
                                 {popularTrips?.data.trips.map((trip) => (
@@ -141,14 +141,14 @@ const SearchPage = () => {
                             </div>
                             <div className="flex gap-2">
                                 <Button
-                                    variant={viewMode === "grid" ? "default" : "outline"}
+                                    className={viewMode === "grid" ? "btn-primary" : "bg-transparent hover:bg-emerald-500 cursor-pointer text-black hover:text-white"}
                                     size="icon-sm"
                                     onClick={() => setViewMode("grid")}
                                 >
                                     <LayoutGrid className="size-4" />
                                 </Button>
                                 <Button
-                                    variant={viewMode === "list" ? "default" : "outline"}
+                                    className={viewMode === "list" ? "btn-primary" : "bg-transparent hover:bg-emerald-500 cursor-pointer text-black hover:text-white"}
                                     size="icon-sm"
                                     onClick={() => setViewMode("list")}
                                 >
@@ -156,9 +156,9 @@ const SearchPage = () => {
                                 </Button>
                             </div>
                         </div>
-                        
-                        <div className={viewMode === "grid" 
-                            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+
+                        <div className={viewMode === "grid"
+                            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                             : "flex flex-col gap-4"
                         }>
                             {trips.map((trip) => (
@@ -180,7 +180,7 @@ const SearchPage = () => {
                                             setFilters((prev) => ({ ...prev, page: i + 1 }))
                                         }
                                         className={`px-4 py-2 rounded ${filters.page === i + 1
-                                            ? "bg-green-500 text-white"
+                                            ? "bg-emerald-500 text-white"
                                             : "bg-gray-200"
                                             }`}
                                     >
@@ -200,7 +200,7 @@ const Page = () => {
     return (
         <Suspense fallback={
             <div className="flex items-center justify-center min-h-[50vh]">
-                <Loader2 className="size-8 animate-spin text-green-500" />
+                <Loader2 className="size-8 animate-spin text-emerald-500" />
             </div>
         }>
             <SearchPage />

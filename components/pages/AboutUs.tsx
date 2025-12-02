@@ -70,7 +70,7 @@ export const AboutUs = () => {
                     <p>{t("notTaxi.content")}</p>
                 </section>
 
-                <div className="mt-12 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                <div className="mt-12 p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
                     <p className="text-lg font-medium">{t("conclusion")}</p>
                 </div>
             </article>

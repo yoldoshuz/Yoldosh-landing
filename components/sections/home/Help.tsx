@@ -6,11 +6,11 @@ export const Help = () => {
     const t = useTranslations("Pages.Help");
     
     return (
-        <section className="relative min-h-screen w-full bg-linear-to-br from-teal-500 via-emerald-500 to-green-500 overflow-hidden">
+        <section className="relative min-h-screen w-full bg-linear-to-br from-teal-500 via-emerald-500 to-emerald-500 overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-                <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-600 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-600 rounded-full blur-3xl"></div>
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -57,10 +57,10 @@ export const Help = () => {
 
                             {/* Floating security icons */}
                             <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
-                                <Lock className="size-6 sm:size-8 text-green-600" />
+                                <Lock className="size-6 sm:size-8 text-emerald-600" />
                             </div>
                             <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
-                                <Eye className="size-6 sm:size-8 text-green-600" />
+                                <Eye className="size-6 sm:size-8 text-emerald-600" />
                             </div>
 
                             <div className="absolute top-1/4 -left-2 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
@@ -107,7 +107,7 @@ export const Help = () => {
                                         className="flex items-start gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                                     >
                                         <div className="shrink-0 w-6 h-6 rounded-full bg-white flex items-center justify-center mt-0.5">
-                                            <span className="text-green-600 font-bold text-sm">{index + 1}</span>
+                                            <span className="text-emerald-600 font-bold text-sm">{index + 1}</span>
                                         </div>
                                         <p className="text-white/95 text-base leading-relaxed">{t(`Protect.${num}`)}</p>
                                     </div>

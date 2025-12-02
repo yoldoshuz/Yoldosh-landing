@@ -23,21 +23,18 @@ export const Footer = () => {
                             <ul className="space-y-4 text-muted-foreground">
                                 <li><a href="https://flowbite.com/" className="hover:underline">{t("Product.1")}</a></li>
                                 <li><a href="https://tailwindcss.com/" className="hover:underline">{t("Product.2")}</a></li>
-                                <li><a href="https://tailwindcss.com/" className="hover:underline">{t("Product.3")}</a></li>
                             </ul>
                         </div>
                         <div>
                             <h2 className="mb-6 text-lg font-semibold text-black">{t("Company.Title")}</h2>
                             <ul className="space-y-4 text-muted-foreground">
-                                <li><a href="https://github.com/themesberg/flowbite" className="hover:underline">{t("Company.1")}</a></li>
-                                <li><a href="https://discord.gg/4eeurUVvTy" className="hover:underline">{t("Company.2")}</a></li>
+                                <li><a href="/about-us" className="hover:underline">{t("Company.1")}</a></li>
                                 <li><a href="https://discord.gg/4eeurUVvTy" className="hover:underline">{t("Company.3")}</a></li>
                             </ul>
                         </div>
                         <div>
                             <h2 className="mb-6 text-lg font-semibold text-black">{t("Support.Title")}</h2>
                             <ul className="space-y-4 text-muted-foreground">
-                                <li><a href="#" className="hover:underline">{t("Support.1")}</a></li>
                                 <li><a href="#" className="hover:underline">{t("Support.2")}</a></li>
                                 <li><a href="#" className="hover:underline">{t("Support.3")}</a></li>
                             </ul>
@@ -46,7 +43,7 @@ export const Footer = () => {
                 </div>
                 <Separator className="my-8" />
                 <div className="text-center">
-                    <span className="text-base text-muted-foreground">
+                    <span className="text-sm text-muted-foreground">
                         © {currentYear} "OOO" Milliy Yoldosh. {t("Rights")}
                     </span>
                 </div>

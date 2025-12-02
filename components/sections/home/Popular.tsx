@@ -11,6 +11,10 @@ import { Button } from "../../ui/button";
 import { ChevronRight } from "lucide-react";
 import { Separator } from "../../ui/separator";
 import {
+    Card,
+    CardContent
+} from "@/components/ui/card";
+import {
     Carousel,
     CarouselContent,
     CarouselItem,
@@ -23,7 +27,7 @@ export const Popular = () => {
     const plugin = useRef(
         Autoplay({ delay: 4000, stopOnInteraction: true })
     );
-    
+
     const { data: popularTrips } = usePopularTrips();
 
     return (
@@ -39,29 +43,29 @@ export const Popular = () => {
 
             <Carousel
                 plugins={[plugin.current]}
-                className="relative flex flex-col items-center justify-center gap-6 mt-10 w-full max-w-6xl overflow-hidden"
+                className="mt-10 w-full max-w-6xl"
                 opts={{
                     align: "start",
                     loop: true,
                 }}
             >
-                <CarouselContent className="flex -ml-2 sm:-ml-3 md:-ml-4 px-2 sm:px-3 md:px-4">
+                <CarouselContent>
                     {popularTrips?.data.trips.map((item: any) => (
                         <CarouselItem
                             key={item.id}
-                            className="pl-2 sm:pl-3 md:pl-4 basis-1/4 sm:basis-1/4 box-border"
+                            className="md:basis-1/2 lg:basis-1/3"
                         >
                             <Link
                                 href={`/trips/${item.id}`}
-                                className="flex flex-col w-full h-full bg-white rounded-xl border hover:border-green-500 smooth overflow-hidden group select-none cursor-pointer"
+                                className="flex flex-col w-full h-full bg-white rounded-xl border hover:border-emerald-500 smooth overflow-hidden group select-none cursor-pointer"
                                 tabIndex={0}
                                 aria-label={`${item.from} → ${item.to}`}
                             >
 
-                                <div className="flex flex-col gap-3 p-5">
-                                    <div className="flex flex-col gap-2">
+                                <Card className="flex flex-col gap-3 p-5">
+                                    <CardContent className="flex flex-col gap-2 px-0!">
                                         <div className="flex items-center gap-3">
-                                            <span className="size-3 rounded-full border-2 border-green-500" />
+                                            <span className="size-3 rounded-full border-2 border-emerald-500" />
                                             <h1 className="font-semibold">{item.from}</h1>
                                         </div>
                                         <div className="w-0.5 h-6 bg-neutral-300 ml-1" />
@@ -69,7 +73,7 @@ export const Popular = () => {
                                             <span className="size-3 rounded-full bg-muted-foreground" />
                                             <h1 className="font-semibold">{item.to}</h1>
                                         </div>
-                                    </div>
+                                    </CardContent>
 
                                     <Separator />
 
@@ -77,28 +81,25 @@ export const Popular = () => {
                                         <div className="flex flex-col">
                                             <span className="text-xs text-muted-foreground">{t("From")}</span>
                                             <h1 className="text-xl font-bold">
-                                                {item.price.toLocaleString()}{" "}
-                                                <span className="text-xs text-muted-foreground font-normal">
-                                                    {t("Sum")}
-                                                </span>
+                                                {item.price.amount.toLocaleString()} uzs
                                             </h1>
                                         </div>
                                         <Button
                                             variant="secondary"
-                                            className="rounded-full p-2 bg-green-500 text-white hover:bg-green-600 transition-colors"
+                                            className="rounded-full p-2 bg-emerald-500 text-white hover:bg-emerald-600 transition-colors"
                                         >
                                             <ChevronRight />
                                         </Button>
                                     </div>
-                                </div>
+                                </Card>
                             </Link>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
 
                 {/* Стрелки адаптивно позиционируются */}
-                <CarouselPrevious className="hidden sm:flex left-2 md:-left-10" />
-                <CarouselNext className="hidden sm:flex right-2 md:-right-10" />
+                <CarouselPrevious className="hidden lg:flex left-2 md:-left-10" />
+                <CarouselNext className="hidden lg:flex right-2 md:-right-10" />
             </Carousel>
         </section>
     );

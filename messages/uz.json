@@ -1,8 +1,8 @@
 {
     "Pages": {
         "Home": {
-            "Title": "Arzon narxlarda siz tanlagan yo‘nalishlar",
-            "Subtitle": "Yo‘lovchilarni toping yoki haydovchi bo‘ling",
+            "Title": "Siz tanlagan yo‘nalishlar arzon narxlarda",
+            "Subtitle": "Yo‘lovchi toping yoki haydovchi bo‘ling — ",
             "From": "Qayerdan",
             "To": "Qayerga",
             "Passengers": {
@@ -15,127 +15,127 @@
                 "6": "6 yo‘lovchi"
             },
             "Search": "Qidirish",
-            "Trips": "Safarlar",
+            "Trips": "Sayohatlar",
             "Drivers": "Haydovchilar",
             "Rating": "Reyting",
-            "Support": "Yordam"
+            "Support": "Qo‘llab-quvvatlash"
         },
         "About": {
-            "title": "Yo'ldosh: Новая эра междугородних поездок в Узбекистане",
-            "intro": "В 2026 году на рынке Узбекистана появится сервис, который изменит подход к междугородним поездкам. Yo'ldosh — это не просто приложение для поиска попутчиков, это решение проблемы, с которой ежедневно сталкиваются тысячи узбекистанцев.",
+            "title": "Yo‘ldosh: O‘zbekistonda shaharlararo sayohatlarning yangi davri",
+            "intro": "2026-yilda O‘zbekiston bozorida shaharlararo sayohatlarga yondashuvni butunlay o‘zgartiradigan xizmat paydo bo‘ladi. Yo‘ldosh — bu oddiy yo‘lovchi qidiruv ilovasi emas, bu minglab o‘zbekistonliklar har kuni duch keladigan muammoning yechimidir.",
             "problem": {
-                "title": "Проблема, которую мы решаем",
-                "content": "Если вы когда-либо искали поездку из Ташкента в Самарканд, Бухару или любой другой город Узбекистана, вы знаете, как это происходит: бесконечные телеграм-группы, публикация своего номера телефона, шквал звонков от десятков водителей, долгие переговоры о цене и условиях. Этот процесс отнимает время, нервы и не гарантирует, что вы найдете именно то, что вам нужно.",
-                "solution": "Именно поэтому мы создали Yo'ldosh — централизованную платформу, где водители и пассажиры находят друг друга быстро, удобно и безопасно, без необходимости раскрывать личные контакты и вести бесконечные переговоры."
+                "title": "Biz hal qilayotgan muammo",
+                "content": "Agar siz hech bo‘lmaganda bir marta Toshkentdan Samarqandga, Buxoroga yoki boshqa shaharga sayohat izlagan bo‘lsangiz, bu jarayon qanday kechishini bilasiz: cheksiz Telegram guruhlar, telefon raqamingizni joylash, o‘nlab haydovchilardan qo‘ng‘iroqlar, narx va shartlar bo‘yicha uzoq muzokaralar. Bu jarayon vaqt va asablarni oladi hamda kerakli narsani topishni kafolatlamaydi.",
+                "solution": "Aynan shuning uchun biz Yo‘ldosh ni yaratdik — haydovchilar va yo‘lovchilar tez, qulay va xavfsiz uchrashadigan markazlashgan platforma, shaxsiy kontaktlarni ochmasdan va cheksiz muzokara qilmasdan."
             },
             "howItWorks": {
-                "title": "Как работает Yo'ldosh?",
-                "intro": "Мы сделали процесс максимально простым и понятным. Все, что нужно для начала работы — зарегистрироваться по номеру телефона. После этого открывается доступ к основным функциям платформы.",
+                "title": "Yo‘ldosh qanday ishlaydi?",
+                "intro": "Biz jarayonni iloji boricha sodda va tushunarli qildik. Ishni boshlash uchun telefon raqamiga ro‘yxatdan o‘tish kifoya. Shundan so‘ng platformaning barcha asosiy funksiyalari ochiladi.",
                 "passengers": {
-                    "title": "Для пассажиров:",
-                    "content": "Укажите основные параметры вашей поездки: откуда и куда вы едете, дату отправления и количество пассажиров. Приложение мгновенно покажет список доступных поездок от водителей, которые едут по вашему маршруту. Вы можете выбрать автомобиль, ознакомиться с условиями, оценить цену и забронировать место — все это без единого звонка. Особенность нашего сервиса — возможность планирования поездок заранее."
+                    "title": "Yo‘lovchilar uchun:",
+                    "content": "Sayohatingizning asosiy parametrlarini ko‘rsating: qayerdan va qayerga, jo‘nash sanasi va yo‘lovchilar soni. Ilova sizning marshrutingiz bo‘yicha ketayotgan haydovchilarning mavjud sayohatlari ro‘yxatini bir zumda ko‘rsatadi. Mashinani tanlang, shartlarni ko‘ring, narxni baholang va joyni bron qiling — bularning barchasi bitta qo‘ng‘iroqsiz. Xizmatimizning o‘ziga xos xususiyati — sayohatlarni oldindan rejalashtirish imkoniyati."
                 },
                 "drivers": {
-                    "title": "Для водителей:",
-                    "registration": "Чтобы начать перевозить пассажиров через Yo'ldosh, необходимо пройти простую регистрацию. Водителем может стать любой гражданин Узбекистана старше 18 лет, имеющий личный автомобиль. В процессе регистрации нужно будет загрузить фотографии водительских прав и технического паспорта транспортного средства.",
-                    "benefits": "Главное преимущество для водителей — больше не нужно тратить время на поиск пассажиров и бесконечные звонки. Вы публикуете поездку с указанием своей цены, а пассажиры сами находят вас. Цену определяете именно вы, а не пассажиры."
+                    "title": "Haydovchilar uchun:",
+                    "registration": "Yo‘ldosh orqali yo‘lovchi tashishni boshlash uchun oddiy ro‘yxatdan o‘tish kerak. 18 yoshdan oshgan, shaxsiy avtomobili bo‘lgan har qanday O‘zbekiston fuqarosi haydovchi bo‘la oladi. Ro‘yxatdan o‘tishda haydovchilik guvohnomasi va transport vositasining texnik pasporti fotosuratlarini yuklash talab etiladi.",
+                    "benefits": "Haydovchilar uchun asosiy afzallik — endi yo‘lovchi izlash va cheksiz qo‘ng‘iroqlarga vaqt sarflash shart emas. Siz o‘z narxingizni ko‘rsatib sayohat e’lon qilasiz, yo‘lovchilar esa sizni o‘zi topadi. Narxni aynan siz belgilaysiz, yo‘lovchilar emas."
                 }
             },
             "guarantee": {
-                "title": "Гарантия поездки: система 100% предоплаты",
-                "content": "Одна из ключевых особенностей Yo'ldosh — система полной предоплаты. Мы понимаем, что для водителей критически важно быть уверенными: если пассажир забронировал место, он точно поедет.",
-                "benefit": "Благодаря системе предоплаты мы выступаем гарантом того, что поездка состоится. Пассажир, бронируя место, подтверждает свое намерение серьезно, а водитель получает уверенность в завтрашнем дне."
+                "title": "Sayohat kafolati: 100% oldindan to‘lov tizimi",
+                "content": "Yo‘ldoshning asosiy xususiyatlaridan biri — to‘liq oldindan to‘lov tizimi. Biz haydovchilar uchun muhim ekanini tushunamiz: agar yo‘lovchi joy bron qilgan bo‘lsa, u albatta ketadi.",
+                "benefit": "Oldindan to‘lov tufayli biz sayohatning amalga oshishiga kafolat beramiz. Joyni bron qilgan yo‘lovchi jiddiy niyatini tasdiqlaydi, haydovchi esa ertangi kunga ishonch hosil qiladi."
             },
             "payment": {
-                "title": "Удобные способы оплаты",
-                "methods": "Yo'ldosh поддерживает как безналичную оплату банковскими картами, так и наличные средства.",
-                "cash": "Однако работа с наличными организована особым образом: деньги не передаются напрямую водителю. Вместо этого пользователь может пополнить внутренний кошелек приложения через банкоматы наших партнеров — Paynet и Oson."
+                "title": "Qulay to‘lov usullari",
+                "methods": "Yo‘ldosh bank kartalari orqali naqd pulsiz to‘lovni ham, naqd pulni ham qo‘llab-quvvatlaydi.",
+                "cash": "Biroq naqd pul bilan ishlash alohida tartibda tashkil etilgan: pul to‘g‘ridan-to‘g‘ri haydovchiga berilmaydi. Buning o‘rniga foydalanuvchi Paynet va Oson terminallari orqali ilova ichidagi hamyonni to‘ldirishi mumkin."
             },
             "loyalty": {
-                "title": "Программа лояльности",
-                "content": "Мы ценим наших пользователей и планируем запустить программу лояльности. За приглашение новых водителей или пассажиров в сервис вы будете получать бонусные баллы на внутренний кошелек приложения.",
-                "campaigns": "Также для водителей будут регулярно проводиться специальные кампании с дополнительными вознаграждениями — следите за обновлениями в приложении."
+                "title": "Sadoqat dasturi",
+                "content": "Biz foydalanuvchilarimizni qadrlaymiz va sadoqat dasturini ishga tushirmoqchi bo‘lib turibmiz. Yangi haydovchi yoki yo‘lovchini taklif qilganingiz uchun ilova ichidagi hamyonga bonus ballari olasiz.",
+                "campaigns": "Shuningdek, haydovchilar uchun qo‘shimcha mukofotlar bilan maxsus aksiyalar muntazam o‘tkazib turiladi — ilovadagi yangiliklarni kuzatib boring."
             },
             "geography": {
-                "title": "География и доступность",
-                "content": "Yo'ldosh запускается сразу по всему Узбекистану. Неважно, едете ли вы из Ташкента в Фергану, из Нукуса в Самарканд или из Андижана в Навои — наш сервис поможет найти попутчиков на любом маршруте.",
-                "apps": "Приложение будет доступно как для пользователей iOS, так и для Android, что обеспечит максимальный охват аудитории."
+                "title": "Geografiya va qamrov",
+                "content": "Yo‘ldosh birdaniga butun O‘zbekiston bo‘ylab ishga tushadi. Toshkentdan Farg‘onaga, Nukusdan Samarqandga yoki Andijondan Navoiyga ketayotganingizdan qat’i nazar — xizmatimiz har qanday marshrutda hamroh topishga yordam beradi.",
+                "apps": "Ilova iOS hamda Android foydalanuvchilari uchun mavjud bo‘lib, maksimal auditoriyani qamrab oladi."
             },
             "mission": {
-                "title": "Наша миссия",
-                "content": "Мы создаем среду, в которой водители и пассажиры могут находить попутчиков по душе с минимальными затратами времени и денег. Каждый день тысячи людей в Узбекистане перемещаются между городами — на работу, к родственникам, по делам.",
-                "guarantees": "Для нас важны гарантии, которые мы предоставляем нашим пользователям. Yo'ldosh — это не просто посредник между водителями и пассажирами, это платформа, которая берет на себя ответственность за то, чтобы каждая поездка была предсказуемой, безопасной и удобной."
+                "title": "Bizning missiyamiz",
+                "content": "Biz haydovchilar va yo‘lovchilar o‘zlariga mos hamrohlarni minimal vaqt va pul sarfi bilan topa oladigan muhit yaratmoqdamiz. Har kuni O‘zbekistonda minglab odamlar shaharlar orasida ishga, qarindoshlarga, ish bilan yuradi.",
+                "guarantees": "Biz foydalanuvchilarimizga beradigan kafolatlar muhim. Yo‘ldosh — bu oddiy vositachi emas, har bir sayohat oldindan aytib bo‘ladigan, xavfsiz va qulay bo‘lishi uchun javobgarlikni o‘z zimmasiga oladigan platformadir."
             },
             "future": {
-                "title": "Планы на будущее",
-                "content": "Yo'ldosh только начинает свой путь, но мы уже смотрим в будущее. В планах — интеграция дополнительных сервисов, включая отправку почты через нашу платформу. Мы постоянно работаем над улучшением функционала и прислушиваемся к отзывам пользователей."
+                "title": "Kelajak rejalari",
+                "content": "Yo‘ldosh endi yo‘l boshlamoqda, lekin biz allaqachon kelajakka qaramoqdamiz. Rejalarda qo‘shimcha xizmatlarni integratsiya qilish, shu jumladan platformamiz orqali posilka jo‘natish ham bor. Biz funksionallikni doimiy ravishda yaxshilab, foydalanuvchi fikr-mulohazalarini tinglaymiz."
             },
             "notTaxi": {
-                "title": "Yo'ldosh — это не такси, это райдшеринг",
-                "content": "Важно понимать разницу: мы не сервис такси для мгновенных поездок. Yo'ldosh — это платформа для планирования междугородних поездок, где водители и пассажиры объединяются для совместных путешествий. Это новая культура передвижения, основанная на взаимном доверии, удобстве и разумной экономии."
+                "title": "Yo‘ldosh — bu taksi emas, bu ridesharing",
+                "content": "Farqni tushunish muhim: biz tezkor taksi xizmati emasmiz. Yo‘ldosh — shaharlararo sayohatlarni rejalashtirish platformasi bo‘lib, haydovchilar va yo‘lovchilar birgalikda sayohat qilish uchun birlashadi. Bu o‘zaro ishonch, qulaylik va oqilona tejamkorlikka asoslangan harakatlanishning yangi madaniyati."
             },
-            "conclusion": "Добро пожаловать в новую эру междугородних путешествий. Добро пожаловать в Yo'ldosh."
+            "conclusion": "Shaharlararo sayohatlarning yangi davriga xush kelibsiz. Yo‘ldosh ga xush kelibsiz."
         },
         "HowItWorks": {
-            "Title": "Qanday ishlaydi",
-            "Subtitle": "Boshlash juda oson - bir nechta oddiy qadamni bajaring va Yo‘ldosh bilan safaringizni boshlang.",
+            "Title": "Bu qanday ishlaydi",
+            "Subtitle": "Boshlash juda oson — bir necha oddiy qadam va Yo‘ldosh bilan yo‘lga chiqing.",
             "Features": {
                 "1": {
-                    "Title": "🎯 To‘g‘ri narxda ideal safar",
-                    "Description": "Jadvalingiz va byudjetingizga mos keladigan arzon safarlardan o‘zingizga mosini tanlang."
+                    "Title": "To‘g‘ri narxda ideal sayohat",
+                    "Description": "Jadval va byudjetingizga to‘liq mos keladigan ko‘plab arzon sayohatlardan tanlang."
                 },
                 "2": {
-                    "Title": "💰 Kim bilan ketayotganingizga ishonch hosil qiling",
-                    "Description": "Barcha haydovchilar pasport va profil orqali tasdiqlangan, shuning uchun safarlaringiz xavfsiz va ishonchli."
+                    "Title": "Kim bilan ket birga ketayotganingizga ishonch hosil qiling",
+                    "Description": "Barcha haydovchilar pasport va profil tekshiruvidan o‘tadi, shuning uchun sayohatlar xavfsiz va tashvishsiz."
                 },
                 "3": {
-                    "Title": "⚡ Aylantiring, bosing va yo‘lga chiqing!",
-                    "Description": "Oddiy va tezkor ilova orqali safarni soniyalar ichida bron qiling."
+                    "Title": "Aylantiring, bosing va yo‘lga chiqing!",
+                    "Description": "Oddiy va tez ilovamizda sayohatni bir necha soniyada bron qiling."
                 },
                 "Button": "Batafsil"
             }
         },
         "Help": {
-            "Title": "Firibgarlardan himoyalanishda bizga yordam bering",
-            "Subtitle": "Yo‘ldosh jamoasi sizning safarlaringiz xavfsiz bo‘lishi uchun hamma narsani qiladi. Biroq ba’zida firibgarlar foydalanuvchilarning ishonchidan foydalanishga urinadi.",
+            "Title": "Bizga firibgarlardan himoya qilishda yordam bering",
+            "Subtitle": "Yo‘ldoshda biz sayohatlaringiz xavfsiz bo‘lishi uchun hamma narsani qilamiz. Lekin ba’zida firibgarlar foydalanuvchilar ishonchidan foydalanishga harakat qiladi.",
             "Protect": {
                 "Title": "O‘zingizni himoya qilish uchun:",
-                "1": "Faqat Yo‘ldosh ilovasi orqali muloqot qiling va to‘lov qiling.",
+                "1": "Faqat Yo‘ldosh ilovasi orqali muloqot qiling va to‘lov amalga oshiring.",
                 "2": "Hech kimga SMS kodlar, PIN-kodlar yoki bank karta ma’lumotlarini bermang.",
-                "3": "Haydovchi va yo‘lovchi reytinglarini hamda sharhlarini tekshirib chiqing.",
-                "4": "Agar shubhali holatni sezsangiz, darhol bizga xabar bering — biz darhol choralar ko‘ramiz."
+                "3": "Haydovchi va yo‘lovchilarning reytingi va sharhlarini tekshiring.",
+                "4": "Agar shubhali narsa sezsangiz — bizga xabar bering, darhol hal qilamiz."
             },
-            "Security": "Xavfsizlik — bu umumiy mas’uliyat.",
-            "BeCareful": "Ehtiyot bo‘ling, shunda har bir Yo‘ldosh safaringiz tinch va ishonchli bo‘ladi."
+            "Security": "Xavfsizlik — bu bizning umumiy mas’uliyatimiz.",
+            "BeCareful": "Ehtiyot bo‘ling va Yo‘ldosh bilan har bir sayohat tinch va ishonchli bo‘ladi."
         },
         "WhyUs": {
-            "Title": "Nega bizni tanlaysiz",
-            "Subtitle": "Oʻzbekiston boʻylab uzoq masofali sayohatlar uchun ishonchli sherigingiz.",
+            "Title": "Nima uchun bizni tanlashadi",
+            "Subtitle": "Butun O‘zbekiston bo‘ylab uzoq masofali ridesharingda ishonchli hamrohingiz.",
             "Cards": {
                 "title1": "Ishonchlilik",
-                "description1": "Har bir haydovchi va yoʻlovchi tekshiriladi — xavfsiz va ishonchli safarlar uchun.",
+                "description1": "Har bir haydovchi va yo‘lovchini tekshiramiz — sayohatingiz xavfsiz va tashvishsiz.",
                 "title2": "Tezlik",
-                "description2": "Safarni toping va joyingizni bir necha soniyada bron qiling.",
-                "title3": "Shaffof narxlar",
-                "description3": "Hech qanday yashirin toʻlovlarsiz — siz har doim qancha toʻlayotganingizni bilasiz.",
+                "description2": "Sayohatni toping va joyni soniyalarda bron qiling. Uzoq kutish yo‘q.",
+                "title3": "Shaffof narxlash",
+                "description3": "Yashirin to‘lovlar yo‘q — har doim nima uchun to‘layotganingizni aniq bilasiz.",
                 "title4": "Qulaylik",
-                "description4": "Oʻzingizga mos safarlarni tanlang va yoʻlda qulaylikdan bahramand boʻling.",
-                "title5": "Hamjamiyat",
-                "description5": "Yoʻlni siz bilan boʻlishadigan haydovchi va yoʻlovchilar jamiyatiga qoʻshiling.",
-                "title6": "24/7 Yordam",
-                "description6": "Bizning yordam jamoamiz siz uchun har doim mavjud.",
+                "description4": "O‘z xohishlaringizga mos sayohatlarni tanlang va qulay sayohat qiling.",
+                "title5": "Jamoa",
+                "description5": "Sizning marshrutingiz bo‘yicha ketayotgan do‘stona haydovchi va yo‘lovchilar jamoasiga qo‘shiling.",
+                "title6": "24/7 qo‘llab-quvvatlash",
+                "description6": "Qo‘llab-quvvatlash jamoamiz har qanday vaqtda yordam berishga tayyor.",
                 "title7": "Moslashuvchanlik",
-                "description7": "Sayohatlaringizni qulay rejalashtiring — oson bron qiling, oʻzgartiring yoki bekor qiling.",
-                "title8": "Ekologik tozalik",
-                "description8": "Birgalikda safar qilib, havoga chiqadigan zararli moddalarni kamaytiring."
+                "description7": "O‘z jadvalingiz bo‘yicha reja tuzing — bron qilish, o‘zgartirish yoki bekor qilish oson.",
+                "title8": "Ekologik toza",
+                "description8": "Yolg‘iz haydash o‘rniga sayohatni bo‘lishib, uglerod izini kamaytiring."
             }
         },
         "Popular": {
-            "Title": "Ommabop yo‘nalishlar",
-            "From": "Dan",
-            "Sum": "Som",
+            "Title": "Mashhur marshrutlar",
+            "From": "Qayerdan",
+            "Sum": "so‘m",
             "Andijan": "Andijon",
-            "Fergana": "Farg'ona",
+            "Fergana": "Farg‘ona",
             "Namangan": "Namangan",
             "Tashkent": "Toshkent",
             "Bukhara": "Buxoro",
@@ -147,39 +147,39 @@
             "Nukus": "Nukus"
         },
         "Travel": {
-            "Title": "Yo‘ldosh ilovasi bilan yanada qulay sayohat qiling",
-            "Description": "Yo‘ldosh mobil ilovasini o‘rnating va yo‘lovchilarni toping. Ilova orqali safarlaringiz haqida ma’lumot oling, yo‘lovchilar bilan yozishing, eslatmalarni oling, chipta va boshqa foydali funksiyalardan foydalaning.",
-            "Subtitle": "Yo‘ldosh ilovasi bilan safarlaringiz tarixi doimo qo‘lingizda!",
-            "AppStore": "App Store’dan yuklab oling",
-            "GooglePlay": "Google Play’dan yuklab oling"
+            "Title": "Yo‘ldosh ilovasi bilan qulayroq sayohat qiling",
+            "Description": "Yo‘lovchi topish uchun Yo‘ldosh mobil ilovasini o‘rnating. U bilan sayohatlaringiz doim nazoratingizda bo‘ladi. Yo‘lovchilar bilan suhbatlashing, sayohat eslatmalarini oling, sotib olingan chiptalarni ko‘ring va boshqa foydali funksiyalardan smartfoningizda foydalaning.",
+            "Subtitle": "Yo‘ldosh ilovasi bilan sayohatlaringiz tarixi doim qo‘lingizda!",
+            "AppStore": "App Store dan yuklab olish",
+            "GooglePlay": "Google Play dan yuklab olish"
         },
         "Trips": {
-            "Title": "Safarlar",
-            "PopularTrips": "Mashxur safarlar",
-            "Found": "safar topildi",
-            "From": "Dan",
-            "NotFound": "Safarlar topilmadi",
-            "Error": "Sayohatlarni yuklashda xatolik yuz berdi. Iltimos, qayta urinib koʻring.",
+            "Title": "Sayohatlar",
+            "PopularTrips": "Mashhur sayohatlar",
+            "Found": "ta sayohat topildi",
+            "From": "Qayerdan",
+            "NotFound": "Sayohatlar topilmadi",
+            "Error": "Sayohatlarni yuklashda xatolik. Qayta urinib ko‘ring.",
             "Details": {
-                "Back": "Orqaga qaytish",
-                "Title": "Safar haqida",
-                "Description": "Sahar haqida ma'lumotni band qilishdan k'orib chiqin",
-                "Route": "Yo'nalish",
-                "Information": "Safar ma’lumot",
-                "Departure": "Kelish sanasi",
-                "Seats": "Bosh joylar",
-                "Driver": "Xaydovchi",
-                "Vehicle": "Moshina",
-                "AdditionalInformation": "Qoshimcha ma’lumot",
-                "Price": "Bir odam uchun narx",
-                "Book": "Band qilish"
+                "Back": "Orqaga",
+                "Title": "Sayohat tafsilotlari",
+                "Description": "Bron qilishdan oldin sayohat haqida ma’lumot bilan tanishib chiqing",
+                "Route": "Marshrut",
+                "Information": "Sayohat haqida",
+                "Departure": "Jo‘nash",
+                "Seats": "Bo‘sh o‘rinlar",
+                "Driver": "Haydovchi",
+                "Vehicle": "Avtomobil",
+                "AdditionalInformation": "Qo‘shimcha ma’lumot",
+                "Price": "Odam boshiga narx",
+                "Book": "Bron qilish"
             },
             "Preferences": {
-                "Smoking": "Smoking Allowed",
-                "Pets": "Pets Allowed",
-                "Music": "Music",
-                "Talkative": "Talkative Driver",
-                "AC": "Air Conditioning"
+                "Smoking": "Chekish",
+                "Pets": "Hayvonlar",
+                "Music": "Musiqa",
+                "Talkative": "Suhbatdosh",
+                "AC": "Konditsioner"
             }
         }
     },
@@ -187,44 +187,44 @@
         "Header": {
             "Home": "Bosh sahifa",
             "About": "Biz haqimizda",
-            "Trips": "Safarlar",
+            "Trips": "Sayohatlar",
             "DownloadApp": "Yuklab olish"
         },
         "Search": {
-            "From": "From",
-            "To": "To",
-            "Date": "Date",
-            "PickDate": "Pick a date",
+            "From": "Qayerdan",
+            "To": "Qayerga",
+            "Date": "Sana",
+            "PickDate": "Sanani tanlang",
             "Passengers": {
-                "Title": "Passengers"
+                "Title": "Yo‘lovchilar"
             },
-            "Search": "Search",
-            "SelectRegion": "Select region",
-            "FiltersAndSort": "Filters & Sort",
-            "SortBy": "Sort By",
+            "Search": "Qidirish",
+            "SelectRegion": "Viloyatni tanlang",
+            "FiltersAndSort": "Filtrlar va saralash",
+            "SortBy": "Saralash tartibi",
             "Sort": {
-                "Default": "Default (Best Match)",
-                "Price": "Price",
-                "Date": "Departure Date",
-                "Distance": "Distance"
+                "Default": "Standart (eng mos)",
+                "Price": "Narx",
+                "Date": "Jo‘nash sanasi",
+                "Distance": "Masofa"
             },
-            "Order": "Order",
-            "Ascending": "Low to High",
-            "Descending": "High to Low",
-            "DriverPreferences": "Driver Preferences",
+            "Order": "Tartib",
+            "Ascending": "O‘sish bo‘yicha",
+            "Descending": "Kamayish bo‘yicha",
+            "DriverPreferences": "Haydovchi xohishlari",
             "Preferences": {
-                "Smoking": "Smoking Allowed",
-                "Pets": "Pets Allowed",
-                "Music": "Music",
-                "Talkative": "Talkative Driver",
-                "AC": "Air Conditioning"
+                "Smoking": "Chekishga ruxsat",
+                "Pets": "Hayvonlarga ruxsat",
+                "Music": "Musiqa",
+                "Talkative": "Suhbatdosh haydovchi",
+                "AC": "Konditsioner"
             },
-            "Any": "Any",
-            "Yes": "Yes",
-            "No": "No",
-            "ResetFilters": "Reset Filters"
+            "Any": "Farqi yo‘q",
+            "Yes": "Ha",
+            "No": "Yo‘q",
+            "ResetFilters": "Filtrlarni tozalash"
         },
-        "Calendar": "kk.oo.yyyy",
+        "Calendar": "dd.mm.yyyy",
         "Footer": {
             "Product": {
                 "Title": "Mahsulot",
@@ -239,28 +239,28 @@
                 "3": "Blog"
             },
             "Support": {
-                "Title": "Yordam",
-                "1": "Yordam markazi",
+                "Title": "Qo‘llab-quvvatlash",
+                "1": "Yordam",
                 "2": "Aloqa",
                 "3": "Xavfsizlik"
             },
             "Rights": "Barcha huquqlar himoyalangan"
         },
         "Regions": {
-            "Andijan": "Andijon",
-            "Bukhara": "Buxoro",
-            "Jizzakh": "Jizzax",
-            "Qashqadarya": "Qashqadaryo",
-            "Navoiy": "Navoiy",
-            "Namangan": "Namangan",
-            "Samarkand": "Samarqand",
-            "Sirdarya": "Sirdaryo",
-            "TashkentCity": "Toshkent shahar",
-            "Tashkent": "Toshkent",
-            "Fergana": "Farg'ona",
-            "Khorezm": "Xorazm",
-            "Karakalpakstan": "Qoraqalpog'iston",
-            "Surkhandarya": "Surxondaryo"
+            "Andijan": "Andijon viloyati",
+            "Bukhara": "Buxoro viloyati",
+            "Jizzakh": "Jizzax viloyati",
+            "Qashqadarya": "Qashqadaryo viloyati",
+            "Navoiy": "Navoiy viloyati",
+            "Namangan": "Namangan viloyati",
+            "Samarkand": "Samarqand viloyati",
+            "Sirdarya": "Sirdaryo viloyati",
+            "TashkentCity": "Toshkent shahri",
+            "Tashkent": "Toshkent viloyati",
+            "Fergana": "Farg‘ona viloyati",
+            "Khorezm": "Xorazm viloyati",
+            "Karakalpakstan": "Qoraqalpog‘iston Respublikasi",
+            "Surkhandarya": "Surxondaryo viloyati"
         }
     }
 }

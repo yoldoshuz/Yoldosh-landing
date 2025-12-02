@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-10 border bg-neutral-50">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-5">
         <div className="flex justify-between items-center h-16">
           <div>
             <Link href="/" className="flex flex-row gap-2 items-center">
@@ -25,7 +25,7 @@ export const Navbar = () => {
               <Link
                 href={link.href}
                 key={link.id}
-                className="px-3 py-2 text-sm hover:text-green-600 smooth"
+                className="px-3 py-2 text-sm hover:text-emerald-600 smooth"
               >
                 {link.title}
               </Link>

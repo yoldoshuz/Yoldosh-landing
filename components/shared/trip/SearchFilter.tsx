@@ -35,8 +35,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
 
 interface SearchFiltersProps {
     onSearch: (filters: any) => void;
@@ -205,7 +203,7 @@ export const SearchFilters = ({ onSearch, initialFilters }: SearchFiltersProps) 
                                 {t("FiltersAndSort")}
                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-80 max-h-[600px] overflow-y-auto">
+                        <DropdownMenuContent className="w-auto h-auto overflow-y-auto">
                             <DropdownMenuLabel>{t("SortBy")}</DropdownMenuLabel>
                             <div className="p-4">
                                 <RadioGroup value={sortBy} onValueChange={setSortBy}>

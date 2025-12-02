@@ -19,7 +19,7 @@ export default function TripDetailsPage({
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-[50vh]">
-                <Loader2 className="size-8 animate-spin text-green-500-500" />
+                <Loader2 className="size-8 animate-spin text-emerald-500-500" />
             </div>
         );
     }
@@ -43,7 +43,7 @@ export default function TripDetailsPage({
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="px-4 py-8 bg-neutral-100">
             <TripDetails trip={data.data.trip} />
         </div>
     );

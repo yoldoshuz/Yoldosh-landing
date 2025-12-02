@@ -14,15 +14,15 @@ export const Home = () => {
                 <SearchTrips />
                 <div className="flex items-center justify-center flex-wrap mt-16 gap-12">
                     <div className="flex flex-col items-center">
-                        <h1 className="text-4xl font-bold text-green-500">100+</h1>
+                        <h1 className="text-4xl font-bold text-emerald-500">100+</h1>
                         <h3 className="text-sm text-muted-foreground">{t("Trips")}</h3>
                     </div>
                     <div className="flex flex-col items-center">
-                        <h1 className="text-4xl font-bold text-green-500">100+</h1>
+                        <h1 className="text-4xl font-bold text-emerald-500">100+</h1>
                         <h3 className="text-sm text-muted-foreground">{t("Drivers")}</h3>
                     </div>
                     <div className="flex flex-col items-center">
-                        <h1 className="text-4xl font-bold text-green-500">24/7</h1>
+                        <h1 className="text-4xl font-bold text-emerald-500">24/7</h1>
                         <h3 className="text-sm text-muted-foreground">{t("Support")}</h3>
                     </div>
                 </div>

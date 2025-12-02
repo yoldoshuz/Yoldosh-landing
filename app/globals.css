@@ -123,11 +123,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-green-500! text-white! hover:bg-green-600! cursor-pointer;
+    @apply bg-emerald-500! text-white! hover:bg-emerald-600! cursor-pointer;
   }
 
   .card {
-    @apply bg-white border hover:border-green-500 hover:shadow-xl transition duration-200 ease-in-out rounded-2xl;
+    @apply bg-white border hover:border-emerald-500 hover:shadow-xl transition duration-200 ease-in-out rounded-2xl;
   }
 }
 
@@ -157,6 +157,6 @@
   }
 
   .link {
-    @apply text-green-500 hover:text-green-600 transition ease-in-out duration-200 cursor-pointer;
+    @apply text-emerald-500 hover:text-emerald-600 transition ease-in-out duration-200 cursor-pointer;
   }
 }

@@ -21,64 +21,64 @@
             "Support": "Support"
         },
         "About": {
-            "title": "Yo'ldosh: Новая эра междугородних поездок в Узбекистане",
-            "intro": "В 2026 году на рынке Узбекистана появится сервис, который изменит подход к междугородним поездкам. Yo'ldosh — это не просто приложение для поиска попутчиков, это решение проблемы, с которой ежедневно сталкиваются тысячи узбекистанцев.",
+            "title": "Yo'ldosh: A new era of intercity travel in Uzbekistan",
+            "intro": "In 2026, a service will appear on the Uzbekistan market that will change the approach to intercity trips. Yo'ldosh is not just an app for finding ride companions — it’s a solution to a problem faced daily by thousands of Uzbekistanis.",
             "problem": {
-                "title": "Проблема, которую мы решаем",
-                "content": "Если вы когда-либо искали поездку из Ташкента в Самарканд, Бухару или любой другой город Узбекистана, вы знаете, как это происходит: бесконечные телеграм-группы, публикация своего номера телефона, шквал звонков от десятков водителей, долгие переговоры о цене и условиях. Этот процесс отнимает время, нервы и не гарантирует, что вы найдете именно то, что вам нужно.",
-                "solution": "Именно поэтому мы создали Yo'ldosh — централизованную платформу, где водители и пассажиры находят друг друга быстро, удобно и безопасно, без необходимости раскрывать личные контакты и вести бесконечные переговоры."
+                "title": "The problem we solve",
+                "content": "If you’ve ever looked for a ride from Tashkent to Samarkand, Bukhara, or any other city in Uzbekistan, you know how it works: endless Telegram groups, posting your phone number, a flood of calls from dozens of drivers, long price and condition negotiations. This process wastes time, nerves, and doesn’t guarantee you’ll find exactly what you need.",
+                "solution": "That’s why we created Yo'ldosh — a centralized platform where drivers and passengers find each other quickly, conveniently, and safely, without revealing personal contacts or endless negotiations."
             },
             "howItWorks": {
-                "title": "Как работает Yo'ldosh?",
-                "intro": "Мы сделали процесс максимально простым и понятным. Все, что нужно для начала работы — зарегистрироваться по номеру телефона. После этого открывается доступ к основным функциям платформы.",
+                "title": "How Yo'ldosh works",
+                "intro": "We made the process as simple and clear as possible. All you need to get started is to register with your phone number. After that, you get access to the platform’s main features.",
                 "passengers": {
-                    "title": "Для пассажиров:",
-                    "content": "Укажите основные параметры вашей поездки: откуда и куда вы едете, дату отправления и количество пассажиров. Приложение мгновенно покажет список доступных поездок от водителей, которые едут по вашему маршруту. Вы можете выбрать автомобиль, ознакомиться с условиями, оценить цену и забронировать место — все это без единого звонка. Особенность нашего сервиса — возможность планирования поездок заранее."
+                    "title": "For passengers:",
+                    "content": "Specify the main parameters of your trip: where you’re going from and to, departure date, and number of passengers. The app instantly shows a list of available rides from drivers going your route. You can choose a car, review the conditions, check the price, and book a seat — all without a single call. A special feature of our service is the ability to plan trips in advance."
                 },
                 "drivers": {
-                    "title": "Для водителей:",
-                    "registration": "Чтобы начать перевозить пассажиров через Yo'ldosh, необходимо пройти простую регистрацию. Водителем может стать любой гражданин Узбекистана старше 18 лет, имеющий личный автомобиль. В процессе регистрации нужно будет загрузить фотографии водительских прав и технического паспорта транспортного средства.",
-                    "benefits": "Главное преимущество для водителей — больше не нужно тратить время на поиск пассажиров и бесконечные звонки. Вы публикуете поездку с указанием своей цены, а пассажиры сами находят вас. Цену определяете именно вы, а не пассажиры."
+                    "title": "For drivers:",
+                    "registration": "To start carrying passengers through Yo'ldosh, you need to go through a simple registration. Any citizen of Uzbekistan over 18 with a personal car can become a driver. During registration, you’ll need to upload photos of your driver’s license and vehicle technical passport.",
+                    "benefits": "The main advantage for drivers — no more wasting time searching for passengers and endless calls. You publish a trip with your price, and passengers find you themselves. You set the price, not the passengers."
                 }
             },
             "guarantee": {
-                "title": "Гарантия поездки: система 100% предоплаты",
-                "content": "Одна из ключевых особенностей Yo'ldosh — система полной предоплаты. Мы понимаем, что для водителей критически важно быть уверенными: если пассажир забронировал место, он точно поедет.",
-                "benefit": "Благодаря системе предоплаты мы выступаем гарантом того, что поездка состоится. Пассажир, бронируя место, подтверждает свое намерение серьезно, а водитель получает уверенность в завтрашнем дне."
+                "title": "Trip guarantee: 100% prepayment system",
+                "content": "One of Yo'ldosh’s key features is full prepayment. We understand how critical it is for drivers to be confident: if a passenger books a seat, they will definitely go.",
+                "benefit": "Thanks to prepayment, we act as a guarantor that the trip will happen. By booking a seat, the passenger confirms their serious intention, and the driver gains confidence in tomorrow."
             },
             "payment": {
-                "title": "Удобные способы оплаты",
-                "methods": "Yo'ldosh поддерживает как безналичную оплату банковскими картами, так и наличные средства.",
-                "cash": "Однако работа с наличными организована особым образом: деньги не передаются напрямую водителю. Вместо этого пользователь может пополнить внутренний кошелек приложения через банкоматы наших партнеров — Paynet и Oson."
+                "title": "Convenient payment methods",
+                "methods": "Yo'ldosh supports both card payments and cash.",
+                "cash": "However, cash handling is organized in a special way: money is not transferred directly to the driver. Instead, users can top up the app’s internal wallet through our partners’ terminals — Paynet and Oson."
             },
             "loyalty": {
-                "title": "Программа лояльности",
-                "content": "Мы ценим наших пользователей и планируем запустить программу лояльности. За приглашение новых водителей или пассажиров в сервис вы будете получать бонусные баллы на внутренний кошелек приложения.",
-                "campaigns": "Также для водителей будут регулярно проводиться специальные кампании с дополнительными вознаграждениями — следите за обновлениями в приложении."
+                "title": "Loyalty program",
+                "content": "We value our users and plan to launch a loyalty program. For inviting new drivers or passengers, you will receive bonus points to your in-app wallet.",
+                "campaigns": "Special campaigns with additional rewards will also be regularly held for drivers — stay updated in the app."
             },
             "geography": {
-                "title": "География и доступность",
-                "content": "Yo'ldosh запускается сразу по всему Узбекистану. Неважно, едете ли вы из Ташкента в Фергану, из Нукуса в Самарканд или из Андижана в Навои — наш сервис поможет найти попутчиков на любом маршруте.",
-                "apps": "Приложение будет доступно как для пользователей iOS, так и для Android, что обеспечит максимальный охват аудитории."
+                "title": "Geography and availability",
+                "content": "Yo'ldosh launches across all of Uzbekistan at once. Whether you’re traveling from Tashkent to Fergana, Nukus to Samarkand, or Andijan to Navoi — our service will help you find companions on any route.",
+                "apps": "The app will be available for both iOS and Android users, ensuring maximum audience coverage."
             },
             "mission": {
-                "title": "Наша миссия",
-                "content": "Мы создаем среду, в которой водители и пассажиры могут находить попутчиков по душе с минимальными затратами времени и денег. Каждый день тысячи людей в Узбекистане перемещаются между городами — на работу, к родственникам, по делам.",
-                "guarantees": "Для нас важны гарантии, которые мы предоставляем нашим пользователям. Yo'ldosh — это не просто посредник между водителями и пассажирами, это платформа, которая берет на себя ответственность за то, чтобы каждая поездка была предсказуемой, безопасной и удобной."
+                "title": "Our mission",
+                "content": "We are creating an environment where drivers and passengers can find like-minded travel companions with minimal time and money costs. Every day, thousands of people in Uzbekistan travel between cities — to work, to relatives, on business.",
+                "guarantees": "The guarantees we provide are important to us. Yo'ldosh is not just an intermediary — it’s a platform that takes responsibility for every trip being predictable, safe, and convenient."
             },
             "future": {
-                "title": "Планы на будущее",
-                "content": "Yo'ldosh только начинает свой путь, но мы уже смотрим в будущее. В планах — интеграция дополнительных сервисов, включая отправку почты через нашу платформу. Мы постоянно работаем над улучшением функционала и прислушиваемся к отзывам пользователей."
+                "title": "Future plans",
+                "content": "Yo'ldosh is just beginning its journey, but we’re already looking ahead. Plans include integration of additional services, such as parcel delivery through our platform. We are constantly improving functionality and listening to user feedback."
             },
             "notTaxi": {
-                "title": "Yo'ldosh — это не такси, это райдшеринг",
-                "content": "Важно понимать разницу: мы не сервис такси для мгновенных поездок. Yo'ldosh — это платформа для планирования междугородних поездок, где водители и пассажиры объединяются для совместных путешествий. Это новая культура передвижения, основанная на взаимном доверии, удобстве и разумной экономии."
+                "title": "Yo'ldosh is not a taxi — it’s ridesharing",
+                "content": "It’s important to understand the difference: we are not an instant taxi service. Yo'ldosh is a platform for planning intercity trips where drivers and passengers team up for shared journeys. It’s a new travel culture based on mutual trust, convenience, and reasonable savings."
             },
-            "conclusion": "Добро пожаловать в новую эру междугородних путешествий. Добро пожаловать в Yo'ldosh."
+            "conclusion": "Welcome to the new era of intercity travel. Welcome to Yo'ldosh."
         },
         "HowItWorks": {
             "Title": "How it works",
-            "Subtitle": "Getting started is easy - follow a few simple steps and start your journey with Yo'ldosh.",
+            "Subtitle": "Getting started is easy — follow a few simple steps and start your journey with Yo'ldosh.",
             "Features": {
                 "1": {
                     "Title": "🎯 Your perfect ride at the right price",
@@ -126,7 +126,7 @@
                 "description6": "Our support team is always here to help, any time, any day.",
                 "title7": "Flexibility",
                 "description7": "Plan trips on your schedule — book, change or cancel with ease.",
-                "title8": "Eco-Friendly",
+                "title8": "Eco-friendly",
                 "description8": "Reduce your carbon footprint by sharing rides instead of driving alone."
             }
         },
@@ -139,26 +139,26 @@
             "Namangan": "Namangan",
             "Tashkent": "Tashkent",
             "Bukhara": "Bukhara",
-            "Jizzah": "Jizzah",
+            "Jizzah": "Jizzakh",
             "Navoiy": "Navoiy",
             "Samarkand": "Samarkand",
             "Sirdarya": "Sirdarya",
-            "Xorezm": "Xorezm",
+            "Xorezm": "Khorezm",
             "Nukus": "Nukus"
         },
         "Travel": {
-            "Title": "Travel more conveniently with the app Yo'ldosh",
-            "Description": "Install the Yo'ldosh mobile app to find passengers. With it, you will always be up to date on your trips. Chat with passengers, receive ride reminders, view purchased bus tickets, and use other useful features right on your smartphone",
+            "Title": "Travel more conveniently with the Yo'ldosh app",
+            "Description": "Install the Yo'ldosh mobile app to find passengers. With it, you will always be up to date on your trips. Chat with passengers, receive ride reminders, view purchased tickets, and use other useful features right on your smartphone.",
             "Subtitle": "With the Yo'ldosh app, your trip history is always at hand!",
             "AppStore": "Download on the App Store",
-            "GooglePlay": "Download on the Google Play"
+            "GooglePlay": "Download on Google Play"
         },
         "Trips": {
             "Title": "Trips",
             "PopularTrips": "Popular trips",
-            "Found": "trips was found",
+            "Found": "trips found",
             "From": "From",
-            "NotFound": "Trips was not found",
+            "NotFound": "No trips found",
             "Error": "Error loading trips. Please try again.",
             "Details": {
                 "Back": "Back",
@@ -170,7 +170,7 @@
                 "Seats": "Available seats",
                 "Driver": "Driver",
                 "Vehicle": "Vehicle",
-                "AdditionalInformation": "AdditionalInformation",
+                "AdditionalInformation": "Additional information",
                 "Price": "Price per person",
                 "Book": "Book"
             },

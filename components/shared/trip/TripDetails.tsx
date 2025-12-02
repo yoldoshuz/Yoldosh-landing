@@ -5,6 +5,11 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
+    Avatar,
+    AvatarFallback,
+    AvatarImage
+} from "@/components/ui/avatar";
+import {
     Calendar,
     Users,
     Star,
@@ -40,33 +45,20 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
             <Button
                 variant="ghost"
                 onClick={() => router.back()}
-                className="mb-2"
+                className="flex items-center justify-between w-full mb-2 px-0!"
             >
-                <ArrowLeft className="size-4" />
-                {t("Back")}
+                <div><ArrowLeft className="size-5" /></div>
+                <div className="mr-6 text-xl font-bold">{t("Title")}</div>
+                <div />
             </Button>
-            <Card className="p-6 md:p-8">
-                {/* Header */}
-                <div className="mb-6">
-                    <h1 className="text-2xl md:text-3xl font-bold mb-2">
-                        {t("Title")}
-
-                    </h1>
-                    <p className="text-muted-foreground">
-                        {t("Description")}
-
-                    </p>
-                </div>
-
-                <Separator className="my-6" />
-
+            <Card className="bg-neutral-100 border-none shadow-none px-2">
                 {/* Route */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">{t("Route")}</h2>
-                    <div className="flex flex-col gap-3">
+                    <h2 className="text-lg font-semibold mb-2">{t("Route")}</h2>
+                    <div className="flex flex-col gap-3 p-4 bg-white rounded-3xl">
                         <div className="flex items-center gap-4">
                             <div className="mt-1">
-                                <div className="size-4 rounded-full border-2 border-green-500" />
+                                <div className="size-4 rounded-full border-2 border-emerald-500" />
                             </div>
                             <div>
                                 <p className="font-semibold text-lg">
@@ -96,33 +88,31 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                     </div>
                 </div>
 
-                <Separator className="my-6" />
-
                 {/* Trip Info */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">{t("Information")}</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-3">
-                            <Calendar className="size-5 text-green-500" />
+                    <h2 className="text-lg font-semibold mb-2">{t("Information")}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white rounded-3xl">
+                        <div className="flex items-center gap-4">
+                            <Calendar className="size-5 text-emerald-500" />
                             <div>
                                 <p className="text-sm text-muted-foreground">{t("Departure")}</p>
                                 <p className="font-medium">
-                                    {formattedDate} at {formattedTime}
+                                    {formattedDate} - {formattedTime}
                                 </p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Users className="size-5 text-green-500" />
+                        <div className="flex items-center gap-4">
+                            <Users className="size-5 text-emerald-500" />
                             <div>
                                 <p className="text-sm text-muted-foreground">
-                                   {t("Seats")}
+                                    {t("Seats")}
                                 </p>
                                 <p className="font-medium">{trip.seats_available}</p>
                             </div>
                         </div>
                         {trip.distance && (
-                            <div className="flex items-center gap-3">
-                                <MapPin className="size-5 text-green-500" />
+                            <div className="flex items-center gap-4">
+                                <MapPin className="size-5 text-emerald-500" />
                                 <div>
                                     <p className="text-sm text-muted-foreground">Distance</p>
                                     <p className="font-medium">{trip.distance} km</p>
@@ -130,8 +120,8 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                             </div>
                         )}
                         {trip.duration && (
-                            <div className="flex items-center gap-3">
-                                <Clock className="size-5 text-green-500" />
+                            <div className="flex items-center gap-4">
+                                <Clock className="size-5 text-emerald-500" />
                                 <div>
                                     <p className="text-sm text-muted-foreground">Duration</p>
                                     <p className="font-medium">
@@ -143,17 +133,14 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                     </div>
                 </div>
 
-                <Separator className="my-6" />
-
                 {/* Driver Info */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">{t("Driver")}</h2>
-                    <div className="flex items-center gap-4">
-                        <div className="size-16 rounded-full bg-green-100 flex items-center justify-center">
-                            <span className="text-green-600 font-bold text-2xl">
-                                {trip.driver.firstName[0]}
-                            </span>
-                        </div>
+                    <h2 className="text-lg font-semibold mb-2">{t("Driver")}</h2>
+                    <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
+                        <Avatar className="size-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                            <AvatarImage src="" />
+                            <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">{trip.driver.firstName[0]}</AvatarFallback>
+                        </Avatar>
                         <div>
                             <p className="font-semibold text-lg">
                                 {trip.driver.firstName} {trip.driver.lastName}
@@ -168,13 +155,11 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                     </div>
                 </div>
 
-                <Separator className="my-6" />
-
                 {/* Car Info */}
                 <div className="mb-6">
-                    <h2 className="text-xl font-semibold mb-4">{t("Vehicle")}</h2>
-                    <div className="flex items-center gap-3">
-                        <Car className="size-5 text-green-500" />
+                    <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
+                    <div className="flex items-center gap-3 bg-white p-4 rounded-3xl">
+                        <Car className="size-5 text-emerald-500" />
                         <div>
                             <p className="font-medium">
                                 {trip.car.make} {trip.car.model}
@@ -188,23 +173,22 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
                 {trip.comment && (
                     <>
-                        <Separator className="my-6" />
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-4">
                                 {t("AdditionalInformation")}
                             </h2>
-                            <p className="text-muted-foreground">{trip.comment}</p>
+                            <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
+                                <p className="text-sm">{trip.comment}</p>
+                            </div>
                         </div>
                     </>
                 )}
-
-                <Separator className="my-6" />
 
                 {/* Price & Action */}
                 <div className="flex items-center justify-between">
                     <div>
                         <p className="text-sm text-muted-foreground">{t("Price")}</p>
-                        <p className="text-3xl font-bold">
+                        <p className="text-2xl font-bold">
                             {trip.price.amount.toLocaleString()}
                             <span className="text-lg font-normal text-muted-foreground ml-2">
                                 UZS
