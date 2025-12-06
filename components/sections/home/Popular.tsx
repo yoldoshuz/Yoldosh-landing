@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link";
-import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 
-import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { usePopularTrips } from "@/hooks/useTrips";
 
@@ -23,11 +22,8 @@ import {
 } from "@/components/ui/carousel";
 
 export const Popular = () => {
+    const locale = localStorage.getItem("locale");
     const t = useTranslations("Pages.Popular");
-    const plugin = useRef(
-        Autoplay({ delay: 4000, stopOnInteraction: true })
-    );
-
     const { data: popularTrips } = usePopularTrips();
 
     return (
@@ -42,7 +38,6 @@ export const Popular = () => {
             </div>
 
             <Carousel
-                plugins={[plugin.current]}
                 className="mt-10 w-full max-w-6xl"
                 opts={{
                     align: "start",
@@ -50,28 +45,42 @@ export const Popular = () => {
                 }}
             >
                 <CarouselContent>
-                    {popularTrips?.data.trips.map((item: any) => (
+                    {popularTrips?.data.trips.slice(0, 6).map((item: any) => (
                         <CarouselItem
                             key={item.id}
                             className="md:basis-1/2 lg:basis-1/3"
                         >
                             <Link
                                 href={`/trips/${item.id}`}
-                                className="flex flex-col w-full h-full bg-white rounded-xl border hover:border-emerald-500 smooth overflow-hidden group select-none cursor-pointer"
+                                className="flex flex-col w-full h-full overflow-hidden group select-none cursor-pointer"
                                 tabIndex={0}
                                 aria-label={`${item.from} → ${item.to}`}
                             >
 
-                                <Card className="flex flex-col gap-3 p-5">
+                                <Card className="flex flex-col gap-3 p-5 bg-white rounded-xl border hover:border-emerald-500 smooth shadow-none">
                                     <CardContent className="flex flex-col gap-2 px-0!">
                                         <div className="flex items-center gap-3">
-                                            <span className="size-3 rounded-full border-2 border-emerald-500" />
-                                            <h1 className="font-semibold">{item.from}</h1>
+                                            <Image src="/location-green.svg" alt="location" width={18} height={18} />
+                                            <div>
+                                                <h1 className="text-lg font-bold">{item.from_location.address}</h1>
+                                                <p className="text-muted-foreground text-xs">
+                                                    {locale === "uz" && item.from_location.fromRegion.nameUz}
+                                                    {locale === "ru" && item.from_location.fromRegion.nameRu}
+                                                    {locale === "en" && item.from_location.fromRegion.nameEn}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div className="w-0.5 h-6 bg-neutral-300 ml-1" />
+                                        <div className="w-0.5 h-8 bg-neutral-300 ml-1.5" />
                                         <div className="flex items-center gap-3">
-                                            <span className="size-3 rounded-full bg-muted-foreground" />
-                                            <h1 className="font-semibold">{item.to}</h1>
+                                            <Image src="/location-red.svg" alt="location" width={18} height={18} />
+                                            <div>
+                                                <h1 className="text-lg font-bold">{item.to_location.address}</h1>
+                                                <p className="text-muted-foreground text-xs">
+                                                    {locale === "uz" && item.to_location.toRegion.nameUz}
+                                                    {locale === "ru" && item.to_location.toRegion.nameRu}
+                                                    {locale === "en" && item.to_location.toRegion.nameEn}
+                                                </p>
+                                            </div>
                                         </div>
                                     </CardContent>
 
@@ -81,14 +90,14 @@ export const Popular = () => {
                                         <div className="flex flex-col">
                                             <span className="text-xs text-muted-foreground">{t("From")}</span>
                                             <h1 className="text-xl font-bold">
-                                                {item.price.amount.toLocaleString()} uzs
+                                                {item.price.final_price.toLocaleString()} UZS
                                             </h1>
                                         </div>
                                         <Button
                                             variant="secondary"
-                                            className="rounded-full p-2 bg-emerald-500 text-white hover:bg-emerald-600 transition-colors"
+                                            className="rounded-full px-2! bg-emerald-500 text-white hover:bg-emerald-600 transition-colors"
                                         >
-                                            <ChevronRight />
+                                            <ChevronRight className="size-5" />
                                         </Button>
                                     </div>
                                 </Card>

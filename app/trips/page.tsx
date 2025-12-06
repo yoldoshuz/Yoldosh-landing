@@ -4,7 +4,7 @@ import { useState, Suspense } from "react";
 import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Loader2, LayoutGrid, List, AlertCircle } from "lucide-react";
-import { PopularTripCard, TripCard } from "@/components/shared/trip/TripCard";
+import { TripCard } from "@/components/shared/trip/TripCard";
 import { SearchFilters } from "@/components/shared/trip/SearchFilter";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
@@ -117,7 +117,7 @@ const SearchPage = () => {
                                 : "flex flex-col gap-4"
                             }>
                                 {popularTrips?.data.trips.map((trip) => (
-                                    <PopularTripCard
+                                    <TripCard
                                         key={trip.id}
                                         trip={trip}
                                         onClick={() => router.push(`/trips/${trip.id}`)}

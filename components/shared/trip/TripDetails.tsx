@@ -1,9 +1,7 @@
-import { Trip } from "@/types/";
 import { Card } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
     Avatar,
     AvatarFallback,
@@ -20,7 +18,7 @@ import {
 } from "lucide-react";
 
 interface TripDetailsProps {
-    trip: Trip;
+    trip: any;
 }
 
 export const TripDetails = ({ trip }: TripDetailsProps) => {
@@ -29,13 +27,26 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
     const locale = localStorage.getItem("locale");
     const departureDate = new Date(trip.departure_ts);
-    const formattedDate = departureDate.toLocaleDateString("ru-RU", {
+    const getLocale = () => {
+        switch (locale) {
+            case "uz":
+                return "uz-UZ";
+            case "ru":
+                return "ru-RU";
+            case "en":
+                return "en-US";
+            default:
+                return "ru-RU";
+        }
+    };
+
+    const formattedDate = departureDate.toLocaleDateString(getLocale(), {
         weekday: "long",
         day: "2-digit",
         month: "long",
         year: "numeric",
     });
-    const formattedTime = departureDate.toLocaleTimeString("ru-RU", {
+    const formattedTime = departureDate.toLocaleTimeString(getLocale(), {
         hour: "2-digit",
         minute: "2-digit",
     });
@@ -51,7 +62,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 <div className="mr-6 text-xl font-bold">{t("Title")}</div>
                 <div />
             </Button>
-            <Card className="bg-neutral-100 border-none shadow-none px-2">
+            <Card className="bg-neutral-100 border-none shadow-none px-0 w-full">
                 {/* Route */}
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold mb-2">{t("Route")}</h2>
@@ -65,8 +76,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                                     {trip.from_location.address}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    {locale === "uz" && trip.from_location.region.nameUz}
-                                    {locale === "ru" && trip.from_location.region.nameRu}
+                                    {locale === "uz" && trip.from_location.fromRegion.nameUz}
+                                    {locale === "ru" && trip.from_location.fromRegion.nameRu}
+                                    {locale === "en" && trip.from_location.fromRegion.nameEn}
                                 </p>
                             </div>
                         </div>
@@ -80,8 +92,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                                     {trip.to_location.address}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    {locale === "uz" && trip.to_location.region.nameUz}
-                                    {locale === "ru" && trip.to_location.region.nameRu}
+                                    {locale === "uz" && trip.to_location.toRegion.nameUz}
+                                    {locale === "ru" && trip.to_location.toRegion.nameRu}
+                                    {locale === "en" && trip.to_location.toRegion.nameEn}
                                 </p>
                             </div>
                         </div>
@@ -156,7 +169,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </div>
 
                 {/* Car Info */}
-                <div className="mb-6">
+                <div className="mb-12">
                     <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
                     <div className="flex items-center gap-3 bg-white p-4 rounded-3xl">
                         <Car className="size-5 text-emerald-500" />
@@ -185,19 +198,22 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 )}
 
                 {/* Price & Action */}
-                <div className="flex items-center justify-between">
-                    <div>
-                        <p className="text-sm text-muted-foreground">{t("Price")}</p>
-                        <p className="text-2xl font-bold">
-                            {trip.price.amount.toLocaleString()}
-                            <span className="text-lg font-normal text-muted-foreground ml-2">
-                                UZS
-                            </span>
-                        </p>
+                <div className="fixed bottom-4 inset-x-0 mx-auto bg-white w-full max-w-4xl rounded-3xl px-6 py-3">
+                    <div className="flex items-center justify-between w-full ">
+                        <div>
+                            <p className="text-sm text-muted-foreground">{t("Price")}</p>
+                            <p className="text-2xl font-bold">
+                                {trip.price.final_price.toLocaleString()}
+                                <span className="text-lg font-normal text-muted-foreground ml-2">
+                                    UZS
+                                </span>
+                            </p>
+                        </div>
+
+                        <Button className="btn-primary">
+                            {t("Book")}
+                        </Button>
                     </div>
-                    <Button size="lg" className="btn-primary">
-                        {t("Book")}
-                    </Button>
                 </div>
             </Card>
         </div>
