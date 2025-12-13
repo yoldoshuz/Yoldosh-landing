@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Card } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -14,7 +16,8 @@ import {
     Car,
     Clock,
     MapPin,
-    ArrowLeft
+    ArrowLeft,
+    Dot
 } from "lucide-react";
 
 interface TripDetailsProps {
@@ -66,11 +69,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 {/* Route */}
                 <div className="mb-6">
                     <h2 className="text-lg font-semibold mb-2">{t("Route")}</h2>
-                    <div className="flex flex-col gap-3 p-4 bg-white rounded-3xl">
+                    <div className="flex flex-col gap-0 p-4 bg-white rounded-3xl">
                         <div className="flex items-center gap-4">
-                            <div className="mt-1">
-                                <div className="size-4 rounded-full border-2 border-emerald-500" />
-                            </div>
+                            <Image src="/location-green.svg" alt="location" width={24} height={24} />
                             <div>
                                 <p className="font-semibold text-lg">
                                     {trip.from_location.address}
@@ -82,11 +83,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-0.5 h-12 bg-neutral-300 ml-1.5" />
+                        <div className="w-0.5 h-8 border border-dashed ml-2" />
                         <div className="flex items-center gap-4">
-                            <div className="mt-1">
-                                <div className="size-4 rounded-full bg-muted-foreground" />
-                            </div>
+                            <Image src="/location-red.svg" alt="location" width={24} height={24} />
                             <div>
                                 <p className="font-semibold text-lg">
                                     {trip.to_location.address}
@@ -169,36 +168,36 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </div>
 
                 {/* Car Info */}
-                <div className="mb-12">
+                <div className="mb-6">
                     <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
-                    <div className="flex items-center gap-3 bg-white p-4 rounded-3xl">
-                        <Car className="size-5 text-emerald-500" />
-                        <div>
-                            <p className="font-medium">
+                    <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
+                        {/* <Car className="size-5 text-emerald-500" /> */}
+                        <div className="flex flex-col gap-2">
+                            <p className="text-lg font-medium">
                                 {trip.car.make} {trip.car.model}
                             </p>
-                            <p className="text-sm text-muted-foreground">
-                                {trip.car.color}
+                            <p className="flex items-center text-sm text-muted-foreground">
+                                {trip.car.govNumber}<Dot />{trip.car.color}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                {trip.comment && (
-                    <>
-                        <div className="mb-6">
+                <div className="mb-12">
+                    {trip.comment && (
+                        <>
                             <h2 className="text-xl font-semibold mb-4">
                                 {t("AdditionalInformation")}
                             </h2>
                             <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
                                 <p className="text-sm">{trip.comment}</p>
                             </div>
-                        </div>
-                    </>
-                )}
+                        </>
+                    )}
+                </div>
 
                 {/* Price & Action */}
-                <div className="fixed bottom-4 inset-x-0 mx-auto bg-white w-full max-w-4xl rounded-3xl px-6 py-3">
+                <div className="fixed bottom-0 md:bottom-4 inset-x-0 mx-auto bg-white w-full max-w-4xl rounded-none md:rounded-3xl px-6 py-3">
                     <div className="flex items-center justify-between w-full ">
                         <div>
                             <p className="text-sm text-muted-foreground">{t("Price")}</p>

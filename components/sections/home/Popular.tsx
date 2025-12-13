@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useTranslations } from "next-intl";
 import { usePopularTrips } from "@/hooks/useTrips";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "../../ui/button";
 import { ChevronRight } from "lucide-react";
@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/carousel";
 
 export const Popular = () => {
-    const locale = localStorage.getItem("locale");
+    const locale = useLocale();
     const t = useTranslations("Pages.Popular");
     const { data: popularTrips } = usePopularTrips();
 
@@ -70,7 +70,7 @@ export const Popular = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="w-0.5 h-8 bg-neutral-300 ml-1.5" />
+                                        <div className="w-0.5 h-8 border border-dashed ml-1.5" />
                                         <div className="flex items-center gap-3">
                                             <Image src="/location-red.svg" alt="location" width={18} height={18} />
                                             <div>

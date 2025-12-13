@@ -56,10 +56,10 @@ export const Help = () => {
                             </div>
 
                             {/* Floating security icons */}
-                            <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
+                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
                                 <Lock className="size-6 sm:size-8 text-emerald-600" />
                             </div>
-                            <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
+                            <div className="absolute bottom-4 left-8 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
                                 <Eye className="size-6 sm:size-8 text-emerald-600" />
                             </div>
 

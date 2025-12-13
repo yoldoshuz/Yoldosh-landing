@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { SearchTrips } from "../../shared/trip/SearchTrips";
+import { NumberTicker } from "@/components/ui/magic/number-ticker";
 
 export const Home = () => {
     const t = useTranslations("Pages.Home");
@@ -14,11 +15,17 @@ export const Home = () => {
                 <SearchTrips />
                 <div className="flex items-center justify-center flex-wrap mt-16 gap-12">
                     <div className="flex flex-col items-center">
-                        <h1 className="text-4xl font-bold text-emerald-500">100+</h1>
+                        <NumberTicker
+                            value={100}
+                            className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-emerald-500"
+                        />
                         <h3 className="text-sm text-muted-foreground">{t("Trips")}</h3>
                     </div>
                     <div className="flex flex-col items-center">
-                        <h1 className="text-4xl font-bold text-emerald-500">100+</h1>
+                        <NumberTicker
+                            value={100}
+                            className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-emerald-500"
+                        />
                         <h3 className="text-sm text-muted-foreground">{t("Drivers")}</h3>
                     </div>
                     <div className="flex flex-col items-center">

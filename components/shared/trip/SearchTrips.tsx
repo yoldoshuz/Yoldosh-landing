@@ -84,7 +84,7 @@ export const SearchTrips = () => {
                 </div>
                 <div className="flex items-center justify-center gap-2 w-full">
                     <Select value={seats} onValueChange={setSeats}>
-                        <SelectTrigger className="bg-transparent border-none shadow-none cursor-pointer w-full px-0 select-none">
+                        <SelectTrigger className="bg-transparent border-none shadow-none text-muted-foreground cursor-pointer w-full px-0 select-none">
                             <SelectValue
                                 placeholder={
                                     <div className="flex items-center gap-4">
@@ -95,12 +95,30 @@ export const SearchTrips = () => {
                             />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="1">{t("Passengers.1")}</SelectItem>
-                            <SelectItem value="2">{t("Passengers.2")}</SelectItem>
-                            <SelectItem value="3">{t("Passengers.3")}</SelectItem>
-                            <SelectItem value="4">{t("Passengers.4")}</SelectItem>
-                            <SelectItem value="5">{t("Passengers.5")}</SelectItem>
-                            <SelectItem value="6">{t("Passengers.6")}</SelectItem>
+                            <SelectItem value="1">
+                                <UserRound className="size-6 mr-2" />
+                                {t("Passengers.1")}
+                            </SelectItem>
+                            <SelectItem value="2">
+                                <UserRound className="size-6 mr-2" />
+                                {t("Passengers.2")}
+                            </SelectItem>
+                            <SelectItem value="3">
+                                <UserRound className="size-6 mr-2" />
+                                {t("Passengers.3")}
+                            </SelectItem>
+                            <SelectItem value="4">
+                                <UserRound className="size-6 mr-2" />
+                                {t("Passengers.4")}
+                            </SelectItem>
+                            <SelectItem value="5">
+                                <UserRound className="size-6 mr-2" />
+                                {t("Passengers.5")}
+                            </SelectItem>
+                            <SelectItem value="6">
+                                <UserRound className="size-6 mr-2" />
+                                {t("Passengers.6")}
+                            </SelectItem>
                         </SelectContent>
                     </Select>
                 </div>

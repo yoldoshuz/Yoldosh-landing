@@ -10,7 +10,7 @@ export const Navbar = () => {
   const t = useTranslations("Components.Header");
 
   return (
-    <header className="fixed top-0 left-0 w-full z-10 border bg-neutral-50">
+    <header className="fixed top-0 left-0 w-full z-20 border bg-neutral-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-5">
         <div className="flex justify-between items-center h-16">
           <div>
