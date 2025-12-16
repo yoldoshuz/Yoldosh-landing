@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/avatar";
 import {
     Calendar,
-    Users,
     Timer,
 } from "lucide-react";
 
@@ -65,13 +64,12 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
                                     <div>
                                         <Image src="/location-green.svg" alt="location" width={28} height={28} />
                                     </div>
-                                    <div className="w-full border border-dashed" />
+                                    <div className="w-full border border-neutral-700 border-dashed" />
                                     <div>
                                         <Image src="/location-red.svg" alt="location" width={28} height={28} />
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-center justify-center text-center gap-0 w-full">
-
                                     <h3 className="font-semibold text-sm">
                                         {trip.to_location.address}
                                     </h3>
@@ -164,38 +162,44 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
                 </div>
 
                 {/* Route */}
-                <div className="flex flex-col gap-2 min-w-50">
+                <div className="flex flex-col gap-0 min-w-50 mt-2">
                     <div className="flex items-center gap-3">
-                        <Image src="/location-green.svg" alt="location" width={24} height={24} />
-                        <h3 className="font-semibold text-sm">
-                            {trip.from_location.address}
-                        </h3>
+                        <p className="text-sm text-muted-foreground">{formattedTime}</p>
+                        <Image src="/location-green.svg" alt="location" width={20} height={20} />
+                        <div>
+                            <h3 className="font-semibold text-sm">
+                                {trip.from_location.address}
+                            </h3>
+                            <p className="text-muted-foreground text-xs">
+                                {locale === "uz" && trip.from_location.fromRegion.nameUz}
+                                {locale === "ru" && trip.from_location.fromRegion.nameRu}
+                                {locale === "en" && trip.from_location.fromRegion.nameEn}
+                            </p>
+                        </div>
                     </div>
-                    <div className="w-0.5 h-8 border border-dashed ml-2" />
+                    <div className="w-0.5 h-4 border border-neutral-700 border-dashed ml-13.25" />
                     <div className="flex items-center gap-3">
-                        <Image src="/location-red.svg" alt="location" width={24} height={24} />
-                        <h3 className="font-semibold text-sm">
-                            {trip.to_location.address}
-                        </h3>
+                        <p className="text-sm text-muted-foreground">{formattedTime}</p>
+                        <Image src="/location-red.svg" alt="location" width={20} height={20} />
+                        <div>
+                            <h3 className="font-semibold text-sm">
+                                {trip.to_location.address}
+                            </h3>
+                            <p className="text-muted-foreground text-xs">
+                                {locale === "uz" && trip.to_location.toRegion.nameUz}
+                                {locale === "ru" && trip.to_location.toRegion.nameRu}
+                                {locale === "en" && trip.to_location.toRegion.nameEn}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 {/* Info */}
-                <div className="flex-1 flex flex-col justify-between gap-4">
-                    <div className="flex flex-col items-start gap-3 text-sm text-muted-foreground mt-2">
+                <div className="flex-1 flex flex-col justify-end items-end gap-4">
+                    <div className="flex flex-col items-end gap-3 text-sm text-muted-foreground mt-0">
                         <div className="flex items-center gap-2">
-                            <Calendar className="size-4" />
-                            <span>{formattedDate}</span>
+                            <span>{t("Details.Seats")}: {trip.seats_available} </span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <Timer className="size-4" />
-                            <span>{formattedTime}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Users className="size-4" />
-                            <span>{trip.seats_available} {t("Details.Seats")}</span>
-                        </div>
-
                     </div>
                 </div>
             </div>

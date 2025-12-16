@@ -51,16 +51,16 @@ export const Popular = () => {
                             className="md:basis-1/2 lg:basis-1/3"
                         >
                             <Link
-                                href={`/trips/${item.id}`}
+                                href={`/trips?from=${item.from_location.fromRegion.id}&to=${item.to_location.toRegion.id}&seats=1`}
                                 className="flex flex-col w-full h-full overflow-hidden group select-none cursor-pointer"
                                 tabIndex={0}
                                 aria-label={`${item.from} → ${item.to}`}
                             >
 
                                 <Card className="flex flex-col gap-3 p-5 bg-white rounded-xl border hover:border-emerald-500 smooth shadow-none">
-                                    <CardContent className="flex flex-col gap-2 px-0!">
+                                    <CardContent className="flex flex-col gap-0 px-0!">
                                         <div className="flex items-center gap-3">
-                                            <Image src="/location-green.svg" alt="location" width={18} height={18} />
+                                            <Image src="/location-green.svg" alt="location" width={22} height={22} />
                                             <div>
                                                 <h1 className="text-lg font-bold">{item.from_location.address}</h1>
                                                 <p className="text-muted-foreground text-xs">
@@ -70,9 +70,9 @@ export const Popular = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="w-0.5 h-8 border border-dashed ml-1.5" />
+                                        <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.25" />
                                         <div className="flex items-center gap-3">
-                                            <Image src="/location-red.svg" alt="location" width={18} height={18} />
+                                            <Image src="/location-red.svg" alt="location" width={22} height={22} />
                                             <div>
                                                 <h1 className="text-lg font-bold">{item.to_location.address}</h1>
                                                 <p className="text-muted-foreground text-xs">

@@ -67,7 +67,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
             </Button>
             <Card className="bg-neutral-100 border-none shadow-none px-0 w-full">
                 {/* Route */}
-                <div className="mb-6">
+                <div className="mb-2">
                     <h2 className="text-lg font-semibold mb-2">{t("Route")}</h2>
                     <div className="flex flex-col gap-0 p-4 bg-white rounded-3xl">
                         <div className="flex items-center gap-4">
@@ -83,7 +83,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-0.5 h-8 border border-dashed ml-2" />
+                        <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.5" />
                         <div className="flex items-center gap-4">
                             <Image src="/location-red.svg" alt="location" width={24} height={24} />
                             <div>
@@ -101,7 +101,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </div>
 
                 {/* Trip Info */}
-                <div className="mb-6">
+                <div className="mb-2">
                     <h2 className="text-lg font-semibold mb-2">{t("Information")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white rounded-3xl">
                         <div className="flex items-center gap-4">
@@ -146,7 +146,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </div>
 
                 {/* Driver Info */}
-                <div className="mb-6">
+                <div className="mb-2">
                     <h2 className="text-lg font-semibold mb-2">{t("Driver")}</h2>
                     <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
                         <Avatar className="size-12 rounded-full bg-emerald-100 flex items-center justify-center">
@@ -168,7 +168,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </div>
 
                 {/* Car Info */}
-                <div className="mb-6">
+                <div className="mb-2">
                     <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
                     <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
                         {/* <Car className="size-5 text-emerald-500" /> */}
