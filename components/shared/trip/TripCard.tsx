@@ -50,7 +50,7 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
                     <div className="flex items-center gap-4 ">
                         <div className="flex items-center justify-between gap-4 w-full">
                             {/* Route */}
-                            <div className="flex flex-row items-center justify-between w-full gap-4 max-w-[500px]">
+                            <div className="flex flex-row items-center justify-between w-full gap-4 max-w-125">
                                 <div className="flex flex-col items-center justify-center text-center gap-0 w-full">
                                     <h3 className="font-semibold text-sm">
                                         {trip.from_location.address}
@@ -164,7 +164,7 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
                 </div>
 
                 {/* Route */}
-                <div className="flex flex-col gap-2 min-w-[200px]">
+                <div className="flex flex-col gap-2 min-w-50">
                     <div className="flex items-center gap-3">
                         <Image src="/location-green.svg" alt="location" width={24} height={24} />
                         <h3 className="font-semibold text-sm">
