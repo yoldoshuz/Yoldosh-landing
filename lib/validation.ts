@@ -12,7 +12,7 @@ export const searchTripSchema = z.object({
       message: "Invalid date format. Expected ISO string (yyyy-MM-ddTHH:mm:ssZ).",
     })
     .pipe(z.coerce.date())
-    .refine((date) => date > new Date(), {
+    .refine((date: Date) => date > new Date(), {
       message: "Departure date must be in the future.",
     }),
   requested_seats: z.number().positive().default(1),
