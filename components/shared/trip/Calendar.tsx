@@ -1,16 +1,12 @@
-"use client"
+"use client";
 
 import * as React from "react";
-
 import { Calendar1 } from "lucide-react";
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useTranslations } from "next-intl";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export const CalendarSelect = ({
   onDateChange,
@@ -19,8 +15,8 @@ export const CalendarSelect = ({
 }) => {
   const t = useTranslations("Components");
 
-  const [open, setOpen] = React.useState(false)
-  const [date, setDate] = React.useState<Date | undefined>(undefined)
+  const [open, setOpen] = React.useState(false);
+  const [date, setDate] = React.useState<Date | undefined>(undefined);
   return (
     <div className="flex flex-col items-start justify-start w-full">
       <Popover open={open} onOpenChange={setOpen}>
@@ -40,14 +36,14 @@ export const CalendarSelect = ({
             selected={date}
             captionLayout="dropdown"
             onSelect={(date) => {
-              setDate(date)
+              setDate(date);
               // notify parent if handler provided
-              if (onDateChange) onDateChange(date)
-              setOpen(false)
+              if (onDateChange) onDateChange(date);
+              setOpen(false);
             }}
           />
         </PopoverContent>
       </Popover>
     </div>
-  )
-}
+  );
+};

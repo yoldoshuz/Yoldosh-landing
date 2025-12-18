@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-
-import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
+
 import { Navbar } from "@/components/shared/widgets/Navbar";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
@@ -36,9 +36,7 @@ export default async function RootLayout({
                 <header className="shrink-0 mb-16">
                   <Navbar />
                 </header>
-                <main className="flex-1">
-                  {children}
-                </main>
+                <main className="flex-1">{children}</main>
               </div>
             </ThemeProviders>
           </NextIntlClientProvider>

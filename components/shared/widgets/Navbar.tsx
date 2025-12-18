@@ -1,10 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
-
-import { navLinks } from "@/constants";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+
 import { LanguageSwitcher } from "@/components/functional/LanguageSwitcher";
+import { Button } from "@/components/ui/button";
+import { navLinks } from "@/constants";
 
 export const Navbar = () => {
   const t = useTranslations("Components.Header");
@@ -22,11 +22,7 @@ export const Navbar = () => {
 
           <nav className="hidden md:flex sm:space-x-6">
             {navLinks().map((link) => (
-              <Link
-                href={link.href}
-                key={link.id}
-                className="px-3 py-2 text-sm hover:text-emerald-600 smooth"
-              >
+              <Link href={link.href} key={link.id} className="px-3 py-2 text-sm hover:text-emerald-600 smooth">
                 {link.title}
               </Link>
             ))}
@@ -35,9 +31,7 @@ export const Navbar = () => {
           <div className="flex items-center justify-center gap-2">
             <LanguageSwitcher />
             <div>
-              <Button className="btn-primary">
-                {t("DownloadApp")}
-              </Button>
+              <Button className="btn-primary">{t("DownloadApp")}</Button>
             </div>
           </div>
         </div>

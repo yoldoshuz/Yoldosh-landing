@@ -1,26 +1,27 @@
-import { useLocale } from 'next-intl';
-import { LanguageSwitcherSelect } from './LanguageSwitcherSelect';
+import { useLocale } from "next-intl";
+
+import { LanguageSwitcherSelect } from "./LanguageSwitcherSelect";
 
 export const LanguageSwitcher = () => {
-    const locale = useLocale();
+  const locale = useLocale();
 
-    return (
-        <LanguageSwitcherSelect
-            defaultValue={locale}
-            items={[
-                {
-                    value: 'uz',
-                    label: "O'zbekcha",
-                },
-                {
-                    value: 'ru',
-                    label: "Русский",
-                },
-                {
-                    value: 'en',
-                    label: "English",
-                }
-            ]}
-        />
-    );
+  return (
+    <LanguageSwitcherSelect
+      defaultValue={locale}
+      items={[
+        {
+          value: "uz",
+          label: "O'zbekcha",
+        },
+        {
+          value: "ru",
+          label: "Русский",
+        },
+        {
+          value: "en",
+          label: "English",
+        },
+      ]}
+    />
+  );
 };
