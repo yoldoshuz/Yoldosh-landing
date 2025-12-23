@@ -1,11 +1,19 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Calendar, Car, Clock, Dot, MapPin, Star, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Dot,
+  MapPin,
+  Star,
+  Users
+} from "lucide-react";
 
 interface TripDetailsProps {
   trip: any;
@@ -63,11 +71,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <Image src="/location-green.svg" alt="location" width={24} height={24} />
               <div>
                 <p className="font-semibold text-lg">{trip.from_location.address}</p>
-                <p className="text-sm text-muted-foreground">
-                  {locale === "uz" && trip.from_location.fromRegion.nameUz}
-                  {locale === "ru" && trip.from_location.fromRegion.nameRu}
-                  {locale === "en" && trip.from_location.fromRegion.nameEn}
-                </p>
+
               </div>
             </div>
             <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.5" />
@@ -75,11 +79,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <Image src="/location-red.svg" alt="location" width={24} height={24} />
               <div>
                 <p className="font-semibold text-lg">{trip.to_location.address}</p>
-                <p className="text-sm text-muted-foreground">
-                  {locale === "uz" && trip.to_location.toRegion.nameUz}
-                  {locale === "ru" && trip.to_location.toRegion.nameRu}
-                  {locale === "en" && trip.to_location.toRegion.nameEn}
-                </p>
+
               </div>
             </div>
           </div>

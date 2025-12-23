@@ -38,34 +38,26 @@ export const Popular = () => {
           {popularTrips?.data.trips.slice(0, 6).map((item: any) => (
             <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
               <Link
-                href={`/trips?from=${item.from_location.fromRegion.id}&to=${item.to_location.toRegion.id}&seats=1`}
+                href={`/trips?from=${item.from_location.city}&to=${item.to_location.city}&seats=1`}
                 className="flex flex-col w-full h-full overflow-hidden group select-none cursor-pointer"
                 tabIndex={0}
-                aria-label={`${item.from} → ${item.to}`}
+                aria-label={`${item.from_location.city} → ${item.to_location.city}`}
               >
                 <Card className="flex flex-col gap-3 p-5 bg-white rounded-xl border hover:border-emerald-500 smooth shadow-none">
                   <CardContent className="flex flex-col gap-0 px-0!">
                     <div className="flex items-center gap-3">
                       <Image src="/location-green.svg" alt="location" width={22} height={22} />
                       <div>
-                        <h1 className="text-lg font-bold">{item.from_location.address}</h1>
-                        <p className="text-muted-foreground text-xs">
-                          {locale === "uz" && item.from_location.fromRegion.nameUz}
-                          {locale === "ru" && item.from_location.fromRegion.nameRu}
-                          {locale === "en" && item.from_location.fromRegion.nameEn}
-                        </p>
+                        <h1 className="text-base font-bold">{item.from_location.address}</h1>
+                        <p className="text-sm text-muted-foreground">{item.from_location.city}</p>
                       </div>
                     </div>
                     <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.25 " />
                     <div className="flex items-center gap-3">
                       <Image src="/location-red.svg" alt="location" width={22} height={22} />
                       <div>
-                        <h1 className="text-lg font-bold">{item.to_location.address}</h1>
-                        <p className="text-muted-foreground text-xs">
-                          {locale === "uz" && item.to_location.toRegion.nameUz}
-                          {locale === "ru" && item.to_location.toRegion.nameRu}
-                          {locale === "en" && item.to_location.toRegion.nameEn}
-                        </p>
+                        <h1 className="text-base font-bold">{item.to_location.address}</h1>
+                        <p className="text-sm text-muted-foreground">{item.to_location.city}</p>
                       </div>
                     </div>
                   </CardContent>

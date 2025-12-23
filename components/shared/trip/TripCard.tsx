@@ -1,10 +1,14 @@
 import Image from "next/image";
-import { Calendar, Timer } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useTranslations } from "next-intl";
+
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage
+} from "@/components/ui/avatar";
 
 interface TripCardProps {
   trip: any;
@@ -13,7 +17,6 @@ interface TripCardProps {
 }
 
 export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) => {
-  const locale = useLocale();
   const t = useTranslations("Pages.Trips");
 
   const departureDate = new Date(trip.departure_ts);
@@ -30,8 +33,6 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
     minute: "2-digit",
   });
 
-  const preferences = trip.driver.preferences || {};
-
   if (viewMode === "list") {
     return (
       <Card
@@ -46,11 +47,7 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
               <div className="flex flex-row items-center justify-between w-full gap-4 max-w-125">
                 <div className="flex flex-col items-center justify-center text-center gap-0 w-full">
                   <h3 className="font-semibold text-sm">{trip.from_location.address}</h3>
-                  <p className="text-muted-foreground text-xs">
-                    {locale === "uz" && trip.from_location.fromRegion.nameUz}
-                    {locale === "ru" && trip.from_location.fromRegion.nameRu}
-                    {locale === "en" && trip.from_location.fromRegion.nameEn}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{trip.from_location.city}</p>
                 </div>
                 <div className="flex items-center justify-between w-full">
                   <div>
@@ -63,11 +60,7 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
                 </div>
                 <div className="flex flex-col items-center justify-center text-center gap-0 w-full">
                   <h3 className="font-semibold text-sm">{trip.to_location.address}</h3>
-                  <p className="text-muted-foreground text-xs">
-                    {locale === "uz" && trip.to_location.toRegion.nameUz}
-                    {locale === "ru" && trip.to_location.toRegion.nameRu}
-                    {locale === "en" && trip.to_location.toRegion.nameEn}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{trip.to_location.city}</p>
                 </div>
               </div>
               <div className="hidden md:flex items-center text-xl font-bold">
@@ -159,24 +152,16 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
             <Image src="/location-green.svg" alt="location" width={20} height={20} />
             <div>
               <h3 className="font-semibold text-sm">{trip.from_location.address}</h3>
-              <p className="text-muted-foreground text-xs">
-                {locale === "uz" && trip.from_location.fromRegion.nameUz}
-                {locale === "ru" && trip.from_location.fromRegion.nameRu}
-                {locale === "en" && trip.from_location.fromRegion.nameEn}
-              </p>
+              <p className="text-sm text-muted-foreground">{trip.from_location.city}</p>
             </div>
           </div>
-          <div className="w-0.5 h-4 border border-neutral-700 border-dashed ml-13.25" />
+          <span className="border-black border-l-2 border-dashed h-4 ml-20" />
           <div className="flex items-center gap-3">
             <p className="text-sm text-muted-foreground">{formattedTime}</p>
             <Image src="/location-red.svg" alt="location" width={20} height={20} />
             <div>
               <h3 className="font-semibold text-sm">{trip.to_location.address}</h3>
-              <p className="text-muted-foreground text-xs">
-                {locale === "uz" && trip.to_location.toRegion.nameUz}
-                {locale === "ru" && trip.to_location.toRegion.nameRu}
-                {locale === "en" && trip.to_location.toRegion.nameEn}
-              </p>
+              <p className="text-sm text-muted-foreground">{trip.to_location.city}</p>
             </div>
           </div>
         </div>
