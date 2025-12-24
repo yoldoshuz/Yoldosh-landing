@@ -1,126 +1,114 @@
+// components/shared/trip/SearchTrips.tsx
+
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { UserRound } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { MapPin, Navigation, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { REGIONS } from "@/constants";
 import { CalendarSelect } from "./Calendar";
 
 export const SearchTrips = () => {
-  const t = useTranslations("Pages.Home");
+  const t = useTranslations("Components.Search");
   const router = useRouter();
-  const [fromRegion, setFromRegion] = useState("");
-  const [toRegion, setToRegion] = useState("");
-  const [date, setDate] = useState<Date | undefined>();
-  const [seats, setSeats] = useState("1");
+  const searchParams = useSearchParams();
+
+  // Инициализируем стейт из URL если есть, или пустотой
+  const [fromName, setFromName] = useState(searchParams.get("from_name") || "");
+  const [toName, setToName] = useState(searchParams.get("to_name") || "");
+  const [date, setDate] = useState<Date | undefined>(
+    searchParams.get("date") ? new Date(searchParams.get("date")!) : undefined
+  );
+  const [seats, setSeats] = useState(searchParams.get("seats") || "1");
+
+  // Синхронизация с URL при навигации назад/вперед
+  useEffect(() => {
+    setFromName(searchParams.get("from_name") || "");
+    setToName(searchParams.get("to_name") || "");
+  }, [searchParams]);
 
   const handleSearch = () => {
-    if (!fromRegion || !toRegion) {
-      alert("Please select both departure and arrival locations");
+    // Разрешаем поиск, даже если заполнено только одно поле,
+    // но лучше требовать оба для корректного маршрута
+    if (!fromName.trim() || !toName.trim()) {
+      // Можно добавить тост уведомление
       return;
     }
 
-    const params = new URLSearchParams({
-      from: fromRegion,
-      to: toRegion,
-      seats: seats,
-    });
+    const params = new URLSearchParams();
+    params.set("from_name", fromName.trim());
+    params.set("to_name", toName.trim());
+    params.set("seats", seats);
 
     if (date) {
-      params.append("date", date.toISOString().split("T")[0]);
+      params.set("date", date.toISOString());
     }
 
     router.push(`/trips?${params.toString()}`);
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-2 shadow-2xl border p-6 md:py-2 md:pl-8 md:pr-2 rounded-3xl md:rounded-full">
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-4">
-        <div className="flex items-center justify-start gap-2 w-full border-b md:border-b-0 md:border-r py-1">
-          <div className="flex items-center justify-center size-6 border-2 border-emerald-500 rounded-full p-2">
-            <span className="bg-emerald-500 rounded-full p-1" />
+    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full gap-4 shadow-2xl border p-4 lg:p-2 lg:pl-6 rounded-3xl lg:rounded-full bg-white">
+      <div className="flex flex-col lg:flex-row items-center w-full gap-2 lg:gap-0">
+        <div className="flex items-center gap-3 w-full px-2 py-2">
+          <div className="flex items-center justify-center size-6 border-2 border-emerald-500 rounded-full shrink-0">
+            <div className="size-2 bg-emerald-500 rounded-full" />
           </div>
-          <Select value={fromRegion} onValueChange={setFromRegion}>
-            <SelectTrigger className="border-none shadow-none text-muted-foreground cursor-pointer">
-              <SelectValue placeholder={t("From")} />
-            </SelectTrigger>
-            <SelectContent>
-              {REGIONS().map((region) => (
-                <SelectItem key={region.id} value={region.id.toString()}>
-                  {region.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex items-center justify-start gap-2 w-full border-b md:border-b-0 md:border-r py-1">
-          <div className="flex items-center justify-center size-6 border-2 border-muted-foreground rounded-full p-2">
-            <span className="bg-muted-foreground rounded-full p-1" />
+          <div className="w-full">
+            <p className="text-xs text-neutral-400">{t("From")}</p>
+            <Input
+              value={fromName}
+              onChange={(e) => setFromName(e.target.value)}
+              placeholder={t("FromCityPlaceholder")}
+              className="border-none shadow-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0"
+            />
           </div>
-          <Select value={toRegion} onValueChange={setToRegion}>
-            <SelectTrigger className="border-none shadow-none text-muted-foreground cursor-pointer">
-              <SelectValue placeholder={t("To")} />
-            </SelectTrigger>
-            <SelectContent>
-              {REGIONS().map((region) => (
-                <SelectItem key={region.id} value={region.id.toString()}>
-                  {region.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
         </div>
-        <div className="flex items-center justify-center gap-2 w-full border-b md:border-b-0 md:border-r py-1">
+
+        <div className="flex items-center gap-3 w-full px-2 py-2">
+          <div className="flex items-center justify-center size-6 border-2 border-muted-foreground rounded-full p-1 shrink-0">
+            <div className="size-2 bg-muted-foreground rounded-full" />
+          </div>
+          <div className="w-full">
+            <p className="text-xs text-neutral-400">{t("To")}</p>
+            <Input
+              value={toName}
+              onChange={(e) => setToName(e.target.value)}
+              placeholder={t("ToCityPlaceholder")}
+              className="border-none shadow-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0"
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-start w-full px-2 py-2 lg:py-0">
           <CalendarSelect onDateChange={setDate} />
         </div>
-        <div className="flex items-center justify-center gap-2 w-full">
+
+        <div className="flex items-center justify-start w-full lg:w-auto pl-2 pr-12 py-2 lg:py-0">
           <Select value={seats} onValueChange={setSeats}>
-            <SelectTrigger className="bg-transparent border-none shadow-none text-muted-foreground cursor-pointer w-full px-0 select-none">
-              <SelectValue
-                placeholder={
-                  <div className="flex items-center gap-4">
-                    <UserRound className="size-6" />
-                    {t("Passengers.Title")}
-                  </div>
-                }
-              />
+            <SelectTrigger className="bg-transparent border-none shadow-none focus:ring-0 p-0 h-auto gap-3.5 text-muted-foreground">
+              <UserRound className="size-6" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="1">
-                <UserRound className="size-6 mr-2" />
-                {t("Passengers.1")}
-              </SelectItem>
-              <SelectItem value="2">
-                <UserRound className="size-6 mr-2" />
-                {t("Passengers.2")}
-              </SelectItem>
-              <SelectItem value="3">
-                <UserRound className="size-6 mr-2" />
-                {t("Passengers.3")}
-              </SelectItem>
-              <SelectItem value="4">
-                <UserRound className="size-6 mr-2" />
-                {t("Passengers.4")}
-              </SelectItem>
-              <SelectItem value="5">
-                <UserRound className="size-6 mr-2" />
-                {t("Passengers.5")}
-              </SelectItem>
-              <SelectItem value="6">
-                <UserRound className="size-6 mr-2" />
-                {t("Passengers.6")}
-              </SelectItem>
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <SelectItem key={num} value={num.toString()}>
+                  {t(`Passengers.${num}`)}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center justify-center gap-2 w-full h-full">
+
+        {/* Кнопка */}
+        <div className="w-full lg:w-auto p-1">
           <Button
             onClick={handleSearch}
-            className="btn-primary w-full py-6 md:py-10 rounded-2xl md:rounded-full text-xl select-none"
+            className="w-full lg:w-auto h-12 lg:h-14 px-8 rounded-full text-lg bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-200 transition-all active:scale-95"
           >
             {t("Search")}
           </Button>

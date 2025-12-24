@@ -3,22 +3,10 @@
         "Home": {
             "Title": "Rides at your choice at low prices",
             "Subtitle": "Find passengers or become a driver with",
-            "From": "From",
-            "To": "To",
-            "Passengers": {
-                "Title": "Passengers",
-                "1": "1 passenger",
-                "2": "2 passengers",
-                "3": "3 passengers",
-                "4": "4 passengers",
-                "5": "5 passengers",
-                "6": "6 passengers"
-            },
-            "Search": "Search",
-            "Trips": "Trips",
-            "Drivers": "Drivers",
             "Rating": "Rating",
-            "Support": "Support"
+            "Support": "Support",
+            "Trips": "Trips",
+            "Drivers": "Drivers"
         },
         "About": {
             "title": "Yo'ldosh: A new era of intercity travel in Uzbekistan",
@@ -172,7 +160,9 @@
                 "Vehicle": "Vehicle",
                 "AdditionalInformation": "Additional information",
                 "Price": "Price per person",
-                "Book": "Book"
+                "Book": "Book",
+                "Distance": "Distance",
+                "Duration": "Duration"
             },
             "Preferences": {
                 "Smoking": "Smoking",
@@ -180,7 +170,9 @@
                 "Music": "Music",
                 "Talkative": "Talkative",
                 "AC": "Air Conditioning"
-            }
+            },
+            "ResetFilters": "Reset Filters",
+            "NotFoundTitle": "Try changing the date or filter options to find a suitable trip."
         }
     },
     "Components": {
@@ -193,14 +185,19 @@
         "Search": {
             "From": "From",
             "To": "To",
-            "Date": "Date",
-            "PickDate": "Pick a date",
+            "FromCityPlaceholder": "Tashkent",
+            "ToCityPlaceholder": "Andijan",
             "Passengers": {
-                "Title": "Passengers"
+                "Title": "Passengers",
+                "1": "1 passenger",
+                "2": "2 passengers",
+                "3": "3 passengers",
+                "4": "4 passengers",
+                "5": "5 passengers",
+                "6": "6 passengers"
             },
             "Search": "Search",
-            "SelectRegion": "Select region",
-            "FiltersAndSort": "Filters & Sort",
+            "Filters": "Filters",
             "SortBy": "Sort By",
             "Sort": {
                 "Default": "Default (Best Match)",

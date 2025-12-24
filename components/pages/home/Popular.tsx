@@ -43,21 +43,21 @@ export const Popular = () => {
                 tabIndex={0}
                 aria-label={`${item.from_location.city} → ${item.to_location.city}`}
               >
-                <Card className="flex flex-col gap-3 p-5 bg-white rounded-xl border hover:border-emerald-500 smooth shadow-none">
+                <Card className="flex flex-col gap-3 p-5 bg-white rounded-2xl border hover:border-emerald-500 smooth shadow-none">
                   <CardContent className="flex flex-col gap-0 px-0!">
                     <div className="flex items-center gap-3">
-                      <Image src="/location-green.svg" alt="location" width={22} height={22} />
+                      <Image src="/assets/location-green.svg" alt="location" width={22} height={22} />
                       <div>
-                        <h1 className="text-base font-bold">{item.from_location.address}</h1>
-                        <p className="text-sm text-muted-foreground">{item.from_location.city}</p>
+                        <p className="text-base font-bold">{item.from_location.city}</p>
+                        <h1 className="text-sm text-muted-foreground">{item.from_location.address}</h1>
                       </div>
                     </div>
                     <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.25 " />
                     <div className="flex items-center gap-3">
-                      <Image src="/location-red.svg" alt="location" width={22} height={22} />
+                      <Image src="/assets/location-red.svg" alt="location" width={22} height={22} />
                       <div>
-                        <h1 className="text-base font-bold">{item.to_location.address}</h1>
-                        <p className="text-sm text-muted-foreground">{item.to_location.city}</p>
+                        <p className="text-base font-bold">{item.to_location.city}</p>
+                        <h1 className="text-sm text-muted-foreground">{item.to_location.address}</h1>
                       </div>
                     </div>
                   </CardContent>

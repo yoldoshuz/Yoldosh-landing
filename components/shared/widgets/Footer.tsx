@@ -14,7 +14,7 @@ export const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0 px-2 sm:px-4">
             <Link href="/" className="flex flex-row gap-2 items-center">
-              <Image src="/logo.svg" alt="logo" width={48} height={48} />
+              <Image src="/assets/logo.svg" alt="logo" width={48} height={48} />
               <h1 className="text-2xl font-bold text-black">Yoldosh</h1>
             </Link>
           </div>

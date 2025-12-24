@@ -1,14 +1,9 @@
 import Image from "next/image";
-
 import { useTranslations } from "next-intl";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage
-} from "@/components/ui/avatar";
 
 interface TripCardProps {
   trip: any;
@@ -20,6 +15,10 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
   const t = useTranslations("Pages.Trips");
 
   const departureDate = new Date(trip.departure_ts);
+
+  // duration в минутах → миллисекунды
+  const arrivalDate = new Date(departureDate.getTime() + trip.duration * 60 * 1000);
+
   const localeDate =
     localStorage.getItem("locale") === "uz" ? "uz-UZ" : localStorage.getItem("locale") === "ru" ? "ru-RU" : "en-US";
 
@@ -28,9 +27,22 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
     month: "short",
     year: "numeric",
   });
+
   const formattedTime = departureDate.toLocaleTimeString(localeDate, {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
+  });
+
+  const formattedArrivalDate = arrivalDate.toLocaleDateString(localeDate, {
+    day: "2-digit",
+    month: "short",
+  });
+
+  const formattedArrivalTime = arrivalDate.toLocaleTimeString(localeDate, {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
   });
 
   if (viewMode === "list") {
@@ -46,21 +58,21 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
               {/* Route */}
               <div className="flex flex-row items-center justify-between w-full gap-4 max-w-125">
                 <div className="flex flex-col items-center justify-center text-center gap-0 w-full">
-                  <h3 className="font-semibold text-sm">{trip.from_location.address}</h3>
-                  <p className="text-sm text-muted-foreground">{trip.from_location.city}</p>
+                  <p className="font-semibold text-base">{trip.from_location.city}</p>
+                  <h3 className="text-xs text-muted-foreground">{trip.from_location.address}</h3>
                 </div>
                 <div className="flex items-center justify-between w-full">
                   <div>
-                    <Image src="/location-green.svg" alt="location" width={28} height={28} />
+                    <Image src="/assets/location-green.svg" alt="location" width={28} height={28} />
                   </div>
                   <div className="w-full border border-neutral-700 border-dashed" />
                   <div>
-                    <Image src="/location-red.svg" alt="location" width={28} height={28} />
+                    <Image src="/assets/location-red.svg" alt="location" width={28} height={28} />
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center text-center gap-0 w-full">
-                  <h3 className="font-semibold text-sm">{trip.to_location.address}</h3>
-                  <p className="text-sm text-muted-foreground">{trip.to_location.city}</p>
+                  <p className="font-semibold text-base">{trip.to_location.city}</p>
+                  <h3 className="text-xs text-muted-foreground">{trip.to_location.address}</h3>
                 </div>
               </div>
               <div className="hidden md:flex items-center text-xl font-bold">
@@ -149,19 +161,19 @@ export const TripCard = ({ trip, onClick, viewMode = "grid" }: TripCardProps) =>
         <div className="flex flex-col gap-0 min-w-50 mt-2">
           <div className="flex items-center gap-3">
             <p className="text-sm text-muted-foreground">{formattedTime}</p>
-            <Image src="/location-green.svg" alt="location" width={20} height={20} />
+            <Image src="/assets/location-green.svg" alt="location" width={20} height={20} />
             <div>
-              <h3 className="font-semibold text-sm">{trip.from_location.address}</h3>
-              <p className="text-sm text-muted-foreground">{trip.from_location.city}</p>
+              <p className="font-semibold text-base">{trip.from_location.city}</p>
+              <h3 className="text-xs text-muted-foreground">{trip.from_location.address}</h3>
             </div>
           </div>
-          <span className="border-black border-l-2 border-dashed h-4 ml-20" />
+          <span className="border-black border-l-2 border-dashed h-4 ml-13.25" />
           <div className="flex items-center gap-3">
-            <p className="text-sm text-muted-foreground">{formattedTime}</p>
-            <Image src="/location-red.svg" alt="location" width={20} height={20} />
+            <p className="text-sm text-muted-foreground">{formattedArrivalTime}</p>
+            <Image src="/assets/location-red.svg" alt="location" width={20} height={20} />
             <div>
-              <h3 className="font-semibold text-sm">{trip.to_location.address}</h3>
-              <p className="text-sm text-muted-foreground">{trip.to_location.city}</p>
+              <p className="font-semibold text-base">{trip.to_location.city}</p>
+              <h3 className="text-xs text-muted-foreground">{trip.to_location.address}</h3>
             </div>
           </div>
         </div>

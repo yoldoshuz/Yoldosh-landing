@@ -3,18 +3,6 @@
         "Home": {
             "Title": "Siz tanlagan yo‘nalishlar arzon narxlarda",
             "Subtitle": "Yo‘lovchi toping yoki haydovchi bo‘ling — ",
-            "From": "Qayerdan",
-            "To": "Qayerga",
-            "Passengers": {
-                "Title": "Yo‘lovchilar",
-                "1": "1 yo‘lovchi",
-                "2": "2 yo‘lovchi",
-                "3": "3 yo‘lovchi",
-                "4": "4 yo‘lovchi",
-                "5": "5 yo‘lovchi",
-                "6": "6 yo‘lovchi"
-            },
-            "Search": "Qidirish",
             "Trips": "Sayohatlar",
             "Drivers": "Haydovchilar",
             "Rating": "Reyting",
@@ -172,7 +160,9 @@
                 "Vehicle": "Avtomobil",
                 "AdditionalInformation": "Qo‘shimcha ma’lumot",
                 "Price": "Odam boshiga narx",
-                "Book": "Bron qilish"
+                "Book": "Bron qilish",
+                "Distance": "Masofa",
+                "Duration": "Davomiylik"
             },
             "Preferences": {
                 "Smoking": "Chekish",
@@ -180,7 +170,9 @@
                 "Music": "Musiqa",
                 "Talkative": "Suhbatdosh",
                 "AC": "Konditsioner"
-            }
+            },
+            "ResetFilters": "Filtrlarni tozalash",
+            "NotFoundTitle": "Kerakli sayohatni topish uchun sana yoki filtr opsiyalarini oʻzgartirib koʻring."
         }
     },
     "Components": {
@@ -193,14 +185,19 @@
         "Search": {
             "From": "Qayerdan",
             "To": "Qayerga",
-            "Date": "Sana",
-            "PickDate": "Sanani tanlang",
+            "FromCityPlaceholder": "Toshkent",
+            "ToCityPlaceholder": "Andijon",
             "Passengers": {
-                "Title": "Yo‘lovchilar"
+                "Title": "Yo‘lovchilar",
+                "1": "1 yo‘lovchi",
+                "2": "2 yo‘lovchi",
+                "3": "3 yo‘lovchi",
+                "4": "4 yo‘lovchi",
+                "5": "5 yo‘lovchi",
+                "6": "6 yo‘lovchi"
             },
             "Search": "Qidirish",
-            "SelectRegion": "Viloyatni tanlang",
-            "FiltersAndSort": "Filtrlar va saralash",
+            "Filters": "Filtrlar",
             "SortBy": "Saralash tartibi",
             "Sort": {
                 "Default": "Standart (eng mos)",

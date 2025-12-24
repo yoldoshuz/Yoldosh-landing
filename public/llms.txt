@@ -1,0 +1,41 @@
+# Yoldosh - Carpooling Service for Uzbekistan
+
+## About
+Yoldosh is a modern carpooling platform connecting drivers and passengers across Uzbekistan. We provide safe, affordable, and eco-friendly intercity transportation.
+
+## Services
+- Intercity carpooling
+- Real-time trip search
+- Verified drivers
+- Secure booking system
+- Multi-language support (Uzbek, Russian, English)
+
+## Coverage
+We operate across all regions of Uzbekistan including:
+- Tashkent
+- Samarkand
+- Bukhara
+- Khiva
+- Fergana Valley
+- And all other major cities
+
+## Key Features
+- Driver verification system
+- Transparent pricing
+- Rating and review system
+- 24/7 customer support
+- Easy booking process
+- Flexible payment options
+
+## Contact
+Website: https://yoldosh.uz
+Email: support@yoldosh.uz
+Phone: +998 XX XXX XX XX
+
+## API
+Public API available at: https://api/yoldosh.uz/api/v1/api-docs/
+
+## Legal
+- Terms of Service: https://yoldosh.uz/terms
+- Privacy Policy: https://yoldosh.uz/privacy
+- Company: "OOO" Milliy Yoldosh

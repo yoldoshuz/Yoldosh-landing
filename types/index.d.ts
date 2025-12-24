@@ -102,12 +102,26 @@ export interface Trip {
 }
 
 export interface SearchParams {
-  from_region_id: number;
-  to_region_id: number;
+  from_name?: string;
+  to_name?: string;
+
+  from_latitude?: number;
+  from_longitude?: number;
+  to_latitude?: number;
+  to_longitude?: number;
+
   departure_date?: string;
   seats?: number;
   page?: number;
   limit?: number;
+
+  sort_by?: string;
+  sort_order?: string;
+  smoking_allowed?: boolean;
+  pets_allowed?: boolean;
+  music_allowed?: boolean;
+  talkative?: boolean;
+  conditioner?: boolean;
 }
 
 export interface SearchResponse {

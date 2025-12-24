@@ -15,7 +15,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div>
             <Link href="/" className="flex flex-row gap-2 items-center">
-              <Image src="/logo.svg" alt="logo" width={48} height={48} />
+              <Image src="/assets/logo.svg" alt="logo" width={48} height={48} />
               <h1 className="text-2xl font-bold hidden md:flex">Yoldosh</h1>
             </Link>
           </div>

@@ -1,30 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { api } from "@/lib/api";
-import { PopularTripsResponse, SearchParams, SearchResponse, TripDetailsResponse } from "@/types";
+import { SearchParams } from "@/types";
 
 export const tripsApi = {
-  searchTrips: async (params: SearchParams): Promise<SearchResponse> => {
-    const response = await api.get("/public/trips/search", { params });
+  searchTrips: async (params: SearchParams) => {
+    const cleanedParams = Object.fromEntries(
+      Object.entries(params).filter(([_, v]) => v != null && v !== "" && v !== "undefined")
+    );
+    const response = await api.get("/public/trips/search", { params: cleanedParams });
     return response.data;
   },
 
-  getTripDetails: async (tripId: string): Promise<TripDetailsResponse> => {
+  getTripDetails: async (tripId: string) => {
     const response = await api.get(`/public/trips/details/${tripId}`);
     return response.data;
   },
 
-  getPopularTrips: async (limit: number = 10): Promise<PopularTripsResponse> => {
+  getPopularTrips: async (limit: number = 10) => {
     const response = await api.get("/public/trips/popular", {
       params: { limit },
     });
-    return response.data;
-  },
-};
-
-export const regionsApi = {
-  getAllRegions: async () => {
-    const response = await api.get("/location/regions");
     return response.data;
   },
 };
@@ -36,6 +32,7 @@ export const useSearchTrips = (params: SearchParams, enabled: boolean = true) =>
     enabled,
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
+    retry: false,
   });
 };
 

@@ -1,19 +1,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { ArrowLeft, Calendar, Clock, Dot, MapPin, Star, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Dot,
-  MapPin,
-  Star,
-  Users
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 interface TripDetailsProps {
   trip: any;
@@ -66,20 +58,20 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         {/* Route */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Route")}</h2>
-          <div className="flex flex-col gap-0 p-4 bg-white rounded-3xl">
+          <div className="flex flex-col gap-0 px-6 py-4 bg-white rounded-3xl">
             <div className="flex items-center gap-4">
-              <Image src="/location-green.svg" alt="location" width={24} height={24} />
+              <Image src="/assets/location-green.svg" alt="location" width={24} height={24} />
               <div>
-                <p className="font-semibold text-lg">{trip.from_location.address}</p>
-
+                <p className="font-semibold text-base">{trip.from_location.city}</p>
+                <h3 className="text-sm text-muted-foreground">{trip.from_location.address}</h3>
               </div>
             </div>
             <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.5" />
             <div className="flex items-center gap-4">
-              <Image src="/location-red.svg" alt="location" width={24} height={24} />
+              <Image src="/assets/location-red.svg" alt="location" width={24} height={24} />
               <div>
-                <p className="font-semibold text-lg">{trip.to_location.address}</p>
-
+                <p className="font-semibold text-base">{trip.to_location.city}</p>
+                <h3 className="text-sm text-muted-foreground">{trip.to_location.address}</h3>
               </div>
             </div>
           </div>
@@ -88,7 +80,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         {/* Trip Info */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Information")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-white rounded-3xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-4 bg-white rounded-3xl">
             <div className="flex items-center gap-4">
               <Calendar className="size-5 text-emerald-500" />
               <div>
@@ -109,7 +101,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <div className="flex items-center gap-4">
                 <MapPin className="size-5 text-emerald-500" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Distance</p>
+                  <p className="text-sm text-muted-foreground">{t("Distance")}</p>
                   <p className="font-medium">{trip.distance} km</p>
                 </div>
               </div>
@@ -118,7 +110,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <div className="flex items-center gap-4">
                 <Clock className="size-5 text-emerald-500" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Duration</p>
+                  <p className="text-sm text-muted-foreground">{t("Duration")}</p>
                   <p className="font-medium">
                     {Math.floor(trip.duration / 60)}h {trip.duration % 60}m
                   </p>
@@ -131,7 +123,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         {/* Driver Info */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Driver")}</h2>
-          <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
+          <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-3xl">
             <Avatar className="size-12 rounded-full bg-emerald-100 flex items-center justify-center">
               <AvatarImage src="" />
               <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
@@ -153,14 +145,13 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         {/* Car Info */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
-          <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
-            {/* <Car className="size-5 text-emerald-500" /> */}
+          <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-3xl">
             <div className="flex flex-col gap-2">
               <p className="text-lg font-medium">
                 {trip.car.make} {trip.car.model}
               </p>
               <p className="flex items-center text-sm text-muted-foreground">
-                {trip.car.govNumber}
+                {trip.car.gov_number}
                 <Dot />
                 {trip.car.color}
               </p>
@@ -171,7 +162,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         <div className="mb-12">
           {trip.comment && (
             <>
-              <h2 className="text-xl font-semibold mb-4">{t("AdditionalInformation")}</h2>
+              <h2 className="text-lg font-semibold mb-4">{t("AdditionalInformation")}</h2>
               <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
                 <p className="text-sm">{trip.comment}</p>
               </div>
