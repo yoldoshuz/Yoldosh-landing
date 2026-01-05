@@ -1,6 +1,7 @@
+import Script from "next/script";
+
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
@@ -10,32 +11,30 @@ import { ThemeProviders } from "./providers/ThemeProviders";
 
 import "./globals.css";
 
+// Оптимизация шрифта с preload
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yoldosh.uz"),
   title: {
-    default: "Yoldosh - Совместные поездки по Узбекистану | Каршеринг между городами",
-    template: "%s | Yoldosh - Карпулинг Узбекистан",
+    default: "Yoldosh - Совместные поездки по Узбекистану",
+    template: "%s | Yoldosh",
   },
   description:
-    "Yoldosh - безопасный и удобный сервис совместных поездок по Узбекистану. Найдите попутчиков для междугородних поездок по Ташкенту, Самарканду, Бухаре и другим городам. Экономьте на транспорте, путешествуйте комфортно!",
+    "Найдите попутчиков для междугородних поездок по Узбекистану. Безопасный сервис Yoldosh соединяет водителей и пассажиров. Ташкент, Самарканд, Бухара. Проверенные водители, низкие цены.",
   keywords: [
-    "Yoldosh",
     "карпулинг Узбекистан",
-    "совместные поездки",
     "попутчики Узбекистан",
-    "междугородние поездки",
     "Ташкент Самарканд",
-    "Ташкент Бухара",
-    "поездки по Узбекистану",
+    "междугородние поездки",
+    "совместные поездки",
     "carpooling Uzbekistan",
-    "ride sharing",
-    "همسفران ازبکستان",
   ],
   authors: [{ name: "Yoldosh Team" }],
   creator: "OOO Milliy Yoldosh",
@@ -52,14 +51,13 @@ export const metadata: Metadata = {
     url: "https://yoldosh.uz",
     siteName: "Yoldosh",
     title: "Yoldosh - Совместные поездки по Узбекистану",
-    description:
-      "Безопасный сервис карпулинга для междугородних поездок по Узбекистану. Найдите попутчиков и экономьте на транспорте!",
+    description: "Безопасный сервис карпулинга для междугородних поездок. Экономьте на транспорте!",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/assets/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Yoldosh - Carpooling Uzbekistan",
+        alt: "Yoldosh Carpooling",
       },
     ],
   },
@@ -76,8 +74,16 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://yoldosh.uz",
+    languages: {
+      'ru': 'https://yoldosh.uz',
+      'uz': 'https://yoldosh.uz',
+      'en': 'https://yoldosh.uz',
+    },
   },
-  category: "transportation",
+  verification: {
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+  },
 };
 
 const jsonLd = {
@@ -93,6 +99,7 @@ const jsonLd = {
     addressCountry: "UZ",
     addressRegion: "Tashkent",
     addressLocality: "Tashkent",
+    streetAddress: "Zarbuloq-31",
   },
   contactPoint: {
     "@type": "ContactPoint",
@@ -100,46 +107,10 @@ const jsonLd = {
     email: "support@yoldosh.uz",
     availableLanguage: ["uz", "ru", "en"],
   },
-  service: {
-    "@type": "Service",
-    serviceType: "Carpooling",
-    provider: {
-      "@type": "Organization",
-      name: "Yoldosh",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Uzbekistan",
-    },
-  },
-};
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Yoldosh",
-  image: "https://yoldosh.uz/logo.svg",
-  "@id": "https://yoldosh.uz",
-  url: "https://yoldosh.uz",
-  telephone: "+998-XX-XXX-XX-XX",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Юнусабадский район, Ташкент, Tashkent, Узбекистан, Zarbuloq-31",
-    addressLocality: "Tashkent",
-    postalCode: "100000",
-    addressCountry: "UZ",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 41.355708169617124,
-    longitude: 69.32520124699197,
-  },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    opens: "9:00",
-    closes: "18:00",
-  },
+  sameAs: [
+    "https://t.me/yoldosh_uz",
+    "https://instagram.com/yoldosh_uz",
+  ],
 };
 
 export default async function RootLayout({
@@ -153,12 +124,22 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Canonical Link */}
-        <link rel="canonical" href="https://yoldosh.uz" />
+        {/* DNS Prefetch для внешних ресурсов */}
+        <link rel="dns-prefetch" href="https://mc.yandex.ru" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
-        {/* Preconnect to external resources */}
+        {/* Preconnect для критичных ресурсов */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Preload критичных ресурсов */}
+        <link
+          rel="preload"
+          href="/assets/logo.svg"
+          as="image"
+          type="image/svg+xml"
+        />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -166,22 +147,22 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
 
-        {/* JSON-LD Structured Data */}
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        <link rel="alternate" hrefLang="ru" href="https://www.yoldosh.uz" />
+        <link rel="alternate" hrefLang="uz" href="https://www.yoldosh.uz" />
+        <link rel="alternate" hrefLang="en" href="https://www.yoldosh.uz" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.yoldosh.uz" />
+
+        {/* JSON-LD - критичный для SEO */}
         <Script
           id="jsonld-org"
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Script
-          id="localBusinessSchema-org"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
       </head>
       <body className={`${inter.variable} antialiased`}>
-        {/* Yandex Metrika */}
+        {/* Yandex Metrika - загружается асинхронно */}
         <Script id="yandex-metrika" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){
@@ -200,10 +181,13 @@ export default async function RootLayout({
           `}
         </Script>
 
-        {/* Yandex Metrika */}
         <noscript>
           <div>
-            <img src="https://mc.yandex.ru/watch/105993566" style={{ position: "absolute", left: "-9999px" }} alt="" />
+            <img
+              src="https://mc.yandex.ru/watch/105993566"
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
           </div>
         </noscript>
 

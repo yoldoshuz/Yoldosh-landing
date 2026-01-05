@@ -50,7 +50,7 @@ export const WhyUs = () => {
   ];
   return (
     <section className="flex flex-col items-center justify-center w-full px-4 my-20">
-      <h1 className="title-2">{t("Title")}</h1>
+      <h3 className="title-2">{t("Title")}</h3>
       <p className="subtitle-text my-4">{t("Subtitle")}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-0 py-10 max-w-7xl mx-auto">
         {features.map((feature, index) => (

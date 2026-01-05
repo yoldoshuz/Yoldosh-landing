@@ -1,32 +1,26 @@
-# Yoldosh - Carpooling Service Robots.txt
+# robots.txt для yoldosh.uz
 
 User-agent: *
 Allow: /
-Allow: /about-us
 Allow: /trips
-Allow: /api/
-
-# Disallow private pages
+Allow: /about-us
+Disallow: /api/
+Disallow: /_next/
 Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /api/private/
 
-# Allow crawling of images and assets
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.webp$
-Allow: /*.css$
-Allow: /*.js$
+# Sitemap
+Sitemap: https://www.yoldosh.uz/sitemap.xml
+Sitemap: https://www.yoldosh.uz/sitemap-trips.xml
 
-# Crawl-delay (optional, adjust as needed)
+# Crawl-delay для бережного индексирования
 Crawl-delay: 1
 
-# Sitemap location
-Sitemap: https://yoldosh.uz/sitemap.xml
+# Специальные правила для Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
 
-# Additional sitemaps if needed
-# Sitemap: https://yoldosh.uz/sitemap-trips.xml
-# Sitemap: https://yoldosh.uz/sitemap-regions.xml
+# Специальные правила для Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5

@@ -1,18 +1,19 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { AlertCircle, LayoutGrid, List } from "lucide-react";
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useRouter, useSearchParams } from "next/navigation";
+import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
 
-import { SearchTrips } from "@/components/shared/trip/SearchTrips";
+import { Button } from "@/components/ui/button";
+import { FilterSidebar } from "./FilterSidebar";
+import { Skeleton } from "@/components/ui/skeleton";
+import { AlertCircle, LayoutGrid, List } from "lucide-react";
 import { TripCard } from "@/components/shared/trip/TripCard";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
-import { cn } from "@/lib/utils";
-import { FilterSidebar } from "./FilterSidebar";
+import { SearchTrips } from "@/components/shared/trip/SearchTrips";
 
 export const SearchPage = () => {
   const t = useTranslations("Pages.Trips");
@@ -38,7 +39,8 @@ export const SearchPage = () => {
   });
 
   // 2. Флаг: Был ли произведен поиск?
-  const hasSearchQuery = !!filters.from_name && !!filters.to_name;
+  const hasSearchQuery =
+  !!searchParams.get("from_name") && !!searchParams.get("to_name");
 
   // 3. Запросы
   // Запрашиваем поиск ТОЛЬКО если есть параметры поиска
@@ -75,6 +77,26 @@ export const SearchPage = () => {
 
   // Популярные трипы (безопасный доступ)
   const popularTrips = popularData?.data?.trips || [];
+
+  useEffect(() => {
+    const nextFilters = {
+      from_name: searchParams.get("from_name") || "",
+      to_name: searchParams.get("to_name") || "",
+      departure_date: searchParams.get("date") || undefined,
+      seats: parseInt(searchParams.get("seats") || "1"),
+      page: Number(searchParams.get("page") || 1),
+      limit: 10,
+      sort_by: searchParams.get("sort_by") || undefined,
+      sort_order: searchParams.get("sort_order") || undefined,
+      smoking_allowed: searchParams.get("smoking_allowed") === "true" ? true : undefined,
+      pets_allowed: searchParams.get("pets_allowed") === "true" ? true : undefined,
+      music_allowed: searchParams.get("music_allowed") === "true" ? true : undefined,
+      talkative: searchParams.get("talkative") === "true" ? true : undefined,
+      conditioner: searchParams.get("conditioner") === "true" ? true : undefined,
+    };
+
+    setFilters(nextFilters);
+  }, [searchParams]);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl min-h-screen">
@@ -141,7 +163,7 @@ export const SearchPage = () => {
         </div>
       ) : (
         /* Если ЕСТЬ запрос -> Показываем Лейаут с сайдбаром и результатами */
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-8 px-2">
           {/* Сайдбар (Только десктоп пока, мобилку можно скрыть или через drawer) */}
           <div className="hidden lg:block w-72 shrink-0">
             <FilterSidebar filters={filters} onChange={updateFilters} />
@@ -151,45 +173,47 @@ export const SearchPage = () => {
           <div className="flex-1">
             {/* Хедер результатов */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
-              <h2 className="text-xl font-bold flex items-center gap-2">
+              <div className="text-xl font-bold flex justify-between w-full">
                 {isSearchLoading ? (
                   <span className="animate-pulse bg-neutral-200 h-6 w-32 rounded" />
                 ) : (
-                  <span>
-                    {totalFound} {t("Found")}
-                  </span>
+                  <div className="flex flex-col items-start">
+                    <p>{totalFound} {t("Found")}</p>
+                    {filters.from_name && filters.to_name && (
+                      <span className="text-muted-foreground font-normal text-base">
+                        {filters.from_name} &rarr; {filters.to_name}
+                      </span>
+                    )}
+                  </div>
                 )}
-                {filters.from_name && filters.to_name && (
-                  <span className="text-muted-foreground font-normal text-base ml-2">
-                    {filters.from_name} &rarr; {filters.to_name}
-                  </span>
-                )}
-              </h2>
+                {/* Переключатель вида */}
+                <div className="flex items-center">
+                  <div className="bg-neutral-100 p-1 rounded-lg">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setViewMode("grid")}
+                      className={cn(
+                        "h-8 px-2 rounded-md transition-all",
+                        viewMode === "grid" && "bg-white shadow-sm text-emerald-600"
+                      )}
+                    >
+                      <LayoutGrid className="size-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setViewMode("list")}
+                      className={cn(
+                        "h-8 px-2 rounded-md transition-all",
+                        viewMode === "list" && "bg-white shadow-sm text-emerald-600"
+                      )}
+                    >
+                      <List className="size-4" />
+                    </Button>
+                  </div>
+                </div>
 
-              {/* Переключатель вида */}
-              <div className="flex gap-1 bg-neutral-100 p-1 rounded-lg self-end">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setViewMode("grid")}
-                  className={cn(
-                    "h-8 px-2 rounded-md transition-all",
-                    viewMode === "grid" && "bg-white shadow-sm text-emerald-600"
-                  )}
-                >
-                  <LayoutGrid className="size-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setViewMode("list")}
-                  className={cn(
-                    "h-8 px-2 rounded-md transition-all",
-                    viewMode === "list" && "bg-white shadow-sm text-emerald-600"
-                  )}
-                >
-                  <List className="size-4" />
-                </Button>
               </div>
             </div>
 
@@ -279,7 +303,8 @@ export const SearchPage = () => {
             )}
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };

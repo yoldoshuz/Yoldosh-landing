@@ -15,7 +15,7 @@ export const Footer = () => {
           <div className="mb-6 md:mb-0 px-2 sm:px-4">
             <Link href="/" className="flex flex-row gap-2 items-center">
               <Image src="/assets/logo.svg" alt="logo" width={48} height={48} />
-              <h1 className="text-2xl font-bold text-black">Yoldosh</h1>
+              <p className="text-2xl font-bold text-black">Yoldosh</p>
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-12 sm:grid-cols-3 px-2 sm:px-4">
@@ -69,7 +69,7 @@ export const Footer = () => {
         <Separator className="my-8" />
         <div className="text-center">
           <span className="text-sm text-muted-foreground">
-            © {currentYear} "OOO" Milliy Yoldosh. {t("Rights")}
+            © 2025 - {currentYear} "OOO" Milliy Yoldosh. {t("Rights")}
           </span>
         </div>
       </div>

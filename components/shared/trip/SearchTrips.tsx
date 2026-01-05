@@ -1,16 +1,15 @@
-// components/shared/trip/SearchTrips.tsx
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { MapPin, Navigation, UserRound } from "lucide-react";
+import { UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarSelect } from "./Calendar";
+import { Separator } from "@/components/ui/separator";
 
 export const SearchTrips = () => {
   const t = useTranslations("Components.Search");
@@ -58,7 +57,7 @@ export const SearchTrips = () => {
           <div className="flex items-center justify-center size-6 border-2 border-emerald-500 rounded-full shrink-0">
             <div className="size-2 bg-emerald-500 rounded-full" />
           </div>
-          <div className="w-full">
+          <div className="w-full border-r-0 lg:border-r">
             <p className="text-xs text-neutral-400">{t("From")}</p>
             <Input
               value={fromName}
@@ -69,11 +68,15 @@ export const SearchTrips = () => {
           </div>
         </div>
 
+        <div className="block lg:hidden px-2 w-full">
+          <Separator />
+        </div>
+
         <div className="flex items-center gap-3 w-full px-2 py-2">
           <div className="flex items-center justify-center size-6 border-2 border-muted-foreground rounded-full p-1 shrink-0">
             <div className="size-2 bg-muted-foreground rounded-full" />
           </div>
-          <div className="w-full">
+          <div className="w-full border-r-0 lg:border-r">
             <p className="text-xs text-neutral-400">{t("To")}</p>
             <Input
               value={toName}
@@ -84,8 +87,16 @@ export const SearchTrips = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-start w-full px-2 py-2 lg:py-0">
+        <div className="block lg:hidden px-2 w-full">
+          <Separator />
+        </div>
+
+        <div className="flex items-center justify-start w-full px-2 py-2 lg:py-0 border-r-0 lg:border-r">
           <CalendarSelect onDateChange={setDate} />
+        </div>
+
+        <div className="block lg:hidden px-2 w-full">
+          <Separator />
         </div>
 
         <div className="flex items-center justify-start w-full lg:w-auto pl-2 pr-12 py-2 lg:py-0">

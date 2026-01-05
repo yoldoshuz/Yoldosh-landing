@@ -97,7 +97,7 @@ export const Help = () => {
 
             {/* Tips */}
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-white">{t("Protect.Title")}</h2>
+              <h3 className="text-2xl font-bold text-white">{t("Protect.Title")}</h3>
 
               <div className="space-y-3">
                 {["1", "2", "3", "4"].map((num, index) => (
@@ -116,7 +116,7 @@ export const Help = () => {
 
             {/* Bottom message */}
             <div className="pt-6 border-t border-white/20">
-              <h3 className="text-xl font-bold text-white mb-2">{t("Security")}</h3>
+              <h3 className="text-xl font-bold text-white">{t("Security")}</h3>
               <p className="text-white/90 text-lg">
                 {t("BeCareful")
                   .split("Yo'ldosh")

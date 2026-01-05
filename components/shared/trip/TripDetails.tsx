@@ -175,9 +175,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="flex items-center justify-between w-full ">
             <div>
               <p className="text-sm text-muted-foreground">{t("Price")}</p>
-              <p className="text-2xl font-bold">
+              <p className="text-xl font-bold">
                 {trip.price.final_price.toLocaleString()}
-                <span className="text-lg font-normal text-muted-foreground ml-2">UZS</span>
+                <span className="ml-1">UZS</span>
               </p>
             </div>
 

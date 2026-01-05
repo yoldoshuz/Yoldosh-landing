@@ -57,7 +57,6 @@ export const FilterSidebar = ({ filters, onChange, className }: FilterSidebarPro
     >
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-bold text-lg flex items-center gap-2">
-          <SlidersHorizontal className="size-5 text-emerald-500" />
           {t("Filters")}
         </h3>
         {hasActiveFilters && (
@@ -111,7 +110,7 @@ export const FilterSidebar = ({ filters, onChange, className }: FilterSidebarPro
           </RadioGroup>
 
           {filters.sort_by && filters.sort_by !== "default" && (
-            <div className="mt-2 pl-0">
+            <div className="mt-2 mx-1.25">
               <Select>
                 <SelectTrigger
                   className="text-sm border rounded-lg p-2 w-full bg-neutral-50 outline-none focus:ring-1 focus:ring-emerald-500"

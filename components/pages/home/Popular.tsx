@@ -22,9 +22,9 @@ export const Popular = () => {
       aria-labelledby="popular-title"
     >
       <div className="flex flex-col items-center text-center gap-4">
-        <h1 id="popular-title" className="title-2 text-3xl font-bold">
+        <h2 id="popular-title" className="title-2 text-3xl font-bold">
           {t("Title")}
-        </h1>
+        </h2>
       </div>
 
       <Carousel
@@ -38,7 +38,7 @@ export const Popular = () => {
           {popularTrips?.data.trips.slice(0, 6).map((item: any) => (
             <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
               <Link
-                href={`/trips?from=${item.from_location.city}&to=${item.to_location.city}&seats=1`}
+                href={`/trips?from_name=${item.from_location.city}&to_name=${item.to_location.city}&seats=1`}
                 className="flex flex-col w-full h-full overflow-hidden group select-none cursor-pointer"
                 tabIndex={0}
                 aria-label={`${item.from_location.city} → ${item.to_location.city}`}
@@ -49,15 +49,15 @@ export const Popular = () => {
                       <Image src="/assets/location-green.svg" alt="location" width={22} height={22} />
                       <div>
                         <p className="text-base font-bold">{item.from_location.city}</p>
-                        <h1 className="text-sm text-muted-foreground">{item.from_location.address}</h1>
+                        <p className="text-sm text-muted-foreground">{item.from_location.address}</p>
                       </div>
                     </div>
-                    <div className="w-0.5 h-8 border border-neutral-700 border-dashed ml-2.25 " />
+                    <span className="border-black border-l-2 border-dashed h-6 ml-2.25" />
                     <div className="flex items-center gap-3">
                       <Image src="/assets/location-red.svg" alt="location" width={22} height={22} />
                       <div>
                         <p className="text-base font-bold">{item.to_location.city}</p>
-                        <h1 className="text-sm text-muted-foreground">{item.to_location.address}</h1>
+                        <p className="text-sm text-muted-foreground">{item.to_location.address}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -66,8 +66,8 @@ export const Popular = () => {
 
                   <div className="flex items-center justify-between w-full mt-2">
                     <div className="flex flex-col">
-                      <span className="text-xs text-muted-foreground">{t("From")}</span>
-                      <h1 className="text-xl font-bold">{item.price.final_price.toLocaleString()} UZS</h1>
+                      <p className="text-xs text-muted-foreground">{t("From")}</p>
+                      <p className="text-xl font-bold">{item.price.final_price.toLocaleString()} UZS</p>
                     </div>
                     <Button
                       variant="secondary"

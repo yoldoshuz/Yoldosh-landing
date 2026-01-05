@@ -11,21 +11,21 @@ export const HowItWorks = () => {
         <h3 className="subtitle-text text-center">{t("Subtitle")}</h3>
         <div className="flex grow flex-wrap items-center justify-center gap-12 mt-12">
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">
-            <h1 className="font-bold text-2xl">{t("Features.1.Title")}</h1>
+            <h3 className="font-bold text-2xl">{t("Features.1.Title")}</h3>
             <p className="text-muted-foreground">{t("Features.1.Description")}</p>
             <Link href="" className="link">
               {t("Features.Button")}
             </Link>
           </div>
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">
-            <h1 className="font-bold text-2xl">{t("Features.2.Title")}</h1>
+            <h3 className="font-bold text-2xl">{t("Features.2.Title")}</h3>
             <p className="text-muted-foreground">{t("Features.2.Description")}</p>
             <Link href="" className="link">
               {t("Features.Button")}
             </Link>
           </div>
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">
-            <h1 className="font-bold text-2xl">{t("Features.3.Title")}</h1>
+            <h3 className="font-bold text-2xl">{t("Features.3.Title")}</h3>
             <p className="text-muted-foreground">{t("Features.3.Description")}</p>
             <Link href="" className="link">
               {t("Features.Button")}
