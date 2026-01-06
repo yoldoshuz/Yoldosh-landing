@@ -20,7 +20,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div>
             <Link href="/" className="flex flex-row gap-2 items-center">
-              <Image src="/assets/logo.svg" alt="logo" width={48} height={48} />
+              <Image src="/assets/logo.svg" alt="logo" draggable={false} width={48} height={48} />
               <p className="text-2xl font-bold hidden md:flex">Yoldosh</p>
             </Link>
           </div>

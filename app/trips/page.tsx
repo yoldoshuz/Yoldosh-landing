@@ -1,6 +1,8 @@
-import { Suspense } from "react";
-import { Metadata } from "next";
+import Head from "next/head";
 import Script from "next/script";
+
+import { Metadata } from "next";
+import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
 import { SearchPage } from "@/components/pages/trips/TripPage";
@@ -8,7 +10,7 @@ import { SearchPage } from "@/components/pages/trips/TripPage";
 export const metadata: Metadata = {
   title: "Поиск поездок - Найдите попутчиков по Узбекистану | Yoldosh",
   description:
-    "Найдите попутчиков для междугородних поездок по Узбекистану. Широкий выбор маршрутов: Ташкент-Самарканд, Ташкент-Бухара, Ташкент-Фергана и другие направления. Удобный поиск, проверенные водители, низкие цены. Бронируйте поездку онлайн за пару минут!",
+    "Найдите попутчиков для междугородних поездок по Узбекистану. Удобный поиск, проверенные водители, низкие цены. Бронируйте поездку онлайн за пару минут!",
   keywords: [
     "поиск попутчиков Узбекистан",
     "Ташкент Самарканд попутчики",
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Yoldosh",
     images: [
       {
-        url: "/og-trips.jpg",
+        url: "/assets/og-trips.jpg",
         width: 1200,
         height: 630,
         alt: "Поиск поездок Yoldosh",
@@ -76,6 +78,14 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
+      <Head>
+        <link
+          rel="canonical"
+          href="https://yoldosh.uz/trips"
+          key="canonical"
+        />
+      </Head>
+
       <Script
         id="searchPageSchema-org"
         type="application/ld+json"

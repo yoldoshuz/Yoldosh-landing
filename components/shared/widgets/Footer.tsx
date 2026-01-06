@@ -14,7 +14,7 @@ export const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0 px-2 sm:px-4">
             <Link href="/" className="flex flex-row gap-2 items-center">
-              <Image src="/assets/logo.svg" alt="logo" width={48} height={48} />
+              <Image src="/assets/logo.svg" alt="logo" draggable={false} width={48} height={48} />
               <p className="text-2xl font-bold text-black">Yoldosh</p>
             </Link>
           </div>
@@ -60,6 +60,11 @@ export const Footer = () => {
                 <li>
                   <a href="#" className="hover:underline">
                     {t("Support.3")}
+                  </a>
+                </li>
+                <li>
+                  <a href="/files/public_offer_milliy_yoldosh.docx" download="public_offer_milliy_yoldosh.docx" className="hover:underline">
+                    {t("Support.4")}
                   </a>
                 </li>
               </ul>

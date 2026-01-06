@@ -1,6 +1,7 @@
-import { Metadata } from "next";
+import Head from "next/head";
 import Script from "next/script";
 
+import { Metadata } from "next";
 import { Help } from "@/components/pages/home/Help";
 import { Home } from "@/components/pages/home/Home";
 import { HowItWorks } from "@/components/pages/home/HowItWorks";
@@ -79,6 +80,14 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
+      <Head>
+        <link
+          rel="canonical"
+          href="https://yoldosh.uz"
+          key="canonical"
+        />
+      </Head>
+
       <Script
         id="webPageSchema-org"
         type="application/ld+json"

@@ -77,7 +77,7 @@ export const Help = () => {
                 <span className="text-white font-medium text-sm">{t("Security")}</span>
               </div>
 
-              <h1 className="title-2 text-white leading-tight">{t("Title")}</h1>
+              <h2 className="title-2 text-white leading-tight">{t("Title")}</h2>
 
               <p className="text-base text-white/90 leading-relaxed">
                 {t("Subtitle")

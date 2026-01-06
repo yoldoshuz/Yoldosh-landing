@@ -1,12 +1,13 @@
-import { Metadata } from "next";
+import Head from "next/head";
 import Script from "next/script";
 
+import { Metadata } from "next";
 import { AboutUs } from "@/components/pages/about/AboutUs";
 
 export const metadata: Metadata = {
-  title: "О нас - Yoldosh | История и миссия сервиса совместных поездок",
+  title: "О нас - Yoldosh | Миссия сервиса совместных поездок",
   description:
-    "Узнайте больше о Yoldosh - ведущем сервисе карпулинга в Узбекистане. Наша миссия - сделать междугородние поездки доступными, безопасными и экологичными для всех жителей Узбекистана. Читайте о нашей истории, ценностях и планах развития.",
+    "Узнайте больше о Yoldosh - ведущем сервисе карпулинга в Узбекистане. Наша миссия - сделать междугородние поездки доступными и безопасными для всех жителей Узбекистана.",
   keywords: [
     "Yoldosh о компании",
     "карпулинг Узбекистан история",
@@ -16,12 +17,12 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "О нас - Yoldosh",
-    description: "История и миссия ведущего сервиса карпулинга в Узбекистане",
+    description: "Миссия ведущего сервиса карпулинга в Узбекистане",
     url: "https://yoldosh.uz/about-us",
     siteName: "Yoldosh",
     images: [
       {
-        url: "/og-about.jpg",
+        url: "/assets/og-about.jpg",
         width: 1200,
         height: 630,
         alt: "О компании Yoldosh",
@@ -69,6 +70,14 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
+      <Head>
+        <link
+          rel="canonical"
+          href="https://yoldosh.uz/about-us"
+          key="canonical"
+        />
+      </Head>
+
       <Script
         id="aboutPageSchema-org"
         type="application/ld+json"

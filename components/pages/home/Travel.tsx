@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
 import { Button } from "../../ui/button";
+import { useTranslations } from "next-intl";
 
 export const Travel = () => {
   const t = useTranslations("Pages.Travel");
@@ -15,17 +15,17 @@ export const Travel = () => {
           <p className="text-white/80 italic">{t("Subtitle")}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-2">
             <Button className="py-6">
-              <Image src="/assets/apple.png" alt="apple" width={28} height={28} className="invert select-none" />
+              <Image src="/assets/apple.png" alt="apple" width={28} height={28} draggable={false} className="invert select-none" />
               {t("AppStore")}
             </Button>
             <Button className="py-6">
-              <Image src="/assets/play.png" alt="play" width={28} height={28} className="select-none" />
+              <Image src="/assets/play.png" alt="play" width={28} height={28} draggable={false} className="select-none" />
               {t("GooglePlay")}
             </Button>
           </div>
         </div>
         <div className="flex flex-col items-center md:items-end justify-center w-full h-full">
-          <Image src="/assets/image.png" alt="image" width={300} height={300} className="object-contain" />
+          <Image src="/assets/image.png" alt="image" width={300} height={300} draggable={false} className="object-contain" />
         </div>
       </div>
     </section>

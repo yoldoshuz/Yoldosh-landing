@@ -173,6 +173,12 @@
             },
             "ResetFilters": "Filtrlarni tozalash",
             "NotFoundTitle": "Kerakli sayohatni topish uchun sana yoki filtr opsiyalarini oʻzgartirib koʻring."
+        },
+        "NotFound": {
+            "Title": "Hech narsa topilmadi",
+            "Description": "So‘ralgan manba topilmadi.",
+            "Button": "Assosiyga qaytish",
+            "RequestError": "Xato haqida xabar bering"
         }
     },
     "Components": {
@@ -239,7 +245,8 @@
                 "Title": "Qo‘llab-quvvatlash",
                 "1": "Yordam",
                 "2": "Aloqa",
-                "3": "Xavfsizlik"
+                "3": "Maxfiylik siyosati",
+                "4": "Ommaviy taklif"
             },
             "Rights": "Barcha huquqlar himoyalangan"
         },

@@ -173,6 +173,12 @@
             },
             "ResetFilters": "Reset Filters",
             "NotFoundTitle": "Try changing the date or filter options to find a suitable trip."
+        },
+        "NotFound": {
+            "Title": "Nothing was found",
+            "Description": "Could not find requested resource",
+            "Button": "Back to home",
+            "RequestError": "Request error"
         }
     },
     "Components": {
@@ -239,7 +245,8 @@
                 "Title": "Support",
                 "1": "Help",
                 "2": "Contacts",
-                "3": "Safety"
+                "3": "Privacy policy",
+                "4": "Public offer"
             },
             "Rights": "All Rights Reserved"
         },

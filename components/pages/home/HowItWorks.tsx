@@ -7,7 +7,7 @@ export const HowItWorks = () => {
   return (
     <section className="flex flex-col items-center justify-center w-full px-4 bg-neutral-100">
       <div className="flex flex-col items-center justify-center my-20 gap-4">
-        <h1 className="title-2">{t("Title")}</h1>
+        <h3 className="title-2">{t("Title")}</h3>
         <h3 className="subtitle-text text-center">{t("Subtitle")}</h3>
         <div className="flex grow flex-wrap items-center justify-center gap-12 mt-12">
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">

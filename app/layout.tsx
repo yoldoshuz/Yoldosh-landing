@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Yoldosh",
   },
   description:
-    "Найдите попутчиков для междугородних поездок по Узбекистану. Безопасный сервис Yoldosh соединяет водителей и пассажиров. Ташкент, Самарканд, Бухара. Проверенные водители, низкие цены.",
+    "Найдите попутчиков для междугородних поездок по Узбекистану. Безопасный сервис Yoldosh соединяет водителей и пассажиров. Проверенные водители, низкие цены.",
   keywords: [
     "карпулинг Узбекистан",
     "попутчики Узбекистан",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     url: "https://yoldosh.uz",
     siteName: "Yoldosh",
     title: "Yoldosh - Совместные поездки по Узбекистану",
-    description: "Безопасный сервис карпулинга для междугородних поездок. Экономьте на транспорте!",
+    description: "Безопасный сервис карпулинга для междугородних поездок.",
     images: [
       {
         url: "/assets/og-image.png",
@@ -186,7 +186,7 @@ export default async function RootLayout({
             <img
               src="https://mc.yandex.ru/watch/105993566"
               style={{ position: "absolute", left: "-9999px" }}
-              alt=""
+              alt="yandex"
             />
           </div>
         </noscript>

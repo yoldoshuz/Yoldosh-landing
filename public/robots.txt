@@ -1,9 +1,6 @@
-# robots.txt для yoldosh.uz
+# robots.txt for yoldosh.uz
 
 User-agent: *
-Allow: /
-Allow: /trips
-Allow: /about-us
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
@@ -12,15 +9,17 @@ Disallow: /admin/
 Sitemap: https://www.yoldosh.uz/sitemap.xml
 Sitemap: https://www.yoldosh.uz/sitemap-trips.xml
 
-# Crawl-delay для бережного индексирования
-Crawl-delay: 1
 
-# Специальные правила для Yandex
+# Rules for Yandex
 User-agent: Yandex
-Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 Crawl-delay: 1
 
-# Специальные правила для Google
+
+# Rules for Google
 User-agent: Googlebot
-Allow: /
-Crawl-delay: 0.5
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
