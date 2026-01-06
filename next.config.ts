@@ -186,6 +186,12 @@ const nextConfig: NextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
+
+  /* ===== ENV ===== */
+  env: {
+    NEXT_PUBLIC_SITE_URL: "https://yoldosh.uz",
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+  },
 };
 
 /* ===== next-intl plugin ===== */
