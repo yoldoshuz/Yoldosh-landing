@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Yoldosh",
     images: [
       {
-        url: "/assets/og-trips.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Поиск поездок Yoldosh",
@@ -78,13 +78,13 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
-      {/* <Head>
+      <Head>
         <link
           rel="canonical"
           href="https://yoldosh.uz/trips"
           key="canonical"
         />
-      </Head> */}
+      </Head>
 
       <Script
         id="searchPageSchema-org"

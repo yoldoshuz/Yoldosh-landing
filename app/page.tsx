@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Yoldosh",
     images: [
       {
-        url: "/og-home.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Yoldosh Carpooling Service",
@@ -80,13 +80,13 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
-      {/* <Head>
+      <Head>
         <link
           rel="canonical"
           href="https://yoldosh.uz"
           key="canonical"
         />
-      </Head> */}
+      </Head>
 
       <Script
         id="webPageSchema-org"

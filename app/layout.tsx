@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description: "Безопасный сервис карпулинга для междугородних поездок.",
     images: [
       {
-        url: "/assets/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Yoldosh Carpooling",
