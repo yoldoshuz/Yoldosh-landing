@@ -78,13 +78,13 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <link
           rel="canonical"
           href="https://yoldosh.uz/trips"
           key="canonical"
         />
-      </Head>
+      </Head> */}
 
       <Script
         id="searchPageSchema-org"

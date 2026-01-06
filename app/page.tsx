@@ -80,13 +80,13 @@ const breadcrumbSchema = {
 const Page = () => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <link
           rel="canonical"
           href="https://yoldosh.uz"
           key="canonical"
         />
-      </Head>
+      </Head> */}
 
       <Script
         id="webPageSchema-org"
