@@ -1,46 +1,115 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
+import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import { useNavIndicator } from "@/hooks/useNavIndicator";
 
 import { navLinks } from "@/constants";
-import { usePathname } from "next/navigation";
+import { CloudDownload } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LanguageSwitcher } from "@/components/functional/LanguageSwitcher";
+
+const Menu = dynamic(() => import("./Menu").then((mod) => mod.Menu), { ssr: false });
+const LanguageSwitcher = dynamic(
+  () => import("@/components/functional/LanguageSwitcher").then((mod) => mod.LanguageSwitcher),
+  {
+    ssr: false
+  });
 
 export const Navbar = () => {
   const t = useTranslations("Components.Header");
   const pathname = usePathname();
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [indicator, setIndicator] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
+
+  useNavIndicator({
+    pathname,
+    containerRef,
+    linkRefs,
+    setIndicator,
+  });
+
   return (
     <header className="fixed top-0 left-0 w-full z-20 border bg-neutral-50">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-5">
         <div className="flex justify-between items-center h-16">
-          <div>
-            <Link href="/" className="flex flex-row gap-2 items-center">
-              <Image src="/assets/logo.svg" alt="logo" draggable={false} width={48} height={48} />
-              <p className="text-2xl font-bold hidden md:flex">Yoldosh</p>
-            </Link>
+          {/* Logo */}
+          <Link href="/" className="flex flex-row gap-2 items-center">
+            <Image
+              src="/assets/logo.svg"
+              alt="logo"
+              draggable={false}
+              width={48}
+              height={48}
+            />
+            <p className="text-2xl font-bold hidden md:flex">Yoldosh</p>
+          </Link>
+
+          {/* NAV LINKS */}
+          <div
+            ref={containerRef}
+            className="hidden md:flex gap-2 relative"
+          >
+            {/* INDICATOR */}
+            <motion.div
+              className="absolute rounded-lg bg-emerald-200/60 pointer-events-none"
+              animate={{
+                x: indicator.x,
+                y: indicator.y,
+                width: indicator.width,
+                height: indicator.height,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 35,
+              }}
+            />
+
+            {navLinks().map((link) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  ref={(el) => {
+                    linkRefs.current[link.href] = el;
+                  }}
+                  className={`flex items-center justify-center gap-2 relative px-4 py-2 text-base font-medium z-10
+                  ${isActive ? "text-emerald-800" : "text-neutral-700"}
+                  `}
+                >
+                  <link.icon className="size-4" strokeWidth={3} />
+                  {link.title}
+                </Link>
+              );
+            })}
           </div>
 
-          <nav className="hidden md:flex sm:space-x-6">
-            {navLinks().map((link) => (
-              <Link
-                href={link.href}
-                key={link.id}
-                className={`px-3 py-2 text-sm hover:text-emerald-600 smooth ${pathname === link.href ? 'text-emerald-600' : null}`}
-              >
-                {link.title}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center justify-center gap-2">
-            <LanguageSwitcher />
-            <div>
-              <Button className="btn-primary">{t("DownloadApp")}</Button>
+          {/* Right side */}
+          <div className="flex items-center gap-2">
+            <div className="hidden md:flex">
+              <LanguageSwitcher />
+            </div>
+            <Button className="btn-glow">
+              <CloudDownload />
+              {t("DownloadApp")}
+            </Button>
+            <div className="flex md:hidden">
+              <Menu />
             </div>
           </div>
         </div>

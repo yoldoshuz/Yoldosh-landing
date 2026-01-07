@@ -162,7 +162,9 @@
                 "Price": "Odam boshiga narx",
                 "Book": "Bron qilish",
                 "Distance": "Masofa",
-                "Duration": "Davomiylik"
+                "Duration": "Davomiylik",
+                "Hours": "s",
+                "Minutes": "m"
             },
             "Preferences": {
                 "Smoking": "Chekish",

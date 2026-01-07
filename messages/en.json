@@ -162,7 +162,9 @@
                 "Price": "Price per person",
                 "Book": "Book",
                 "Distance": "Distance",
-                "Duration": "Duration"
+                "Duration": "Duration",
+                "Hours": "h",
+                "Minutes": "m"
             },
             "Preferences": {
                 "Smoking": "Smoking",

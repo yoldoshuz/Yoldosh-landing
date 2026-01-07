@@ -1,11 +1,24 @@
 import Image from "next/image";
+
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, Dot, MapPin, Star, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage
+} from "@/components/ui/avatar";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Dot,
+  MapPin,
+  Star,
+  Users
+} from "lucide-react";
 
 interface TripDetailsProps {
   trip: any;
@@ -112,7 +125,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 <div>
                   <p className="text-sm text-muted-foreground">{t("Duration")}</p>
                   <p className="font-medium">
-                    {Math.floor(trip.duration / 60)}h {trip.duration % 60}m
+                    {Math.floor(trip.duration / 60)}{t("Hours")} {trip.duration % 60}{t("Minutes")}
                   </p>
                 </div>
               </div>

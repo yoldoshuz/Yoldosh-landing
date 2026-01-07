@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { UserRound } from "lucide-react";
+import { Search, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
@@ -116,11 +116,12 @@ export const SearchTrips = () => {
         </div>
 
         {/* Кнопка */}
-        <div className="w-full lg:w-auto p-1">
+        <div className="w-full lg:w-auto">
           <Button
             onClick={handleSearch}
-            className="w-full lg:w-auto h-12 lg:h-14 px-8 rounded-full text-lg bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-200 transition-all active:scale-95"
+            className="w-full lg:w-auto h-12 lg:h-14 px-10! rounded-full text-lg btn-glow"
           >
+            <Search className="size-5" strokeWidth={2.75} />
             {t("Search")}
           </Button>
         </div>

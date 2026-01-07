@@ -162,7 +162,9 @@
                 "Price": "Цена за человека",
                 "Book": "Забронировать",
                 "Distance": "Дистанция",
-                "Duration": "Длительность"
+                "Duration": "Длительность",
+                "Hours": "ч",
+                "Minutes": "м"
             },
             "Preferences": {
                 "Smoking": "Курение",

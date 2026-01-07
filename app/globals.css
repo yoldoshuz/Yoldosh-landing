@@ -130,6 +130,10 @@
     @apply bg-emerald-500! text-white! hover:bg-emerald-600! cursor-pointer;
   }
 
+  .btn-glow {
+    @apply bg-emerald-500! hover:bg-emerald-600! text-white! shadow-lg! shadow-emerald-200! transition-all! active:scale-95!;
+  }
+
   .card {
     @apply bg-white border hover:border-emerald-500 hover:shadow-xl transition duration-200 ease-in-out rounded-2xl;
   }
@@ -153,7 +157,7 @@
   }
 
   .subtitle-text {
-    @apply text-base md:text-lg text-muted-foreground;
+    @apply text-center text-base md:text-lg text-muted-foreground font-semibold;
   }
 
   .smooth {

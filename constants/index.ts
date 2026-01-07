@@ -1,3 +1,4 @@
+import { Home, Route, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export const navLinks = () => {
@@ -8,16 +9,19 @@ export const navLinks = () => {
       id: 1,
       title: t("Home"),
       href: "/",
+      icon: Home,
     },
     {
       id: 2,
       title: t("About"),
       href: "/about-us",
+      icon: Users,
     },
     {
       id: 3,
       title: t("Trips"),
       href: "/trips",
+      icon: Route
     },
   ];
 

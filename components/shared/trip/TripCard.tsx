@@ -1,8 +1,9 @@
 import Image from "next/image";
+
 import { useTranslations } from "next-intl";
 
 import { Card } from "@/components/ui/card";
-import { ChevronRight, Circle, Dot } from "lucide-react";
+import { CircleSmall, Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface TripCardProps {
@@ -12,11 +13,11 @@ interface TripCardProps {
   priority?: boolean; // Для первых карточек
 }
 
-export const TripCard = ({ 
-  trip, 
-  onClick, 
+export const TripCard = ({
+  trip,
+  onClick,
   viewMode = "grid",
-  priority = false 
+  priority = false
 }: TripCardProps) => {
   const t = useTranslations("Pages.Trips");
 
@@ -24,11 +25,11 @@ export const TripCard = ({
   const arrivalDate = new Date(departureDate.getTime() + trip.duration * 60 * 1000);
 
   const localeDate =
-    localStorage.getItem("locale") === "uz" 
-      ? "uz-UZ" 
-      : localStorage.getItem("locale") === "ru" 
-      ? "ru-RU" 
-      : "en-US";
+    localStorage.getItem("locale") === "uz"
+      ? "uz-UZ"
+      : localStorage.getItem("locale") === "ru"
+        ? "ru-RU"
+        : "en-US";
 
   const formattedTime = departureDate.toLocaleTimeString(localeDate, {
     hour: "2-digit",
@@ -51,68 +52,48 @@ export const TripCard = ({
         <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-between gap-4 w-full">
-              <div className="flex flex-row items-start justify-between gap-3 w-full max-w-125">
+              <div className="flex flex-row items-center justify-between gap-3 w-full max-w-125">
                 <div className="flex items-center justify-start gap-0">
                   <div className="flex flex-col items-start">
                     <p className="text-base font-semibold">{formattedTime}</p>
-                    <p className="text-sm">{trip.from_location.city}</p>
+                    <p className="font-semibold text-xs md:text-sm">{trip.from_location.city}</p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between gap-2 w-full text-muted-foreground">
-                  <div className="flex items-center justify-start w-full">
-                    <Circle className="w-3 h-3" />
-                    <div className="border border-dashed w-full" />
+                <div className="flex items-center justify-between gap-2 w-full">
+                  <div className="flex items-center justify-start w-full ">
+                    <CircleSmall className="text-gray-700" strokeWidth={3} />
+                    <div className="border-gray-700 border w-full" />
                   </div>
                   <div className="flex items-center justify-center text-xs">
-                    <p className="text-center w-12">
-                      {Math.floor(trip.duration / 60)}:{trip.duration % 60}
+                    <p className="text-center font-mono font-semibold w-12 text-gray-700">
+                      {Math.floor(trip.duration / 60)}{t("Details.Hours")} {trip.duration % 60}{t("Details.Minutes")}
                     </p>
                   </div>
                   <div className="flex items-center justify-start w-full">
-                    <div className="border border-dashed w-full" />
-                    <ChevronRight />
+                    <div className="border-gray-700 border w-full" />
+                    <CircleSmall className="text-gray-700" strokeWidth={3} />
                   </div>
                 </div>
                 <div className="flex items-center justify-end gap-0">
                   <div className="flex flex-col items-start">
                     <p className="text-base font-semibold">{formattedArrivalTime}</p>
-                    <p className="text-sm">{trip.to_location.city}</p>
+                    <p className="font-semibold text-xs md:text-sm">{trip.to_location.city}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div>
-            <div className="flex-1 flex flex-col justify-start items-start gap-4">
-              <div className="flex flex-col items-end gap-3 text-sm mt-0">
-                <div className="flex items-center gap-2">
-                  <span>
-                    {t("Details.Seats")}: {trip.seats_available}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center text-sm">
-              <p>{t("Details.Price")}:&nbsp;</p>
-              <p>{trip.price.final_price.toLocaleString()}</p>
-              <span className="ml-1">UZS</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
+          <div className="flex items-center gap-4 mt-2">
+            <div className="flex items-center justify-center">
+              <Avatar className="size-8 rounded-full bg-emerald-100 flex items-center justify-center">
                 <AvatarImage src="" />
-                <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
+                <AvatarFallback className="bg-emerald-300 font-bold text-white text-base">
                   {trip.driver.firstName[0]}
                 </AvatarFallback>
               </Avatar>
-              <div className="absolute -bottom-2 -right-2 z-10 bg-emerald-500 border border-white rounded-full px-1.5 py-0.5 flex items-center gap-1 text-xs text-muted-foreground">
-                <span className="text-white">{trip.driver.rating.toFixed(1)}</span>
-              </div>
             </div>
-            <div className="flex justify-start items-center w-full">
+            <div className="flex flex-col justify-center items-start w-full">
               <p className="font-medium text-base">{trip.driver.firstName}</p>
-              <Dot />
               <p className="text-muted-foreground text-xs">
                 {trip.car && (
                   <span>
@@ -120,6 +101,16 @@ export const TripCard = ({
                   </span>
                 )}
               </p>
+            </div>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2">
+              <div className="flex items-center rounded-full px-1.5 py-0.5 gap-1 text-xs text-muted-foreground">
+                <Star className="fill-gray-500 size-4" />
+                <span className="">{trip.driver.rating.toFixed(1)}</span>
+              </div>
+              <div className="flex items-center text-sm font-bold">
+                <p>{trip.price.final_price.toLocaleString()}</p>
+                <span className="ml-1">UZS</span>
+              </div>
             </div>
           </div>
         </div>
