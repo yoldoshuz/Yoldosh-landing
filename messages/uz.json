@@ -164,14 +164,30 @@
                 "Distance": "Masofa",
                 "Duration": "Davomiylik",
                 "Hours": "s",
-                "Minutes": "m"
+                "Minutes": "m",
+                "Preferences": {
+                    "Title": "Afzalliklar",
+                    "Smoking": "Chekish",
+                    "Door": "Uydan olish",
+                    "Food": "Ovqat uchun to'htash",
+                    "Pets": "Hayvon",
+                    "Garage": "Bagaj",
+                    "Yes": "Ha",
+                    "No": "Yo'q",
+                    "Empty": "Bo'sh",
+                    "HalfEmpty": "Yarmi bo'sh",
+                    "Full": "To'la"
+                }
             },
             "Preferences": {
+                "Title": "Предпочтения",
                 "Smoking": "Chekish",
-                "Pets": "Hayvonlar",
-                "Music": "Musiqa",
-                "Talkative": "Suhbatdosh",
-                "AC": "Konditsioner"
+                "Door": "Uydan olish",
+                "Food": "Ovqat uchun to'htash",
+                "Pets": "Hayvon",
+                "Garage": "Bagaj",
+                "Yes": "Ha",
+                "No": "Yo'q"
             },
             "ResetFilters": "Filtrlarni tozalash",
             "NotFoundTitle": "Kerakli sayohatni topish uchun sana yoki filtr opsiyalarini oʻzgartirib koʻring."

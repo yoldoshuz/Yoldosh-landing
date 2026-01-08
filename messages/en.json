@@ -164,14 +164,30 @@
                 "Distance": "Distance",
                 "Duration": "Duration",
                 "Hours": "h",
-                "Minutes": "m"
+                "Minutes": "m",
+                "Preferences": {
+                    "Title": "Preferences",
+                    "Smoking": "Smoking",
+                    "Door": "Pickup from door",
+                    "Food": "Stop for dinner",
+                    "Pets": "Pets",
+                    "Garage": "Garage",
+                    "Yes": "Yes",
+                    "No": "No",
+                    "Empty": "Empty",
+                    "HalfEmpty": "Half empty",
+                    "Full": "Full"
+                }
             },
             "Preferences": {
+                "Title": "Preferences",
                 "Smoking": "Smoking",
+                "Door": "Pickup from door",
+                "Food": "Stop for dinner",
                 "Pets": "Pets",
-                "Music": "Music",
-                "Talkative": "Talkative",
-                "AC": "Air Conditioning"
+                "Garage": "Garage",
+                "Yes": "Yes",
+                "No": "No"
             },
             "ResetFilters": "Reset Filters",
             "NotFoundTitle": "Try changing the date or filter options to find a suitable trip."

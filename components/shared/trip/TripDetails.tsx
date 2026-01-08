@@ -12,10 +12,18 @@ import {
 } from "@/components/ui/avatar";
 import {
   ArrowLeft,
+  Briefcase,
   Calendar,
+  Candy,
+  CandyOff,
+  Cigarette,
+  CigaretteOff,
   Clock,
+  DoorClosed,
+  DoorOpen,
   Dot,
   MapPin,
+  PawPrint,
   Star,
   Users
 } from "lucide-react";
@@ -172,6 +180,73 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           </div>
         </div>
 
+        {/* Preferences */}
+        <div className="mb-2">
+          <h2 className="text-lg font-semibold mb-2">{t("Preferences.Title")}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-4 bg-white rounded-3xl">
+            <div className="flex items-center gap-4">
+              {trip.driver.smoking ? (
+                <Cigarette className="size-5 text-emerald-500" />
+              ) : (
+                <CigaretteOff className="size-5 text-emerald-500" />
+              )}
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.Smoking")}</p>
+                <p className="font-medium">
+                  {trip.driver.smoking ? t("Preferences.Yes") : t("Preferences.No")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {trip.driver.door_pickup ? (
+                <DoorOpen className="size-5 text-emerald-500" />
+              ) : (
+                <DoorClosed className="size-5 text-emerald-500" />
+              )}
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.Door")}</p>
+                <p className="font-medium">
+                  {trip.driver.door_pickup ? t("Preferences.Yes") : t("Preferences.No")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {trip.driver.food_stop ? (
+                <Candy className="size-5 text-emerald-500" />
+              ) : (
+                <CandyOff className="size-5 text-emerald-500" />
+              )}
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.Food")}</p>
+                <p className="font-medium">
+                  {trip.driver.food_stop ? t("Preferences.Yes") : t("Preferences.No")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <PawPrint className="size-5 text-emerald-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.Pets")}</p>
+                <p className="font-medium">
+                  {trip.driver.pets_allowed ? t("Preferences.Yes") : t("Preferences.No")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Briefcase className="size-5 text-emerald-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.Garage")}</p>
+                <p className="font-medium">
+                  {trip.driver.garage === "EMPTY" && t("Preferences.Empty")}
+                  {trip.driver.garage === "HALF_EMPTY" && t("Preferences.HalfEmpty")}
+                  {trip.driver.garage === "FULL" && t("Preferences.Full")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Commentary */}
         <div className="mb-12">
           {trip.comment && (
             <>
@@ -197,7 +272,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
             <Button className="btn-primary">{t("Book")}</Button>
           </div>
         </div>
-      </Card>
-    </div>
+      </Card >
+    </div >
   );
 };
