@@ -2,7 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 
 import { Metadata } from "next";
-import { AboutUs } from "@/components/pages/about/AboutUs";
+import { AboutUs } from "@/components/pages/about-us/AboutUs";
 
 export const metadata: Metadata = {
   title: "О нас - Yoldosh | Миссия сервиса совместных поездок",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Yoldosh",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-about.png",
         width: 1200,
         height: 630,
         alt: "О компании Yoldosh",

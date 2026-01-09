@@ -61,7 +61,7 @@ export const Menu = () => {
                                 width={28}
                                 height={28}
                             />
-                            <p className="text-lg font-bold">Yoldosh</p>
+                            <p className="text-lg font-bold">Yo'ldosh</p>
                         </Link>
                     </SheetTitle>
                     <SheetDescription></SheetDescription>

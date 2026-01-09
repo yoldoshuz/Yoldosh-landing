@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
 import { useTranslations } from "next-intl";
 
 import { Separator } from "@/components/ui/separator";
@@ -15,7 +16,7 @@ export const Footer = () => {
           <div className="mb-6 md:mb-0 px-2 sm:px-4">
             <Link href="/" className="flex flex-row gap-2 items-center">
               <Image src="/assets/logo.svg" alt="logo" draggable={false} width={48} height={48} />
-              <p className="text-2xl font-bold text-black">Yoldosh</p>
+              <p className="text-2xl font-bold text-black">Yo'ldosh</p>
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-12 sm:grid-cols-3 px-2 sm:px-4">
@@ -23,14 +24,14 @@ export const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-black">{t("Product.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
-                  <a href="https://flowbite.com/" className="hover:underline">
+                  <Link href="https://flowbite.com/" className="hover:underline">
                     {t("Product.1")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://tailwindcss.com/" className="hover:underline">
+                  <Link href="https://tailwindcss.com/" className="hover:underline">
                     {t("Product.2")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -38,14 +39,14 @@ export const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-black">{t("Company.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
-                  <a href="/about-us" className="hover:underline">
+                  <Link href="/about-us" className="hover:underline">
                     {t("Company.1")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">
+                  <Link href="https://discord.gg/4eeurUVvTy" className="hover:underline">
                     {t("Company.3")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -53,19 +54,19 @@ export const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-black">{t("Support.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     {t("Support.2")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="#" className="hover:underline">
                     {t("Support.3")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/files/public_offer_milliy_yoldosh.docx" download="public_offer_milliy_yoldosh.docx" className="hover:underline">
+                  <Link href="/public-offer" className="hover:underline">
                     {t("Support.4")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -74,7 +75,7 @@ export const Footer = () => {
         <Separator className="my-8" />
         <div className="text-center">
           <span className="text-sm text-muted-foreground">
-            © 2025 - {currentYear} "OOO" Milliy Yoldosh. {t("Rights")}
+            © 2025 - {currentYear} "OOO" Milliy Yo'ldosh. {t("Rights")}
           </span>
         </div>
       </div>

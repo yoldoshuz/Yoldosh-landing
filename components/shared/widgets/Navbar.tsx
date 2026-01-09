@@ -54,7 +54,7 @@ export const Navbar = () => {
               width={48}
               height={48}
             />
-            <p className="text-2xl font-bold hidden md:flex">Yoldosh</p>
+            <p className="text-2xl font-bold hidden md:flex">Yo'ldosh</p>
           </Link>
 
           {/* NAV LINKS */}
@@ -79,7 +79,9 @@ export const Navbar = () => {
             />
 
             {navLinks().map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = link.href === "/"
+                ? pathname === "/"
+                : pathname === link.href || pathname.startsWith(link.href + "/");
 
               return (
                 <Link

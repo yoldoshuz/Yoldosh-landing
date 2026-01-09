@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Yoldosh",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-trips.png",
         width: 1200,
         height: 630,
         alt: "Поиск поездок Yoldosh",

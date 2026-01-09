@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Yoldosh",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-home.png",
         width: 1200,
         height: 630,
         alt: "Yoldosh Carpooling Service",
