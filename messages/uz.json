@@ -206,132 +206,132 @@
             "intro": "'MILLIY YOLDOSH' MChJ, keyingi o'rinlarda 'Ijrochi' deb ataluvchi, direktor nomidan Ustav asosida harakat qiluvchi, Yo'ldosh platformasiga kirish huquqini berish bo'yicha xizmatlar ko'rsatish shartnomasini tuzish haqida ushbu Ommaviy taklifni e'lon qiladi.",
             "terms": {
                 "title": "1. ATAMALAR VA TA'RIFLAR",
-                "1": "1) Ommaviy taklif (keyingi o'rinlarda – «Taklif») – Ijrochining noaniq shaxslarga yo'naltirilgan ommaviy taklifi, ushbu Taklifda bayon etilgan shartlar asosida Shartnoma tuzish.",
-                "2": "2) Taklifni qabul qilish – ushbu Taklifning 3.2-bandida ko'rsatilgan harakatlarni amalga oshirish orqali Taklifni to'liq va so'zsiz qabul qilish.",
-                "3": "3) Foydalanuvchi – 18 yoshga to'lgan va Ijrochi bilan ushbu Taklifda mavjud shartlar asosida Shartnoma tuzgan jismoniy shaxs.",
-                "4": "4) Platforma (Ilova) – mobil qurilmalarda yuklab olish va foydalanish uchun mavjud bo'lgan 'Yo'ldosh' dasturiy ta'minoti, Haydovchilar va Yo'lovchilar o'rtasida birgalikdagi sayohatlarni tashkil qilish uchun mo'ljallangan.",
-                "5": "5) Haydovchi – tekshiruvdan o'tgan va Ilovada sayohatlar haqida ma'lumot e'lon qilish huquqiga ega bo'lgan Foydalanuvchi.",
-                "6": "6) Yo'lovchi – Ilovani sayohatlarni qidirish va bron qilish uchun ishlatuvchi Foydalanuvchi.",
-                "7": "7) Sayohat – Ilovada Haydovchi tomonidan e'lon qilingan marshrut bo'yicha Haydovchining avtomobilida birgalikdagi sayohat.",
-                "8": "8) Tekshiruv – Haydovchi hujjatlarini (haydovchilik guvohnomasi, avtomobil texnik pasporti) Ijrochi avtomatlashtirilgan tizimi orqali tekshirish tartibi.",
-                "9": "9) Xizmat komissiyasi – Platformaga kirish huquqini berish uchun Ijrochining mukofoti, uning miqdori ushbu Taklifning 5-bo'limiga muvofiq aniqlanadi."
+                "1": "1.1 Ommaviy taklif (keyingi o'rinlarda – «Taklif») – Ijrochining noaniq shaxslarga yo'naltirilgan ommaviy taklifi, ushbu Taklifda bayon etilgan shartlar asosida Shartnoma tuzish.",
+                "2": "1.2 Taklifni qabul qilish – ushbu Taklifning 3.2-bandida ko'rsatilgan harakatlarni amalga oshirish orqali Taklifni to'liq va so'zsiz qabul qilish.",
+                "3": "1.3 Foydalanuvchi – 18 yoshga to'lgan va Ijrochi bilan ushbu Taklifda mavjud shartlar asosida Shartnoma tuzgan jismoniy shaxs.",
+                "4": "1.4 Platforma (Ilova) – mobil qurilmalarda yuklab olish va foydalanish uchun mavjud bo'lgan 'Yo'ldosh' dasturiy ta'minoti, Haydovchilar va Yo'lovchilar o'rtasida birgalikdagi sayohatlarni tashkil qilish uchun mo'ljallangan.",
+                "5": "1.5 Haydovchi – tekshiruvdan o'tgan va Ilovada sayohatlar haqida ma'lumot e'lon qilish huquqiga ega bo'lgan Foydalanuvchi.",
+                "6": "1.6 Yo'lovchi – Ilovani sayohatlarni qidirish va bron qilish uchun ishlatuvchi Foydalanuvchi.",
+                "7": "1.7 Sayohat – Ilovada Haydovchi tomonidan e'lon qilingan marshrut bo'yicha Haydovchining avtomobilida birgalikdagi sayohat.",
+                "8": "1.8 Tekshiruv – Haydovchi hujjatlarini (haydovchilik guvohnomasi, avtomobil texnik pasporti) Ijrochi avtomatlashtirilgan tizimi orqali tekshirish tartibi.",
+                "9": "1.9 Xizmat komissiyasi – Platformaga kirish huquqini berish uchun Ijrochining mukofoti, uning miqdori ushbu Taklifning 5-bo'limiga muvofiq aniqlanadi."
             },
             "subject": {
                 "title": "2. SHARTNOMA PREDMETI",
-                "1": "1) Ijrochi Foydalanuvchiga birgalikdagi sayohatlarni tashkil qilish uchun Platforma funksiyalariga kirish huquqini berishga majbur, Foydalanuvchi esa Platformadan ushbu Taklif shartlariga muvofiq foydalanishga va Xizmat komissiyasini ushbu Taklifda nazarda tutilgan tartibda va shartlarda to'lashga majbur.",
-                "2": "2) Ijrochi Haydovchilar va Yo'lovchilar o'rtasida o'zaro aloqani ta'minlovchi texnologik platformani taqdim etadi. Ijrochi tashuvchi emas va yo'lovchilarni tashish xizmatlarini ko'rsatmaydi.",
-                "3": "3) Transport xizmatlarini ko'rsatish shartnomasi bevosita Haydovchi va Yo'lovchi o'rtasida tuziladi. Tashish bo'yicha majburiyatlarni to'g'ri bajarish uchun javobgarlik Haydovchiga yuklatiladi."
+                "1": "2.1 Ijrochi Foydalanuvchiga birgalikdagi sayohatlarni tashkil qilish uchun Platforma funksiyalariga kirish huquqini berishga majbur, Foydalanuvchi esa Platformadan ushbu Taklif shartlariga muvofiq foydalanishga va Xizmat komissiyasini ushbu Taklifda nazarda tutilgan tartibda va shartlarda to'lashga majbur.",
+                "2": "2.2 Ijrochi Haydovchilar va Yo'lovchilar o'rtasida o'zaro aloqani ta'minlovchi texnologik platformani taqdim etadi. Ijrochi tashuvchi emas va yo'lovchilarni tashish xizmatlarini ko'rsatmaydi.",
+                "3": "2.3 Transport xizmatlarini ko'rsatish shartnomasi bevosita Haydovchi va Yo'lovchi o'rtasida tuziladi. Tashish bo'yicha majburiyatlarni to'g'ri bajarish uchun javobgarlik Haydovchiga yuklatiladi."
             },
             "acceptance": {
                 "title": "3. TAKLIFNI QABUL QILISH TARTIBI",
-                "1": "1) Ushbu Taklifni qabul qilish Taklifning barcha shartlarini hech qanday istisno va cheklovlarsiz to'liq va so'zsiz qabul qilishni anglatadi.",
-                "2": "2) Ushbu Taklifni qabul qilish Foydalanuvchi tomonidan quyidagi harakatlarni amalga oshirishdir:",
-                "2_1": "1. Ilovaga telefon raqamini kiritish;",
-                "2_2": "2. SMS-xabar orqali olingan bir martalik kodni (OTP-kod) kiritish orqali telefon raqamini tasdiqlash.",
-                "3": "3) Taklifni qabul qilish va Shartnomani tuzish momenti OTP-kodni muvaffaqiyatli kiritish va Ilova funksiyalariga kirish olish momenti hisoblanadi.",
-                "4": "4) Ushbu Taklifni qabul qilish orqali Foydalanuvchi quyidagilarni tasdiqlaydi:",
-                "4_1": "1. 18 yoshga to'lgan;",
-                "4_2": "2. ushbu Taklif shartlari bilan to'liq tanishgan;",
-                "4_3": "3. Shartnoma predmetini to'liq tushunadi;",
-                "4_4": "4. Shartnomani tuzish va bajarish bo'yicha o'z harakatlarining ahamiyati va oqibatlarini to'liq tushunadi."
+                "1": "3.1 Ushbu Taklifni qabul qilish Taklifning barcha shartlarini hech qanday istisno va cheklovlarsiz to'liq va so'zsiz qabul qilishni anglatadi.",
+                "2": "3.2 Ushbu Taklifni qabul qilish Foydalanuvchi tomonidan quyidagi harakatlarni amalga oshirishdir:",
+                "2_1": "3.2.1 Ilovaga telefon raqamini kiritish;",
+                "2_2": "3.2.2 SMS-xabar orqali olingan bir martalik kodni (OTP-kod) kiritish orqali telefon raqamini tasdiqlash.",
+                "3": "3.3 Taklifni qabul qilish va Shartnomani tuzish momenti OTP-kodni muvaffaqiyatli kiritish va Ilova funksiyalariga kirish olish momenti hisoblanadi.",
+                "4": "3.4 Ushbu Taklifni qabul qilish orqali Foydalanuvchi quyidagilarni tasdiqlaydi:",
+                "4_1": "3.4.1 18 yoshga to'lgan;",
+                "4_2": "3.4.2 ushbu Taklif shartlari bilan to'liq tanishgan;",
+                "4_3": "3.4.3 Shartnoma predmetini to'liq tushunadi;",
+                "4_4": "3.4.4 Shartnomani tuzish va bajarish bo'yicha o'z harakatlarining ahamiyati va oqibatlarini to'liq tushunadi."
             },
             "rights": {
                 "title": "4. TOMONLARNING HUQUQ VA MAJBURIYATLARI",
-                "executorObliges": "* Ijrochi majburiyatni oladi:",
-                "executorObliges1": "- Platformaning ishlashini va Foydalanuvchilarning uning funksiyalariga 24/7 kirishini ta'minlash, profilaktika va ta'mirlash ishlari vaqtini istisno qilgan holda.",
-                "executorObliges2": "- Foydalanuvchilarning shaxsiy ma'lumotlarining maxfiyligini Maxfiylik siyosatiga va O'zbekiston Respublikasi qonunchiligiga muvofiq ta'minlash.",
-                "executorObliges3": "- Haydovchilar hujjatlarini avtomatlashtirilgan tizim orqali tekshirishni amalga oshirish.",
-                "executorObliges4": "- Haydovchilar va Yo'lovchilar o'rtasida muloqot uchun ichki chatni taqdim etish.",
-                "executorObliges5": "- Ushbu Taklif shartlaridagi o'zgarishlar haqida Foydalanuvchilarni Ilovada yangi tahrirni e'lon qilish orqali xabardor qilish.",
-                "executorRights": "1. Ijrochi huquqiga ega:",
-                "executorRights1": "1) Ushbu Taklif shartlarini bir tomonlama o'zgartirish, Foydalanuvchilarni Ilovada yangi tahrirni e'lon qilish orqali o'zgarishlar kuchga kirishidan kamida 7 (etti) kalendar kun oldin xabardor qilish.",
-                "executorRights2": "2) Foydalanuvchining ushbu Taklif shartlarini buzgan taqdirda, uning Platformaga kirishini vaqtinchalik to'xtatib qo'yish yoki to'xtatish.",
-                "executorRights3": "3) Ushbu Taklifning 6-bo'limida nazarda tutilgan holatlarda Foydalanuvchi hisobini oldindan ogohlantirmasdan bloklash.",
-                "executorRights4": "4) Xizmat komissiyasi miqdorini belgilash va o'zgartirish, Foydalanuvchilarni o'zgarishlar kuchga kirishidan kamida 14 (o'n to'rt) kalendar kun oldin xabardor qilish.",
-                "executorRights5": "5) Platformaning vaqtinchalik mavjud bo'lmasligiga olib kelishi mumkin bo'lgan profilaktika ishlarini olib borish, Foydalanuvchilarni Ilova orqali oldindan xabardor qilish.",
-                "userPassengerObliges": "1. Foydalanuvchi (Yo'lovchi) majburiyatni oladi:",
-                "userPassengerObliges1": "1) Ro'yxatdan o'tishda to'g'ri ma'lumotlarni taqdim etish (ism, familiya, telefon raqami).",
-                "userPassengerObliges2": "2) Sayohatlarni o'z vaqtida bron qilish va Haydovchini bronni bekor qilish haqida xabardor qilish.",
-                "userPassengerObliges3": "3) Sayohat vaqtida xulq-atvor qoidalariga rioya qilish va Haydovchi va boshqa Yo'lovchilarga hurmat bilan munosabatda bo'lish.",
-                "userPassengerObliges4": "4) Haydovchi bilan barcha muloqotlarni faqat Ilovaning ichki chati orqali amalga oshirish.",
-                "userPassengerObliges5": "5) Platformani chetlab o'tish maqsadida aloqa ma'lumotlarini (telefon raqamlari, messenjerlar va ijtimoiy tarmoqlardagi hisoblar) tarqatmaslik.",
-                "userDriverObliges": "1. Foydalanuvchi (Haydovchi) majburiyatni oladi:",
-                "userDriverObliges1": "1) To'g'ri ma'lumotlarni taqdim etib, quyidagi hujjatlar nusxalarini taqdim etish orqali tekshiruv tartibidan o'tish: haydovchilik guvohnomasi (PINFL va haydovchilik kategoriyasi haqida ma'lumot bilan); transport vositasining texnik pasporti.",
-                "userDriverObliges2": "2) Yo'lovchilarni tashish xavfsizligini ta'minlash, O'zbekiston Respublikasi Yo'l harakati qoidalariga rioya qilish.",
-                "userDriverObliges3": "3) Avtomobilni texnik jihatdan yaxshi holatda saqlash.",
-                "userDriverObliges4": "4) Ilovada faqat sayohatlar haqida to'g'ri ma'lumot e'lon qilish (marshrut, sana, vaqt, narx, bo'sh o'rinlar soni).",
-                "userDriverObliges5": "5) Sayohat statusini o'z vaqtida yangilash («Sayohatni boshlash», «Sayohatni tugatish»).",
-                "userDriverObliges6": "6) Ushbu Taklifning 5-bo'limida nazarda tutilgan tartibda Xizmat komissiyasini o'z vaqtida to'lash.",
-                "userDriverObliges7": "7) Yo'lovchilar bilan barcha muloqotlarni faqat Ilovaning ichki chati orqali amalga oshirish.",
-                "userDriverObliges8": "8) Platformani chetlab o'tish maqsadida aloqa ma'lumotlarini (telefon raqamlari, messenjerlar va ijtimoiy tarmoqlardagi hisoblar) tarqatmaslik.",
-                "userDriverObliges9": "9) Transport vositasi egasining fuqarolik javobgarligini majburiy sug'urtalash bo'yicha amal qiluvchi polisiga ega bo'lish.",
-                "userRights": "1. Foydalanuvchi huquqiga ega:",
-                "userRights1": "1) Ushbu Taklifga muvofiq Platforma funksiyalaridan foydalanish.",
-                "userRights2": "2) Ijrochidan texnik qo'llab-quvvatlash olish.",
-                "userRights3": "3) Har qanday vaqtda Platformadan foydalanishni to'xtatish va o'z hisobini o'chirish."
+                "executorObliges": "4.1 Ijrochi majburiyatni oladi:",
+                "executorObliges1": "4.1.1 Platformaning ishlashini va Foydalanuvchilarning uning funksiyalariga 24/7 kirishini ta'minlash, profilaktika va ta'mirlash ishlari vaqtini istisno qilgan holda.",
+                "executorObliges2": "4.1.2 Foydalanuvchilarning shaxsiy ma'lumotlarining maxfiyligini Maxfiylik siyosatiga va O'zbekiston Respublikasi qonunchiligiga muvofiq ta'minlash.",
+                "executorObliges3": "4.1.3 Haydovchilar hujjatlarini avtomatlashtirilgan tizim orqali tekshirishni amalga oshirish.",
+                "executorObliges4": "4.1.4 Haydovchilar va Yo'lovchilar o'rtasida muloqot uchun ichki chatni taqdim etish.",
+                "executorObliges5": "4.1.5 Ushbu Taklif shartlaridagi o'zgarishlar haqida Foydalanuvchilarni Ilovada yangi tahrirni e'lon qilish orqali xabardor qilish.",
+                "executorRights": "4.2 Ijrochi huquqiga ega:",
+                "executorRights1": "4.2.1 Ushbu Taklif shartlarini bir tomonlama o'zgartirish, Foydalanuvchilarni Ilovada yangi tahrirni e'lon qilish orqali o'zgarishlar kuchga kirishidan kamida 7 (etti) kalendar kun oldin xabardor qilish.",
+                "executorRights2": "4.2.2 Foydalanuvchining ushbu Taklif shartlarini buzgan taqdirda, uning Platformaga kirishini vaqtinchalik to'xtatib qo'yish yoki to'xtatish.",
+                "executorRights3": "4.2.3 Ushbu Taklifning 6-bo'limida nazarda tutilgan holatlarda Foydalanuvchi hisobini oldindan ogohlantirmasdan bloklash.",
+                "executorRights4": "4.2.4 Xizmat komissiyasi miqdorini belgilash va o'zgartirish, Foydalanuvchilarni o'zgarishlar kuchga kirishidan kamida 14 (o'n to'rt) kalendar kun oldin xabardor qilish.",
+                "executorRights5": "4.2.5 Platformaning vaqtinchalik mavjud bo'lmasligiga olib kelishi mumkin bo'lgan profilaktika ishlarini olib borish, Foydalanuvchilarni Ilova orqali oldindan xabardor qilish.",
+                "userPassengerObliges": "4.3 Foydalanuvchi (Yo'lovchi) majburiyatni oladi:",
+                "userPassengerObliges1": "4.3.1 Ro'yxatdan o'tishda to'g'ri ma'lumotlarni taqdim etish (ism, familiya, telefon raqami).",
+                "userPassengerObliges2": "4.3.2 Sayohatlarni o'z vaqtida bron qilish va Haydovchini bronni bekor qilish haqida xabardor qilish.",
+                "userPassengerObliges3": "4.3.3 Sayohat vaqtida xulq-atvor qoidalariga rioya qilish va Haydovchi va boshqa Yo'lovchilarga hurmat bilan munosabatda bo'lish.",
+                "userPassengerObliges4": "4.3.4 Haydovchi bilan barcha muloqotlarni faqat Ilovaning ichki chati orqali amalga oshirish.",
+                "userPassengerObliges5": "4.3.5 Platformani chetlab o'tish maqsadida aloqa ma'lumotlarini (telefon raqamlari, messenjerlar va ijtimoiy tarmoqlardagi hisoblar) tarqatmaslik.",
+                "userDriverObliges": "4.4 Foydalanuvchi (Haydovchi) majburiyatni oladi:",
+                "userDriverObliges1": "4.4.1 To'g'ri ma'lumotlarni taqdim etib, quyidagi hujjatlar nusxalarini taqdim etish orqali tekshiruv tartibidan o'tish: haydovchilik guvohnomasi (PINFL va haydovchilik kategoriyasi haqida ma'lumot bilan); transport vositasining texnik pasporti.",
+                "userDriverObliges2": "4.4.2 Yo'lovchilarni tashish xavfsizligini ta'minlash, O'zbekiston Respublikasi Yo'l harakati qoidalariga rioya qilish.",
+                "userDriverObliges3": "4.4.3 Avtomobilni texnik jihatdan yaxshi holatda saqlash.",
+                "userDriverObliges4": "4.4.4 Ilovada faqat sayohatlar haqida to'g'ri ma'lumot e'lon qilish (marshrut, sana, vaqt, narx, bo'sh o'rinlar soni).",
+                "userDriverObliges5": "4.4.5 Sayohat statusini o'z vaqtida yangilash («Sayohatni boshlash», «Sayohatni tugatish»).",
+                "userDriverObliges6": "4.4.6 Ushbu Taklifning 5-bo'limida nazarda tutilgan tartibda Xizmat komissiyasini o'z vaqtida to'lash.",
+                "userDriverObliges7": "4.4.7 Yo'lovchilar bilan barcha muloqotlarni faqat Ilovaning ichki chati orqali amalga oshirish.",
+                "userDriverObliges8": "4.4.8 Platformani chetlab o'tish maqsadida aloqa ma'lumotlarini (telefon raqamlari, messenjerlar va ijtimoiy tarmoqlardagi hisoblar) tarqatmaslik.",
+                "userDriverObliges9": "4.4.9 Transport vositasi egasining fuqarolik javobgarligini majburiy sug'urtalash bo'yicha amal qiluvchi polisiga ega bo'lish.",
+                "userRights": "4.5 Foydalanuvchi huquqiga ega:",
+                "userRights1": "4.5.1 Ushbu Taklifga muvofiq Platforma funksiyalaridan foydalanish.",
+                "userRights2": "4.5.2 Ijrochidan texnik qo'llab-quvvatlash olish.",
+                "userRights3": "4.5.3 Har qanday vaqtda Platformadan foydalanishni to'xtatish va o'z hisobini o'chirish."
             },
             "pricing": {
                 "title": "5. XIZMATLAR NARXI VA HISOB-KITOB TARTIBI",
-                "1": "1. Ilovada ro'yxatdan o'tish va Yo'lovchi rolini olish bepuldir.",
-                "2": "2. Haydovchini tekshirish va sayohatlarni e'lon qilishga kirish olish bepuldir.",
-                "3": "3. Platforma ishining dastlabki bosqichida Ijrochi Haydovchilarga komissiyasiz davrni taqdim etadi, bu davrda Xizmat komissiyasi undirilmaydi. Komissiyasiz davrning davomiyligi Ijrochi tomonidan aniqlanadi va turli Haydovchilar uchun farq qilishi mumkin.",
-                "4": "4. Komissiyasiz davr tugagandan so'ng Ijrochi Xizmat komissiyasini joriy etadi, u har bir tugallangan sayohat uchun Haydovchidan undiriladi.",
-                "5": "5. Xizmat komissiyasi miqdori Ijrochi tomonidan aniqlanadi va Ilovada e'lon qilinadi. Ijrochi komissiya miqdorini belgilash yoki o'zgartirish haqida Haydovchilarni o'zgarishlar kuchga kirishidan kamida 14 (o'n to'rt) kalendar kun oldin xabardor qiladi.",
-                "6": "6. Xizmat komissiyasi «Sayohatni tugatish» tugmasini bosgandan keyin Haydovchining Ilovadagi balansidan avtomatik ravishda undiriladi.",
-                "7": "7. Haydovchi Xizmat komissiyasini to'lash uchun Ilovada ijobiy balansni saqlashga majbur. Balansni to'ldirish Ilovada mavjud usullar orqali amalga oshiriladi.",
-                "8": "8. Haydovchi balansida Xizmat komissiyasini to'lash uchun yetarli mablag' bo'lmagan taqdirda, qarz tizimda qayd etiladi. Haydovchi qarzni 3 (uch) kalendar kun ichida to'lashga majbur. Qarz to'langunga qadar Haydovchi yangi sayohatlarni e'lon qila olmaydi.",
-                "9": "9. Haydovchi va Yo'lovchi o'rtasidagi transport xizmatlari uchun hisob-kitoblar bevosita ular o'rtasida amalga oshiriladi va Platforma orqali o'tmaydi. Ijrochi tashish shartnomasining tarafi emas va Haydovchi va Yo'lovchi o'rtasidagi hisob-kitoblar uchun javobgar emas."
+                "1": "5.1 Ilovada ro'yxatdan o'tish va Yo'lovchi rolini olish bepuldir.",
+                "2": "5.2 Haydovchini tekshirish va sayohatlarni e'lon qilishga kirish olish bepuldir.",
+                "3": "5.3 Platforma ishining dastlabki bosqichida Ijrochi Haydovchilarga komissiyasiz davrni taqdim etadi, bu davrda Xizmat komissiyasi undirilmaydi. Komissiyasiz davrning davomiyligi Ijrochi tomonidan aniqlanadi va turli Haydovchilar uchun farq qilishi mumkin.",
+                "4": "5.4 Komissiyasiz davr tugagandan so'ng Ijrochi Xizmat komissiyasini joriy etadi, u har bir tugallangan sayohat uchun Haydovchidan undiriladi.",
+                "5": "5.5 Xizmat komissiyasi miqdori Ijrochi tomonidan aniqlanadi va Ilovada e'lon qilinadi. Ijrochi komissiya miqdorini belgilash yoki o'zgartirish haqida Haydovchilarni o'zgarishlar kuchga kirishidan kamida 14 (o'n to'rt) kalendar kun oldin xabardor qiladi.",
+                "6": "5.6 Xizmat komissiyasi «Sayohatni tugatish» tugmasini bosgandan keyin Haydovchining Ilovadagi balansidan avtomatik ravishda undiriladi.",
+                "7": "5.7 Haydovchi Xizmat komissiyasini to'lash uchun Ilovada ijobiy balansni saqlashga majbur. Balansni to'ldirish Ilovada mavjud usullar orqali amalga oshiriladi.",
+                "8": "5.8 Haydovchi balansida Xizmat komissiyasini to'lash uchun yetarli mablag' bo'lmagan taqdirda, qarz tizimda qayd etiladi. Haydovchi qarzni 3 (uch) kalendar kun ichida to'lashga majbur. Qarz to'langunga qadar Haydovchi yangi sayohatlarni e'lon qila olmaydi.",
+                "9": "5.9 Haydovchi va Yo'lovchi o'rtasidagi transport xizmatlari uchun hisob-kitoblar bevosita ular o'rtasida amalga oshiriladi va Platforma orqali o'tmaydi. Ijrochi tashish shartnomasining tarafi emas va Haydovchi va Yo'lovchi o'rtasidagi hisob-kitoblar uchun javobgar emas."
             },
             "liability": {
                 "title": "6. PLATFORMADAN FOYDALANISH QOIDALARI VA JAVOBGARLIK",
-                "1": "1. Foydalanuvchilarga QAT'IY TAQIQLANADI:",
-                "1_1": "1) Platformani chetlab o'tish maqsadida telefon raqamlari, messenjerlardagi (WhatsApp, Telegram va boshqalar) hisoblar yoki ijtimoiy tarmoqlarda sayohatlarni tashkil qilish uchun almashinuvi.",
-                "1_2": "2) Boshqa Foydalanuvchilar bilan Ilovaning ichki chati tashqarisida, Platforma orqali sayohatni tashkil qilishdan oldin yoki vaqtida muloqot qilish.",
-                "1_3": "3) Ishonchsiz, yolg'on yoki aldovga olib keluvchi ma'lumot e'lon qilish.",
-                "1_4": "4) Platformadan noqonuniy maqsadlarda yoki uchinchi shaxslar huquqlarini buzuvchi usullarda foydalanish.",
-                "1_5": "5) Ijrochi platformasiga, serverlariga yoki ma'lumotlar bazasiga ruxsatsiz kirishga urinish.",
-                "1_6": "6) Ijrochi yozma roziligisiz Platforma bilan o'zaro aloqa qilish uchun avtomatlashtirilgan vositalardan (botlar, skriptlar) foydalanish.",
-                "1_7": "7) Chat va profilga tahdidlar, haqoratlar, diskriminatsiya, nopok so'zlar, jinsiy yoki pornografik xarakterdagi materiallarni joylashtirish.",
-                "1_8": "8) O'z hisobiga kirishni uchinchi shaxslarga berish.",
-                "2": "2. Foydalanuvchi tomonidan ushbu Taklifning 6.1-bandi qoidalari buzilgan taqdirda, Ijrochi huquqiga ega:",
-                "2_1": "1) Foydalanuvchiga ogohlantirish yuborish.",
-                "2_2": "2) Hisobga kirishni 7 dan 30 kungacha vaqtinchalik to'xtatib qo'yish.",
-                "2_3": "3) Foydalanuvchi hisobini tiklash imkoniyatisiz bloklash.",
-                "3": "3. Javobgarlik chorasini qo'llash haqidagi qaror Ijrochi tomonidan mustaqil ravishda, buzilish xarakteri va og'irligini hisobga olgan holda qabul qilinadi.",
-                "4": "4. 6.1.1 va 6.1.2-bandlarida ko'rsatilgan qoidalarning (aloqa ma'lumotlarini almashish, Platforma tashqarisida muloqot) takroriy buzilishida hisob ogohlantirishsiz va tiklash huquqisiz bloklanadi.",
-                "5": "5. Haydovchi quyidagilar uchun to'liq javobgarlikni o'z zimmasiga oladi: Yo'lovchilarni tashish xavfsizligi; transport vositasining texnik holati; Yo'l harakati qoidalariga rioya qilish; transport vositasini boshqarish huquqi va transport vositasi uchun amal qiluvchi hujjatlar mavjudligi; sayohat vaqtida Yo'lovchilar va uchinchi shaxslar hayoti, salomatligi yoki mulkiga zarar yetkazish.",
-                "6": "6. Ijrochi quyidagilar uchun javobgar emas: Haydovchilar va Yo'lovchilarning harakatlari yoki harakatsizligi; Haydovchilar tomonidan ko'rsatiladigan tashish xizmatlari sifati; Foydalanuvchilarga bir-biri bilan o'zaro aloqada bo'lgan zarar; sayohat vaqtida Foydalanuvchilar mulkining yo'qolishi yoki shikastlanishi; Haydovchilar va Yo'lovchilar o'rtasidagi nizolar va bahslar; profilaktika ishlari yoki texnik nosozliklar tufayli Platformaning vaqtinchalik mavjud bo'lmasligi.",
-                "7": "7. Foydalanuvchi Platformadan foydalanish xavfini mustaqil baholaydi va boshqa Foydalanuvchilar bilan o'zaro aloqaning maqsadga muvofiqligi haqida qaror qabul qiladi."
+                "1": "6.1 Foydalanuvchilarga QAT'IY TAQIQLANADI:",
+                "1_1": "6.1.1 Platformani chetlab o'tish maqsadida telefon raqamlari, messenjerlardagi (WhatsApp, Telegram va boshqalar) hisoblar yoki ijtimoiy tarmoqlarda sayohatlarni tashkil qilish uchun almashinuvi.",
+                "1_2": "6.1.2 Boshqa Foydalanuvchilar bilan Ilovaning ichki chati tashqarisida, Platforma orqali sayohatni tashkil qilishdan oldin yoki vaqtida muloqot qilish.",
+                "1_3": "6.1.3 Ishonchsiz, yolg'on yoki aldovga olib keluvchi ma'lumot e'lon qilish.",
+                "1_4": "6.1.4 Platformadan noqonuniy maqsadlarda yoki uchinchi shaxslar huquqlarini buzuvchi usullarda foydalanish.",
+                "1_5": "6.1.5 Ijrochi platformasiga, serverlariga yoki ma'lumotlar bazasiga ruxsatsiz kirishga urinish.",
+                "1_6": "6.1.6 Ijrochi yozma roziligisiz Platforma bilan o'zaro aloqa qilish uchun avtomatlashtirilgan vositalardan (botlar, skriptlar) foydalanish.",
+                "1_7": "6.1.7 Chat va profilga tahdidlar, haqoratlar, diskriminatsiya, nopok so'zlar, jinsiy yoki pornografik xarakterdagi materiallarni joylashtirish.",
+                "1_8": "6.1.8 O'z hisobiga kirishni uchinchi shaxslarga berish.",
+                "2": "6.2 Foydalanuvchi tomonidan ushbu Taklifning 6.1-bandi qoidalari buzilgan taqdirda, Ijrochi huquqiga ega:",
+                "2_1": "6.2.1 Foydalanuvchiga ogohlantirish yuborish.",
+                "2_2": "6.2.2 Hisobga kirishni 7 dan 30 kungacha vaqtinchalik to'xtatib qo'yish.",
+                "2_3": "6.2.3 Foydalanuvchi hisobini tiklash imkoniyatisiz bloklash.",
+                "3": "6.3 Javobgarlik chorasini qo'llash haqidagi qaror Ijrochi tomonidan mustaqil ravishda, buzilish xarakteri va og'irligini hisobga olgan holda qabul qilinadi.",
+                "4": "6.4 6.1.1 va 6.1.2-bandlarida ko'rsatilgan qoidalarning (aloqa ma'lumotlarini almashish, Platforma tashqarisida muloqot) takroriy buzilishida hisob ogohlantirishsiz va tiklash huquqisiz bloklanadi.",
+                "5": "6.5 Haydovchi quyidagilar uchun to'liq javobgarlikni o'z zimmasiga oladi: Yo'lovchilarni tashish xavfsizligi; transport vositasining texnik holati; Yo'l harakati qoidalariga rioya qilish; transport vositasini boshqarish huquqi va transport vositasi uchun amal qiluvchi hujjatlar mavjudligi; sayohat vaqtida Yo'lovchilar va uchinchi shaxslar hayoti, salomatligi yoki mulkiga zarar yetkazish.",
+                "6": "6.6 Ijrochi quyidagilar uchun javobgar emas: Haydovchilar va Yo'lovchilarning harakatlari yoki harakatsizligi; Haydovchilar tomonidan ko'rsatiladigan tashish xizmatlari sifati; Foydalanuvchilarga bir-biri bilan o'zaro aloqada bo'lgan zarar; sayohat vaqtida Foydalanuvchilar mulkining yo'qolishi yoki shikastlanishi; Haydovchilar va Yo'lovchilar o'rtasidagi nizolar va bahslar; profilaktika ishlari yoki texnik nosozliklar tufayli Platformaning vaqtinchalik mavjud bo'lmasligi.",
+                "7": "6.7 Foydalanuvchi Platformadan foydalanish xavfini mustaqil baholaydi va boshqa Foydalanuvchilar bilan o'zaro aloqaning maqsadga muvofiqligi haqida qaror qabul qiladi."
             },
             "privacy": {
                 "title": "7. MAXFIYLIK VA SHAXSIY MA'LUMOTLAR",
-                "1": "1. Foydalanuvchilarning shaxsiy ma'lumotlarini qayta ishlash Yo'ldosh Platformasining Maxfiylik siyosatiga va O'zbekiston Respublikasi shaxsiy ma'lumotlar to'g'risidagi qonunchiligiga muvofiq amalga oshiriladi.",
-                "2": "2. Ilovada ro'yxatdan o'tish orqali Foydalanuvchi Platformaga va uning funksiyalariga kirish huquqini berish maqsadida o'z shaxsiy ma'lumotlarini qayta ishlashga rozilik beradi.",
-                "3": "3. Ijrochi Foydalanuvchilarning shaxsiy ma'lumotlarini O'zbekiston Respublikasi qonunchiligi yoki Maxfiylik siyosatida nazarda tutilgan holatlardan tashqari uchinchi shaxslarga uzatmaslikka majbur."
+                "1": "7.1 Foydalanuvchilarning shaxsiy ma'lumotlarini qayta ishlash Yo'ldosh Platformasining Maxfiylik siyosatiga va O'zbekiston Respublikasi shaxsiy ma'lumotlar to'g'risidagi qonunchiligiga muvofiq amalga oshiriladi.",
+                "2": "7.2 Ilovada ro'yxatdan o'tish orqali Foydalanuvchi Platformaga va uning funksiyalariga kirish huquqini berish maqsadida o'z shaxsiy ma'lumotlarini qayta ishlashga rozilik beradi.",
+                "3": "7.3 Ijrochi Foydalanuvchilarning shaxsiy ma'lumotlarini O'zbekiston Respublikasi qonunchiligi yoki Maxfiylik siyosatida nazarda tutilgan holatlardan tashqari uchinchi shaxslarga uzatmaslikka majbur."
             },
             "disputes": {
                 "title": "8. NIZOLARNI HAL QILISH",
-                "1": "1. Ushbu Shartnomadan yoki u bilan bog'liq bo'lgan barcha nizolar va kelishmovchiliklar Tomonlar o'rtasida muzokaralar yo'li bilan hal qilinadi.",
-                "2": "2. Nizoni muzokaralar yo'li bilan hal qilish imkoni bo'lmagan taqdirda, nizo O'zbekiston Respublikasi qonunchiligiga muvofiq sud tartibida ko'rib chiqiladi.",
-                "3": "3. Nizoni hal qilishning da'vo tartibi majburiydir. Da'voni ko'rib chiqish muddati uning olinishi vaqtidan boshlab 10 (o'n) ish kuni.",
-                "4": "4. Da'volar Ijrochiga Ilovadagi orqa aloqa funksiyasi orqali yoki ushbu Taklifning 10-bo'limida ko'rsatilgan elektron pochta orqali yuboriladi."
+                "1": "8.1 Ushbu Shartnomadan yoki u bilan bog'liq bo'lgan barcha nizolar va kelishmovchiliklar Tomonlar o'rtasida muzokaralar yo'li bilan hal qilinadi.",
+                "2": "8.2 Nizoni muzokaralar yo'li bilan hal qilish imkoni bo'lmagan taqdirda, nizo O'zbekiston Respublikasi qonunchiligiga muvofiq sud tartibida ko'rib chiqiladi.",
+                "3": "8.3 Nizoni hal qilishning da'vo tartibi majburiydir. Da'voni ko'rib chiqish muddati uning olinishi vaqtidan boshlab 10 (o'n) ish kuni.",
+                "4": "8.4 Da'volar Ijrochiga Ilovadagi orqa aloqa funksiyasi orqali yoki ushbu Taklifning 10-bo'limida ko'rsatilgan elektron pochta orqali yuboriladi."
             },
             "termination": {
                 "title": "9. SHARTNOMA AMAL QILISH MUDDATI VA BEKOR QILISH TARTIBI",
-                "1": "1. Shartnoma Foydalanuvchi tomonidan qabul qilingan vaqtdan kuchga kiradi va muddatsiz amal qiladi.",
-                "2": "2. Foydalanuvchi har qanday vaqtda Shartnomani bir tomonlama bekor qilish huquqiga ega, Ilovadagi o'z hisobini o'chirish orqali.",
-                "3": "3. Ijrochi Foydalanuvchi tomonidan ushbu Taklif shartlari buzilgan taqdirda Shartnomani bir tomonlama bekor qilish huquqiga ega, Foydalanuvchi hisobini bloklash orqali.",
-                "4": "4. Shartnomani bekor qilish Tomonlarni uning amal qilish davrida sodir etilgan buzilishlar uchun javobgarlikdan ozod qilmaydi.",
-                "5": "5. Shartnomani bekor qilganda Haydovchi mavjud Xizmat komissiyasi qarzini 5 (besh) kalendar kun ichida to'lashga majbur."
+                "1": "9.1 Shartnoma Foydalanuvchi tomonidan qabul qilingan vaqtdan kuchga kiradi va muddatsiz amal qiladi.",
+                "2": "9.2 Foydalanuvchi har qanday vaqtda Shartnomani bir tomonlama bekor qilish huquqiga ega, Ilovadagi o'z hisobini o'chirish orqali.",
+                "3": "9.3 Ijrochi Foydalanuvchi tomonidan ushbu Taklif shartlari buzilgan taqdirda Shartnomani bir tomonlama bekor qilish huquqiga ega, Foydalanuvchi hisobini bloklash orqali.",
+                "4": "9.4 Shartnomani bekor qilish Tomonlarni uning amal qilish davrida sodir etilgan buzilishlar uchun javobgarlikdan ozod qilmaydi.",
+                "5": "9.5 Shartnomani bekor qilganda Haydovchi mavjud Xizmat komissiyasi qarzini 5 (besh) kalendar kun ichida to'lashga majbur."
             },
             "final": {
                 "title": "10. YAKUNIY QOIDALAR",
-                "1": "1. Ushbu Taklif O'zbekiston Respublikasi qonunchiligiga muvofiq tuzilgan.",
-                "2": "2. Ushbu Taklifning biror qoidasi haqiqiy emas deb topilsa, bu qolgan qoidalarning haqiqiyligiga ta'sir qilmaydi.",
-                "3": "3. Ijrochi ushbu Taklifga o'zgartirishlar kiritish huquqini saqlab qoladi. Taklifning yangi tahriri Ilovada joylashtirilgan vaqtdan kuchga kiradi, agar yangi tahrirda boshqacha nazarda tutilmasa.",
-                "4": "4. Taklifning yangi tahriri kuchga kirgandan keyin Platformadan foydalanishni davom ettirish Foydalanuvchining kiritilgan o'zgartirishlarga roziligini anglatadi.",
-                "5": "5. Ushbu Shartnomani bajarish bilan bog'liq barcha bildirishnomalar Foydalanuvchilarga Ilova orqali (push-bildirishnomalar, Ilovadagi xabarlar) yoki ro'yxatdan o'tish vaqtida ko'rsatilgan telefon raqamiga yuboriladi.",
-                "6": "6. Ushbu Taklif matni Ilovada va www.yoldosh.uz manzilida mavjud."
+                "1": "10.1 Ushbu Taklif O'zbekiston Respublikasi qonunchiligiga muvofiq tuzilgan.",
+                "2": "10.2 Ushbu Taklifning biror qoidasi haqiqiy emas deb topilsa, bu qolgan qoidalarning haqiqiyligiga ta'sir qilmaydi.",
+                "3": "10.3 Ijrochi ushbu Taklifga o'zgartirishlar kiritish huquqini saqlab qoladi. Taklifning yangi tahriri Ilovada joylashtirilgan vaqtdan kuchga kiradi, agar yangi tahrirda boshqacha nazarda tutilmasa.",
+                "4": "10.4 Taklifning yangi tahriri kuchga kirgandan keyin Platformadan foydalanishni davom ettirish Foydalanuvchining kiritilgan o'zgartirishlarga roziligini anglatadi.",
+                "5": "10.5 Ushbu Shartnomani bajarish bilan bog'liq barcha bildirishnomalar Foydalanuvchilarga Ilova orqali (push-bildirishnomalar, Ilovadagi xabarlar) yoki ro'yxatdan o'tish vaqtida ko'rsatilgan telefon raqamiga yuboriladi.",
+                "6": "10.6 Ushbu Taklif matni Ilovada va www.yoldosh.uz manzilida mavjud."
             },
             "requisites": {
                 "title": "IJROCHI REKVIZITLARI",
@@ -432,5 +432,64 @@
             "Karakalpakstan": "Qoraqalpog‘iston Respublikasi",
             "Surkhandarya": "Surxondaryo viloyati"
         }
+    },
+    "metadata": {
+        "home": {
+            "title": "Yoldosh — O‘zbekiston bo‘ylab hamroh safarlar",
+            "description": "Shaharlararo safarlar uchun hamroh toping. Yoldosh — xavfsiz carpooling xizmati.",
+            "keywords": [
+                "hamroh safar",
+                "carpooling Uzbekistan"
+            ],
+            "og": {
+                "title": "Yoldosh — Hamroh safarlar",
+                "description": "Ishonchli haydovchilar bilan qulay safar.",
+                "image": "/og-home-uz.png"
+            }
+        },
+        "about": {
+            "title": "Biz haqimizda — Yoldosh",
+            "description": "Yoldosh platformasi va bizning maqsadimiz haqida.",
+            "keywords": [
+                "Yoldosh haqida",
+                "carpooling"
+            ],
+            "og": {
+                "title": "Yoldosh haqida",
+                "description": "O‘zbekiston bo‘yicha yetakchi carpooling xizmati.",
+                "image": "/og-about-uz.png"
+            }
+        },
+        "trips": {
+            "title": "Safarlarni qidirish — Yoldosh",
+            "description": "O‘zbekiston bo‘ylab safarlarni tez va oson toping.",
+            "keywords": [
+                "safar qidirish",
+                "hamroh safar"
+            ],
+            "og": {
+                "title": "Safarlarni qidirish",
+                "description": "Yuzlab yo‘nalishlar har kuni.",
+                "image": "/og-trips-uz.png"
+            }
+        },
+        "publicOffer": {
+            "title": "Ommaviy taklif — Yoldosh",
+            "description": "Yoldosh platformasidan foydalanish shartlari.",
+            "keywords": [
+                "ommaviy taklif",
+                "foydalanish shartlari"
+            ],
+            "og": {
+                "title": "Yoldosh ommaviy taklifi",
+                "description": "Yuridik ma’lumotlar.",
+                "image": "/og-offer-uz.png"
+            }
+        }
+    },
+    "manifest": {
+        "name": "Yoldosh — hamroh safarlar",
+        "shortName": "Yoldosh",
+        "description": "O‘zbekiston bo‘ylab xavfsiz safarlar"
     }
 }

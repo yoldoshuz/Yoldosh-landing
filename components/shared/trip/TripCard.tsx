@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
 import { CircleSmall, Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
 
 interface TripCardProps {
   trip: any;
@@ -133,9 +134,6 @@ export const TripCard = ({
                   {trip.driver.firstName[0]}
                 </AvatarFallback>
               </Avatar>
-              <div className="absolute -bottom-2 -right-2 z-10 bg-emerald-500 border border-white rounded-full px-1.5 py-0.5 flex items-center gap-1 text-xs text-muted-foreground">
-                <span className="text-white">{trip.driver.rating.toFixed(1)}</span>
-              </div>
             </div>
             <div className="flex flex-row items-center justify-between w-full">
               <div className="flex flex-col justify-center">
@@ -148,9 +146,11 @@ export const TripCard = ({
                   )}
                 </p>
               </div>
-              <div className="text-base font-bold">
-                {trip.price.final_price.toLocaleString()}
-                <span className="ml-1">UZS</span>
+              <div className="flex items-center justify-center gap-2 ">
+                <span className="flex items-center justify-center text-base font-bold">
+                  {trip.price.final_price.toLocaleString()}
+                  <p className="ml-1">UZS</p>
+                </span>
               </div>
             </div>
           </div>
@@ -191,9 +191,14 @@ export const TripCard = ({
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col justify-end items-end gap-4">
+        <div className="flex-1 flex flex-col justify-end items-end gap-4 mt-2">
           <div className="flex flex-col items-end gap-3 text-sm text-muted-foreground mt-0">
             <div className="flex items-center gap-2">
+              <div className="flex items-center rounded-full  gap-1 text-xs text-muted-foreground">
+                <Star className="fill-gray-500 size-4" />
+                <span className="">{trip.driver.rating.toFixed(1)}</span>
+              </div>
+              <Separator orientation="vertical" />
               <span>
                 {t("Details.Seats")}: {trip.seats_available}
               </span>

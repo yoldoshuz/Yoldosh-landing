@@ -206,132 +206,132 @@
             "intro": "LLC 'MILLIY YOLDOSH', hereinafter referred to as the 'Service Provider', represented by the director acting on the basis of the Charter, publishes this Public Offer for the conclusion of an Agreement for the provision of services for providing access to the Yo'ldosh platform.",
             "terms": {
                 "title": "1. TERMS AND DEFINITIONS",
-                "1": "1) Public Offer (hereinafter – “Offer”) – a public proposal by the Service Provider addressed to an indefinite number of persons to conclude an Agreement on the terms set forth in this Offer.",
-                "2": "2) Acceptance of the Offer – full and unconditional acceptance of the Offer by performing the actions specified in clause 3.2 of this Offer.",
-                "3": "3) User – an individual who has reached 18 years of age and has concluded an Agreement with the Service Provider on the terms contained in this Offer.",
-                "4": "4) Platform (Application) – the 'Yo'ldosh' software available for download and use on mobile devices, intended for organizing joint trips between Drivers and Passengers.",
-                "5": "5) Driver – a User who has passed verification and received the right to publish trip information in the Application.",
-                "6": "6) Passenger – a User using the Application to search for and book trips.",
-                "7": "7) Trip – a joint trip in the Driver's vehicle along the route published by the Driver in the Application.",
-                "8": "8) Verification – the procedure for checking the Driver's documents (driver's license, vehicle technical passport) by the Service Provider's automated system.",
-                "9": "9) Service Commission – the Service Provider's remuneration for providing access to the Platform, the amount of which is determined in accordance with section 5 of this Offer."
+                "1": "1.1 Public Offer (hereinafter – “Offer”) – a public proposal by the Service Provider addressed to an indefinite number of persons to conclude an Agreement on the terms set forth in this Offer.",
+                "2": "1.2 Acceptance of the Offer – full and unconditional acceptance of the Offer by performing the actions specified in clause 3.2 of this Offer.",
+                "3": "1.3 User – an individual who has reached 18 years of age and has concluded an Agreement with the Service Provider on the terms contained in this Offer.",
+                "4": "1.4 Platform (Application) – the 'Yo'ldosh' software available for download and use on mobile devices, intended for organizing joint trips between Drivers and Passengers.",
+                "5": "1.5 Driver – a User who has passed verification and received the right to publish trip information in the Application.",
+                "6": "1.6 Passenger – a User using the Application to search for and book trips.",
+                "7": "1.7 Trip – a joint trip in the Driver's vehicle along the route published by the Driver in the Application.",
+                "8": "1.8 Verification – the procedure for checking the Driver's documents (driver's license, vehicle technical passport) by the Service Provider's automated system.",
+                "9": "1.9 Service Commission – the Service Provider's remuneration for providing access to the Platform, the amount of which is determined in accordance with section 5 of this Offer."
             },
             "subject": {
                 "title": "2. SUBJECT OF THE AGREEMENT",
-                "1": "1) The Service Provider undertakes to provide the User with access to the Platform's functionality for organizing joint trips, and the User undertakes to use the Platform in accordance with the terms of this Offer and pay the Service Commission in the manner and on the terms provided for in this Offer.",
-                "2": "2) The Service Provider provides a technological platform that ensures interaction between Drivers and Passengers. The Service Provider is not a carrier and does not provide passenger transportation services.",
-                "3": "3) The agreement for the provision of transportation services is concluded directly between the Driver and the Passenger. The Driver is responsible for the proper fulfillment of obligations under the transportation."
+                "1": "2.1 The Service Provider undertakes to provide the User with access to the Platform's functionality for organizing joint trips, and the User undertakes to use the Platform in accordance with the terms of this Offer and pay the Service Commission in the manner and on the terms provided for in this Offer.",
+                "2": "2.2 The Service Provider provides a technological platform that ensures interaction between Drivers and Passengers. The Service Provider is not a carrier and does not provide passenger transportation services.",
+                "3": "2.3 The agreement for the provision of transportation services is concluded directly between the Driver and the Passenger. The Driver is responsible for the proper fulfillment of obligations under the transportation."
             },
             "acceptance": {
                 "title": "3. PROCEDURE FOR ACCEPTANCE OF THE OFFER",
-                "1": "1) Acceptance of this Offer means full and unconditional acceptance of all terms of the Offer without any exceptions or limitations.",
-                "2": "2) Acceptance of this Offer is the User's performance of the following actions:",
-                "2_1": "1. Entering the phone number in the Application;",
-                "2_2": "2. Confirming the phone number by entering a one-time code (OTP code) received via SMS message.",
-                "3": "3) The moment of acceptance of the Offer and conclusion of the Agreement is considered the moment of successful entry of the OTP code and gaining access to the Application's functionality.",
-                "4": "4) By accepting this Offer, the User confirms that:",
-                "4_1": "1. has reached 18 years of age;",
-                "4_2": "2. is fully familiar with the terms of this Offer;",
-                "4_3": "3. fully understands the subject of the Agreement;",
-                "4_4": "4. fully understands the significance and consequences of their actions in relation to the conclusion and execution of the Agreement."
+                "1": "3.1 Acceptance of this Offer means full and unconditional acceptance of all terms of the Offer without any exceptions or limitations.",
+                "2": "3.2 Acceptance of this Offer is the User's performance of the following actions:",
+                "2_1": "3.2.1 Entering the phone number in the Application;",
+                "2_2": "3.2.2 Confirming the phone number by entering a one-time code (OTP code) received via SMS message.",
+                "3": "3.3 The moment of acceptance of the Offer and conclusion of the Agreement is considered the moment of successful entry of the OTP code and gaining access to the Application's functionality.",
+                "4": "3.4 By accepting this Offer, the User confirms that:",
+                "4_1": "3.4.1 has reached 18 years of age;",
+                "4_2": "3.4.2 is fully familiar with the terms of this Offer;",
+                "4_3": "3.4.3 fully understands the subject of the Agreement;",
+                "4_4": "3.4.4 fully understands the significance and consequences of their actions in relation to the conclusion and execution of the Agreement."
             },
             "rights": {
                 "title": "4. RIGHTS AND OBLIGATIONS OF THE PARTIES",
-                "executorObliges": "* The Service Provider undertakes to:",
-                "executorObliges1": "- Ensure the operation of the Platform and access of Users to its functionality 24/7, except for the time of preventive and repair work.",
-                "executorObliges2": "- Ensure the confidentiality of Users' personal data in accordance with the Privacy Policy and the legislation of the Republic of Uzbekistan.",
-                "executorObliges3": "- Carry out verification of Drivers' documents through an automated system.",
-                "executorObliges4": "- Provide a built-in chat for communication between Drivers and Passengers.",
-                "executorObliges5": "- Notify Users of changes to the terms of this Offer by publishing a new edition in the Application.",
-                "executorRights": "1. The Service Provider has the right to:",
-                "executorRights1": "1) Change the terms of this Offer unilaterally, notifying Users by publishing a new edition in the Application at least 7 (seven) calendar days before the changes come into force.",
-                "executorRights2": "2) Suspend or terminate the User's access to the Platform in case of violation of the terms of this Offer.",
-                "executorRights3": "3) Block the User's account without prior notice in cases provided for in section 6 of this Offer.",
-                "executorRights4": "4) Set and change the amount of the Service Commission, notifying Users at least 14 (fourteen) calendar days before the introduction of changes.",
-                "executorRights5": "5) Carry out preventive work that may lead to temporary unavailability of the Platform, having previously notified Users through the Application.",
-                "userPassengerObliges": "1. The User (Passenger) undertakes to:",
-                "userPassengerObliges1": "1) Provide reliable information during registration (name, surname, phone number).",
-                "userPassengerObliges2": "2) Timely book trips and notify the Driver of booking cancellation.",
-                "userPassengerObliges3": "3) Comply with the rules of conduct during the trip and treat the Driver and other Passengers with respect.",
-                "userPassengerObliges4": "4) Carry out all communications with the Driver exclusively through the built-in chat of the Application.",
-                "userPassengerObliges5": "5) Not distribute contact details (phone numbers, accounts in messengers and social networks) for the purpose of bypassing the Platform.",
-                "userDriverObliges": "1. The User (Driver) undertakes to:",
-                "userDriverObliges1": "1) Pass the verification procedure by providing reliable information and copies of the following documents: driver's license (with information about PINFL and license category); vehicle technical passport.",
-                "userDriverObliges2": "2) Ensure the safety of Passenger transportation, comply with the Road Traffic Rules of the Republic of Uzbekistan.",
-                "userDriverObliges3": "3) Keep the vehicle in technically sound condition.",
-                "userDriverObliges4": "4) Publish in the Application only reliable information about trips (route, date, time, price, number of available seats).",
-                "userDriverObliges5": "5) Timely update the trip status ('Start trip', 'Complete trip').",
-                "userDriverObliges6": "6) Timely pay the Service Commission in the manner provided for in section 5 of this Offer.",
-                "userDriverObliges7": "7) Carry out all communications with Passengers exclusively through the built-in chat of the Application.",
-                "userDriverObliges8": "8) Not distribute contact details (phone numbers, accounts in messengers and social networks) for the purpose of bypassing the Platform.",
-                "userDriverObliges9": "9) Have a valid policy of compulsory civil liability insurance of the vehicle owner.",
-                "userRights": "1. The User has the right to:",
-                "userRights1": "1) Use the Platform's functionality in accordance with this Offer.",
-                "userRights2": "2) Receive technical support from the Service Provider.",
-                "userRights3": "3) At any time stop using the Platform and delete their account."
+                "executorObliges": "4.1 The Service Provider undertakes to:",
+                "executorObliges1": "4.1.1 Ensure the operation of the Platform and access of Users to its functionality 24/7, except for the time of preventive and repair work.",
+                "executorObliges2": "4.1.2 Ensure the confidentiality of Users' personal data in accordance with the Privacy Policy and the legislation of the Republic of Uzbekistan.",
+                "executorObliges3": "4.1.3 Carry out verification of Drivers' documents through an automated system.",
+                "executorObliges4": "4.1.4 Provide a built-in chat for communication between Drivers and Passengers.",
+                "executorObliges5": "4.1.5 Notify Users of changes to the terms of this Offer by publishing a new edition in the Application.",
+                "executorRights": "4.2 The Service Provider has the right to:",
+                "executorRights1": "4.2.1 Change the terms of this Offer unilaterally, notifying Users by publishing a new edition in the Application at least 7 (seven) calendar days before the changes come into force.",
+                "executorRights2": "4.2.2 Suspend or terminate the User's access to the Platform in case of violation of the terms of this Offer.",
+                "executorRights3": "4.2.3 Block the User's account without prior notice in cases provided for in section 6 of this Offer.",
+                "executorRights4": "4.2.4 Set and change the amount of the Service Commission, notifying Users at least 14 (fourteen) calendar days before the introduction of changes.",
+                "executorRights5": "4.2.5 Carry out preventive work that may lead to temporary unavailability of the Platform, having previously notified Users through the Application.",
+                "userPassengerObliges": "4.3 The User (Passenger) undertakes to:",
+                "userPassengerObliges1": "4.3.1 Provide reliable information during registration (name, surname, phone number).",
+                "userPassengerObliges2": "4.3.2 Timely book trips and notify the Driver of booking cancellation.",
+                "userPassengerObliges3": "4.3.3 Comply with the rules of conduct during the trip and treat the Driver and other Passengers with respect.",
+                "userPassengerObliges4": "4.3.4 Carry out all communications with the Driver exclusively through the built-in chat of the Application.",
+                "userPassengerObliges5": "4.3.5 Not distribute contact details (phone numbers, accounts in messengers and social networks) for the purpose of bypassing the Platform.",
+                "userDriverObliges": "4.4 The User (Driver) undertakes to:",
+                "userDriverObliges1": "4.4.1 Pass the verification procedure by providing reliable information and copies of the following documents: driver's license (with information about PINFL and license category); vehicle technical passport.",
+                "userDriverObliges2": "4.4.2 Ensure the safety of Passenger transportation, comply with the Road Traffic Rules of the Republic of Uzbekistan.",
+                "userDriverObliges3": "4.4.3 Keep the vehicle in technically sound condition.",
+                "userDriverObliges4": "4.4.4 Publish in the Application only reliable information about trips (route, date, time, price, number of available seats).",
+                "userDriverObliges5": "4.4.5 Timely update the trip status ('Start trip', 'Complete trip').",
+                "userDriverObliges6": "4.4.6 Timely pay the Service Commission in the manner provided for in section 5 of this Offer.",
+                "userDriverObliges7": "4.4.7 Carry out all communications with Passengers exclusively through the built-in chat of the Application.",
+                "userDriverObliges8": "4.4.8 Not distribute contact details (phone numbers, accounts in messengers and social networks) for the purpose of bypassing the Platform.",
+                "userDriverObliges9": "4.4.9 Have a valid policy of compulsory civil liability insurance of the vehicle owner.",
+                "userRights": "4.5 The User has the right to:",
+                "userRights1": "4.5.1 Use the Platform's functionality in accordance with this Offer.",
+                "userRights2": "4.5.2 Receive technical support from the Service Provider.",
+                "userRights3": "4.5.3 At any time stop using the Platform and delete their account."
             },
             "pricing": {
                 "title": "5. COST OF SERVICES AND PAYMENT PROCEDURE",
-                "1": "1. Registration in the Application and obtaining the Passenger role is free of charge.",
-                "2": "2. Driver verification and obtaining access to publishing trips is free of charge.",
-                "3": "3. At the initial stage of the Platform's operation, the Service Provider provides Drivers with a commission-free period, during which the Service Commission is not charged. The duration of the commission-free period is determined by the Service Provider and may vary for different Drivers.",
-                "4": "4. Upon expiration of the commission-free period, the Service Provider introduces the Service Commission, which is charged from the Driver for each completed trip.",
-                "5": "5. The amount of the Service Commission is determined by the Service Provider and published in the Application. The Service Provider notifies Drivers of the establishment or change in the amount of the Commission at least 14 (fourteen) calendar days before the changes come into force.",
-                "6": "6. The Service Commission is automatically debited from the Driver's balance in the Application after pressing the 'Complete trip' button.",
-                "7": "7. The Driver is obliged to maintain a positive balance in the Application to pay the Service Commission. Replenishment of the balance is carried out by methods available in the Application.",
-                "8": "8. In case of insufficient funds on the Driver's balance to pay the Service Commission, the debt is recorded in the system. The Driver is obliged to repay the debt within 3 (three) calendar days. Until the debt is repaid, the Driver cannot publish new trips.",
-                "9": "9. Settlements between the Driver and the Passenger for transportation services are made directly between them and do not go through the Platform. The Service Provider is not a party to the transportation agreement and is not responsible for settlements between the Driver and the Passenger."
+                "1": "5.1 Registration in the Application and obtaining the Passenger role is free of charge.",
+                "2": "5.2 Driver verification and obtaining access to publishing trips is free of charge.",
+                "3": "5.3 At the initial stage of the Platform's operation, the Service Provider provides Drivers with a commission-free period, during which the Service Commission is not charged. The duration of the commission-free period is determined by the Service Provider and may vary for different Drivers.",
+                "4": "5.4 Upon expiration of the commission-free period, the Service Provider introduces the Service Commission, which is charged from the Driver for each completed trip.",
+                "5": "5.5 The amount of the Service Commission is determined by the Service Provider and published in the Application. The Service Provider notifies Drivers of the establishment or change in the amount of the Commission at least 14 (fourteen) calendar days before the changes come into force.",
+                "6": "5.6 The Service Commission is automatically debited from the Driver's balance in the Application after pressing the 'Complete trip' button.",
+                "7": "5.7 The Driver is obliged to maintain a positive balance in the Application to pay the Service Commission. Replenishment of the balance is carried out by methods available in the Application.",
+                "8": "5.8 In case of insufficient funds on the Driver's balance to pay the Service Commission, the debt is recorded in the system. The Driver is obliged to repay the debt within 3 (three) calendar days. Until the debt is repaid, the Driver cannot publish new trips.",
+                "9": "5.9 Settlements between the Driver and the Passenger for transportation services are made directly between them and do not go through the Platform. The Service Provider is not a party to the transportation agreement and is not responsible for settlements between the Driver and the Passenger."
             },
             "liability": {
                 "title": "6. RULES FOR USING THE PLATFORM AND LIABILITY",
-                "1": "1. Users are STRICTLY PROHIBITED from:",
-                "1_1": "1) Exchanging phone numbers, accounts in messengers (WhatsApp, Telegram, etc.) or social networks for the purpose of organizing trips bypassing the Platform.",
-                "1_2": "2) Communicating with other Users outside the built-in chat of the Application before or during the organization of a trip through the Platform.",
-                "1_3": "3) Publishing unreliable, false or misleading information.",
-                "1_4": "4) Using the Platform for illegal purposes or in ways that violate the rights of third parties.",
-                "1_5": "5) Attempting to gain unauthorized access to the Platform, servers or databases of the Service Provider.",
-                "1_6": "6) Using automated means (bots, scripts) to interact with the Platform without the written consent of the Service Provider.",
-                "1_7": "7) Placing in the chat and profile information containing threats, insults, discrimination, obscene language, materials of a sexual or pornographic nature.",
-                "1_8": "8) Transferring access to their account to third parties.",
-                "2": "2. In case of violation by the User of the provisions of clause 6.1 of this Offer, the Service Provider has the right to:",
-                "2_1": "1) Send a warning to the User.",
-                "2_2": "2) Temporarily suspend access to the account for a period of 7 to 30 days.",
-                "2_3": "3) Block the User's account without the possibility of recovery.",
-                "3": "3. The decision on the application of the liability measure is made by the Service Provider independently, taking into account the nature and severity of the violation.",
-                "4": "4. In case of repeated violations of the rules specified in clauses 6.1.1 and 6.1.2 (exchange of contacts, communication outside the Platform), the account is blocked without warning and the right to recovery.",
-                "5": "5. The Driver bears full responsibility for: the safety of Passenger transportation; the technical condition of the vehicle; compliance with Traffic Rules; the presence of valid documents for the right to drive the vehicle and for the vehicle itself; causing harm to the life, health or property of Passengers and third parties during the trip.",
-                "6": "6. The Service Provider is not responsible for: actions or inaction of Drivers and Passengers; the quality of transportation services provided by Drivers; damage caused to Users as a result of interaction with each other; loss or damage to Users' property during the trip; conflicts and disputes between Drivers and Passengers; temporary unavailability of the Platform due to preventive work or technical failures.",
-                "7": "7. The User independently assesses the risks of using the Platform and makes a decision on the feasibility of interacting with other Users."
+                "1": "6.1 Users are STRICTLY PROHIBITED from:",
+                "1_1": "6.1.1 Exchanging phone numbers, accounts in messengers (WhatsApp, Telegram, etc.) or social networks for the purpose of organizing trips bypassing the Platform.",
+                "1_2": "6.1.2 Communicating with other Users outside the built-in chat of the Application before or during the organization of a trip through the Platform.",
+                "1_3": "6.1.3 Publishing unreliable, false or misleading information.",
+                "1_4": "6.1.4 Using the Platform for illegal purposes or in ways that violate the rights of third parties.",
+                "1_5": "6.1.5 Attempting to gain unauthorized access to the Platform, servers or databases of the Service Provider.",
+                "1_6": "6.1.6 Using automated means (bots, scripts) to interact with the Platform without the written consent of the Service Provider.",
+                "1_7": "6.1.7 Placing in the chat and profile information containing threats, insults, discrimination, obscene language, materials of a sexual or pornographic nature.",
+                "1_8": "6.1.8 Transferring access to their account to third parties.",
+                "2": "6.2 In case of violation by the User of the provisions of clause 6.1 of this Offer, the Service Provider has the right to:",
+                "2_1": "6.2.1 Send a warning to the User.",
+                "2_2": "6.2.2 Temporarily suspend access to the account for a period of 7 to 30 days.",
+                "2_3": "6.2.3 Block the User's account without the possibility of recovery.",
+                "3": "6.3 The decision on the application of the liability measure is made by the Service Provider independently, taking into account the nature and severity of the violation.",
+                "4": "6.4 In case of repeated violations of the rules specified in clauses 6.1.1 and 6.1.2 (exchange of contacts, communication outside the Platform), the account is blocked without warning and the right to recovery.",
+                "5": "6.5 The Driver bears full responsibility for: the safety of Passenger transportation; the technical condition of the vehicle; compliance with Traffic Rules; the presence of valid documents for the right to drive the vehicle and for the vehicle itself; causing harm to the life, health or property of Passengers and third parties during the trip.",
+                "6": "6.6 The Service Provider is not responsible for: actions or inaction of Drivers and Passengers; the quality of transportation services provided by Drivers; damage caused to Users as a result of interaction with each other; loss or damage to Users' property during the trip; conflicts and disputes between Drivers and Passengers; temporary unavailability of the Platform due to preventive work or technical failures.",
+                "7": "6.7 The User independently assesses the risks of using the Platform and makes a decision on the feasibility of interacting with other Users."
             },
             "privacy": {
                 "title": "7. CONFIDENTIALITY AND PERSONAL DATA",
-                "1": "1. Processing of Users' personal data is carried out in accordance with the Privacy Policy of the Yo'ldosh Platform and the legislation of the Republic of Uzbekistan on personal data.",
-                "2": "2. By registering in the Application, the User consents to the processing of their personal data for the purpose of providing access to the Platform and its functionality.",
-                "3": "3. The Service Provider undertakes not to transfer Users' personal data to third parties, except in cases provided for by the legislation of the Republic of Uzbekistan or the Privacy Policy."
+                "1": "7.1 Processing of Users' personal data is carried out in accordance with the Privacy Policy of the Yo'ldosh Platform and the legislation of the Republic of Uzbekistan on personal data.",
+                "2": "7.2 By registering in the Application, the User consents to the processing of their personal data for the purpose of providing access to the Platform and its functionality.",
+                "3": "7.3 The Service Provider undertakes not to transfer Users' personal data to third parties, except in cases provided for by the legislation of the Republic of Uzbekistan or the Privacy Policy."
             },
             "disputes": {
                 "title": "8. DISPUTE RESOLUTION",
-                "1": "1. All disputes and disagreements arising from this Agreement or in connection with it are resolved through negotiations between the Parties.",
-                "2": "2. If it is impossible to resolve the dispute through negotiations, the dispute is subject to consideration in court in accordance with the legislation of the Republic of Uzbekistan.",
-                "3": "3. The pre-trial procedure for resolving the dispute is mandatory. The period for considering the claim is 10 (ten) working days from the date of its receipt.",
-                "4": "4. Claims are sent to the Service Provider through the feedback functionality in the Application or by email specified in section 10 of this Offer."
+                "1": "8.1 All disputes and disagreements arising from this Agreement or in connection with it are resolved through negotiations between the Parties.",
+                "2": "8.2 If it is impossible to resolve the dispute through negotiations, the dispute is subject to consideration in court in accordance with the legislation of the Republic of Uzbekistan.",
+                "3": "8.3 The pre-trial procedure for resolving the dispute is mandatory. The period for considering the claim is 10 (ten) working days from the date of its receipt.",
+                "4": "8.4 Claims are sent to the Service Provider through the feedback functionality in the Application or by email specified in section 10 of this Offer."
             },
             "termination": {
                 "title": "9. TERM OF THE AGREEMENT AND TERMINATION PROCEDURE",
-                "1": "1. The Agreement comes into force from the moment of its acceptance by the User and is valid indefinitely.",
-                "2": "2. The User has the right to terminate the Agreement unilaterally at any time by deleting their account in the Application.",
-                "3": "3. The Service Provider has the right to terminate the Agreement unilaterally in case of violation by the User of the terms of this Offer by blocking the User's account.",
-                "4": "4. Termination of the Agreement does not release the Parties from liability for violations committed during its validity.",
-                "5": "5. Upon termination of the Agreement, the Driver is obliged to repay the existing debt on the Service Commission within 5 (five) calendar days."
+                "1": "9.1 The Agreement comes into force from the moment of its acceptance by the User and is valid indefinitely.",
+                "2": "9.2 The User has the right to terminate the Agreement unilaterally at any time by deleting their account in the Application.",
+                "3": "9.3 The Service Provider has the right to terminate the Agreement unilaterally in case of violation by the User of the terms of this Offer by blocking the User's account.",
+                "4": "9.4 Termination of the Agreement does not release the Parties from liability for violations committed during its validity.",
+                "5": "9.5 Upon termination of the Agreement, the Driver is obliged to repay the existing debt on the Service Commission within 5 (five) calendar days."
             },
             "final": {
                 "title": "10. FINAL PROVISIONS",
-                "1": "1. This Offer is drawn up in accordance with the legislation of the Republic of Uzbekistan.",
-                "2": "2. If any provision of this Offer is declared invalid, this does not entail the invalidity of the remaining provisions.",
-                "3": "3. The Service Provider reserves the right to make changes to this Offer. The new edition of the Offer comes into force from the moment of its placement in the Application, unless otherwise provided by the new edition of the Offer.",
-                "4": "4. Continued use of the Platform after the new edition of the Offer comes into force means the User's consent to the changes made.",
-                "5": "5. All notifications related to the execution of this Agreement are sent to Users through the Application (push notifications, messages in the Application) or to the phone number specified during registration.",
-                "6": "6. The text of this Offer is available in the Application and at: www.yoldosh.uz"
+                "1": "10.1 This Offer is drawn up in accordance with the legislation of the Republic of Uzbekistan.",
+                "2": "10.2 If any provision of this Offer is declared invalid, this does not entail the invalidity of the remaining provisions.",
+                "3": "10.3 The Service Provider reserves the right to make changes to this Offer. The new edition of the Offer comes into force from the moment of its placement in the Application, unless otherwise provided by the new edition of the Offer.",
+                "4": "10.4 Continued use of the Platform after the new edition of the Offer comes into force means the User's consent to the changes made.",
+                "5": "10.5 All notifications related to the execution of this Agreement are sent to Users through the Application (push notifications, messages in the Application) or to the phone number specified during registration.",
+                "6": "10.6 The text of this Offer is available in the Application and at: www.yoldosh.uz"
             },
             "requisites": {
                 "title": "SERVICE PROVIDER DETAILS",
@@ -432,5 +432,66 @@
             "Karakalpakstan": "Karakalpakstan",
             "Surkhandarya": "Surkhandarya"
         }
+    },
+    "metadata": {
+        "home": {
+            "title": "Yoldosh — Carpooling Across Uzbekistan",
+            "description": "Find travel companions for intercity trips across Uzbekistan. Safe and affordable carpooling.",
+            "keywords": [
+                "carpooling Uzbekistan",
+                "ridesharing",
+                "intercity travel"
+            ],
+            "og": {
+                "title": "Yoldosh — Carpooling Service",
+                "description": "Travel smarter across Uzbekistan with trusted drivers.",
+                "image": "/og-home-en.png"
+            }
+        },
+        "about": {
+            "title": "About Us — Yoldosh",
+            "description": "Learn more about Yoldosh and our mission to make travel safe and affordable.",
+            "keywords": [
+                "about Yoldosh",
+                "carpooling service"
+            ],
+            "og": {
+                "title": "About Yoldosh",
+                "description": "Leading carpooling platform in Uzbekistan.",
+                "image": "/og-about-en.png"
+            }
+        },
+        "trips": {
+            "title": "Find Trips — Yoldosh",
+            "description": "Search for intercity trips and travel companions across Uzbekistan.",
+            "keywords": [
+                "find trips",
+                "carpooling",
+                "ridesharing"
+            ],
+            "og": {
+                "title": "Find Trips with Yoldosh",
+                "description": "Thousands of routes across Uzbekistan.",
+                "image": "/og-trips-en.png"
+            }
+        },
+        "publicOffer": {
+            "title": "Public Offer — Yoldosh",
+            "description": "Official terms and conditions of using the Yoldosh platform.",
+            "keywords": [
+                "public offer",
+                "terms of service"
+            ],
+            "og": {
+                "title": "Yoldosh Public Offer",
+                "description": "Legal terms of service.",
+                "image": "/og-offer-en.png"
+            }
+        }
+    },
+    "manifest": {
+        "name": "Yoldosh — Carpooling",
+        "shortName": "Yoldosh",
+        "description": "Safe and affordable carpooling across Uzbekistan"
     }
 }

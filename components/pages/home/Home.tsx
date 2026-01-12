@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
 
-import { NumberTicker } from "@/components/ui/magic/number-ticker";
+import { Suspense } from "react";
 import { SearchTrips } from "../../shared/trip/SearchTrips";
-import { Headset, MapPin, User } from "lucide-react";
+import { Headset, Loader2, MapPin, User } from "lucide-react";
+import { NumberTicker } from "@/components/ui/magic/number-ticker";
 
 export const Home = () => {
   const t = useTranslations("Pages.Home");
@@ -32,7 +33,13 @@ export const Home = () => {
           </div>
         </div>
 
-        <SearchTrips />
+        <Suspense fallback={
+          <div className="flex items-center justify-center min-h-screen">
+            <Loader2 className="size-8 animate-spin text-emerald-500" />
+          </div>
+        }>
+          <SearchTrips />
+        </Suspense>
 
         <div className="flex items-center justify-center flex-wrap mt-16 gap-18">
           <div className="flex flex-col items-center">

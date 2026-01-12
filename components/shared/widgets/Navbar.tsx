@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+import { Link, usePathname } from '@/app/i18n/routing';
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
 import { useNavIndicator } from "@/hooks/useNavIndicator";
 
 import { navLinks } from "@/constants";
@@ -86,7 +85,7 @@ export const Navbar = () => {
               return (
                 <Link
                   key={link.id}
-                  href={link.href}
+                  href={link.href as any}
                   ref={(el) => {
                     linkRefs.current[link.href] = el;
                   }}

@@ -167,4 +167,24 @@
   .link {
     @apply text-emerald-500 hover:text-emerald-600 transition ease-in-out duration-200 cursor-pointer;
   }
+
+  .section-padding {
+    @apply mb-10 space-y-4;
+  }
+
+  .section-title {
+    @apply text-center text-xl font-bold mb-4;
+  }
+
+  .section-text {
+    @apply text-[15px];
+  }
+
+  .section-subtitle {
+    @apply font-medium;
+  }
+
+  .section-subsection {
+    @apply pl-5 space-y-2
+  }
 }

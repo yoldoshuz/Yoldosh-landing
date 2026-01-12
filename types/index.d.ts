@@ -147,3 +147,13 @@ export interface PopularTripsResponse {
     trips: Trip[];
   };
 }
+
+export type PageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+
+export type LayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};

@@ -40,7 +40,7 @@ export const SearchPage = () => {
 
   // 2. Флаг: Был ли произведен поиск?
   const hasSearchQuery =
-  !!searchParams.get("from_name") && !!searchParams.get("to_name");
+    !!searchParams.get("from_name") && !!searchParams.get("to_name");
 
   // 3. Запросы
   // Запрашиваем поиск ТОЛЬКО если есть параметры поиска

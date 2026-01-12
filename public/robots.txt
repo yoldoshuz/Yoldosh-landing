@@ -1,25 +1,2 @@
-# robots.txt for yoldosh.uz
-
-User-agent: *
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-
-# Sitemap
-Sitemap: https://www.yoldosh.uz/sitemap.xml
-Sitemap: https://www.yoldosh.uz/sitemap-trips.xml
-
-
-# Rules for Yandex
-User-agent: Yandex
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-Crawl-delay: 1
-
-
-# Rules for Google
-User-agent: Googlebot
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
+User-Agent: *
+Allow: *

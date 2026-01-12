@@ -1,9 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from '@/app/i18n/routing';
 import { useNavIndicator } from "@/hooks/useNavIndicator";
 
 import { motion } from "framer-motion";
@@ -92,7 +91,7 @@ export const Menu = () => {
                         return (
                             <Link
                                 key={link.id}
-                                href={link.href}
+                                href={link.href as any}
                                 ref={(el) => {
                                     linkRefs.current[link.href] = el;
                                 }}

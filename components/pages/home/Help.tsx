@@ -1,6 +1,7 @@
-import React from "react";
+import React, { use } from "react";
+import { Locale, useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { AlertTriangle, Eye, Lock, Shield } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 export const Help = () => {
   const t = useTranslations("Pages.Help");

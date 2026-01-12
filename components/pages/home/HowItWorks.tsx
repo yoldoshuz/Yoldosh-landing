@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from '@/app/i18n/routing';
 import { useTranslations } from "next-intl";
 
 export const HowItWorks = () => {
@@ -13,21 +13,21 @@ export const HowItWorks = () => {
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">
             <h3 className="font-bold text-2xl">{t("Features.1.Title")}</h3>
             <p className="text-muted-foreground">{t("Features.1.Description")}</p>
-            <Link href="" className="link">
+            <Link href="/" className="link">
               {t("Features.Button")}
             </Link>
           </div>
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">
             <h3 className="font-bold text-2xl">{t("Features.2.Title")}</h3>
             <p className="text-muted-foreground">{t("Features.2.Description")}</p>
-            <Link href="" className="link">
+            <Link href="/" className="link">
               {t("Features.Button")}
             </Link>
           </div>
           <div className="flex flex-col items-start gap-4 max-w-[350px] p-8 card">
             <h3 className="font-bold text-2xl">{t("Features.3.Title")}</h3>
             <p className="text-muted-foreground">{t("Features.3.Description")}</p>
-            <Link href="" className="link">
+            <Link href="/" className="link">
               {t("Features.Button")}
             </Link>
           </div>

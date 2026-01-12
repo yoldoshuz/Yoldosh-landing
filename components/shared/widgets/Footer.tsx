@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 
+import { Link } from '@/app/i18n/routing';
 import { useTranslations } from "next-intl";
 
 import { Separator } from "@/components/ui/separator";
@@ -24,12 +24,12 @@ export const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-black">{t("Product.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
-                  <Link href="https://flowbite.com/" className="hover:underline">
+                  <Link href="/" className="hover:underline">
                     {t("Product.1")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://tailwindcss.com/" className="hover:underline">
+                  <Link href="/" className="hover:underline">
                     {t("Product.2")}
                   </Link>
                 </li>
@@ -44,7 +44,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://discord.gg/4eeurUVvTy" className="hover:underline">
+                  <Link href="/" className="hover:underline">
                     {t("Company.3")}
                   </Link>
                 </li>
@@ -54,12 +54,12 @@ export const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-black">{t("Support.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
-                  <Link href="#" className="hover:underline">
+                  <Link href="/" className="hover:underline">
                     {t("Support.2")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:underline">
+                  <Link href="/" className="hover:underline">
                     {t("Support.3")}
                   </Link>
                 </li>

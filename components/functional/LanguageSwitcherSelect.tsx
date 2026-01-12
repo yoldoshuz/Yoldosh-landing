@@ -1,11 +1,11 @@
 "use client";
 
 import { useTransition } from "react";
+import { useParams } from "next/navigation";
+import { Globe } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Globe } from "lucide-react";
-import { Locale } from "@/app/i18n/config";
-import { setUserLocale } from "@/app/i18n/locale";
+import { usePathname, useRouter, type Locale } from "@/app/i18n/routing";
 import {
   Select,
   SelectContent,
@@ -21,13 +21,20 @@ interface LanguageSwitcherSelectProps {
 }
 
 export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcherSelectProps) => {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const params = useParams();
 
-  const onChange = async (value: string) => {
-    const locale = value as Locale;
-    startTransition(async () => {
-      localStorage.setItem("locale", locale);
-      await setUserLocale(locale);
+  const onChange = (nextLocale: string) => {
+    startTransition(() => {
+      router.replace(
+        // @ts-expect-error -- TypeScript will validate that only known `params`
+        // are used in combination with a given `pathname`. Since the two will
+        // always match for the current route, we can skip runtime checks.
+        { pathname, params },
+        { locale: nextLocale as Locale }
+      );
     });
   };
 
@@ -43,11 +50,7 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
         <Globe />
         <SelectValue />
       </SelectTrigger>
-      <SelectContent
-        className={cn(
-          "w-auto font-medium z-999",
-        )}
-      >
+      <SelectContent className={cn("w-auto font-medium z-999")}>
         <SelectGroup>
           {items.map((item) => (
             <SelectItem key={item.value} value={item.value}>

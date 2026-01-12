@@ -32,7 +32,6 @@ const nextConfig: NextConfig = {
 
   /* ===== Experimental ===== */
   experimental: {
-    optimizeCss: true,
     scrollRestoration: true,
     optimizePackageImports: [
       'lucide-react',
@@ -100,60 +99,12 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: '/fonts/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
-    ];
-  },
-
-  /* ===== SEO rewrites ===== */
-  async rewrites() {
-    return [
-      { source: "/sitemap.xml", destination: "/api/sitemap" },
-      { source: "/robots.txt", destination: "/api/robots" },
     ];
   },
 
   /* ===== Redirects ===== */
   async redirects() {
     return [
-      {
-        source: "/search",
-        destination: "/trips",
-        permanent: true,
-      },
-      {
-        source: "/about",
-        destination: "/about-us",
-        permanent: true,
-      },
       {
         source: '/:path*',
         has: [
@@ -171,7 +122,6 @@ const nextConfig: NextConfig = {
   // Webpack оптимизации
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      // Tree shaking для production
       config.optimization = {
         ...config.optimization,
         usedExports: true,
@@ -195,6 +145,6 @@ const nextConfig: NextConfig = {
 };
 
 /* ===== next-intl plugin ===== */
-const withNextIntl = createNextIntlPlugin("./app/i18n/requests.ts");
+const withNextIntl = createNextIntlPlugin('./app/i18n/request.ts');
 
 export default withNextIntl(nextConfig);
