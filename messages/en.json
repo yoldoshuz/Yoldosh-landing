@@ -9,60 +9,72 @@
             "Drivers": "Drivers"
         },
         "About": {
-            "title": "Yo'ldosh: A new era of intercity travel in Uzbekistan",
-            "intro": "In 2026, a service will appear on the Uzbekistan market that will change the approach to intercity trips. Yo'ldosh is not just an app for finding ride companions — it’s a solution to a problem faced daily by thousands of Uzbekistanis.",
-            "problem": {
-                "title": "The problem we solve",
-                "content": "If you’ve ever looked for a ride from Tashkent to Samarkand, Bukhara, or any other city in Uzbekistan, you know how it works: endless Telegram groups, posting your phone number, a flood of calls from dozens of drivers, long price and condition negotiations. This process wastes time, nerves, and doesn’t guarantee you’ll find exactly what you need.",
-                "solution": "That’s why we created Yo'ldosh — a centralized platform where drivers and passengers find each other quickly, conveniently, and safely, without revealing personal contacts or endless negotiations."
-            },
-            "howItWorks": {
-                "title": "How Yo'ldosh works",
-                "intro": "We made the process as simple and clear as possible. All you need to get started is to register with your phone number. After that, you get access to the platform’s main features.",
-                "passengers": {
-                    "title": "For passengers:",
-                    "content": "Specify the main parameters of your trip: where you’re going from and to, departure date, and number of passengers. The app instantly shows a list of available rides from drivers going your route. You can choose a car, review the conditions, check the price, and book a seat — all without a single call. A special feature of our service is the ability to plan trips in advance."
+            "heroTitle": "About Us",
+            "missionQuote": "We make intercity travel accessible, safe, and human-centered for everyone in Uzbekistan",
+            "missionAuthor": "— Yo'ldosh Mission",
+            "introText": "Yo'ldosh is Uzbekistan’s first intercity ridesharing platform that connects drivers and passengers traveling along the same route. We use modern technologies to fill empty seats in cars and make intercity trips more affordable and comfortable. Yo'ldosh builds a trusted community of travel companions where every trip is not only about saving money, but also about meeting interesting people and reaching your destination safely.",
+            "originTitle": "How It All Started",
+            "originText1": "In 2024, our founder faced a common problem in Uzbekistan: he urgently needed to travel from Tashkent to Andijan, but all train tickets were sold out and taxis were too expensive. He started searching for travel companions through Telegram groups and quickly realized how inconvenient and unsafe this process was.",
+            "originText2": "Sharing a personal phone number in public chats, dozens of calls from strangers, hours of price negotiations, and no information about who would be driving — all of this raised an important question: why, in the age of modern technology, are we still searching for travel companions like it’s the 1990s?",
+            "originHighlight": "That’s when the idea was born: to create a centralized platform where people could safely find travel companions without exposing personal contact details, with transparent pricing and a rating system. This is how Yo'ldosh was created.",
+            "originText3": "In Uzbek, the word \"yo'ldosh\" means \"travel companion\" — someone who shares the road with you. This word perfectly reflects our philosophy: not just transportation from point A to point B, but a shared journey where people support one another.",
+            "originText4": "Over the next year, we studied international ridesharing platforms such as BlaBlaCar and adapted the best practices to the realities of the Uzbek market. We developed an automated driver verification system using OCR, built a secure AI-moderated chat to protect user contacts, and created a fair dispute resolution system.",
+            "originText5": "Today, Yo'ldosh is ready to change the culture of intercity transportation in Uzbekistan. We are building not just a service, but a movement — a community of people who choose convenience, safety, and mutual support over chaos and uncertainty.",
+            "statsTitle": "Our Numbers",
+            "stats": [
+                {
+                    "title": "15+",
+                    "description": "Cities across Uzbekistan in our network"
                 },
-                "drivers": {
-                    "title": "For drivers:",
-                    "registration": "To start carrying passengers through Yo'ldosh, you need to go through a simple registration. Any citizen of Uzbekistan over 18 with a personal car can become a driver. During registration, you’ll need to upload photos of your driver’s license and vehicle technical passport.",
-                    "benefits": "The main advantage for drivers — no more wasting time searching for passengers and endless calls. You publish a trip with your price, and passengers find you themselves. You set the price, not the passengers."
+                {
+                    "title": "50%",
+                    "description": "Savings compared to taxis"
+                },
+                {
+                    "title": "24/7",
+                    "description": "User support"
+                },
+                {
+                    "title": "300km+",
+                    "description": "Average trip distance"
+                },
+                {
+                    "title": "100%",
+                    "description": "All drivers are verified"
+                },
+                {
+                    "title": "12 months",
+                    "description": "Advance booking available"
                 }
-            },
-            "guarantee": {
-                "title": "Trip guarantee: 100% prepayment system",
-                "content": "One of Yo'ldosh’s key features is full prepayment. We understand how critical it is for drivers to be confident: if a passenger books a seat, they will definitely go.",
-                "benefit": "Thanks to prepayment, we act as a guarantor that the trip will happen. By booking a seat, the passenger confirms their serious intention, and the driver gains confidence in tomorrow."
-            },
-            "payment": {
-                "title": "Convenient payment methods",
-                "methods": "Yo'ldosh supports both card payments and cash.",
-                "cash": "However, cash handling is organized in a special way: money is not transferred directly to the driver. Instead, users can top up the app’s internal wallet through our partners’ terminals — Paynet and Oson."
-            },
-            "loyalty": {
-                "title": "Loyalty program",
-                "content": "We value our users and plan to launch a loyalty program. For inviting new drivers or passengers, you will receive bonus points to your in-app wallet.",
-                "campaigns": "Special campaigns with additional rewards will also be regularly held for drivers — stay updated in the app."
-            },
-            "geography": {
-                "title": "Geography and availability",
-                "content": "Yo'ldosh launches across all of Uzbekistan at once. Whether you’re traveling from Tashkent to Fergana, Nukus to Samarkand, or Andijan to Navoi — our service will help you find companions on any route.",
-                "apps": "The app will be available for both iOS and Android users, ensuring maximum audience coverage."
-            },
-            "mission": {
-                "title": "Our mission",
-                "content": "We are creating an environment where drivers and passengers can find like-minded travel companions with minimal time and money costs. Every day, thousands of people in Uzbekistan travel between cities — to work, to relatives, on business.",
-                "guarantees": "The guarantees we provide are important to us. Yo'ldosh is not just an intermediary — it’s a platform that takes responsibility for every trip being predictable, safe, and convenient."
-            },
-            "future": {
-                "title": "Future plans",
-                "content": "Yo'ldosh is just beginning its journey, but we’re already looking ahead. Plans include integration of additional services, such as parcel delivery through our platform. We are constantly improving functionality and listening to user feedback."
-            },
-            "notTaxi": {
-                "title": "Yo'ldosh is not a taxi — it’s ridesharing",
-                "content": "It’s important to understand the difference: we are not an instant taxi service. Yo'ldosh is a platform for planning intercity trips where drivers and passengers team up for shared journeys. It’s a new travel culture based on mutual trust, convenience, and reasonable savings."
-            },
-            "conclusion": "Welcome to the new era of intercity travel. Welcome to Yo'ldosh."
+            ],
+            "impactTitle": "Want to see how we are changing Uzbekistan?",
+            "impactText": "Yo'ldosh doesn’t just save users money — we are transforming the culture of intercity travel, making it safer, more convenient, and more human. Here’s how we do it:",
+            "cards": [
+                {
+                    "title": "Safety First",
+                    "description": "Every driver goes through automatic document verification using OCR technology. The system checks personal ID numbers, license categories, vehicle VIN, and data consistency. Only after successful verification can a driver publish trips."
+                },
+                {
+                    "title": "Building a Trusted Community",
+                    "description": "Carpooling creates unique conditions where people who might never have met connect and travel together. Our rating and review system helps build trust between strangers and fosters a culture of mutual support on Uzbekistan’s roads."
+                },
+                {
+                    "title": "Making Travel Affordable",
+                    "description": "By sharing fuel costs among passengers, we reduce intercity travel expenses by an average of 50% compared to taxis. This makes travel accessible for students, young families, and anyone who values smart savings."
+                },
+                {
+                    "title": "Protecting Privacy",
+                    "description": "Our built-in AI-moderated chat strictly prohibits sharing contact details. Your phone number remains private, and all communication happens within a secure platform."
+                },
+                {
+                    "title": "Fairness for Everyone",
+                    "description": "Our independent dispute resolution system ensures fair handling of conflicts. Every user has the right to appeal and receive an objective review."
+                },
+                {
+                    "title": "Innovation for Convenience",
+                    "description": "We continuously introduce new technologies — from automated document recognition to smart matching algorithms. Upcoming plans include card payments, trip insurance, referral programs, and expansion across Central Asia."
+                }
+            ]
         },
         "HowItWorks": {
             "Title": "How it works",
@@ -158,7 +170,7 @@
                 "Seats": "Available seats",
                 "Driver": "Driver",
                 "Vehicle": "Vehicle",
-                "AdditionalInformation": "Additional information",
+                "AdditionalInformation": "Driver commentary",
                 "Price": "Price per person",
                 "Book": "Book",
                 "Distance": "Distance",
@@ -415,22 +427,6 @@
                 "4": "Public offer"
             },
             "Rights": "All Rights Reserved"
-        },
-        "Regions": {
-            "Andijan": "Andijan",
-            "Bukhara": "Bukhara",
-            "Jizzakh": "Jizzakh",
-            "Qashqadarya": "Qashqadarya",
-            "Navoiy": "Navoiy",
-            "Namangan": "Namangan",
-            "Samarkand": "Samarkand",
-            "Sirdarya": "Sirdarya",
-            "TashkentCity": "Tashkent city",
-            "Tashkent": "Tashkent",
-            "Fergana": "Fergana",
-            "Khorezm": "Khorezm",
-            "Karakalpakstan": "Karakalpakstan",
-            "Surkhandarya": "Surkhandarya"
         }
     },
     "metadata": {

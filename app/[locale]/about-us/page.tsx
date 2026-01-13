@@ -2,9 +2,10 @@ import Script from "next/script";
 
 import { PageProps } from "@/types";
 import { getPageJsonLd } from "@/app/lib/jsonld";
-import { generatePageMetadata } from "@/app/lib/seo";
-import { AboutUs } from "@/components/pages/about-us/AboutUs";
 import { getTranslations } from "next-intl/server";
+import { generatePageMetadata } from "@/app/lib/seo";
+import { Footer } from "@/components/shared/widgets/Footer";
+import { AboutUs } from "@/components/pages/about-us/AboutUs";
 
 export async function generateMetadata({ params }: PageProps) {
   return generatePageMetadata((await params).locale, 'about', '/about-us');
@@ -39,8 +40,9 @@ const Page = async ({ params }: PageProps) => {
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
-      
+
       <AboutUs />
+      <Footer />
     </>
   );
 };

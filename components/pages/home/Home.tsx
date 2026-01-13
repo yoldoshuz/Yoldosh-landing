@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 import { SearchTrips } from "../../shared/trip/SearchTrips";
 import { Headset, Loader2, MapPin, User } from "lucide-react";
-import { NumberTicker } from "@/components/ui/magic/number-ticker";
 
 export const Home = () => {
   const t = useTranslations("Pages.Home");
@@ -45,20 +44,14 @@ export const Home = () => {
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-1">
               <MapPin className="size-8 text-4xl font-bold text-emerald-500" strokeWidth={3} />
-              <NumberTicker
-                value={100}
-                className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-emerald-500"
-              />
+              <p className="text-4xl font-bold text-emerald-500" aria-label="Поездки">100+</p>
             </div>
             <h2 className="text-sm text-muted-foreground">{t("Trips")}</h2>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-1">
               <User className="size-8 text-4xl font-bold text-emerald-500" strokeWidth={3} />
-              <NumberTicker
-                value={100}
-                className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-emerald-500"
-              />
+              <p className="text-4xl font-bold text-emerald-500" aria-label="Водители">100+</p>
             </div>
             <h2 className="text-sm text-muted-foreground">{t("Drivers")}</h2>
           </div>

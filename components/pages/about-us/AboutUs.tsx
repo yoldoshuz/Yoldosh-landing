@@ -1,77 +1,99 @@
+import { cardsItem, ourStats } from "@/constants";
 import { useTranslations } from "next-intl";
 
 export const AboutUs = () => {
   const t = useTranslations("Pages.About");
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <article className="prose prose-lg dark:prose-invert max-w-none">
-        <h2 className="text-4xl font-bold mb-6">{t("title")}</h2>
+    <section>
+      {/* HERO */}
+      <div className="flex items-center justify-center h-56 w-full bg-emerald-500">
+        <h3 className="font-bold text-3xl sm:text-5xl text-white">
+          {t("heroTitle")}
+        </h3>
+      </div>
 
-        <p className="text-lg text-muted-foreground mb-8">{t("intro")}</p>
+      {/* MISSION */}
+      <section className="about-section">
+        <h3 className="text-xl sm:text-2xl md:text-4xl font-normal sm:font-thin italic leading-8 sm:leading-10 md:leading-14 text-center">
+          “{t("missionQuote")}”
+        </h3>
+        <p className="my-6 text-center text-lg sm:text-2xl text-muted-foreground font-light">
+          {t("missionAuthor")}
+        </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("problem.title")}</h2>
-          <p className="mb-4">{t("problem.content")}</p>
-          <p>{t("problem.solution")}</p>
-        </section>
+        <p className="mt-14 about-paragraph">
+          {t("introText")}
+        </p>
+      </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("howItWorks.title")}</h2>
-          <p className="mb-4">{t("howItWorks.intro")}</p>
+      {/* ORIGIN */}
+      <section className="bg-neutral-100 w-full">
+        <article className="about-section">
+          <h3 className="about-title">{t("originTitle")}</h3>
 
-          <h3 className="text-xl font-semibold mb-3">{t("howItWorks.passengers.title")}</h3>
-          <p className="mb-4">{t("howItWorks.passengers.content")}</p>
+          <p className="mt-14 about-paragraph">{t("originText1")}</p>
+          <p className="mt-10 about-paragraph">{t("originText2")}</p>
 
-          <h3 className="text-xl font-semibold mb-3">{t("howItWorks.drivers.title")}</h3>
-          <p className="mb-4">{t("howItWorks.drivers.registration")}</p>
-          <p>{t("howItWorks.drivers.benefits")}</p>
-        </section>
+          <div className="mt-10 w-full py-12 px-6 sm:px-12 text-start sm:text-center text-white text-xl font-semibold bg-emerald-500 rounded-3xl">
+            {t("originHighlight")}
+          </div>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("guarantee.title")}</h2>
-          <p className="mb-4">{t("guarantee.content")}</p>
-          <p>{t("guarantee.benefit")}</p>
-        </section>
+          <p className="mt-14 about-paragraph">{t("originText3")}</p>
+          <p className="mt-10 about-paragraph">{t("originText4")}</p>
+          <p className="mt-10 about-paragraph">{t("originText5")}</p>
+        </article>
+      </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("payment.title")}</h2>
-          <p className="mb-4">{t("payment.methods")}</p>
-          <p>{t("payment.cash")}</p>
-        </section>
+      {/* STATS */}
+      <section className="bg-white w-full">
+        <article className="about-section">
+          <h3 className="about-title">{t("statsTitle")}</h3>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("loyalty.title")}</h2>
-          <p className="mb-4">{t("loyalty.content")}</p>
-          <p>{t("loyalty.campaigns")}</p>
-        </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-24 mt-14">
+            {ourStats().map((stat, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-start gap-4"
+              >
+                <h4 className="text-5xl font-bold text-emerald-500">
+                  {stat.title}
+                </h4>
+                <p className="text-center text-lg text-neutral-600">
+                  {stat.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("geography.title")}</h2>
-          <p className="mb-4">{t("geography.content")}</p>
-          <p>{t("geography.apps")}</p>
-        </section>
+      {/* IMPACT */}
+      <section className="bg-neutral-100 w-full">
+        <article className="about-section">
+          <h3 className="about-title">{t("impactTitle")}</h3>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("mission.title")}</h2>
-          <p className="mb-4">{t("mission.content")}</p>
-          <p>{t("mission.guarantees")}</p>
-        </section>
+          <p className="mt-10 text-xl text-neutral-700">
+            {t("impactText")}
+          </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("future.title")}</h2>
-          <p>{t("future.content")}</p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">{t("notTaxi.title")}</h2>
-          <p>{t("notTaxi.content")}</p>
-        </section>
-
-        <div className="mt-12 p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
-          <p className="text-lg font-medium">{t("conclusion")}</p>
-        </div>
-      </article>
-    </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-14">
+            {cardsItem().map((card, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-start gap-4 bg-white p-8 rounded-3xl"
+              >
+                <h4 className="text-2xl font-bold text-neutral-800">
+                  {card.title}
+                </h4>
+                <p className="text-start text-lg text-neutral-600">
+                  {card.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+    </section>
   );
 };

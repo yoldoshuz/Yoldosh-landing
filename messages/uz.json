@@ -9,60 +9,72 @@
             "Support": "Qo‘llab-quvvatlash"
         },
         "About": {
-            "title": "Yo‘ldosh: O‘zbekistonda shaharlararo sayohatlarning yangi davri",
-            "intro": "2026-yilda O‘zbekiston bozorida shaharlararo sayohatlarga yondashuvni butunlay o‘zgartiradigan xizmat paydo bo‘ladi. Yo‘ldosh — bu oddiy yo‘lovchi qidiruv ilovasi emas, bu minglab o‘zbekistonliklar har kuni duch keladigan muammoning yechimidir.",
-            "problem": {
-                "title": "Biz hal qilayotgan muammo",
-                "content": "Agar siz hech bo‘lmaganda bir marta Toshkentdan Samarqandga, Buxoroga yoki boshqa shaharga sayohat izlagan bo‘lsangiz, bu jarayon qanday kechishini bilasiz: cheksiz Telegram guruhlar, telefon raqamingizni joylash, o‘nlab haydovchilardan qo‘ng‘iroqlar, narx va shartlar bo‘yicha uzoq muzokaralar. Bu jarayon vaqt va asablarni oladi hamda kerakli narsani topishni kafolatlamaydi.",
-                "solution": "Aynan shuning uchun biz Yo‘ldosh ni yaratdik — haydovchilar va yo‘lovchilar tez, qulay va xavfsiz uchrashadigan markazlashgan platforma, shaxsiy kontaktlarni ochmasdan va cheksiz muzokara qilmasdan."
-            },
-            "howItWorks": {
-                "title": "Yo‘ldosh qanday ishlaydi?",
-                "intro": "Biz jarayonni iloji boricha sodda va tushunarli qildik. Ishni boshlash uchun telefon raqamiga ro‘yxatdan o‘tish kifoya. Shundan so‘ng platformaning barcha asosiy funksiyalari ochiladi.",
-                "passengers": {
-                    "title": "Yo‘lovchilar uchun:",
-                    "content": "Sayohatingizning asosiy parametrlarini ko‘rsating: qayerdan va qayerga, jo‘nash sanasi va yo‘lovchilar soni. Ilova sizning marshrutingiz bo‘yicha ketayotgan haydovchilarning mavjud sayohatlari ro‘yxatini bir zumda ko‘rsatadi. Mashinani tanlang, shartlarni ko‘ring, narxni baholang va joyni bron qiling — bularning barchasi bitta qo‘ng‘iroqsiz. Xizmatimizning o‘ziga xos xususiyati — sayohatlarni oldindan rejalashtirish imkoniyati."
+            "heroTitle": "Biz haqimizda",
+            "missionQuote": "Biz Oʻzbekistondagi har bir inson uchun shaharlararo sayohatlarni qulay, xavfsiz va insonparvar qilamiz",
+            "missionAuthor": "— Yo'ldosh missiyasi",
+            "introText": "Yo'ldosh — Oʻzbekistondagi birinchi shaharlararo ridesharing platformasi bo‘lib, bir yo‘nalishda harakatlanayotgan haydovchilar va yo‘lovchilarni birlashtiradi. Biz avtomobillardagi bo‘sh o‘rinlarni to‘ldirish va shaharlararo safarlarni yanada arzon va qulay qilish uchun zamonaviy texnologiyalardan foydalanamiz. Yo'ldosh ishonchli hamrohlar jamiyatini yaratadi, bu yerda har bir safar nafaqat tejamkorlik, balki yangi odamlar bilan tanishish va manzilga xavfsiz yetib borish imkonidir.",
+            "originTitle": "Hammasi qanday boshlangan",
+            "originText1": "2024-yilda asoschimiz Oʻzbekistonga xos muammoga duch keldi: Toshkentdan Andijonga zudlik bilan yetib borish kerak edi, ammo poyezd chiptalari tugagan, taksi esa juda qimmat edi.",
+            "originText2": "Ochiq chatlarda shaxsiy telefon raqamini joylash, begonalardan o‘nlab qo‘ng‘iroqlar, narx bo‘yicha uzoq muzokaralar va haydovchi haqida hech qanday ma’lumot yo‘qligi muhim savolni tug‘dirdi: nega biz hali ham 90-yillardagidek yo‘ldosh qidiryapmiz?",
+            "originHighlight": "Shu payt g‘oya tug‘ildi: shaxsiy kontaktlarni oshkor qilmasdan, aniq narxlar va reyting tizimi bilan xavfsiz yo‘ldosh topish mumkin bo‘lgan yagona platforma yaratish. Shunday qilib Yo'ldosh paydo bo‘ldi.",
+            "originText3": "O‘zbek tilida “yo'ldosh” so‘zi “hamroh” degan ma’noni anglatadi. Bu bizning falsafamizni to‘liq ifodalaydi: A nuqtadan B nuqtaga oddiy yetib borish emas, balki birgalikdagi safar.",
+            "originText4": "Keyingi yil davomida biz BlaBlaCar kabi xalqaro platformalar tajribasini o‘rganib, eng yaxshi yechimlarni O‘zbekiston bozoriga moslashtirdik.",
+            "originText5": "Bugun Yo'ldosh O‘zbekistonda shaharlararo transport madaniyatini o‘zgartirishga tayyor. Biz shunchaki servis emas, balki harakat yaratmoqdamiz.",
+            "statsTitle": "Bizning raqamlar",
+            "stats": [
+                {
+                    "title": "15+",
+                    "description": "Tarmog‘imizdagi shaharlar"
                 },
-                "drivers": {
-                    "title": "Haydovchilar uchun:",
-                    "registration": "Yo‘ldosh orqali yo‘lovchi tashishni boshlash uchun oddiy ro‘yxatdan o‘tish kerak. 18 yoshdan oshgan, shaxsiy avtomobili bo‘lgan har qanday O‘zbekiston fuqarosi haydovchi bo‘la oladi. Ro‘yxatdan o‘tishda haydovchilik guvohnomasi va transport vositasining texnik pasporti fotosuratlarini yuklash talab etiladi.",
-                    "benefits": "Haydovchilar uchun asosiy afzallik — endi yo‘lovchi izlash va cheksiz qo‘ng‘iroqlarga vaqt sarflash shart emas. Siz o‘z narxingizni ko‘rsatib sayohat e’lon qilasiz, yo‘lovchilar esa sizni o‘zi topadi. Narxni aynan siz belgilaysiz, yo‘lovchilar emas."
+                {
+                    "title": "50%",
+                    "description": "Taksiga nisbatan tejamkorlik"
+                },
+                {
+                    "title": "24/7",
+                    "description": "Foydalanuvchilarni qo‘llab-quvvatlash"
+                },
+                {
+                    "title": "300km+",
+                    "description": "O‘rtacha safar masofasi"
+                },
+                {
+                    "title": "100%",
+                    "description": "Barcha haydovchilar tasdiqlangan"
+                },
+                {
+                    "title": "12 oy",
+                    "description": "Oldindan bron qilish imkoniyati"
                 }
-            },
-            "guarantee": {
-                "title": "Sayohat kafolati: 100% oldindan to‘lov tizimi",
-                "content": "Yo‘ldoshning asosiy xususiyatlaridan biri — to‘liq oldindan to‘lov tizimi. Biz haydovchilar uchun muhim ekanini tushunamiz: agar yo‘lovchi joy bron qilgan bo‘lsa, u albatta ketadi.",
-                "benefit": "Oldindan to‘lov tufayli biz sayohatning amalga oshishiga kafolat beramiz. Joyni bron qilgan yo‘lovchi jiddiy niyatini tasdiqlaydi, haydovchi esa ertangi kunga ishonch hosil qiladi."
-            },
-            "payment": {
-                "title": "Qulay to‘lov usullari",
-                "methods": "Yo‘ldosh bank kartalari orqali naqd pulsiz to‘lovni ham, naqd pulni ham qo‘llab-quvvatlaydi.",
-                "cash": "Biroq naqd pul bilan ishlash alohida tartibda tashkil etilgan: pul to‘g‘ridan-to‘g‘ri haydovchiga berilmaydi. Buning o‘rniga foydalanuvchi Paynet va Oson terminallari orqali ilova ichidagi hamyonni to‘ldirishi mumkin."
-            },
-            "loyalty": {
-                "title": "Sadoqat dasturi",
-                "content": "Biz foydalanuvchilarimizni qadrlaymiz va sadoqat dasturini ishga tushirmoqchi bo‘lib turibmiz. Yangi haydovchi yoki yo‘lovchini taklif qilganingiz uchun ilova ichidagi hamyonga bonus ballari olasiz.",
-                "campaigns": "Shuningdek, haydovchilar uchun qo‘shimcha mukofotlar bilan maxsus aksiyalar muntazam o‘tkazib turiladi — ilovadagi yangiliklarni kuzatib boring."
-            },
-            "geography": {
-                "title": "Geografiya va qamrov",
-                "content": "Yo‘ldosh birdaniga butun O‘zbekiston bo‘ylab ishga tushadi. Toshkentdan Farg‘onaga, Nukusdan Samarqandga yoki Andijondan Navoiyga ketayotganingizdan qat’i nazar — xizmatimiz har qanday marshrutda hamroh topishga yordam beradi.",
-                "apps": "Ilova iOS hamda Android foydalanuvchilari uchun mavjud bo‘lib, maksimal auditoriyani qamrab oladi."
-            },
-            "mission": {
-                "title": "Bizning missiyamiz",
-                "content": "Biz haydovchilar va yo‘lovchilar o‘zlariga mos hamrohlarni minimal vaqt va pul sarfi bilan topa oladigan muhit yaratmoqdamiz. Har kuni O‘zbekistonda minglab odamlar shaharlar orasida ishga, qarindoshlarga, ish bilan yuradi.",
-                "guarantees": "Biz foydalanuvchilarimizga beradigan kafolatlar muhim. Yo‘ldosh — bu oddiy vositachi emas, har bir sayohat oldindan aytib bo‘ladigan, xavfsiz va qulay bo‘lishi uchun javobgarlikni o‘z zimmasiga oladigan platformadir."
-            },
-            "future": {
-                "title": "Kelajak rejalari",
-                "content": "Yo‘ldosh endi yo‘l boshlamoqda, lekin biz allaqachon kelajakka qaramoqdamiz. Rejalarda qo‘shimcha xizmatlarni integratsiya qilish, shu jumladan platformamiz orqali posilka jo‘natish ham bor. Biz funksionallikni doimiy ravishda yaxshilab, foydalanuvchi fikr-mulohazalarini tinglaymiz."
-            },
-            "notTaxi": {
-                "title": "Yo‘ldosh — bu taksi emas, bu ridesharing",
-                "content": "Farqni tushunish muhim: biz tezkor taksi xizmati emasmiz. Yo‘ldosh — shaharlararo sayohatlarni rejalashtirish platformasi bo‘lib, haydovchilar va yo‘lovchilar birgalikda sayohat qilish uchun birlashadi. Bu o‘zaro ishonch, qulaylik va oqilona tejamkorlikka asoslangan harakatlanishning yangi madaniyati."
-            },
-            "conclusion": "Shaharlararo sayohatlarning yangi davriga xush kelibsiz. Yo‘ldosh ga xush kelibsiz."
+            ],
+            "impactTitle": "O‘zbekistonni qanday o‘zgartirayotganimizni bilmoqchimisiz?",
+            "impactText": "Yo'ldosh faqatgina pul tejash emas — biz shaharlararo safar madaniyatini yanada xavfsiz va qulay qilmoqdamiz:",
+            "cards": [
+                {
+                    "title": "Xavfsizlik birinchi o‘rinda",
+                    "description": "Har bir haydovchi OCR texnologiyalaridan foydalangan holda hujjatlarni avtomatik tekshiruvdan o‘tadi. Tizim haydovchining JShShIR raqamini, haydovchilik guvohnomasi toifalarini, avtomobilning VIN raqamini va hujjatlardagi ma’lumotlarning mosligini tekshiradi. Faqat barcha tekshiruvlardan muvaffaqiyatli o‘tgandan so‘nggina haydovchiga safarlarni e’lon qilishga ruxsat beriladi."
+                },
+                {
+                    "title": "Ishonchli hamjamiyatni yaratamiz",
+                    "description": "Karpuling noyob sharoitlarni yaratadi: odatda hech qachon uchrashmagan odamlar bir-biri bilan aloqa o‘rnatadi va birgalikda yo‘lga chiqadi. Bizning reyting va fikr-mulohazalar tizimimiz notanish odamlar o‘rtasida ishonchni mustahkamlashga yordam beradi va O‘zbekiston yo‘llarida o‘zaro yordam madaniyatini shakllantiradi."
+                },
+                {
+                    "title": "Safarlarni hammabop qilamiz",
+                    "description": "Yoqilg‘i xarajatlarini yo‘ldoshlar o‘rtasida bo‘lishish orqali biz shaharlararo safar narxini taksiga nisbatan o‘rtacha 50% ga kamaytiramiz. Bu shaharlar o‘rtasidagi sayohatlarni talabalar, yosh oilalar va oqilona tejamkorlikni qadrlaydigan barcha uchun qulay va hammabop qiladi."
+                },
+                {
+                    "title": "Maxfiylikni himoya qilamiz",
+                    "description": "AI-moderatsiyaga ega ichki chatimizda aloqa ma’lumotlarini almashish qat’iyan taqiqlangan. Sizning telefon raqamingiz to‘liq xavfsiz bo‘lib qoladi, barcha muloqot esa himoyalangan platforma orqali amalga oshiriladi. Tizim kontaktlarni uzatishga bo‘lgan urinishlarni avtomatik aniqlaydi va qoidabuzarlarga nisbatan choralar ko‘radi."
+                },
+                {
+                    "title": "Hamma uchun adolat",
+                    "description": "Bizning mustaqil nizolarni hal qilish tizimimiz kelishmovchiliklarni adolatli va xolis ko‘rib chiqishni ta’minlaydi. Moderatorlar dalillarni, yozishmalar tarixini va geolokatsiyani tahlil qilib, barcha tomonlarning manfaatlarini himoya qilgan holda qaror chiqaradi. Har bir foydalanuvchi apellyatsiya qilish va adolatli ko‘rib chiqilish huquqiga ega."
+                },
+                {
+                    "title": "Qulaylik uchun innovatsiyalar",
+                    "description": "Biz doimiy ravishda yangi texnologiyalarni joriy qilamiz: hujjatlarni avtomatik tanib olishdan tortib, aqlli yo‘ldosh tanlash algoritmlarigacha. Rejalarimizda karta orqali to‘lovlar, safarlarni sug‘urtalash, referal dastur va butun Markaziy Osiyo bo‘ylab kengayish mavjud."
+                }
+            ]
         },
         "HowItWorks": {
             "Title": "Bu qanday ishlaydi",
@@ -158,7 +170,7 @@
                 "Seats": "Bo‘sh o‘rinlar",
                 "Driver": "Haydovchi",
                 "Vehicle": "Avtomobil",
-                "AdditionalInformation": "Qo‘shimcha ma’lumot",
+                "AdditionalInformation": "Haydovchi sharhi",
                 "Price": "Odam boshiga narx",
                 "Book": "Bron qilish",
                 "Distance": "Masofa",
@@ -415,22 +427,6 @@
                 "4": "Ommaviy taklif"
             },
             "Rights": "Barcha huquqlar himoyalangan"
-        },
-        "Regions": {
-            "Andijan": "Andijon viloyati",
-            "Bukhara": "Buxoro viloyati",
-            "Jizzakh": "Jizzax viloyati",
-            "Qashqadarya": "Qashqadaryo viloyati",
-            "Navoiy": "Navoiy viloyati",
-            "Namangan": "Namangan viloyati",
-            "Samarkand": "Samarqand viloyati",
-            "Sirdarya": "Sirdaryo viloyati",
-            "TashkentCity": "Toshkent shahri",
-            "Tashkent": "Toshkent viloyati",
-            "Fergana": "Farg‘ona viloyati",
-            "Khorezm": "Xorazm viloyati",
-            "Karakalpakstan": "Qoraqalpog‘iston Respublikasi",
-            "Surkhandarya": "Surxondaryo viloyati"
         }
     },
     "metadata": {

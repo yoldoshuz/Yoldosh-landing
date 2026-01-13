@@ -8,7 +8,6 @@ export const Help = () => {
 
   return (
     <section className="relative min-h-screen w-full bg-linear-to-br from-teal-500 via-emerald-500 to-emerald-500 overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-600 rounded-full blur-3xl"></div>
@@ -16,13 +15,10 @@ export const Help = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left side - Illustration */}
           <div className="relative order-2 lg:order-1">
             <div className="relative w-full aspect-square max-w-lg mx-auto lg:block">
-              {/* Main shield illustration */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-52 h-58 sm:w-64 sm:h-72">
-                  {/* Shield background */}
+                <div className="relative w-34 h-38 sm:w-64 sm:h-72">
                   <svg viewBox="0 0 200 220" className="w-full h-full drop-shadow-2xl">
                     <defs>
                       <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -40,7 +36,7 @@ export const Help = () => {
 
                   {/* Check mark */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" className="size-24 sm:size-32">
+                    <svg viewBox="0 0 100 100" className="size-18 sm:size-32">
                       <path
                         d="M20 50 L40 70 L80 30"
                         fill="none"

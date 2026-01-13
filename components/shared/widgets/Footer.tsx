@@ -4,6 +4,7 @@ import { Link } from '@/app/i18n/routing';
 import { useTranslations } from "next-intl";
 
 import { Separator } from "@/components/ui/separator";
+import { Headset } from "lucide-react";
 
 export const Footer = () => {
   const t = useTranslations("Components.Footer");
@@ -16,10 +17,10 @@ export const Footer = () => {
           <div className="mb-6 md:mb-0 px-2 sm:px-4">
             <Link href="/" className="flex flex-row gap-2 items-center">
               <Image src="/assets/logo.svg" alt="logo" draggable={false} width={48} height={48} />
-              <p className="text-2xl font-bold text-black">Yo'ldosh</p>
+              <p className="text-2xl font-bold text-neutral-800">Yo'ldosh</p>
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-3 px-2 sm:px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:grid-cols-3 px-2 sm:px-4">
             <div>
               <h2 className="mb-6 text-lg font-semibold text-black">{t("Product.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
@@ -67,6 +68,10 @@ export const Footer = () => {
                   <Link href="/public-offer" className="hover:underline">
                     {t("Support.4")}
                   </Link>
+                </li>
+                <li className="text-base flex items-center gap-2 font-bold text-emerald-500">
+                  <Headset />
+                  <p>+998 94 000 12 58</p>
                 </li>
               </ul>
             </div>

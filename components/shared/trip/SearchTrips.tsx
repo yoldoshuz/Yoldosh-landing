@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarSelect } from "./Calendar";
 import { Separator } from "@/components/ui/separator";
+import { CityAutocomplete } from "./CityAutocomplete";
 
 export const SearchTrips = () => {
   const t = useTranslations("Components.Search");
@@ -59,11 +60,10 @@ export const SearchTrips = () => {
           </div>
           <div className="w-full border-r-0 lg:border-r">
             <p className="text-xs text-neutral-400">{t("From")}</p>
-            <Input
-              value={fromName}
-              onChange={(e) => setFromName(e.target.value)}
+            <CityAutocomplete
               placeholder={t("FromCityPlaceholder")}
-              className="border-none shadow-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0"
+              initialValue={fromName}
+              onCitySelected={(city) => setFromName(city)}
             />
           </div>
         </div>
@@ -78,11 +78,10 @@ export const SearchTrips = () => {
           </div>
           <div className="w-full border-r-0 lg:border-r">
             <p className="text-xs text-neutral-400">{t("To")}</p>
-            <Input
-              value={toName}
-              onChange={(e) => setToName(e.target.value)}
-              placeholder={t("ToCityPlaceholder")}
-              className="border-none shadow-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0"
+            <CityAutocomplete
+              placeholder={t("FromCityPlaceholder")}
+              initialValue={fromName}
+              onCitySelected={(city) => setFromName(city)}
             />
           </div>
         </div>

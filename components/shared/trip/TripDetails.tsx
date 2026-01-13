@@ -184,7 +184,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Preferences.Title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-4 bg-white rounded-3xl">
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               {trip.driver.smoking ? (
                 <Cigarette className="size-5 text-emerald-500" />
               ) : (
@@ -196,7 +196,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                   {trip.driver.smoking ? t("Preferences.Yes") : t("Preferences.No")}
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="flex items-center gap-4">
               {trip.driver.door_pickup ? (
                 <DoorOpen className="size-5 text-emerald-500" />
@@ -252,7 +252,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
             <>
               <h2 className="text-lg font-semibold mb-4">{t("AdditionalInformation")}</h2>
               <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
-                <p className="text-sm">{trip.comment}</p>
+                <p className="text-base font-sans">{trip.comment}</p>
               </div>
             </>
           )}

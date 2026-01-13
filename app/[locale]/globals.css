@@ -187,4 +187,16 @@
   .section-subsection {
     @apply pl-5 space-y-2
   }
+
+  .about-section {
+    @apply container mx-auto max-w-5xl px-4 py-18;
+  }
+
+  .about-title {
+    @apply text-2xl sm:text-4xl uppercase font-semibold text-neutral-800;
+  }
+
+  .about-paragraph {
+    @apply text-lg sm:text-xl indent-8 text-neutral-700 text-justify text-pretty;
+  }
 }

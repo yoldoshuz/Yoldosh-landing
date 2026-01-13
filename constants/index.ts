@@ -28,25 +28,80 @@ export const navLinks = () => {
   return links;
 };
 
-export const REGIONS = () => {
-  const t = useTranslations("Components.Regions");
+export const ourStats = () => {
+  const t = useTranslations("Pages.About");
 
-  const REGIONS = [
-    { id: 1, name: t("Andijan") },
-    { id: 2, name: t("Bukhara") },
-    { id: 3, name: t("Jizzakh") },
-    { id: 4, name: t("Qashqadarya") },
-    { id: 5, name: t("Navoiy") },
-    { id: 6, name: t("Namangan") },
-    { id: 7, name: t("Samarkand") },
-    { id: 8, name: t("Sirdarya") },
-    { id: 9, name: t("TashkentCity") },
-    { id: 10, name: t("Tashkent") },
-    { id: 11, name: t("Fergana") },
-    { id: 12, name: t("Khorezm") },
-    { id: 13, name: t("Karakalpakstan") },
-    { id: 14, name: t("Surkhandarya") },
+  const stats = [
+    {
+      id: 1,
+      title: t("stats.0.title"),
+      description: t("stats.0.description")
+    },
+    {
+      id: 2,
+      title: t("stats.1.title"),
+      description: t("stats.1.description")
+    },
+    {
+      id: 3,
+      title: t("stats.2.title"),
+      description: t("stats.2.description")
+    },
+    {
+      id: 4,
+      title: t("stats.3.title"),
+      description: t("stats.3.description")
+    },
+    {
+      id: 5,
+      title: t("stats.4.title"),
+      description: t("stats.4.description")
+    },
+    {
+      id: 6,
+      title: t("stats.5.title"),
+      description: t("stats.5.description")
+    }
   ];
 
-  return REGIONS;
+  return stats;
+};
+
+export const cardsItem = () => {
+  const t = useTranslations("Pages.About");
+
+  const cards = [
+    {
+      id: 1,
+      title: t("cards.0.title"),
+      description: t("cards.0.description")
+    },
+    {
+      id: 2,
+      title: t("cards.1.title"),
+      description: t("cards.1.description")
+    },
+    {
+      id: 3,
+      title: t("cards.2.title"),
+      description: t("cards.2.description")
+    },
+    {
+      id: 4,
+      title: t("cards.3.title"),
+      description: t("cards.3.description")
+    },
+    {
+      id: 5,
+      title: t("cards.4.title"),
+      description: t("cards.4.description")
+    },
+    {
+      id: 6,
+      title: t("cards.5.title"),
+      description: t("cards.5.description")
+    }
+  ];
+
+  return cards;
 };
