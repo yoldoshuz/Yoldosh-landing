@@ -393,12 +393,17 @@
             "Ascending": "Low to High",
             "Descending": "High to Low",
             "DriverPreferences": "Driver Preferences",
+            "PassengerPreferences": "Your Preferences",
             "Preferences": {
                 "Smoking": "Smoking Allowed",
                 "Pets": "Pets Allowed",
                 "Music": "Music",
                 "Talkative": "Talkative Driver",
-                "AC": "Air Conditioning"
+                "AC": "Air Conditioning",
+                "Any": "Any",
+                "Empty": "Empty",
+                "HalfEmpty": "Half empty",
+                "Full": "Full"
             },
             "Any": "Any",
             "Yes": "Yes",

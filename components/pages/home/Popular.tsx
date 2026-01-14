@@ -39,7 +39,7 @@ export const Popular = () => {
           {popularTrips?.data.trips.slice(0, 6).map((item: any) => (
             <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
               <Link
-                href={`/trips?from_name=${item.from_location.city}&to_name=${item.to_location.city}&seats=1`}
+                href={`/trips?from=${item.from_location.city}&to=${item.to_location.city}&seats=1`}
                 className="flex flex-col w-full h-full overflow-hidden group select-none cursor-pointer"
                 tabIndex={0}
                 aria-label={`${item.from_location.city} → ${item.to_location.city}`}

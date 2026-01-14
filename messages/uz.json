@@ -75,6 +75,7 @@
                     "description": "Biz doimiy ravishda yangi texnologiyalarni joriy qilamiz: hujjatlarni avtomatik tanib olishdan tortib, aqlli yo‘ldosh tanlash algoritmlarigacha. Rejalarimizda karta orqali to‘lovlar, safarlarni sug‘urtalash, referal dastur va butun Markaziy Osiyo bo‘ylab kengayish mavjud."
                 }
             ]
+
         },
         "HowItWorks": {
             "Title": "Bu qanday ishlaydi",
@@ -393,12 +394,17 @@
             "Ascending": "O‘sish bo‘yicha",
             "Descending": "Kamayish bo‘yicha",
             "DriverPreferences": "Haydovchi xohishlari",
+            "PassengerPreferences": "Sizning xohishiz",
             "Preferences": {
                 "Smoking": "Chekishga ruxsat",
                 "Pets": "Hayvonlarga ruxsat",
                 "Music": "Musiqa",
                 "Talkative": "Suhbatdosh haydovchi",
-                "AC": "Konditsioner"
+                "AC": "Konditsioner",
+                "Any":"Farqi yo‘q",
+                "Empty": "Bo'sh",
+                "HalfEmpty": "Yarmi bo'sh",
+                "Full": "To'la"
             },
             "Any": "Farqi yo‘q",
             "Yes": "Ha",

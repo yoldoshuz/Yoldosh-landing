@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-
 import { api } from "@/lib/api";
 import { SearchParams } from "@/types";
 
 export const tripsApi = {
   searchTrips: async (params: SearchParams) => {
+    // Чистим параметры, но оставляем 0 и false (если нужны boolean флаги как строки)
     const cleanedParams = Object.fromEntries(
-      Object.entries(params).filter(([_, v]) => v != null && v !== "" && v !== "undefined")
+      Object.entries(params).filter(([_, v]) => v !== null && v !== "" && v !== undefined && v !== "undefined")
     );
     const response = await api.get("/public/trips/search", { params: cleanedParams });
     return response.data;

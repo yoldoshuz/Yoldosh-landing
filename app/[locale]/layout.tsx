@@ -107,6 +107,10 @@ export default async function RootLayout({
             __html: JSON.stringify(getOrganizationJsonLd())
           }}
         />
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyD5T6hjyhafvGhxq_vAiSiCn8n-KieShFk&libraries=places&language=en`}
+          strategy="beforeInteractive"
+        />
       </head>
       <body className={`${inter.variable} antialiased`}>
         {/* Yandex Metrika - загружается асинхронно */}

@@ -102,8 +102,8 @@ export interface Trip {
 }
 
 export interface SearchParams {
-  from_name?: string;
-  to_name?: string;
+  from?: string;
+  to?: string;
 
   from_latitude?: number;
   from_longitude?: number;

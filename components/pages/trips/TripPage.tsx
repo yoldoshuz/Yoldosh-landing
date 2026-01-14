@@ -1,12 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
-
 import { Button } from "@/components/ui/button";
 import { FilterSidebar } from "./FilterSidebar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -23,8 +21,13 @@ export const SearchPage = () => {
 
   // 1. Инициализация фильтров из URL
   const [filters, setFilters] = useState<any>({
-    from_name: searchParams.get("from_name") || "",
-    to_name: searchParams.get("to_name") || "",
+    from: searchParams.get("from") || "",
+    to: searchParams.get("to") || "",
+    from_lat: searchParams.get("from_lat") || undefined,
+    from_lon: searchParams.get("from_lon") || undefined,
+    to_lat: searchParams.get("to_lat") || undefined,
+    to_lon: searchParams.get("to_lon") || undefined,
+
     departure_date: searchParams.get("date") || undefined,
     seats: parseInt(searchParams.get("seats") || "1"),
     page: 1,
@@ -36,29 +39,28 @@ export const SearchPage = () => {
     music_allowed: searchParams.get("music_allowed") === "true" ? true : undefined,
     talkative: searchParams.get("talkative") === "true" ? true : undefined,
     conditioner: searchParams.get("conditioner") === "true" ? true : undefined,
+    max_two_back: searchParams.get("max_two_back") === "true" ? true : undefined,
+    garage: searchParams.get("garage") || undefined,
   });
 
-  // 2. Флаг: Был ли произведен поиск?
-  const hasSearchQuery =
-    !!searchParams.get("from_name") && !!searchParams.get("to_name");
+  // 2. Флаг: Был ли произведен поиск? (Проверяем текстовые поля)
+  const hasSearchQuery = 
+    (!!searchParams.get("from") && !!searchParams.get("to")) || 
+    (!!searchParams.get("from_lat") && !!searchParams.get("to_lat"));
 
   // 3. Запросы
-  // Запрашиваем поиск ТОЛЬКО если есть параметры поиска
   const {
     data: searchResults,
     isLoading: isSearchLoading,
     error: searchError,
   } = useSearchTrips(filters, hasSearchQuery);
 
-  // Запрашиваем популярное ТОЛЬКО если НЕТ поиска
-  const { data: popularData, isLoading: isPopularLoading } = usePopularTrips(10); // enabled можно не трогать, react-query закэширует
+  const { data: popularData, isLoading: isPopularLoading } = usePopularTrips(10);
 
-  // Синхронизация URL при изменении фильтров (только если уже был поиск)
   const updateFilters = (newFilters: Partial<typeof filters>) => {
     const updated = { ...filters, ...newFilters, page: 1 };
     setFilters(updated);
 
-    // Если мы в режиме поиска, обновляем URL
     if (hasSearchQuery) {
       const params = new URLSearchParams();
       Object.entries(updated).forEach(([key, value]) => {
@@ -70,18 +72,19 @@ export const SearchPage = () => {
     }
   };
 
-  // Безопасный доступ к данным
   const trips = searchResults?.data?.trips || [];
   const totalPages = searchResults?.data?.totalPages || 0;
   const totalFound = searchResults?.data?.total || 0;
-
-  // Популярные трипы (безопасный доступ)
   const popularTrips = popularData?.data?.trips || [];
 
   useEffect(() => {
     const nextFilters = {
-      from_name: searchParams.get("from_name") || "",
-      to_name: searchParams.get("to_name") || "",
+      from: searchParams.get("from") || "",
+      to: searchParams.get("to") || "",
+      from_lat: searchParams.get("from_lat") || undefined,
+      from_lon: searchParams.get("from_lon") || undefined,
+      to_lat: searchParams.get("to_lat") || undefined,
+      to_lon: searchParams.get("to_lon") || undefined,
       departure_date: searchParams.get("date") || undefined,
       seats: parseInt(searchParams.get("seats") || "1"),
       page: Number(searchParams.get("page") || 1),
@@ -93,6 +96,8 @@ export const SearchPage = () => {
       music_allowed: searchParams.get("music_allowed") === "true" ? true : undefined,
       talkative: searchParams.get("talkative") === "true" ? true : undefined,
       conditioner: searchParams.get("conditioner") === "true" ? true : undefined,
+      max_two_back: searchParams.get("max_two_back") === "true" ? true : undefined,
+      garage: searchParams.get("garage") || undefined,
     };
 
     setFilters(nextFilters);
@@ -100,17 +105,14 @@ export const SearchPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl min-h-screen">
-      {/* Блок поиска сверху */}
-      <div className="sticky mb-8">
+      <div className="flex mb-8 z-30 top-24">
         <SearchTrips />
       </div>
 
-      {/* Если нет поискового запроса -> Показываем Популярное */}
       {!hasSearchQuery ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold">{t("PopularTrips")}</h2>
-            {/* Переключатель вида */}
             <div className="flex gap-1 bg-neutral-100 p-1 rounded-lg self-end">
               <Button
                 variant="ghost"
@@ -162,16 +164,12 @@ export const SearchPage = () => {
           )}
         </div>
       ) : (
-        /* Если ЕСТЬ запрос -> Показываем Лейаут с сайдбаром и результатами */
         <div className="flex flex-col lg:flex-row gap-8 px-2">
-          {/* Сайдбар (Только десктоп пока, мобилку можно скрыть или через drawer) */}
           <div className="hidden lg:block w-72 shrink-0">
             <FilterSidebar filters={filters} onChange={updateFilters} />
           </div>
 
-          {/* Контентная область */}
           <div className="flex-1">
-            {/* Хедер результатов */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
               <div className="text-xl font-bold flex justify-between w-full">
                 {isSearchLoading ? (
@@ -179,14 +177,13 @@ export const SearchPage = () => {
                 ) : (
                   <div className="flex flex-col items-start">
                     <p>{totalFound} {t("Found")}</p>
-                    {filters.from_name && filters.to_name && (
+                    {filters.from && filters.to && (
                       <span className="text-muted-foreground font-normal text-base">
-                        {filters.from_name} &rarr; {filters.to_name}
+                        {filters.from} &rarr; {filters.to}
                       </span>
                     )}
                   </div>
                 )}
-                {/* Переключатель вида */}
                 <div className="flex items-center">
                   <div className="bg-neutral-100 p-1 rounded-lg">
                     <Button
@@ -217,7 +214,6 @@ export const SearchPage = () => {
               </div>
             </div>
 
-            {/* Состояния загрузки и ошибок */}
             {isSearchLoading ? (
               <div className={cn("grid gap-4", viewMode === "grid" ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1")}>
                 {[1, 2, 3, 4].map((i) => (
@@ -230,7 +226,6 @@ export const SearchPage = () => {
                 <AlertDescription>{t("Error")}</AlertDescription>
               </Alert>
             ) : trips.length === 0 ? (
-              /* Пустое состояние */
               <div className="flex flex-col items-center justify-center py-20 bg-neutral-50 rounded-3xl border-2 border-dashed border-neutral-200">
                 <div className="bg-white p-4 rounded-full shadow-sm mb-4">
                   <LayoutGrid className="size-8 text-neutral-300" />
@@ -247,6 +242,8 @@ export const SearchPage = () => {
                       music_allowed: undefined,
                       talkative: undefined,
                       conditioner: undefined,
+                      garage: undefined,
+                      max_two_back: undefined
                     })
                   }
                 >
@@ -254,7 +251,6 @@ export const SearchPage = () => {
                 </Button>
               </div>
             ) : (
-              /* Список результатов */
               <div
                 className={cn(
                   "grid gap-4",
@@ -272,7 +268,6 @@ export const SearchPage = () => {
               </div>
             )}
 
-            {/* Пагинация */}
             {totalPages > 1 && (
               <div className="mt-10 flex justify-center gap-2">
                 <Button

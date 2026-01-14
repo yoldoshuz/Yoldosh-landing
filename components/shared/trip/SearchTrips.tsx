@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "@/app/i18n/routing";
+import { useSearchParams } from "next/navigation";
 import { Search, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
-
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CalendarSelect } from "./Calendar";
 import { Separator } from "@/components/ui/separator";
@@ -17,38 +16,61 @@ export const SearchTrips = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Инициализируем стейт из URL если есть, или пустотой
-  const [fromName, setFromName] = useState(searchParams.get("from_name") || "");
-  const [toName, setToName] = useState(searchParams.get("to_name") || "");
+  // State для текста
+  const [fromName, setFromName] = useState(searchParams.get("from") || "");
+  const [toName, setToName] = useState(searchParams.get("to") || "");
+
+  // State для координат
+  const [fromCoords, setFromCoords] = useState<{ lat?: number, lng?: number }>({
+    lat: searchParams.get("from_lat") ? parseFloat(searchParams.get("from_lat")!) : undefined,
+    lng: searchParams.get("from_lon") ? parseFloat(searchParams.get("from_lon")!) : undefined
+  });
+  const [toCoords, setToCoords] = useState<{ lat?: number, lng?: number }>({
+    lat: searchParams.get("to_lat") ? parseFloat(searchParams.get("to_lat")!) : undefined,
+    lng: searchParams.get("to_lon") ? parseFloat(searchParams.get("to_lon")!) : undefined
+  });
+
   const [date, setDate] = useState<Date | undefined>(
     searchParams.get("date") ? new Date(searchParams.get("date")!) : undefined
   );
   const [seats, setSeats] = useState(searchParams.get("seats") || "1");
 
-  // Синхронизация с URL при навигации назад/вперед
   useEffect(() => {
-    setFromName(searchParams.get("from_name") || "");
-    setToName(searchParams.get("to_name") || "");
+    setFromName(searchParams.get("from") || "");
+    setToName(searchParams.get("to") || "");
   }, [searchParams]);
 
   const handleSearch = () => {
-    // Разрешаем поиск, даже если заполнено только одно поле,
-    // но лучше требовать оба для корректного маршрута
     if (!fromName.trim() || !toName.trim()) {
-      // Можно добавить тост уведомление
       return;
     }
 
     const params = new URLSearchParams();
-    params.set("from_name", fromName.trim());
-    params.set("to_name", toName.trim());
+
+    // Текстовые параметры (для отображения и fallback)
+    params.set("from", fromName.trim());
+    params.set("to", toName.trim());
+
+    // Координаты (для radius search)
+    if (fromCoords.lat && fromCoords.lng) {
+      params.set("from_lat", fromCoords.lat.toString());
+      params.set("from_lon", fromCoords.lng.toString());
+    }
+    if (toCoords.lat && toCoords.lng) {
+      params.set("to_lat", toCoords.lat.toString());
+      params.set("to_lon", toCoords.lng.toString());
+    }
+
     params.set("seats", seats);
 
     if (date) {
       params.set("date", date.toISOString());
     }
 
-    router.push(`/trips?${params.toString()}`);
+    router.push({
+      pathname: "/trips",
+      query: Object.fromEntries(params)
+    });
   };
 
   return (
@@ -63,7 +85,10 @@ export const SearchTrips = () => {
             <CityAutocomplete
               placeholder={t("FromCityPlaceholder")}
               initialValue={fromName}
-              onCitySelected={(city) => setFromName(city)}
+              onCitySelected={(data) => {
+                setFromName(data.name);
+                setFromCoords({ lat: data.lat, lng: data.lng });
+              }}
             />
           </div>
         </div>
@@ -79,9 +104,12 @@ export const SearchTrips = () => {
           <div className="w-full border-r-0 lg:border-r">
             <p className="text-xs text-neutral-400">{t("To")}</p>
             <CityAutocomplete
-              placeholder={t("FromCityPlaceholder")}
-              initialValue={fromName}
-              onCitySelected={(city) => setFromName(city)}
+              placeholder={t("ToCityPlaceholder")}
+              initialValue={toName}
+              onCitySelected={(data) => {
+                setToName(data.name);
+                setToCoords({ lat: data.lat, lng: data.lng });
+              }}
             />
           </div>
         </div>
@@ -114,11 +142,11 @@ export const SearchTrips = () => {
           </Select>
         </div>
 
-        {/* Кнопка */}
         <div className="w-full lg:w-auto">
           <Button
+            type="button"
             onClick={handleSearch}
-            className="w-full lg:w-auto h-12 lg:h-14 px-10! rounded-full text-lg btn-glow"
+            className="w-full lg:w-auto h-12 lg:h-14 px-12! rounded-full text-lg btn-glow"
           >
             <Search className="size-5" strokeWidth={2.75} />
             {t("Search")}
