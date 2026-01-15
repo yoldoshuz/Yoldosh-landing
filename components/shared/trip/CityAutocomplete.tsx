@@ -67,7 +67,7 @@ export const CityAutocomplete = ({
 
       if (results && results[0]) {
         // Получаем координаты
-        const { lat, lng } = await getLatLng(results[0]);
+        const { lat, lng } = getLatLng(results[0]);
 
         // Нормализуем имя города
         const addressComponents = results[0].address_components;
@@ -78,6 +78,8 @@ export const CityAutocomplete = ({
         );
 
         const normalizedName = cityComponent ? cityComponent.long_name : description.split(',')[0];
+
+        console.log(lat, lng)
 
         // Отправляем данные родителю
         onCitySelected({

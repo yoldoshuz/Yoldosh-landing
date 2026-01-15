@@ -11,6 +11,7 @@ import {
   AvatarImage
 } from "@/components/ui/avatar";
 import {
+  AirVent,
   ArrowLeft,
   Briefcase,
   Calendar,
@@ -198,7 +199,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               </div>
             </div> */}
             <div className="flex items-center gap-4">
-              {trip.driver.door_pickup ? (
+              {trip.door_pickup ? (
                 <DoorOpen className="size-5 text-emerald-500" />
               ) : (
                 <DoorClosed className="size-5 text-emerald-500" />
@@ -206,12 +207,12 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <div>
                 <p className="text-sm text-muted-foreground">{t("Preferences.Door")}</p>
                 <p className="font-medium">
-                  {trip.driver.door_pickup ? t("Preferences.Yes") : t("Preferences.No")}
+                  {trip.door_pickup ? t("Preferences.Yes") : t("Preferences.No")}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              {trip.driver.food_stop ? (
+              {trip.food_stop ? (
                 <Candy className="size-5 text-emerald-500" />
               ) : (
                 <CandyOff className="size-5 text-emerald-500" />
@@ -219,7 +220,29 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <div>
                 <p className="text-sm text-muted-foreground">{t("Preferences.Food")}</p>
                 <p className="font-medium">
-                  {trip.driver.food_stop ? t("Preferences.Yes") : t("Preferences.No")}
+                  {trip.food_stop ? t("Preferences.Yes") : t("Preferences.No")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {trip.smoking_allowed ? (
+                <Cigarette className="size-5 text-emerald-500" />
+              ) : (
+                <CigaretteOff className="size-5 text-emerald-500" />
+              )}
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.Smoking")}</p>
+                <p className="font-medium">
+                  {trip.food_stop ? t("Preferences.Yes") : t("Preferences.No")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <AirVent className="size-5 text-emerald-500" />
+              <div>
+                <p className="text-sm text-muted-foreground">{t("Preferences.AC")}</p>
+                <p className="font-medium">
+                  {trip.food_stop ? t("Preferences.Yes") : t("Preferences.No")}
                 </p>
               </div>
             </div>
@@ -228,7 +251,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <div>
                 <p className="text-sm text-muted-foreground">{t("Preferences.Pets")}</p>
                 <p className="font-medium">
-                  {trip.driver.pets_allowed ? t("Preferences.Yes") : t("Preferences.No")}
+                  {trip.pets_allowed ? t("Preferences.Yes") : t("Preferences.No")}
                 </p>
               </div>
             </div>
@@ -237,9 +260,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               <div>
                 <p className="text-sm text-muted-foreground">{t("Preferences.Garage")}</p>
                 <p className="font-medium">
-                  {trip.driver.garage === "EMPTY" && t("Preferences.Empty")}
-                  {trip.driver.garage === "HALF_EMPTY" && t("Preferences.HalfEmpty")}
-                  {trip.driver.garage === "FULL" && t("Preferences.Full")}
+                  {trip.garage === "EMPTY" && t("Preferences.Empty")}
+                  {trip.garage === "HALF_EMPTY" && t("Preferences.HalfEmpty")}
+                  {trip.garage === "FULL" && t("Preferences.Full")}
                 </p>
               </div>
             </div>
