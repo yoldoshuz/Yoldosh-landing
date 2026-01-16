@@ -169,6 +169,7 @@
                 "Departure": "Departure",
                 "Seats": "Available seats",
                 "Driver": "Driver",
+                "Passengers": "Passengers",
                 "Vehicle": "Vehicle",
                 "AdditionalInformation": "Driver commentary",
                 "Price": "Price per person",
@@ -182,12 +183,13 @@
                     "Smoking": "Smoking",
                     "Door": "Pickup from door",
                     "Food": "Stop for dinner",
+                    "AC": "Air Conditioning",
                     "Pets": "Pets",
                     "Garage": "Garage",
                     "Yes": "Yes",
                     "No": "No",
                     "Empty": "Empty",
-                    "HalfEmpty": "Half empty",
+                    "HalfEmpty": "Halfempty",
                     "Full": "Full"
                 }
             },

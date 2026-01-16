@@ -169,6 +169,7 @@
                 "Departure": "Jo‘nash",
                 "Seats": "Bo‘sh o‘rinlar",
                 "Driver": "Haydovchi",
+                "Passengers": "Yo'lovchilar",
                 "Vehicle": "Avtomobil",
                 "AdditionalInformation": "Haydovchi sharhi",
                 "Price": "Odam boshiga narx",
@@ -188,7 +189,7 @@
                     "Yes": "Ha",
                     "No": "Yo'q",
                     "Empty": "Bo'sh",
-                    "HalfEmpty": "Yarmi bo'sh",
+                    "HalfEmpty": "Yarmibo'sh",
                     "Full": "To'la"
                 }
             },

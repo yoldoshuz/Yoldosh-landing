@@ -1,11 +1,12 @@
 import Image from "next/image";
 
+import { BASE_URL } from "@/lib/api";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import { Card } from "@/components/ui/card";
 import { CircleSmall, Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
 
 interface TripCardProps {
   trip: any;
@@ -21,24 +22,33 @@ export const TripCard = ({
   priority = false
 }: TripCardProps) => {
   const t = useTranslations("Pages.Trips");
+  const pathname = usePathname();
 
   const departureDate = new Date(trip.departure_ts);
   const arrivalDate = new Date(departureDate.getTime() + trip.duration * 60 * 1000);
 
-  const localeDate =
-    localStorage.getItem("locale") === "uz"
-      ? "uz-UZ"
-      : localStorage.getItem("locale") === "ru"
-        ? "ru-RU"
-        : "en-US";
+  const locale = pathname.slice(1, 3);
 
-  const formattedTime = departureDate.toLocaleTimeString(localeDate, {
+  const getLocale = () => {
+    switch (locale) {
+      case "uz":
+        return "uz-UZ";
+      case "ru":
+        return "ru-RU";
+      case "en":
+        return "en-US";
+      default:
+        return "ru-RU";
+    }
+  };
+
+  const formattedTime = departureDate.toLocaleTimeString(getLocale(), {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
 
-  const formattedArrivalTime = arrivalDate.toLocaleTimeString(localeDate, {
+  const formattedArrivalTime = arrivalDate.toLocaleTimeString(getLocale(), {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
@@ -47,11 +57,11 @@ export const TripCard = ({
   if (viewMode === "list") {
     return (
       <Card
-        className="p-5 hover:border-emerald-500 hover:shadow-xl smooth cursor-pointer shadow-none bg-white"
+        className="p-4 md:p-6 hover:border-emerald-500 hover:shadow-xl smooth cursor-pointer shadow-none bg-white"
         onClick={onClick}
       >
         <div className="flex flex-col gap-4 md:gap-6">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center">
             <div className="flex items-center justify-between gap-4 w-full">
               <div className="flex flex-row items-center justify-between gap-3 w-full max-w-125">
                 <div className="flex items-center justify-start gap-0">
@@ -84,10 +94,14 @@ export const TripCard = ({
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-4 mt-2">
+          <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
+            <time>{t("Details.Departure")}: {departureDate.toLocaleDateString()}</time>
+            <span>{t("Details.Seats")}: {trip.seats_available}</span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center justify-center">
-              <Avatar className="size-8 rounded-full bg-emerald-100 flex items-center justify-center">
-                <AvatarImage src="" />
+              <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                <AvatarImage src={`${BASE_URL}${trip.driver.avatar}`} />
                 <AvatarFallback className="bg-emerald-300 font-bold text-white text-base">
                   {trip.driver.firstName[0]}
                 </AvatarFallback>
@@ -103,13 +117,13 @@ export const TripCard = ({
                 )}
               </p>
             </div>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <div className="flex items-center rounded-full px-1.5 py-0.5 gap-1 text-xs text-muted-foreground">
+            <div className="flex flex-col md:flex-row items-end justify-center gap-2">
+              <div className="flex items-center rounded-full px-1.5 py-0.5 gap-1 text-xs font-mono font-semibold text-muted-foreground">
                 <Star className="fill-gray-500 size-4" />
                 <span className="">{trip.driver.rating.toFixed(1)}</span>
               </div>
               <div className="flex items-center text-sm font-bold">
-                <p>{trip.price.final_price.toLocaleString()}</p>
+                <p>{trip.price.price_per_person.toLocaleString()}</p>
                 <span className="ml-1">UZS</span>
               </div>
             </div>
@@ -121,15 +135,15 @@ export const TripCard = ({
 
   return (
     <Card
-      className="p-5 hover:border-emerald-500 hover:shadow-xl smooth cursor-pointer shadow-none bg-white"
+      className="p-4 md:p-6 hover:border-emerald-500 hover:shadow-xl smooth cursor-pointer shadow-none bg-white"
       onClick={onClick}
     >
       <div className="flex flex-col gap-4 md:gap-6">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-4 w-full">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 w-full">
             <div className="relative">
               <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
-                <AvatarImage src="" />
+                <AvatarImage src={`${BASE_URL}${trip.driver.avatar}`} />
                 <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
                   {trip.driver.firstName[0]}
                 </AvatarFallback>
@@ -146,11 +160,15 @@ export const TripCard = ({
                   )}
                 </p>
               </div>
-              <div className="flex items-center justify-center gap-2 ">
+              <div className="flex flex-col items-end justify-start gap-1">
                 <span className="flex items-center justify-center text-base font-bold">
-                  {trip.price.final_price.toLocaleString()}
+                  {trip.price.price_per_person.toLocaleString()}
                   <p className="ml-1">UZS</p>
                 </span>
+                <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono text-muted-foreground">
+                  <Star className="fill-gray-500 size-4" />
+                  <span className="">{trip.driver.rating.toFixed(1)}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -191,19 +209,9 @@ export const TripCard = ({
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col justify-end items-end gap-4 mt-2">
-          <div className="flex flex-col items-end gap-3 text-sm text-muted-foreground mt-0">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center rounded-full  gap-1 text-xs text-muted-foreground">
-                <Star className="fill-gray-500 size-4" />
-                <span className="">{trip.driver.rating.toFixed(1)}</span>
-              </div>
-              <Separator orientation="vertical" />
-              <span>
-                {t("Details.Seats")}: {trip.seats_available}
-              </span>
-            </div>
-          </div>
+        <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
+          <time>{t("Details.Departure")}: {departureDate.toLocaleDateString()}</time>
+          <span>{t("Details.Seats")}: {trip.seats_available}</span>
         </div>
       </div>
     </Card>

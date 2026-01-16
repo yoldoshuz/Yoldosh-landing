@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "@/app/i18n/routing";
 import { useSearchParams } from "next/navigation";
-import { Search, UserRound } from "lucide-react";
+import { CircleUserRound, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -128,8 +128,8 @@ export const SearchTrips = () => {
 
         <div className="flex items-center justify-start w-full lg:w-auto pl-2 pr-12 py-2 lg:py-0">
           <Select value={seats} onValueChange={setSeats}>
-            <SelectTrigger className="bg-transparent border-none shadow-none focus:ring-0 p-0 h-auto gap-3.5 text-muted-foreground">
-              <UserRound className="size-6" />
+            <SelectTrigger className="bg-transparent border-none shadow-none focus:ring-0 p-0 h-auto gap-3.5 text-muted-foreground cursor-pointer select-none">
+              <CircleUserRound className="size-6" />
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
