@@ -33,7 +33,7 @@ export const TripDetailsPage = ({ tripId }: { tripId: string }) => {
   }
 
   return (
-    <div className="px-4 py-8 bg-neutral-100">
+    <div className="px-4 py-8 bg-zinc-100">
       <TripDetails trip={data.data.trip} />
     </div>
   );

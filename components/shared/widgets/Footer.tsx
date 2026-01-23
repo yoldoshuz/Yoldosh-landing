@@ -11,7 +11,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200">
+    <footer className="bg-neutral-50">
       <div className="mx-auto w-full max-w-7xl px-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0 px-2 sm:px-4">
@@ -22,7 +22,7 @@ export const Footer = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:grid-cols-3 px-2 sm:px-4">
             <div>
-              <h2 className="mb-6 text-lg font-semibold text-black">{t("Product.Title")}</h2>
+              <h2 className="mb-6 text-lg font-semibold text-neutral-800">{t("Product.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
                   <Link href="/" className="hover:underline">
@@ -37,7 +37,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-lg font-semibold text-black">{t("Company.Title")}</h2>
+              <h2 className="mb-6 text-lg font-semibold text-neutral-800">{t("Company.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
                   <Link href="/about-us" className="hover:underline">
@@ -52,7 +52,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-lg font-semibold text-black">{t("Support.Title")}</h2>
+              <h2 className="mb-6 text-lg font-semibold text-neutral-800">{t("Support.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
                   <Link href="/" className="hover:underline">

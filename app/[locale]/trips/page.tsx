@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps) {
   return generatePageMetadata((await params).locale, 'trips', '/trips');
 };
 
-export default async function Page({ params }: PageProps) {
+const Page = async ({ params }: PageProps) => {
   const { locale } = await params;
 
   const t = await getTranslations({ locale, namespace: 'metadata.trips' });
@@ -44,8 +44,12 @@ export default async function Page({ params }: PageProps) {
           <Loader2 className="size-8 animate-spin text-emerald-500" />
         </div>
       }>
-        <SearchPage />
+        <div className='bg-zinc-100'>
+          <SearchPage />
+        </div>
       </Suspense>
     </>
   );
 };
+
+export default Page;

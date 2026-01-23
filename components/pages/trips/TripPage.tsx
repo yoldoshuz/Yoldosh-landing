@@ -113,14 +113,14 @@ export const SearchPage = () => {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold">{t("PopularTrips")}</h2>
-            <div className="flex gap-1 bg-neutral-100 p-1 rounded-lg self-end">
+            <div className="flex gap-1 bg-white p-1 rounded-lg self-end">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setViewMode("grid")}
                 className={cn(
                   "h-8 px-2 rounded-md transition-all",
-                  viewMode === "grid" && "bg-white shadow-sm text-emerald-600"
+                  viewMode === "grid" && "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                 )}
               >
                 <LayoutGrid className="size-4" />
@@ -131,7 +131,7 @@ export const SearchPage = () => {
                 onClick={() => setViewMode("list")}
                 className={cn(
                   "h-8 px-2 rounded-md transition-all",
-                  viewMode === "list" && "bg-white shadow-sm text-emerald-600"
+                  viewMode === "list" && "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                 )}
               >
                 <List className="size-4" />
@@ -185,14 +185,14 @@ export const SearchPage = () => {
                   </div>
                 )}
                 <div className="flex items-center">
-                  <div className="bg-neutral-100 p-1 rounded-lg">
+                  <div className="flex gap-1 bg-white p-1 rounded-lg">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setViewMode("grid")}
                       className={cn(
                         "h-8 px-2 rounded-md transition-all",
-                        viewMode === "grid" && "bg-white shadow-sm text-emerald-600"
+                        viewMode === "grid" && "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                       )}
                     >
                       <LayoutGrid className="size-4" />
@@ -203,7 +203,7 @@ export const SearchPage = () => {
                       onClick={() => setViewMode("list")}
                       className={cn(
                         "h-8 px-2 rounded-md transition-all",
-                        viewMode === "list" && "bg-white shadow-sm text-emerald-600"
+                        viewMode === "list" && "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                       )}
                     >
                       <List className="size-4" />
@@ -226,12 +226,12 @@ export const SearchPage = () => {
                 <AlertDescription>{t("Error")}</AlertDescription>
               </Alert>
             ) : trips.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-20 bg-neutral-50 rounded-3xl border-2 border-dashed border-neutral-200">
+              <div className="flex flex-col items-center justify-center py-20 bg-white rounded-3xl border-2 border-dashed">
                 <div className="bg-white p-4 rounded-full shadow-sm mb-4">
                   <LayoutGrid className="size-8 text-neutral-300" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900">{t("NotFound")}</h3>
-                <p className="text-muted-foreground text-center max-w-sm mt-2">{t("NotFoundTitle")}</p>
+                <p className="text-muted-foreground text-center max-w-sm mt-2 px-4">{t("NotFoundTitle")}</p>
                 <Button
                   variant="outline"
                   className="mt-6"

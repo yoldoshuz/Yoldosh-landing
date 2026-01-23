@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { BASE_URL } from "@/lib/api";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/app/i18n/routing";
+import { Link, useRouter } from "@/app/i18n/routing";
 import { Separator } from "@/components/ui/separator";
 
 import { Card } from "@/components/ui/card";
@@ -81,7 +81,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         <div className="mr-6 text-xl font-bold">{t("Title")}</div>
         <div />
       </Button>
-      <Card className="bg-neutral-100 border-none shadow-none px-0 w-full">
+      <Card className="bg-zinc-100 border-none shadow-none px-0 w-full">
         {/* Route */}
         <div className="mb-2">
           <h2 className="text-lg font-bold mb-2">{departureDate.toLocaleDateString()}</h2>
@@ -173,11 +173,13 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
             </div>
           </div>
         </div>
+
+        {/* Passengers */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Passengers")}</h2>
           <div className="bg-white rounded-3xl">
             {trip.bookings.map((booking: any) => (
-              <div className="flex items-center gap-4 px-6 py-4" key={booking.id}>
+              <Link href={`/trips/passengers/${booking.passenger.id}` as any} className="flex items-center gap-4 px-6 py-4" key={booking.id}>
                 <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
                   <AvatarImage src={`${BASE_URL}${booking.passenger.avatar}`} />
                   <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
@@ -195,7 +197,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                     <span className="font-medium">{booking.passenger.rating.toFixed(1)}</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

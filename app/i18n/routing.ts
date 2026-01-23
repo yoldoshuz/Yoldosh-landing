@@ -12,6 +12,11 @@ export const routing = defineRouting({
       ru: '/поездки',
       uz: '/safarlar'
     },
+    '/trips/passengers/[passengerId]': {
+      en: '/trips/passengers/[passengerId]',
+      ru: '/поездки/пассажиры/[passengerId]',
+      uz: '/safarlar/yolovchilar/[passengerId]'
+    },
     '/trips/[tripId]': {
       en: '/trips/[tripId]',
       ru: '/поездки/[tripId]',

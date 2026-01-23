@@ -62,14 +62,11 @@ export const CityAutocomplete = ({
     setDropdownOpen(false);
 
     try {
-      // Получаем детали места
       const results = await getGeocode({ address: description });
 
       if (results && results[0]) {
-        // Получаем координаты
         const { lat, lng } = getLatLng(results[0]);
 
-        // Нормализуем имя города
         const addressComponents = results[0].address_components;
         const cityComponent = addressComponents.find(
           (component: any) =>
@@ -79,9 +76,6 @@ export const CityAutocomplete = ({
 
         const normalizedName = cityComponent ? cityComponent.long_name : description.split(',')[0];
 
-        console.log(lat, lng)
-
-        // Отправляем данные родителю
         onCitySelected({
           name: normalizedName,
           lat: lat,
@@ -90,7 +84,6 @@ export const CityAutocomplete = ({
       }
     } catch (error) {
       console.error("Geocoding error: ", error);
-      // Fallback: если геокодинг упал (лимиты и т.д.), возвращаем только текст
       onCitySelected({ name: description, lat: undefined, lng: undefined });
     }
   };
@@ -110,7 +103,7 @@ export const CityAutocomplete = ({
         onChange={handleInput}
         disabled={!ready}
         placeholder={placeholder}
-        className={cn("border-none shadow-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0", className)}
+        className={cn("border-none shadow-none rounded-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0", className)}
         autoComplete="off"
       />
 
