@@ -60,7 +60,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="hover:underline">
+                  <Link href="/privacy-policy" className="hover:underline">
                     {t("Support.3")}
                   </Link>
                 </li>

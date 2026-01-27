@@ -3,6 +3,7 @@ import { PassengerDetailsPage } from "@/components/pages/users/PassengerDetailsP
 
 const Page = ({ params }: { params: Promise<{ passengerId: string }> }) => {
     const { passengerId } = use(params);
+    
     return <PassengerDetailsPage passengerId={passengerId} />;
 };
 

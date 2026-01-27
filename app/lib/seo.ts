@@ -16,7 +16,6 @@ export async function generatePageMetadata(
     title: t('title'),
     description: t('description'),
     keywords: t.raw('keywords'),
-
     openGraph: {
       title: t('og.title'),
       description: t('og.description'),

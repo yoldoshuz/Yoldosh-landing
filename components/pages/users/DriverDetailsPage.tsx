@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/avatar";
 import { BASE_URL } from '@/lib/api';
 
-export const PassengerDetailsPage = ({ passengerId }: { passengerId: string }) => {
+export const DriverDetailsPage = ({ driverId }: { driverId: string }) => {
     const router = useRouter();
-    const { data, isLoading, error } = usePassengerDetails(passengerId);
+    const { data, isLoading, error } = usePassengerDetails(driverId);
 
     if (isLoading) {
         return (

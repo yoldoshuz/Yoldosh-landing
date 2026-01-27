@@ -152,7 +152,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         {/* Driver Info */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Driver")}</h2>
-          <div className="flex items-center gap-3 bg-white px-6 py-4 rounded-3xl">
+          <Link href={`/trips/driver/${trip.driver.id}` as any} className="flex items-center gap-4 px-6 py-4 bg-white hover:bg-neutral-50 rounded-3xl smooth">
             <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
               <AvatarImage src={`${BASE_URL}${trip.driver.avatar}`} />
               <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
@@ -171,7 +171,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 <span className="font-medium">{trip.driver.rating.toFixed(1)}</span>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Passengers */}
@@ -179,7 +179,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <h2 className="text-lg font-semibold mb-2">{t("Passengers")}</h2>
           <div className="bg-white rounded-3xl">
             {trip.bookings.map((booking: any) => (
-              <Link href={`/trips/passengers/${booking.passenger.id}` as any} className="flex items-center gap-4 px-6 py-4" key={booking.id}>
+              <Link href={`/trips/passengers/${booking.passenger.id}` as any} className="flex items-center gap-4 px-6 py-4 hover:bg-neutral-50 rounded-3xl smooth" key={booking.id}>
                 <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
                   <AvatarImage src={`${BASE_URL}${booking.passenger.avatar}`} />
                   <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">

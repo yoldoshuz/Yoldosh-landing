@@ -359,6 +359,313 @@
                 "email": "Elektron pochta: info@yoldosh.uz",
                 "director": "'MILLIY YOLDOSH' MChJ direktori Xanapiyayev B.F."
             }
+        },
+        "PrivacyPolicy": {
+            "title": "MAXFIYLIK SIYOSATI",
+            "subtitle": "Yo'ldosh ilovasining",
+            "effectiveDate": "Kuchga kirish sanasi: 13.01.2026",
+            "lastUpdate": "Oxirgi yangilanish: 13.01.2026",
+            "general": {
+                "title": "1. UMUMIY QOIDALAR",
+                "1": "1.1. Ushbu Maxfiylik siyosati (keyingi o'rinlarda – «Siyosat») mobil ilova foydalanuvchilarining shaxsiy ma'lumotlarini qayta ishlash va himoya qilish tartibini belgilaydi «Yo'ldosh» (keyingi o'rinlarda – «Ilova», «Platforma»).",
+                "2": "1.2. Shaxsiy ma'lumotlar operatori O'zbekiston Respublikasi qonunchiligiga muvofiq ro'yxatdan o'tkazilgan «MILLIY YOLDOSH» MChJ (keyingi o'rinlarda – «Operator», «Biz»)dir.",
+                "3": "1.3. Ushbu Siyosat quyidagilarga muvofiq ishlab chiqilgan:",
+                "3_1": "O'zbekiston Respublikasining 2019 yil 2 iyuldagi «Shaxsiy ma'lumotlar to'g'risida»gi № ZRU-547-son qonuni;",
+                "3_2": "O'zbekiston Respublikasi Vazirlar Mahkamasining 2020 yil 10 fevraldagi «Shaxsiy ma'lumotlarni qayta ishlash tartibini takomillashtirish chora-tadbirlari to'g'risida»gi № 82-son qarori;",
+                "3_3": "O'zbekiston Respublikasining boshqa me'yoriy-huquqiy hujjatlari.",
+                "4": "1.4. Ilovani ishlatish Foydalanuvchining ushbu Siyosat va unda ko'rsatilgan shaxsiy ma'lumotlarini qayta ishlash shartlari bilan so'zsiz roziligini bildiradi. Siyosat shartlariga rozi bo'lmaslik holida Foydalanuvchi Ilovani ishlatishni to'xtatishi kerak.",
+                "5": "1.5. Ushbu Siyosat faqat Yo'ldosh ilovasiga tatbiq etiladi. Biz Ilovada mavjud bo'lgan havolalar orqali Foydalanuvchi o'tishi mumkin bo'lgan uchinchi shaxslar saytlari va xizmatlari uchun nazorat qilmaymiz va javobgarlikni o'z zimmamizga olmaymiz.",
+                "6": "1.6. Operator shaxsiy ma'lumotlarning dolzarbligini tekshiradi va noaniqliklar aniqlanganda, O'zbekiston Respublikasi qonunchiligida boshqacha nazarda tutilmagan bo'lsa, ularni yangilash yoki o'chirish choralarini ko'radi."
+            },
+            "definitions": {
+                "title": "2. ATAMALAR VA TA'RIFLAR",
+                "intro": "2.1. Ushbu Siyosatda quyidagi atamalar qo'llaniladi:",
+                "1": "Shaxsiy ma'lumotlar – to'g'ridan-to'g'ri yoki bilvosita aniqlangan yoki aniqlanishi mumkin bo'lgan jismoniy shaxsga (shaxsiy ma'lumotlar sub'ekti) tegishli har qanday ma'lumot.",
+                "2": "Shaxsiy ma'lumotlarni qayta ishlash – shaxsiy ma'lumotlar bilan amalga oshiriladigan har qanday harakat yoki harakatlar to'plami, shu jumladan yig'ish, yozib olish, tizimlashtirish, to'plash, saqlash, aniqlashtirish (yangilash, o'zgartirish), chiqarib olish, foydalanish, uzatish (tarqatish, taqdim etish, kirish), shaxssizlantirish, bloklash, o'chirish, shaxsiy ma'lumotlarni yo'q qilish.",
+                "3": "Shaxsiy ma'lumotlar maxfiyligi – Operator yoki shaxsiy ma'lumotlarga kirish huquqiga ega bo'lgan boshqa shaxs tomonidan rioya qilinishi shart bo'lgan, shaxsiy ma'lumotlar sub'ektining roziligi yoki boshqa qonuniy asos mavjud bo'lmagan holda ularni tarqatishga yo'l qo'ymaslik talabi.",
+                "4": "Foydalanuvchi – Internet tarmog'i orqali Ilovaga kirish huquqiga ega va Ilovani ishlatayotgan shaxs.",
+                "5": "Yo'lovchi – Ilovani sayohatlarni qidirish va bron qilish uchun ishlatayotgan Foydalanuvchi.",
+                "6": "Haydovchi – Verifikatsiyadan o'tgan va Ilovani sayohatlar haqidagi ma'lumotlarni joylashtirish uchun ishlatayotgan Foydalanuvchi.",
+                "7": "Cookies – Foydalanuvchi qurilmasida saqlanadigan va Ilovadagi oldingi tashriflar va harakatlar haqidagi ma'lumotlarni o'z ichiga olgan kichik fayllar."
+            },
+            "collection": {
+                "title": "3. QANDAY SHAXSIY MA'LUMOTLARNI YIG'AMIZ",
+                "1": "3.1. Barcha Foydalanuvchilardan ro'yxatdan o'tish vaqtida yig'iladigan ma'lumotlar:",
+                "1_list": [
+                    "Mobil telefon raqami",
+                    "Ism",
+                    "Familiya"
+                ],
+                "2": "3.2. Haydovchilardan verifikatsiyadan o'tish vaqtida yig'iladigan qo'shimcha ma'lumotlar:",
+                "2_1": "Haydovchi guvohnomasining nusxasi, shu jumladan:",
+                "2_1_list": [
+                    "Haydovchi guvohnomasi fotosurati",
+                    "Haydovchi guvohnomasining seriyasi va raqami",
+                    "Haydovchi huquqlari kategoriyasi",
+                    "Berilgan sana va amal qilish muddati",
+                    "PINFL (jismoniy shaxsning shaxsiy identifikatsiya raqami)",
+                    "Tug'ilgan sana",
+                    "Hujjat berilgan joy"
+                ],
+                "2_2": "Transport vositasining texnik pasportining nusxasi, shu jumladan:",
+                "2_2_list": [
+                    "Texnik pasport fotosurati",
+                    "Avtomobilning davlat ro'yxat raqami",
+                    "Transport vositasining markasi, modeli, chiqarilgan yili",
+                    "VIN-raqam (transport vositasining identifikatsiya raqami)",
+                    "Transport vositasi egasi haqidagi ma'lumotlar"
+                ],
+                "3": "3.3. Ilovani ishlatish vaqtida avtomatik yig'iladigan ma'lumotlar:",
+                "3_list": [
+                    "Sayohatlar haqidagi ma'lumot (marshrut, sana, sayohat boshlanishi va tugashi vaqti, narxi)",
+                    "Bronlar tarixi",
+                    "Geolokatsiya ma'lumotlari (navigatsiya va joylashuvni aniqlash funksiyalaridan foydalanish vaqtida)",
+                    "O'rnatilgan chatdagi xabarlar tarixi",
+                    "IP-manzil",
+                    "Qurilma turi, operatsion tizim, Ilova versiyasi",
+                    "Qurilmaning noyob identifikatori",
+                    "Ilova bilan o'zaro ta'sir ma'lumotlari (ko'rilgan sahifalar, foydalanish vaqti, bosishlar)",
+                    "Haydovchi balans haqidagi ma'lumot va tranzaksiyalar tarixi (komissiya yechib olish)",
+                    "Cookies va shunga o'xshash kuzatuv texnologiyalari"
+                ],
+                "4": "3.4. Foydalanuvchilar tomonidan ixtiyoriy ravishda taqdim etiladigan ma'lumotlar:",
+                "4_list": [
+                    "Profil fotosurati (ixtiyoriy)",
+                    "Qo'shimcha aloqa ma'lumotlari (ixtiyoriy)",
+                    "Boshqa Foydalanuvchilarning sharhlari va reytinglari",
+                    "Qo'llab-quvvatlash xizmatiga murojaatlar"
+                ]
+            },
+            "purposes": {
+                "title": "4. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH MAQSADLARI",
+                "intro": "4.1. Biz Foydalanuvchilarning shaxsiy ma'lumotlarini quyidagi maqsadlarda yig'amiz va qayta ishlaymiz:",
+                "1": "4.2. Platformaga kirishni ta'minlash:",
+                "1_list": [
+                    "Foydalanuvchilarni ro'yxatdan o'tkazish va identifikatsiya qilish",
+                    "Hisob qaydnomasini yaratish va boshqarish",
+                    "Ilovani ishlashini ta'minlash"
+                ],
+                "2": "4.3. Haydovchilarni verifikatsiya qilish:",
+                "2_list": [
+                    "Hujjatlarning asl nusxasini tekshirish (haydovchi guvohnomasi, texnik pasport)",
+                    "Transport vositasini boshqarish huquqini tasdiqlash",
+                    "Yo'lovchilar xavfsizligini ta'minlash",
+                    "Tashish qonunchiligiga rioya qilish"
+                ],
+                "3": "4.4. Sayohatlarni tashkil etish:",
+                "3_list": [
+                    "Sayohatlar haqidagi ma'lumotlarni joylashtirish",
+                    "Sayohatlarni qidirish va bron qilish",
+                    "Haydovchilar va Yo'lovchilar o'rtasidagi aloqani o'rnatilgan chat orqali ta'minlash",
+                    "Sayohat holati haqida xabardor qilish"
+                ],
+                "4": "4.5. Moliyaviy operatsiyalar:",
+                "4_list": [
+                    "Xizmat komissiyasini hisoblash va Haydovchilardan yechib olish",
+                    "Tranzaksiyalarni hisobga olish va Haydovchilar balansini boshqarish",
+                    "Moliyaviy hisobotni shakllantirish"
+                ],
+                "5": "4.6. Xavfsizlikni ta'minlash:",
+                "5_list": [
+                    "Firibgarlik va suiiste'mollikning oldini olish",
+                    "Ommaviy oferta buzilishlarini aniqlash",
+                    "Foydalanuvchilar o'rtasidagi nizolarni hal qilish",
+                    "Voqealarni tergov qilish"
+                ],
+                "6": "4.7. Xizmat sifatini yaxshilash:",
+                "6_list": [
+                    "Ilovani ishlatish tahlili",
+                    "Yangi funksiyalar va xizmatlarni ishlab chiqish",
+                    "Foydalanuvchi tajribasini shaxsiylashtirish",
+                    "Marshrutlar va qidiruv algoritmlarini optimallashtirish"
+                ],
+                "7": "4.8. Foydalanuvchilar bilan aloqa:",
+                "7_list": [
+                    "Sayohatlar haqida bildirishnomalarni yuborish",
+                    "Ilovadagi o'zgarishlar haqida ma'lumot berish",
+                    "Texnik qo'llab-quvvatlash",
+                    "Yangiliklar va maxsus takliflarni tarqatish (Foydalanuvchi roziligi bilan)"
+                ],
+                "8": "4.9. Qonunchilikka rioya qilish:",
+                "8_list": [
+                    "Soliq va buxgalteriya hisobi talablarini bajarish",
+                    "Davlat organlariga so'rov bo'yicha ma'lumot taqdim etish",
+                    "Operatorning huquqlari va qonuniy manfaatlarini himoya qilish"
+                ]
+            },
+            "grounds": {
+                "title": "5. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH HUQUQIY ASOSLARI",
+                "intro": "5.1. Shaxsiy ma'lumotlarni qayta ishlash huquqiy asoslari quyidagilar:",
+                "1": "5.2. Shaxsiy ma'lumotlar sub'ektining shaxsiy ma'lumotlarini qayta ishlashga roziligi, Ilovada ro'yxatdan o'tish vaqtida ushbu Siyosatni qabul qilish orqali taqdim etiladi.",
+                "2": "5.3. Shaxsiy ma'lumotlar sub'ekti tomon bo'lgan shartnomani bajarish zarurati (Platformaga kirishni ta'minlash xizmatlarini taqdim etish bo'yicha ommaviy oferta).",
+                "3": "5.4. Operator yoki uchinchi shaxslarning huquqlari va qonuniy manfaatlarini amalga oshirish zarurati (xavfsizlikni ta'minlash, firibgarlikning oldini olish).",
+                "4": "5.5. O'zbekiston Respublikasi qonunchiligida nazarda tutilgan majburiyatlarni bajarish zarurati (moliyaviy hisobot, davlat organlari talablari)."
+            },
+            "methods": {
+                "title": "6. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH USULLARI VA MUDDATLARI",
+                "1": "6.1. Shaxsiy ma'lumotlarni qayta ishlash avtomatlashtirish vositalaridan foydalangan holda va avtomatlashtirish vositalaridan foydalanmasdan amalga oshiriladi.",
+                "2": "6.2. Biz shaxsiy ma'lumotlarni ushbu Siyosatning 4-bo'limida ko'rsatilgan qayta ishlash maqsadlariga erishish uchun zarur muddat davomida qayta ishlaymiz, agar qonunchilikda boshqacha nazarda tutilmagan bo'lsa.",
+                "3": "6.3. Shaxsiy ma'lumotlarni saqlash muddatlari:",
+                "3_list": [
+                    "Faol Foydalanuvchilar ma'lumotlari (ism, familiya, telefon raqami) Foydalanuvchi hisob qaydnomasini o'chirguncha yoki Operator hisob qaydnomasini bloklaguncha saqlanadi.",
+                    "Haydovchilar hujjatlari (haydovchi guvohnomasi, texnik pasport) Haydovchi Ilovani ishlatishning butun davri davomida va hisob qaydnomasini o'chirish yoki bloklashdan keyin 3 (uch) yil davomida saqlanadi.",
+                    "Sayohatlar tarixi va moliyaviy tranzaksiyalar buxgalteriya hisobi va soliq qonunchiligiga rioya qilish maqsadlarida 5 (besh) yil davomida saqlanadi.",
+                    "O'rnatilgan chatdagi xabarlar yuborilgan paytdan boshlab 1 (bir) yil davomida yoki Foydalanuvchi hisob qaydnomasini o'chirguncha saqlanadi.",
+                    "Geolokatsiya ma'lumotlari sayohat tugagan paytdan boshlab 90 (to'qson) kun davomida saqlanadi.",
+                    "Texnik ma'lumot (IP-manzil, qurilma ma'lumotlari, cookies) 6 (olti) oy davomida saqlanadi."
+                ],
+                "4": "6.4. Saqlash muddatlari tugagach, shaxsiy ma'lumotlar o'chirilishi yoki shaxssizlantirilishi kerak, agar O'zbekiston Respublikasi qonunchiligida boshqacha nazarda tutilmagan bo'lsa.",
+                "5": "6.5. Foydalanuvchi hisob qaydnomasini o'chirganda, uning shaxsiy ma'lumotlari 30 (o'ttiz) kalendar kun ichida o'chiriladi, qonunchilik talablariga muvofiq saqlanishi kerak bo'lgan ma'lumotlar bundan mustasno (moliyaviy tranzaksiyalar, buxgalteriya hisobi hujjatlari)."
+            },
+            "transfer": {
+                "title": "7. SHAXSIY MA'LUMOTLARNI UCHINCHI SHAXSLARGA UZATISH",
+                "1": "7.1. Biz Foydalanuvchilarning shaxsiy ma'lumotlarini Foydalanuvchi roziligi bo'lmagan holda sotmaymiz, almashmaymiz va uchinchi shaxslarga uzatmaymiz, ushbu Siyosat va O'zbekiston Respublikasi qonunchiligida nazarda tutilgan holatlardan tashqari.",
+                "2": "7.2. Shaxsiy ma'lumotlar quyidagi holatlarda uchinchi shaxslarga uzatilishi mumkin:",
+                "2_1": "Ilovaning boshqa Foydalanuvchilariga:",
+                "2_1_list": [
+                    "Yo'lovchilarga sayohatni ko'rish vaqtida Haydovchi haqidagi ma'lumot (ism, familiya, profil fotosurati, reyting, avtomobil markasi va modeli, davlat raqami) ko'rsatiladi.",
+                    "Haydovchilarga sayohatni bron qilgandan keyin Yo'lovchilar haqidagi ma'lumot (ism, familiya, profil fotosurati, reyting) ko'rsatiladi.",
+                    "Uzatish faqat sayohatni tashkil etish uchun zarur hajmda amalga oshiriladi."
+                ],
+                "2_2": "Xizmat ta'minlovchilari va pudratchilarga:",
+                "2_2_desc": "Biz shaxsiy ma'lumotlarni biz nomidan xizmatlar ko'rsatadigan tashkilotlarga uzatishimiz mumkin:",
+                "2_2_list": [
+                    "Serverlarda ma'lumotlarni joylashtirish uchun xosting provayderlariga",
+                    "Moliyaviy operatsiyalarni qayta ishlash uchun to'lov tizimlariga",
+                    "OTP-kodlari va bildirishnomalarni yuborish uchun SMS-tarqatish provayderlariga",
+                    "Ilovani ishlatish tahlili uchun analitika xizmatlariga",
+                    "Texnik qo'llab-quvvatlash xizmatlariga",
+                    "Barcha bunday uchinchi shaxslar Operator bilan tuzilgan shartnomalar bo'yicha shaxsiy ma'lumotlar maxfiyligi va xavfsizligini ta'minlashga majburdirlar."
+                ],
+                "2_3": "Davlat organlari va huquqni muhofaza qiluvchi organlarga:",
+                "2_3_desc": "O'zbekiston Respublikasi qonunchiligiga muvofiq vakolatli organlarning rasmiy so'rovi asosida (sud, prokuratura, politsiya, soliq organlari va boshqalar).",
+                "2_4": "Biznesni qayta tashkil etish yoki sotishda:",
+                "2_4_desc": "Operatorning birlashishi, sotib olinishi, qayta tashkil etilishi yoki aktivlarini sotish holida shaxsiy ma'lumotlar voris yoki sotib oluvchiga ushbu Siyosatni rioya qilish sharti bilan uzatilishi mumkin.",
+                "3": "7.3. Biz O'zbekiston Respublikasining shaxsiy ma'lumotlar to'g'risidagi qonunchiligi talablariga rioya qilmasdan transchegaraviy shaxsiy ma'lumotlarni uzatishni amalga oshirmaymiz.",
+                "4": "7.4. Faoliyatni boshqa davlatlar hududiga kengaytirganda Operator tegishli mamlakatlarning shaxsiy ma'lumotlarni himoya qilish qonunchiligi talablariga rioya qiladi."
+            },
+            "protection": {
+                "title": "8. SHAXSIY MA'LUMOTLARNI HIMOYA QILISH",
+                "1": "8.1. Operator shaxsiy ma'lumotlarni noqonuniy yoki tasodifiy kirishdan, yo'q qilishdan, o'zgartirishdan, bloklashdan, nusxalashdan, taqdim etishdan, tarqatishdan, shuningdek boshqa noqonuniy harakatlardan himoya qilish uchun zarur huquqiy, tashkiliy va texnik choralarni ko'radi.",
+                "2": "8.2. Texnik himoya choralari:",
+                "2_list": [
+                    "Uzatish vaqtida shaxsiy ma'lumotlarni shifrlash (SSL/TLS)",
+                    "Ma'lumotlar bazalarida saqlash vaqtida shaxsiy ma'lumotlarni shifrlash",
+                    "Cheklangan kirishli himoyalangan serverlardan foydalanish",
+                    "Ma'lumotlarni muntazam zaxiralash",
+                    "Ruxsatsiz kirishdan himoya (firewallar, kirishni aniqlash tizimlari)",
+                    "Antivirus himoyasi",
+                    "Administrativ kirish uchun ko'p bosqichli autentifikatsiya"
+                ],
+                "3": "8.3. Tashkiliy himoya choralari:",
+                "3_list": [
+                    "Shaxsiy ma'lumotlarni qayta ishlash tashkilini mas'ul shaxsni tayinlash",
+                    "Xodimlarning shaxsiy ma'lumotlarga kirish huquqlarini ajratish",
+                    "Xodimlarni shaxsiy ma'lumotlarni qayta ishlash va himoya qilish qoidalari bo'yicha o'qitish",
+                    "Xodimlar bilan maxfiylik shartnomalarini tuzish",
+                    "Shaxsiy ma'lumotlar to'g'risidagi qonunchilik talablariga rioya qilish nazorati",
+                    "Shaxsiy ma'lumotlar himoya tizimining ichki auditlarini o'tkazish"
+                ],
+                "4": "8.4. Shaxsiy ma'lumotlarga kirish faqat Operatorning vakolatli xodimlari va pudratchilari uchun mavjud bo'lib, ularga bu ma'lumot xizmat vazifalarini bajarish uchun zarur.",
+                "5": "8.5. Barcha zarur xavfsizlik choralarini qo'llashga qaramay, Internet tarmoqining texnik cheklovlarini hisobga olgan holda, biz shaxsiy ma'lumotlarni barcha mumkin bo'lgan tahdidlardan mutlaqo himoya qilishni kafolatlay olmaymiz.",
+                "6": "8.6. Foydalanuvchi o'z hisob ma'lumotlari (telefon raqami, OTP-kod) maxfiyligini saqlash uchun javobgardir. Foydalanuvchi hisob qaydnomasidan foydalangan holda amalga oshirilgan har qanday harakatlar Foydalanuvchi tomonidan amalga oshirilgan deb hisoblanadi.",
+                "7": "8.7. Shaxsiy ma'lumotlar xavfsizligi buzilishi bilan bog'liq voqea aniqlanganda, Operator ta'sirlangan Foydalanuvchilarni va vakolatli davlat organini qonunchilikda belgilangan muddatlarda xabardor qilishga majburdir."
+            },
+            "rights": {
+                "title": "9. SHAXSIY MA'LUMOTLAR SUB'EKTLARINING HUQUQLARI",
+                "1": "9.1. O'zbekiston Respublikasi qonunchiligiga muvofiq Foydalanuvchilar o'z shaxsiy ma'lumotlariga nisbatan quyidagi huquqlarga egadirlar:",
+                "1_1": "1) Kirish huquqi: Foydalanuvchi o'z shaxsiy ma'lumotlari qayta ishlanayotganligi haqida ma'lumot olish huquqiga ega va bunday shaxsiy ma'lumotlarga kirish huquqiga ega.",
+                "1_2": "2) Aniqlashtirish huquqi: Foydalanuvchi noaniq yoki to'liqsiz shaxsiy ma'lumotlarni tuzatishni talab qilish huquqiga ega.",
+                "1_3": "3) O'chirish huquqi: Foydalanuvchi o'z shaxsiy ma'lumotlarini o'chirishni talab qilish huquqiga ega, quyidagi holatlarda:",
+                "1_3_list": [
+                    "shaxsiy ma'lumotlar ular yig'ilgan maqsadlar uchun endi zarur bo'lmasa;",
+                    "Foydalanuvchi shaxsiy ma'lumotlarni qayta ishlashga roziligini qaytarib olsa;",
+                    "shaxsiy ma'lumotlar noqonuniy qayta ishlangan bo'lsa;",
+                    "o'chirish qonunchilik talablarini bajarish uchun zarur bo'lsa."
+                ],
+                "1_4": "4) Qayta ishlashni cheklash huquqi: Foydalanuvchi shaxsiy ma'lumotlarni qayta ishlashni cheklashni talab qilish huquqiga ega, quyidagi holatlarda:",
+                "1_4_list": [
+                    "shaxsiy ma'lumotlarning aniqligi bahslashilayotganda;",
+                    "qayta ishlash noqonuniy bo'lsa, lekin Foydalanuvchi ma'lumotlarni o'chirishni xohlamasa;",
+                    "shaxsiy ma'lumotlar Operatorga endi zarur bo'lmasa, lekin Foydalanuvchiga o'z huquqlarini himoya qilish uchun zarur bo'lsa."
+                ],
+                "1_5": "5) Rozilikni qaytarib olish huquqi: Foydalanuvchi istalgan vaqtda Ilovada hisob qaydnomasini o'chirish orqali shaxsiy ma'lumotlarni qayta ishlashga roziligini qaytarib olish huquqiga ega.",
+                "1_6": "6) Shikoyat berish huquqi: Foydalanuvchi shaxsiy ma'lumotlar sub'ektlari huquqlarini himoya qilish bo'yicha vakolatli davlat organiga shikoyat berish huquqiga ega.",
+                "2": "9.2. O'z huquqlarini amalga oshirish uchun Foydalanuvchi quyidagilarni qilishi mumkin:",
+                "2_list": [
+                    "Ilovadagi hisob qaydnomasi sozlamalaridan foydalanib ma'lumotlarni yangilash yoki o'chirish.",
+                    "Ilova funksiyasi orqali yoki ushbu Siyosatning 14-bo'limida ko'rsatilgan kontaktlar orqali qo'llab-quvvatlash xizmatiga murojaat qilish."
+                ],
+                "3": "9.3. Operator Foydalanuvchi so'rovini ko'rib chiqishga va so'rov olingan paytdan boshlab 30 (o'ttiz) kalendar kun ichida javob berishga majburdir.",
+                "4": "9.4. Operator shaxsiy ma'lumotlarni o'chirishdan bosh tortish huquqiga ega, agar ularni saqlash O'zbekiston Respublikasi qonunchiligida nazarda tutilgan bo'lsa (masalan, buxgalteriya hisobi maqsadlarida moliyaviy tranzaksiyalar)."
+            },
+            "cookies": {
+                "title": "10. COOKIES VA KUZATUV TEXNOLOGIYALARI",
+                "1": "10.1. Yo'ldosh ilovasi foydalanuvchi tajribasini yaxshilash va Ilovani ishlatishni tahlil qilish uchun cookies va shunga o'xshash kuzatuv texnologiyalaridan foydalanadi.",
+                "2": "10.2. Cookies – Foydalanuvchi qurilmasida saqlanadigan va Ilovaga Foydalanuvchi harakatlari va afzalliklari haqidagi ma'lumotlarni eslab qolishga imkon beradigan kichik matn fayllari.",
+                "3": "10.3. Biz quyidagi turdagi cookiesdan foydalanamiz:",
+                "3_1": "1) Zaruriy cookies: Ilovaning asosiy funksiyalarini ta'minlaydi (avtorizatsiya, xavfsizlik). Bu cookies Ilovani ishlashi uchun zarur va o'chirilishi mumkin emas.",
+                "3_2": "2) Funksional cookies: Ilovaga Foydalanuvchi tanlovini eslab qolishga imkon beradi (interfeys tili, ko'rsatish sozlamalari).",
+                "3_3": "3) Analitik cookies: Foydalanuvchilar Ilovani qanday ishlatayotganligi haqidagi ma'lumotlarni yig'adi, bu bizga uning ishini yaxshilashga imkon beradi (Google Analytics, Firebase Analytics va boshqalar).",
+                "3_4": "4) Reklama cookies: Tegishli reklamalarni ko'rsatish va reklama kampaniyalari samaradorligini baholash uchun ishlatiladi (hozirda ishlatilmaydi, lekin kelajakda joriy etilishi mumkin).",
+                "4": "10.4. Foydalanuvchi o'z qurilmasi yoki brauzer sozlamalari orqali cookiesni boshqarishi mumkin. Biroq, zaruriy cookiesni o'chirish Ilova funksiyalariga ta'sir qilishi mumkin.",
+                "5": "10.5. Cookiesdan tashqari, biz quyidagi texnologiyalardan foydalanamiz:",
+                "5_list": [
+                    "Email-tarqatishlar samaradorligini tahlil qilish uchun kuzatuv piksellari (tracking pixels) (agar qo'llaniladigan bo'lsa).",
+                    "Analitika va xatolarni kuzatish uchun uchinchi shaxslar SDKlari (Firebase, Crashlytics va boshqalar).",
+                    "Turli sessiyalarda Foydalanuvchilarni identifikatsiya qilish uchun qurilmalar noyob identifikatorlari."
+                ]
+            },
+            "minors": {
+                "title": "11. VOYAGA YETMAGANLAR MA'LUMOTLARINI QAYTA ISHLASHNING O'ZIGA XOS XUSUSIYATLARI",
+                "1": "11.1. Yo'ldosh ilovasi 18 (o'n sakkiz) yoshga yetgan shaxslar uchun mo'ljallangan.",
+                "2": "11.2. Biz 18 yoshga yetmagan shaxslarning shaxsiy ma'lumotlarini qasddan yig'maymiz.",
+                "3": "11.3. Agar Operator 18 yoshga yetmagan shaxsdan ota-onalar yoki qonuniy vakillar roziligi bo'lmagan holda shaxsiy ma'lumotlar yig'ilganligi haqida xabardor bo'lsa, bunday ma'lumotlar darhol o'chiriladi.",
+                "4": "11.4. Agar siz biz 18 yoshga yetmagan shaxsdan shaxsiy ma'lumotlarni olishimiz mumkin deb hisoblasangiz, iltimos, ushbu Siyosatning 14-bo'limida ko'rsatilgan kontaktlar orqali biz bilan bog'laning."
+            },
+            "changes": {
+                "title": "12. MAXFIYLIK SIYOSATIDAGI O'ZGARTIRISHLAR",
+                "1": "12.1. Operator istalgan vaqtda ushbu Siyosatga o'zgartirishlar kiritish huquqini o'zida saqlab qoladi.",
+                "2": "12.2. Siyosatning yangi tahriri Ilovada joylashtirilgan paytdan boshlab kuchga kiradi, agar Siyosatning yangi tahririda boshqacha nazarda tutilmagan bo'lsa.",
+                "3": "12.3. Siyosatdagi jiddiy o'zgartirishlar haqida (qayta ishlash maqsadlari o'zgarishi, ma'lumotlarni yangi uchinchi shaxslarga uzatish, saqlash muddatlarini o'zgartirish) Foydalanuvchilar Ilova orqali (push-bildirishnoma, Ilovadagi xabar) o'zgartirishlar kuchga kirishidan kamida 7 (yetti) kalendar kun oldin xabardor qilinadi.",
+                "4": "12.4. Siyosatning amaldagi tahriri doimo Ilova sozlamalari bo'limida va manzilda mavjud: [agar mavjud bo'lsa, veb-saytni ko'rsating].",
+                "5": "12.5. Siyosatning yangi tahriri kuchga kirgandan keyin Ilovani ishlatishni davom ettirish Foydalanuvchining kiritilgan o'zgartirishlar bilan roziligini bildiradi.",
+                "6": "12.6. Siyosatning oxirgi yangilanish sanasi hujjat boshida ko'rsatiladi."
+            },
+            "law": {
+                "title": "13. QO'LLANILADIGAN QONUNCHILIK",
+                "1": "13.1. Ushbu Siyosat va u bilan bog'liq barcha masalalar O'zbekiston Respublikasi qonunchiligi bilan tartibga solinadi.",
+                "2": "13.2. Shaxsiy ma'lumotlarni qayta ishlash bilan bog'liq barcha nizolar O'zbekiston Respublikasi qonunchiligiga muvofiq hal etiladi.",
+                "3": "13.3. Sudga murojaat qilishdan oldin da'vo tartibiga rioya qilish majburiydir. Da'voni ko'rib chiqish muddati – 10 (o'n) kalendar kun."
+            },
+            "contact": {
+                "title": "14. ALOQA MA'LUMOTLARI",
+                "1": "14.1. Agar sizda ushbu Siyosat yoki shaxsiy ma'lumotlaringizni qayta ishlash bo'yicha savollar, izohlar yoki so'rovlar bo'lsa, siz quyidagi usullar orqali biz bilan bog'lanishingiz mumkin:",
+                "company": "«MILLIY YOLDOSH» MChJ",
+                "address": "Yuridik manzil: Toshkent viloyati, Qibray tumani, Farovon MFY, BUSH \"NURAFSHON-2\" ko'chasi, 3-uy",
+                "email": "Umumiy elektron pochta: info@yoldosh.uz",
+                "phone": "Qo'llab-quvvatlash telefoni: +998 (94) 000-12-58",
+                "telegram": "Telegram: @yoldosh_admin",
+                "workHours": "Qo'llab-quvvatlash xizmati ish vaqti: 11:00-20:00",
+                "2": "14.2. Biz sizning so'rovingizga uni olingan paytdan boshlab 10 (o'n) kalendar kun ichida javob berishga majburmiz.",
+                "3": "14.3. So'rovlarini qayta ishlash vaqtida maxfiyligingizni himoya qilish uchun biz sizdan shaxsingizni tasdiqlash uchun qo'shimcha ma'lumotlarni so'rashimiz mumkin."
+            },
+            "final": {
+                "title": "15. YAKUNIY QOIDALAR",
+                "1": "15.1. Ushbu Siyosat Yo'ldosh Platformasiga kirishni ta'minlash xizmatlarini ko'rsatish bo'yicha ommaviy ofertaning ajralmas qismidir.",
+                "2": "15.2. Agar ushbu Siyosatning biron bir qoidasi haqiqiy emas deb topilsa, bu qolgan qoidalarning haqiqiy emasligini keltirib chiqarmaydi.",
+                "3": "15.3. Ushbu Siyosat rus va o'zbek tillarida tuzilgan. Qarama-qarshiliklar holida o'zbek tilidagi versiya ustunlikka ega.",
+                "4": "15.4. Ushbu Siyosat shartlarini qabul qilish orqali Foydalanuvchi quyidagilarni tasdiqlaydi:",
+                "4_list": [
+                    "Siyosat matnini to'liq o'qib chiqqan;",
+                    "o'z huquqlari va majburiyatlarini tushunadi;",
+                    "ushbu Siyosatda belgilangan maqsadlar va shartlarda o'z shaxsiy ma'lumotlarini qayta ishlashga rozilik beradi;",
+                    "o'z hisob qaydnomasi ma'lumotlari maxfiyligini saqlashga majburdir."
+                ],
+                "date": "Nashr etilgan sana: 13.01.2026",
+                "version": "Versiya: 1.0",
+                "director": "«MILLIY YOLDOSH» MChJ direktori                    Xanapiyayev B.F."
+            }
         }
     },
     "Components": {
@@ -487,6 +794,19 @@
                 "title": "Yoldosh ommaviy taklifi",
                 "description": "Yuridik ma’lumotlar.",
                 "image": "/og-offer-uz.png"
+            }
+        },
+        "privacyPolicy": {
+            "title": "Maxfiylik siyosati — Yoldosh",
+            "description": "Yoldosh platformasining rasmiy maxfiylik siyosati.",
+            "keywords": [
+                "maxfiylik siyosati",
+                "yoldosh foydalanish shartlari"
+            ],
+            "og": {
+                "title": "Yoldosh Maxfiylik siyosati",
+                "description": "Huquqiy ma'lumotlar va xizmatdan foydalanish shartlari.",
+                "image": "/og-offer-en.png"
             }
         }
     },

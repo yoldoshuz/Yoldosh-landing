@@ -181,7 +181,7 @@
   }
 
   .preferences-text-active {
-    @apply bg-emerald-500 rounded-full text-white;
+    @apply bg-emerald-500 rounded-full text-white text-center;
   }
 
   .section-padding {

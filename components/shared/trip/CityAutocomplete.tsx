@@ -103,6 +103,7 @@ export const CityAutocomplete = ({
         onChange={handleInput}
         disabled={!ready}
         placeholder={placeholder}
+        required={true}
         className={cn("border-none shadow-none rounded-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0", className)}
         autoComplete="off"
       />

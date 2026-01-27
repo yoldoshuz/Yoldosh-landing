@@ -17,6 +17,11 @@ export const routing = defineRouting({
       ru: '/поездки/пассажиры/[passengerId]',
       uz: '/safarlar/yolovchilar/[passengerId]'
     },
+    '/trips/driver/[driverId]': {
+      en: '/trips/driver/[driverId]',
+      ru: '/поездки/водитель/[driverId]',
+      uz: '/safarlar/haydovchi/[driverId]'
+    },
     '/trips/[tripId]': {
       en: '/trips/[tripId]',
       ru: '/поездки/[tripId]',
@@ -31,6 +36,11 @@ export const routing = defineRouting({
       en: '/public-offer',
       ru: '/публичная-офферта',
       uz: '/ommaviy-taklif'
+    },
+    '/privacy-policy': {
+      en: '/privacy-policy',
+      ru: '/политика-конфиденциальности',
+      uz: '/maxfiylik-siyosati'
     }
   }
 });
