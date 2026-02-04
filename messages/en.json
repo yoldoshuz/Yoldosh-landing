@@ -3,22 +3,78 @@
         "Home": {
             "Title": "Rides at your choice at low prices",
             "Subtitle": "Find passengers or become a driver with",
-            "From": "From",
-            "To": "To",
-            "Passengers": {
-                "Title": "Passengers",
-                "1": "1 passenger",
-                "2": "2 passengers",
-                "3": "3 passengers",
-                "4": "4 passengers",
-                "5": "5 passengers",
-                "6": "6 passengers"
-            },
-            "Search": "Search",
-            "Trips": "Trips",
-            "Drivers": "Drivers",
             "Rating": "Rating",
-            "Support": "Support"
+            "Support": "Support",
+            "Trips": "Trips",
+            "Drivers": "Drivers"
+        },
+        "About": {
+            "heroTitle": "About Us",
+            "missionQuote": "We make intercity travel accessible, safe, and human-centered for everyone in Uzbekistan",
+            "missionAuthor": "— Yo'ldosh Mission",
+            "introText": "Yo'ldosh is Uzbekistan’s first intercity ridesharing platform that connects drivers and passengers traveling along the same route. We use modern technologies to fill empty seats in cars and make intercity trips more affordable and comfortable. Yo'ldosh builds a trusted community of travel companions where every trip is not only about saving money, but also about meeting interesting people and reaching your destination safely.",
+            "originTitle": "How It All Started",
+            "originText1": "In 2024, our founder faced a common problem in Uzbekistan: he urgently needed to travel from Tashkent to Andijan, but all train tickets were sold out and taxis were too expensive. He started searching for travel companions through Telegram groups and quickly realized how inconvenient and unsafe this process was.",
+            "originText2": "Sharing a personal phone number in public chats, dozens of calls from strangers, hours of price negotiations, and no information about who would be driving — all of this raised an important question: why, in the age of modern technology, are we still searching for travel companions like it’s the 1990s?",
+            "originHighlight": "That’s when the idea was born: to create a centralized platform where people could safely find travel companions without exposing personal contact details, with transparent pricing and a rating system. This is how Yo'ldosh was created.",
+            "originText3": "In Uzbek, the word \"yo'ldosh\" means \"travel companion\" — someone who shares the road with you. This word perfectly reflects our philosophy: not just transportation from point A to point B, but a shared journey where people support one another.",
+            "originText4": "Over the next year, we studied international ridesharing platforms such as BlaBlaCar and adapted the best practices to the realities of the Uzbek market. We developed an automated driver verification system using OCR, built a secure AI-moderated chat to protect user contacts, and created a fair dispute resolution system.",
+            "originText5": "Today, Yo'ldosh is ready to change the culture of intercity transportation in Uzbekistan. We are building not just a service, but a movement — a community of people who choose convenience, safety, and mutual support over chaos and uncertainty.",
+            "statsTitle": "Our Numbers",
+            "stats": [
+                {
+                    "title": "15+",
+                    "description": "Cities across Uzbekistan in our network"
+                },
+                {
+                    "title": "50%",
+                    "description": "Savings compared to taxis"
+                },
+                {
+                    "title": "24/7",
+                    "description": "User support"
+                },
+                {
+                    "title": "300km+",
+                    "description": "Average trip distance"
+                },
+                {
+                    "title": "100%",
+                    "description": "All drivers are verified"
+                },
+                {
+                    "title": "12 months",
+                    "description": "Advance booking available"
+                }
+            ],
+            "impactTitle": "Want to see how we are changing Uzbekistan?",
+            "impactText": "Yo'ldosh doesn’t just save users money — we are transforming the culture of intercity travel, making it safer, more convenient, and more human. Here’s how we do it:",
+            "cards": [
+                {
+                    "title": "Safety First",
+                    "description": "Every driver goes through automatic document verification using OCR technology. The system checks personal ID numbers, license categories, vehicle VIN, and data consistency. Only after successful verification can a driver publish trips."
+                },
+                {
+                    "title": "Building a Trusted Community",
+                    "description": "Carpooling creates unique conditions where people who might never have met connect and travel together. Our rating and review system helps build trust between strangers and fosters a culture of mutual support on Uzbekistan’s roads."
+                },
+                {
+                    "title": "Making Travel Affordable",
+                    "description": "By sharing fuel costs among passengers, we reduce intercity travel expenses by an average of 50% compared to taxis. This makes travel accessible for students, young families, and anyone who values smart savings."
+                },
+                {
+                    "title": "Protecting Privacy",
+                    "description": "Our built-in AI-moderated chat strictly prohibits sharing contact details. Your phone number remains private, and all communication happens within a secure platform."
+                },
+                {
+                    "title": "Fairness for Everyone",
+                    "description": "Our independent dispute resolution system ensures fair handling of conflicts. Every user has the right to appeal and receive an objective review."
+                },
+                {
+                    "title": "Innovation for Convenience",
+                    "description": "We continuously introduce new technologies — from automated document recognition to smart matching algorithms. Upcoming plans include card payments, trip insurance, referral programs, and expansion across Central Asia."
+                }
+            ]
         },
         "HowItWorks": {
             "Title": "How it works",
@@ -33,7 +89,7 @@
                     "Description": "All drivers are verified with their passport and profile check, so your rides are safe and worry-free."
                 },
                 "3": {
-                    "Title": "⚡ Scroll, click, tap — and go!",
+                    "Title": "⚡ Scroll, click, tap and go!",
                     "Description": "Book your ride in seconds through our simple and fast app."
                 },
                 "Button": "Read more"
@@ -70,7 +126,7 @@
                 "description6": "Our support team is always here to help, any time, any day.",
                 "title7": "Flexibility",
                 "description7": "Plan trips on your schedule — book, change or cancel with ease.",
-                "title8": "Eco-Friendly",
+                "title8": "Eco-friendly",
                 "description8": "Reduce your carbon footprint by sharing rides instead of driving alone."
             }
         },
@@ -83,27 +139,586 @@
             "Namangan": "Namangan",
             "Tashkent": "Tashkent",
             "Bukhara": "Bukhara",
-            "Jizzah": "Jizzah",
+            "Jizzah": "Jizzakh",
             "Navoiy": "Navoiy",
             "Samarkand": "Samarkand",
             "Sirdarya": "Sirdarya",
-            "Xorezm": "Xorezm",
+            "Xorezm": "Khorezm",
             "Nukus": "Nukus"
         },
         "Travel": {
-            "Title": "Travel more conveniently with the app Yo'ldosh",
-            "Description": "Install the Yo'ldosh mobile app to find passengers. With it, you will always be up to date on your trips. Chat with passengers, receive ride reminders, view purchased bus tickets, and use other useful features right on your smartphone",
+            "Title": "Travel more conveniently with the Yo'ldosh app",
+            "Description": "Install the Yo'ldosh mobile app to find passengers. With it, you will always be up to date on your trips. Chat with passengers, receive ride reminders, view purchased tickets, and use other useful features right on your smartphone.",
             "Subtitle": "With the Yo'ldosh app, your trip history is always at hand!",
             "AppStore": "Download on the App Store",
-            "GooglePlay": "Download on the Google Play"
+            "GooglePlay": "Download on Google Play"
+        },
+        "Trips": {
+            "Title": "Trips",
+            "PopularTrips": "Popular trips",
+            "Found": "trips found",
+            "From": "From",
+            "NotFound": "No trips found",
+            "Error": "Error loading trips. Please try again.",
+            "Details": {
+                "Back": "Back",
+                "Title": "Trip Details",
+                "Description": "Review the trip information before booking",
+                "Route": "Route",
+                "Information": "Trip information",
+                "Departure": "Departure",
+                "Seats": "Available seats",
+                "Driver": "Driver",
+                "Passengers": "Passengers",
+                "Vehicle": "Vehicle",
+                "AdditionalInformation": "Driver commentary",
+                "Price": "Price per person",
+                "Book": "Book",
+                "Distance": "Distance",
+                "Duration": "Duration",
+                "Hours": "h",
+                "Minutes": "m",
+                "Preferences": {
+                    "Title": "Preferences",
+                    "Smoking": "Smoking",
+                    "Door": "Pickup from door",
+                    "Food": "Stop for dinner",
+                    "AC": "Air Conditioning",
+                    "Pets": "Pets",
+                    "Garage": "Garage",
+                    "Yes": "Yes",
+                    "No": "No",
+                    "Empty": "Empty",
+                    "HalfEmpty": "Halfempty",
+                    "Full": "Full"
+                }
+            },
+            "Preferences": {
+                "Title": "Preferences",
+                "Smoking": "Smoking",
+                "Door": "Pickup from door",
+                "Food": "Stop for dinner",
+                "AC": "Air Conditioning",
+                "Pets": "Pets",
+                "Garage": "Garage",
+                "Yes": "Yes",
+                "No": "No"
+            },
+            "ResetFilters": "Reset Filters",
+            "NotFoundTitle": "Try changing the date or filter options to find a suitable trip."
+        },
+        "NotFound": {
+            "Title": "Nothing was found",
+            "Description": "Could not find requested resource",
+            "Button": "Back to home",
+            "RequestError": "Request error"
+        },
+        "PublicOffer": {
+            "title": "PUBLIC OFFER",
+            "subtitle": "for the provision of services for providing access to the Yo'ldosh platform",
+            "date": "'5' January 2026",
+            "city": "Tashkent",
+            "intro": "LLC 'MILLIY YOLDOSH', hereinafter referred to as the 'Service Provider', represented by the director acting on the basis of the Charter, publishes this Public Offer for the conclusion of an Agreement for the provision of services for providing access to the Yo'ldosh platform.",
+            "terms": {
+                "title": "1. TERMS AND DEFINITIONS",
+                "1": "1.1 Public Offer (hereinafter – “Offer”) – a public proposal by the Service Provider addressed to an indefinite number of persons to conclude an Agreement on the terms set forth in this Offer.",
+                "2": "1.2 Acceptance of the Offer – full and unconditional acceptance of the Offer by performing the actions specified in clause 3.2 of this Offer.",
+                "3": "1.3 User – an individual who has reached 18 years of age and has concluded an Agreement with the Service Provider on the terms contained in this Offer.",
+                "4": "1.4 Platform (Application) – the 'Yo'ldosh' software available for download and use on mobile devices, intended for organizing joint trips between Drivers and Passengers.",
+                "5": "1.5 Driver – a User who has passed verification and received the right to publish trip information in the Application.",
+                "6": "1.6 Passenger – a User using the Application to search for and book trips.",
+                "7": "1.7 Trip – a joint trip in the Driver's vehicle along the route published by the Driver in the Application.",
+                "8": "1.8 Verification – the procedure for checking the Driver's documents (driver's license, vehicle technical passport) by the Service Provider's automated system.",
+                "9": "1.9 Service Commission – the Service Provider's remuneration for providing access to the Platform, the amount of which is determined in accordance with section 5 of this Offer."
+            },
+            "subject": {
+                "title": "2. SUBJECT OF THE AGREEMENT",
+                "1": "2.1 The Service Provider undertakes to provide the User with access to the Platform's functionality for organizing joint trips, and the User undertakes to use the Platform in accordance with the terms of this Offer and pay the Service Commission in the manner and on the terms provided for in this Offer.",
+                "2": "2.2 The Service Provider provides a technological platform that ensures interaction between Drivers and Passengers. The Service Provider is not a carrier and does not provide passenger transportation services.",
+                "3": "2.3 The agreement for the provision of transportation services is concluded directly between the Driver and the Passenger. The Driver is responsible for the proper fulfillment of obligations under the transportation."
+            },
+            "acceptance": {
+                "title": "3. PROCEDURE FOR ACCEPTANCE OF THE OFFER",
+                "1": "3.1 Acceptance of this Offer means full and unconditional acceptance of all terms of the Offer without any exceptions or limitations.",
+                "2": "3.2 Acceptance of this Offer is the User's performance of the following actions:",
+                "2_1": "3.2.1 Entering the phone number in the Application;",
+                "2_2": "3.2.2 Confirming the phone number by entering a one-time code (OTP code) received via SMS message.",
+                "3": "3.3 The moment of acceptance of the Offer and conclusion of the Agreement is considered the moment of successful entry of the OTP code and gaining access to the Application's functionality.",
+                "4": "3.4 By accepting this Offer, the User confirms that:",
+                "4_1": "3.4.1 has reached 18 years of age;",
+                "4_2": "3.4.2 is fully familiar with the terms of this Offer;",
+                "4_3": "3.4.3 fully understands the subject of the Agreement;",
+                "4_4": "3.4.4 fully understands the significance and consequences of their actions in relation to the conclusion and execution of the Agreement."
+            },
+            "rights": {
+                "title": "4. RIGHTS AND OBLIGATIONS OF THE PARTIES",
+                "executorObliges": "4.1 The Service Provider undertakes to:",
+                "executorObliges1": "4.1.1 Ensure the operation of the Platform and access of Users to its functionality 24/7, except for the time of preventive and repair work.",
+                "executorObliges2": "4.1.2 Ensure the confidentiality of Users' personal data in accordance with the Privacy Policy and the legislation of the Republic of Uzbekistan.",
+                "executorObliges3": "4.1.3 Carry out verification of Drivers' documents through an automated system.",
+                "executorObliges4": "4.1.4 Provide a built-in chat for communication between Drivers and Passengers.",
+                "executorObliges5": "4.1.5 Notify Users of changes to the terms of this Offer by publishing a new edition in the Application.",
+                "executorRights": "4.2 The Service Provider has the right to:",
+                "executorRights1": "4.2.1 Change the terms of this Offer unilaterally, notifying Users by publishing a new edition in the Application at least 7 (seven) calendar days before the changes come into force.",
+                "executorRights2": "4.2.2 Suspend or terminate the User's access to the Platform in case of violation of the terms of this Offer.",
+                "executorRights3": "4.2.3 Block the User's account without prior notice in cases provided for in section 6 of this Offer.",
+                "executorRights4": "4.2.4 Set and change the amount of the Service Commission, notifying Users at least 14 (fourteen) calendar days before the introduction of changes.",
+                "executorRights5": "4.2.5 Carry out preventive work that may lead to temporary unavailability of the Platform, having previously notified Users through the Application.",
+                "userPassengerObliges": "4.3 The User (Passenger) undertakes to:",
+                "userPassengerObliges1": "4.3.1 Provide reliable information during registration (name, surname, phone number).",
+                "userPassengerObliges2": "4.3.2 Timely book trips and notify the Driver of booking cancellation.",
+                "userPassengerObliges3": "4.3.3 Comply with the rules of conduct during the trip and treat the Driver and other Passengers with respect.",
+                "userPassengerObliges4": "4.3.4 Carry out all communications with the Driver exclusively through the built-in chat of the Application.",
+                "userPassengerObliges5": "4.3.5 Not distribute contact details (phone numbers, accounts in messengers and social networks) for the purpose of bypassing the Platform.",
+                "userDriverObliges": "4.4 The User (Driver) undertakes to:",
+                "userDriverObliges1": "4.4.1 Pass the verification procedure by providing reliable information and copies of the following documents: driver's license (with information about PINFL and license category); vehicle technical passport.",
+                "userDriverObliges2": "4.4.2 Ensure the safety of Passenger transportation, comply with the Road Traffic Rules of the Republic of Uzbekistan.",
+                "userDriverObliges3": "4.4.3 Keep the vehicle in technically sound condition.",
+                "userDriverObliges4": "4.4.4 Publish in the Application only reliable information about trips (route, date, time, price, number of available seats).",
+                "userDriverObliges5": "4.4.5 Timely update the trip status ('Start trip', 'Complete trip').",
+                "userDriverObliges6": "4.4.6 Timely pay the Service Commission in the manner provided for in section 5 of this Offer.",
+                "userDriverObliges7": "4.4.7 Carry out all communications with Passengers exclusively through the built-in chat of the Application.",
+                "userDriverObliges8": "4.4.8 Not distribute contact details (phone numbers, accounts in messengers and social networks) for the purpose of bypassing the Platform.",
+                "userDriverObliges9": "4.4.9 Have a valid policy of compulsory civil liability insurance of the vehicle owner.",
+                "userRights": "4.5 The User has the right to:",
+                "userRights1": "4.5.1 Use the Platform's functionality in accordance with this Offer.",
+                "userRights2": "4.5.2 Receive technical support from the Service Provider.",
+                "userRights3": "4.5.3 At any time stop using the Platform and delete their account."
+            },
+            "pricing": {
+                "title": "5. COST OF SERVICES AND PAYMENT PROCEDURE",
+                "1": "5.1 Registration in the Application and obtaining the Passenger role is free of charge.",
+                "2": "5.2 Driver verification and obtaining access to publishing trips is free of charge.",
+                "3": "5.3 At the initial stage of the Platform's operation, the Service Provider provides Drivers with a commission-free period, during which the Service Commission is not charged. The duration of the commission-free period is determined by the Service Provider and may vary for different Drivers.",
+                "4": "5.4 Upon expiration of the commission-free period, the Service Provider introduces the Service Commission, which is charged from the Driver for each completed trip.",
+                "5": "5.5 The amount of the Service Commission is determined by the Service Provider and published in the Application. The Service Provider notifies Drivers of the establishment or change in the amount of the Commission at least 14 (fourteen) calendar days before the changes come into force.",
+                "6": "5.6 The Service Commission is automatically debited from the Driver's balance in the Application after pressing the 'Complete trip' button.",
+                "7": "5.7 The Driver is obliged to maintain a positive balance in the Application to pay the Service Commission. Replenishment of the balance is carried out by methods available in the Application.",
+                "8": "5.8 In case of insufficient funds on the Driver's balance to pay the Service Commission, the debt is recorded in the system. The Driver is obliged to repay the debt within 3 (three) calendar days. Until the debt is repaid, the Driver cannot publish new trips.",
+                "9": "5.9 Settlements between the Driver and the Passenger for transportation services are made directly between them and do not go through the Platform. The Service Provider is not a party to the transportation agreement and is not responsible for settlements between the Driver and the Passenger."
+            },
+            "liability": {
+                "title": "6. RULES FOR USING THE PLATFORM AND LIABILITY",
+                "1": "6.1 Users are STRICTLY PROHIBITED from:",
+                "1_1": "6.1.1 Exchanging phone numbers, accounts in messengers (WhatsApp, Telegram, etc.) or social networks for the purpose of organizing trips bypassing the Platform.",
+                "1_2": "6.1.2 Communicating with other Users outside the built-in chat of the Application before or during the organization of a trip through the Platform.",
+                "1_3": "6.1.3 Publishing unreliable, false or misleading information.",
+                "1_4": "6.1.4 Using the Platform for illegal purposes or in ways that violate the rights of third parties.",
+                "1_5": "6.1.5 Attempting to gain unauthorized access to the Platform, servers or databases of the Service Provider.",
+                "1_6": "6.1.6 Using automated means (bots, scripts) to interact with the Platform without the written consent of the Service Provider.",
+                "1_7": "6.1.7 Placing in the chat and profile information containing threats, insults, discrimination, obscene language, materials of a sexual or pornographic nature.",
+                "1_8": "6.1.8 Transferring access to their account to third parties.",
+                "2": "6.2 In case of violation by the User of the provisions of clause 6.1 of this Offer, the Service Provider has the right to:",
+                "2_1": "6.2.1 Send a warning to the User.",
+                "2_2": "6.2.2 Temporarily suspend access to the account for a period of 7 to 30 days.",
+                "2_3": "6.2.3 Block the User's account without the possibility of recovery.",
+                "3": "6.3 The decision on the application of the liability measure is made by the Service Provider independently, taking into account the nature and severity of the violation.",
+                "4": "6.4 In case of repeated violations of the rules specified in clauses 6.1.1 and 6.1.2 (exchange of contacts, communication outside the Platform), the account is blocked without warning and the right to recovery.",
+                "5": "6.5 The Driver bears full responsibility for: the safety of Passenger transportation; the technical condition of the vehicle; compliance with Traffic Rules; the presence of valid documents for the right to drive the vehicle and for the vehicle itself; causing harm to the life, health or property of Passengers and third parties during the trip.",
+                "6": "6.6 The Service Provider is not responsible for: actions or inaction of Drivers and Passengers; the quality of transportation services provided by Drivers; damage caused to Users as a result of interaction with each other; loss or damage to Users' property during the trip; conflicts and disputes between Drivers and Passengers; temporary unavailability of the Platform due to preventive work or technical failures.",
+                "7": "6.7 The User independently assesses the risks of using the Platform and makes a decision on the feasibility of interacting with other Users."
+            },
+            "privacy": {
+                "title": "7. CONFIDENTIALITY AND PERSONAL DATA",
+                "1": "7.1 Processing of Users' personal data is carried out in accordance with the Privacy Policy of the Yo'ldosh Platform and the legislation of the Republic of Uzbekistan on personal data.",
+                "2": "7.2 By registering in the Application, the User consents to the processing of their personal data for the purpose of providing access to the Platform and its functionality.",
+                "3": "7.3 The Service Provider undertakes not to transfer Users' personal data to third parties, except in cases provided for by the legislation of the Republic of Uzbekistan or the Privacy Policy."
+            },
+            "disputes": {
+                "title": "8. DISPUTE RESOLUTION",
+                "1": "8.1 All disputes and disagreements arising from this Agreement or in connection with it are resolved through negotiations between the Parties.",
+                "2": "8.2 If it is impossible to resolve the dispute through negotiations, the dispute is subject to consideration in court in accordance with the legislation of the Republic of Uzbekistan.",
+                "3": "8.3 The pre-trial procedure for resolving the dispute is mandatory. The period for considering the claim is 10 (ten) working days from the date of its receipt.",
+                "4": "8.4 Claims are sent to the Service Provider through the feedback functionality in the Application or by email specified in section 10 of this Offer."
+            },
+            "termination": {
+                "title": "9. TERM OF THE AGREEMENT AND TERMINATION PROCEDURE",
+                "1": "9.1 The Agreement comes into force from the moment of its acceptance by the User and is valid indefinitely.",
+                "2": "9.2 The User has the right to terminate the Agreement unilaterally at any time by deleting their account in the Application.",
+                "3": "9.3 The Service Provider has the right to terminate the Agreement unilaterally in case of violation by the User of the terms of this Offer by blocking the User's account.",
+                "4": "9.4 Termination of the Agreement does not release the Parties from liability for violations committed during its validity.",
+                "5": "9.5 Upon termination of the Agreement, the Driver is obliged to repay the existing debt on the Service Commission within 5 (five) calendar days."
+            },
+            "final": {
+                "title": "10. FINAL PROVISIONS",
+                "1": "10.1 This Offer is drawn up in accordance with the legislation of the Republic of Uzbekistan.",
+                "2": "10.2 If any provision of this Offer is declared invalid, this does not entail the invalidity of the remaining provisions.",
+                "3": "10.3 The Service Provider reserves the right to make changes to this Offer. The new edition of the Offer comes into force from the moment of its placement in the Application, unless otherwise provided by the new edition of the Offer.",
+                "4": "10.4 Continued use of the Platform after the new edition of the Offer comes into force means the User's consent to the changes made.",
+                "5": "10.5 All notifications related to the execution of this Agreement are sent to Users through the Application (push notifications, messages in the Application) or to the phone number specified during registration.",
+                "6": "10.6 The text of this Offer is available in the Application and at: www.yoldosh.uz"
+            },
+            "requisites": {
+                "title": "SERVICE PROVIDER DETAILS",
+                "company": "LLC 'MILLIY YOLDOSH'",
+                "address": "Legal address: Farovon MFY, BUSH 'NURAFSHON-2' street, house 3",
+                "inn": "TIN: 312381612",
+                "account": "Settlement account: 20208000007298685001",
+                "bank": "Bank: JSC 'Mikrokreditbank'",
+                "mfo": "MFO: 00433",
+                "phone": "Phone: +998911366444",
+                "email": "Email: info@yoldosh.uz",
+                "director": "Director of LLC 'MILLIY YOLDOSH' Khanapiyaev B.F."
+            }
+        },
+        "PrivacyPolicy": {
+            "title": "PRIVACY POLICY",
+            "subtitle": "of the Yo'ldosh Application",
+            "effectiveDate": "Effective Date: 13.01.2026",
+            "lastUpdate": "Last Update: 13.01.2026",
+            "general": {
+                "title": "1. GENERAL PROVISIONS",
+                "1": "1.1. This Privacy Policy (hereinafter – “Policy”) defines the procedure for processing and protecting personal data of users of the mobile application “Yo'ldosh” (hereinafter – “Application”, “Platform”).",
+                "2": "1.2. The personal data operator is LLC \"MILLIY YOLDOSH\" (hereinafter – “Operator”, “We”), registered in accordance with the legislation of the Republic of Uzbekistan.",
+                "3": "1.3. This Policy is developed in accordance with:",
+                "3_1": "The Law of the Republic of Uzbekistan “On Personal Data” dated 02.07.2019 No. ZRU-547;",
+                "3_2": "The Resolution of the Cabinet of Ministers of the Republic of Uzbekistan “On measures to improve the procedure for processing personal data” dated 10.02.2020 No. 82;",
+                "3_3": "other regulatory legal acts of the Republic of Uzbekistan.",
+                "4": "1.4. Use of the Application means the User's unconditional agreement with this Policy and the conditions for processing his personal data specified therein. In case of disagreement with the terms of the Policy, the User must stop using the Application.",
+                "5": "1.5. This Policy applies only to the Yo'ldosh Application. We do not control and are not responsible for third-party sites and services to which the User can navigate via links available in the Application.",
+                "6": "1.6. The Operator checks the relevance of personal data and, if inaccuracies are identified, takes measures to update or delete them, unless otherwise provided by the legislation of the Republic of Uzbekistan."
+            },
+            "definitions": {
+                "title": "2. TERMS AND DEFINITIONS",
+                "intro": "2.1. This Policy uses the following terms:",
+                "1": "Personal data – any information relating to a directly or indirectly identified or identifiable natural person (personal data subject).",
+                "2": "Personal data processing – any action or set of actions performed with personal data, including collection, recording, systematization, accumulation, storage, clarification (update, change), extraction, use, transfer (distribution, provision, access), depersonalization, blocking, deletion, destruction of personal data.",
+                "3": "Personal data confidentiality – a mandatory requirement for the Operator or other person who has gained access to personal data not to allow their dissemination without the consent of the personal data subject or other legal grounds.",
+                "4": "User – a person who has access to the Application via the Internet and uses the Application.",
+                "5": "Passenger – a User who uses the Application to search and book trips.",
+                "6": "Driver – a User who has passed verification and uses the Application to publish trip information.",
+                "7": "Cookies – small files that are saved on the User's device and contain information about previous visits and actions in the Application."
+            },
+            "collection": {
+                "title": "3. WHAT PERSONAL DATA WE COLLECT",
+                "1": "3.1. Data collected from all Users during registration:",
+                "1_list": [
+                    "Mobile phone number",
+                    "First name",
+                    "Last name"
+                ],
+                "2": "3.2. Additional data collected from Drivers during verification:",
+                "2_1": "Copy of driver's license, including:",
+                "2_1_list": [
+                    "Driver's license photo",
+                    "Series and number of driver's license",
+                    "Driver's license category",
+                    "Issue date and expiration date",
+                    "PINFL (personal identification number of an individual)",
+                    "Date of birth",
+                    "Place of document issuance"
+                ],
+                "2_2": "Copy of vehicle technical passport, including:",
+                "2_2_list": [
+                    "Technical passport photo",
+                    "Vehicle state registration number",
+                    "Make, model, year of manufacture of the vehicle",
+                    "VIN number (vehicle identification number)",
+                    "Data about the vehicle owner"
+                ],
+                "3": "3.3. Data collected automatically when using the Application:",
+                "3_list": [
+                    "Trip information (route, date, start and end time of the trip, cost)",
+                    "Booking history",
+                    "Geolocation data (when using navigation and location determination functions)",
+                    "History of messages in the built-in chat",
+                    "IP address",
+                    "Device type, operating system, Application version",
+                    "Unique device identifier",
+                    "Data on interaction with the Application (viewed pages, usage time, clicks)",
+                    "Information about the Driver's balance and transaction history (commission deduction)",
+                    "Cookies and similar tracking technologies"
+                ],
+                "4": "3.4. Data provided by Users voluntarily:",
+                "4_list": [
+                    "Profile photo (optional)",
+                    "Additional contact information (optional)",
+                    "Reviews and ratings of other Users",
+                    "Appeals to support service"
+                ]
+            },
+            "purposes": {
+                "title": "4. PURPOSES OF PERSONAL DATA PROCESSING",
+                "intro": "4.1. We collect and process Users' personal data for the following purposes:",
+                "1": "4.2. Providing access to the Platform:",
+                "1_list": [
+                    "Registration and identification of Users",
+                    "Creation and management of user account",
+                    "Ensuring the functioning of the Application"
+                ],
+                "2": "4.3. Driver verification:",
+                "2_list": [
+                    "Verification of document authenticity (driver's license, technical passport)",
+                    "Confirmation of the right to operate the vehicle",
+                    "Ensuring Passenger safety",
+                    "Compliance with transportation legislation"
+                ],
+                "3": "4.4. Trip organization:",
+                "3_list": [
+                    "Publication of trip information",
+                    "Search and booking of trips",
+                    "Ensuring communication between Drivers and Passengers through the built-in chat",
+                    "Notification of trip status"
+                ],
+                "4": "4.5. Financial operations:",
+                "4_list": [
+                    "Calculation and deduction of Service commission from Drivers",
+                    "Accounting of transactions and management of Drivers' balance",
+                    "Formation of financial reporting"
+                ],
+                "5": "4.6. Ensuring security:",
+                "5_list": [
+                    "Prevention of fraud and abuse",
+                    "Detection of violations of the Public Offer",
+                    "Resolution of disputes between Users",
+                    "Investigation of incidents"
+                ],
+                "6": "4.7. Improving service quality:",
+                "6_list": [
+                    "Analysis of Application usage",
+                    "Development of new features and services",
+                    "Personalization of user experience",
+                    "Optimization of routes and search algorithms"
+                ],
+                "7": "4.8. Communication with Users:",
+                "7_list": [
+                    "Sending trip notifications",
+                    "Informing about changes in the Application",
+                    "Technical support",
+                    "Sending news and special offers (with User consent)"
+                ],
+                "8": "4.9. Compliance with legislation:",
+                "8_list": [
+                    "Fulfillment of tax and accounting requirements",
+                    "Provision of information to state authorities upon request",
+                    "Protection of the Operator's rights and legitimate interests"
+                ]
+            },
+            "grounds": {
+                "title": "5. LEGAL GROUNDS FOR PERSONAL DATA PROCESSING",
+                "intro": "5.1. The legal grounds for processing personal data are:",
+                "1": "5.2. Consent of the personal data subject to the processing of his personal data, provided by accepting this Policy during registration in the Application.",
+                "2": "5.3. Necessity for the performance of a contract to which the personal data subject is a party (Public Offer for the provision of services for access to the Platform).",
+                "3": "5.4. Necessity for the exercise of the rights and legitimate interests of the Operator or third parties (ensuring security, fraud prevention).",
+                "4": "5.5. Necessity for the fulfillment of obligations provided by the legislation of the Republic of Uzbekistan (financial reporting, requirements of state authorities)."
+            },
+            "methods": {
+                "title": "6. METHODS AND TERMS OF PERSONAL DATA PROCESSING",
+                "1": "6.1. Personal data processing is carried out using automation tools and without using automation tools.",
+                "2": "6.2. We process personal data for the period necessary to achieve the processing purposes specified in section 4 of this Policy, unless otherwise provided by legislation.",
+                "3": "6.3. Personal data storage periods:",
+                "3_list": [
+                    "Data of active Users (name, surname, phone number) are stored until the User deletes the account or the Operator blocks the account.",
+                    "Drivers' documents (driver's license, technical passport) are stored for the entire period of the Driver's use of the Application and for 3 (three) years after deletion or blocking of the account.",
+                    "Trip history and financial transactions are stored for 5 (five) years for accounting and tax compliance purposes.",
+                    "Messages in the built-in chat are stored for 1 (one) year from the date of sending or until the User deletes the account.",
+                    "Geolocation data are stored for 90 (ninety) days from the completion of the trip.",
+                    "Technical information (IP address, device data, cookies) is stored for 6 (six) months."
+                ],
+                "4": "6.4. Upon expiration of storage periods, personal data are subject to deletion or depersonalization, unless otherwise provided by the legislation of the Republic of Uzbekistan.",
+                "5": "6.5. In case of deletion of the account by the User, his personal data are deleted within 30 (thirty) calendar days, except for data that must be stored in accordance with legislative requirements (financial transactions, accounting documents)."
+            },
+            "transfer": {
+                "title": "7. TRANSFER OF PERSONAL DATA TO THIRD PARTIES",
+                "1": "7.1. We do not sell, exchange or transfer Users' personal data to third parties without the User's consent, except in cases provided by this Policy and the legislation of the Republic of Uzbekistan.",
+                "2": "7.2. Personal data may be transferred to third parties in the following cases:",
+                "2_1": "To other Application Users:",
+                "2_1_list": [
+                    "Passengers are shown information about the Driver (name, surname, profile photo, rating, car make and model, state number) when viewing the trip.",
+                    "Drivers are shown information about Passengers (name, surname, profile photo, rating) after booking the trip.",
+                    "Transfer is carried out only to the extent necessary for organizing the trip."
+                ],
+                "2_2": "To service providers and contractors:",
+                "2_2_desc": "We may transfer personal data to organizations that provide services on our behalf:",
+                "2_2_list": [
+                    "Hosting providers for data placement on servers",
+                    "Payment systems for processing financial operations",
+                    "SMS mailing providers for sending OTP codes and notifications",
+                    "Analytics services for analyzing Application usage",
+                    "Technical support services",
+                    "All such third parties are obliged to ensure the confidentiality and security of personal data in accordance with agreements concluded with the Operator."
+                ],
+                "2_3": "To state authorities and law enforcement agencies:",
+                "2_3_desc": "In accordance with the legislation of the Republic of Uzbekistan based on an official request from competent authorities (court, prosecutor's office, police, tax authorities, etc.).",
+                "2_4": "In case of reorganization or sale of business:",
+                "2_4_desc": "In case of merger, acquisition, reorganization or sale of the Operator's assets, personal data may be transferred to the successor or acquirer subject to their compliance with this Policy.",
+                "3": "7.3. We do not carry out cross-border transfer of personal data without complying with the requirements of the legislation of the Republic of Uzbekistan on personal data.",
+                "4": "7.4. When expanding activities to the territory of other states, the Operator will comply with the requirements of the legislation on personal data protection of the respective countries."
+            },
+            "protection": {
+                "title": "8. PROTECTION OF PERSONAL DATA",
+                "1": "8.1. The Operator takes necessary legal, organizational and technical measures to protect personal data from unauthorized or accidental access, destruction, alteration, blocking, copying, provision, distribution, as well as from other unlawful actions.",
+                "2": "8.2. Technical protection measures:",
+                "2_list": [
+                    "Encryption of personal data during transmission (SSL/TLS)",
+                    "Encryption of personal data during storage in databases",
+                    "Use of secure servers with limited access",
+                    "Regular data backup",
+                    "Protection against unauthorized access (firewalls, intrusion detection systems)",
+                    "Antivirus protection",
+                    "Multi-level authentication for administrative access"
+                ],
+                "3": "8.3. Organizational protection measures:",
+                "3_list": [
+                    "Appointment of a person responsible for organizing personal data processing",
+                    "Differentiation of employee access rights to personal data",
+                    "Training of employees on rules for processing and protecting personal data",
+                    "Conclusion of confidentiality agreements with employees",
+                    "Control over compliance with personal data legislation requirements",
+                    "Conducting internal audits of the personal data protection system"
+                ],
+                "4": "8.4. Access to personal data is available only to authorized employees of the Operator and contractors who need this information to perform their duties.",
+                "5": "8.5. Despite the application of all necessary security measures, we cannot guarantee absolute protection of personal data from all possible threats, taking into account the technical limitations of the Internet.",
+                "6": "8.6. The User is responsible for maintaining the confidentiality of his account data (phone number, OTP code). Any actions performed using the User's account are considered performed by the User himself.",
+                "7": "8.7. In case of detection of an incident related to a personal data security breach, the Operator undertakes to notify the affected Users and the authorized state body within the time limits established by legislation."
+            },
+            "rights": {
+                "title": "9. RIGHTS OF PERSONAL DATA SUBJECTS",
+                "1": "9.1. In accordance with the legislation of the Republic of Uzbekistan, Users have the following rights regarding their personal data:",
+                "1_1": "1) Right of access: The User has the right to obtain information on whether his personal data is being processed and to access such personal data.",
+                "1_2": "2) Right to rectification: The User has the right to demand correction of inaccurate or incomplete personal data.",
+                "1_3": "3) Right to erasure: The User has the right to demand deletion of his personal data in cases where:",
+                "1_3_list": [
+                    "personal data is no longer necessary for the purposes for which it was collected;",
+                    "the User withdraws consent to personal data processing;",
+                    "personal data was processed unlawfully;",
+                    "deletion is necessary to comply with legislative requirements."
+                ],
+                "1_4": "4) Right to restriction of processing: The User has the right to demand restriction of personal data processing in cases where:",
+                "1_4_list": [
+                    "the accuracy of personal data is contested;",
+                    "processing is unlawful, but the User does not want data deletion;",
+                    "personal data is no longer needed by the Operator, but is needed by the User to protect his rights."
+                ],
+                "1_5": "5) Right to withdraw consent: The User has the right to withdraw his consent to personal data processing at any time by deleting the account in the Application.",
+                "1_6": "6) Right to lodge a complaint: The User has the right to lodge a complaint with the authorized state body for the protection of personal data subjects' rights.",
+                "2": "9.2. To exercise their rights, the User can:",
+                "2_list": [
+                    "Use account settings in the Application to update or delete information.",
+                    "Contact support service through the Application functionality or via contacts specified in section 14 of this Policy."
+                ],
+                "3": "9.3. The Operator undertakes to consider the User's request and provide a response within 30 (thirty) calendar days from the date of receipt of the request.",
+                "4": "9.4. The Operator has the right to refuse deletion of personal data if their storage is provided by the legislation of the Republic of Uzbekistan (for example, financial transactions for accounting purposes)."
+            },
+            "cookies": {
+                "title": "10. COOKIES AND TRACKING TECHNOLOGIES",
+                "1": "10.1. The Yo'ldosh Application uses cookies and similar tracking technologies to improve user experience and analyze Application usage.",
+                "2": "10.2. Cookies are small text files that are saved on the User's device and allow the Application to remember information about the User's actions and preferences.",
+                "3": "10.3. We use the following types of cookies:",
+                "3_1": "1) Essential cookies: Provide basic Application functionality (authorization, security). These cookies are necessary for the Application's operation and cannot be disabled.",
+                "3_2": "2) Functional cookies: Allow the Application to remember the User's choices (interface language, display settings).",
+                "3_3": "3) Analytical cookies: Collect information on how Users use the Application, which allows us to improve its operation (Google Analytics, Firebase Analytics and others).",
+                "3_4": "4) Advertising cookies: Used to display relevant advertising and evaluate the effectiveness of advertising campaigns (currently not used, but may be implemented in the future).",
+                "4": "10.4. The User can manage cookies through their device or browser settings. However, disabling essential cookies may affect the Application's functionality.",
+                "5": "10.5. In addition to cookies, we use the following technologies:",
+                "5_list": [
+                    "Tracking pixels for analyzing the effectiveness of email mailings (if applicable).",
+                    "Third-party SDKs for analytics and error tracking (Firebase, Crashlytics, etc.).",
+                    "Unique device identifiers for identifying Users across different sessions."
+                ]
+            },
+            "minors": {
+                "title": "11. SPECIAL FEATURES OF PROCESSING DATA OF MINORS",
+                "1": "11.1. The Yo'ldosh Application is intended for persons who have reached 18 (eighteen) years of age.",
+                "2": "11.2. We do not intentionally collect personal data of persons under 18 years of age.",
+                "3": "11.3. If the Operator becomes aware that personal data has been collected from a person under 18 years of age without the consent of parents or legal representatives, such data will be immediately deleted.",
+                "4": "11.4. If you believe that we may have received personal data from a person under 18 years of age, please contact us via the contacts specified in section 14 of this Policy."
+            },
+            "changes": {
+                "title": "12. CHANGES TO THE PRIVACY POLICY",
+                "1": "12.1. The Operator reserves the right to make changes to this Policy at any time.",
+                "2": "12.2. The new version of the Policy comes into force from the moment of its placement in the Application, unless otherwise provided by the new version of the Policy.",
+                "3": "12.3. Users will be notified of significant changes in the Policy (changes in processing purposes, transfer of data to new third parties, changes in storage periods) through the Application (push notification, message in the Application) at least 7 (seven) calendar days before the changes come into force.",
+                "4": "12.4. The current version of the Policy is always available in the Application in the settings section and at the address: [specify website if available].",
+                "5": "12.5. Continued use of the Application after the new version of the Policy comes into force means the User's agreement with the changes made.",
+                "6": "12.6. The date of the last Policy update is indicated at the beginning of the document."
+            },
+            "law": {
+                "title": "13. APPLICABLE LAW",
+                "1": "13.1. This Policy and all related issues are governed by the legislation of the Republic of Uzbekistan.",
+                "2": "13.2. All disputes arising in connection with personal data processing are resolved in accordance with the legislation of the Republic of Uzbekistan.",
+                "3": "13.3. Compliance with the pre-trial procedure is mandatory before going to court. The period for considering a claim is 10 (ten) calendar days."
+            },
+            "contact": {
+                "title": "14. CONTACT INFORMATION",
+                "1": "14.1. If you have questions, comments or requests regarding this Policy or the processing of your personal data, you can contact us in the following ways:",
+                "company": "LLC \"MILLIY YOLDOSH\"",
+                "address": "Legal address: Tashkent region, Kibray district, Farovon MFY, BUSH \"NURAFSHON-2\" kuchasi, 3-uy",
+                "email": "General email: info@yoldosh.uz",
+                "phone": "Support phone: +998 (94) 000-12-58",
+                "telegram": "Telegram: @yoldosh_admin",
+                "workHours": "Support working hours: 11:00-20:00",
+                "2": "14.2. We undertake to respond to your request within 10 (ten) calendar days from the date of its receipt.",
+                "3": "14.3. To protect your privacy when processing requests, we may ask you for additional information to verify your identity."
+            },
+            "final": {
+                "title": "15. FINAL PROVISIONS",
+                "1": "15.1. This Policy is an integral part of the Public Offer for the provision of services for access to the Yo'ldosh Platform.",
+                "2": "15.2. If any provision of this Policy is declared invalid, this does not entail the invalidity of the remaining provisions.",
+                "3": "15.3. This Policy is drawn up in Russian and Uzbek languages. In case of discrepancies, the Uzbek version has priority.",
+                "4": "15.4. By accepting the terms of this Policy, the User confirms that:",
+                "4_list": [
+                    "he has read the text of the Policy in full;",
+                    "understands his rights and obligations;",
+                    "gives consent to the processing of his personal data for the purposes and under the conditions defined by this Policy;",
+                    "undertakes to maintain the confidentiality of his account credentials."
+                ],
+                "date": "Publication date: 13.01.2026",
+                "version": "Version: 1.0",
+                "director": "Director of LLC \"MILLIY YOLDOSH\"                    Khanapiyaev B.F."
+            }
         }
     },
     "Components": {
         "Header": {
-            "Features": "Features",
-            "HowItWorks": "How it works",
-            "Contacts": "Contacts",
+            "Home": "Home",
+            "About": "About",
+            "Trips": "Trips",
             "DownloadApp": "Download"
+        },
+        "Search": {
+            "From": "From",
+            "To": "To",
+            "FromCityPlaceholder": "Tashkent",
+            "ToCityPlaceholder": "Andijan",
+            "Passengers": {
+                "Title": "Passengers",
+                "1": "1 passenger",
+                "2": "2 passengers",
+                "3": "3 passengers",
+                "4": "4 passengers",
+                "5": "5 passengers",
+                "6": "6 passengers"
+            },
+            "Search": "Search",
+            "Filters": "Filters",
+            "SortBy": "Sort By",
+            "Sort": {
+                "Default": "Default (Best Match)",
+                "Price": "Price",
+                "Date": "Departure Date",
+                "Distance": "Distance"
+            },
+            "Order": "Order",
+            "Ascending": "Low to High",
+            "Descending": "High to Low",
+            "DriverPreferences": "Driver Preferences",
+            "PassengerPreferences": "Your Preferences",
+            "Preferences": {
+                "Smoking": "Smoking Allowed",
+                "Pets": "Pets Allowed",
+                "Music": "Music",
+                "Talkative": "Talkative Driver",
+                "AC": "Air Conditioning",
+                "Any": "Any",
+                "Empty": "Empty",
+                "HalfEmpty": "Half empty",
+                "Full": "Full"
+            },
+            "Any": "Any",
+            "Yes": "Yes",
+            "No": "No",
+            "ResetFilters": "Reset Filters"
         },
         "Calendar": "dd.mm.yyyy",
         "Footer": {
@@ -123,9 +738,84 @@
                 "Title": "Support",
                 "1": "Help",
                 "2": "Contacts",
-                "3": "Safety"
+                "3": "Privacy policy",
+                "4": "Public offer"
             },
             "Rights": "All Rights Reserved"
         }
+    },
+    "metadata": {
+        "home": {
+            "title": "Yoldosh — Carpooling Across Uzbekistan",
+            "description": "Find travel companions for intercity trips across Uzbekistan. Safe and affordable carpooling.",
+            "keywords": [
+                "carpooling Uzbekistan",
+                "ridesharing",
+                "intercity travel"
+            ],
+            "og": {
+                "title": "Yoldosh — Carpooling Service",
+                "description": "Travel smarter across Uzbekistan with trusted drivers.",
+                "image": "/og-home-en.png"
+            }
+        },
+        "about": {
+            "title": "About Us — Yoldosh",
+            "description": "Learn more about Yoldosh and our mission to make travel safe and affordable.",
+            "keywords": [
+                "about Yoldosh",
+                "carpooling service"
+            ],
+            "og": {
+                "title": "About Yoldosh",
+                "description": "Leading carpooling platform in Uzbekistan.",
+                "image": "/og-about-en.png"
+            }
+        },
+        "trips": {
+            "title": "Find Trips — Yoldosh",
+            "description": "Search for intercity trips and travel companions across Uzbekistan.",
+            "keywords": [
+                "find trips",
+                "carpooling",
+                "ridesharing"
+            ],
+            "og": {
+                "title": "Find Trips with Yoldosh",
+                "description": "Thousands of routes across Uzbekistan.",
+                "image": "/og-trips-en.png"
+            }
+        },
+        "publicOffer": {
+            "title": "Public Offer — Yoldosh",
+            "description": "Official terms and conditions of using the Yoldosh platform.",
+            "keywords": [
+                "public offer",
+                "terms of service"
+            ],
+            "og": {
+                "title": "Yoldosh Public Offer",
+                "description": "Legal terms of service.",
+                "image": "/og-offer-en.png"
+            }
+        },        
+        "privacyPolicy": {
+            "title": "Privacy Policy — Yoldosh",
+            "description": "Official privacy policy of the Yoldosh platform.",
+            "keywords": [
+                "privacy policy",
+                "terms of service"
+            ],
+            "og": {
+                "title": "Yoldosh Privacy Policy",
+                "description": "Legal terms of service.",
+                "image": "/og-offer-en.png"
+            }
+        }
+    },
+    "manifest": {
+        "name": "Yoldosh — Carpooling",
+        "shortName": "Yoldosh",
+        "description": "Safe and affordable carpooling across Uzbekistan"
     }
 }
