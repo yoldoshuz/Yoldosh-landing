@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 
 import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { Navbar } from "@/components/shared/Navbar";
+import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
 
 import "./globals.css";
-import { Navbar } from "@/components/shared/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,16 +29,18 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${inter.variable} antialiased`}>
-        <NextIntlClientProvider>
-          <ThemeProviders>
-            <main className="flex flex-col">
-              <div className="mb-16">
-                <Navbar />
-              </div>
-              {children}
-            </main>
-          </ThemeProviders>
-        </NextIntlClientProvider>
+        <QueryProvider>
+          <NextIntlClientProvider>
+            <ThemeProviders>
+              <main className="flex flex-col">
+                <div className="mb-16">
+                  <Navbar />
+                </div>
+                {children}
+              </main>
+            </ThemeProviders>
+          </NextIntlClientProvider>
+        </QueryProvider>
       </body>
     </html>
   );

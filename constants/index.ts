@@ -23,3 +23,53 @@ export const navLinks = () => {
 
     return links;
 }
+
+
+export const tripItems = () => {
+    const t = useTranslations("Pages.Popular");
+
+    const items = [
+        {
+            id: 1,
+            from: t("Tashkent"),
+            to: t("Samarkand"),
+            image: "/city.jpg",
+            price: 150000,
+            url: ""
+        },
+        {
+            id: 2,
+            from: t("Tashkent"),
+            to: t("Andijan"),
+            image: "/city.jpg",
+            price: 170000,
+            url: ""
+        },
+        {
+            id: 3,
+            from: t("Tashkent"),
+            to: t("Bukhara"),
+            image: "/city.jpg",
+            price: 200000,
+            url: ""
+        },
+        {
+            id: 4,
+            from: t("Tashkent"),
+            to: t("Nukus"),
+            image: "/city.jpg",
+            price: 250000,
+            url: ""
+        },
+        {
+            id: 5,
+            from: t("Tashkent"),
+            to: t("Navoiy"),
+            image: "/city.jpg",
+            price: 150000,
+            url: ""
+        },
+    ]
+    
+    return items;
+}
