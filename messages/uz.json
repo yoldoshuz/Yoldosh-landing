@@ -666,6 +666,21 @@
                 "version": "Versiya: 1.0",
                 "director": "«MILLIY YOLDOSH» MChJ direktori                    Xanapiyayev B.F."
             }
+        },
+        "DeleteAccount": {
+            "title": "Hisobni o‘chirish",
+            "deleting": "Hisobingiz o‘chirilmoqda...",
+            "success": "Hisob muvaffaqiyatli o‘chirildi",
+            "successDefault": "Amaliyot muvaffaqiyatli bajarildi",
+            "error": "Hisobni o‘chirib bo‘lmadi",
+            "missingParams": "Havolada majburiy parametrlar yo‘q",
+            "invalidPhone": "Telefon raqami formati noto‘g‘ri",
+            "invalidToken": "Havola yaroqsiz yoki buzilgan",
+            "somethingWentWrong": "Xatolik yuz berdi",
+            "contactSupport": "Muammo davom etsa — qo‘llab-quvvatlash xizmatiga murojaat qiling",
+            "redirectIn": "Qayta yo‘naltirish",
+            "seconds": "soniya",
+            "locale": "uz"
         }
     },
     "Components": {

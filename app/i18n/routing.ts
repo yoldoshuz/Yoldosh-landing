@@ -41,6 +41,11 @@ export const routing = defineRouting({
       en: '/privacy-policy',
       ru: '/политика-конфиденциальности',
       uz: '/maxfiylik-siyosati'
+    },
+    '/delete-account': {
+      en: '/delete-account',
+      ru: '/удалить-аккаунт',
+      uz: '/hisobni-ochirish'
     }
   }
 });

@@ -667,6 +667,21 @@
                 "version": "Version: 1.0",
                 "director": "Director of LLC \"MILLIY YOLDOSH\"                    Khanapiyaev B.F."
             }
+        },
+        "DeleteAccount": {
+            "title": "Delete Account",
+            "deleting": "Deleting your account...",
+            "success": "Account successfully deleted",
+            "successDefault": "Operation completed successfully",
+            "error": "Failed to delete account",
+            "missingParams": "Required parameters are missing in the link",
+            "invalidPhone": "Invalid phone number format",
+            "invalidToken": "Link is invalid or corrupted",
+            "somethingWentWrong": "Something went wrong",
+            "contactSupport": "If the issue persists — contact support",
+            "redirectIn": "Redirecting in",
+            "seconds": "seconds",
+            "locale": "en"
         }
     },
     "Components": {
@@ -798,7 +813,7 @@
                 "description": "Legal terms of service.",
                 "image": "/og-offer-en.png"
             }
-        },        
+        },
         "privacyPolicy": {
             "title": "Privacy Policy — Yoldosh",
             "description": "Official privacy policy of the Yoldosh platform.",
