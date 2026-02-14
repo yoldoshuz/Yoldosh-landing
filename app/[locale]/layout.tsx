@@ -2,9 +2,9 @@ import Script from "next/script";
 import NotFound from "./not-found";
 
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Nunito_Sans, TikTok_Sans} from "next/font/google";
 import { routing } from "../i18n/routing";
-import { LayoutProps, PageProps } from "@/types";
+import { LayoutProps } from "@/types";
 import { NextIntlClientProvider } from "next-intl";
 import { getOrganizationJsonLd } from '@/app/lib/jsonld'
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -15,13 +15,9 @@ import { ThemeProviders } from "./providers/ThemeProviders";
 
 import "./globals.css";
 
-// Оптимизация шрифта с preload
-const inter = Inter({
-  variable: "--font-inter",
+const font = Nunito_Sans({
+  variable: "--font-font",
   subsets: ["latin", "cyrillic"],
-  display: "swap",
-  preload: true,
-  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
@@ -112,7 +108,7 @@ export default async function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${font.className} antialiased`}>
         {/* Yandex Metrika - загружается асинхронно */}
         <Script id="yandex-metrika" strategy="afterInteractive">
           {`

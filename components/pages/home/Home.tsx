@@ -15,10 +15,6 @@ export const Home = () => {
 
         {/* Видимый SEO-контент для поисковиков */}
         <div className="text-center max-w-3xl my-4">
-          <p className="subtitle-text">
-            {t("Subtitle")} <span className="link"> Yo'ldosh</span>
-          </p>
-
           {/* Дополнительный SEO-текст (можно скрыть визуально, но оставить для поисковиков) */}
           <div className="sr-only">
             <p>
@@ -39,30 +35,6 @@ export const Home = () => {
         }>
           <SearchTrips />
         </Suspense>
-
-        <div className="flex items-center justify-center flex-wrap mt-16 gap-18">
-          <div className="flex flex-col items-center">
-            <div className="flex items-center justify-center gap-1">
-              <MapPin className="size-8 text-4xl font-bold text-emerald-500" strokeWidth={3} />
-              <p className="text-4xl font-bold text-emerald-500" aria-label="Поездки">100+</p>
-            </div>
-            <h2 className="text-sm text-muted-foreground">{t("Trips")}</h2>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex items-center justify-center gap-1">
-              <User className="size-8 text-4xl font-bold text-emerald-500" strokeWidth={3} />
-              <p className="text-4xl font-bold text-emerald-500" aria-label="Водители">100+</p>
-            </div>
-            <h2 className="text-sm text-muted-foreground">{t("Drivers")}</h2>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex items-center justify-center gap-2">
-              <Headset className="size-8 text-4xl font-bold text-emerald-500" strokeWidth={3} />
-              <p className="text-4xl font-bold text-emerald-500" aria-label="Круглосуточная поддержка">24/7</p>
-            </div>
-            <h2 className="text-sm text-muted-foreground">{t("Support")}</h2>
-          </div>
-        </div>
       </div>
     </section>
   );

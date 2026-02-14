@@ -16,7 +16,7 @@ export const Help = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative order-2 lg:order-1">
-            <div className="relative w-full aspect-square max-w-lg mx-auto lg:block">
+            <div className="hidden w-full aspect-square max-w-lg mx-auto lg:block">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-34 h-38 sm:w-64 sm:h-72">
                   <svg viewBox="0 0 200 220" className="w-full h-full drop-shadow-2xl">
@@ -51,7 +51,6 @@ export const Help = () => {
                 </div>
               </div>
 
-              {/* Floating security icons */}
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-xl">
                 <Lock className="size-6 sm:size-8 text-emerald-600" />
               </div>
@@ -74,7 +73,7 @@ export const Help = () => {
                 <span className="text-white font-medium text-sm">{t("Security")}</span>
               </div>
 
-              <h2 className="title-2 text-white leading-tight">{t("Title")}</h2>
+              <h2 className="title-2 text-start! text-white leading-tight">{t("Title")}</h2>
 
               <p className="text-base text-white/90 leading-relaxed">
                 {t("Subtitle")

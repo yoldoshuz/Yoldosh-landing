@@ -77,8 +77,9 @@
             ]
         },
         "HowItWorks": {
-            "Title": "Bu qanday ishlaydi",
-            "Subtitle": "Boshlash juda oson — bir necha oddiy qadam va Yo‘ldosh bilan yo‘lga chiqing.",
+            "Title": "Xarajatlarni sayohatchilaringiz bilan baham ko'ring va pulingizni tejang",
+            "Subtitle": "Haydovchi sifatida sayohatlarni taklif qiling va mashinangizni yo'lovchilar bilan to'ldirish orqali pulingizni tejang. Hammasi oddiy: sayohatingizni e'lon qiling va yo'lovchilar yoqilg'i va yo'l haqini bo'lishadilar.",
+            "Share": "Sayohatingizni baham ko'ring",
             "Features": {
                 "1": {
                     "Title": "To‘g‘ri narxda ideal sayohat",
@@ -131,7 +132,7 @@
             }
         },
         "Popular": {
-            "Title": "Mashhur marshrutlar",
+            "Title": "Foydalanuvchilarimiz orasida mashhur bo'lgan marshrutlar",
             "From": "Dan",
             "Sum": "so‘m",
             "Andijan": "Andijon",

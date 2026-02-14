@@ -50,10 +50,10 @@ const Page = async ({ params }: PageProps) => {
 
       <article>
         <Home />
+        <Popular />
         <HowItWorks />
         <Help />
         <WhyUs />
-        <Popular />
         <Travel />
       </article>
       <Footer />

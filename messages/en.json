@@ -77,19 +77,20 @@
             ]
         },
         "HowItWorks": {
-            "Title": "How it works",
-            "Subtitle": "Getting started is easy — follow a few simple steps and start your journey with Yo'ldosh.",
+            "Title": "Share the costs with your fellow travelers and save money",
+            "Subtitle": "Offer rides as a driver and save money by filling your car with passengers. It's simple: post your ride, and passengers will share the cost of fuel and tolls.",
+            "Share": "Share with trip",
             "Features": {
                 "1": {
-                    "Title": "🎯 Your perfect ride at the right price",
+                    "Title": "Your perfect ride at the right price",
                     "Description": "Choose from a wide range of affordable rides that fit your schedule and budget perfectly."
                 },
                 "2": {
-                    "Title": "💰 Trust who you travel with",
+                    "Title": "Trust who you travel with",
                     "Description": "All drivers are verified with their passport and profile check, so your rides are safe and worry-free."
                 },
                 "3": {
-                    "Title": "⚡ Scroll, click, tap and go!",
+                    "Title": "Scroll, click, tap and go!",
                     "Description": "Book your ride in seconds through our simple and fast app."
                 },
                 "Button": "Read more"
@@ -131,7 +132,7 @@
             }
         },
         "Popular": {
-            "Title": "Popular routes",
+            "Title": "Routes that popular among our users",
             "From": "From",
             "Sum": "Sum",
             "Andijan": "Andijan",

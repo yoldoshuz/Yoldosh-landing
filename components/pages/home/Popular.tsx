@@ -21,7 +21,7 @@ export const Popular = () => {
     <>
       {popularTrips?.data.trips.length > 0 && (
         <section
-          className="flex flex-col items-center justify-center w-full px-4 bg-neutral-100 py-20"
+          className="flex flex-col items-center justify-center w-full px-4 bg-neutral-100 py-12"
           aria-labelledby="popular-title"
         >
           <div className="flex flex-col items-center text-center gap-4">
