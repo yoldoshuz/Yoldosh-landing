@@ -2,7 +2,7 @@ import Script from "next/script";
 import NotFound from "./not-found";
 
 import { Metadata } from "next";
-import { Geist, Nunito_Sans, TikTok_Sans} from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import { routing } from "../i18n/routing";
 import { LayoutProps } from "@/types";
 import { NextIntlClientProvider } from "next-intl";
@@ -20,8 +20,11 @@ const font = Nunito_Sans({
   subsets: ["latin", "cyrillic"],
 });
 
+// ИСПРАВЛЕНИЕ: единый canonical домен без www — должен совпадать с sitemap и hreflang
+const SITE_URL = 'https://yoldosh.uz';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://yoldosh.uz'),
+  metadataBase: new URL(SITE_URL),  // БЕЗ www — везде одинаково!
 
   robots: {
     index: true,
@@ -31,56 +34,60 @@ export const metadata: Metadata = {
       follow: true,
       'max-image-preview': 'large',
       'max-video-preview': -1,
-      'max-snippet': -1
-    }
+      'max-snippet': -1,
+    },
   },
 
   verification: {
     google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code'
-  }
+    yandex: 'your-yandex-verification-code',
+  },
 };
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
-  children,
-  params
-}: LayoutProps) {
+export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
 
-  // Проверяем валидность локали
   if (!routing.locales.includes(locale as any)) {
-    <NotFound />
+    return <NotFound />;  // ИСПРАВЛЕНИЕ: не было return — компонент рендерился но layout продолжался!
   }
 
-  // Включаем статический рендеринг
   setRequestLocale(locale);
-
-  // Получаем сообщения для текущей локали
   const messages = await getMessages();
+
+  // hreflang для текущей страницы (базовый, страницы дополняют через generateMetadata)
+  const hreflangs = [
+    { hreflang: 'ru', href: `${SITE_URL}/ru` },
+    { hreflang: 'uz', href: `${SITE_URL}/uz` },
+    { hreflang: 'en', href: `${SITE_URL}/en` },
+    { hreflang: 'x-default', href: `${SITE_URL}/ru` },
+  ];
 
   return (
     <html lang={locale}>
       <head>
-        {/* DNS Prefetch для внешних ресурсов */}
+        {/* ===== CANONICAL — указываем без www ===== */}
+        <link rel="canonical" href={`${SITE_URL}/${locale}`} />
+
+        {/* ===== HREFLANG — критично для multilingual SEO ===== */}
+        {hreflangs.map(({ hreflang, href }) => (
+          <link key={hreflang} rel="alternate" hrefLang={hreflang} href={href} />
+        ))}
+
+        {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="https://mc.yandex.ru" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
-        {/* Preconnect для критичных ресурсов */}
+        {/* Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Preload критичных ресурсов */}
-        <link
-          rel="preload"
-          href="/assets/logo.svg"
-          as="image"
-          type="image/svg+xml"
-        />
+        {/* Preload */}
+        <link rel="preload" href="/assets/logo.svg" as="image" type="image/svg+xml" />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -88,28 +95,23 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
 
+        {/* Sitemap */}
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-        <link rel="alternate" hrefLang="ru" href="https://www.yoldosh.uz/ru" />
-        <link rel="alternate" hrefLang="uz" href="https://www.yoldosh.uz/uz" />
-        <link rel="alternate" hrefLang="en" href="https://www.yoldosh.uz/en" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.yoldosh.uz" />
 
-        {/* JSON-LD - критичный для SEO */}
+        {/* JSON-LD Organization */}
         <Script
           id="jsonld-organization"
           type="application/ld+json"
           strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getOrganizationJsonLd())
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
         />
         <Script
           src={`https://maps.googleapis.com/maps/api/js?key=AIzaSyD5T6hjyhafvGhxq_vAiSiCn8n-KieShFk&libraries=places&language=en`}
-          strategy="beforeInteractive"
+          strategy="afterInteractive"  // ИСПРАВЛЕНИЕ: было beforeInteractive — замедляет FCP!
         />
       </head>
-      <body className={`${font.className} antialiased`}>
-        {/* Yandex Metrika - загружается асинхронно */}
+      <body className={`${font.variable} antialiased`}>
+        {/* Yandex Metrika */}
         <Script id="yandex-metrika" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){
@@ -118,7 +120,6 @@ export default async function RootLayout({
               k=e.createElement(t),a=e.getElementsByTagName(t)[0];
               k.async=1;k.src=r;a.parentNode.insertBefore(k,a);
             })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
             ym(105993566, "init", {
               clickmap:true,
               trackLinks:true,
@@ -155,4 +156,4 @@ export default async function RootLayout({
       </body>
     </html>
   );
-};
+}

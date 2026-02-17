@@ -761,41 +761,56 @@
     },
     "metadata": {
         "home": {
-            "title": "Yoldosh — O‘zbekiston bo‘ylab hamroh safarlar",
-            "description": "Shaharlararo safarlar uchun hamroh toping. Yoldosh — xavfsiz carpooling xizmati.",
+            "title": "Yoldosh — O'zbekiston bo'ylab hamroh safarlar",
+            "description": "Toshkent–Samarqand, Toshkent–Buxoro, Toshkent–Farg'ona va boshqa yo'nalishlarda hamroh toping. Xavfsiz va arzon carpooling.",
             "keywords": [
-                "hamroh safar",
-                "carpooling Uzbekistan"
+                "hamroh safar O'zbekiston",
+                "carpooling O'zbekiston",
+                "Toshkent Samarqand hamroh",
+                "Toshkent Buxoro hamroh",
+                "Toshkent Farg'ona hamroh",
+                "Toshkent Andijon hamroh",
+                "Toshkent Namangan hamroh",
+                "Samarqand Buxoro yo'l",
+                "shaharlararo safar O'zbekiston",
+                "arzon safar O'zbekiston"
             ],
             "og": {
-                "title": "Yoldosh — Hamroh safarlar",
-                "description": "Ishonchli haydovchilar bilan qulay safar.",
+                "title": "Yoldosh — hamroh safarlar",
+                "description": "Ishonchli haydovchilar bilan qulay va arzon safar.",
                 "image": "/og-home-uz.png"
             }
         },
         "about": {
-            "title": "Biz haqimizda — Yoldosh",
-            "description": "Yoldosh platformasi va bizning maqsadimiz haqida.",
+            "title": "Biz haqimizda — Yoldosh | O'zbekiston carpooling",
+            "description": "Yoldosh — O'zbekiston bo'yicha yetakchi carpooling xizmati. Shaharlararo safarlarni xavfsiz va arzon qilamiz.",
             "keywords": [
                 "Yoldosh haqida",
-                "carpooling"
+                "carpooling O'zbekiston",
+                "hamroh safar ilovasi"
             ],
             "og": {
                 "title": "Yoldosh haqida",
-                "description": "O‘zbekiston bo‘yicha yetakchi carpooling xizmati.",
+                "description": "O'zbekiston bo'yicha yetakchi carpooling xizmati.",
                 "image": "/og-about-uz.png"
             }
         },
         "trips": {
-            "title": "Safarlarni qidirish — Yoldosh",
-            "description": "O‘zbekiston bo‘ylab safarlarni tez va oson toping.",
+            "title": "Safarlarni qidirish — Yoldosh | Toshkent, Samarqand, Buxoro",
+            "description": "Toshkent–Samarqand, Toshkent–Buxoro, Toshkent–Farg'ona, Andijon–Toshkent va minglab boshqa yo'nalishlarda hamroh toping.",
             "keywords": [
-                "safar qidirish",
-                "hamroh safar"
+                "safar qidirish O'zbekiston",
+                "hamroh safar",
+                "carpooling O'zbekiston",
+                "Toshkent Samarqand narxi",
+                "Toshkent Buxoro carpooling",
+                "Andijon Toshkent hamroh",
+                "Namangan Toshkent safar",
+                "shaharlararo hamroh O'zbekiston"
             ],
             "og": {
-                "title": "Safarlarni qidirish",
-                "description": "Yuzlab yo‘nalishlar har kuni.",
+                "title": "Safarlarni qidirish — Yoldosh",
+                "description": "Yuzlab yo'nalishlar har kuni.",
                 "image": "/og-trips-uz.png"
             }
         },
@@ -803,12 +818,12 @@
             "title": "Ommaviy taklif — Yoldosh",
             "description": "Yoldosh platformasidan foydalanish shartlari.",
             "keywords": [
-                "ommaviy taklif",
+                "ommaviy taklif Yoldosh",
                 "foydalanish shartlari"
             ],
             "og": {
                 "title": "Yoldosh ommaviy taklifi",
-                "description": "Yuridik ma’lumotlar.",
+                "description": "Yuridik ma'lumotlar.",
                 "image": "/og-offer-uz.png"
             }
         },
@@ -816,19 +831,19 @@
             "title": "Maxfiylik siyosati — Yoldosh",
             "description": "Yoldosh platformasining rasmiy maxfiylik siyosati.",
             "keywords": [
-                "maxfiylik siyosati",
-                "yoldosh foydalanish shartlari"
+                "maxfiylik siyosati Yoldosh",
+                "shaxsiy ma'lumotlar"
             ],
             "og": {
-                "title": "Yoldosh Maxfiylik siyosati",
-                "description": "Huquqiy ma'lumotlar va xizmatdan foydalanish shartlari.",
-                "image": "/og-offer-en.png"
+                "title": "Yoldosh maxfiylik siyosati",
+                "description": "Shaxsiy ma'lumotlarni himoya qilish.",
+                "image": "/og-offer-uz.png"
             }
         }
     },
     "manifest": {
         "name": "Yoldosh — hamroh safarlar",
         "shortName": "Yoldosh",
-        "description": "O‘zbekiston bo‘ylab xavfsiz safarlar"
+        "description": "O'zbekiston bo'ylab xavfsiz safarlar"
     }
 }

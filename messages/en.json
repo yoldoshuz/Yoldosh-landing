@@ -762,25 +762,31 @@
     },
     "metadata": {
         "home": {
-            "title": "Yoldosh — Carpooling Across Uzbekistan",
-            "description": "Find travel companions for intercity trips across Uzbekistan. Safe and affordable carpooling.",
+            "title": "Yoldosh — Carpooling Across Uzbekistan | Find Travel Companions",
+            "description": "Find travel companions for intercity trips: Tashkent–Samarkand, Tashkent–Bukhara, Tashkent–Fergana and more. Safe and affordable carpooling in Uzbekistan.",
             "keywords": [
                 "carpooling Uzbekistan",
-                "ridesharing",
-                "intercity travel"
+                "ridesharing Uzbekistan",
+                "Tashkent Samarkand carpooling",
+                "Tashkent Bukhara rideshare",
+                "Tashkent Fergana travel",
+                "intercity travel Uzbekistan",
+                "cheap travel Uzbekistan",
+                "travel companion Uzbekistan"
             ],
             "og": {
-                "title": "Yoldosh — Carpooling Service",
+                "title": "Yoldosh — Carpooling Across Uzbekistan",
                 "description": "Travel smarter across Uzbekistan with trusted drivers.",
                 "image": "/og-home-en.png"
             }
         },
         "about": {
-            "title": "About Us — Yoldosh",
-            "description": "Learn more about Yoldosh and our mission to make travel safe and affordable.",
+            "title": "About Us — Yoldosh | Carpooling in Uzbekistan",
+            "description": "Learn about Yoldosh — the leading carpooling service in Uzbekistan making intercity travel safe, affordable and eco-friendly.",
             "keywords": [
                 "about Yoldosh",
-                "carpooling service"
+                "carpooling Uzbekistan",
+                "ridesharing app Uzbekistan"
             ],
             "og": {
                 "title": "About Yoldosh",
@@ -789,24 +795,29 @@
             }
         },
         "trips": {
-            "title": "Find Trips — Yoldosh",
-            "description": "Search for intercity trips and travel companions across Uzbekistan.",
+            "title": "Find Trips in Uzbekistan — Yoldosh | Tashkent, Samarkand, Bukhara",
+            "description": "Search intercity trips: Tashkent–Samarkand, Tashkent–Bukhara, Tashkent–Fergana, Andijan–Tashkent and thousands of daily routes.",
             "keywords": [
-                "find trips",
-                "carpooling",
-                "ridesharing"
+                "find trips Uzbekistan",
+                "carpooling routes",
+                "Tashkent Samarkand trip price",
+                "Tashkent Bukhara carpool",
+                "Andijan Tashkent rideshare",
+                "Namangan Tashkent travel",
+                "intercity carpool Uzbekistan",
+                "cheap bus alternative Uzbekistan"
             ],
             "og": {
-                "title": "Find Trips with Yoldosh",
-                "description": "Thousands of routes across Uzbekistan.",
+                "title": "Find Trips with Yoldosh — Uzbekistan",
+                "description": "Thousands of routes across Uzbekistan every day.",
                 "image": "/og-trips-en.png"
             }
         },
         "publicOffer": {
             "title": "Public Offer — Yoldosh",
-            "description": "Official terms and conditions of using the Yoldosh platform.",
+            "description": "Official terms and conditions of using the Yoldosh carpooling platform.",
             "keywords": [
-                "public offer",
+                "Yoldosh public offer",
                 "terms of service"
             ],
             "og": {
@@ -817,14 +828,14 @@
         },
         "privacyPolicy": {
             "title": "Privacy Policy — Yoldosh",
-            "description": "Official privacy policy of the Yoldosh platform.",
+            "description": "Official privacy policy of the Yoldosh carpooling platform.",
             "keywords": [
-                "privacy policy",
-                "terms of service"
+                "Yoldosh privacy policy",
+                "data protection"
             ],
             "og": {
                 "title": "Yoldosh Privacy Policy",
-                "description": "Legal terms of service.",
+                "description": "How we protect your personal data.",
                 "image": "/og-offer-en.png"
             }
         }
