@@ -1,17 +1,19 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
-import { Button } from "@/components/ui/button";
-import { FilterSidebar } from "./FilterSidebar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { AlertCircle, LayoutGrid, List } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+import { SearchTrips } from "@/components/shared/trip/SearchTrips";
 import { TripCard } from "@/components/shared/trip/TripCard";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { SearchTrips } from "@/components/shared/trip/SearchTrips";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useObserver } from "@/hooks/useObserver";
+import { usePopularTrips, useSearchTrips } from "@/hooks/useTrips";
+import { cn } from "@/lib/utils";
+import { FilterSidebar } from "./FilterSidebar";
 
 export const SearchPage = () => {
   const t = useTranslations("Pages.Trips");
@@ -44,18 +46,27 @@ export const SearchPage = () => {
   });
 
   // 2. Флаг: Был ли произведен поиск? (Проверяем текстовые поля)
-  const hasSearchQuery = 
-    (!!searchParams.get("from") && !!searchParams.get("to")) || 
+  const hasSearchQuery =
+    (!!searchParams.get("from") && !!searchParams.get("to")) ||
     (!!searchParams.get("from_lat") && !!searchParams.get("to_lat"));
 
   // 3. Запросы
   const {
-    data: searchResults,
+    data,
     isLoading: isSearchLoading,
     error: searchError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
   } = useSearchTrips(filters, hasSearchQuery);
 
-  const { data: popularData, isLoading: isPopularLoading } = usePopularTrips(10);
+  const {
+    data: popularData,
+    fetchNextPage: fetchNextPopular,
+    hasNextPage: hasNextPopular,
+    isFetchingNextPage: popularLoadingMore,
+    isLoading: isPopularLoading,
+  } = usePopularTrips(!hasSearchQuery);
 
   const updateFilters = (newFilters: Partial<typeof filters>) => {
     const updated = { ...filters, ...newFilters, page: 1 };
@@ -72,10 +83,23 @@ export const SearchPage = () => {
     }
   };
 
-  const trips = searchResults?.data?.trips || [];
-  const totalPages = searchResults?.data?.totalPages || 0;
-  const totalFound = searchResults?.data?.total || 0;
-  const popularTrips = popularData?.data?.trips || [];
+  const trips = data?.pages?.flatMap((p: any) => p?.data?.trips || []) || [];
+
+  const totalFound = data?.pages?.[0]?.data?.total || 0;
+
+  const popularTrips = popularData?.pages?.flatMap((p: any) => p?.data?.trips || []) || [];
+
+  const loadMoreRef = useObserver(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, hasNextPage);
+
+  const popularRef = useObserver(() => {
+    if (hasNextPopular && !popularLoadingMore) {
+      fetchNextPopular();
+    }
+  }, !hasSearchQuery && hasNextPopular);
 
   useEffect(() => {
     const nextFilters = {
@@ -139,29 +163,37 @@ export const SearchPage = () => {
             </div>
           </div>
 
-          {isPopularLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {popularLoadingMore && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
               {[1, 2, 3].map((i) => (
                 <Skeleton key={i} className="h-64 w-full rounded-2xl" />
               ))}
             </div>
-          ) : (
-            <div
-              className={cn(
-                "grid gap-4",
-                viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
-              )}
-            >
-              {popularTrips.map((trip: any) => (
-                <TripCard
-                  key={trip.id}
-                  trip={trip}
-                  onClick={() => router.push(`/trips/${trip.id}`)}
-                  viewMode={viewMode}
-                />
-              ))}
-            </div>
           )}
+          <div
+            className={cn(
+              "grid gap-4",
+              viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
+            )}
+          >
+            {popularTrips.map((trip: any) => (
+              <TripCard
+                key={trip.id}
+                trip={trip}
+                onClick={() => router.push(`/trips/${trip.id}`)}
+                viewMode={viewMode}
+              />
+            ))}
+            <div ref={popularRef} className="h-16" />
+
+            {isFetchingNextPage && (
+              <div className="grid gap-4 mt-4">
+                {[1, 2].map((i) => (
+                  <Skeleton key={i} className="h-60 w-full rounded-2xl" />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         <div className="flex flex-col lg:flex-row gap-8 px-2">
@@ -176,7 +208,9 @@ export const SearchPage = () => {
                   <span className="animate-pulse bg-neutral-200 h-6 w-32 rounded" />
                 ) : (
                   <div className="flex flex-col items-start">
-                    <p>{totalFound} {t("Found")}</p>
+                    <p>
+                      {totalFound} {t("Found")}
+                    </p>
                     {filters.from && filters.to && (
                       <span className="text-muted-foreground font-normal text-base">
                         {filters.from} &rarr; {filters.to}
@@ -192,7 +226,8 @@ export const SearchPage = () => {
                       onClick={() => setViewMode("grid")}
                       className={cn(
                         "h-8 px-2 rounded-md transition-all",
-                        viewMode === "grid" && "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
+                        viewMode === "grid" &&
+                          "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                       )}
                     >
                       <LayoutGrid className="size-4" />
@@ -203,14 +238,14 @@ export const SearchPage = () => {
                       onClick={() => setViewMode("list")}
                       className={cn(
                         "h-8 px-2 rounded-md transition-all",
-                        viewMode === "list" && "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
+                        viewMode === "list" &&
+                          "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                       )}
                     >
                       <List className="size-4" />
                     </Button>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -243,7 +278,7 @@ export const SearchPage = () => {
                       talkative: undefined,
                       conditioner: undefined,
                       garage: undefined,
-                      max_two_back: undefined
+                      max_two_back: undefined,
                     })
                   }
                 >
@@ -251,12 +286,7 @@ export const SearchPage = () => {
                 </Button>
               </div>
             ) : (
-              <div
-                className={cn(
-                  "grid gap-4",
-                  viewMode === "grid" ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"
-                )}
-              >
+              <div className={cn("grid gap-4", viewMode === "grid" ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1")}>
                 {trips.map((trip: any) => (
                   <TripCard
                     key={trip.id}
@@ -265,41 +295,21 @@ export const SearchPage = () => {
                     viewMode={viewMode}
                   />
                 ))}
-              </div>
-            )}
 
-            {totalPages > 1 && (
-              <div className="mt-10 flex justify-center gap-2">
-                <Button
-                  variant="outline"
-                  disabled={filters.page === 1}
-                  onClick={() => updateFilters({ page: filters.page - 1 })}
-                >
-                  Prev
-                </Button>
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <Button
-                    key={i + 1}
-                    variant={filters.page === i + 1 ? "default" : "outline"}
-                    className={cn(filters.page === i + 1 && "bg-emerald-500 hover:bg-emerald-600")}
-                    onClick={() => updateFilters({ page: i + 1 })}
-                  >
-                    {i + 1}
-                  </Button>
-                ))}
-                <Button
-                  variant="outline"
-                  disabled={filters.page === totalPages}
-                  onClick={() => updateFilters({ page: filters.page + 1 })}
-                >
-                  Next
-                </Button>
+                <div ref={loadMoreRef} className="h-10" />
+
+                {isFetchingNextPage && (
+                  <div className="grid gap-4 mt-4">
+                    {[1, 2].map((i) => (
+                      <Skeleton key={i} className="h-60 w-full rounded-2xl" />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 };

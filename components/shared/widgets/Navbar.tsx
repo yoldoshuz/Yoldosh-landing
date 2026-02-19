@@ -1,24 +1,24 @@
 "use client";
 
-import Image from "next/image";
-import dynamic from "next/dynamic";
-
-import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Link, usePathname } from '@/app/i18n/routing';
-import { useTranslations } from "next-intl";
-import { useNavIndicator } from "@/hooks/useNavIndicator";
-
-import { navLinks } from "@/constants";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { CloudDownload } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+import { Link, usePathname } from "@/app/i18n/routing";
 import { Button } from "@/components/ui/button";
+import { navLinks } from "@/constants";
+import { useNavIndicator } from "@/hooks/useNavIndicator";
 
 const Menu = dynamic(() => import("./Menu").then((mod) => mod.Menu), { ssr: false });
 const LanguageSwitcher = dynamic(
   () => import("@/components/functional/LanguageSwitcher").then((mod) => mod.LanguageSwitcher),
   {
-    ssr: false
-  });
+    ssr: false,
+  }
+);
 
 export const Navbar = () => {
   const t = useTranslations("Components.Header");
@@ -45,17 +45,16 @@ export const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const baseClasses = 'fixed top-0 left-0 w-full z-50 smooth';
-  const defaultStateClasses = 'bg-white border-transparent';
-  const scrolledStateClasses = 'bg-white/80 backdrop-blur-xl shadow-lg';
-
+  const baseClasses = "fixed top-0 left-0 w-full z-50 smooth";
+  const defaultStateClasses = "bg-white border-transparent";
+  const scrolledStateClasses = "bg-white/80 backdrop-blur-xl shadow-lg";
 
   useNavIndicator({
     pathname,
@@ -65,29 +64,17 @@ export const Navbar = () => {
   });
 
   return (
-    <header
-      className={`${baseClasses} ${isScrolled ? scrolledStateClasses : defaultStateClasses
-        }`}
-    >
+    <header className={`${baseClasses} ${isScrolled ? scrolledStateClasses : defaultStateClasses}`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-5">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex flex-row gap-2 items-center">
-            <Image
-              src="/assets/logo.svg"
-              alt="logo"
-              draggable={false}
-              width={48}
-              height={48}
-            />
+            <Image src="/assets/logo.svg" alt="logo" draggable={false} width={48} height={48} />
             <p className="text-2xl font-bold hidden lg:flex text-neutral-800">Yo'ldosh</p>
           </Link>
 
           {/* NAV LINKS */}
-          <div
-            ref={containerRef}
-            className="hidden md:flex gap-2 relative"
-          >
+          <div ref={containerRef} className="hidden md:flex gap-2 relative">
             {/* INDICATOR */}
             <motion.div
               className="absolute rounded-lg bg-emerald-200/60 pointer-events-none"
@@ -105,9 +92,8 @@ export const Navbar = () => {
             />
 
             {navLinks().map((link) => {
-              const isActive = link.href === "/"
-                ? pathname === "/"
-                : pathname === link.href || pathname.startsWith(link.href + "/");
+              const isActive =
+                link.href === "/" ? pathname === "/" : pathname === link.href || pathname.startsWith(link.href + "/");
 
               return (
                 <Link

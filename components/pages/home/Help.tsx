@@ -1,22 +1,16 @@
-import React, { use } from "react";
-import { Locale, useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import React from "react";
 import { AlertTriangle, Eye, Lock, Shield } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const Help = () => {
   const t = useTranslations("Pages.Help");
 
   return (
-    <section className="relative min-h-screen w-full bg-linear-to-br from-teal-500 via-emerald-500 to-emerald-500 overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-600 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="relative min-h-max w-full bg-linear-to-br from-teal-500 via-emerald-500 to-emerald-500 overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div className="relative order-2 lg:order-1">
-            <div className="hidden w-full aspect-square max-w-lg mx-auto lg:block">
+            <div className="hidden w-full aspect-square max-w-lg mx-auto lg:flex">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-34 h-38 sm:w-64 sm:h-72">
                   <svg viewBox="0 0 200 220" className="w-full h-full drop-shadow-2xl">
@@ -65,7 +59,7 @@ export const Help = () => {
           </div>
 
           {/* Right side - Content */}
-          <div className="order-1 lg:order-2 space-y-8">
+          <div className="order-1 lg:order-2 space-y-4">
             {/* Header */}
             <div className="space-y-4">
               <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full">
@@ -92,7 +86,7 @@ export const Help = () => {
             </div>
 
             {/* Tips */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h3 className="text-2xl font-bold text-white">{t("Protect.Title")}</h3>
 
               <div className="space-y-3">
@@ -108,7 +102,7 @@ export const Help = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Bottom message */}
             <div className="pt-6 border-t border-white/20">

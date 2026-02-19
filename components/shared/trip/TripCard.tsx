@@ -1,12 +1,11 @@
 import Image from "next/image";
-
-import { BASE_URL } from "@/lib/api";
 import { usePathname } from "next/navigation";
+import { CircleSmall, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Card } from "@/components/ui/card";
-import { CircleSmall, Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/card";
+import { BASE_URL } from "@/lib/api";
 
 interface TripCardProps {
   trip: any;
@@ -15,12 +14,7 @@ interface TripCardProps {
   priority?: boolean; // Для первых карточек
 }
 
-export const TripCard = ({
-  trip,
-  onClick,
-  viewMode = "grid",
-  priority = false
-}: TripCardProps) => {
+export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }: TripCardProps) => {
   const t = useTranslations("Pages.Trips");
   const pathname = usePathname();
 
@@ -77,7 +71,9 @@ export const TripCard = ({
                   </div>
                   <div className="flex items-center justify-center text-xs">
                     <p className="text-center font-mono font-semibold w-12 text-gray-700">
-                      {Math.floor(trip.duration / 60)}{t("Details.Hours")} {trip.duration % 60}{t("Details.Minutes")}
+                      {Math.floor(trip.duration / 60)}
+                      {t("Details.Hours")} {trip.duration % 60}
+                      {t("Details.Minutes")}
                     </p>
                   </div>
                   <div className="flex items-center justify-start w-full">
@@ -95,8 +91,12 @@ export const TripCard = ({
             </div>
           </div>
           <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
-            <time>{t("Details.Departure")}: {departureDate.toLocaleDateString()}</time>
-            <span>{t("Details.Seats")}: {trip.seats_available}</span>
+            <time>
+              {t("Details.Departure")}: {departureDate.toLocaleDateString()}
+            </time>
+            <span>
+              {t("Details.Seats")}: {trip.seats_available}
+            </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center justify-center">
@@ -210,8 +210,12 @@ export const TripCard = ({
         </div>
 
         <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
-          <time>{t("Details.Departure")}: {departureDate.toLocaleDateString()}</time>
-          <span>{t("Details.Seats")}: {trip.seats_available}</span>
+          <time>
+            {t("Details.Departure")}: {departureDate.toLocaleDateString()}
+          </time>
+          <span>
+            {t("Details.Seats")}: {trip.seats_available}
+          </span>
         </div>
       </div>
     </Card>

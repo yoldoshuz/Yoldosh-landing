@@ -1,7 +1,7 @@
-import { DeleteAccount } from '@/components/pages/delete-account/DeleteAccount';
+import { DeleteAccount } from "@/components/pages/delete-account/DeleteAccount";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default function DeleteAccountPage() {
-    return <DeleteAccount />;
-};
+  return <DeleteAccount />;
+}

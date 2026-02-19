@@ -1,8 +1,8 @@
+import { Suspense } from "react";
+import { Headset, Loader2, MapPin, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Suspense } from "react";
 import { SearchTrips } from "../../shared/trip/SearchTrips";
-import { Headset, Loader2, MapPin, User } from "lucide-react";
 
 export const Home = () => {
   const t = useTranslations("Pages.Home");
@@ -18,21 +18,21 @@ export const Home = () => {
           {/* Дополнительный SEO-текст (можно скрыть визуально, но оставить для поисковиков) */}
           <div className="sr-only">
             <p>
-              Сервис совместных поездок Yoldosh предлагает безопасные и экономичные
-              междугородние поездки по Узбекистану. Популярные направления:
-              Ташкент - Самарканд, Ташкент - Бухара, Ташкент - Фергана,
-              Самарканд - Бухара. Бронируйте поездки онлайн за несколько минут
-              с гарантией безопасности и комфорта. Проверенные водители,
-              низкие цены, круглосуточная поддержка.
+              Сервис совместных поездок Yoldosh предлагает безопасные и экономичные междугородние поездки по
+              Узбекистану. Популярные направления: Ташкент - Самарканд, Ташкент - Бухара, Ташкент - Фергана, Самарканд -
+              Бухара. Бронируйте поездки онлайн за несколько минут с гарантией безопасности и комфорта. Проверенные
+              водители, низкие цены, круглосуточная поддержка.
             </p>
           </div>
         </div>
 
-        <Suspense fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <Loader2 className="size-8 animate-spin text-emerald-500" />
-          </div>
-        }>
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center min-h-screen">
+              <Loader2 className="size-8 animate-spin text-emerald-500" />
+            </div>
+          }
+        >
           <SearchTrips />
         </Suspense>
       </div>

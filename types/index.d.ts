@@ -113,7 +113,7 @@ export interface SearchParams {
   departure_date?: string;
   seats?: number;
   page?: number;
-  limit?: number; 
+  limit?: number;
 
   sort_by?: string;
   sort_order?: string;
@@ -151,7 +151,6 @@ export interface PopularTripsResponse {
 export type PageProps = {
   params: Promise<{ locale: string }>;
 };
-
 
 export type LayoutProps = {
   children: React.ReactNode;

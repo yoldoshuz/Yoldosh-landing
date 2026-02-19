@@ -1,27 +1,14 @@
 import Image from "next/image";
-
-import { BASE_URL } from "@/lib/api";
-import { useTranslations } from "next-intl";
-import { Link, useRouter } from "@/app/i18n/routing";
-import { Separator } from "@/components/ui/separator";
-
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage
-} from "@/components/ui/avatar";
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Dot,
-  MapPin,
-  Star,
-  Users
-} from "lucide-react";
 import { usePathname } from "next/navigation";
+import { ArrowLeft, Calendar, Clock, Dot, MapPin, Star, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+import { Link, useRouter } from "@/app/i18n/routing";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { BASE_URL } from "@/lib/api";
 
 interface TripDetailsProps {
   trip: any;
@@ -141,7 +128,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 <div>
                   <p className="text-sm text-muted-foreground">{t("Duration")}</p>
                   <p className="font-medium">
-                    {Math.floor(trip.duration / 60)}{t("Hours")} {trip.duration % 60}{t("Minutes")}
+                    {Math.floor(trip.duration / 60)}
+                    {t("Hours")} {trip.duration % 60}
+                    {t("Minutes")}
                   </p>
                 </div>
               </div>
@@ -152,7 +141,10 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         {/* Driver Info */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Driver")}</h2>
-          <Link href={`/trips/driver/${trip.driver.id}` as any} className="flex items-center gap-4 px-6 py-4 bg-white hover:bg-neutral-50 rounded-3xl smooth">
+          <Link
+            href={`/trips/driver/${trip.driver.id}` as any}
+            className="flex items-center gap-4 px-6 py-4 bg-white hover:bg-neutral-50 rounded-3xl smooth"
+          >
             <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
               <AvatarImage src={`${BASE_URL}${trip.driver.avatar}`} />
               <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
@@ -164,7 +156,9 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 <p className="font-semibold text-base">
                   {trip.driver.firstName} {trip.driver.lastName}
                 </p>
-                {trip.driver.passport_verified && <Image src="/assets/verified.gif" alt="verified" width={24} height={24} />}
+                {trip.driver.passport_verified && (
+                  <Image src="/assets/verified.gif" alt="verified" width={24} height={24} />
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <Star className="size-4 fill-yellow-400 text-yellow-400" />
@@ -179,7 +173,11 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <h2 className="text-lg font-semibold mb-2">{t("Passengers")}</h2>
           <div className="bg-white rounded-3xl">
             {trip.bookings.map((booking: any) => (
-              <Link href={`/trips/passengers/${booking.passenger.id}` as any} className="flex items-center gap-4 px-6 py-4 hover:bg-neutral-50 rounded-3xl smooth" key={booking.id}>
+              <Link
+                href={`/trips/passengers/${booking.passenger.id}` as any}
+                className="flex items-center gap-4 px-6 py-4 hover:bg-neutral-50 rounded-3xl smooth"
+                key={booking.id}
+              >
                 <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
                   <AvatarImage src={`${BASE_URL}${booking.passenger.avatar}`} />
                   <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
@@ -188,9 +186,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </Avatar>
                 <div>
                   <div className="flex items-center justify-start gap-2">
-                    <p className="font-semibold text-base">
-                      {booking.passenger.firstName}
-                    </p>
+                    <p className="font-semibold text-base">{booking.passenger.firstName}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <Star className="size-4 fill-yellow-400 text-yellow-400" />
@@ -238,13 +234,13 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="preferences-container">
             {t("Preferences.Garage")}
             <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.garage === "EMPTY" ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.garage === "EMPTY" ? "preferences-text-active" : null}`}>
                 {t("Preferences.Empty")}
               </div>
-              <div className={`preferences-text ${trip.garage === "HALF_EMPTY" ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.garage === "HALF_EMPTY" ? "preferences-text-active" : null}`}>
                 {t("Preferences.HalfEmpty")}
               </div>
-              <div className={`preferences-text ${trip.garage === "FULL" ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.garage === "FULL" ? "preferences-text-active" : null}`}>
                 {t("Preferences.Full")}
               </div>
             </div>
@@ -252,10 +248,10 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="preferences-container">
             {t("Preferences.AC")}
             <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.conditioner === true ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.conditioner === true ? "preferences-text-active" : null}`}>
                 {t("Preferences.Yes")}
               </div>
-              <div className={`preferences-text ${trip.conditioner === false ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.conditioner === false ? "preferences-text-active" : null}`}>
                 {t("Preferences.No")}
               </div>
             </div>
@@ -263,10 +259,10 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="preferences-container">
             {t("Preferences.Food")}
             <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.food_stop === true ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.food_stop === true ? "preferences-text-active" : null}`}>
                 {t("Preferences.Yes")}
               </div>
-              <div className={`preferences-text ${trip.food_stop === false ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.food_stop === false ? "preferences-text-active" : null}`}>
                 {t("Preferences.No")}
               </div>
             </div>
@@ -274,10 +270,10 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="preferences-container">
             {t("Preferences.Door")}
             <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.door_pickup === true ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.door_pickup === true ? "preferences-text-active" : null}`}>
                 {t("Preferences.Yes")}
               </div>
-              <div className={`preferences-text ${trip.door_pickup === false ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.door_pickup === false ? "preferences-text-active" : null}`}>
                 {t("Preferences.No")}
               </div>
             </div>
@@ -285,10 +281,10 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="preferences-container">
             {t("Preferences.Smoking")}
             <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.smoking_allowed === true ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.smoking_allowed === true ? "preferences-text-active" : null}`}>
                 {t("Preferences.Yes")}
               </div>
-              <div className={`preferences-text ${trip.smoking_allowed === false ? 'preferences-text-active' : null}`}>
+              <div className={`preferences-text ${trip.smoking_allowed === false ? "preferences-text-active" : null}`}>
                 {t("Preferences.No")}
               </div>
             </div>
@@ -308,7 +304,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
             <Button className="btn-primary">{t("Book")}</Button>
           </div>
         </div>
-      </Card >
-    </div >
+      </Card>
+    </div>
   );
 };

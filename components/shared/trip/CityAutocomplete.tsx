@@ -1,12 +1,10 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-import { Input } from "@/components/ui/input";
+import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 interface CityData {
@@ -22,12 +20,7 @@ interface CityAutocompleteProps {
   className?: string;
 }
 
-export const CityAutocomplete = ({
-  placeholder,
-  initialValue,
-  onCitySelected,
-  className,
-}: CityAutocompleteProps) => {
+export const CityAutocomplete = ({ placeholder, initialValue, onCitySelected, className }: CityAutocompleteProps) => {
   const {
     ready,
     value,
@@ -70,16 +63,15 @@ export const CityAutocomplete = ({
         const addressComponents = results[0].address_components;
         const cityComponent = addressComponents.find(
           (component: any) =>
-            component.types.includes("locality") ||
-            component.types.includes("administrative_area_level_1")
+            component.types.includes("locality") || component.types.includes("administrative_area_level_1")
         );
 
-        const normalizedName = cityComponent ? cityComponent.long_name : description.split(',')[0];
+        const normalizedName = cityComponent ? cityComponent.long_name : description.split(",")[0];
 
         onCitySelected({
           name: normalizedName,
           lat: lat,
-          lng: lng
+          lng: lng,
         });
       }
     } catch (error) {
@@ -104,7 +96,10 @@ export const CityAutocomplete = ({
         disabled={!ready}
         placeholder={placeholder}
         required={true}
-        className={cn("border-none shadow-none rounded-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0", className)}
+        className={cn(
+          "border-none shadow-none rounded-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0",
+          className
+        )}
         autoComplete="off"
       />
 
@@ -118,12 +113,8 @@ export const CityAutocomplete = ({
             >
               <MapPin className="size-4 text-emerald-500 shrink-0" />
               <div className="flex flex-col">
-                <span className="font-medium text-neutral-900">
-                  {structured_formatting.main_text}
-                </span>
-                <span className="text-xs text-neutral-500">
-                  {structured_formatting.secondary_text}
-                </span>
+                <span className="font-medium text-neutral-900">{structured_formatting.main_text}</span>
+                <span className="text-xs text-neutral-500">{structured_formatting.secondary_text}</span>
               </div>
             </li>
           ))}

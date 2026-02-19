@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+
 import { Separator } from "@/components/ui/separator";
 
 export const PrivacyPolicy = () => {
@@ -52,39 +53,39 @@ export const PrivacyPolicy = () => {
       {/* 3. КАКИЕ ПЕРСОНАЛЬНЫЕ ДАННЫЕ МЫ СОБИРАЕМ */}
       <section className="section-padding section-text">
         <h2 className="section-title">{t("collection.title")}</h2>
-        
+
         <p className="section-subtitle">{t("collection.1")}</p>
         <ul className="section-subsection">
           {(t.raw("collection.1_list") as string[]).map((item, i) => (
-             <li key={i}>{item}</li>
+            <li key={i}>{item}</li>
           ))}
         </ul>
 
         <p className="section-subtitle">{t("collection.2")}</p>
         <p className="font-medium mt-2">{t("collection.2_1")}</p>
         <ul className="section-subsection">
-           {(t.raw("collection.2_1_list") as string[]).map((item, i) => (
-             <li key={i}>{item}</li>
+          {(t.raw("collection.2_1_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </ul>
         <p className="font-medium mt-2">{t("collection.2_2")}</p>
         <ul className="section-subsection">
-           {(t.raw("collection.2_2_list") as string[]).map((item, i) => (
-             <li key={i}>{item}</li>
+          {(t.raw("collection.2_2_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </ul>
 
         <p className="section-subtitle">{t("collection.3")}</p>
         <ul className="section-subsection">
-           {(t.raw("collection.3_list") as string[]).map((item, i) => (
-             <li key={i}>{item}</li>
+          {(t.raw("collection.3_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </ul>
 
         <p className="section-subtitle">{t("collection.4")}</p>
         <ul className="section-subsection">
-           {(t.raw("collection.4_list") as string[]).map((item, i) => (
-             <li key={i}>{item}</li>
+          {(t.raw("collection.4_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </ul>
       </section>
@@ -96,42 +97,58 @@ export const PrivacyPolicy = () => {
 
         <p className="section-subtitle">{t("purposes.1")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.1_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.1_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
         <p className="section-subtitle">{t("purposes.2")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.2_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.2_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
         <p className="section-subtitle">{t("purposes.3")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.3_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.3_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
         <p className="section-subtitle">{t("purposes.4")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.4_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.4_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
-         <p className="section-subtitle">{t("purposes.5")}</p>
+        <p className="section-subtitle">{t("purposes.5")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.5_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.5_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
-         <p className="section-subtitle">{t("purposes.6")}</p>
+        <p className="section-subtitle">{t("purposes.6")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.6_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.6_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
-         <p className="section-subtitle">{t("purposes.7")}</p>
+        <p className="section-subtitle">{t("purposes.7")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.7_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.7_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
-        
+
         <p className="section-subtitle">{t("purposes.8")}</p>
         <ul className="section-subsection">
-           {(t.raw("purposes.8_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("purposes.8_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
       </section>
 
@@ -140,10 +157,10 @@ export const PrivacyPolicy = () => {
         <h2 className="section-title">{t("grounds.title")}</h2>
         <p>{t("grounds.intro")}</p>
         <ul className="space-y-2 mt-2">
-            <li>{t("grounds.1")}</li>
-            <li>{t("grounds.2")}</li>
-            <li>{t("grounds.3")}</li>
-            <li>{t("grounds.4")}</li>
+          <li>{t("grounds.1")}</li>
+          <li>{t("grounds.2")}</li>
+          <li>{t("grounds.3")}</li>
+          <li>{t("grounds.4")}</li>
         </ul>
       </section>
 
@@ -154,7 +171,9 @@ export const PrivacyPolicy = () => {
         <p>{t("methods.2")}</p>
         <p className="section-subtitle">{t("methods.3")}</p>
         <ul className="section-subsection">
-            {(t.raw("methods.3_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("methods.3_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
         <p className="mt-2">{t("methods.4")}</p>
         <p>{t("methods.5")}</p>
@@ -165,16 +184,20 @@ export const PrivacyPolicy = () => {
         <h2 className="section-title">{t("transfer.title")}</h2>
         <p>{t("transfer.1")}</p>
         <p className="section-subtitle">{t("transfer.2")}</p>
-        
+
         <p className="font-medium mt-2">{t("transfer.2_1")}</p>
         <ul className="section-subsection">
-            {(t.raw("transfer.2_1_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("transfer.2_1_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
         <p className="font-medium mt-2">{t("transfer.2_2")}</p>
         <p>{t("transfer.2_2_desc")}</p>
         <ul className="section-subsection">
-            {(t.raw("transfer.2_2_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("transfer.2_2_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
 
         <p className="font-medium mt-2">{t("transfer.2_3")}</p>
@@ -193,11 +216,15 @@ export const PrivacyPolicy = () => {
         <p>{t("protection.1")}</p>
         <p className="section-subtitle">{t("protection.2")}</p>
         <ul className="section-subsection">
-            {(t.raw("protection.2_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("protection.2_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
         <p className="section-subtitle">{t("protection.3")}</p>
         <ul className="section-subsection">
-            {(t.raw("protection.3_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("protection.3_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
         <p className="mt-2">{t("protection.4")}</p>
         <p>{t("protection.5")}</p>
@@ -205,31 +232,37 @@ export const PrivacyPolicy = () => {
         <p>{t("protection.7")}</p>
       </section>
 
-       {/* 9. ПРАВА СУБЪЕКТОВ */}
-       <section className="section-padding section-text">
+      {/* 9. ПРАВА СУБЪЕКТОВ */}
+      <section className="section-padding section-text">
         <h2 className="section-title">{t("rights.title")}</h2>
         <p>{t("rights.1")}</p>
         <ul className="space-y-2 mt-2">
-            <li>{t("rights.1_1")}</li>
-            <li>{t("rights.1_2")}</li>
-            <li>
-                {t("rights.1_3")}
-                <ul className="section-subsection mt-1">
-                    {(t.raw("rights.1_3_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
-                </ul>
-            </li>
-            <li>
-                {t("rights.1_4")}
-                <ul className="section-subsection mt-1">
-                    {(t.raw("rights.1_4_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
-                </ul>
-            </li>
-            <li>{t("rights.1_5")}</li>
-            <li>{t("rights.1_6")}</li>
+          <li>{t("rights.1_1")}</li>
+          <li>{t("rights.1_2")}</li>
+          <li>
+            {t("rights.1_3")}
+            <ul className="section-subsection mt-1">
+              {(t.raw("rights.1_3_list") as string[]).map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            {t("rights.1_4")}
+            <ul className="section-subsection mt-1">
+              {(t.raw("rights.1_4_list") as string[]).map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </li>
+          <li>{t("rights.1_5")}</li>
+          <li>{t("rights.1_6")}</li>
         </ul>
         <p className="section-subtitle">{t("rights.2")}</p>
         <ul className="section-subsection">
-            {(t.raw("rights.2_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("rights.2_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
         <p className="mt-2">{t("rights.3")}</p>
         <p>{t("rights.4")}</p>
@@ -242,15 +275,17 @@ export const PrivacyPolicy = () => {
         <p>{t("cookies.2")}</p>
         <p className="section-subtitle">{t("cookies.3")}</p>
         <ul className="space-y-2 mt-2">
-            <li>{t("cookies.3_1")}</li>
-            <li>{t("cookies.3_2")}</li>
-            <li>{t("cookies.3_3")}</li>
-            <li>{t("cookies.3_4")}</li>
+          <li>{t("cookies.3_1")}</li>
+          <li>{t("cookies.3_2")}</li>
+          <li>{t("cookies.3_3")}</li>
+          <li>{t("cookies.3_4")}</li>
         </ul>
         <p className="mt-2">{t("cookies.4")}</p>
         <p className="section-subtitle">{t("cookies.5")}</p>
         <ul className="section-subsection">
-            {(t.raw("cookies.5_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("cookies.5_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
       </section>
 
@@ -274,8 +309,8 @@ export const PrivacyPolicy = () => {
         <p>{t("changes.6")}</p>
       </section>
 
-       {/* 13. ЗАКОНОДАТЕЛЬСТВО */}
-       <section className="section-padding section-text">
+      {/* 13. ЗАКОНОДАТЕЛЬСТВО */}
+      <section className="section-padding section-text">
         <h2 className="section-title">{t("law.title")}</h2>
         <p>{t("law.1")}</p>
         <p>{t("law.2")}</p>
@@ -287,12 +322,12 @@ export const PrivacyPolicy = () => {
         <h2 className="section-title">{t("contact.title")}</h2>
         <p>{t("contact.1")}</p>
         <div className="mt-4 pl-4 border-l-2 border-neutral-200">
-            <p className="font-bold">{t("contact.company")}</p>
-            <p>{t("contact.address")}</p>
-            <p>{t("contact.email")}</p>
-            <p>{t("contact.phone")}</p>
-            <p>{t("contact.telegram")}</p>
-            <p>{t("contact.workHours")}</p>
+          <p className="font-bold">{t("contact.company")}</p>
+          <p>{t("contact.address")}</p>
+          <p>{t("contact.email")}</p>
+          <p>{t("contact.phone")}</p>
+          <p>{t("contact.telegram")}</p>
+          <p>{t("contact.workHours")}</p>
         </div>
         <p className="mt-4">{t("contact.2")}</p>
         <p>{t("contact.3")}</p>
@@ -306,16 +341,17 @@ export const PrivacyPolicy = () => {
         <p>{t("final.3")}</p>
         <p>{t("final.4")}</p>
         <ul className="section-subsection">
-            {(t.raw("final.4_list") as string[]).map((item, i) => <li key={i}>{item}</li>)}
+          {(t.raw("final.4_list") as string[]).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ul>
-        
+
         <div className="mt-8 pt-4 border-t border-neutral-200 text-right">
-             <p>{t("final.date")}</p>
-             <p>{t("final.version")}</p>
-             <p className="font-bold mt-2">{t("final.director")}</p>
+          <p>{t("final.date")}</p>
+          <p>{t("final.version")}</p>
+          <p className="font-bold mt-2">{t("final.director")}</p>
         </div>
       </section>
-
     </article>
   );
 };

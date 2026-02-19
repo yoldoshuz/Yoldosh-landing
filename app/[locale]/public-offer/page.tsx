@@ -1,33 +1,31 @@
-import Script from "next/script";
-
 import { Suspense } from "react";
-import { PageProps } from "@/types";
+import Script from "next/script";
 import { Loader2 } from "lucide-react";
-import { getPageJsonLd } from "@/app/lib/jsonld";
 import { getTranslations } from "next-intl/server";
-import { generatePageMetadata } from "@/app/lib/seo";
 
+import { getPageJsonLd } from "@/app/lib/jsonld";
+import { generatePageMetadata } from "@/app/lib/seo";
 import { PublicOffer } from "@/components/pages/public-offer/PublicOffer";
+import { PageProps } from "@/types";
 
 export async function generateMetadata({ params }: PageProps) {
-  return generatePageMetadata((await params).locale, 'publicOffer', '');
-};
+  return generatePageMetadata((await params).locale, "publicOffer", "");
+}
 
 const Page = async ({ params }: PageProps) => {
   const { locale } = await params;
   const t = await getTranslations({
     locale,
-    namespace: 'metadata.publicOffer'
+    namespace: "metadata.publicOffer",
   });
 
   const { page, breadcrumb } = getPageJsonLd({
     locale,
-    path: '/public-offer',
-    type: 'LegalDocument',
-    name: t('title'),
-    description: t('description')
+    path: "/public-offer",
+    type: "LegalDocument",
+    name: t("title"),
+    description: t("description"),
   });
-
 
   return (
     <>

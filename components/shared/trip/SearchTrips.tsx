@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "@/app/i18n/routing";
 import { useSearchParams } from "next/navigation";
 import { CircleUserRound, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
+
+import { useRouter } from "@/app/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CalendarSelect } from "./Calendar";
 import { Separator } from "@/components/ui/separator";
+import { CalendarSelect } from "./Calendar";
 import { CityAutocomplete } from "./CityAutocomplete";
 
 export const SearchTrips = () => {
@@ -21,13 +22,13 @@ export const SearchTrips = () => {
   const [toName, setToName] = useState(searchParams.get("to") || "");
 
   // State для координат
-  const [fromCoords, setFromCoords] = useState<{ lat?: number, lng?: number }>({
+  const [fromCoords, setFromCoords] = useState<{ lat?: number; lng?: number }>({
     lat: searchParams.get("from_lat") ? parseFloat(searchParams.get("from_lat")!) : undefined,
-    lng: searchParams.get("from_lon") ? parseFloat(searchParams.get("from_lon")!) : undefined
+    lng: searchParams.get("from_lon") ? parseFloat(searchParams.get("from_lon")!) : undefined,
   });
-  const [toCoords, setToCoords] = useState<{ lat?: number, lng?: number }>({
+  const [toCoords, setToCoords] = useState<{ lat?: number; lng?: number }>({
     lat: searchParams.get("to_lat") ? parseFloat(searchParams.get("to_lat")!) : undefined,
-    lng: searchParams.get("to_lon") ? parseFloat(searchParams.get("to_lon")!) : undefined
+    lng: searchParams.get("to_lon") ? parseFloat(searchParams.get("to_lon")!) : undefined,
   });
 
   const [date, setDate] = useState<Date | undefined>(
@@ -69,7 +70,7 @@ export const SearchTrips = () => {
 
     router.push({
       pathname: "/trips",
-      query: Object.fromEntries(params)
+      query: Object.fromEntries(params),
     });
   };
 

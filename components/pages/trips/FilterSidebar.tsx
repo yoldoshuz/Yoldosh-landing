@@ -1,6 +1,18 @@
 "use client";
-import { Cigarette, Dog, MessageCircle, Music, SlidersHorizontal, Trash, Wind, Armchair, Warehouse } from "lucide-react";
+
+import {
+  Armchair,
+  Cigarette,
+  Dog,
+  MessageCircle,
+  Music,
+  SlidersHorizontal,
+  Trash,
+  Warehouse,
+  Wind,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -27,7 +39,7 @@ interface FilterState {
   talkative?: boolean;
   conditioner?: boolean;
   max_two_back?: boolean; // Добавлено
-  garage?: string;        // Добавлено (string для ENUM)
+  garage?: string; // Добавлено (string для ENUM)
 }
 
 interface FilterSidebarProps {
@@ -55,9 +67,7 @@ export const FilterSidebar = ({ filters, onChange, className }: FilterSidebarPro
       className={cn("w-full lg:w-72 shrink-0 space-y-6 bg-white p-6 rounded-2xl border h-fit sticky top-24", className)}
     >
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold text-lg flex items-center gap-2">
-          {t("Filters")}
-        </h3>
+        <h3 className="font-bold text-lg flex items-center gap-2">{t("Filters")}</h3>
         {hasActiveFilters && (
           <Button
             variant="ghost"
@@ -72,7 +82,7 @@ export const FilterSidebar = ({ filters, onChange, className }: FilterSidebarPro
                 talkative: undefined,
                 conditioner: undefined,
                 max_two_back: undefined,
-                garage: undefined
+                garage: undefined,
               })
             }
             className="h-8 px-2 text-red-500 hover:text-red-600 hover:bg-red-50 text-xs cursor-pointer"
@@ -92,24 +102,27 @@ export const FilterSidebar = ({ filters, onChange, className }: FilterSidebarPro
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="default" id="s-def" className="text-emerald-500 " />
-              <Label htmlFor="s-def" className="cursor-pointer font-normal text-sm">{t("Sort.Default")}</Label>
+              <Label htmlFor="s-def" className="cursor-pointer font-normal text-sm">
+                {t("Sort.Default")}
+              </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="price" id="s-price" className="text-emerald-500" />
-              <Label htmlFor="s-price" className="cursor-pointer font-normal text-sm">{t("Sort.Price")}</Label>
+              <Label htmlFor="s-price" className="cursor-pointer font-normal text-sm">
+                {t("Sort.Price")}
+              </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="departure_date" id="s-date" className="text-emerald-500" />
-              <Label htmlFor="s-date" className="cursor-pointer font-normal text-sm">{t("Sort.Date")}</Label>
+              <Label htmlFor="s-date" className="cursor-pointer font-normal text-sm">
+                {t("Sort.Date")}
+              </Label>
             </div>
           </RadioGroup>
 
           {filters.sort_by && filters.sort_by !== "default" && (
             <div className="mt-2 mx-1.25">
-              <Select
-                value={filters.sort_order || "asc"}
-                onValueChange={(val) => updateFilter("sort_order", val)}
-              >
+              <Select value={filters.sort_order || "asc"} onValueChange={(val) => updateFilter("sort_order", val)}>
                 <SelectTrigger className="text-sm border rounded-lg p-2 w-full bg-neutral-50 outline-none focus:ring-1 focus:ring-emerald-500">
                   <SelectValue placeholder={t("Order")} />
                 </SelectTrigger>
@@ -192,7 +205,6 @@ export const FilterSidebar = ({ filters, onChange, className }: FilterSidebarPro
               <SelectItem value="FULL">{t("Preferences.Full")}</SelectItem>
             </SelectContent>
           </Select>
-
         </div>
       </ScrollArea>
     </aside>

@@ -1,7 +1,8 @@
-import { Link } from '@/app/i18n/routing';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+
+import { Link } from "@/app/i18n/routing";
+import { Button } from "@/components/ui/button";
 
 export const HowItWorks = () => {
   const t = useTranslations("Pages.HowItWorks");

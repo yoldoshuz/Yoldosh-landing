@@ -1,10 +1,9 @@
 import Image from "next/image";
-
-import { Link } from '@/app/i18n/routing';
+import { Headset } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { Link } from "@/app/i18n/routing";
 import { Separator } from "@/components/ui/separator";
-import { Headset } from "lucide-react";
 
 export const Footer = () => {
   const t = useTranslations("Components.Footer");

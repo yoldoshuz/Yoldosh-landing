@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   /* ===== Images ===== */
   images: {
     minimumCacheTTL: 60,
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
@@ -34,17 +34,17 @@ const nextConfig: NextConfig = {
   experimental: {
     scrollRestoration: true,
     optimizePackageImports: [
-      'lucide-react',
-      '@radix-ui/react-avatar',
-      '@radix-ui/react-checkbox',
-      '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-label',
-      '@radix-ui/react-popover',
-      '@radix-ui/react-radio-group',
-      '@radix-ui/react-scroll-area',
-      '@radix-ui/react-select',
-      '@radix-ui/react-separator',
-      '@radix-ui/react-slot',
+      "lucide-react",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-checkbox",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-label",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-radio-group",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-select",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slot",
     ],
   },
 
@@ -91,11 +91,11 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/:all*(svg|jpg|png|webp|avif)',
+        source: "/:all*(svg|jpg|png|webp|avif)",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
@@ -106,15 +106,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'yoldosh.uz',
-          },
-        ],
-        destination: 'https://www.yoldosh.uz/:path*',
-        permanent: true,
+        source: "/:path*",
+        has: [{ type: "host", value: "www.yoldosh.uz" }],
+        destination: "https://yoldosh.uz/:path*",
+        permanent: true, // 301 редирект
       },
     ];
   },
@@ -132,9 +127,12 @@ const nextConfig: NextConfig = {
   },
 
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
+    removeConsole:
+      process.env.NODE_ENV === "production"
+        ? {
+          exclude: ["error", "warn"],
+        }
+        : false,
   },
 
   /* ===== ENV ===== */
@@ -145,6 +143,6 @@ const nextConfig: NextConfig = {
 };
 
 /* ===== next-intl plugin ===== */
-const withNextIntl = createNextIntlPlugin('./app/i18n/request.ts');
+const withNextIntl = createNextIntlPlugin("./app/i18n/request.ts");
 
 export default withNextIntl(nextConfig);

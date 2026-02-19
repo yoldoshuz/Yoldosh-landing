@@ -4,16 +4,9 @@ import { useTransition } from "react";
 import { useParams } from "next/navigation";
 import { Globe } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { usePathname, useRouter, type Locale } from "@/app/i18n/routing";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 interface LanguageSwitcherSelectProps {
   defaultValue: string;

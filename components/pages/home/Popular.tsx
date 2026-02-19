@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-
+import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -15,11 +14,19 @@ import { Separator } from "../../ui/separator";
 export const Popular = () => {
   const locale = useLocale();
   const t = useTranslations("Pages.Popular");
-  const { data: popularTrips } = usePopularTrips();
+  const {
+    data: popularData,
+    fetchNextPage: fetchNextPopular,
+    hasNextPage: hasNextPopular,
+    isFetchingNextPage: popularLoadingMore,
+    isLoading: isPopularLoading,
+  } = usePopularTrips();
+
+  const popularTrips = popularData?.pages?.flatMap((p: any) => p?.data?.trips || []) || [];
 
   return (
     <>
-      {popularTrips?.data.trips.length > 0 && (
+      {popularTrips?.length > 0 && (
         <section
           className="flex flex-col items-center justify-center w-full px-4 bg-neutral-100 py-12"
           aria-labelledby="popular-title"
@@ -38,7 +45,7 @@ export const Popular = () => {
             }}
           >
             <CarouselContent>
-              {popularTrips?.data.trips.slice(0, 6).map((item: any) => (
+              {popularTrips?.map((item: any) => (
                 <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
                   <Link
                     href={`/trips?from_lat=${item.from_location.coordinates.latitude}&from_lon=${item.from_location.coordinates.longitude}&to_lat=${item.to_location.coordinates.latitude}&to_lon=${item.to_location.coordinates.longitude}&seats=1`}
@@ -91,7 +98,6 @@ export const Popular = () => {
           </Carousel>
         </section>
       )}
-
     </>
   );
 };
