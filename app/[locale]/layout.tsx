@@ -68,6 +68,8 @@ export default async function RootLayout({ children, params }: LayoutProps) {
       className="light"
       style={{ colorScheme: "light" }}
     >
+      {/* ===== CANONICAL — указываем без www ===== */}
+      <link rel="canonical" href={`${SITE_URL}/${locale}`} />
       <head>
         {hreflangs.map(({ hreflang, href }) => (
           <link key={hreflang} rel="alternate" hrefLang={hreflang} href={href} />
