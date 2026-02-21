@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
-import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
-
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
@@ -20,28 +18,30 @@ interface CityAutocompleteProps {
   className?: string;
 }
 
-export const CityAutocomplete = ({ placeholder, initialValue, onCitySelected, className }: CityAutocompleteProps) => {
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      types: ["(cities)"],
-      componentRestrictions: { country: "uz" },
-    },
-    debounce: 300,
-    defaultValue: initialValue || "",
-  });
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
+export const CityAutocomplete = ({
+  placeholder,
+  initialValue,
+  onCitySelected,
+  className,
+}: CityAutocompleteProps) => {
+  const [value, setValue] = useState(initialValue || "");
+  const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     };
@@ -49,42 +49,71 @@ export const CityAutocomplete = ({ placeholder, initialValue, onCitySelected, cl
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSelect = async (description: string) => {
-    setValue(description, false);
-    clearSuggestions();
-    setDropdownOpen(false);
+  const fetchSuggestions = async (input: string) => {
+    if (!window.google || !input) return;
 
-    try {
-      const results = await getGeocode({ address: description });
+    const { AutocompleteSuggestion } =
+      await window.google.maps.importLibrary("places");
 
-      if (results && results[0]) {
-        const { lat, lng } = getLatLng(results[0]);
+    const response =
+      await AutocompleteSuggestion.fetchAutocompleteSuggestions({
+        input,
+        includedRegionCodes: ["uz"], // ЖЁСТКО только Узбекистан
+        includedPrimaryTypes: [
+          "locality",                 // города
+          "administrative_area_level_1", // области
+          "route",                    // улицы
+          "street_address",           // конкретные адреса
+        ],
+      });
 
-        const addressComponents = results[0].address_components;
-        const cityComponent = addressComponents.find(
-          (component: any) =>
-            component.types.includes("locality") || component.types.includes("administrative_area_level_1")
-        );
-
-        const normalizedName = cityComponent ? cityComponent.long_name : description.split(",")[0];
-
-        onCitySelected({
-          name: normalizedName,
-          lat: lat,
-          lng: lng,
-        });
-      }
-    } catch (error) {
-      console.error("Geocoding error: ", error);
-      onCitySelected({ name: description, lat: undefined, lng: undefined });
-    }
+    setSuggestions(response.suggestions || []);
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const val = e.target.value;
+    setValue(val);
     setDropdownOpen(true);
-    if (e.target.value === "") {
+
+    if (val === "") {
+      setSuggestions([]);
       onCitySelected({ name: "" });
+      return;
+    }
+
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    debounceRef.current = setTimeout(() => {
+      fetchSuggestions(val);
+    }, 300);
+  };
+
+  const handleSelect = async (suggestion: any) => {
+    const placePrediction = suggestion.placePrediction;
+    const description = placePrediction.text.text;
+
+    setValue(description);
+    setDropdownOpen(false);
+    setSuggestions([]);
+
+    try {
+      const place = await placePrediction.toPlace();
+      await place.fetchFields({
+        fields: ["displayName", "location"],
+      });
+
+      const lat = place.location?.lat();
+      const lng = place.location?.lng();
+      const normalizedName = place.displayName;
+
+      onCitySelected({
+        name: normalizedName,
+        lat,
+        lng,
+      });
+    } catch (error) {
+      console.error("Place fetch error:", error);
+      onCitySelected({ name: description });
     }
   };
 
@@ -93,31 +122,35 @@ export const CityAutocomplete = ({ placeholder, initialValue, onCitySelected, cl
       <Input
         value={value}
         onChange={handleInput}
-        disabled={!ready}
         placeholder={placeholder}
-        required={true}
+        required
+        autoComplete="off"
         className={cn(
           "border-none shadow-none rounded-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0",
           className
         )}
-        autoComplete="off"
       />
 
-      {status === "OK" && isDropdownOpen && (
+      {isDropdownOpen && suggestions.length > 0 && (
         <ul className="absolute z-50 top-full left-0 w-full mt-2 bg-white border rounded-lg shadow-lg max-h-60 overflow-y-auto">
-          {data.map(({ place_id, description, structured_formatting }) => (
-            <li
-              key={place_id}
-              onClick={() => handleSelect(description)}
-              className="px-4 py-3 hover:bg-neutral-50 cursor-pointer flex items-center gap-3 transition-colors text-sm"
-            >
-              <MapPin className="size-4 text-emerald-500 shrink-0" />
-              <div className="flex flex-col">
-                <span className="font-medium text-neutral-900">{structured_formatting.main_text}</span>
-                <span className="text-xs text-neutral-500">{structured_formatting.secondary_text}</span>
-              </div>
-            </li>
-          ))}
+          {suggestions.map((suggestion, index) => {
+            const prediction = suggestion.placePrediction;
+
+            return (
+              <li
+                key={index}
+                onClick={() => handleSelect(suggestion)}
+                className="px-4 py-3 hover:bg-neutral-50 cursor-pointer flex items-center gap-3 transition-colors text-sm"
+              >
+                <MapPin className="size-4 text-emerald-500 shrink-0" />
+                <div className="flex flex-col">
+                  <span className="font-medium text-neutral-900">
+                    {prediction.text.text}
+                  </span>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

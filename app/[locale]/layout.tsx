@@ -63,11 +63,12 @@ export default async function RootLayout({ children, params }: LayoutProps) {
   ];
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      className="light"
+      style={{ colorScheme: "light" }}
+    >
       <head>
-        {/* ❌ УДАЛЁН статичный canonical — он задаётся в каждой странице через generateMetadata */}
-
-        {/* hreflang для корневых страниц (страницы переопределяют через alternates) */}
         {hreflangs.map(({ hreflang, href }) => (
           <link key={hreflang} rel="alternate" hrefLang={hreflang} href={href} />
         ))}

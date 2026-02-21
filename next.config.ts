@@ -103,16 +103,27 @@ const nextConfig: NextConfig = {
   },
 
   /* ===== Redirects ===== */
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.yoldosh.uz" }],
-        destination: "https://yoldosh.uz/:path*",
-        permanent: true, // 301 редирект
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       has: [
+  //         {
+  //           type: 'host',
+  //           value: 'yoldosh.uz',
+  //         },
+  //       ],
+  //       destination: 'https://www.yoldosh.uz/:path*',
+  //       permanent: true,
+  //     },
+  //     {
+  //       source: "/:path*",
+  //       has: [{ type: "host", value: "www.yoldosh.uz" }],
+  //       destination: "https://yoldosh.uz/:path*",
+  //       permanent: true, // 301 редирект
+  //     },
+  //   ];
+  // },
 
   // Webpack оптимизации
   webpack: (config, { dev, isServer }) => {
