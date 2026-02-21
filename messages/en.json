@@ -135,17 +135,7 @@
             "Title": "Routes that popular among our users",
             "From": "From",
             "Sum": "Sum",
-            "Andijan": "Andijan",
-            "Fergana": "Fergana",
-            "Namangan": "Namangan",
-            "Tashkent": "Tashkent",
-            "Bukhara": "Bukhara",
-            "Jizzah": "Jizzakh",
-            "Navoiy": "Navoiy",
-            "Samarkand": "Samarkand",
-            "Sirdarya": "Sirdarya",
-            "Xorezm": "Khorezm",
-            "Nukus": "Nukus"
+            "ViewAll": "View all trips"
         },
         "Travel": {
             "Title": "Travel more conveniently with the Yo'ldosh app",
@@ -189,6 +179,8 @@
                     "Garage": "Garage",
                     "Yes": "Yes",
                     "No": "No",
+                    "Allowed": "Allowed",
+                    "NotAllowed": "Not allowed",
                     "Empty": "Empty",
                     "HalfEmpty": "Halfempty",
                     "Full": "Full"
@@ -695,6 +687,7 @@
         "Search": {
             "From": "From",
             "To": "To",
+            "Date": "Date",
             "FromCityPlaceholder": "Tashkent",
             "ToCityPlaceholder": "Andijan",
             "Passengers": {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { CircleUserRound, Search } from "lucide-react";
+import { Calendar1, CircleUserRound, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { useRouter } from "@/app/i18n/routing";
@@ -119,28 +119,39 @@ export const SearchTrips = () => {
           <Separator />
         </div>
 
-        <div className="flex items-center justify-start w-full px-2 py-2 lg:py-0 border-r-0 lg:border-r">
-          <CalendarSelect onDateChange={setDate} />
+        <div className="flex items-center justify-start w-full px-2 py-2 lg:py-0 border-r-0 lg:border-r gap-3">
+          <div className="flex items-center justify-center size-6 shrink-0">
+            <Calendar1 className="text-muted-foreground" />
+          </div>
+          <div className="w-full h-auto">
+            <p className="text-xs text-neutral-400">{t("Date")}</p>
+            <CalendarSelect onDateChange={setDate} />
+          </div>
         </div>
 
         <div className="block lg:hidden px-2 w-full">
           <Separator />
         </div>
 
-        <div className="flex items-center justify-start w-full lg:w-auto pl-2 pr-12 py-2 lg:py-0">
-          <Select value={seats} onValueChange={setSeats}>
-            <SelectTrigger className="bg-transparent border-none shadow-none focus:ring-0 p-0 h-auto gap-3.5 text-muted-foreground cursor-pointer select-none">
-              <CircleUserRound className="size-6" />
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                <SelectItem key={num} value={num.toString()}>
-                  {t(`Passengers.${num}`)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+        <div className="flex items-center justify-start w-full px-2 py-2 lg:py-0 gap-3">
+          <div className="flex items-center justify-center size-6 shrink-0">
+            <CircleUserRound className="size-6 text-muted-foreground" />
+          </div>
+          <div className="w-full h-auto">
+            <p className="text-xs text-neutral-400">{t("Passengers.Title")}</p>
+            <Select value={seats} onValueChange={setSeats}>
+              <SelectTrigger size="sm" className="border-none shadow-none focus:ring-0 px-0! h-auto text-sm text-muted-foreground font-medium cursor-pointer select-none">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {[1, 2, 3, 4, 5, 6].map((num) => (
+                  <SelectItem key={num} value={num.toString()}>
+                    {t(`Passengers.${num}`)}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         <div className="w-full lg:w-auto">

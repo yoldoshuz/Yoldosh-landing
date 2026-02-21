@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { CircleSmall, Star } from "lucide-react";
+import { Armchair, CircleSmall, PlaneTakeoff, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -60,8 +60,8 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
               <div className="flex flex-row items-center justify-between gap-3 w-full max-w-125">
                 <div className="flex items-center justify-start gap-0">
                   <div className="flex flex-col items-start">
-                    <p className="text-base font-semibold">{formattedTime}</p>
-                    <p className="font-semibold text-xs md:text-sm">{trip.from_location.city}</p>
+                    <p className="text-sm md:text-base font-semibold">{formattedTime}</p>
+                    <p className="text-muted-foreground font-semibold text-xs md:text-sm">{trip.from_location.city}</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between gap-2 w-full">
@@ -83,20 +83,26 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
                 </div>
                 <div className="flex items-center justify-end gap-0">
                   <div className="flex flex-col items-start">
-                    <p className="text-base font-semibold">{formattedArrivalTime}</p>
-                    <p className="font-semibold text-xs md:text-sm">{trip.to_location.city}</p>
+                    <p className="text-sm md:text-base font-semibold">{formattedArrivalTime}</p>
+                    <p className="text-muted-foreground font-semibold text-xs md:text-sm">{trip.to_location.city}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
-            <time>
-              {t("Details.Departure")}: {departureDate.toLocaleDateString()}
-            </time>
-            <span>
-              {t("Details.Seats")}: {trip.seats_available}
-            </span>
+          <div className="flex flex-col sm:flex-row justify-center sm:justify-start text-sm items-start gap-1 text-neutral-700 mt-2">
+            <div className="flex items-center gap-2 bg-emerald-200/25 text-emerald-600 font-medium py-1 px-3 rounded-full text-xs sm:text-sm">
+              <PlaneTakeoff className="size-3 sm:size-4" />
+              <time>
+                {t("Details.Departure")}: {departureDate.toLocaleDateString()}
+              </time>
+            </div>
+            <div className={`flex items-center gap-2 text-xs sm:text-sm ${trip.seats_available === 0 ? 'bg-red-200/25 text-red-600' : 'bg-blue-200/25 text-blue-600'} font-medium py-1 px-3 rounded-full`}>
+              <Armchair className="size-3 sm:size-4" />
+              <span>
+                {t("Details.Seats")}: {trip.seats_available}
+              </span>
+            </div>
           </div>
           <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center justify-center">
@@ -108,7 +114,13 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
               </Avatar>
             </div>
             <div className="flex flex-col justify-center items-start w-full">
-              <p className="font-medium text-base">{trip.driver.firstName}</p>
+              <div className="flex items-center gap-1">
+                <p className="font-medium text-base">{trip.driver.firstName}</p>
+                <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono bg-amber-200/25 py-px px-1.5 text-amber-400">
+                  <Star className="fill-amber-300 stroke-amber-300 size-3" />
+                  <span className="">{trip.driver.rating.toFixed(1)}</span>
+                </div>
+              </div>
               <p className="text-muted-foreground text-xs">
                 {trip.car && (
                   <span>
@@ -118,11 +130,7 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
               </p>
             </div>
             <div className="flex flex-col md:flex-row items-end justify-center gap-2">
-              <div className="flex items-center rounded-full px-1.5 py-0.5 gap-1 text-xs font-mono font-semibold text-muted-foreground">
-                <Star className="fill-gray-500 size-4" />
-                <span className="">{trip.driver.rating.toFixed(1)}</span>
-              </div>
-              <div className="flex items-center text-sm font-bold">
+              <div className="flex items-center text-sm sm:text-base font-bold">
                 <p>{trip.price.price_per_person.toLocaleString()}</p>
                 <span className="ml-1">UZS</span>
               </div>
@@ -165,8 +173,8 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
                   {trip.price.price_per_person.toLocaleString()}
                   <p className="ml-1">UZS</p>
                 </span>
-                <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono text-muted-foreground">
-                  <Star className="fill-gray-500 size-4" />
+                <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono bg-amber-200/25 py-1 px-2 text-amber-400">
+                  <Star className="fill-amber-300 stroke-amber-300 size-4" />
                   <span className="">{trip.driver.rating.toFixed(1)}</span>
                 </div>
               </div>
@@ -210,12 +218,18 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
         </div>
 
         <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
-          <time>
-            {t("Details.Departure")}: {departureDate.toLocaleDateString()}
-          </time>
-          <span>
-            {t("Details.Seats")}: {trip.seats_available}
-          </span>
+          <div className="flex items-center gap-2 bg-emerald-200/25 text-emerald-600 font-medium py-1 px-3 rounded-full text-xs sm:text-sm">
+            <PlaneTakeoff className="size-3 sm:size-4" />
+            <time>
+              {t("Details.Departure")}: {departureDate.toLocaleDateString()}
+            </time>
+          </div>
+          <div className={`flex items-center gap-2 text-xs sm:text-sm ${trip.seats_available === 0 ? 'bg-red-200/25 text-red-600' : 'bg-blue-200/25 text-blue-600'} font-medium py-1 px-3 rounded-full`}>
+            <Armchair className="size-3 sm:size-4" />
+            <span>
+              {t("Details.Seats")}: {trip.seats_available}
+            </span>
+          </div>
         </div>
       </div>
     </Card>

@@ -126,7 +126,7 @@ export const CityAutocomplete = ({
         required
         autoComplete="off"
         className={cn(
-          "border-none shadow-none rounded-none p-0 h-auto text-base font-medium placeholder:text-muted-foreground focus-visible:ring-0",
+          "border-none shadow-none rounded-none p-0 h-auto text-sm font-medium placeholder:text-muted-foreground focus-visible:ring-0",
           className
         )}
       />

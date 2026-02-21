@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, Dot, MapPin, Star, Users } from "lucide-react";
+import { ArrowLeft, Backpack, Calendar, Clock, DoorOpen, Dot, MapPin, Snowflake, Star, Users, Utensils } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
@@ -168,6 +168,36 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           </Link>
         </div>
 
+
+        {/* Commentary */}
+        {trip.comment && (
+          <div className="mb-2">
+            <>
+              <h2 className="text-lg font-semibold mb-2">{t("AdditionalInformation")}</h2>
+              <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
+                <p className="text-base">{trip.comment}</p>
+              </div>
+            </>
+          </div>
+        )}
+
+        {/* Car Info */}
+        <div className="mb-2">
+          <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
+          <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-3xl">
+            <div className="flex flex-col">
+              <p className="text-lg font-medium">
+                {trip.car.make} {trip.car.model}
+              </p>
+              <p className="flex items-center text-sm text-muted-foreground">
+                {trip.car.gov_number}
+                <Dot />
+                {trip.car.color}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Passengers */}
         <div className="mb-2">
           <h2 className="text-lg font-semibold mb-2">{t("Passengers")}</h2>
@@ -198,96 +228,47 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           </div>
         </div>
 
-        {/* Car Info */}
-        <div className="mb-2">
-          <h2 className="text-lg font-semibold mb-2">{t("Vehicle")}</h2>
-          <div className="flex items-center gap-4 bg-white px-6 py-4 rounded-3xl">
-            <div className="flex flex-col">
-              <p className="text-lg font-medium">
-                {trip.car.make} {trip.car.model}
-              </p>
-              <p className="flex items-center text-sm text-muted-foreground">
-                {trip.car.gov_number}
-                <Dot />
-                {trip.car.color}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Commentary */}
-        {trip.comment && (
-          <div className="mb-2">
-            <>
-              <h2 className="text-lg font-semibold mb-2">{t("AdditionalInformation")}</h2>
-              <div className="flex items-center gap-4 bg-white p-4 rounded-3xl">
-                <p className="text-base">{trip.comment}</p>
-              </div>
-            </>
-          </div>
-        )}
-
         {/* Preferences */}
-        <div className="flex flex-col gap-2 space-y-2 font-semibold mb-24">
-          <h1 className="text-lg font-semibold">{t("Preferences.Title")}</h1>
-          <Separator className="mb-2" />
-          <div className="preferences-container">
-            {t("Preferences.Garage")}
-            <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.garage === "EMPTY" ? "preferences-text-active" : null}`}>
-                {t("Preferences.Empty")}
-              </div>
-              <div className={`preferences-text ${trip.garage === "HALF_EMPTY" ? "preferences-text-active" : null}`}>
-                {t("Preferences.HalfEmpty")}
-              </div>
-              <div className={`preferences-text ${trip.garage === "FULL" ? "preferences-text-active" : null}`}>
-                {t("Preferences.Full")}
-              </div>
-            </div>
+        <div className="flex flex-col gap-2 space-y-2 mb-24 bg-white text-emerald-500 rounded-3xl px-6 py-4">
+          <div className="flex items-center gap-1">
+            <Backpack className="size-5 mr-2" strokeWidth={1} />
+            <p>{t("Preferences.Garage")}&nbsp;-</p>
+            {trip.garage === "EMPTY" && (
+              t("Preferences.Empty")
+            )}
+            {trip.garage === "HALF_EMPTY" && (
+              t("Preferences.HalfEmpty")
+            )}
+            {trip.garage === "FULL" && (
+              t("Preferences.Full")
+            )}
           </div>
-          <div className="preferences-container">
-            {t("Preferences.AC")}
-            <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.conditioner === true ? "preferences-text-active" : null}`}>
-                {t("Preferences.Yes")}
-              </div>
-              <div className={`preferences-text ${trip.conditioner === false ? "preferences-text-active" : null}`}>
-                {t("Preferences.No")}
-              </div>
-            </div>
+          <div className="flex items-center gap-1">
+            <Snowflake className="size-5 mr-2" strokeWidth={1} />
+            <p>{t("Preferences.AC")}&nbsp;-</p>
+            {trip.conditioner === true ? (
+              t("Preferences.Yes")
+            ) : (
+              t("Preferences.No")
+            )}
           </div>
-          <div className="preferences-container">
-            {t("Preferences.Food")}
-            <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.food_stop === true ? "preferences-text-active" : null}`}>
-                {t("Preferences.Yes")}
-              </div>
-              <div className={`preferences-text ${trip.food_stop === false ? "preferences-text-active" : null}`}>
-                {t("Preferences.No")}
-              </div>
-            </div>
+          <div className="flex items-center gap-1">
+            <DoorOpen className="size-5 mr-2" strokeWidth={1} />
+            <p>{t("Preferences.Door")}&nbsp;-</p>
+            {trip.door_pickup === true ? (
+              t("Preferences.Yes")
+            ) : (
+              t("Preferences.No")
+            )}
           </div>
-          <div className="preferences-container">
-            {t("Preferences.Door")}
-            <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.door_pickup === true ? "preferences-text-active" : null}`}>
-                {t("Preferences.Yes")}
-              </div>
-              <div className={`preferences-text ${trip.door_pickup === false ? "preferences-text-active" : null}`}>
-                {t("Preferences.No")}
-              </div>
-            </div>
-          </div>
-          <div className="preferences-container">
-            {t("Preferences.Smoking")}
-            <div className="preferences-tab-container">
-              <div className={`preferences-text ${trip.smoking_allowed === true ? "preferences-text-active" : null}`}>
-                {t("Preferences.Yes")}
-              </div>
-              <div className={`preferences-text ${trip.smoking_allowed === false ? "preferences-text-active" : null}`}>
-                {t("Preferences.No")}
-              </div>
-            </div>
+          <div className="flex items-center gap-1">
+            <Utensils className="size-5 mr-2" strokeWidth={1} />
+            <p>{t("Preferences.Food")}&nbsp;-</p>
+            {trip.food_stop === true ? (
+              t("Preferences.Allowed")
+            ) : (
+              t("Preferences.NotAllowed")
+            )}
           </div>
         </div>
 

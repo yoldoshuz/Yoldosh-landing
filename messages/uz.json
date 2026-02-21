@@ -135,17 +135,7 @@
             "Title": "Foydalanuvchilarimiz orasida mashhur bo'lgan marshrutlar",
             "From": "Dan",
             "Sum": "so‘m",
-            "Andijan": "Andijon",
-            "Fergana": "Farg‘ona",
-            "Namangan": "Namangan",
-            "Tashkent": "Toshkent",
-            "Bukhara": "Buxoro",
-            "Jizzah": "Jizzax",
-            "Navoiy": "Navoiy",
-            "Samarkand": "Samarqand",
-            "Sirdarya": "Sirdaryo",
-            "Xorezm": "Xorazm",
-            "Nukus": "Nukus"
+            "ViewAll": "Hamma y'onalishlardi k'orish"
         },
         "Travel": {
             "Title": "Yo‘ldosh ilovasi bilan qulayroq sayohat qiling",
@@ -189,6 +179,8 @@
                     "Garage": "Bagaj",
                     "Yes": "Ha",
                     "No": "Yo'q",
+                    "Allowed": "Mayli",
+                    "NotAllowed": "Mumkin emas",
                     "Empty": "Bo'sh",
                     "HalfEmpty": "Yarmibo'sh",
                     "Full": "To'la"
@@ -694,6 +686,7 @@
         "Search": {
             "From": "Qayerdan",
             "To": "Qayerga",
+            "Date": "Sana",
             "FromCityPlaceholder": "Toshkent",
             "ToCityPlaceholder": "Andijon",
             "Passengers": {

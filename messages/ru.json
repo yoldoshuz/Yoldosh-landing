@@ -135,17 +135,7 @@
             "Title": "Популярные маршруты среди наших пользователей",
             "From": "От",
             "Sum": "сум",
-            "Andijan": "Андижан",
-            "Fergana": "Фергана",
-            "Namangan": "Наманган",
-            "Tashkent": "Ташкент",
-            "Bukhara": "Бухара",
-            "Jizzah": "Джизак",
-            "Navoiy": "Навои",
-            "Samarkand": "Самарканд",
-            "Sirdarya": "Сырдарья",
-            "Xorezm": "Хорезм",
-            "Nukus": "Нукус"
+            "ViewAll": "Смотреть все поездки"
         },
         "Travel": {
             "Title": "Путешествуйте удобнее с приложением Yo'ldosh",
@@ -189,6 +179,8 @@
                     "Garage": "Багаж",
                     "Yes": "Да",
                     "No": "Нет",
+                    "Allowed": "Можно",
+                    "NotAllowed": "Нельзя",
                     "Empty": "Пустой",
                     "HalfEmpty": "Полупустой",
                     "Full": "Полный"
@@ -694,6 +686,7 @@
         "Search": {
             "From": "Откуда",
             "To": "Куда",
+            "Date": "Дата",
             "FromCityPlaceholder": "Ташкент",
             "ToCityPlaceholder": "Андижан",
             "Passengers": {
