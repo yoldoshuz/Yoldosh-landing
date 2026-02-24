@@ -156,8 +156,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, route } = await params;
   const r = ROUTES[route];
-  if (!r) return {};
 
+  // Если маршрут не найден, редиректим на главную (это правильно)
+  if (!r) {
+    redirect(`/${locale}`);
+  }
   const fromName = locale === "ru" ? r.fromRu : locale === "uz" ? r.fromUz : r.fromEn;
   const toName = locale === "ru" ? r.toRu : locale === "uz" ? r.toUz : r.toEn;
   const siteUrl = "https://yoldosh.uz";
@@ -272,9 +275,9 @@ export default async function RoutePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(routeJsonLd) }}
       />
 
-      <article className="max-w-4xl mx-auto px-4 py-12">
+      <article className="flex items-center justify-center max-w-4xl mx-auto px-4 py-12 h-full min-h-[80vh]">
         {/* Hero */}
-        <div className="bg-emerald-500 rounded-3xl p-8 text-white mb-8">
+        <div className="bg-emerald-500 rounded-3xl shadow-2xl p-8 text-white mb-8">
           <h1 className="text-3xl font-bold mb-3">{l.hero}</h1>
           <p className="text-white/90 text-lg mb-6">{l.sub}</p>
           <div className="flex gap-6 mb-6 text-sm">

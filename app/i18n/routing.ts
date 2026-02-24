@@ -47,10 +47,10 @@ export const routing = defineRouting({
       ru: "/удалить-аккаунт",
       uz: "/hisobni-ochirish",
     },
-    "/routes/[from]-[to]": {
-      en: "/routes/[from]-[to]",
-      ru: "/маршруты/[from]-[to]",
-      uz: "/yonalishlar/[from]-[to]"
+    "/routes/[route]": {
+      en: "/routes/[route]",
+      ru: "/маршруты/[route]",
+      uz: "/yonalishlar/[route]"
     }
   },
 });

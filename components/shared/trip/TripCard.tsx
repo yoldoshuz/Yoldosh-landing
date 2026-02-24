@@ -21,6 +21,22 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
   const departureDate = new Date(trip.departure_ts);
   const arrivalDate = new Date(departureDate.getTime() + trip.duration * 60 * 1000);
 
+  const today = new Date();
+  const departureDay = new Date(departureDate.getFullYear(), departureDate.getMonth(), departureDate.getDate());
+  const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const diffDays = Math.floor((departureDay.getTime() - todayDay.getTime()) / (1000 * 60 * 60 * 24));
+
+  let departureBgColor = 'bg-emerald-200/25';
+  let departureTextColor = 'text-emerald-600';
+
+  if (diffDays < 0) {
+    departureBgColor = 'bg-red-200/25';
+    departureTextColor = 'text-red-600';
+  } else if (diffDays === 1 || diffDays === 2) {
+    departureBgColor = 'bg-amber-200/25';
+    departureTextColor = 'text-amber-600';
+  }
+
   const locale = pathname.slice(1, 3);
 
   const getLocale = () => {
@@ -91,13 +107,16 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
             </div>
           </div>
           <div className="flex flex-col sm:flex-row justify-center sm:justify-start text-sm items-start gap-1 text-neutral-700 mt-2">
-            <div className="flex items-center gap-2 bg-emerald-200/25 text-emerald-600 font-medium py-1 px-3 rounded-full text-xs sm:text-sm">
+            <div className={`flex items-center gap-2 ${departureBgColor} ${departureTextColor} font-medium py-1 px-3 rounded-full text-xs sm:text-sm`}>
               <PlaneTakeoff className="size-3 sm:size-4" />
               <time>
                 {t("Details.Departure")}: {departureDate.toLocaleDateString()}
               </time>
             </div>
-            <div className={`flex items-center gap-2 text-xs sm:text-sm ${trip.seats_available === 0 ? 'bg-red-200/25 text-red-600' : 'bg-blue-200/25 text-blue-600'} font-medium py-1 px-3 rounded-full`}>
+            <div
+              className={`flex items-center gap-2 text-xs sm:text-sm 
+              ${trip.seats_available === 0 ? 'bg-red-200/25 text-red-600' : trip.seats_available === 1 ? 'bg-amber-200/25 text-amber-600' : 'bg-blue-200/25 text-blue-600'} font-medium py-1 px-3 rounded-full`}
+            >
               <Armchair className="size-3 sm:size-4" />
               <span>
                 {t("Details.Seats")}: {trip.seats_available}
@@ -158,8 +177,15 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
               </Avatar>
             </div>
             <div className="flex flex-row items-center justify-between w-full">
+
               <div className="flex flex-col justify-center">
-                <p className="font-medium text-base">{trip.driver.firstName}</p>
+                <div className="flex items-center justify-start gap-1">
+                  <p className="font-medium text-base">{trip.driver.firstName}</p>
+                  <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono bg-amber-200/25 py-px px-1.5 text-amber-400">
+                    <Star className="fill-amber-300 stroke-amber-300 size-3" />
+                    <span className="">{trip.driver.rating.toFixed(1)}</span>
+                  </div>
+                </div>
                 <p className="text-muted-foreground text-xs">
                   {trip.car && (
                     <span>
@@ -173,10 +199,6 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
                   {trip.price.price_per_person.toLocaleString()}
                   <p className="ml-1">UZS</p>
                 </span>
-                <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono bg-amber-200/25 py-1 px-2 text-amber-400">
-                  <Star className="fill-amber-300 stroke-amber-300 size-4" />
-                  <span className="">{trip.driver.rating.toFixed(1)}</span>
-                </div>
               </div>
             </div>
           </div>
@@ -218,13 +240,16 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
         </div>
 
         <div className="flex flex-col justify-center text-sm items-start gap-1 text-neutral-700 mt-2">
-          <div className="flex items-center gap-2 bg-emerald-200/25 text-emerald-600 font-medium py-1 px-3 rounded-full text-xs sm:text-sm">
+          <div className={`flex items-center gap-2 ${departureBgColor} ${departureTextColor} font-medium py-1 px-3 rounded-full text-xs sm:text-sm`}>
             <PlaneTakeoff className="size-3 sm:size-4" />
             <time>
               {t("Details.Departure")}: {departureDate.toLocaleDateString()}
             </time>
           </div>
-          <div className={`flex items-center gap-2 text-xs sm:text-sm ${trip.seats_available === 0 ? 'bg-red-200/25 text-red-600' : 'bg-blue-200/25 text-blue-600'} font-medium py-1 px-3 rounded-full`}>
+          <div
+            className={`flex items-center gap-2 text-xs sm:text-sm 
+            ${trip.seats_available === 0 ? 'bg-red-200/25 text-red-600' : trip.seats_available === 1 ? 'bg-amber-200/25 text-amber-600' : 'bg-blue-200/25 text-blue-600'} font-medium py-1 px-3 rounded-full`}
+          >
             <Armchair className="size-3 sm:size-4" />
             <span>
               {t("Details.Seats")}: {trip.seats_available}
