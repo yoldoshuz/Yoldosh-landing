@@ -51,15 +51,31 @@ export function getPageJsonLd({ locale, path, type = "WebPage", name, descriptio
         },
         ...(path
           ? [
-              {
-                "@type": "ListItem",
-                position: 2,
-                name,
-                item: url,
-              },
-            ]
+            {
+              "@type": "ListItem",
+              position: 2,
+              name,
+              item: url,
+            },
+          ]
           : []),
       ],
     },
+  };
+}
+
+export function generateTripJsonLd(trip: any, locale: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product", // Или "OfferCatalog" / "Trip"
+    "name": `Поездка ${trip.from} - ${trip.to}`,
+    "description": `Пассажирские перевозки из ${trip.from} в ${trip.to}.`,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "UZS",
+      "price": trip.price,
+      "availability": "https://schema.org/InStock",
+      "url": `https://yoldosh.uz/${locale}/routes/${trip.slug}`
+    }
   };
 }

@@ -4,12 +4,11 @@
  * Автоматически перенаправляют на /trips с координатами,
  * но сами индексируются Google как отдельные страницы под маршрутные запросы.
  */
+import Script from "next/script";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import Script from "next/script";
-import { getTranslations } from "next-intl/server";
+import { generateTripJsonLd } from '@/app/lib/jsonld';
 
-import { Link } from "@/app/i18n/routing";
 import { Footer } from "@/components/shared/widgets/Footer";
 import { Button } from "@/components/ui/button";
 
@@ -145,22 +144,26 @@ const ROUTES: Record<
   },
 };
 
-type Props = {
-  params: Promise<{ locale: string; route: string }>;
-};
+interface RoutePageProps {
+  params: {
+    locale: string;
+    route: string; // например 'tashkent-samarkand'
+  };
+}
 
 export async function generateStaticParams() {
   return Object.keys(ROUTES).flatMap((route) => ["ru", "uz", "en"].map((locale) => ({ locale, route })));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, route } = await params;
+export async function generateMetadata({ params }: RoutePageProps): Promise<Metadata> {
+  const { locale, route } = params;
   const r = ROUTES[route];
 
   // Если маршрут не найден, редиректим на главную (это правильно)
   if (!r) {
     redirect(`/${locale}`);
-  }
+  };
+  
   const fromName = locale === "ru" ? r.fromRu : locale === "uz" ? r.fromUz : r.fromEn;
   const toName = locale === "ru" ? r.toRu : locale === "uz" ? r.toUz : r.toEn;
   const siteUrl = "https://yoldosh.uz";
@@ -203,8 +206,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function RoutePage({ params }: Props) {
-  const { locale, route } = await params;
+export default async function RoutePage({ params }: RoutePageProps) {
+  const { locale, route } = params;
   const r = ROUTES[route];
 
   if (!r) {
