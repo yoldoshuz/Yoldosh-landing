@@ -1,6 +1,18 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ArrowLeft, Backpack, Calendar, Clock, DoorOpen, Dot, MapPin, Snowflake, Star, Users, Utensils } from "lucide-react";
+import {
+  ArrowLeft,
+  Backpack,
+  Calendar,
+  Clock,
+  DoorOpen,
+  Dot,
+  MapPin,
+  Snowflake,
+  Star,
+  Users,
+  Utensils,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
@@ -168,7 +180,6 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           </Link>
         </div>
 
-
         {/* Commentary */}
         {trip.comment && (
           <div className="mb-2">
@@ -233,42 +244,24 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
           <div className="flex items-center gap-1">
             <Backpack className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.Garage")}&nbsp;-</p>
-            {trip.garage === "EMPTY" && (
-              t("Preferences.Empty")
-            )}
-            {trip.garage === "HALF_EMPTY" && (
-              t("Preferences.HalfEmpty")
-            )}
-            {trip.garage === "FULL" && (
-              t("Preferences.Full")
-            )}
+            {trip.garage === "EMPTY" && t("Preferences.Empty")}
+            {trip.garage === "HALF_EMPTY" && t("Preferences.HalfEmpty")}
+            {trip.garage === "FULL" && t("Preferences.Full")}
           </div>
           <div className="flex items-center gap-1">
             <Snowflake className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.AC")}&nbsp;-</p>
-            {trip.conditioner === true ? (
-              t("Preferences.Yes")
-            ) : (
-              t("Preferences.No")
-            )}
+            {trip.conditioner === true ? t("Preferences.Yes") : t("Preferences.No")}
           </div>
           <div className="flex items-center gap-1">
             <DoorOpen className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.Door")}&nbsp;-</p>
-            {trip.door_pickup === true ? (
-              t("Preferences.Yes")
-            ) : (
-              t("Preferences.No")
-            )}
+            {trip.door_pickup === true ? t("Preferences.Yes") : t("Preferences.No")}
           </div>
           <div className="flex items-center gap-1">
             <Utensils className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.Food")}&nbsp;-</p>
-            {trip.food_stop === true ? (
-              t("Preferences.Allowed")
-            ) : (
-              t("Preferences.NotAllowed")
-            )}
+            {trip.food_stop === true ? t("Preferences.Allowed") : t("Preferences.NotAllowed")}
           </div>
         </div>
 

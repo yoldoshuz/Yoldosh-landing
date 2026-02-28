@@ -50,8 +50,8 @@ export const routing = defineRouting({
     "/routes/[route]": {
       en: "/routes/[route]",
       ru: "/маршруты/[route]",
-      uz: "/yonalishlar/[route]"
-    }
+      uz: "/yonalishlar/[route]",
+    },
   },
 });
 

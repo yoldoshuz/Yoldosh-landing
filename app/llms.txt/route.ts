@@ -1,5 +1,5 @@
 export async function GET() {
-    const content = `# Yoldosh - Carpooling Service for Uzbekistan
+  const content = `# Yoldosh - Carpooling Service for Uzbekistan
 
 ## About
 Yoldosh is a modern, fast, and secure carpooling platform connecting drivers and passengers across Uzbekistan. We provide safe, affordable, and eco-friendly intercity transportation, serving as the modern alternative to traditional intercity taxis.
@@ -39,10 +39,10 @@ We operate across all 12 regions of Uzbekistan, the Republic of Karakalpakstan, 
 - Operator: "OOO Milliy Yoldosh"
 `;
 
-    return new Response(content, {
-        headers: {
-            'Content-Type': 'text/plain; charset=utf-8',
-            'Cache-Control': 'public, max-age=86400',
-        },
-    });
+  return new Response(content, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=86400",
+    },
+  });
 }

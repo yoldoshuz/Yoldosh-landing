@@ -1,8 +1,6 @@
-import Script from "next/script";
-import NotFound from "./not-found";
-
 import { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -10,6 +8,7 @@ import { getOrganizationJsonLd } from "@/app/lib/jsonld";
 import { Navbar } from "@/components/shared/widgets/Navbar";
 import { LayoutProps } from "@/types";
 import { routing } from "../i18n/routing";
+import NotFound from "./not-found";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
 
@@ -23,7 +22,7 @@ const font = Nunito_Sans({
 const SITE_URL = "https://yoldosh.uz";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL("https://yoldosh.uz"),
   robots: {
     index: true,
     follow: true,
@@ -36,8 +35,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
+    google: "YOUR_REAL_GOOGLE_CODE",
+    yandex: "YOUR_REAL_YANDEX_CODE",
   },
 };
 
@@ -55,24 +54,9 @@ export default async function RootLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale);
   const messages = await getMessages();
 
-  const hreflangs = [
-    { hreflang: "ru", href: `${SITE_URL}/ru` },
-    { hreflang: "uz", href: `${SITE_URL}/uz` },
-    { hreflang: "en", href: `${SITE_URL}/en` },
-    { hreflang: "x-default", href: `${SITE_URL}/ru` },
-  ];
-
   return (
-    <html
-      lang={locale}
-      className="light"
-      style={{ colorScheme: "light" }}
-    >
+    <html lang={locale} className="light" style={{ colorScheme: "light" }}>
       <head>
-        {hreflangs.map(({ hreflang, href }) => (
-          <link key={hreflang} rel="alternate" hrefLang={hreflang} href={href} />
-        ))}
-
         <link rel="dns-prefetch" href="https://mc.yandex.ru" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />

@@ -1,28 +1,25 @@
 {
-    "name": "Yoldosh - Совместные поездки",
-    "short_name": "Yoldosh",
-    "description": "Безопасный сервис совместных поездок по Узбекистану",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#10b981",
-    "orientation": "portrait-primary",
-    "icons": [
-        {
-            "src": "/icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "categories": [
-        "travel",
-        "transportation"
-    ],
-    "lang": "ru",
-    "dir": "ltr"
+  "background_color": "#ffffff",
+  "categories": ["travel", "transportation"],
+  "description": "Безопасный сервис совместных поездок по Узбекистану",
+  "dir": "ltr",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "ru",
+  "name": "Yoldosh - Совместные поездки",
+  "orientation": "portrait-primary",
+  "short_name": "Yoldosh",
+  "start_url": "/",
+  "theme_color": "#10b981"
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
+
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
@@ -24,12 +25,7 @@ declare global {
   }
 }
 
-export const CityAutocomplete = ({
-  placeholder,
-  initialValue,
-  onCitySelected,
-  className,
-}: CityAutocompleteProps) => {
+export const CityAutocomplete = ({ placeholder, initialValue, onCitySelected, className }: CityAutocompleteProps) => {
   const [value, setValue] = useState(initialValue || "");
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -38,10 +34,7 @@ export const CityAutocomplete = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(event.target as Node)
-      ) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
         setDropdownOpen(false);
       }
     };
@@ -52,20 +45,18 @@ export const CityAutocomplete = ({
   const fetchSuggestions = async (input: string) => {
     if (!window.google || !input) return;
 
-    const { AutocompleteSuggestion } =
-      await window.google.maps.importLibrary("places");
+    const { AutocompleteSuggestion } = await window.google.maps.importLibrary("places");
 
-    const response =
-      await AutocompleteSuggestion.fetchAutocompleteSuggestions({
-        input,
-        includedRegionCodes: ["uz"], // ЖЁСТКО только Узбекистан
-        includedPrimaryTypes: [
-          "locality",                 // города
-          "administrative_area_level_1", // области
-          "route",                    // улицы
-          "street_address",           // конкретные адреса
-        ],
-      });
+    const response = await AutocompleteSuggestion.fetchAutocompleteSuggestions({
+      input,
+      includedRegionCodes: ["uz"], // ЖЁСТКО только Узбекистан
+      includedPrimaryTypes: [
+        "locality", // города
+        "administrative_area_level_1", // области
+        "route", // улицы
+        "street_address", // конкретные адреса
+      ],
+    });
 
     setSuggestions(response.suggestions || []);
   };
@@ -144,9 +135,7 @@ export const CityAutocomplete = ({
               >
                 <MapPin className="size-4 text-emerald-500 shrink-0" />
                 <div className="flex flex-col">
-                  <span className="font-medium text-neutral-900">
-                    {prediction.text.text}
-                  </span>
+                  <span className="font-medium text-neutral-900">{prediction.text.text}</span>
                 </div>
               </li>
             );

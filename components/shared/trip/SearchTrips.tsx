@@ -140,7 +140,10 @@ export const SearchTrips = () => {
           <div className="w-full h-auto">
             <p className="text-xs text-neutral-400">{t("Passengers.Title")}</p>
             <Select value={seats} onValueChange={setSeats}>
-              <SelectTrigger size="sm" className="border-none shadow-none focus:ring-0 px-0! h-auto text-sm text-muted-foreground font-medium cursor-pointer select-none">
+              <SelectTrigger
+                size="sm"
+                className="border-none shadow-none focus:ring-0 px-0! h-auto text-sm text-muted-foreground font-medium cursor-pointer select-none"
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

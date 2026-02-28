@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -11,7 +11,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { usePopularTrips } from "@/hooks/useTrips";
 import { Button } from "../../ui/button";
 import { Separator } from "../../ui/separator";
-import { useRouter } from "next/navigation";
 
 export const Popular = () => {
   const locale = useLocale();
@@ -100,7 +99,12 @@ export const Popular = () => {
             <CarouselNext className="hidden lg:flex right-2 md:-right-10" />
           </Carousel>
           <div className="mt-4">
-            <Button className="btn-glow" onClick={() => { router.push("trips") }}>
+            <Button
+              className="btn-glow"
+              onClick={() => {
+                router.push("trips");
+              }}
+            >
               {t("ViewAll")}
               <ChevronRight className="size-5" />
             </Button>

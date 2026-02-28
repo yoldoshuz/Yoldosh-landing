@@ -1,25 +1,22 @@
-const locales = ['ru', 'uz', 'en'];
-const baseUrl = 'https://yoldosh.uz';
+const locales = ["ru", "uz", "en"];
+const baseUrl = "https://yoldosh.uz";
 
 function slugify(text: string) {
   return text
     .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '');
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "");
 }
 
 export async function GET() {
   try {
-    const response = await fetch(
-      'https://api.yoldosh.uz/api/v1/public/trips/popular',
-      {
-        cache: 'no-store',
-        next: { revalidate: 86400 },
-      }
-    );
+    const response = await fetch("https://api.yoldosh.uz/api/v1/public/trips/popular", {
+      cache: "no-store",
+      next: { revalidate: 86400 },
+    });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch trips');
+      throw new Error("Failed to fetch trips");
     }
 
     const json = await response.json();
@@ -27,7 +24,7 @@ export async function GET() {
     const trips = json?.data?.trips;
 
     if (!trips || trips.length === 0) {
-      throw new Error('No trips found');
+      throw new Error("No trips found");
     }
 
     // Убираем дубликаты маршрутов
@@ -72,17 +69,16 @@ export async function GET() {
 
     return new Response(xml, {
       headers: {
-        'Content-Type': 'application/xml',
-        'Cache-Control':
-          'public, max-age=86400, s-maxage=86400, stale-while-revalidate',
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=86400, s-maxage=86400, stale-while-revalidate",
       },
     });
   } catch (error) {
-    console.error('Sitemap trips error:', error);
+    console.error("Sitemap trips error:", error);
 
     return new Response(
       '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',
-      { headers: { 'Content-Type': 'application/xml' } }
+      { headers: { "Content-Type": "application/xml" } }
     );
   }
 }

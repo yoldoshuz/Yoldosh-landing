@@ -1,18 +1,11 @@
-/**
- * SEO-страницы для популярных маршрутов.
- * URL: /ru/routes/tashkent-samarkand
- * Автоматически перенаправляют на /trips с координатами,
- * но сами индексируются Google как отдельные страницы под маршрутные запросы.
- */
-import Script from "next/script";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { generateTripJsonLd } from '@/app/lib/jsonld';
+import Script from "next/script";
+import { getTranslations } from "next-intl/server";
 
 import { Footer } from "@/components/shared/widgets/Footer";
 import { Button } from "@/components/ui/button";
 
-// ===== База маршрутов =====
 const ROUTES: Record<
   string,
   {
@@ -144,130 +137,98 @@ const ROUTES: Record<
   },
 };
 
-interface RoutePageProps {
-  params: {
-    locale: string;
-    route: string; // например 'tashkent-samarkand'
-  };
-}
+const tripsPathByLocale: Record<string, string> = { ru: "поездки", uz: "safarlar", en: "trips" };
+const siteUrl = "https://yoldosh.uz";
+
+type Props = { params: Promise<{ locale: string; route: string }> };
 
 export async function generateStaticParams() {
   return Object.keys(ROUTES).flatMap((route) => ["ru", "uz", "en"].map((locale) => ({ locale, route })));
 }
 
-export async function generateMetadata({ params }: RoutePageProps): Promise<Metadata> {
-  const { locale, route } = params;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, route } = await params;
   const r = ROUTES[route];
+  if (!r) redirect(`/${locale}`);
 
-  // Если маршрут не найден, редиректим на главную (это правильно)
-  if (!r) {
-    redirect(`/${locale}`);
-  };
-  
-  const fromName = locale === "ru" ? r.fromRu : locale === "uz" ? r.fromUz : r.fromEn;
-  const toName = locale === "ru" ? r.toRu : locale === "uz" ? r.toUz : r.toEn;
-  const siteUrl = "https://yoldosh.uz";
-
-  const titles: Record<string, string> = {
-    ru: `${fromName} → ${toName} попутчик — Yoldosh | Карпулинг Узбекистан`,
-    uz: `${fromName} → ${toName} hamroh — Yoldosh | Carpooling O'zbekiston`,
-    en: `${fromName} to ${toName} Carpool — Yoldosh | Uzbekistan Rideshare`,
-  };
-  const descs: Record<string, string> = {
-    ru: `Найдите попутчика ${fromName}–${toName}. Расстояние ~${r.distanceKm} км, ~${r.durationH} ч. Проверенные водители, честные цены. Карпулинг Yoldosh.`,
-    uz: `${fromName}–${toName} yo'nalishida hamroh toping. Masofa ~${r.distanceKm} km, ~${r.durationH} soat. Yoldosh carpooling.`,
-    en: `Find a carpool from ${fromName} to ${toName}. Distance ~${r.distanceKm} km, ~${r.durationH} hrs. Verified drivers on Yoldosh.`,
-  };
+  const t = await getTranslations({ locale, namespace: `metadata.routes.${route}` });
 
   return {
-    title: titles[locale],
-    description: descs[locale],
-    keywords: [
-      `${fromName} ${toName} попутчик`,
-      `${fromName} ${toName} карпулинг`,
-      `${fromName} ${toName} поездка`,
-      `${r.fromEn} ${r.toEn} carpool`,
-      `${r.fromEn} ${r.toEn} rideshare`,
-    ],
+    title: t("title"),
+    description: t("description"),
+    keywords: t.raw("keywords") as string[],
+    metadataBase: new URL(siteUrl),
     alternates: {
       canonical: `${siteUrl}/${locale}/routes/${route}`,
       languages: {
         ru: `${siteUrl}/ru/routes/${route}`,
         uz: `${siteUrl}/uz/routes/${route}`,
         en: `${siteUrl}/en/routes/${route}`,
+        "x-default": `${siteUrl}/ru/routes/${route}`,
       },
     },
     openGraph: {
-      title: titles[locale],
-      description: descs[locale],
+      title: t("title"),
+      description: t("description"),
       url: `${siteUrl}/${locale}/routes/${route}`,
       type: "website",
+      siteName: "Yoldosh",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
     },
   };
 }
 
-export default async function RoutePage({ params }: RoutePageProps) {
-  const { locale, route } = params;
+export default async function RoutePage({ params }: Props) {
+  const { locale, route } = await params;
   const r = ROUTES[route];
+  if (!r) redirect(`/${locale}`);
 
-  if (!r) {
-    redirect(`/${locale}`);
-  }
+  const t = await getTranslations({ locale, namespace: `metadata.routes.${route}` });
 
   const fromName = locale === "ru" ? r.fromRu : locale === "uz" ? r.fromUz : r.fromEn;
   const toName = locale === "ru" ? r.toRu : locale === "uz" ? r.toUz : r.toEn;
 
-  // URL для перехода на поиск с координатами
-  const tripsUrl = `/${locale === "ru" ? "ru/%D0%BF%D0%BE%D0%B5%D0%B7%D0%B4%D0%BA%D0%B8" : locale === "uz" ? "uz/safarlar" : "en/trips"}?from=${encodeURIComponent(fromName)}&to=${encodeURIComponent(toName)}&from_lat=${r.fromLat}&from_lon=${r.fromLon}&to_lat=${r.toLat}&to_lon=${r.toLon}&seats=1`;
+  const tripsSegment = tripsPathByLocale[locale] ?? "trips";
+  const tripsUrl = `/${locale}/${tripsSegment}?from=${encodeURIComponent(fromName)}&to=${encodeURIComponent(toName)}&from_lat=${r.fromLat}&from_lon=${r.fromLon}&to_lat=${r.toLat}&to_lon=${r.toLon}&seats=1`;
 
-  // JSON-LD для маршрута
+  const ctaLabels: Record<string, string> = { ru: "Найти поездки", uz: "Safarlarni qidirish", en: "Find Trips" };
+  const distLabels: Record<string, string> = { ru: "Расстояние", uz: "Masofa", en: "Distance" };
+  const durLabels: Record<string, string> = { ru: "Время в пути", uz: "Yo'l vaqti", en: "Duration" };
+  const kmLabels: Record<string, string> = { ru: "км", uz: "km", en: "km" };
+  const hLabels: Record<string, string> = { ru: "ч", uz: "soat", en: "hrs" };
+  const faqTitle: Record<string, string> = { ru: "Частые вопросы", uz: "Ko'p so'raladigan savollar", en: "FAQ" };
+
+  const faq = t.has("faq") ? (t.raw("faq") as { q: string; a: string }[]) : [];
+
   const routeJsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
     name: `${fromName} → ${toName}`,
-    description: `Carpooling from ${fromName} to ${toName} in Uzbekistan`,
+    description: t("description"),
     touristType: "Budget travelers",
     itinerary: [
       { "@type": "City", name: fromName },
       { "@type": "City", name: toName },
     ],
-    provider: {
-      "@type": "Organization",
-      name: "Yoldosh",
-      url: "https://yoldosh.uz",
-    },
+    provider: { "@type": "Organization", name: "Yoldosh", url: siteUrl },
   };
 
-  const labels: Record<string, Record<string, string>> = {
-    ru: {
-      hero: `Попутчики ${fromName} → ${toName}`,
-      sub: `Найдите попутчиков на маршруте ${fromName}–${toName}. Расстояние ~${r.distanceKm} км, время в пути ~${r.durationH} ч.`,
-      cta: "Найти поездки",
-      dist: "Расстояние",
-      dur: "Время в пути",
-      km: "км",
-      h: "ч",
-    },
-    uz: {
-      hero: `${fromName} → ${toName} hamroh`,
-      sub: `${fromName}–${toName} yo'nalishida hamroh toping. Masofa ~${r.distanceKm} km, yo'l vaqti ~${r.durationH} soat.`,
-      cta: "Safarlarni qidirish",
-      dist: "Masofa",
-      dur: "Yo'l vaqti",
-      km: "km",
-      h: "soat",
-    },
-    en: {
-      hero: `${fromName} to ${toName} Carpool`,
-      sub: `Find travel companions from ${fromName} to ${toName}. Distance ~${r.distanceKm} km, travel time ~${r.durationH} hrs.`,
-      cta: "Find Trips",
-      dist: "Distance",
-      dur: "Duration",
-      km: "km",
-      h: "hrs",
-    },
-  };
-  const l = labels[locale] ?? labels.en;
+  const faqJsonLd =
+    faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map(({ q, a }) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -277,32 +238,55 @@ export default async function RoutePage({ params }: RoutePageProps) {
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(routeJsonLd) }}
       />
+      {faqJsonLd && (
+        <Script
+          id="faq-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
-      <article className="flex items-center justify-center max-w-4xl mx-auto px-4 py-12 h-full min-h-[80vh]">
-        {/* Hero */}
-        <div className="bg-emerald-500 rounded-3xl shadow-2xl p-8 text-white mb-8">
-          <h1 className="text-3xl font-bold mb-3">{l.hero}</h1>
-          <p className="text-white/90 text-lg mb-6">{l.sub}</p>
+      <article className="flex flex-col items-center justify-center max-w-4xl mx-auto px-4 py-12 gap-8 min-h-[80vh]">
+        {/* Hero card */}
+        <div className="w-full bg-emerald-500 rounded-3xl shadow-2xl p-8 text-white">
+          <h1 className="text-3xl font-bold mb-3">{t("h1")}</h1>
+          <p className="text-white/90 text-lg mb-6">{t("intro")}</p>
           <div className="flex gap-6 mb-6 text-sm">
             <div>
-              <span className="text-white/70">{l.dist}: </span>
+              <span className="text-white/70">{distLabels[locale]}: </span>
               <strong>
-                ~{r.distanceKm} {l.km}
+                ~{r.distanceKm} {kmLabels[locale]}
               </strong>
             </div>
             <div>
-              <span className="text-white/70">{l.dur}: </span>
+              <span className="text-white/70">{durLabels[locale]}: </span>
               <strong>
-                ~{r.durationH} {l.h}
+                ~{r.durationH} {hLabels[locale]}
               </strong>
             </div>
           </div>
           <a href={tripsUrl}>
             <Button className="bg-white text-emerald-600 hover:bg-neutral-100 font-bold rounded-full px-8">
-              {l.cta}
+              {ctaLabels[locale]}
             </Button>
           </a>
         </div>
+
+        {/* FAQ section — renders only if faq array is non-empty */}
+        {faq.length > 0 && (
+          <section className="w-full bg-white rounded-2xl shadow p-8">
+            <h2 className="text-xl font-bold mb-4 text-neutral-800">{faqTitle[locale]}</h2>
+            <div className="space-y-4">
+              {faq.map(({ q, a }, i) => (
+                <div key={i}>
+                  <p className="font-semibold text-neutral-800">{q}</p>
+                  <p className="text-muted-foreground text-sm mt-1">{a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </article>
       <Footer />
     </>

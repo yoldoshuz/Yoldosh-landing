@@ -201,7 +201,7 @@
   }
 
   .section-subsection {
-    @apply pl-5 space-y-2
+    @apply pl-5 space-y-2;
   }
 
   .about-section {
@@ -216,3 +216,4 @@
     @apply text-lg sm:text-xl indent-8 text-neutral-700 text-justify text-pretty;
   }
 }
+
