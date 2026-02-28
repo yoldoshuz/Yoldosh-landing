@@ -7,7 +7,7 @@ export function generatePageMetadata(
   locale: string,
   path: string,
   title: string,
-  description: string
+  description?: string
 ): Metadata {
   // Убираем параметры запроса для чистого canonical
   const cleanPath = path.split('?')[0];
