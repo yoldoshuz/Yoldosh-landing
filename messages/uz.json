@@ -4,6 +4,7 @@
       "Home": "Bosh sahifa",
       "About": "Biz haqimizda",
       "Trips": "Sayohatlar",
+      "Blog": "Blog",
       "DownloadApp": "Yuklab olish"
     },
     "Search": {
@@ -76,6 +77,15 @@
     }
   },
   "Pages": {
+    "Blog": {
+      "title": "Blog",
+      "subtitle": "Safarlar, maslahatlar va xizmat yangiliklari haqida foydali maqolalar",
+      "searchPlaceholder": "Maqolalar bo'yicha qidirish...",
+      "readMore": "Batafsil o'qish",
+      "empty": "Hozircha maqolalar yo'q",
+      "notFound": "Maqola topilmadi",
+      "backToList": "Barcha maqolalar"
+    },
     "Home": {
       "Title": "Siz tanlagan yo‘nalishlar arzon narxlarda",
       "Subtitle": "Yo‘lovchi toping yoki haydovchi bo‘ling — ",
@@ -758,6 +768,10 @@
     "description": "O'zbekiston bo'ylab xavfsiz safarlar"
   },
   "metadata": {
+    "blog": {
+      "title": "Blog — Yoldosh",
+      "description": "Safarlar bo'yicha maslahatlar, xizmat yangiliklari va haydovchilar hamda yo'lovchilar uchun foydali materiallar"
+    },
     "home": {
       "title": "Yoldosh — O'zbekiston bo'ylab hamroh safarlar",
       "description": "Toshkent–Samarqand, Toshkent–Buxoro, Toshkent–Farg'ona va boshqa yo'nalishlarda hamroh toping. Xavfsiz va arzon carpooling.",

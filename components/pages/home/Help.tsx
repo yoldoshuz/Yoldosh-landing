@@ -7,7 +7,7 @@ export const Help = () => {
 
   return (
     <section className="relative min-h-max w-full bg-linear-to-br from-teal-500 via-emerald-500 to-emerald-500 overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative max-w-7xl mx-auto pl-4 pr-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div className="relative order-2 lg:order-1">
             <div className="hidden w-full aspect-square max-w-lg mx-auto lg:flex">

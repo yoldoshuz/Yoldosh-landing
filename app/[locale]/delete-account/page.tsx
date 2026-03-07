@@ -1,7 +1,13 @@
+import { Suspense } from "react";
+
 import { DeleteAccount } from "@/components/pages/delete-account/DeleteAccount";
 
-export const dynamic = "force-dynamic";
+const DeleteAccountPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DeleteAccount />
+    </Suspense>
+  );
+};
 
-export default function DeleteAccountPage() {
-  return <DeleteAccount />;
-}
+export default DeleteAccountPage;

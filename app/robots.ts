@@ -7,9 +7,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // Запрещаем индексировать результаты поиска с параметрами
       disallow: ["/*?*from=", "/*?*to=", "/*?*seats=", "/api/*"],
     },
-    sitemap: [`${baseUrl}/sitemap.xml`, `${baseUrl}/sitemap-trips.xml`],
+    sitemap: [
+      `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/sitemap-trips.xml`,
+      `${baseUrl}/sitemap-blogs.xml`, // ← добавили
+    ],
   };
 }

@@ -113,7 +113,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50 selection:bg-emerald-500/30 selection:text-emerald-900;
+    @apply border-border scroll-smooth outline-ring/50 selection:bg-emerald-500/30 selection:text-emerald-900;
   }
 
   ::-webkit-scrollbar {

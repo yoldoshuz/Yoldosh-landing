@@ -12,9 +12,10 @@ const localizedPaths: Record<string, Record<string, string>> = {
   "/public-offer": { ru: "/публичная-офферта", uz: "/ommaviy-taklif", en: "/public-offer" },
   "/privacy-policy": { ru: "/политика-конфиденциальности", uz: "/maxfiylik-siyosati", en: "/privacy-policy" },
   "/delete-account": { ru: "/удалить-аккаунт", uz: "/hisobni-ochirish", en: "/delete-account" },
+  "/blog": { ru: "/блог", uz: "/blog", en: "/blog" },
 };
 
-type PageKey = "home" | "about" | "trips" | "publicOffer" | "privacyPolicy";
+type PageKey = "home" | "about" | "trips" | "publicOffer" | "privacyPolicy" | "blog";
 
 const namespaceMap: Record<PageKey, string> = {
   home: "metadata.home",
@@ -22,6 +23,7 @@ const namespaceMap: Record<PageKey, string> = {
   trips: "metadata.trips",
   publicOffer: "metadata.publicOffer",
   privacyPolicy: "metadata.privacyPolicy",
+  blog: "metadata.blog",
 };
 
 export async function generatePageMetadata(

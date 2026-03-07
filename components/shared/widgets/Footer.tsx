@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Headset } from "lucide-react";
+import { Headset, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
@@ -107,6 +107,25 @@ export const Footer = () => {
                 <YouTubeIcon />
               </a>
             </div>
+
+            {/* Contact information */}
+            <div
+              className="flex flex-col items-start gap-2 mt-6 text-sm"
+              aria-label="Contact information"
+            >
+              <li className="flex items-center gap-2 font-bold text-emerald-500">
+                <Headset aria-hidden="true" className="size-5" />
+                <a href="tel:+998940001258" aria-label="Call support: +998 94 000 12 58">
+                  +998 94 000 12 58
+                </a>
+              </li>
+              <li className="flex items-center gap-2 font-bold text-emerald-500">
+                <Mail aria-hidden="true" className="size-5" />
+                <a href="mailto:support@yoldosh.uz" aria-label="Call support: +998 94 000 12 58">
+                  support@yoldosh.uz
+                </a>
+              </li>
+            </div>
           </div>
 
           {/* Nav columns */}
@@ -115,12 +134,12 @@ export const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-neutral-800">{t("Product.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
                 <li>
-                  <Link href="/" className="hover:underline">
+                  <Link href="/for-passengers" className="hover:underline">
                     {t("Product.1")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="hover:underline">
+                  <Link href="/for-drivers" className="hover:underline">
                     {t("Product.2")}
                   </Link>
                 </li>
@@ -135,7 +154,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="hover:underline">
+                  <Link href="/blog" className="hover:underline">
                     {t("Company.3")}
                   </Link>
                 </li>
@@ -144,11 +163,11 @@ export const Footer = () => {
             <div>
               <h2 className="mb-6 text-lg font-semibold text-neutral-800">{t("Support.Title")}</h2>
               <ul className="space-y-4 text-muted-foreground">
-                <li>
+                {/* <li>
                   <Link href="/" className="hover:underline">
                     {t("Support.2")}
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="/privacy-policy" className="hover:underline">
                     {t("Support.3")}
@@ -158,12 +177,6 @@ export const Footer = () => {
                   <Link href="/public-offer" className="hover:underline">
                     {t("Support.4")}
                   </Link>
-                </li>
-                <li className="flex items-center gap-2 font-bold text-emerald-500">
-                  <Headset aria-hidden="true" />
-                  <a href="tel:+998940001258" aria-label="Call support: +998 94 000 12 58">
-                    +998 94 000 12 58
-                  </a>
                 </li>
               </ul>
             </div>

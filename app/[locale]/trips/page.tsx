@@ -45,7 +45,7 @@ const Page = async ({ params }: PageProps) => {
           </div>
         }
       >
-        <div className="bg-zinc-100">
+        <div className="bg-gray-100">
           <SearchPage />
         </div>
       </Suspense>

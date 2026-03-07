@@ -1,4 +1,4 @@
-import { Home, Route, Users } from "lucide-react";
+import { GalleryVertical, Home, Route, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export const navLinks = () => {
@@ -22,6 +22,12 @@ export const navLinks = () => {
       title: t("Trips"),
       href: "/trips",
       icon: Route,
+    },
+    {
+      id: 4,
+      title: t("Blog"),
+      href: "/blog",
+      icon: GalleryVertical,
     },
   ];
 

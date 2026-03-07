@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
-import Script from "next/script";
+import { Chiron_GoRound_TC } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -8,13 +7,15 @@ import { getOrganizationJsonLd } from "@/app/lib/jsonld";
 import { Navbar } from "@/components/shared/widgets/Navbar";
 import { LayoutProps } from "@/types";
 import { routing } from "../i18n/routing";
-import NotFound from "./not-found";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
 
+import Script from "next/script";
+import NotFound from "./not-found";
+
 import "./globals.css";
 
-const font = Nunito_Sans({
+const font = Chiron_GoRound_TC({
   variable: "--font-font",
   subsets: ["latin", "cyrillic"],
 });
@@ -80,7 +81,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
           strategy="afterInteractive"
         />
       </head>
-      <body className={`${font.variable} antialiased`}>
+      <body className={`${font.className} antialiased`}>
         <Script id="yandex-metrika" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){

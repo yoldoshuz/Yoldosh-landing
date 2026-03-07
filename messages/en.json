@@ -4,6 +4,7 @@
       "Home": "Home",
       "About": "About",
       "Trips": "Trips",
+      "Blog": "Blog",
       "DownloadApp": "Download"
     },
     "Search": {
@@ -76,6 +77,15 @@
     }
   },
   "Pages": {
+    "Blog": {
+      "title": "Blog",
+      "subtitle": "Useful articles about trips, tips and service updates",
+      "searchPlaceholder": "Search articles...",
+      "readMore": "Read more",
+      "empty": "No articles yet",
+      "notFound": "Article not found",
+      "backToList": "All articles"
+    },
     "Home": {
       "Title": "Rides at your choice at low prices",
       "Subtitle": "Find passengers or become a driver with",
@@ -759,6 +769,10 @@
     "description": "Safe and affordable carpooling across Uzbekistan"
   },
   "metadata": {
+    "blog": {
+      "title": "Blog — Yoldosh",
+      "description": "Travel tips, service news and useful materials for drivers and passengers"
+    },
     "home": {
       "title": "Yoldosh — Carpooling Across Uzbekistan | Find Travel Companions",
       "description": "Find travel companions for intercity trips: Tashkent–Samarkand, Tashkent–Bukhara, Tashkent–Fergana and more. Safe and affordable carpooling in Uzbekistan.",

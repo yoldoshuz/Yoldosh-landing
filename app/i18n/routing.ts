@@ -52,6 +52,26 @@ export const routing = defineRouting({
       ru: "/маршруты/[route]",
       uz: "/yonalishlar/[route]",
     },
+    "/for-drivers": {
+      en: "/for-drivers",
+      ru: "/для-водителей",
+      uz: "/haydovchilar-uchun",
+    },
+    "/for-passengers": {
+      en: "/for-passengers",
+      ru: "/для-пассажиров",
+      uz: "/yolovchilar-uchun",
+    },
+    "/blog": {
+      en: "/blog",
+      ru: "/блог",
+      uz: "/blog",
+    },
+    "/blog/[slug]": {
+      en: "/blog/[slug]",
+      ru: "/блог/[slug]",
+      uz: "/blog/[slug]",
+    },
   },
 });
 
