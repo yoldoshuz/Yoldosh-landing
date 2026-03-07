@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import remarkGfm from "remark-gfm";
-import ReactMarkdown from "react-markdown";
+import remarkMath from 'remark-math'
+import Markdown from "react-markdown";
+import rehypeKatex from 'rehype-katex'
+import remarkBreaks from "remark-breaks";
+import rehypeHighlight from "rehype-highlight";
 
 import { useLocale, useTranslations } from "next-intl";
 import { CalendarDays, ChevronLeft, Eye } from "lucide-react";
@@ -112,25 +116,34 @@ export const BlogDetail = ({ slug }: Props) => {
 
             {/* Markdown Content */}
             {blog.content && (
-                <div className="prose prose-neutral dark:prose-invert prose-img:rounded-xl prose-img:shadow-md prose-a:text-emerald-600 prose-headings:font-bold max-w-none">
-                    <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        components={{
-                            // Картинки внутри markdown тоже форматируем
-                            img: ({ src, alt }) => {
-                                const formatted = formatImgUrl(src as string) ?? src ?? "";
-                                return (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={formatted} alt={alt ?? ""} className="rounded-xl shadow-md max-w-full" />
-                                );
-                            },
-                        }}
+                <div className="mx-auto max-w-3xl">
+                    <article className="prose prose-lg dark:prose-invert max-w-none
+                            prose-headings:font-bold
+                            prose-a:text-emerald-600
+                            prose-img:rounded-xl
+                            prose-pre:rounded-xl"
                     >
-                        {blog.content}
-                    </ReactMarkdown>
+                        <Markdown
+                            remarkPlugins={[remarkGfm, remarkMath, remarkBreaks]}
+                            rehypePlugins={[rehypeKatex, rehypeHighlight]}
+                            components={{
+                                img: ({ src, alt }) => {
+                                    const formatted = formatImgUrl(src as string) ?? src ?? "";
+                                    return (
+                                        <img
+                                            src={formatted}
+                                            alt={alt ?? ""}
+                                            className="rounded-xl shadow-md max-w-full"
+                                        />
+                                    );
+                                },
+                            }}
+                        >
+                            {blog.content}
+                        </Markdown>
+                    </article>
                 </div>
             )}
-            
             <ScrollToTop />
         </article>
     );
