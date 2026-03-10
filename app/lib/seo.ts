@@ -4,7 +4,6 @@ import { getTranslations } from "next-intl/server";
 const locales = ["ru", "uz", "en"];
 const baseUrl = "https://yoldosh.uz";
 
-// Localized path map — must match i18n/routing.ts pathnames
 const localizedPaths: Record<string, Record<string, string>> = {
   "": { ru: "", uz: "", en: "" },
   "/about-us": { ru: "/о-нас", uz: "/biz-haqimizda", en: "/about-us" },
@@ -13,9 +12,11 @@ const localizedPaths: Record<string, Record<string, string>> = {
   "/privacy-policy": { ru: "/политика-конфиденциальности", uz: "/maxfiylik-siyosati", en: "/privacy-policy" },
   "/delete-account": { ru: "/удалить-аккаунт", uz: "/hisobni-ochirish", en: "/delete-account" },
   "/blog": { ru: "/блог", uz: "/blog", en: "/blog" },
+  "/for-drivers": { ru: "/для-водителей", uz: "/haydovchilar-uchun", en: "/for-drivers" },
+  "/for-passengers": { ru: "/для-пассажиров", uz: "/yolovchilar-uchun", en: "/for-passengers" },
 };
 
-type PageKey = "home" | "about" | "trips" | "publicOffer" | "privacyPolicy" | "blog";
+type PageKey = "home" | "about" | "trips" | "publicOffer" | "privacyPolicy" | "blog" | "forDrivers" | "forPassengers";
 
 const namespaceMap: Record<PageKey, string> = {
   home: "metadata.home",
@@ -24,13 +25,11 @@ const namespaceMap: Record<PageKey, string> = {
   publicOffer: "metadata.publicOffer",
   privacyPolicy: "metadata.privacyPolicy",
   blog: "metadata.blog",
+  forDrivers: "metadata.forDrivers",
+  forPassengers: "metadata.forPassengers",
 };
 
-export async function generatePageMetadata(
-  locale: string,
-  pageKey: PageKey,
-  canonicalPath: string // e.g. '', '/about-us', '/trips'
-): Promise<Metadata> {
+export async function generatePageMetadata(locale: string, pageKey: PageKey, canonicalPath: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: namespaceMap[pageKey] });
 
   const title = t("title");
@@ -39,7 +38,6 @@ export async function generatePageMetadata(
   const ogTitle = t.has("og.title") ? t("og.title") : title;
   const ogDescription = t.has("og.description") ? t("og.description") : description;
 
-  // Build language alternates with localized paths
   const languages: Record<string, string> = {};
   locales.forEach((l) => {
     const localePath = localizedPaths[canonicalPath]?.[l] ?? canonicalPath;
@@ -63,7 +61,7 @@ export async function generatePageMetadata(
       url: `${baseUrl}/${locale}${canonicalLocPath}`,
       type: "website",
       images: [{ url: ogImage, width: 1200, height: 630, alt: ogTitle }],
-      siteName: "Yoldosh",
+      siteName: "Yo'ldosh",
       locale,
     },
     twitter: {

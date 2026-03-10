@@ -1,5 +1,5 @@
-import { ChevronUp } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { ChevronUp } from "lucide-react";
 
 export const ScrollToTop = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -21,13 +21,13 @@ export const ScrollToTop = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // For smooth scrolling
+      behavior: "smooth", // For smooth scrolling
     });
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!isVisible) return null;

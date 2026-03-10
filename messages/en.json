@@ -471,11 +471,7 @@
       "collection": {
         "title": "3. WHAT PERSONAL DATA WE COLLECT",
         "1": "3.1. Data collected from all Users during registration:",
-        "1_list": [
-          "Mobile phone number",
-          "First name",
-          "Last name"
-        ],
+        "1_list": ["Mobile phone number", "First name", "Last name"],
         "2": "3.2. Additional data collected from Drivers during verification:",
         "2_1": "Copy of driver's license, including:",
         "2_1_list": [
@@ -761,6 +757,201 @@
       "redirectIn": "Redirecting in",
       "seconds": "seconds",
       "locale": "en"
+    },
+    "ForDrivers": {
+      "hero": {
+        "badge": "For Drivers",
+        "title": "Share Rides — Cover Your Travel Costs",
+        "subtitle": "Post your routes, find passengers, and split fuel costs. Simple, safe, and commission-free.",
+        "stat1": {
+          "value": "12+",
+          "label": "regions of Uzbekistan"
+        },
+        "stat2": {
+          "value": "0%",
+          "label": "service commission"
+        },
+        "stat3": {
+          "value": "24/7",
+          "label": "driver support"
+        }
+      },
+      "steps": {
+        "title": "How to Get Started",
+        "subtitle": "Four simple steps to your first shared trip",
+        "profile": {
+          "title": "Complete Your Profile",
+          "desc": "Go to 'About Me' and tap 'Add Car'. Enter up-to-date vehicle details — this helps passengers trust you."
+        },
+        "create": {
+          "title": "Post a Trip",
+          "desc": "Set the route, date, time, available seats and cost contribution. Choose a booking type and tap 'Publish'."
+        },
+        "booking": {
+          "title": "Accept Requests",
+          "desc": "Passengers message you in the in-app chat, clarify details and send a booking request. You accept or decline each one."
+        },
+        "payment": {
+          "title": "Get Paid",
+          "desc": "After the trip, passengers pay in cash. No advance payments — only honest settlement after arrival."
+        }
+      },
+      "pricing": {
+        "badge": "Cost Contribution",
+        "title": "How is the amount calculated?",
+        "desc": "The system automatically suggests a recommended contribution based on distance and fuel costs. The amount is divided by the number of seats, including the driver's.",
+        "note": "Yo'ldosh is not a taxi. The service is designed for sharing travel costs, not for commercial profit.",
+        "rule1": "You set the amount within the suggested range.",
+        "rule2": "Extra costs (tolls, ferries) are discussed with passengers in advance.",
+        "rule3": "All payments are in cash only, after the trip is complete."
+      },
+      "booking": {
+        "title": "Booking Types",
+        "subtitle": "Choose your preferred mode — you always control who rides with you",
+        "instant": {
+          "badge": "Recommended",
+          "title": "Instant Booking",
+          "desc": "Passengers get a seat automatically without your confirmation. Great if you want to fill your car quickly."
+        },
+        "manual": {
+          "badge": "Full Control",
+          "title": "Manual Booking",
+          "desc": "You review each request individually. Check the passenger's profile and reviews before confirming."
+        }
+      },
+      "tips": {
+        "title": "Tips for a Safe Trip",
+        "subtitle": "Follow these recommendations for a comfortable ride every time",
+        "reviews": {
+          "title": "Read Reviews",
+          "desc": "Before accepting a request, check the passenger's rating and reviews."
+        },
+        "notify": {
+          "title": "Inform Your Loved Ones",
+          "desc": "Before each trip, let family know your route and estimated return time."
+        },
+        "luggage": {
+          "title": "Clarify Luggage",
+          "desc": "Discuss large bags or suitcases with passengers ahead of time."
+        },
+        "breaks": {
+          "title": "Take Breaks",
+          "desc": "On long routes, plan rest stops — it's safer and more comfortable for everyone."
+        },
+        "safety": {
+          "title": "Use Only the In-App Chat",
+          "desc": "Don't switch to third-party messengers. Never share your banking details."
+        },
+        "passengers": {
+          "title": "Verify Passengers",
+          "desc": "Make sure the person boarding matches the details shown in the app."
+        }
+      },
+      "fraud": {
+        "title": "Watch Out: Fraud",
+        "desc": "Be alert if you encounter the following:",
+        "1": "A passenger asks you to follow a link for 'insurance' or 'booking confirmation'.",
+        "2": "Someone messages you in a third-party messenger claiming to be Yo'ldosh support.",
+        "3": "You are asked to accept a prepayment or transfer money before the trip.",
+        "contact": "Spotted something suspicious? Block the user and contact us: help@yoldosh.uz or our official Telegram channel."
+      },
+      "cta": {
+        "title": "Ready to Hit the Road?",
+        "desc": "Download Yo'ldosh and post your first trip today.",
+        "download": "Download the App"
+      }
+    },
+    "ForPassengers": {
+      "hero": {
+        "badge": "For Passengers",
+        "title": "Travel Across Uzbekistan — Cheaper and Easier",
+        "subtitle": "Find drivers on intercity routes, pay only in cash, and feel safe every step of the way.",
+        "stat1": {
+          "value": "12+",
+          "label": "regions of Uzbekistan"
+        },
+        "stat2": {
+          "value": "100%",
+          "label": "safe trips"
+        },
+        "stat3": {
+          "value": "0 UZS",
+          "label": "booking fee"
+        }
+      },
+      "steps": {
+        "title": "How to Find a Trip",
+        "subtitle": "Four steps to a comfortable journey",
+        "search": {
+          "title": "Search",
+          "desc": "Enter your departure point, destination, and number of passengers."
+        },
+        "choose": {
+          "title": "Choose",
+          "desc": "Browse available trips, check driver ratings, and pick the best option."
+        },
+        "chat": {
+          "title": "Chat",
+          "desc": "Contact the driver through the in-app chat to confirm trip details."
+        },
+        "book": {
+          "title": "Book",
+          "desc": "Send a booking request — the driver will confirm or decline it."
+        }
+      },
+      "safety": {
+        "title": "Your Safety is Our Priority",
+        "subtitle": "Follow these rules on every trip",
+        "noprepay": {
+          "title": "No Advance Payments",
+          "desc": "Yo'ldosh is completely free. Never transfer money in advance — not to a card, not via any link."
+        },
+        "cash": {
+          "title": "Cash Only",
+          "desc": "All payments are made in cash directly to the driver after the trip ends."
+        },
+        "data": {
+          "title": "Protect Your Data",
+          "desc": "Never share bank card numbers, passwords, or personal information in the chat."
+        },
+        "verify": {
+          "title": "Verify the Driver",
+          "desc": "Before getting in, make sure the driver and vehicle match the details shown in the app."
+        }
+      },
+      "tips": {
+        "title": "Tips for a Comfortable Trip",
+        "subtitle": "Helpful recommendations from the Yo'ldosh team",
+        "reviews": {
+          "title": "Read Reviews",
+          "desc": "Before booking, check the driver's rating and reviews from other passengers."
+        },
+        "contact": {
+          "title": "Stay Connected",
+          "desc": "Avoid distracting the driver, but stay in touch. If they seem tired, suggest a rest stop."
+        },
+        "children": {
+          "title": "Children & Luggage",
+          "desc": "Let the driver know in advance if you need a child seat or have large luggage."
+        },
+        "parcels": {
+          "title": "Don't Carry Parcels",
+          "desc": "Yo'ldosh does not deliver parcels. Don't agree to carry packages from strangers."
+        }
+      },
+      "fraud": {
+        "title": "Watch Out: Fraud",
+        "desc": "Be alert if you notice the following:",
+        "sign1": "You're asked to follow a link for 'insurance' or 'booking confirmation'.",
+        "sign2": "Someone messages you in a third-party messenger claiming to be Yo'ldosh support.",
+        "sign3": "The driver tries to change the price that was agreed upon in the chat.",
+        "contact": "Noticed something suspicious? Block the user and write to us: help@yoldosh.uz or our official Telegram channel."
+      },
+      "cta": {
+        "title": "Ready for the Journey?",
+        "desc": "Download Yo'ldosh and find a trip right now.",
+        "download": "Download the App"
+      }
     }
   },
   "manifest": {
@@ -769,6 +960,14 @@
     "description": "Safe and affordable carpooling across Uzbekistan"
   },
   "metadata": {
+    "forDrivers": {
+      "title": "For Drivers — Post Trips & Find Passengers | Yo'ldosh",
+      "description": "How to become a driver on Yo'ldosh: post routes, accept passengers and split fuel costs. Safe, free and commission-free carpooling across Uzbekistan."
+    },
+    "forPassengers": {
+      "title": "For Passengers — Find Shared Rides Across Uzbekistan | Yo'ldosh",
+      "description": "Search intercity shared rides across Uzbekistan on Yo'ldosh. Verified drivers, cash payment, no hidden fees. Learn how to travel safely."
+    },
     "blog": {
       "title": "Blog — Yoldosh",
       "description": "Travel tips, service news and useful materials for drivers and passengers"
@@ -795,11 +994,7 @@
     "about": {
       "title": "About Us — Yoldosh | Carpooling in Uzbekistan",
       "description": "Learn about Yoldosh — the leading carpooling service in Uzbekistan making intercity travel safe, affordable and eco-friendly.",
-      "keywords": [
-        "about Yoldosh",
-        "carpooling Uzbekistan",
-        "ridesharing app Uzbekistan"
-      ],
+      "keywords": ["about Yoldosh", "carpooling Uzbekistan", "ridesharing app Uzbekistan"],
       "og": {
         "title": "About Yoldosh",
         "description": "Leading carpooling platform in Uzbekistan.",
@@ -828,10 +1023,7 @@
     "publicOffer": {
       "title": "Public Offer — Yoldosh",
       "description": "Official terms and conditions of using the Yoldosh carpooling platform.",
-      "keywords": [
-        "Yoldosh public offer",
-        "terms of service"
-      ],
+      "keywords": ["Yoldosh public offer", "terms of service"],
       "og": {
         "title": "Yoldosh Public Offer",
         "description": "Legal terms of service.",
@@ -841,10 +1033,7 @@
     "privacyPolicy": {
       "title": "Privacy Policy — Yoldosh",
       "description": "Official privacy policy of the Yoldosh carpooling platform.",
-      "keywords": [
-        "Yoldosh privacy policy",
-        "data protection"
-      ],
+      "keywords": ["Yoldosh privacy policy", "data protection"],
       "og": {
         "title": "Yoldosh Privacy Policy",
         "description": "How we protect your personal data.",

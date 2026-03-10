@@ -470,11 +470,7 @@
       "collection": {
         "title": "3. QANDAY SHAXSIY MA'LUMOTLARNI YIG'AMIZ",
         "1": "3.1. Barcha Foydalanuvchilardan ro'yxatdan o'tish vaqtida yig'iladigan ma'lumotlar:",
-        "1_list": [
-          "Mobil telefon raqami",
-          "Ism",
-          "Familiya"
-        ],
+        "1_list": ["Mobil telefon raqami", "Ism", "Familiya"],
         "2": "3.2. Haydovchilardan verifikatsiyadan o'tish vaqtida yig'iladigan qo'shimcha ma'lumotlar:",
         "2_1": "Haydovchi guvohnomasining nusxasi, shu jumladan:",
         "2_1_list": [
@@ -760,6 +756,201 @@
       "redirectIn": "Qayta yo‘naltirish",
       "seconds": "soniya",
       "locale": "uz"
+    },
+    "ForDrivers": {
+      "hero": {
+        "badge": "Haydovchilar uchun",
+        "title": "Safarlaringizni bo'lishing — yo'l xarajatlarini qoplang",
+        "subtitle": "Marshrutlaringizni e'lon qiling, yo'lovchilar toping va yoqilg'i xarajatlarini bo'lishing. Sodda, xavfsiz va komissiyasiz.",
+        "stat1": {
+          "value": "12+",
+          "label": "O'zbekiston viloyatlari"
+        },
+        "stat2": {
+          "value": "0%",
+          "label": "xizmat komissiyasi"
+        },
+        "stat3": {
+          "value": "24/7",
+          "label": "haydovchi yordami"
+        }
+      },
+      "steps": {
+        "title": "Qanday boshlash kerak",
+        "subtitle": "Birinchi umumiy safaringizga to'rt oddiy qadam",
+        "profile": {
+          "title": "Profilni to'ldiring",
+          "desc": "'Men haqimda' bo'limiga o'ting va 'Avtomobil qo'shish' tugmasini bosing. Avtomobilingiz ma'lumotlarini kiriting — bu yo'lovchilarga sizga ishonishga yordam beradi."
+        },
+        "create": {
+          "title": "Safar e'lon qiling",
+          "desc": "Marshrut, sana, vaqt, o'rinlar soni va xarajat miqdorini belgilang. Bron turini tanlang va 'E'lon qilish' tugmasini bosing."
+        },
+        "booking": {
+          "title": "So'rovlarni qabul qiling",
+          "desc": "Yo'lovchilar ilovadagi chat orqali yozadi, tafsilotlarni aniqlashtiradi va bron so'rovini yuboradi. Har bir so'rovni qabul qilasiz yoki rad etasiz."
+        },
+        "payment": {
+          "title": "To'lovni oling",
+          "desc": "Safar yakunida yo'lovchi naqd pul to'laydi. Oldindan to'lov yo'q — faqat adolatli hisob-kitob."
+        }
+      },
+      "pricing": {
+        "badge": "Xarajatlarni qoplash",
+        "title": "Miqdor qanday hisoblanadi?",
+        "desc": "Tizim masofa va yoqilg'i xarajatlariga asoslanib tavsiya etilgan miqdorni avtomatik taklif qiladi. Miqdor haydovchini ham hisobga olgan holda o'rindiqlar soniga bo'linadi.",
+        "note": "Yo'ldosh — taksi emas. Xizmat tijorat daromadi uchun emas, balki yo'l xarajatlarini bo'lishish uchun mo'ljallangan.",
+        "rule1": "Siz taklif qilingan diapazon doirasida miqdorni o'zingiz belgilaysiz.",
+        "rule2": "Qo'shimcha xarajatlar (to'lli yo'llar, parom) yo'lovchilar bilan oldindan muhokama qilinadi.",
+        "rule3": "Barcha to'lovlar — faqat safar yakunida naqd pul bilan."
+      },
+      "booking": {
+        "title": "Bron turlari",
+        "subtitle": "Qulay rejimni tanlang — kim sizga hamroh bo'lishini doim o'zingiz nazorat qilasiz",
+        "instant": {
+          "badge": "Tavsiya etiladi",
+          "title": "Tezkor bron",
+          "desc": "Yo'lovchi sizning tasdiqingizisiz avtomatik o'rin oladi. Mashinani tezroq to'ldirmoqchi bo'lsangiz qulay."
+        },
+        "manual": {
+          "badge": "To'liq nazorat",
+          "title": "Qo'lda bron",
+          "desc": "Har bir so'rovni alohida ko'rib chiqasiz. Tasdiqlashdan oldin yo'lovchining profili va sharhlarini o'qing."
+        }
+      },
+      "tips": {
+        "title": "Xavfsiz safar maslahatlari",
+        "subtitle": "Har bir safar qulay o'tishi uchun quyidagi tavsiyalarga amal qiling",
+        "reviews": {
+          "title": "Sharhlarni o'qing",
+          "desc": "So'rovni qabul qilishdan oldin yo'lovchining reytingi va sharhlarini tekshiring."
+        },
+        "notify": {
+          "title": "Yaqinlaringizni xabardor qiling",
+          "desc": "Har bir safardan oldin qarindoshlaringizga marshrut va qaytish vaqtingizni ayting."
+        },
+        "luggage": {
+          "title": "Yukni aniqlashtiring",
+          "desc": "Yo'lovchilar bilan katta sumkalar yoki chemodonlar haqida oldindan gaplashing."
+        },
+        "breaks": {
+          "title": "To'xtashlar qiling",
+          "desc": "Uzoq marshrutlarda dam olish to'xtashlarini rejalashtiring — bu xavfsiz va qulay."
+        },
+        "safety": {
+          "title": "Faqat ilova chatidan foydalaning",
+          "desc": "Uchinchi tomon messenjerlarga o'tmang. Bank rekvizitlaringizni ulashmang."
+        },
+        "passengers": {
+          "title": "Yo'lovchilarni tekshiring",
+          "desc": "Minayotgan kishi ilovadagi ma'lumotlarga mos kelishiga ishonch hosil qiling."
+        }
+      },
+      "fraud": {
+        "title": "Ehtiyot bo'ling: firibgarlik",
+        "desc": "Quyidagi belgilarni ko'rsangiz, hushyor bo'ling:",
+        "1": "Yo'lovchi 'sug'urta' yoki 'tasdiqlash' uchun havolaga o'tishni so'raydi.",
+        "2": "Sizga Yo'ldosh yordami nomidan uchinchi tomon messenjerlarda yozishadi.",
+        "3": "Sizdan safardan oldin oldindan to'lov qabul qilish yoki pul o'tkazish so'raladi.",
+        "contact": "Shubhali narsa sezdingizmi? Foydalanuvchini bloklang va bizga yozing: help@yoldosh.uz yoki rasmiy Telegram kanalimiz."
+      },
+      "cta": {
+        "title": "Yo'lga chiqishga tayyormisiz?",
+        "desc": "Yo'ldoshni yuklab oling va bugun birinchi safaringizni e'lon qiling.",
+        "download": "Ilovani yuklab olish"
+      }
+    },
+    "ForPassengers": {
+      "hero": {
+        "badge": "Yo'lovchilar uchun",
+        "title": "O'zbekiston bo'ylab arzonroq va qulayroq sayohat qiling",
+        "subtitle": "Shaharlararo marshrutlarda hamrohlar toping, faqat naqd pul to'lang va har doim o'zingizni xavfsiz his qiling.",
+        "stat1": {
+          "value": "12+",
+          "label": "O'zbekiston viloyatlari"
+        },
+        "stat2": {
+          "value": "100%",
+          "label": "xavfsiz safarlar"
+        },
+        "stat3": {
+          "value": "0 so'm",
+          "label": "bron uchun komissiya"
+        }
+      },
+      "steps": {
+        "title": "Safar qanday topiladi",
+        "subtitle": "Qulay sayohatga to'rt qadam",
+        "search": {
+          "title": "Qidirish",
+          "desc": "Jo'nash nuqtasi, manzil va yo'lovchilar sonini kiriting."
+        },
+        "choose": {
+          "title": "Tanlash",
+          "desc": "Takliflarni ko'rib chiqing, haydovchi reyting va sharhlarini o'rganib, eng mos variantni tanlang."
+        },
+        "chat": {
+          "title": "Muloqot",
+          "desc": "Ilova ichidagi chat orqali haydovchi bilan bog'laning va safar tafsilotlarini aniqlashtiring."
+        },
+        "book": {
+          "title": "Bron qilish",
+          "desc": "Bron so'rovini yuboring — haydovchi tasdiqlaydi yoki rad etadi."
+        }
+      },
+      "safety": {
+        "title": "Xavfsizligingiz — bizning ustuvorligimiz",
+        "subtitle": "Har bir safaringizda quyidagi qoidalarga amal qiling",
+        "noprepay": {
+          "title": "Oldindan to'lov yo'q",
+          "desc": "Yo'ldosh xizmati mutlaqo bepul. Hech qachon oldindan pul o'tkazmang — na kartaga, na havolalar orqali."
+        },
+        "cash": {
+          "title": "Faqat naqd pul",
+          "desc": "Barcha to'lovlar safar yakunida bevosita haydovchiga naqd pul bilan amalga oshiriladi."
+        },
+        "data": {
+          "title": "Ma'lumotlaringizni himoya qiling",
+          "desc": "Hech qachon bank karta raqamlari, parollar yoki shaxsiy ma'lumotlarni chatda ulashmang."
+        },
+        "verify": {
+          "title": "Haydovchini tekshiring",
+          "desc": "Minishdan oldin haydovchi va avtomobil ilovadagi ma'lumotlarga mos kelishiga ishonch hosil qiling."
+        }
+      },
+      "tips": {
+        "title": "Qulay safar maslahatlari",
+        "subtitle": "Yo'ldosh jamoasidan foydali tavsiyalar",
+        "reviews": {
+          "title": "Sharhlarni o'qing",
+          "desc": "Bron qilishdan oldin haydovchining reytingi va sharhlarini o'rganing."
+        },
+        "contact": {
+          "title": "Aloqada bo'ling",
+          "desc": "Haydovchini chalg'itmang, lekin aloqada bo'ling. Charchagan ko'rinsalar — to'xtash taklif qiling."
+        },
+        "children": {
+          "title": "Bolalar va yuk",
+          "desc": "Bola o'rindig'i kerak bo'lsa yoki katta yuk bo'lsa, haydovchini oldindan xabardor qiling."
+        },
+        "parcels": {
+          "title": "Posilka olmang",
+          "desc": "Yo'ldosh posilka tashimaydi. Notanish odamlardan yuk olishga rozi bo'lmang."
+        }
+      },
+      "fraud": {
+        "title": "Ehtiyot bo'ling: firibgarlik",
+        "desc": "Quyidagi belgilarni ko'rsangiz, hushyor bo'ling:",
+        "sign1": "Sizdan 'sug'urta' yoki 'bron tasdiqlash' uchun havolaga o'tish so'raladi.",
+        "sign2": "Sizga Yo'ldosh yordami nomidan uchinchi tomon messenjerlarda yozishadi.",
+        "sign3": "Haydovchi chatda kelishilgan narxni o'zgartirishga urinadi.",
+        "contact": "Shubhali narsa sezdingizmi? Foydalanuvchini bloklang va bizga yozing: help@yoldosh.uz yoki rasmiy Telegram kanalimiz."
+      },
+      "cta": {
+        "title": "Yo'lga chiqishga tayyormisiz?",
+        "desc": "Yo'ldoshni yuklab oling va hozir safar toping.",
+        "download": "Ilovani yuklab olish"
+      }
     }
   },
   "manifest": {
@@ -768,6 +959,14 @@
     "description": "O'zbekiston bo'ylab xavfsiz safarlar"
   },
   "metadata": {
+    "forDrivers": {
+      "title": "Haydovchilar uchun — safarlar e'lon qiling va yo'lovchilar toping | Yo'ldosh",
+      "description": "Yo'ldoshda haydovchi bo'lish: marshrutlar e'lon qiling, yo'lovchilar qabul qiling va yoqilg'i xarajatlarini bo'ling. Xavfsiz, bepul, komissiyasiz."
+    },
+    "forPassengers": {
+      "title": "Yo'lovchilar uchun — O'zbekiston bo'ylab yo'ldosh toping | Yo'ldosh",
+      "description": "Yo'ldoshda O'zbekiston bo'ylab shaharlararo safarlar qidiring. Tekshirilgan haydovchilar, naqd to'lov, yashirin komissiyasiz."
+    },
     "blog": {
       "title": "Blog — Yoldosh",
       "description": "Safarlar bo'yicha maslahatlar, xizmat yangiliklari va haydovchilar hamda yo'lovchilar uchun foydali materiallar"
@@ -796,11 +995,7 @@
     "about": {
       "title": "Biz haqimizda — Yoldosh | O'zbekiston carpooling",
       "description": "Yoldosh — O'zbekiston bo'yicha yetakchi carpooling xizmati. Shaharlararo safarlarni xavfsiz va arzon qilamiz.",
-      "keywords": [
-        "Yoldosh haqida",
-        "carpooling O'zbekiston",
-        "hamroh safar ilovasi"
-      ],
+      "keywords": ["Yoldosh haqida", "carpooling O'zbekiston", "hamroh safar ilovasi"],
       "og": {
         "title": "Yoldosh haqida",
         "description": "O'zbekiston bo'yicha yetakchi carpooling xizmati.",
@@ -829,10 +1024,7 @@
     "publicOffer": {
       "title": "Ommaviy taklif — Yoldosh",
       "description": "Yoldosh platformasidan foydalanish shartlari.",
-      "keywords": [
-        "ommaviy taklif Yoldosh",
-        "foydalanish shartlari"
-      ],
+      "keywords": ["ommaviy taklif Yoldosh", "foydalanish shartlari"],
       "og": {
         "title": "Yoldosh ommaviy taklifi",
         "description": "Yuridik ma'lumotlar.",
@@ -842,10 +1034,7 @@
     "privacyPolicy": {
       "title": "Maxfiylik siyosati — Yoldosh",
       "description": "Yoldosh platformasining rasmiy maxfiylik siyosati.",
-      "keywords": [
-        "maxfiylik siyosati Yoldosh",
-        "shaxsiy ma'lumotlar"
-      ],
+      "keywords": ["maxfiylik siyosati Yoldosh", "shaxsiy ma'lumotlar"],
       "og": {
         "title": "Yoldosh maxfiylik siyosati",
         "description": "Shaxsiy ma'lumotlarni himoya qilish.",

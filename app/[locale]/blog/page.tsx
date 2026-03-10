@@ -1,8 +1,8 @@
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
-import { generatePageMetadata } from "@/app/lib/seo";
 import { getPageJsonLd } from "@/app/lib/jsonld";
+import { generatePageMetadata } from "@/app/lib/seo";
 import { Blog } from "@/components/pages/blog/Blog";
 import { PageProps } from "@/types";
 

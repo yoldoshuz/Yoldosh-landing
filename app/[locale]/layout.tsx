@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Chiron_GoRound_TC } from "next/font/google";
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -7,11 +8,9 @@ import { getOrganizationJsonLd } from "@/app/lib/jsonld";
 import { Navbar } from "@/components/shared/widgets/Navbar";
 import { LayoutProps } from "@/types";
 import { routing } from "../i18n/routing";
+import NotFound from "./not-found";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
-
-import Script from "next/script";
-import NotFound from "./not-found";
 
 import "./globals.css";
 
