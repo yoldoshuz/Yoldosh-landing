@@ -1,20 +1,24 @@
-import Image from "next/image";
-import { useTranslations } from "next-intl";
+"use client"
 
+import Image from "next/image";
+
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Button } from "../../ui/button";
 
 export const Travel = () => {
   const t = useTranslations("Pages.Travel");
+  const router = useRouter();
 
   return (
     <section className="flex flex-col items-center justify-center w-full px-4 sm:px-8 bg-emerald-500">
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between my-20 gap-4 w-full max-w-6xl h-full">
         <div className="flex flex-col items-center md:items-start justify-start w-full h-full gap-6">
           <h2 className="title-2 text-start! text-white">{t("Title")}</h2>
-          <p className="text-white w-full max-w-[450px]">{t("Description")}</p>
+          <p className="text-white w-full max-w-112.5">{t("Description")}</p>
           <p className="text-white/80 italic">{t("Subtitle")}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-            <Button className="py-6">
+            <Button onClick={() => {router.push("https://redirect.appmetrica.yandex.com/serve/173876829097132884")}} className="py-6">
               <Image
                 src="/assets/apple.png"
                 alt="apple"
@@ -25,7 +29,7 @@ export const Travel = () => {
               />
               {t("AppStore")}
             </Button>
-            <Button className="py-6">
+            <Button onClick={() => {router.push("https://redirect.appmetrica.yandex.com/serve/317992046667305463")}} className="py-6">
               <Image
                 src="/assets/play.png"
                 alt="play"

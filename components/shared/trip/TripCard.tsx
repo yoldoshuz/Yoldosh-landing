@@ -150,12 +150,12 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
                 )}
               </p>
             </div>
-            <div className="flex flex-col md:flex-row items-end justify-center gap-2">
-              <div className="flex items-center text-sm sm:text-base font-bold">
-                <p>{trip.price.price_per_person.toLocaleString()}</p>
-                <span className="ml-1">UZS</span>
-              </div>
-            </div>
+          </div>
+          <div className="flex flex-col items-end justify-start gap-1">
+            <span className="flex items-center justify-center text-base font-bold">
+              {trip.price.price_per_person === 1 ? t("Negotiable") : trip.price.price_per_person.toLocaleString()}
+              {trip.price.price_per_person === 1 ? "" : <p className="ml-1">UZS</p>}
+            </span>
           </div>
         </div>
       </Card>
@@ -194,12 +194,6 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
                     </span>
                   )}
                 </p>
-              </div>
-              <div className="flex flex-col items-end justify-start gap-1">
-                <span className="flex items-center justify-center text-base font-bold">
-                  {trip.price.price_per_person.toLocaleString()}
-                  <p className="ml-1">UZS</p>
-                </span>
               </div>
             </div>
           </div>
@@ -258,6 +252,12 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
               {t("Details.Seats")}: {trip.seats_available}
             </span>
           </div>
+        </div>
+        <div className="flex flex-col items-end justify-start gap-1">
+          <span className="flex items-center justify-center text-base font-bold">
+            {trip.price.price_per_person === 1 ? t("Negotiable") : trip.price.price_per_person.toLocaleString()}
+            {trip.price.price_per_person === 1 ? "" : <p className="ml-1">UZS</p>}
+          </span>
         </div>
       </div>
     </Card>

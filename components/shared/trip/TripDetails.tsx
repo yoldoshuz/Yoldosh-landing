@@ -1,5 +1,8 @@
+"use client"
+
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useRouter as Router } from "next/navigation";
 import {
   ArrowLeft,
   Backpack,
@@ -28,6 +31,7 @@ interface TripDetailsProps {
 
 export const TripDetails = ({ trip }: TripDetailsProps) => {
   const t = useTranslations("Pages.Trips.Details");
+  const routerRedirect = Router();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -275,7 +279,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 <span className="ml-1">UZS</span>
               </p>
             </div>
-            <Button className="btn-primary">{t("Book")}</Button>
+            <Button onClick={() => {routerRedirect.push("https://app.yoldosh.uz")}} className="btn-primary">{t("Book")}</Button>
           </div>
         </div>
       </Card>

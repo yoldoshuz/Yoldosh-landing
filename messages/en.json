@@ -236,6 +236,7 @@
       "Found": "trips found",
       "From": "From",
       "NotFound": "No trips found",
+      "Negotiable": "Negotiable",
       "Error": "Error loading trips. Please try again.",
       "Details": {
         "Back": "Back",

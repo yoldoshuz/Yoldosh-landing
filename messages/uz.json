@@ -236,6 +236,7 @@
       "Found": "ta sayohat topildi",
       "From": "Qayerdan",
       "NotFound": "Sayohatlar topilmadi",
+      "Negotiable": "Kelishiladi",
       "Error": "Sayohatlarni yuklashda xatolik. Qayta urinib ko‘ring.",
       "Details": {
         "Back": "Orqaga",
@@ -470,7 +471,11 @@
       "collection": {
         "title": "3. QANDAY SHAXSIY MA'LUMOTLARNI YIG'AMIZ",
         "1": "3.1. Barcha Foydalanuvchilardan ro'yxatdan o'tish vaqtida yig'iladigan ma'lumotlar:",
-        "1_list": ["Mobil telefon raqami", "Ism", "Familiya"],
+        "1_list": [
+          "Mobil telefon raqami",
+          "Ism",
+          "Familiya"
+        ],
         "2": "3.2. Haydovchilardan verifikatsiyadan o'tish vaqtida yig'iladigan qo'shimcha ma'lumotlar:",
         "2_1": "Haydovchi guvohnomasining nusxasi, shu jumladan:",
         "2_1_list": [
@@ -995,7 +1000,11 @@
     "about": {
       "title": "Biz haqimizda — Yoldosh | O'zbekiston carpooling",
       "description": "Yoldosh — O'zbekiston bo'yicha yetakchi carpooling xizmati. Shaharlararo safarlarni xavfsiz va arzon qilamiz.",
-      "keywords": ["Yoldosh haqida", "carpooling O'zbekiston", "hamroh safar ilovasi"],
+      "keywords": [
+        "Yoldosh haqida",
+        "carpooling O'zbekiston",
+        "hamroh safar ilovasi"
+      ],
       "og": {
         "title": "Yoldosh haqida",
         "description": "O'zbekiston bo'yicha yetakchi carpooling xizmati.",
@@ -1024,7 +1033,10 @@
     "publicOffer": {
       "title": "Ommaviy taklif — Yoldosh",
       "description": "Yoldosh platformasidan foydalanish shartlari.",
-      "keywords": ["ommaviy taklif Yoldosh", "foydalanish shartlari"],
+      "keywords": [
+        "ommaviy taklif Yoldosh",
+        "foydalanish shartlari"
+      ],
       "og": {
         "title": "Yoldosh ommaviy taklifi",
         "description": "Yuridik ma'lumotlar.",
@@ -1034,7 +1046,10 @@
     "privacyPolicy": {
       "title": "Maxfiylik siyosati — Yoldosh",
       "description": "Yoldosh platformasining rasmiy maxfiylik siyosati.",
-      "keywords": ["maxfiylik siyosati Yoldosh", "shaxsiy ma'lumotlar"],
+      "keywords": [
+        "maxfiylik siyosati Yoldosh",
+        "shaxsiy ma'lumotlar"
+      ],
       "og": {
         "title": "Yoldosh maxfiylik siyosati",
         "description": "Shaxsiy ma'lumotlarni himoya qilish.",
