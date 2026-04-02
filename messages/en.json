@@ -221,7 +221,9 @@
       "Title": "Routes that popular among our users",
       "From": "From",
       "Sum": "Sum",
-      "ViewAll": "View all trips"
+      "Price": "Price",
+      "ViewAll": "View all trips",
+      "Negotiable": "Negotiable"
     },
     "Travel": {
       "Title": "Travel more conveniently with the Yo'ldosh app",
@@ -254,6 +256,7 @@
         "Book": "Book",
         "Distance": "Distance",
         "Duration": "Duration",
+        "Negotiable": "Negotiable",
         "Hours": "h",
         "Minutes": "m",
         "Preferences": {
@@ -472,7 +475,11 @@
       "collection": {
         "title": "3. WHAT PERSONAL DATA WE COLLECT",
         "1": "3.1. Data collected from all Users during registration:",
-        "1_list": ["Mobile phone number", "First name", "Last name"],
+        "1_list": [
+          "Mobile phone number",
+          "First name",
+          "Last name"
+        ],
         "2": "3.2. Additional data collected from Drivers during verification:",
         "2_1": "Copy of driver's license, including:",
         "2_1_list": [
@@ -995,7 +1002,11 @@
     "about": {
       "title": "About Us — Yoldosh | Carpooling in Uzbekistan",
       "description": "Learn about Yoldosh — the leading carpooling service in Uzbekistan making intercity travel safe, affordable and eco-friendly.",
-      "keywords": ["about Yoldosh", "carpooling Uzbekistan", "ridesharing app Uzbekistan"],
+      "keywords": [
+        "about Yoldosh",
+        "carpooling Uzbekistan",
+        "ridesharing app Uzbekistan"
+      ],
       "og": {
         "title": "About Yoldosh",
         "description": "Leading carpooling platform in Uzbekistan.",
@@ -1024,7 +1035,10 @@
     "publicOffer": {
       "title": "Public Offer — Yoldosh",
       "description": "Official terms and conditions of using the Yoldosh carpooling platform.",
-      "keywords": ["Yoldosh public offer", "terms of service"],
+      "keywords": [
+        "Yoldosh public offer",
+        "terms of service"
+      ],
       "og": {
         "title": "Yoldosh Public Offer",
         "description": "Legal terms of service.",
@@ -1034,7 +1048,10 @@
     "privacyPolicy": {
       "title": "Privacy Policy — Yoldosh",
       "description": "Official privacy policy of the Yoldosh carpooling platform.",
-      "keywords": ["Yoldosh privacy policy", "data protection"],
+      "keywords": [
+        "Yoldosh privacy policy",
+        "data protection"
+      ],
       "og": {
         "title": "Yoldosh Privacy Policy",
         "description": "How we protect your personal data.",

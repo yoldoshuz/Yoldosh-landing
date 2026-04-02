@@ -220,8 +220,10 @@
     "Popular": {
       "Title": "Foydalanuvchilarimiz orasida mashhur bo'lgan marshrutlar",
       "From": "Dan",
+      "Price": "Narx",
       "Sum": "so‘m",
-      "ViewAll": "Hamma y'onalishlardi k'orish"
+      "ViewAll": "Hamma y'onalishlardi k'orish",
+      "Negotiable": "Kelishiladi"
     },
     "Travel": {
       "Title": "Yo‘ldosh ilovasi bilan qulayroq sayohat qiling",
@@ -249,6 +251,7 @@
         "Driver": "Haydovchi",
         "Passengers": "Yo'lovchilar",
         "Vehicle": "Avtomobil",
+        "Negotiable": "Kelishiladi",
         "AdditionalInformation": "Haydovchi sharhi",
         "Price": "Odam boshiga narx",
         "Book": "Bron qilish",
