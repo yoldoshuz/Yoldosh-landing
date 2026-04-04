@@ -128,7 +128,7 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
           <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center justify-center">
               <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
-                <AvatarImage src={`${BASE_URL}${trip.driver.avatar}`} />
+                <AvatarImage src={trip.driver.avatar ? BASE_URL + trip.driver.avatar : ""} />
                 <AvatarFallback className="bg-emerald-300 font-bold text-white text-base">
                   {trip.driver.firstName[0]}
                 </AvatarFallback>
@@ -172,19 +172,19 @@ export const TripCard = ({ trip, onClick, viewMode = "grid", priority = false }:
           <div className="flex items-center gap-2 w-full">
             <div className="relative">
               <Avatar className="size-10 rounded-full bg-emerald-100 flex items-center justify-center">
-                <AvatarImage src={`${BASE_URL}${trip.driver.avatar}`} />
+                <AvatarImage src={trip.driver?.avatar ? BASE_URL + trip.driver.avatar : ""} />
                 <AvatarFallback className="bg-emerald-300 font-bold text-white text-xl">
-                  {trip.driver.firstName[0]}
+                  {trip.driver?.firstName[0] ? trip.driver?.firstName[0] : "?"}
                 </AvatarFallback>
               </Avatar>
             </div>
             <div className="flex flex-row items-center justify-between w-full">
               <div className="flex flex-col justify-center">
                 <div className="flex items-center justify-start gap-1">
-                  <p className="font-medium text-base">{trip.driver.firstName}</p>
+                  <p className="font-medium text-base">{trip.driver?.firstName}</p>
                   <div className="flex items-center rounded-full gap-1 text-xs font-semibold font-mono bg-amber-200/25 py-px px-1.5 text-amber-400">
                     <Star className="fill-amber-300 stroke-amber-300 size-3" />
-                    <span className="">{trip.driver.rating.toFixed(1)}</span>
+                    <span className="">{trip.driver?.rating.toFixed(1)}</span>
                   </div>
                 </div>
                 <p className="text-muted-foreground text-xs">
