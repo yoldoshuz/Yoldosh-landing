@@ -45,7 +45,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         return "uz-UZ";
       case "ru":
         return "ru-RU";
-      case "en":
+      case "en":             
         return "en-US";
       default:
         return "ru-RU";

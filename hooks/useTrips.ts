@@ -30,6 +30,7 @@ export const tripsApi = {
     return response.data;
   },
 };
+
 export const useSearchTrips = (params: SearchParams, enabled: boolean) => {
   return useInfiniteQuery({
     queryKey: ["trips", "search", params],

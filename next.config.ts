@@ -102,28 +102,51 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  /* ===== Redirects ===== */
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/:path*',
-  //       has: [
-  //         {
-  //           type: 'host',
-  //           value: 'yoldosh.uz',
-  //         },
-  //       ],
-  //       destination: 'https://www.yoldosh.uz/:path*',
-  //       permanent: true,
-  //     },
-  //     {
-  //       source: "/:path*",
-  //       has: [{ type: "host", value: "www.yoldosh.uz" }],
-  //       destination: "https://yoldosh.uz/:path*",
-  //       permanent: true, // 301 редирект
-  //     },
-  //   ];
-  // },
+  /* ===== Redirects =====
+   *
+   * Legacy Cyrillic / Uzbek-localized pathnames are kept alive with 308
+   * permanent redirects so previously indexed URLs are funneled into the
+   * Latin canonical equivalents without losing accumulated SEO equity.
+   *
+   * Order matters: more specific paths come before generic ones.
+   */
+  async redirects() {
+    return [
+      // === Russian Cyrillic legacy URLs ===
+      { source: "/ru/маршруты/:slug*", destination: "/ru/routes/:slug*", permanent: true },
+      { source: "/ru/поездки/пассажиры/:id", destination: "/ru/trips/passengers/:id", permanent: true },
+      { source: "/ru/поездки/водитель/:id", destination: "/ru/trips/driver/:id", permanent: true },
+      { source: "/ru/поездки/:tripId", destination: "/ru/trips/:tripId", permanent: true },
+      { source: "/ru/поездки", destination: "/ru/trips", permanent: true },
+      { source: "/ru/о-нас", destination: "/ru/about-us", permanent: true },
+      { source: "/ru/публичная-офферта", destination: "/ru/public-offer", permanent: true },
+      { source: "/ru/политика-конфиденциальности", destination: "/ru/privacy-policy", permanent: true },
+      { source: "/ru/удалить-аккаунт", destination: "/ru/delete-account", permanent: true },
+      { source: "/ru/для-водителей", destination: "/ru/for-drivers", permanent: true },
+      { source: "/ru/для-пассажиров", destination: "/ru/for-passengers", permanent: true },
+      { source: "/ru/блог/:slug*", destination: "/ru/blog/:slug*", permanent: true },
+      { source: "/ru/блог", destination: "/ru/blog", permanent: true },
+
+      // === Uzbek legacy URLs ===
+      { source: "/uz/yonalishlar/:slug*", destination: "/uz/routes/:slug*", permanent: true },
+      { source: "/uz/safarlar/yolovchilar/:id", destination: "/uz/trips/passengers/:id", permanent: true },
+      { source: "/uz/safarlar/haydovchi/:id", destination: "/uz/trips/driver/:id", permanent: true },
+      { source: "/uz/safarlar/:tripId", destination: "/uz/trips/:tripId", permanent: true },
+      { source: "/uz/safarlar", destination: "/uz/trips", permanent: true },
+      { source: "/uz/biz-haqimizda", destination: "/uz/about-us", permanent: true },
+      { source: "/uz/ommaviy-taklif", destination: "/uz/public-offer", permanent: true },
+      { source: "/uz/maxfiylik-siyosati", destination: "/uz/privacy-policy", permanent: true },
+      { source: "/uz/hisobni-ochirish", destination: "/uz/delete-account", permanent: true },
+      { source: "/uz/haydovchilar-uchun", destination: "/uz/for-drivers", permanent: true },
+      { source: "/uz/yolovchilar-uchun", destination: "/uz/for-passengers", permanent: true },
+
+      // === Bare paths without locale prefix → default to /ru ===
+      { source: "/маршруты/:slug*", destination: "/ru/routes/:slug*", permanent: true },
+      { source: "/поездки", destination: "/ru/trips", permanent: true },
+      { source: "/yonalishlar/:slug*", destination: "/uz/routes/:slug*", permanent: true },
+      { source: "/safarlar", destination: "/uz/trips", permanent: true },
+    ];
+  },
 
   // Webpack оптимизации
   webpack: (config, { dev, isServer }) => {

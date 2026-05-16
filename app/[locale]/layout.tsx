@@ -34,10 +34,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "YOUR_REAL_GOOGLE_CODE",
-    yandex: "YOUR_REAL_YANDEX_CODE",
-  },
+  // Google verification ships as /public/google298d1de612ac4217.html.
+  // Yandex verification is wired through Yandex.Metrika initialization in
+  // the body — no meta tag fallback needed.
 };
 
 export function generateStaticParams() {

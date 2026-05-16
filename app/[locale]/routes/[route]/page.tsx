@@ -1,611 +1,239 @@
 import Script from "next/script";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
 import { Footer } from "@/components/shared/widgets/Footer";
 import { Button } from "@/components/ui/button";
+import { getDisplayName } from "@/app/lib/cities";
+import {
+  ResolvedRoute,
+  listPopularRouteSlugs,
+  resolveRoute,
+  resolveRouteWithLiveStats,
+} from "@/app/lib/route-resolver";
 
-type RouteData = {
-  fromRu: string;
-  toRu: string;
-  fromUz: string;
-  toUz: string;
-  fromEn: string;
-  toEn: string;
-  fromLat: number;
-  fromLon: number;
-  toLat: number;
-  toLon: number;
-  distanceKm: number;
-  durationH: number;
-};
+const SITE_URL = "https://yoldosh.uz";
+const LOCALES = ["ru", "uz", "en"] as const;
+type AppLocale = (typeof LOCALES)[number];
 
-/** Mirror a route (B→A from A→B) */
-const mirror = (r: RouteData): RouteData => ({
-  fromRu: r.toRu,
-  toRu: r.fromRu,
-  fromUz: r.toUz,
-  toUz: r.fromUz,
-  fromEn: r.toEn,
-  toEn: r.fromEn,
-  fromLat: r.toLat,
-  fromLon: r.toLon,
-  toLat: r.fromLat,
-  toLon: r.fromLon,
-  distanceKm: r.distanceKm,
-  durationH: r.durationH,
-});
+// Page is revalidated hourly so live trip data and route stats refresh
+// without manual deploys. dynamicParams = true means city pairs outside the
+// pre-rendered popular set still render on demand (no 404 for long tail).
+export const revalidate = 3600;
+export const dynamicParams = true;
 
-const slug = (a: string, b: string) =>
-  `${a.toLowerCase().replace(/\s+/g, "-")}-${b.toLowerCase().replace(/\s+/g, "-")}`;
-
-const BASE: Record<string, RouteData> = {
-  "tashkent-samarkand": {
-    fromRu: "Ташкент",
-    toRu: "Самарканд",
-    fromUz: "Toshkent",
-    toUz: "Samarqand",
-    fromEn: "Tashkent",
-    toEn: "Samarkand",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 39.6547,
-    toLon: 66.9758,
-    distanceKm: 325,
-    durationH: 4,
-  },
-  "tashkent-bukhara": {
-    fromRu: "Ташкент",
-    toRu: "Бухара",
-    fromUz: "Toshkent",
-    toUz: "Buxoro",
-    fromEn: "Tashkent",
-    toEn: "Bukhara",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 39.7747,
-    toLon: 64.4286,
-    distanceKm: 560,
-    durationH: 6,
-  },
-  "tashkent-fergana": {
-    fromRu: "Ташкент",
-    toRu: "Фергана",
-    fromUz: "Toshkent",
-    toUz: "Farg'ona",
-    fromEn: "Tashkent",
-    toEn: "Fergana",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 40.3842,
-    toLon: 71.7843,
-    distanceKm: 420,
-    durationH: 5,
-  },
-  "tashkent-andijan": {
-    fromRu: "Ташкент",
-    toRu: "Андижан",
-    fromUz: "Toshkent",
-    toUz: "Andijon",
-    fromEn: "Tashkent",
-    toEn: "Andijan",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 40.7821,
-    toLon: 72.3442,
-    distanceKm: 450,
-    durationH: 5,
-  },
-  "tashkent-namangan": {
-    fromRu: "Ташкент",
-    toRu: "Наманган",
-    fromUz: "Toshkent",
-    toUz: "Namangan",
-    fromEn: "Tashkent",
-    toEn: "Namangan",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 41.0011,
-    toLon: 71.6726,
-    distanceKm: 400,
-    durationH: 4,
-  },
-  "tashkent-khiva": {
-    fromRu: "Ташкент",
-    toRu: "Хива",
-    fromUz: "Toshkent",
-    toUz: "Xiva",
-    fromEn: "Tashkent",
-    toEn: "Khiva",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 41.3775,
-    toLon: 60.3594,
-    distanceKm: 880,
-    durationH: 10,
-  },
-  "tashkent-nukus": {
-    fromRu: "Ташкент",
-    toRu: "Нукус",
-    fromUz: "Toshkent",
-    toUz: "Nukus",
-    fromEn: "Tashkent",
-    toEn: "Nukus",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 42.453,
-    toLon: 59.6103,
-    distanceKm: 1100,
-    durationH: 12,
-  },
-  "tashkent-termez": {
-    fromRu: "Ташкент",
-    toRu: "Термез",
-    fromUz: "Toshkent",
-    toUz: "Termiz",
-    fromEn: "Tashkent",
-    toEn: "Termez",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 37.2242,
-    toLon: 67.2783,
-    distanceKm: 650,
-    durationH: 8,
-  },
-  "tashkent-navoi": {
-    fromRu: "Ташкент",
-    toRu: "Навои",
-    fromUz: "Toshkent",
-    toUz: "Navoiy",
-    fromEn: "Tashkent",
-    toEn: "Navoi",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 40.0843,
-    toLon: 65.3791,
-    distanceKm: 500,
-    durationH: 6,
-  },
-  "tashkent-urgench": {
-    fromRu: "Ташкент",
-    toRu: "Ургенч",
-    fromUz: "Toshkent",
-    toUz: "Urganch",
-    fromEn: "Tashkent",
-    toEn: "Urgench",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 41.5503,
-    toLon: 60.6347,
-    distanceKm: 900,
-    durationH: 11,
-  },
-  "tashkent-karshi": {
-    fromRu: "Ташкент",
-    toRu: "Карши",
-    fromUz: "Toshkent",
-    toUz: "Qarshi",
-    fromEn: "Tashkent",
-    toEn: "Karshi",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 38.8608,
-    toLon: 65.7903,
-    distanceKm: 520,
-    durationH: 6,
-  },
-  "tashkent-jizzakh": {
-    fromRu: "Ташкент",
-    toRu: "Джизак",
-    fromUz: "Toshkent",
-    toUz: "Jizzax",
-    fromEn: "Tashkent",
-    toEn: "Jizzakh",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 40.1158,
-    toLon: 67.8422,
-    distanceKm: 200,
-    durationH: 2,
-  },
-  "tashkent-gulistan": {
-    fromRu: "Ташкент",
-    toRu: "Гулистан",
-    fromUz: "Toshkent",
-    toUz: "Guliston",
-    fromEn: "Tashkent",
-    toEn: "Gulistan",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 40.4897,
-    toLon: 68.7842,
-    distanceKm: 140,
-    durationH: 2,
-  },
-  "tashkent-kokand": {
-    fromRu: "Ташкент",
-    toRu: "Коканд",
-    fromUz: "Toshkent",
-    toUz: "Qo'qon",
-    fromEn: "Tashkent",
-    toEn: "Kokand",
-    fromLat: 41.2995,
-    fromLon: 69.2401,
-    toLat: 40.5283,
-    toLon: 70.9425,
-    distanceKm: 330,
-    durationH: 4,
-  },
-  "samarkand-bukhara": {
-    fromRu: "Самарканд",
-    toRu: "Бухара",
-    fromUz: "Samarqand",
-    toUz: "Buxoro",
-    fromEn: "Samarkand",
-    toEn: "Bukhara",
-    fromLat: 39.6547,
-    fromLon: 66.9758,
-    toLat: 39.7747,
-    toLon: 64.4286,
-    distanceKm: 270,
-    durationH: 3,
-  },
-  "samarkand-navoi": {
-    fromRu: "Самарканд",
-    toRu: "Навои",
-    fromUz: "Samarqand",
-    toUz: "Navoiy",
-    fromEn: "Samarkand",
-    toEn: "Navoi",
-    fromLat: 39.6547,
-    fromLon: 66.9758,
-    toLat: 40.0843,
-    toLon: 65.3791,
-    distanceKm: 130,
-    durationH: 2,
-  },
-  "samarkand-karshi": {
-    fromRu: "Самарканд",
-    toRu: "Карши",
-    fromUz: "Samarqand",
-    toUz: "Qarshi",
-    fromEn: "Samarkand",
-    toEn: "Karshi",
-    fromLat: 39.6547,
-    fromLon: 66.9758,
-    toLat: 38.8608,
-    toLon: 65.7903,
-    distanceKm: 220,
-    durationH: 3,
-  },
-  "samarkand-termez": {
-    fromRu: "Самарканд",
-    toRu: "Термез",
-    fromUz: "Samarqand",
-    toUz: "Termiz",
-    fromEn: "Samarkand",
-    toEn: "Termez",
-    fromLat: 39.6547,
-    fromLon: 66.9758,
-    toLat: 37.2242,
-    toLon: 67.2783,
-    distanceKm: 380,
-    durationH: 5,
-  },
-  "samarkand-fergana": {
-    fromRu: "Самарканд",
-    toRu: "Фергана",
-    fromUz: "Samarqand",
-    toUz: "Farg'ona",
-    fromEn: "Samarkand",
-    toEn: "Fergana",
-    fromLat: 39.6547,
-    fromLon: 66.9758,
-    toLat: 40.3842,
-    toLon: 71.7843,
-    distanceKm: 470,
-    durationH: 6,
-  },
-  "bukhara-khiva": {
-    fromRu: "Бухара",
-    toRu: "Хива",
-    fromUz: "Buxoro",
-    toUz: "Xiva",
-    fromEn: "Bukhara",
-    toEn: "Khiva",
-    fromLat: 39.7747,
-    fromLon: 64.4286,
-    toLat: 41.3775,
-    toLon: 60.3594,
-    distanceKm: 390,
-    durationH: 5,
-  },
-  "bukhara-urgench": {
-    fromRu: "Бухара",
-    toRu: "Ургенч",
-    fromUz: "Buxoro",
-    toUz: "Urganch",
-    fromEn: "Bukhara",
-    toEn: "Urgench",
-    fromLat: 39.7747,
-    fromLon: 64.4286,
-    toLat: 41.5503,
-    toLon: 60.6347,
-    distanceKm: 400,
-    durationH: 5,
-  },
-  "bukhara-nukus": {
-    fromRu: "Бухара",
-    toRu: "Нукус",
-    fromUz: "Buxoro",
-    toUz: "Nukus",
-    fromEn: "Bukhara",
-    toEn: "Nukus",
-    fromLat: 39.7747,
-    fromLon: 64.4286,
-    toLat: 42.453,
-    toLon: 59.6103,
-    distanceKm: 540,
-    durationH: 7,
-  },
-  "bukhara-karshi": {
-    fromRu: "Бухара",
-    toRu: "Карши",
-    fromUz: "Buxoro",
-    toUz: "Qarshi",
-    fromEn: "Bukhara",
-    toEn: "Karshi",
-    fromLat: 39.7747,
-    fromLon: 64.4286,
-    toLat: 38.8608,
-    toLon: 65.7903,
-    distanceKm: 260,
-    durationH: 3,
-  },
-  "fergana-andijan": {
-    fromRu: "Фергана",
-    toRu: "Андижан",
-    fromUz: "Farg'ona",
-    toUz: "Andijon",
-    fromEn: "Fergana",
-    toEn: "Andijan",
-    fromLat: 40.3842,
-    fromLon: 71.7843,
-    toLat: 40.7821,
-    toLon: 72.3442,
-    distanceKm: 80,
-    durationH: 1,
-  },
-  "fergana-namangan": {
-    fromRu: "Фергана",
-    toRu: "Наманган",
-    fromUz: "Farg'ona",
-    toUz: "Namangan",
-    fromEn: "Fergana",
-    toEn: "Namangan",
-    fromLat: 40.3842,
-    fromLon: 71.7843,
-    toLat: 41.0011,
-    toLon: 71.6726,
-    distanceKm: 110,
-    durationH: 2,
-  },
-  "fergana-kokand": {
-    fromRu: "Фергана",
-    toRu: "Коканд",
-    fromUz: "Farg'ona",
-    toUz: "Qo'qon",
-    fromEn: "Fergana",
-    toEn: "Kokand",
-    fromLat: 40.3842,
-    fromLon: 71.7843,
-    toLat: 40.5283,
-    toLon: 70.9425,
-    distanceKm: 70,
-    durationH: 1,
-  },
-  "andijan-namangan": {
-    fromRu: "Андижан",
-    toRu: "Наманган",
-    fromUz: "Andijon",
-    toUz: "Namangan",
-    fromEn: "Andijan",
-    toEn: "Namangan",
-    fromLat: 40.7821,
-    fromLon: 72.3442,
-    toLat: 41.0011,
-    toLon: 71.6726,
-    distanceKm: 100,
-    durationH: 1,
-  },
-  "khiva-urgench": {
-    fromRu: "Хива",
-    toRu: "Ургенч",
-    fromUz: "Xiva",
-    toUz: "Urganch",
-    fromEn: "Khiva",
-    toEn: "Urgench",
-    fromLat: 41.3775,
-    fromLon: 60.3594,
-    toLat: 41.5503,
-    toLon: 60.6347,
-    distanceKm: 35,
-    durationH: 1,
-  },
-  "urgench-nukus": {
-    fromRu: "Ургенч",
-    toRu: "Нукус",
-    fromUz: "Urganch",
-    toUz: "Nukus",
-    fromEn: "Urgench",
-    toEn: "Nukus",
-    fromLat: 41.5503,
-    fromLon: 60.6347,
-    toLat: 42.453,
-    toLon: 59.6103,
-    distanceKm: 160,
-    durationH: 2,
-  },
-  "navoi-bukhara": {
-    fromRu: "Навои",
-    toRu: "Бухара",
-    fromUz: "Navoiy",
-    toUz: "Buxoro",
-    fromEn: "Navoi",
-    toEn: "Bukhara",
-    fromLat: 40.0843,
-    fromLon: 65.3791,
-    toLat: 39.7747,
-    toLon: 64.4286,
-    distanceKm: 130,
-    durationH: 2,
-  },
-  "karshi-termez": {
-    fromRu: "Карши",
-    toRu: "Термез",
-    fromUz: "Qarshi",
-    toUz: "Termiz",
-    fromEn: "Karshi",
-    toEn: "Termez",
-    fromLat: 38.8608,
-    fromLon: 65.7903,
-    toLat: 37.2242,
-    toLon: 67.2783,
-    distanceKm: 260,
-    durationH: 3,
-  },
-  "namangan-fergana": {
-    fromRu: "Наманган",
-    toRu: "Фергана",
-    fromUz: "Namangan",
-    toUz: "Farg'ona",
-    fromEn: "Namangan",
-    toEn: "Fergana",
-    fromLat: 41.0011,
-    fromLon: 71.6726,
-    toLat: 40.3842,
-    toLon: 71.7843,
-    distanceKm: 110,
-    durationH: 2,
-  },
-  "namangan-bukhara": {
-    fromRu: "Наманган",
-    toRu: "Бухара",
-    fromUz: "Namangan",
-    toUz: "Buxoro",
-    fromEn: "Namangan",
-    toEn: "Bukhara",
-    fromLat: 41.0011,
-    fromLon: 71.6726,
-    toLat: 39.7747,
-    toLon: 64.4286,
-    distanceKm: 620,
-    durationH: 8,
-  },
-  "urgench-fergana": {
-    fromRu: "Ургенч",
-    toRu: "Фергана",
-    fromUz: "Urganch",
-    toUz: "Farg'ona",
-    fromEn: "Urgench",
-    toEn: "Fergana",
-    fromLat: 41.5503,
-    fromLon: 60.6347,
-    toLat: 40.3842,
-    toLon: 71.7843,
-    distanceKm: 980,
-    durationH: 12,
-  },
-};
-
-const ROUTES: Record<string, RouteData> = { ...BASE };
-
-Object.entries(BASE).forEach(([key, data]) => {
-  const [a, b] = key.split(/-(.+)/);
-  const mirrorKey = slug(data.toEn, data.fromEn);
-  if (!ROUTES[mirrorKey]) {
-    ROUTES[mirrorKey] = mirror(data);
-  }
-});
-
-const LOCALES = ["ru", "uz", "en"];
-const siteUrl = "https://yoldosh.uz";
-
-const tripsPathByLocale: Record<string, string> = {
-  ru: "поездки",
-  uz: "safarlar",
-  en: "trips",
-};
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.yoldosh.uz/api/v1";
 
 type Props = { params: Promise<{ locale: string; route: string }> };
 
+interface LiveTrip {
+  id: string;
+  departure_ts: string;
+  price_per_person: string | number;
+  seats_available: number;
+  duration?: number; // minutes
+  distance?: number; // km, often 0 from API
+  driver?: { firstName?: string; rating?: number };
+  car?: { make?: string; model?: string };
+  from_location?: { city?: string };
+  to_location?: { city?: string };
+}
+
+/**
+ * Fetches a few upcoming trips for this city pair and derives:
+ *   - liveTrips (rendered as ItemList JSON-LD + visible mini list)
+ *   - avgDurationH (replaces estimated duration when available)
+ *   - avgDistanceKm (replaces haversine fallback when API has real values)
+ */
+async function fetchLiveStats(route: ResolvedRoute): Promise<{
+  trips: LiveTrip[];
+  avgDurationH?: number;
+  avgDistanceKm?: number;
+}> {
+  try {
+    const params = new URLSearchParams({
+      from_lat: String(route.fromCity.lat),
+      from_lon: String(route.fromCity.lon),
+      to_lat: String(route.toCity.lat),
+      to_lon: String(route.toCity.lon),
+      seats: "1",
+      page: "1",
+      limit: "10",
+    });
+    const res = await fetch(`${API_BASE}/public/trips/popular?${params.toString()}`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return { trips: [] };
+    const json = await res.json();
+    const trips: LiveTrip[] = (json?.data?.trips ?? []).slice(0, 10);
+
+    // Aggregate non-zero stats — API often returns distance: 0 even for real trips.
+    const validDurations = trips
+      .map((t) => (typeof t.duration === "number" ? t.duration : 0))
+      .filter((m) => m > 0);
+    const validDistances = trips
+      .map((t) => (typeof t.distance === "number" ? t.distance : 0))
+      .filter((k) => k > 0);
+
+    const avgDurationMin = validDurations.length
+      ? validDurations.reduce((a, b) => a + b, 0) / validDurations.length
+      : undefined;
+    const avgDistanceKm = validDistances.length
+      ? validDistances.reduce((a, b) => a + b, 0) / validDistances.length
+      : undefined;
+
+    return {
+      trips: trips.slice(0, 5),
+      avgDurationH: avgDurationMin ? avgDurationMin / 60 : undefined,
+      avgDistanceKm,
+    };
+  } catch {
+    return { trips: [] };
+  }
+}
+
 export async function generateStaticParams() {
-  return Object.keys(ROUTES).flatMap((route) => LOCALES.map((locale) => ({ locale, route })));
+  const popularSlugs = listPopularRouteSlugs();
+  return popularSlugs.flatMap((route) => LOCALES.map((locale) => ({ locale, route })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, route } = await params;
-  const r = ROUTES[route];
+  const resolved = await resolveRoute(route);
 
-  // Return 404 metadata instead of redirecting
-  if (!r) {
-    return { title: "Not Found", robots: { index: false } };
+  if (!resolved) {
+    return { title: "Not Found", robots: { index: false, follow: false } };
   }
 
-  const fromName = locale === "ru" ? r.fromRu : locale === "uz" ? r.fromUz : r.fromEn;
-  const toName = locale === "ru" ? r.toRu : locale === "uz" ? r.toUz : r.toEn;
+  if (!resolved.isCanonical) {
+    return { robots: { index: false, follow: true } };
+  }
 
-  const titles: Record<string, string> = {
-    ru: `${fromName} — ${toName}: поездки, попутчики, цена | Yo'ldosh`,
-    uz: `${fromName} — ${toName}: safarlar, yo'ldoshlar, narx | Yo'ldosh`,
-    en: `${fromName} to ${toName}: Shared Rides & Prices | Yo'ldosh`,
+  const l = (LOCALES.includes(locale as AppLocale) ? locale : "ru") as AppLocale;
+  const fromName = getDisplayName(resolved.fromCity, l);
+  const toName = getDisplayName(resolved.toCity, l);
+  const { distanceKm, durationH, canonicalSlug } = resolved;
+
+  const titles: Record<AppLocale, string> = {
+    ru: `${fromName} ${toName} попутчики: цена, расписание, BlaBlaCar Узбекистан | Yo'ldosh`,
+    uz: `${fromName} ${toName} yo'ldoshlar: narx, jadval, BlaBlaCar O'zbekiston | Yo'ldosh`,
+    en: `${fromName} ${toName} carpool: rideshare, price, schedule | Yo'ldosh`,
   };
-  const descs: Record<string, string> = {
-    ru: `Найдите попутчика из ${fromName} в ${toName}. Расстояние ~${r.distanceKm} км, время ~${r.durationH} ч. Безопасные межгородские поездки на Yo'ldosh.`,
-    uz: `${fromName}dan ${toName}ga yo'ldosh toping. Masofa ~${r.distanceKm} km, vaqt ~${r.durationH} soat. Yo'ldoshda xavfsiz shaharlararo safarlar.`,
-    en: `Find a shared ride from ${fromName} to ${toName}. Distance ~${r.distanceKm} km, ~${r.durationH} hrs. Safe intercity carpooling on Yo'ldosh.`,
+  const descriptions: Record<AppLocale, string> = {
+    ru: `Поездка ${fromName} — ${toName} с попутчиком от ${fromName} до ${toName}. Расстояние ~${distanceKm} км, ~${durationH} ч в пути. Проверенные водители, цены ниже такси. Карпулинг Узбекистан на Yo'ldosh.`,
+    uz: `${fromName}dan ${toName}ga yo'ldosh bilan safar. ${fromName} ${toName} masofa ~${distanceKm} km, ~${durationH} soat. Tekshirilgan haydovchilar, narxlar taksidan arzon. Yo'ldoshda karpuling.`,
+    en: `Travel ${fromName} ${toName} with a verified driver. Distance ~${distanceKm} km, ~${durationH} hrs en route. Daily shared rides between ${fromName} and ${toName}. Affordable carpool on Yo'ldosh.`,
   };
+  const keywords: Record<AppLocale, string[]> = {
+    ru: [
+      `${fromName} ${toName}`,
+      `${fromName} ${toName} попутчик`,
+      `${fromName} ${toName} попутчики`,
+      `${fromName} ${toName} карпулинг`,
+      `${fromName} ${toName} поездка`,
+      `${fromName} ${toName} такси`,
+      `${fromName} ${toName} цена`,
+      `${fromName} ${toName} расстояние`,
+      `попутчик из ${fromName} в ${toName}`,
+      `BlaBlaCar ${fromName} ${toName}`,
+    ],
+    uz: [
+      `${fromName} ${toName}`,
+      `${fromName} ${toName} yo'ldosh`,
+      `${fromName} ${toName} taksi`,
+      `${fromName} ${toName} narx`,
+      `${fromName} ${toName} masofa`,
+      `${fromName}dan ${toName}ga safar`,
+      `BlaBlaCar ${fromName} ${toName}`,
+    ],
+    en: [
+      `${fromName} ${toName}`,
+      `${fromName} to ${toName}`,
+      `${fromName} ${toName} carpool`,
+      `${fromName} ${toName} rideshare`,
+      `${fromName} ${toName} price`,
+      `${fromName} ${toName} distance`,
+      `BlaBlaCar ${fromName} ${toName}`,
+    ],
+  };
+
+  const languages: Record<string, string> = {};
+  for (const lc of LOCALES) {
+    languages[lc] = `${SITE_URL}/${lc}/routes/${canonicalSlug}`;
+  }
+  languages["x-default"] = `${SITE_URL}/ru/routes/${canonicalSlug}`;
 
   return {
-    title: titles[locale],
-    description: descs[locale],
-    metadataBase: new URL(siteUrl),
+    title: titles[l],
+    description: descriptions[l],
+    keywords: keywords[l],
+    metadataBase: new URL(SITE_URL),
     alternates: {
-      canonical: `${siteUrl}/${locale}/routes/${route}`,
-      languages: Object.fromEntries([
-        ...LOCALES.map((l) => [l, `${siteUrl}/${l}/routes/${route}`]),
-        ["x-default", `${siteUrl}/ru/routes/${route}`],
-      ]),
+      canonical: `${SITE_URL}/${l}/routes/${canonicalSlug}`,
+      languages,
     },
     openGraph: {
-      title: titles[locale],
-      description: descs[locale],
-      url: `${siteUrl}/${locale}/routes/${route}`,
+      title: titles[l],
+      description: descriptions[l],
+      url: `${SITE_URL}/${l}/routes/${canonicalSlug}`,
       type: "website",
       siteName: "Yo'ldosh",
+      locale: l,
     },
     twitter: {
       card: "summary_large_image",
-      title: titles[locale],
-      description: descs[locale],
+      title: titles[l],
+      description: descriptions[l],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
     },
   };
 }
 
 export default async function RoutePage({ params }: Props) {
   const { locale, route } = await params;
-  const r = ROUTES[route];
+  const baseResolved = await resolveRoute(route);
 
-  if (!r) notFound();
+  if (!baseResolved) {
+    notFound();
+  }
 
-  const t = await getTranslations({ locale, namespace: `metadata.routes.${route}` }).catch(() => null);
+  if (!baseResolved.isCanonical) {
+    permanentRedirect(`/${locale}/routes/${baseResolved.canonicalSlug}`);
+  }
 
-  const fromName = locale === "ru" ? r.fromRu : locale === "uz" ? r.fromUz : r.fromEn;
-  const toName = locale === "ru" ? r.toRu : locale === "uz" ? r.toUz : r.toEn;
+  // Sample live trips, then re-resolve with averaged stats so distance and
+  // duration reflect what real drivers report rather than haversine guesses.
+  const liveStats = await fetchLiveStats(baseResolved);
+  const resolved =
+    (await resolveRouteWithLiveStats(route, {
+      distanceKm: liveStats.avgDistanceKm,
+      durationH: liveStats.avgDurationH,
+    })) ?? baseResolved;
+  const liveTrips = liveStats.trips;
 
-  const tripsSegment = tripsPathByLocale[locale] ?? "trips";
-  const tripsUrl = `/${locale}/${tripsSegment}?from=${encodeURIComponent(fromName)}&to=${encodeURIComponent(toName)}&from_lat=${r.fromLat}&from_lon=${r.fromLon}&to_lat=${r.toLat}&to_lon=${r.toLon}&seats=1`;
+  const safeLocale: AppLocale = LOCALES.includes(locale as AppLocale)
+    ? (locale as AppLocale)
+    : "ru";
+
+  const fromName = getDisplayName(resolved.fromCity, safeLocale);
+  const toName = getDisplayName(resolved.toCity, safeLocale);
+  const { distanceKm, durationH, canonicalSlug } = resolved;
+
+  const t = await getTranslations({
+    locale: safeLocale,
+    namespace: `metadata.routes.${canonicalSlug}`,
+  }).catch(() => null);
+
+  const tripsSearchUrl =
+    `/${safeLocale}/trips` +
+    `?from=${encodeURIComponent(fromName)}&to=${encodeURIComponent(toName)}` +
+    `&from_lat=${resolved.fromCity.lat}&from_lon=${resolved.fromCity.lon}` +
+    `&to_lat=${resolved.toCity.lat}&to_lon=${resolved.toCity.lon}&seats=1`;
 
   const labels = {
     cta: { ru: "Найти поездки", uz: "Safarlarni qidirish", en: "Find Trips" },
@@ -614,36 +242,81 @@ export default async function RoutePage({ params }: Props) {
     km: { ru: "км", uz: "km", en: "km" },
     h: { ru: "ч", uz: "soat", en: "hrs" },
     faqT: { ru: "Частые вопросы", uz: "Ko'p so'raladigan savollar", en: "FAQ" },
+    upcomingT: {
+      ru: `Ближайшие поездки ${fromName} — ${toName}`,
+      uz: `${fromName} — ${toName} eng yaqin safarlar`,
+      en: `Upcoming rides ${fromName} — ${toName}`,
+    },
+    seatsLabel: { ru: "мест", uz: "joy", en: "seats" },
+    departsLabel: { ru: "Отправление", uz: "Jo'nash", en: "Departs" },
+    bookCta: { ru: "Забронировать", uz: "Bron qilish", en: "Book" },
     h1: {
-      ru: `Поездки из ${fromName} в ${toName}`,
-      uz: `${fromName}dan ${toName}ga safarlar`,
-      en: `Rides from ${fromName} to ${toName}`,
+      ru: `${fromName} ${toName}: поездки с попутчиком`,
+      uz: `${fromName} ${toName}: yo'ldosh bilan safarlar`,
+      en: `${fromName} ${toName}: shared rides`,
     },
     intro: {
-      ru: `Ищете попутчика из ${fromName} в ${toName}? На Yo'ldosh вы найдёте проверенных водителей, безопасные поездки и честные цены. Расстояние около ${r.distanceKm} км, в дороге примерно ${r.durationH} ч.`,
-      uz: `${fromName}dan ${toName}ga yo'ldosh qidiraysizmi? Yo'ldoshda tekshirilgan haydovchilar, xavfsiz safarlar va adolatli narxlarni topasiz. Masofa taxminan ${r.distanceKm} km, yo'lda taxminan ${r.durationH} soat.`,
-      en: `Looking for a shared ride from ${fromName} to ${toName}? On Yo'ldosh you'll find verified drivers, safe trips and fair prices. Distance is about ${r.distanceKm} km, approximately ${r.durationH} hrs on the road.`,
+      ru: `Поездка ${fromName} ${toName} с проверенными водителями. Расстояние около ${distanceKm} км, в дороге примерно ${durationH} ч. На Yoldosh ежедневно публикуются попутные машины из ${fromName} в ${toName} — дешевле такси, удобнее автобуса. Цены формируют сами водители, оплата только за свободное место.`,
+      uz: `${fromName} ${toName} yo'nalishida tekshirilgan haydovchilar bilan safar. Masofa taxminan ${distanceKm} km, yo'lda ${durationH} soat. Yo'ldoshda har kuni ${fromName}dan ${toName}ga yo'ldosh mashinalar e'lon qilinadi — taksidan arzon, avtobusdan qulay.`,
+      en: `Shared rides from ${fromName} to ${toName} with verified drivers. The distance is around ${distanceKm} km and the trip takes roughly ${durationH} hours. Yoldosh lists daily ${fromName} ${toName} carpools — cheaper than a taxi, more flexible than the bus.`,
     },
   };
 
-  const faq: { q: string; a: string }[] = t?.has("faq") ? (t.raw("faq") as { q: string; a: string }[]) : [];
+  const h1 = t?.has("h1") ? t("h1") : labels.h1[safeLocale];
+  const intro = t?.has("intro") ? t("intro") : labels.intro[safeLocale];
+  const faq: { q: string; a: string }[] = t?.has("faq")
+    ? (t.raw("faq") as { q: string; a: string }[])
+    : defaultFaq(fromName, toName, distanceKm, durationH, safeLocale);
 
-  const routeJsonLd = {
+  const tripJsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
     name: `${fromName} → ${toName}`,
-    description: labels.intro[locale as "ru" | "uz" | "en"],
-    touristType: "Budget travelers",
+    description: intro,
+    touristType: ["Budget travelers", "Commuters", "Carpoolers"],
     itinerary: [
-      { "@type": "City", name: fromName },
-      { "@type": "City", name: toName },
+      {
+        "@type": "City",
+        name: fromName,
+        geo: { "@type": "GeoCoordinates", latitude: resolved.fromCity.lat, longitude: resolved.fromCity.lon },
+      },
+      {
+        "@type": "City",
+        name: toName,
+        geo: { "@type": "GeoCoordinates", latitude: resolved.toCity.lat, longitude: resolved.toCity.lon },
+      },
     ],
-    provider: { "@type": "Organization", name: "Yo'ldosh", url: siteUrl },
+    provider: { "@type": "Organization", name: "Yo'ldosh", url: SITE_URL },
+    url: `${SITE_URL}/${safeLocale}/routes/${canonicalSlug}`,
   };
 
-  const faqJsonLd =
-    faq.length > 0
-      ? {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: safeLocale === "ru" ? "Главная" : safeLocale === "uz" ? "Bosh sahifa" : "Home",
+        item: `${SITE_URL}/${safeLocale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: safeLocale === "ru" ? "Маршруты" : safeLocale === "uz" ? "Yo'nalishlar" : "Routes",
+        item: `${SITE_URL}/${safeLocale}/routes`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${fromName} → ${toName}`,
+        item: `${SITE_URL}/${safeLocale}/routes/${canonicalSlug}`,
+      },
+    ],
+  };
+
+  const faqJsonLd = faq.length
+    ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: faq.map(({ q, a }) => ({
@@ -652,57 +325,139 @@ export default async function RoutePage({ params }: Props) {
           acceptedAnswer: { "@type": "Answer", text: a },
         })),
       }
-      : null;
+    : null;
 
-  const l = locale as "ru" | "uz" | "en";
+  const itemListJsonLd =
+    liveTrips.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: liveTrips.map((trip, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            item: {
+              "@type": "Trip",
+              name: `${fromName} → ${toName}`,
+              departureTime: trip.departure_ts,
+              offers: {
+                "@type": "Offer",
+                price: trip.price_per_person,
+                priceCurrency: "UZS",
+                availability: "https://schema.org/InStock",
+                url: `${SITE_URL}/${safeLocale}/trips/${trip.id}`,
+              },
+              provider: {
+                "@type": "Organization",
+                name: trip.driver?.firstName ?? "Yo'ldosh driver",
+              },
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
       <Script
-        id="route-jsonld"
+        id="route-trip-jsonld"
         type="application/ld+json"
         strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(routeJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tripJsonLd) }}
+      />
+      <Script
+        id="route-breadcrumb-jsonld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd && (
         <Script
-          id="faq-jsonld"
+          id="route-faq-jsonld"
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
+      {itemListJsonLd && (
+        <Script
+          id="route-itemlist-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        />
+      )}
 
       <article className="flex flex-col items-center justify-center max-w-4xl mx-auto px-4 py-12 gap-8 min-h-[80vh]">
-        {/* Hero card */}
         <div className="w-full bg-emerald-500 rounded-3xl shadow-2xl p-8 text-white">
-          <h1 className="text-3xl font-bold mb-3">{labels.h1[l]}</h1>
-          <p className="text-white/90 text-lg mb-6">{labels.intro[l]}</p>
+          <h1 className="text-3xl font-bold mb-3">{h1}</h1>
+          <p className="text-white/90 text-lg mb-6">{intro}</p>
           <div className="flex gap-6 mb-6 text-sm">
             <div>
-              <span className="text-white/70">{labels.dist[l]}: </span>
+              <span className="text-white/70">{labels.dist[safeLocale]}: </span>
               <strong>
-                ~{r.distanceKm} {labels.km[l]}
+                ~{distanceKm} {labels.km[safeLocale]}
               </strong>
             </div>
             <div>
-              <span className="text-white/70">{labels.dur[l]}: </span>
+              <span className="text-white/70">{labels.dur[safeLocale]}: </span>
               <strong>
-                ~{r.durationH} {labels.h[l]}
+                ~{durationH} {labels.h[safeLocale]}
               </strong>
             </div>
           </div>
-          <a href={tripsUrl}>
+          <a href={tripsSearchUrl}>
             <Button className="bg-white text-emerald-600 hover:bg-neutral-100 font-bold rounded-full px-8">
-              {labels.cta[l]}
+              {labels.cta[safeLocale]}
             </Button>
           </a>
         </div>
 
-        {/* FAQ */}
+        {liveTrips.length > 0 && (
+          <section className="w-full bg-white rounded-2xl shadow p-8">
+            <h2 className="text-xl font-bold mb-4 text-neutral-800">{labels.upcomingT[safeLocale]}</h2>
+            <ul className="space-y-3">
+              {liveTrips.map((trip) => {
+                const dep = new Date(trip.departure_ts);
+                const depStr = isNaN(dep.getTime())
+                  ? trip.departure_ts
+                  : dep.toLocaleString(
+                      safeLocale === "ru" ? "ru-RU" : safeLocale === "uz" ? "uz-UZ" : "en-US",
+                      {
+                        day: "2-digit",
+                        month: "short",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      },
+                    );
+                return (
+                  <li
+                    key={trip.id}
+                    className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-100 pb-3 last:border-b-0"
+                  >
+                    <div className="text-sm text-neutral-700">
+                      <div className="font-medium">
+                        {trip.from_location?.city || fromName} → {trip.to_location?.city || toName}
+                      </div>
+                      <div className="text-neutral-500">
+                        {labels.departsLabel[safeLocale]}: {depStr} · {trip.seats_available}{" "}
+                        {labels.seatsLabel[safeLocale]}
+                      </div>
+                    </div>
+                    <a
+                      href={`/${safeLocale}/trips/${trip.id}`}
+                      className="text-emerald-600 font-semibold text-sm hover:underline"
+                    >
+                      {labels.bookCta[safeLocale]}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
         {faq.length > 0 && (
           <section className="w-full bg-white rounded-2xl shadow p-8">
-            <h2 className="text-xl font-bold mb-4 text-neutral-800">{labels.faqT[l]}</h2>
+            <h2 className="text-xl font-bold mb-4 text-neutral-800">{labels.faqT[safeLocale]}</h2>
             <div className="space-y-4">
               {faq.map(({ q, a }, i) => (
                 <div key={i}>
@@ -717,4 +472,59 @@ export default async function RoutePage({ params }: Props) {
       <Footer />
     </>
   );
+}
+
+function defaultFaq(
+  fromName: string,
+  toName: string,
+  distanceKm: number,
+  durationH: number,
+  locale: AppLocale,
+): { q: string; a: string }[] {
+  if (locale === "uz") {
+    return [
+      {
+        q: `${fromName}dan ${toName}ga qancha vaqt yo'lda bo'lasiz?`,
+        a: `O'rtacha ${durationH} soat. Masofa taxminan ${distanceKm} km.`,
+      },
+      {
+        q: `${fromName} ${toName} yo'ldosh narxi qancha?`,
+        a: `Narxni haydovchining o'zi belgilaydi. Yo'ldoshda taksidan 30-50% arzon takliflarni topishingiz mumkin.`,
+      },
+      {
+        q: `${fromName} ${toName} yo'nalishida har kuni safarlar bormi?`,
+        a: `Ha, Yo'ldoshda bu yo'nalishda har kuni o'nlab takliflar e'lon qilinadi.`,
+      },
+    ];
+  }
+  if (locale === "en") {
+    return [
+      {
+        q: `How long does the ${fromName} ${toName} trip take?`,
+        a: `On average ${durationH} hours. The distance is around ${distanceKm} km.`,
+      },
+      {
+        q: `How much does a ${fromName} to ${toName} carpool cost?`,
+        a: `Drivers set their own price. On Yoldosh you'll find rides 30-50% cheaper than a private taxi.`,
+      },
+      {
+        q: `Are there daily rides between ${fromName} and ${toName}?`,
+        a: `Yes — Yoldosh lists dozens of new ${fromName} ${toName} trips every day.`,
+      },
+    ];
+  }
+  return [
+    {
+      q: `Сколько ехать ${fromName} ${toName}?`,
+      a: `В среднем ${durationH} часов. Расстояние около ${distanceKm} км.`,
+    },
+    {
+      q: `Сколько стоит поездка ${fromName} — ${toName}?`,
+      a: `Цену устанавливает сам водитель. На Yoldosh обычно можно найти попутку на 30-50% дешевле такси.`,
+    },
+    {
+      q: `Есть ли ежедневные поездки ${fromName} — ${toName}?`,
+      a: `Да, на Yoldosh в этом направлении каждый день публикуются десятки предложений.`,
+    },
+  ];
 }

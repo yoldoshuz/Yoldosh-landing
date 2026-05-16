@@ -1,24 +1,24 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-const locales = ["ru", "uz", "en"];
-const baseUrl = "https://yoldosh.uz";
+const LOCALES = ["ru", "uz", "en"];
+const SITE_URL = "https://yoldosh.uz";
+const DEFAULT_LOCALE = "ru";
 
-const localizedPaths: Record<string, Record<string, string>> = {
-  "": { ru: "", uz: "", en: "" },
-  "/about-us": { ru: "/о-нас", uz: "/biz-haqimizda", en: "/about-us" },
-  "/trips": { ru: "/поездки", uz: "/safarlar", en: "/trips" },
-  "/public-offer": { ru: "/публичная-офферта", uz: "/ommaviy-taklif", en: "/public-offer" },
-  "/privacy-policy": { ru: "/политика-конфиденциальности", uz: "/maxfiylik-siyosati", en: "/privacy-policy" },
-  "/delete-account": { ru: "/удалить-аккаунт", uz: "/hisobni-ochirish", en: "/delete-account" },
-  "/blog": { ru: "/блог", uz: "/blog", en: "/blog" },
-  "/for-drivers": { ru: "/для-водителей", uz: "/haydovchilar-uchun", en: "/for-drivers" },
-  "/for-passengers": { ru: "/для-пассажиров", uz: "/yolovchilar-uchun", en: "/for-passengers" },
-};
+// All locales now share the same Latin canonical path. Per-locale Cyrillic /
+// Uzbek aliases (e.g. /ru/поездки, /uz/safarlar) live as 308 redirects in
+// next.config.ts so the canonical URL surfaced to search engines is unified.
+type PageKey =
+  | "home"
+  | "about"
+  | "trips"
+  | "publicOffer"
+  | "privacyPolicy"
+  | "blog"
+  | "forDrivers"
+  | "forPassengers";
 
-type PageKey = "home" | "about" | "trips" | "publicOffer" | "privacyPolicy" | "blog" | "forDrivers" | "forPassengers";
-
-const namespaceMap: Record<PageKey, string> = {
+const NAMESPACE_MAP: Record<PageKey, string> = {
   home: "metadata.home",
   about: "metadata.about",
   trips: "metadata.trips",
@@ -29,8 +29,21 @@ const namespaceMap: Record<PageKey, string> = {
   forPassengers: "metadata.forPassengers",
 };
 
-export async function generatePageMetadata(locale: string, pageKey: PageKey, canonicalPath: string): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: namespaceMap[pageKey] });
+function buildLanguageAlternates(canonicalPath: string): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const l of LOCALES) {
+    languages[l] = `${SITE_URL}/${l}${canonicalPath}`;
+  }
+  languages["x-default"] = `${SITE_URL}/${DEFAULT_LOCALE}${canonicalPath}`;
+  return languages;
+}
+
+export async function generatePageMetadata(
+  locale: string,
+  pageKey: PageKey,
+  canonicalPath: string,
+): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: NAMESPACE_MAP[pageKey] });
 
   const title = t("title");
   const description = t("description");
@@ -38,27 +51,18 @@ export async function generatePageMetadata(locale: string, pageKey: PageKey, can
   const ogTitle = t.has("og.title") ? t("og.title") : title;
   const ogDescription = t.has("og.description") ? t("og.description") : description;
 
-  const languages: Record<string, string> = {};
-  locales.forEach((l) => {
-    const localePath = localizedPaths[canonicalPath]?.[l] ?? canonicalPath;
-    languages[l] = `${baseUrl}/${l}${localePath}`;
-  });
-  languages["x-default"] = `${baseUrl}/ru${localizedPaths[canonicalPath]?.["ru"] ?? canonicalPath}`;
-
-  const canonicalLocPath = localizedPaths[canonicalPath]?.[locale] ?? canonicalPath;
-
   return {
     title,
     description,
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(SITE_URL),
     alternates: {
-      canonical: `${baseUrl}/${locale}${canonicalLocPath}`,
-      languages,
+      canonical: `${SITE_URL}/${locale}${canonicalPath}`,
+      languages: buildLanguageAlternates(canonicalPath),
     },
     openGraph: {
       title: ogTitle,
       description: ogDescription,
-      url: `${baseUrl}/${locale}${canonicalLocPath}`,
+      url: `${SITE_URL}/${locale}${canonicalPath}`,
       type: "website",
       images: [{ url: ogImage, width: 1200, height: 630, alt: ogTitle }],
       siteName: "Yo'ldosh",

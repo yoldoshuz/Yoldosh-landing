@@ -1,77 +1,28 @@
 import { createNavigation } from "next-intl/navigation";
 import { defineRouting } from "next-intl/routing";
 
+// All localized pathnames use the same Latin canonical URL for every locale.
+// Legacy Cyrillic / Uzbek-localized URLs are kept alive via 308 redirects
+// configured in next.config.ts so accumulated link equity is preserved.
 export const routing = defineRouting({
   locales: ["en", "ru", "uz"],
   defaultLocale: "ru",
   localePrefix: "always",
   pathnames: {
     "/": "/",
-    "/trips": {
-      en: "/trips",
-      ru: "/поездки",
-      uz: "/safarlar",
-    },
-    "/trips/passengers/[passengerId]": {
-      en: "/trips/passengers/[passengerId]",
-      ru: "/поездки/пассажиры/[passengerId]",
-      uz: "/safarlar/yolovchilar/[passengerId]",
-    },
-    "/trips/driver/[driverId]": {
-      en: "/trips/driver/[driverId]",
-      ru: "/поездки/водитель/[driverId]",
-      uz: "/safarlar/haydovchi/[driverId]",
-    },
-    "/trips/[tripId]": {
-      en: "/trips/[tripId]",
-      ru: "/поездки/[tripId]",
-      uz: "/safarlar/[tripId]",
-    },
-    "/about-us": {
-      en: "/about-us",
-      ru: "/о-нас",
-      uz: "/biz-haqimizda",
-    },
-    "/public-offer": {
-      en: "/public-offer",
-      ru: "/публичная-офферта",
-      uz: "/ommaviy-taklif",
-    },
-    "/privacy-policy": {
-      en: "/privacy-policy",
-      ru: "/политика-конфиденциальности",
-      uz: "/maxfiylik-siyosati",
-    },
-    "/delete-account": {
-      en: "/delete-account",
-      ru: "/удалить-аккаунт",
-      uz: "/hisobni-ochirish",
-    },
-    "/routes/[route]": {
-      en: "/routes/[route]",
-      ru: "/маршруты/[route]",
-      uz: "/yonalishlar/[route]",
-    },
-    "/for-drivers": {
-      en: "/for-drivers",
-      ru: "/для-водителей",
-      uz: "/haydovchilar-uchun",
-    },
-    "/for-passengers": {
-      en: "/for-passengers",
-      ru: "/для-пассажиров",
-      uz: "/yolovchilar-uchun",
-    },
-    "/blog": {
-      en: "/blog",
-      ru: "/блог",
-      uz: "/blog",
-    },
-    "/blog/[slug]": {
-      en: "/blog/[slug]",
-      ru: "/блог/[slug]",
-      uz: "/blog/[slug]",
-    },
+    "/trips": "/trips",
+    "/trips/passengers/[passengerId]": "/trips/passengers/[passengerId]",
+    "/trips/driver/[driverId]": "/trips/driver/[driverId]",
+    "/trips/[tripId]": "/trips/[tripId]",
+    "/about-us": "/about-us",
+    "/public-offer": "/public-offer",
+    "/privacy-policy": "/privacy-policy",
+    "/delete-account": "/delete-account",
+    "/routes/[route]": "/routes/[route]",
+    "/for-drivers": "/for-drivers",
+    "/for-passengers": "/for-passengers",
+    "/blog": "/blog",
+    "/blog/[slug]": "/blog/[slug]",
   },
 });
 
