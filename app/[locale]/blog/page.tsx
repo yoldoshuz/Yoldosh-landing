@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
 import { getPageJsonLd } from "@/app/lib/jsonld";
@@ -17,22 +16,19 @@ const BlogPage = async ({ params }: PageProps) => {
   const { page, breadcrumb } = getPageJsonLd({
     locale,
     path: "/blog",
+    type: "CollectionPage",
     name: t("title"),
     description: t("description"),
   });
 
   return (
     <>
-      <Script
-        id="blog-page-schema"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
       />
-      <Script
-        id="blog-breadcrumb-schema"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       <div className="bg-gray-100 min-h-screen">

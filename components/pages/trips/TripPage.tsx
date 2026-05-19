@@ -227,7 +227,7 @@ export const SearchPage = () => {
                       className={cn(
                         "h-8 px-2 rounded-md transition-all",
                         viewMode === "grid" &&
-                        "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
+                          "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                       )}
                     >
                       <LayoutGrid className="size-4" />
@@ -239,7 +239,7 @@ export const SearchPage = () => {
                       className={cn(
                         "h-8 px-2 rounded-md transition-all",
                         viewMode === "list" &&
-                        "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
+                          "bg-emerald-500 shadow-sm text-white hover:text-white hover:bg-emerald-600"
                       )}
                     >
                       <List className="size-4" />

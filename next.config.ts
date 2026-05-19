@@ -48,7 +48,18 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  /* ===== Headers (SEO + Security) ===== */
+  /* ===== Headers (SEO + Security) =====
+   *
+   * Notes:
+   *  - `X-XSS-Protection` is deliberately omitted. The header is
+   *    deprecated across modern browsers (Chrome removed the XSS auditor
+   *    entirely in M78) and its legacy `1; mode=block` value can introduce
+   *    XSS vectors of its own in some edge cases. CSP/Trusted Types are
+   *    the modern replacement.
+   *  - `Cross-Origin-Opener-Policy` and `Cross-Origin-Resource-Policy`
+   *    are set to defaults that improve isolation without breaking
+   *    third-party widgets (Google Maps, Yandex.Metrika).
+   */
   async headers() {
     return [
       {
@@ -61,15 +72,25 @@ const nextConfig: NextConfig = {
           },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          { key: "X-XSS-Protection", value: "1; mode=block" },
           {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(self)",
+            value: "camera=(), microphone=(), geolocation=(self), interest-cohort=()",
           },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+          { key: "Cross-Origin-Resource-Policy", value: "same-site" },
+        ],
+      },
+      {
+        // robots.txt, sitemap and llms.txt must not be aggressively cached
+        // by intermediary CDNs — let our route handlers govern freshness.
+        source: "/(robots.txt|sitemap.xml|sitemap-trips.xml|sitemap-blogs.xml|llms.txt)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, s-maxage=3600, must-revalidate" },
+          { key: "X-Robots-Tag", value: "noindex" },
         ],
       },
       {

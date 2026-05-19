@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
+import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export const HowItWorks = () => {
@@ -16,7 +16,12 @@ export const HowItWorks = () => {
         <div className="flex flex-col items-center justify-center sm:rounded-4xl rounded-2xl bg-emerald-600 text-white w-full py-8 px-6 gap-8">
           <h3 className="title-2">{t("Title")}</h3>
           <h3 className="text-neutral-200 text-start sm:text-center max-w-2xl">{t("Subtitle")}</h3>
-          <Button onClick={() => {router.push("https://app.yoldosh.uz")}} className="text-base p-4! rounded-full bg-white text-emerald-600 font-bold hover:bg-neutral-200 cursor-pointer">
+          <Button
+            onClick={() => {
+              router.push("https://app.yoldosh.uz");
+            }}
+            className="text-base p-4! rounded-full bg-white text-emerald-600 font-bold hover:bg-neutral-200 cursor-pointer"
+          >
             <ArrowRight />
             {t("Share")}
           </Button>

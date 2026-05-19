@@ -39,13 +39,21 @@ export const Footer = () => {
             </Link>
             <div className="flex items-center gap-2 font-bold text-emerald-500">
               <Headset aria-hidden="true" className="size-5" />
-              <a href="tel:+998940001258" aria-label="Call support: +998 94 000 12 58" className="hover:text-emerald-700 transition duration-300 ease-in-out">
+              <a
+                href="tel:+998940001258"
+                aria-label="Call support: +998 94 000 12 58"
+                className="hover:text-emerald-700 transition duration-300 ease-in-out"
+              >
                 +998 94 000 12 58
               </a>
             </div>
             <div className="flex items-center gap-2 font-bold text-emerald-500">
               <Mail aria-hidden="true" className="size-5" />
-              <a href="mailto:help@yoldosh.uz" aria-label="Email support: help@yoldosh.uz" className="hover:text-emerald-700 transition duration-300 ease-in-out">
+              <a
+                href="mailto:help@yoldosh.uz"
+                aria-label="Email support: help@yoldosh.uz"
+                className="hover:text-emerald-700 transition duration-300 ease-in-out"
+              >
                 help@yoldosh.uz
               </a>
             </div>

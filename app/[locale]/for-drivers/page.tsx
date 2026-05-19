@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
 import { getPageJsonLd } from "@/app/lib/jsonld";
@@ -24,16 +23,12 @@ const ForDriversPage = async ({ params }: PageProps) => {
 
   return (
     <>
-      <Script
-        id="for-drivers-schema"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
       />
-      <Script
-        id="for-drivers-breadcrumb"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       <ForDrivers />

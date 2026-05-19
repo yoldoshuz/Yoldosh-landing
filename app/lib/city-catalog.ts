@@ -9,7 +9,7 @@
 
 import { unstable_cache } from "next/cache";
 
-import { City, CITIES as SEED_CITIES, normalizeForLookup } from "./cities";
+import { City, normalizeForLookup, CITIES as SEED_CITIES } from "./cities";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.yoldosh.uz/api/v1";
 
@@ -45,10 +45,9 @@ interface ApiResponse {
 
 async function fetchTripsPage(page: number): Promise<ApiTrip[] | null> {
   try {
-    const res = await fetch(
-      `${API_URL}/public/trips/popular?page=${page}&limit=${PAGE_SIZE}`,
-      { next: { revalidate: 86400 } },
-    );
+    const res = await fetch(`${API_URL}/public/trips/popular?page=${page}&limit=${PAGE_SIZE}`, {
+      next: { revalidate: 86400 },
+    });
     if (!res.ok) return null;
     const json: ApiResponse = await res.json();
     return json?.data?.trips ?? [];

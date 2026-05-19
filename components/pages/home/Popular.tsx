@@ -81,7 +81,9 @@ export const Popular = () => {
                           <p className="text-xs text-muted-foreground">{t("Price")}</p>
                           <div className="flex flex-col items-end justify-start gap-1">
                             <span className="flex items-center justify-center text-base font-bold">
-                              {item.price.price_per_person === 1 ? t("Negotiable") : item.price.price_per_person.toLocaleString()}
+                              {item.price.price_per_person === 1
+                                ? t("Negotiable")
+                                : item.price.price_per_person.toLocaleString()}
                               {item.price.price_per_person === 1 ? "" : <p className="ml-1">UZS</p>}
                             </span>
                           </div>

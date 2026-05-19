@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Script from "next/script";
 import { Loader2 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
@@ -9,7 +8,7 @@ import { PrivacyPolicy } from "@/components/pages/privacy-policy/page";
 import { PageProps } from "@/types";
 
 export async function generateMetadata({ params }: PageProps) {
-  return generatePageMetadata((await params).locale, "privacyPolicy", "");
+  return generatePageMetadata((await params).locale, "privacyPolicy", "/privacy-policy");
 }
 
 const Page = async ({ params }: PageProps) => {
@@ -17,7 +16,7 @@ const Page = async ({ params }: PageProps) => {
 
   const t = await getTranslations({
     locale,
-    namespace: "metadata.publicOffer",
+    namespace: "metadata.privacyPolicy",
   });
 
   const { page, breadcrumb } = getPageJsonLd({
@@ -30,16 +29,12 @@ const Page = async ({ params }: PageProps) => {
 
   return (
     <>
-      <Script
-        id="privacy-policy-schema"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
       />
-      <Script
-        id="breadcrumbSchema-org"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 

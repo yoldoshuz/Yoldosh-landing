@@ -1,8 +1,4 @@
-import {
-  buildRouteSlug,
-  listPopularRouteSlugs,
-  resolveCity,
-} from "@/app/lib/route-resolver";
+import { buildRouteSlug, listPopularRouteSlugs, resolveCity } from "@/app/lib/route-resolver";
 
 // /sitemap-trips.xml — exposes every indexable city-pair landing page.
 //
@@ -31,10 +27,9 @@ interface ApiTrip {
 
 async function fetchTripsPage(page: number): Promise<ApiTrip[]> {
   try {
-    const res = await fetch(
-      `${API_URL}/public/trips/popular?page=${page}&limit=${PAGE_SIZE}`,
-      { next: { revalidate: 86400 } },
-    );
+    const res = await fetch(`${API_URL}/public/trips/popular?page=${page}&limit=${PAGE_SIZE}`, {
+      next: { revalidate: 86400 },
+    });
     if (!res.ok) return [];
     const json = await res.json();
     return json?.data?.trips ?? [];
@@ -66,9 +61,7 @@ export async function GET() {
   const routeMap = new Map<string, { lastmod: string }>();
 
   try {
-    const tripPages = await Promise.all(
-      Array.from({ length: PAGE_COUNT }, (_, i) => fetchTripsPage(i + 1)),
-    );
+    const tripPages = await Promise.all(Array.from({ length: PAGE_COUNT }, (_, i) => fetchTripsPage(i + 1)));
 
     for (const page of tripPages) {
       for (const trip of page) {
@@ -78,10 +71,7 @@ export async function GET() {
 
         // Async catalog lookup — seed first, falls through to the live
         // catalog populated from the same API surface.
-        const [from, to] = await Promise.all([
-          resolveCity(fromCityName),
-          resolveCity(toCityName),
-        ]);
+        const [from, to] = await Promise.all([resolveCity(fromCityName), resolveCity(toCityName)]);
         if (!from || !to || from.key === to.key) continue;
 
         const slug = buildRouteSlug(from, to);
@@ -105,7 +95,7 @@ export async function GET() {
   if (routeMap.size === 0) {
     return new Response(
       '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',
-      { headers: { "Content-Type": "application/xml" } },
+      { headers: { "Content-Type": "application/xml" } }
     );
   }
 

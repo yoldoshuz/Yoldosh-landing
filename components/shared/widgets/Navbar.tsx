@@ -1,13 +1,13 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { CloudDownload } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 import { Link, usePathname } from "@/app/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { navLinks } from "@/constants";
@@ -120,10 +120,15 @@ export const Navbar = () => {
             <div className="hidden md:flex">
               <LanguageSwitcher />
             </div>
-              <Button onClick={() => {router.push("https://app.yoldosh.uz")}} className="btn-glow">
-                <CloudDownload />
-                {t("DownloadApp")}
-              </Button>
+            <Button
+              onClick={() => {
+                router.push("https://app.yoldosh.uz");
+              }}
+              className="btn-glow"
+            >
+              <CloudDownload />
+              {t("DownloadApp")}
+            </Button>
             <div className="flex md:hidden">
               <Menu />
             </div>

@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useRouter as Router } from "next/navigation";
+import { useRouter as Router, usePathname } from "next/navigation";
 import {
   ArrowLeft,
   Backpack,
@@ -45,7 +44,7 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
         return "uz-UZ";
       case "ru":
         return "ru-RU";
-      case "en":             
+      case "en":
         return "en-US";
       default:
         return "ru-RU";
@@ -245,24 +244,26 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
 
         {/* Preferences */}
         <div className="flex flex-col gap-2 space-y-2 mb-24 bg-white rounded-3xl px-6 py-4">
-          <div className={`flex items-center gap-1 ${trip.garage === "EMPTY" ? 'text-emerald-500' : trip.garage === "HALF_EMPTY" ? 'text-yellow-500' : 'text-red-500'}`}>
+          <div
+            className={`flex items-center gap-1 ${trip.garage === "EMPTY" ? "text-emerald-500" : trip.garage === "HALF_EMPTY" ? "text-yellow-500" : "text-red-500"}`}
+          >
             <Backpack className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.Garage")}&nbsp;-</p>
             {trip.garage === "EMPTY" && t("Preferences.Empty")}
             {trip.garage === "HALF_EMPTY" && t("Preferences.HalfEmpty")}
             {trip.garage === "FULL" && t("Preferences.Full")}
           </div>
-          <div className={`flex items-center gap-1 ${trip.conditioner === true ? 'text-emerald-500' : 'text-red-500'}`}>
+          <div className={`flex items-center gap-1 ${trip.conditioner === true ? "text-emerald-500" : "text-red-500"}`}>
             <Snowflake className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.AC")}&nbsp;-</p>
             {trip.conditioner === true ? t("Preferences.Yes") : t("Preferences.No")}
           </div>
-          <div className={`flex items-center gap-1 ${trip.door_pickup === true ? 'text-emerald-500' : 'text-red-500'}`}>
+          <div className={`flex items-center gap-1 ${trip.door_pickup === true ? "text-emerald-500" : "text-red-500"}`}>
             <DoorOpen className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.Door")}&nbsp;-</p>
             {trip.door_pickup === true ? t("Preferences.Yes") : t("Preferences.No")}
           </div>
-          <div className={`flex items-center gap-1 ${trip.food_stop === true ? 'text-emerald-500' : 'text-red-500'}`}>
+          <div className={`flex items-center gap-1 ${trip.food_stop === true ? "text-emerald-500" : "text-red-500"}`}>
             <Utensils className="size-5 mr-2" strokeWidth={1} />
             <p>{t("Preferences.Food")}&nbsp;-</p>
             {trip.food_stop === true ? t("Preferences.Allowed") : t("Preferences.NotAllowed")}
@@ -281,7 +282,14 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </span>
               </div>
             </div>
-            <Button onClick={() => { routerRedirect.push("https://app.yoldosh.uz") }} className="btn-primary">{t("Book")}</Button>
+            <Button
+              onClick={() => {
+                routerRedirect.push("https://app.yoldosh.uz");
+              }}
+              className="btn-primary"
+            >
+              {t("Book")}
+            </Button>
           </div>
         </div>
       </Card>

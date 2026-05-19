@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import Image from "next/image";
-
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+
 import { Button } from "../../ui/button";
 
 export const Travel = () => {
@@ -18,7 +18,12 @@ export const Travel = () => {
           <p className="text-white w-full max-w-112.5">{t("Description")}</p>
           <p className="text-white/80 italic">{t("Subtitle")}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-            <Button onClick={() => {router.push("https://redirect.appmetrica.yandex.com/serve/173876829097132884")}} className="py-6">
+            <Button
+              onClick={() => {
+                router.push("https://redirect.appmetrica.yandex.com/serve/173876829097132884");
+              }}
+              className="py-6"
+            >
               <Image
                 src="/assets/apple.png"
                 alt="apple"
@@ -29,7 +34,12 @@ export const Travel = () => {
               />
               {t("AppStore")}
             </Button>
-            <Button onClick={() => {router.push("https://redirect.appmetrica.yandex.com/serve/317992046667305463")}} className="py-6">
+            <Button
+              onClick={() => {
+                router.push("https://redirect.appmetrica.yandex.com/serve/317992046667305463");
+              }}
+              className="py-6"
+            >
               <Image
                 src="/assets/play.png"
                 alt="play"

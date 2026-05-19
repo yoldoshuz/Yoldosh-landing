@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
 import { getPageJsonLd } from "@/app/lib/jsonld";
@@ -15,7 +14,7 @@ const Page = async ({ params }: PageProps) => {
   const { locale } = await params;
   const t = await getTranslations({
     locale,
-    namespace: "metadata.trips",
+    namespace: "metadata.about",
   });
 
   const { page, breadcrumb } = getPageJsonLd({
@@ -28,16 +27,12 @@ const Page = async ({ params }: PageProps) => {
 
   return (
     <>
-      <Script
-        id="aboutPageSchema-org"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
       />
-      <Script
-        id="breadcrumbSchema-org"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 

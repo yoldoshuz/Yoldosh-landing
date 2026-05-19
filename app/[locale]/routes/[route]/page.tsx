@@ -1,17 +1,16 @@
-import Script from "next/script";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-import { Footer } from "@/components/shared/widgets/Footer";
-import { Button } from "@/components/ui/button";
 import { getDisplayName } from "@/app/lib/cities";
 import {
-  ResolvedRoute,
   listPopularRouteSlugs,
+  ResolvedRoute,
   resolveRoute,
   resolveRouteWithLiveStats,
 } from "@/app/lib/route-resolver";
+import { Footer } from "@/components/shared/widgets/Footer";
+import { Button } from "@/components/ui/button";
 
 const SITE_URL = "https://yoldosh.uz";
 const LOCALES = ["ru", "uz", "en"] as const;
@@ -69,12 +68,8 @@ async function fetchLiveStats(route: ResolvedRoute): Promise<{
     const trips: LiveTrip[] = (json?.data?.trips ?? []).slice(0, 10);
 
     // Aggregate non-zero stats — API often returns distance: 0 even for real trips.
-    const validDurations = trips
-      .map((t) => (typeof t.duration === "number" ? t.duration : 0))
-      .filter((m) => m > 0);
-    const validDistances = trips
-      .map((t) => (typeof t.distance === "number" ? t.distance : 0))
-      .filter((k) => k > 0);
+    const validDurations = trips.map((t) => (typeof t.duration === "number" ? t.duration : 0)).filter((m) => m > 0);
+    const validDistances = trips.map((t) => (typeof t.distance === "number" ? t.distance : 0)).filter((k) => k > 0);
 
     const avgDurationMin = validDurations.length
       ? validDurations.reduce((a, b) => a + b, 0) / validDurations.length
@@ -178,18 +173,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: descriptions[l],
       url: `${SITE_URL}/${l}/routes/${canonicalSlug}`,
       type: "website",
-      siteName: "Yo'ldosh",
-      locale: l,
+      siteName: "Yoldosh",
+      // Open Graph expects BCP-47 form (ru_RU, uz_UZ, en_US) — raw
+      // 2-letter codes are silently dropped by Facebook's parser.
+      locale: l === "ru" ? "ru_RU" : l === "uz" ? "uz_UZ" : "en_US",
+      alternateLocale: LOCALES.filter((x) => x !== l).map((x) =>
+        x === "ru" ? "ru_RU" : x === "uz" ? "uz_UZ" : "en_US"
+      ),
+      images: [
+        {
+          url: `${SITE_URL}/og-trips-${l}.png`,
+          width: 1200,
+          height: 630,
+          alt: titles[l],
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: titles[l],
       description: descriptions[l],
+      images: [`${SITE_URL}/og-trips-${l}.png`],
     },
     robots: {
       index: true,
       follow: true,
-      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
   };
 }
@@ -216,9 +231,7 @@ export default async function RoutePage({ params }: Props) {
     })) ?? baseResolved;
   const liveTrips = liveStats.trips;
 
-  const safeLocale: AppLocale = LOCALES.includes(locale as AppLocale)
-    ? (locale as AppLocale)
-    : "ru";
+  const safeLocale: AppLocale = LOCALES.includes(locale as AppLocale) ? (locale as AppLocale) : "ru";
 
   const fromName = getDisplayName(resolved.fromCity, safeLocale);
   const toName = getDisplayName(resolved.toCity, safeLocale);
@@ -268,26 +281,65 @@ export default async function RoutePage({ params }: Props) {
     ? (t.raw("faq") as { q: string; a: string }[])
     : defaultFaq(fromName, toName, distanceKm, durationH, safeLocale);
 
+  const pageUrl = `${SITE_URL}/${safeLocale}/routes/${canonicalSlug}`;
+
+  // TouristTrip describes the journey itself; we wrap it with a Service
+  // node so Google can also surface the offering as a "carpooling service
+  // between cityA and cityB" in AI Overviews and Knowledge Graph cards.
+  // Both nodes reference the central Organization via stable `@id`.
   const tripJsonLd = {
     "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    name: `${fromName} → ${toName}`,
-    description: intro,
-    touristType: ["Budget travelers", "Commuters", "Carpoolers"],
-    itinerary: [
+    "@graph": [
       {
-        "@type": "City",
-        name: fromName,
-        geo: { "@type": "GeoCoordinates", latitude: resolved.fromCity.lat, longitude: resolved.fromCity.lon },
+        "@type": "TouristTrip",
+        "@id": `${pageUrl}#trip`,
+        name: `${fromName} → ${toName}`,
+        description: intro,
+        touristType: ["Budget travelers", "Commuters", "Carpoolers"],
+        itinerary: [
+          {
+            "@type": "City",
+            name: fromName,
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: resolved.fromCity.lat,
+              longitude: resolved.fromCity.lon,
+            },
+          },
+          {
+            "@type": "City",
+            name: toName,
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: resolved.toCity.lat,
+              longitude: resolved.toCity.lon,
+            },
+          },
+        ],
+        provider: { "@id": `${SITE_URL}#organization` },
+        url: pageUrl,
+        inLanguage: safeLocale,
       },
       {
-        "@type": "City",
-        name: toName,
-        geo: { "@type": "GeoCoordinates", latitude: resolved.toCity.lat, longitude: resolved.toCity.lon },
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        name: `Carpooling ${fromName} ${toName}`,
+        serviceType: "Carpooling",
+        provider: { "@id": `${SITE_URL}#organization` },
+        areaServed: [
+          { "@type": "City", name: fromName },
+          { "@type": "City", name: toName },
+        ],
+        description: intro,
+        url: pageUrl,
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "UZS",
+          availability: "https://schema.org/InStock",
+          offerCount: liveTrips.length || undefined,
+        },
       },
     ],
-    provider: { "@type": "Organization", name: "Yo'ldosh", url: SITE_URL },
-    url: `${SITE_URL}/${safeLocale}/routes/${canonicalSlug}`,
   };
 
   const breadcrumbJsonLd = {
@@ -357,31 +409,29 @@ export default async function RoutePage({ params }: Props) {
 
   return (
     <>
-      <Script
-        id="route-trip-jsonld"
+      {/*
+        JSON-LD blocks are inlined as plain `<script type="application/ld+json">`
+        — they ship with the server-rendered HTML so crawlers parse them on
+        first byte, without the client-side scheduling overhead of `<Script>`
+        (which `beforeInteractive` would only honor in the root layout).
+      */}
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(tripJsonLd) }}
       />
-      <Script
-        id="route-breadcrumb-jsonld"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd && (
-        <Script
-          id="route-faq-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
       {itemListJsonLd && (
-        <Script
-          id="route-itemlist-jsonld"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
         />
       )}
@@ -419,15 +469,12 @@ export default async function RoutePage({ params }: Props) {
                 const dep = new Date(trip.departure_ts);
                 const depStr = isNaN(dep.getTime())
                   ? trip.departure_ts
-                  : dep.toLocaleString(
-                      safeLocale === "ru" ? "ru-RU" : safeLocale === "uz" ? "uz-UZ" : "en-US",
-                      {
-                        day: "2-digit",
-                        month: "short",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      },
-                    );
+                  : dep.toLocaleString(safeLocale === "ru" ? "ru-RU" : safeLocale === "uz" ? "uz-UZ" : "en-US", {
+                      day: "2-digit",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    });
                 return (
                   <li
                     key={trip.id}
@@ -479,7 +526,7 @@ function defaultFaq(
   toName: string,
   distanceKm: number,
   durationH: number,
-  locale: AppLocale,
+  locale: AppLocale
 ): { q: string; a: string }[] {
   if (locale === "uz") {
     return [

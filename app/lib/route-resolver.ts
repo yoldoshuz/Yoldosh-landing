@@ -15,14 +15,7 @@
 //   - The /[route] page samples a few live trips and feeds the averages
 //     back into the rendered metadata via resolveRouteWithLiveStats().
 
-import {
-  City,
-  CITIES,
-  CITY_BY_ALIAS,
-  CITY_BY_KEY,
-  POPULAR_CITIES,
-  normalizeForLookup,
-} from "./cities";
+import { CITIES, City, CITY_BY_ALIAS, CITY_BY_KEY, normalizeForLookup, POPULAR_CITIES } from "./cities";
 import { getCityCatalog } from "./city-catalog";
 
 export interface ResolvedRoute {
@@ -73,10 +66,7 @@ export function estimateDurationH(distanceKm: number): number {
  * Splits a slug into two city aliases, trying every possible split position
  * to handle multi-word names like "denov-tumani" or "qoʻrgʻontepa-toshkent".
  */
-function splitToCities(
-  slug: string,
-  byAlias: Map<string, City>,
-): { from: City; to: City } | null {
+function splitToCities(slug: string, byAlias: Map<string, City>): { from: City; to: City } | null {
   const normalized = normalizeForLookup(slug);
   if (!normalized) return null;
   const parts = normalized.split("-").filter(Boolean);
@@ -97,7 +87,7 @@ function buildResolved(
   to: City,
   inputSlug: string,
   overrideDistanceKm?: number,
-  overrideDurationH?: number,
+  overrideDurationH?: number
 ): ResolvedRoute {
   const canonicalSlug = `${from.key}-${to.key}`;
   const normalized = normalizeForLookup(inputSlug);
@@ -160,18 +150,12 @@ export async function resolveRoute(slug: string): Promise<ResolvedRoute | null> 
  */
 export async function resolveRouteWithLiveStats(
   slug: string,
-  liveStats?: { distanceKm?: number; durationH?: number },
+  liveStats?: { distanceKm?: number; durationH?: number }
 ): Promise<ResolvedRoute | null> {
   const base = await resolveRoute(slug);
   if (!base) return null;
   if (!liveStats) return base;
-  return buildResolved(
-    base.fromCity,
-    base.toCity,
-    slug,
-    liveStats.distanceKm,
-    liveStats.durationH,
-  );
+  return buildResolved(base.fromCity, base.toCity, slug, liveStats.distanceKm, liveStats.durationH);
 }
 
 /**

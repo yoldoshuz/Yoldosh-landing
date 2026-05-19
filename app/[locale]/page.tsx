@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
 import { generatePageMetadata } from "@/app/lib/seo";
@@ -33,16 +32,19 @@ const Page = async ({ params }: PageProps) => {
 
   return (
     <>
-      <Script
-        id="webPageSchema-org"
+      {/*
+        JSON-LD is structured data, not executable script — emit it as a
+        plain `<script type="application/ld+json">` so it ships with the
+        initial server-rendered HTML. `<Script strategy="beforeInteractive">`
+        is silently downgraded in nested route segments and has no benefit
+        here (LD payloads don't execute).
+      */}
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
       />
-      <Script
-        id="breadcrumbSchema-org"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 

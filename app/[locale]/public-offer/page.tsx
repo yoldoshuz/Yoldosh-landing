@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Script from "next/script";
 import { Loader2 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
@@ -9,7 +8,7 @@ import { PublicOffer } from "@/components/pages/public-offer/PublicOffer";
 import { PageProps } from "@/types";
 
 export async function generateMetadata({ params }: PageProps) {
-  return generatePageMetadata((await params).locale, "publicOffer", "");
+  return generatePageMetadata((await params).locale, "publicOffer", "/public-offer");
 }
 
 const Page = async ({ params }: PageProps) => {
@@ -29,16 +28,12 @@ const Page = async ({ params }: PageProps) => {
 
   return (
     <>
-      <Script
-        id="public-offer-schema"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
       />
-      <Script
-        id="breadcrumbSchema-org"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 
