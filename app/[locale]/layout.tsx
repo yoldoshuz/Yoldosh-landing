@@ -1,5 +1,6 @@
 import Script from "next/script";
 import NotFound from "./not-found";
+import { Suspense } from "react";
 import YandexMetrika from "@/components/functional/YandexMetrika";
 
 import { Metadata } from "next";
@@ -105,7 +106,9 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         />
       </head>
       <body className={`${font.className} antialiased`}>
-        <YandexMetrika />
+        <Suspense fallback={null}>
+          <YandexMetrika />
+        </Suspense>
         {/*
           Google Maps Places API is only required on pages that mount the
           search autocomplete. Deferring with `lazyOnload` keeps it out of
