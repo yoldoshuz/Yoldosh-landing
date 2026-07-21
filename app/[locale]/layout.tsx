@@ -1,6 +1,9 @@
+import Script from "next/script";
+import NotFound from "./not-found";
+import YandexMetrika from "@/components/functional/YandexMetrika";
+
 import { Metadata } from "next";
 import { Chiron_GoRound_TC } from "next/font/google";
-import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -8,7 +11,6 @@ import { getOrganizationJsonLd, getWebSiteJsonLd } from "@/app/lib/jsonld";
 import { Navbar } from "@/components/shared/widgets/Navbar";
 import { LayoutProps } from "@/types";
 import { routing } from "../i18n/routing";
-import NotFound from "./not-found";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ThemeProviders } from "./providers/ThemeProviders";
 
@@ -103,6 +105,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         />
       </head>
       <body className={`${font.className} antialiased`}>
+        <YandexMetrika />
         {/*
           Google Maps Places API is only required on pages that mount the
           search autocomplete. Deferring with `lazyOnload` keeps it out of
@@ -122,20 +125,29 @@ export default async function RootLayout({ children, params }: LayoutProps) {
           browser is idle dramatically improves Core Web Vitals without
           losing any analytical signal.
         */}
-        <Script id="yandex-metrika" strategy="lazyOnload">
+        <Script id="yandex-metrika" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){
               m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
               m[i].l=1*new Date();
+              for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) return;
+              }
               k=e.createElement(t),a=e.getElementsByTagName(t)[0];
-              k.async=1;k.src=r;a.parentNode.insertBefore(k,a);
-            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+              k.async=1;
+              k.src=r;
+              a.parentNode.insertBefore(k,a);
+            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=105993566", "ym");
+
             ym(105993566, "init", {
-              clickmap:true,
-              trackLinks:true,
-              accurateTrackBounce:true,
-              webvisor:true,
-              defer:true
+              ssr: true,
+              webvisor: true,
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true,
+              ecommerce: "dataLayer",
+              referrer: document.referrer,
+              url: location.href
             });
           `}
         </Script>
