@@ -120,6 +120,15 @@ export const Navbar = () => {
             <div className="hidden md:flex">
               <LanguageSwitcher />
             </div>
+            {/*
+              Marketing is only ever rendered for signed-out visitors
+              (`MarketingGuard` bounces everyone else into the app), so this
+              is unconditionally the "sign in" entry point — no session check
+              and no logged-in variant to keep in sync.
+            */}
+            <Button asChild variant="secondary">
+              <Link href="/login">{t("Login")}</Link>
+            </Button>
             <Button
               onClick={() => {
                 router.push("https://app.yoldosh.uz");

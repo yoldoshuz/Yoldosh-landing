@@ -23,6 +23,35 @@ export const routing = defineRouting({
     "/for-passengers": "/for-passengers",
     "/blog": "/blog",
     "/blog/[slug]": "/blog/[slug]",
+
+    // ===== Authenticated app shell =====
+    // Deliberately identical across locales: these URLs are noindex and only
+    // ever reached from inside the app, so there is no SEO value in
+    // translating them — and one spelling keeps deep links portable.
+    "/login": "/login",
+    // The five tabs of the mobile build, in its order.
+    "/search": "/search",
+    "/publish": "/publish",
+    "/my-trips": "/my-trips",
+    "/chats": "/chats",
+    "/profile": "/profile",
+
+    "/chats/[chatId]": "/chats/[chatId]",
+    "/ride/[tripId]": "/ride/[tripId]",
+    "/parcels": "/parcels",
+    "/wallet": "/wallet",
+    "/notifications": "/notifications",
+
+    // Profile sub-screens, each its own page on mobile.
+    "/profile/edit": "/profile/edit",
+    "/profile/cars": "/profile/cars",
+    "/profile/reviews": "/profile/reviews",
+    "/profile/notifications": "/profile/notifications",
+    "/profile/language": "/profile/language",
+    "/profile/security": "/profile/security",
+    "/profile/promocodes": "/profile/promocodes",
+    "/profile/help": "/profile/help",
+    "/users/[userId]": "/users/[userId]",
   },
 });
 

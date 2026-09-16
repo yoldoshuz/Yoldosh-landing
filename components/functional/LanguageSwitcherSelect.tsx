@@ -11,9 +11,11 @@ import { cn } from "@/lib/utils";
 interface LanguageSwitcherSelectProps {
   defaultValue: string;
   items: Array<{ value: string; label: string }>;
+  /** Lets the app sidebar stretch the trigger to the full column width. */
+  className?: string;
 }
 
-export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcherSelectProps) => {
+export const LanguageSwitcherSelect = ({ defaultValue, items, className }: LanguageSwitcherSelectProps) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
@@ -36,7 +38,8 @@ export const LanguageSwitcherSelect = ({ defaultValue, items }: LanguageSwitcher
       <SelectTrigger
         className={cn(
           "h-8 w-auto font-medium bg-white border-none shadow-lg",
-          isPending && "opacity-50 cursor-not-allowed"
+          isPending && "opacity-50 cursor-not-allowed",
+          className
         )}
         disabled={isPending}
       >

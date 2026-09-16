@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter as Router, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   ArrowLeft,
   Backpack,
@@ -30,7 +30,6 @@ interface TripDetailsProps {
 
 export const TripDetails = ({ trip }: TripDetailsProps) => {
   const t = useTranslations("Pages.Trips.Details");
-  const routerRedirect = Router();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -282,9 +281,16 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
                 </span>
               </div>
             </div>
+            {/*
+              Booking lives in the signed-in app, so a guest gets handed to
+              /login carrying this trip as `next`. Finishing sign-up (or the
+              third registration step) drops them straight back on this ride,
+              ready to book — instead of on a generic home screen with no memory
+              of what they were doing.
+            */}
             <Button
               onClick={() => {
-                routerRedirect.push("https://app.yoldosh.uz");
+                router.push({ pathname: "/login", query: { next: `/ride/${trip.id}` } });
               }}
               className="btn-primary"
             >

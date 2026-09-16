@@ -5,7 +5,8 @@
       "About": "Biz haqimizda",
       "Trips": "Sayohatlar",
       "Blog": "Blog",
-      "DownloadApp": "Yuklab olish"
+      "DownloadApp": "Yuklab olish",
+      "Login": "Kirish"
     },
     "Search": {
       "From": "Qayerdan",
@@ -14,13 +15,13 @@
       "FromCityPlaceholder": "Toshkent",
       "ToCityPlaceholder": "Andijon",
       "Passengers": {
-        "Title": "Yo‘lovchilar",
         "1": "1 yo‘lovchi",
         "2": "2 yo‘lovchi",
         "3": "3 yo‘lovchi",
         "4": "4 yo‘lovchi",
         "5": "5 yo‘lovchi",
-        "6": "6 yo‘lovchi"
+        "6": "6 yo‘lovchi",
+        "Title": "Yo‘lovchilar"
       },
       "Search": "Qidirish",
       "Filters": "Filtrlar",
@@ -45,7 +46,8 @@
         "Any": "Farqi yo‘q",
         "Empty": "Bo'sh",
         "HalfEmpty": "Yarmi bo'sh",
-        "Full": "To'la"
+        "Full": "To'la",
+        "MaxTwoBack": "Orqada ko'pi bilan 2 kishi"
       },
       "Any": "Farqi yo‘q",
       "Yes": "Ha",
@@ -55,23 +57,23 @@
     "Calendar": "dd.mm.yyyy",
     "Footer": {
       "Product": {
-        "Title": "Mahsulot",
         "1": "Yo‘lovchilar uchun",
         "2": "Haydovchilar uchun",
-        "3": "Narxlar"
+        "3": "Narxlar",
+        "Title": "Mahsulot"
       },
       "Company": {
-        "Title": "Kompaniya",
         "1": "Biz haqimizda",
         "2": "Karyera",
-        "3": "Blog"
+        "3": "Blog",
+        "Title": "Kompaniya"
       },
       "Support": {
-        "Title": "Qo‘llab-quvvatlash",
         "1": "Yordam",
         "2": "Aloqa",
         "3": "Maxfiylik siyosati",
-        "4": "Ommaviy taklif"
+        "4": "Ommaviy taklif",
+        "Title": "Qo‘llab-quvvatlash"
       },
       "Rights": "Barcha huquqlar himoyalangan"
     }
@@ -186,11 +188,11 @@
       "Title": "Bizga firibgarlardan himoya qilishda yordam bering",
       "Subtitle": "Yo‘ldoshda biz sayohatlaringiz xavfsiz bo‘lishi uchun hamma narsani qilamiz. Lekin ba’zida firibgarlar foydalanuvchilar ishonchidan foydalanishga harakat qiladi.",
       "Protect": {
-        "Title": "O‘zingizni himoya qilish uchun:",
         "1": "Faqat Yo‘ldosh ilovasi orqali muloqot qiling va to‘lov amalga oshiring.",
         "2": "Hech kimga SMS kodlar, PIN-kodlar yoki bank karta ma’lumotlarini bermang.",
         "3": "Haydovchi va yo‘lovchilarning reytingi va sharhlarini tekshiring.",
-        "4": "Agar shubhali narsa sezsangiz — bizga xabar bering, darhol hal qilamiz."
+        "4": "Agar shubhali narsa sezsangiz — bizga xabar bering, darhol hal qilamiz.",
+        "Title": "O‘zingizni himoya qilish uchun:"
       },
       "Security": "Xavfsizlik — bu bizning umumiy mas’uliyatimiz.",
       "BeCareful": "Ehtiyot bo‘ling va Yo‘ldosh bilan har bir sayohat tinch va ishonchli bo‘ladi."
@@ -302,7 +304,6 @@
       "city": "Toshkent sh.",
       "intro": "'MILLIY YOLDOSH' MChJ, keyingi o'rinlarda 'Ijrochi' deb ataluvchi, direktor nomidan Ustav asosida harakat qiluvchi, Yo'ldosh platformasiga kirish huquqini berish bo'yicha xizmatlar ko'rsatish shartnomasini tuzish haqida ushbu Ommaviy taklifni e'lon qiladi.",
       "terms": {
-        "title": "1. ATAMALAR VA TA'RIFLAR",
         "1": "1.1 Ommaviy taklif (keyingi o'rinlarda – «Taklif») – Ijrochining noaniq shaxslarga yo'naltirilgan ommaviy taklifi, ushbu Taklifda bayon etilgan shartlar asosida Shartnoma tuzish.",
         "2": "1.2 Taklifni qabul qilish – ushbu Taklifning 3.2-bandida ko'rsatilgan harakatlarni amalga oshirish orqali Taklifni to'liq va so'zsiz qabul qilish.",
         "3": "1.3 Foydalanuvchi – 18 yoshga to'lgan va Ijrochi bilan ushbu Taklifda mavjud shartlar asosida Shartnoma tuzgan jismoniy shaxs.",
@@ -311,22 +312,23 @@
         "6": "1.6 Yo'lovchi – Ilovani sayohatlarni qidirish va bron qilish uchun ishlatuvchi Foydalanuvchi.",
         "7": "1.7 Sayohat – Ilovada Haydovchi tomonidan e'lon qilingan marshrut bo'yicha Haydovchining avtomobilida birgalikdagi sayohat.",
         "8": "1.8 Tekshiruv – Haydovchi hujjatlarini (haydovchilik guvohnomasi, avtomobil texnik pasporti) Ijrochi avtomatlashtirilgan tizimi orqali tekshirish tartibi.",
-        "9": "1.9 Xizmat komissiyasi – Platformaga kirish huquqini berish uchun Ijrochining mukofoti, uning miqdori ushbu Taklifning 5-bo'limiga muvofiq aniqlanadi."
+        "9": "1.9 Xizmat komissiyasi – Platformaga kirish huquqini berish uchun Ijrochining mukofoti, uning miqdori ushbu Taklifning 5-bo'limiga muvofiq aniqlanadi.",
+        "title": "1. ATAMALAR VA TA'RIFLAR"
       },
       "subject": {
-        "title": "2. SHARTNOMA PREDMETI",
         "1": "2.1 Ijrochi Foydalanuvchiga birgalikdagi sayohatlarni tashkil qilish uchun Platforma funksiyalariga kirish huquqini berishga majbur, Foydalanuvchi esa Platformadan ushbu Taklif shartlariga muvofiq foydalanishga va Xizmat komissiyasini ushbu Taklifda nazarda tutilgan tartibda va shartlarda to'lashga majbur.",
         "2": "2.2 Ijrochi Haydovchilar va Yo'lovchilar o'rtasida o'zaro aloqani ta'minlovchi texnologik platformani taqdim etadi. Ijrochi tashuvchi emas va yo'lovchilarni tashish xizmatlarini ko'rsatmaydi.",
-        "3": "2.3 Transport xizmatlarini ko'rsatish shartnomasi bevosita Haydovchi va Yo'lovchi o'rtasida tuziladi. Tashish bo'yicha majburiyatlarni to'g'ri bajarish uchun javobgarlik Haydovchiga yuklatiladi."
+        "3": "2.3 Transport xizmatlarini ko'rsatish shartnomasi bevosita Haydovchi va Yo'lovchi o'rtasida tuziladi. Tashish bo'yicha majburiyatlarni to'g'ri bajarish uchun javobgarlik Haydovchiga yuklatiladi.",
+        "title": "2. SHARTNOMA PREDMETI"
       },
       "acceptance": {
-        "title": "3. TAKLIFNI QABUL QILISH TARTIBI",
         "1": "3.1 Ushbu Taklifni qabul qilish Taklifning barcha shartlarini hech qanday istisno va cheklovlarsiz to'liq va so'zsiz qabul qilishni anglatadi.",
         "2": "3.2 Ushbu Taklifni qabul qilish Foydalanuvchi tomonidan quyidagi harakatlarni amalga oshirishdir:",
-        "2_1": "3.2.1 Ilovaga telefon raqamini kiritish;",
-        "2_2": "3.2.2 SMS-xabar orqali olingan bir martalik kodni (OTP-kod) kiritish orqali telefon raqamini tasdiqlash.",
         "3": "3.3 Taklifni qabul qilish va Shartnomani tuzish momenti OTP-kodni muvaffaqiyatli kiritish va Ilova funksiyalariga kirish olish momenti hisoblanadi.",
         "4": "3.4 Ushbu Taklifni qabul qilish orqali Foydalanuvchi quyidagilarni tasdiqlaydi:",
+        "title": "3. TAKLIFNI QABUL QILISH TARTIBI",
+        "2_1": "3.2.1 Ilovaga telefon raqamini kiritish;",
+        "2_2": "3.2.2 SMS-xabar orqali olingan bir martalik kodni (OTP-kod) kiritish orqali telefon raqamini tasdiqlash.",
         "4_1": "3.4.1 18 yoshga to'lgan;",
         "4_2": "3.4.2 ushbu Taklif shartlari bilan to'liq tanishgan;",
         "4_3": "3.4.3 Shartnoma predmetini to'liq tushunadi;",
@@ -368,7 +370,6 @@
         "userRights3": "4.5.3 Har qanday vaqtda Platformadan foydalanishni to'xtatish va o'z hisobini o'chirish."
       },
       "pricing": {
-        "title": "5. XIZMATLAR NARXI VA HISOB-KITOB TARTIBI",
         "1": "5.1 Ilovada ro'yxatdan o'tish va Yo'lovchi rolini olish bepuldir.",
         "2": "5.2 Haydovchini tekshirish va sayohatlarni e'lon qilishga kirish olish bepuldir.",
         "3": "5.3 Platforma ishining dastlabki bosqichida Ijrochi Haydovchilarga komissiyasiz davrni taqdim etadi, bu davrda Xizmat komissiyasi undirilmaydi. Komissiyasiz davrning davomiyligi Ijrochi tomonidan aniqlanadi va turli Haydovchilar uchun farq qilishi mumkin.",
@@ -377,11 +378,18 @@
         "6": "5.6 Xizmat komissiyasi «Sayohatni tugatish» tugmasini bosgandan keyin Haydovchining Ilovadagi balansidan avtomatik ravishda undiriladi.",
         "7": "5.7 Haydovchi Xizmat komissiyasini to'lash uchun Ilovada ijobiy balansni saqlashga majbur. Balansni to'ldirish Ilovada mavjud usullar orqali amalga oshiriladi.",
         "8": "5.8 Haydovchi balansida Xizmat komissiyasini to'lash uchun yetarli mablag' bo'lmagan taqdirda, qarz tizimda qayd etiladi. Haydovchi qarzni 3 (uch) kalendar kun ichida to'lashga majbur. Qarz to'langunga qadar Haydovchi yangi sayohatlarni e'lon qila olmaydi.",
-        "9": "5.9 Haydovchi va Yo'lovchi o'rtasidagi transport xizmatlari uchun hisob-kitoblar bevosita ular o'rtasida amalga oshiriladi va Platforma orqali o'tmaydi. Ijrochi tashish shartnomasining tarafi emas va Haydovchi va Yo'lovchi o'rtasidagi hisob-kitoblar uchun javobgar emas."
+        "9": "5.9 Haydovchi va Yo'lovchi o'rtasidagi transport xizmatlari uchun hisob-kitoblar bevosita ular o'rtasida amalga oshiriladi va Platforma orqali o'tmaydi. Ijrochi tashish shartnomasining tarafi emas va Haydovchi va Yo'lovchi o'rtasidagi hisob-kitoblar uchun javobgar emas.",
+        "title": "5. XIZMATLAR NARXI VA HISOB-KITOB TARTIBI"
       },
       "liability": {
-        "title": "6. PLATFORMADAN FOYDALANISH QOIDALARI VA JAVOBGARLIK",
         "1": "6.1 Foydalanuvchilarga QAT'IY TAQIQLANADI:",
+        "2": "6.2 Foydalanuvchi tomonidan ushbu Taklifning 6.1-bandi qoidalari buzilgan taqdirda, Ijrochi huquqiga ega:",
+        "3": "6.3 Javobgarlik chorasini qo'llash haqidagi qaror Ijrochi tomonidan mustaqil ravishda, buzilish xarakteri va og'irligini hisobga olgan holda qabul qilinadi.",
+        "4": "6.4 6.1.1 va 6.1.2-bandlarida ko'rsatilgan qoidalarning (aloqa ma'lumotlarini almashish, Platforma tashqarisida muloqot) takroriy buzilishida hisob ogohlantirishsiz va tiklash huquqisiz bloklanadi.",
+        "5": "6.5 Haydovchi quyidagilar uchun to'liq javobgarlikni o'z zimmasiga oladi: Yo'lovchilarni tashish xavfsizligi; transport vositasining texnik holati; Yo'l harakati qoidalariga rioya qilish; transport vositasini boshqarish huquqi va transport vositasi uchun amal qiluvchi hujjatlar mavjudligi; sayohat vaqtida Yo'lovchilar va uchinchi shaxslar hayoti, salomatligi yoki mulkiga zarar yetkazish.",
+        "6": "6.6 Ijrochi quyidagilar uchun javobgar emas: Haydovchilar va Yo'lovchilarning harakatlari yoki harakatsizligi; Haydovchilar tomonidan ko'rsatiladigan tashish xizmatlari sifati; Foydalanuvchilarga bir-biri bilan o'zaro aloqada bo'lgan zarar; sayohat vaqtida Foydalanuvchilar mulkining yo'qolishi yoki shikastlanishi; Haydovchilar va Yo'lovchilar o'rtasidagi nizolar va bahslar; profilaktika ishlari yoki texnik nosozliklar tufayli Platformaning vaqtinchalik mavjud bo'lmasligi.",
+        "7": "6.7 Foydalanuvchi Platformadan foydalanish xavfini mustaqil baholaydi va boshqa Foydalanuvchilar bilan o'zaro aloqaning maqsadga muvofiqligi haqida qaror qabul qiladi.",
+        "title": "6. PLATFORMADAN FOYDALANISH QOIDALARI VA JAVOBGARLIK",
         "1_1": "6.1.1 Platformani chetlab o'tish maqsadida telefon raqamlari, messenjerlardagi (WhatsApp, Telegram va boshqalar) hisoblar yoki ijtimoiy tarmoqlarda sayohatlarni tashkil qilish uchun almashinuvi.",
         "1_2": "6.1.2 Boshqa Foydalanuvchilar bilan Ilovaning ichki chati tashqarisida, Platforma orqali sayohatni tashkil qilishdan oldin yoki vaqtida muloqot qilish.",
         "1_3": "6.1.3 Ishonchsiz, yolg'on yoki aldovga olib keluvchi ma'lumot e'lon qilish.",
@@ -390,45 +398,39 @@
         "1_6": "6.1.6 Ijrochi yozma roziligisiz Platforma bilan o'zaro aloqa qilish uchun avtomatlashtirilgan vositalardan (botlar, skriptlar) foydalanish.",
         "1_7": "6.1.7 Chat va profilga tahdidlar, haqoratlar, diskriminatsiya, nopok so'zlar, jinsiy yoki pornografik xarakterdagi materiallarni joylashtirish.",
         "1_8": "6.1.8 O'z hisobiga kirishni uchinchi shaxslarga berish.",
-        "2": "6.2 Foydalanuvchi tomonidan ushbu Taklifning 6.1-bandi qoidalari buzilgan taqdirda, Ijrochi huquqiga ega:",
         "2_1": "6.2.1 Foydalanuvchiga ogohlantirish yuborish.",
         "2_2": "6.2.2 Hisobga kirishni 7 dan 30 kungacha vaqtinchalik to'xtatib qo'yish.",
-        "2_3": "6.2.3 Foydalanuvchi hisobini tiklash imkoniyatisiz bloklash.",
-        "3": "6.3 Javobgarlik chorasini qo'llash haqidagi qaror Ijrochi tomonidan mustaqil ravishda, buzilish xarakteri va og'irligini hisobga olgan holda qabul qilinadi.",
-        "4": "6.4 6.1.1 va 6.1.2-bandlarida ko'rsatilgan qoidalarning (aloqa ma'lumotlarini almashish, Platforma tashqarisida muloqot) takroriy buzilishida hisob ogohlantirishsiz va tiklash huquqisiz bloklanadi.",
-        "5": "6.5 Haydovchi quyidagilar uchun to'liq javobgarlikni o'z zimmasiga oladi: Yo'lovchilarni tashish xavfsizligi; transport vositasining texnik holati; Yo'l harakati qoidalariga rioya qilish; transport vositasini boshqarish huquqi va transport vositasi uchun amal qiluvchi hujjatlar mavjudligi; sayohat vaqtida Yo'lovchilar va uchinchi shaxslar hayoti, salomatligi yoki mulkiga zarar yetkazish.",
-        "6": "6.6 Ijrochi quyidagilar uchun javobgar emas: Haydovchilar va Yo'lovchilarning harakatlari yoki harakatsizligi; Haydovchilar tomonidan ko'rsatiladigan tashish xizmatlari sifati; Foydalanuvchilarga bir-biri bilan o'zaro aloqada bo'lgan zarar; sayohat vaqtida Foydalanuvchilar mulkining yo'qolishi yoki shikastlanishi; Haydovchilar va Yo'lovchilar o'rtasidagi nizolar va bahslar; profilaktika ishlari yoki texnik nosozliklar tufayli Platformaning vaqtinchalik mavjud bo'lmasligi.",
-        "7": "6.7 Foydalanuvchi Platformadan foydalanish xavfini mustaqil baholaydi va boshqa Foydalanuvchilar bilan o'zaro aloqaning maqsadga muvofiqligi haqida qaror qabul qiladi."
+        "2_3": "6.2.3 Foydalanuvchi hisobini tiklash imkoniyatisiz bloklash."
       },
       "privacy": {
-        "title": "7. MAXFIYLIK VA SHAXSIY MA'LUMOTLAR",
         "1": "7.1 Foydalanuvchilarning shaxsiy ma'lumotlarini qayta ishlash Yo'ldosh Platformasining Maxfiylik siyosatiga va O'zbekiston Respublikasi shaxsiy ma'lumotlar to'g'risidagi qonunchiligiga muvofiq amalga oshiriladi.",
         "2": "7.2 Ilovada ro'yxatdan o'tish orqali Foydalanuvchi Platformaga va uning funksiyalariga kirish huquqini berish maqsadida o'z shaxsiy ma'lumotlarini qayta ishlashga rozilik beradi.",
-        "3": "7.3 Ijrochi Foydalanuvchilarning shaxsiy ma'lumotlarini O'zbekiston Respublikasi qonunchiligi yoki Maxfiylik siyosatida nazarda tutilgan holatlardan tashqari uchinchi shaxslarga uzatmaslikka majbur."
+        "3": "7.3 Ijrochi Foydalanuvchilarning shaxsiy ma'lumotlarini O'zbekiston Respublikasi qonunchiligi yoki Maxfiylik siyosatida nazarda tutilgan holatlardan tashqari uchinchi shaxslarga uzatmaslikka majbur.",
+        "title": "7. MAXFIYLIK VA SHAXSIY MA'LUMOTLAR"
       },
       "disputes": {
-        "title": "8. NIZOLARNI HAL QILISH",
         "1": "8.1 Ushbu Shartnomadan yoki u bilan bog'liq bo'lgan barcha nizolar va kelishmovchiliklar Tomonlar o'rtasida muzokaralar yo'li bilan hal qilinadi.",
         "2": "8.2 Nizoni muzokaralar yo'li bilan hal qilish imkoni bo'lmagan taqdirda, nizo O'zbekiston Respublikasi qonunchiligiga muvofiq sud tartibida ko'rib chiqiladi.",
         "3": "8.3 Nizoni hal qilishning da'vo tartibi majburiydir. Da'voni ko'rib chiqish muddati uning olinishi vaqtidan boshlab 10 (o'n) ish kuni.",
-        "4": "8.4 Da'volar Ijrochiga Ilovadagi orqa aloqa funksiyasi orqali yoki ushbu Taklifning 10-bo'limida ko'rsatilgan elektron pochta orqali yuboriladi."
+        "4": "8.4 Da'volar Ijrochiga Ilovadagi orqa aloqa funksiyasi orqali yoki ushbu Taklifning 10-bo'limida ko'rsatilgan elektron pochta orqali yuboriladi.",
+        "title": "8. NIZOLARNI HAL QILISH"
       },
       "termination": {
-        "title": "9. SHARTNOMA AMAL QILISH MUDDATI VA BEKOR QILISH TARTIBI",
         "1": "9.1 Shartnoma Foydalanuvchi tomonidan qabul qilingan vaqtdan kuchga kiradi va muddatsiz amal qiladi.",
         "2": "9.2 Foydalanuvchi har qanday vaqtda Shartnomani bir tomonlama bekor qilish huquqiga ega, Ilovadagi o'z hisobini o'chirish orqali.",
         "3": "9.3 Ijrochi Foydalanuvchi tomonidan ushbu Taklif shartlari buzilgan taqdirda Shartnomani bir tomonlama bekor qilish huquqiga ega, Foydalanuvchi hisobini bloklash orqali.",
         "4": "9.4 Shartnomani bekor qilish Tomonlarni uning amal qilish davrida sodir etilgan buzilishlar uchun javobgarlikdan ozod qilmaydi.",
-        "5": "9.5 Shartnomani bekor qilganda Haydovchi mavjud Xizmat komissiyasi qarzini 5 (besh) kalendar kun ichida to'lashga majbur."
+        "5": "9.5 Shartnomani bekor qilganda Haydovchi mavjud Xizmat komissiyasi qarzini 5 (besh) kalendar kun ichida to'lashga majbur.",
+        "title": "9. SHARTNOMA AMAL QILISH MUDDATI VA BEKOR QILISH TARTIBI"
       },
       "final": {
-        "title": "10. YAKUNIY QOIDALAR",
         "1": "10.1 Ushbu Taklif O'zbekiston Respublikasi qonunchiligiga muvofiq tuzilgan.",
         "2": "10.2 Ushbu Taklifning biror qoidasi haqiqiy emas deb topilsa, bu qolgan qoidalarning haqiqiyligiga ta'sir qilmaydi.",
         "3": "10.3 Ijrochi ushbu Taklifga o'zgartirishlar kiritish huquqini saqlab qoladi. Taklifning yangi tahriri Ilovada joylashtirilgan vaqtdan kuchga kiradi, agar yangi tahrirda boshqacha nazarda tutilmasa.",
         "4": "10.4 Taklifning yangi tahriri kuchga kirgandan keyin Platformadan foydalanishni davom ettirish Foydalanuvchining kiritilgan o'zgartirishlarga roziligini anglatadi.",
         "5": "10.5 Ushbu Shartnomani bajarish bilan bog'liq barcha bildirishnomalar Foydalanuvchilarga Ilova orqali (push-bildirishnomalar, Ilovadagi xabarlar) yoki ro'yxatdan o'tish vaqtida ko'rsatilgan telefon raqamiga yuboriladi.",
-        "6": "10.6 Ushbu Taklif matni Ilovada va www.yoldosh.uz manzilida mavjud."
+        "6": "10.6 Ushbu Taklif matni Ilovada va www.yoldosh.uz manzilida mavjud.",
+        "title": "10. YAKUNIY QOIDALAR"
       },
       "requisites": {
         "title": "IJROCHI REKVIZITLARI",
@@ -449,33 +451,39 @@
       "effectiveDate": "Kuchga kirish sanasi: 13.01.2026",
       "lastUpdate": "Oxirgi yangilanish: 13.01.2026",
       "general": {
-        "title": "1. UMUMIY QOIDALAR",
         "1": "1.1. Ushbu Maxfiylik siyosati (keyingi o'rinlarda – «Siyosat») mobil ilova foydalanuvchilarining shaxsiy ma'lumotlarini qayta ishlash va himoya qilish tartibini belgilaydi «Yo'ldosh» (keyingi o'rinlarda – «Ilova», «Platforma»).",
         "2": "1.2. Shaxsiy ma'lumotlar operatori O'zbekiston Respublikasi qonunchiligiga muvofiq ro'yxatdan o'tkazilgan «MILLIY YOLDOSH» MChJ (keyingi o'rinlarda – «Operator», «Biz»)dir.",
         "3": "1.3. Ushbu Siyosat quyidagilarga muvofiq ishlab chiqilgan:",
-        "3_1": "O'zbekiston Respublikasining 2019 yil 2 iyuldagi «Shaxsiy ma'lumotlar to'g'risida»gi № ZRU-547-son qonuni;",
-        "3_2": "O'zbekiston Respublikasi Vazirlar Mahkamasining 2020 yil 10 fevraldagi «Shaxsiy ma'lumotlarni qayta ishlash tartibini takomillashtirish chora-tadbirlari to'g'risida»gi № 82-son qarori;",
-        "3_3": "O'zbekiston Respublikasining boshqa me'yoriy-huquqiy hujjatlari.",
         "4": "1.4. Ilovani ishlatish Foydalanuvchining ushbu Siyosat va unda ko'rsatilgan shaxsiy ma'lumotlarini qayta ishlash shartlari bilan so'zsiz roziligini bildiradi. Siyosat shartlariga rozi bo'lmaslik holida Foydalanuvchi Ilovani ishlatishni to'xtatishi kerak.",
         "5": "1.5. Ushbu Siyosat faqat Yo'ldosh ilovasiga tatbiq etiladi. Biz Ilovada mavjud bo'lgan havolalar orqali Foydalanuvchi o'tishi mumkin bo'lgan uchinchi shaxslar saytlari va xizmatlari uchun nazorat qilmaymiz va javobgarlikni o'z zimmamizga olmaymiz.",
-        "6": "1.6. Operator shaxsiy ma'lumotlarning dolzarbligini tekshiradi va noaniqliklar aniqlanganda, O'zbekiston Respublikasi qonunchiligida boshqacha nazarda tutilmagan bo'lsa, ularni yangilash yoki o'chirish choralarini ko'radi."
+        "6": "1.6. Operator shaxsiy ma'lumotlarning dolzarbligini tekshiradi va noaniqliklar aniqlanganda, O'zbekiston Respublikasi qonunchiligida boshqacha nazarda tutilmagan bo'lsa, ularni yangilash yoki o'chirish choralarini ko'radi.",
+        "title": "1. UMUMIY QOIDALAR",
+        "3_1": "O'zbekiston Respublikasining 2019 yil 2 iyuldagi «Shaxsiy ma'lumotlar to'g'risida»gi № ZRU-547-son qonuni;",
+        "3_2": "O'zbekiston Respublikasi Vazirlar Mahkamasining 2020 yil 10 fevraldagi «Shaxsiy ma'lumotlarni qayta ishlash tartibini takomillashtirish chora-tadbirlari to'g'risida»gi № 82-son qarori;",
+        "3_3": "O'zbekiston Respublikasining boshqa me'yoriy-huquqiy hujjatlari."
       },
       "definitions": {
-        "title": "2. ATAMALAR VA TA'RIFLAR",
-        "intro": "2.1. Ushbu Siyosatda quyidagi atamalar qo'llaniladi:",
         "1": "Shaxsiy ma'lumotlar – to'g'ridan-to'g'ri yoki bilvosita aniqlangan yoki aniqlanishi mumkin bo'lgan jismoniy shaxsga (shaxsiy ma'lumotlar sub'ekti) tegishli har qanday ma'lumot.",
         "2": "Shaxsiy ma'lumotlarni qayta ishlash – shaxsiy ma'lumotlar bilan amalga oshiriladigan har qanday harakat yoki harakatlar to'plami, shu jumladan yig'ish, yozib olish, tizimlashtirish, to'plash, saqlash, aniqlashtirish (yangilash, o'zgartirish), chiqarib olish, foydalanish, uzatish (tarqatish, taqdim etish, kirish), shaxssizlantirish, bloklash, o'chirish, shaxsiy ma'lumotlarni yo'q qilish.",
         "3": "Shaxsiy ma'lumotlar maxfiyligi – Operator yoki shaxsiy ma'lumotlarga kirish huquqiga ega bo'lgan boshqa shaxs tomonidan rioya qilinishi shart bo'lgan, shaxsiy ma'lumotlar sub'ektining roziligi yoki boshqa qonuniy asos mavjud bo'lmagan holda ularni tarqatishga yo'l qo'ymaslik talabi.",
         "4": "Foydalanuvchi – Internet tarmog'i orqali Ilovaga kirish huquqiga ega va Ilovani ishlatayotgan shaxs.",
         "5": "Yo'lovchi – Ilovani sayohatlarni qidirish va bron qilish uchun ishlatayotgan Foydalanuvchi.",
         "6": "Haydovchi – Verifikatsiyadan o'tgan va Ilovani sayohatlar haqidagi ma'lumotlarni joylashtirish uchun ishlatayotgan Foydalanuvchi.",
-        "7": "Cookies – Foydalanuvchi qurilmasida saqlanadigan va Ilovadagi oldingi tashriflar va harakatlar haqidagi ma'lumotlarni o'z ichiga olgan kichik fayllar."
+        "7": "Cookies – Foydalanuvchi qurilmasida saqlanadigan va Ilovadagi oldingi tashriflar va harakatlar haqidagi ma'lumotlarni o'z ichiga olgan kichik fayllar.",
+        "title": "2. ATAMALAR VA TA'RIFLAR",
+        "intro": "2.1. Ushbu Siyosatda quyidagi atamalar qo'llaniladi:"
       },
       "collection": {
-        "title": "3. QANDAY SHAXSIY MA'LUMOTLARNI YIG'AMIZ",
         "1": "3.1. Barcha Foydalanuvchilardan ro'yxatdan o'tish vaqtida yig'iladigan ma'lumotlar:",
-        "1_list": ["Mobil telefon raqami", "Ism", "Familiya"],
         "2": "3.2. Haydovchilardan verifikatsiyadan o'tish vaqtida yig'iladigan qo'shimcha ma'lumotlar:",
+        "3": "3.3. Ilovani ishlatish vaqtida avtomatik yig'iladigan ma'lumotlar:",
+        "4": "3.4. Foydalanuvchilar tomonidan ixtiyoriy ravishda taqdim etiladigan ma'lumotlar:",
+        "title": "3. QANDAY SHAXSIY MA'LUMOTLARNI YIG'AMIZ",
+        "1_list": [
+          "Mobil telefon raqami",
+          "Ism",
+          "Familiya"
+        ],
         "2_1": "Haydovchi guvohnomasining nusxasi, shu jumladan:",
         "2_1_list": [
           "Haydovchi guvohnomasi fotosurati",
@@ -494,7 +502,6 @@
           "VIN-raqam (transport vositasining identifikatsiya raqami)",
           "Transport vositasi egasi haqidagi ma'lumotlar"
         ],
-        "3": "3.3. Ilovani ishlatish vaqtida avtomatik yig'iladigan ma'lumotlar:",
         "3_list": [
           "Sayohatlar haqidagi ma'lumot (marshrut, sana, sayohat boshlanishi va tugashi vaqti, narxi)",
           "Bronlar tarixi",
@@ -507,7 +514,6 @@
           "Haydovchi balans haqidagi ma'lumot va tranzaksiyalar tarixi (komissiya yechib olish)",
           "Cookies va shunga o'xshash kuzatuv texnologiyalari"
         ],
-        "4": "3.4. Foydalanuvchilar tomonidan ixtiyoriy ravishda taqdim etiladigan ma'lumotlar:",
         "4_list": [
           "Profil fotosurati (ixtiyoriy)",
           "Qo'shimcha aloqa ma'lumotlari (ixtiyoriy)",
@@ -516,56 +522,56 @@
         ]
       },
       "purposes": {
+        "1": "4.2. Platformaga kirishni ta'minlash:",
+        "2": "4.3. Haydovchilarni verifikatsiya qilish:",
+        "3": "4.4. Sayohatlarni tashkil etish:",
+        "4": "4.5. Moliyaviy operatsiyalar:",
+        "5": "4.6. Xavfsizlikni ta'minlash:",
+        "6": "4.7. Xizmat sifatini yaxshilash:",
+        "7": "4.8. Foydalanuvchilar bilan aloqa:",
+        "8": "4.9. Qonunchilikka rioya qilish:",
         "title": "4. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH MAQSADLARI",
         "intro": "4.1. Biz Foydalanuvchilarning shaxsiy ma'lumotlarini quyidagi maqsadlarda yig'amiz va qayta ishlaymiz:",
-        "1": "4.2. Platformaga kirishni ta'minlash:",
         "1_list": [
           "Foydalanuvchilarni ro'yxatdan o'tkazish va identifikatsiya qilish",
           "Hisob qaydnomasini yaratish va boshqarish",
           "Ilovani ishlashini ta'minlash"
         ],
-        "2": "4.3. Haydovchilarni verifikatsiya qilish:",
         "2_list": [
           "Hujjatlarning asl nusxasini tekshirish (haydovchi guvohnomasi, texnik pasport)",
           "Transport vositasini boshqarish huquqini tasdiqlash",
           "Yo'lovchilar xavfsizligini ta'minlash",
           "Tashish qonunchiligiga rioya qilish"
         ],
-        "3": "4.4. Sayohatlarni tashkil etish:",
         "3_list": [
           "Sayohatlar haqidagi ma'lumotlarni joylashtirish",
           "Sayohatlarni qidirish va bron qilish",
           "Haydovchilar va Yo'lovchilar o'rtasidagi aloqani o'rnatilgan chat orqali ta'minlash",
           "Sayohat holati haqida xabardor qilish"
         ],
-        "4": "4.5. Moliyaviy operatsiyalar:",
         "4_list": [
           "Xizmat komissiyasini hisoblash va Haydovchilardan yechib olish",
           "Tranzaksiyalarni hisobga olish va Haydovchilar balansini boshqarish",
           "Moliyaviy hisobotni shakllantirish"
         ],
-        "5": "4.6. Xavfsizlikni ta'minlash:",
         "5_list": [
           "Firibgarlik va suiiste'mollikning oldini olish",
           "Ommaviy oferta buzilishlarini aniqlash",
           "Foydalanuvchilar o'rtasidagi nizolarni hal qilish",
           "Voqealarni tergov qilish"
         ],
-        "6": "4.7. Xizmat sifatini yaxshilash:",
         "6_list": [
           "Ilovani ishlatish tahlili",
           "Yangi funksiyalar va xizmatlarni ishlab chiqish",
           "Foydalanuvchi tajribasini shaxsiylashtirish",
           "Marshrutlar va qidiruv algoritmlarini optimallashtirish"
         ],
-        "7": "4.8. Foydalanuvchilar bilan aloqa:",
         "7_list": [
           "Sayohatlar haqida bildirishnomalarni yuborish",
           "Ilovadagi o'zgarishlar haqida ma'lumot berish",
           "Texnik qo'llab-quvvatlash",
           "Yangiliklar va maxsus takliflarni tarqatish (Foydalanuvchi roziligi bilan)"
         ],
-        "8": "4.9. Qonunchilikka rioya qilish:",
         "8_list": [
           "Soliq va buxgalteriya hisobi talablarini bajarish",
           "Davlat organlariga so'rov bo'yicha ma'lumot taqdim etish",
@@ -573,18 +579,20 @@
         ]
       },
       "grounds": {
-        "title": "5. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH HUQUQIY ASOSLARI",
-        "intro": "5.1. Shaxsiy ma'lumotlarni qayta ishlash huquqiy asoslari quyidagilar:",
         "1": "5.2. Shaxsiy ma'lumotlar sub'ektining shaxsiy ma'lumotlarini qayta ishlashga roziligi, Ilovada ro'yxatdan o'tish vaqtida ushbu Siyosatni qabul qilish orqali taqdim etiladi.",
         "2": "5.3. Shaxsiy ma'lumotlar sub'ekti tomon bo'lgan shartnomani bajarish zarurati (Platformaga kirishni ta'minlash xizmatlarini taqdim etish bo'yicha ommaviy oferta).",
         "3": "5.4. Operator yoki uchinchi shaxslarning huquqlari va qonuniy manfaatlarini amalga oshirish zarurati (xavfsizlikni ta'minlash, firibgarlikning oldini olish).",
-        "4": "5.5. O'zbekiston Respublikasi qonunchiligida nazarda tutilgan majburiyatlarni bajarish zarurati (moliyaviy hisobot, davlat organlari talablari)."
+        "4": "5.5. O'zbekiston Respublikasi qonunchiligida nazarda tutilgan majburiyatlarni bajarish zarurati (moliyaviy hisobot, davlat organlari talablari).",
+        "title": "5. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH HUQUQIY ASOSLARI",
+        "intro": "5.1. Shaxsiy ma'lumotlarni qayta ishlash huquqiy asoslari quyidagilar:"
       },
       "methods": {
-        "title": "6. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH USULLARI VA MUDDATLARI",
         "1": "6.1. Shaxsiy ma'lumotlarni qayta ishlash avtomatlashtirish vositalaridan foydalangan holda va avtomatlashtirish vositalaridan foydalanmasdan amalga oshiriladi.",
         "2": "6.2. Biz shaxsiy ma'lumotlarni ushbu Siyosatning 4-bo'limida ko'rsatilgan qayta ishlash maqsadlariga erishish uchun zarur muddat davomida qayta ishlaymiz, agar qonunchilikda boshqacha nazarda tutilmagan bo'lsa.",
         "3": "6.3. Shaxsiy ma'lumotlarni saqlash muddatlari:",
+        "4": "6.4. Saqlash muddatlari tugagach, shaxsiy ma'lumotlar o'chirilishi yoki shaxssizlantirilishi kerak, agar O'zbekiston Respublikasi qonunchiligida boshqacha nazarda tutilmagan bo'lsa.",
+        "5": "6.5. Foydalanuvchi hisob qaydnomasini o'chirganda, uning shaxsiy ma'lumotlari 30 (o'ttiz) kalendar kun ichida o'chiriladi, qonunchilik talablariga muvofiq saqlanishi kerak bo'lgan ma'lumotlar bundan mustasno (moliyaviy tranzaksiyalar, buxgalteriya hisobi hujjatlari).",
+        "title": "6. SHAXSIY MA'LUMOTLARNI QAYTA ISHLASH USULLARI VA MUDDATLARI",
         "3_list": [
           "Faol Foydalanuvchilar ma'lumotlari (ism, familiya, telefon raqami) Foydalanuvchi hisob qaydnomasini o'chirguncha yoki Operator hisob qaydnomasini bloklaguncha saqlanadi.",
           "Haydovchilar hujjatlari (haydovchi guvohnomasi, texnik pasport) Haydovchi Ilovani ishlatishning butun davri davomida va hisob qaydnomasini o'chirish yoki bloklashdan keyin 3 (uch) yil davomida saqlanadi.",
@@ -592,14 +600,14 @@
           "O'rnatilgan chatdagi xabarlar yuborilgan paytdan boshlab 1 (bir) yil davomida yoki Foydalanuvchi hisob qaydnomasini o'chirguncha saqlanadi.",
           "Geolokatsiya ma'lumotlari sayohat tugagan paytdan boshlab 90 (to'qson) kun davomida saqlanadi.",
           "Texnik ma'lumot (IP-manzil, qurilma ma'lumotlari, cookies) 6 (olti) oy davomida saqlanadi."
-        ],
-        "4": "6.4. Saqlash muddatlari tugagach, shaxsiy ma'lumotlar o'chirilishi yoki shaxssizlantirilishi kerak, agar O'zbekiston Respublikasi qonunchiligida boshqacha nazarda tutilmagan bo'lsa.",
-        "5": "6.5. Foydalanuvchi hisob qaydnomasini o'chirganda, uning shaxsiy ma'lumotlari 30 (o'ttiz) kalendar kun ichida o'chiriladi, qonunchilik talablariga muvofiq saqlanishi kerak bo'lgan ma'lumotlar bundan mustasno (moliyaviy tranzaksiyalar, buxgalteriya hisobi hujjatlari)."
+        ]
       },
       "transfer": {
-        "title": "7. SHAXSIY MA'LUMOTLARNI UCHINCHI SHAXSLARGA UZATISH",
         "1": "7.1. Biz Foydalanuvchilarning shaxsiy ma'lumotlarini Foydalanuvchi roziligi bo'lmagan holda sotmaymiz, almashmaymiz va uchinchi shaxslarga uzatmaymiz, ushbu Siyosat va O'zbekiston Respublikasi qonunchiligida nazarda tutilgan holatlardan tashqari.",
         "2": "7.2. Shaxsiy ma'lumotlar quyidagi holatlarda uchinchi shaxslarga uzatilishi mumkin:",
+        "3": "7.3. Biz O'zbekiston Respublikasining shaxsiy ma'lumotlar to'g'risidagi qonunchiligi talablariga rioya qilmasdan transchegaraviy shaxsiy ma'lumotlarni uzatishni amalga oshirmaymiz.",
+        "4": "7.4. Faoliyatni boshqa davlatlar hududiga kengaytirganda Operator tegishli mamlakatlarning shaxsiy ma'lumotlarni himoya qilish qonunchiligi talablariga rioya qiladi.",
+        "title": "7. SHAXSIY MA'LUMOTLARNI UCHINCHI SHAXSLARGA UZATISH",
         "2_1": "Ilovaning boshqa Foydalanuvchilariga:",
         "2_1_list": [
           "Yo'lovchilarga sayohatni ko'rish vaqtida Haydovchi haqidagi ma'lumot (ism, familiya, profil fotosurati, reyting, avtomobil markasi va modeli, davlat raqami) ko'rsatiladi.",
@@ -619,14 +627,17 @@
         "2_3": "Davlat organlari va huquqni muhofaza qiluvchi organlarga:",
         "2_3_desc": "O'zbekiston Respublikasi qonunchiligiga muvofiq vakolatli organlarning rasmiy so'rovi asosida (sud, prokuratura, politsiya, soliq organlari va boshqalar).",
         "2_4": "Biznesni qayta tashkil etish yoki sotishda:",
-        "2_4_desc": "Operatorning birlashishi, sotib olinishi, qayta tashkil etilishi yoki aktivlarini sotish holida shaxsiy ma'lumotlar voris yoki sotib oluvchiga ushbu Siyosatni rioya qilish sharti bilan uzatilishi mumkin.",
-        "3": "7.3. Biz O'zbekiston Respublikasining shaxsiy ma'lumotlar to'g'risidagi qonunchiligi talablariga rioya qilmasdan transchegaraviy shaxsiy ma'lumotlarni uzatishni amalga oshirmaymiz.",
-        "4": "7.4. Faoliyatni boshqa davlatlar hududiga kengaytirganda Operator tegishli mamlakatlarning shaxsiy ma'lumotlarni himoya qilish qonunchiligi talablariga rioya qiladi."
+        "2_4_desc": "Operatorning birlashishi, sotib olinishi, qayta tashkil etilishi yoki aktivlarini sotish holida shaxsiy ma'lumotlar voris yoki sotib oluvchiga ushbu Siyosatni rioya qilish sharti bilan uzatilishi mumkin."
       },
       "protection": {
-        "title": "8. SHAXSIY MA'LUMOTLARNI HIMOYA QILISH",
         "1": "8.1. Operator shaxsiy ma'lumotlarni noqonuniy yoki tasodifiy kirishdan, yo'q qilishdan, o'zgartirishdan, bloklashdan, nusxalashdan, taqdim etishdan, tarqatishdan, shuningdek boshqa noqonuniy harakatlardan himoya qilish uchun zarur huquqiy, tashkiliy va texnik choralarni ko'radi.",
         "2": "8.2. Texnik himoya choralari:",
+        "3": "8.3. Tashkiliy himoya choralari:",
+        "4": "8.4. Shaxsiy ma'lumotlarga kirish faqat Operatorning vakolatli xodimlari va pudratchilari uchun mavjud bo'lib, ularga bu ma'lumot xizmat vazifalarini bajarish uchun zarur.",
+        "5": "8.5. Barcha zarur xavfsizlik choralarini qo'llashga qaramay, Internet tarmoqining texnik cheklovlarini hisobga olgan holda, biz shaxsiy ma'lumotlarni barcha mumkin bo'lgan tahdidlardan mutlaqo himoya qilishni kafolatlay olmaymiz.",
+        "6": "8.6. Foydalanuvchi o'z hisob ma'lumotlari (telefon raqami, OTP-kod) maxfiyligini saqlash uchun javobgardir. Foydalanuvchi hisob qaydnomasidan foydalangan holda amalga oshirilgan har qanday harakatlar Foydalanuvchi tomonidan amalga oshirilgan deb hisoblanadi.",
+        "7": "8.7. Shaxsiy ma'lumotlar xavfsizligi buzilishi bilan bog'liq voqea aniqlanganda, Operator ta'sirlangan Foydalanuvchilarni va vakolatli davlat organini qonunchilikda belgilangan muddatlarda xabardor qilishga majburdir.",
+        "title": "8. SHAXSIY MA'LUMOTLARNI HIMOYA QILISH",
         "2_list": [
           "Uzatish vaqtida shaxsiy ma'lumotlarni shifrlash (SSL/TLS)",
           "Ma'lumotlar bazalarida saqlash vaqtida shaxsiy ma'lumotlarni shifrlash",
@@ -636,7 +647,6 @@
           "Antivirus himoyasi",
           "Administrativ kirish uchun ko'p bosqichli autentifikatsiya"
         ],
-        "3": "8.3. Tashkiliy himoya choralari:",
         "3_list": [
           "Shaxsiy ma'lumotlarni qayta ishlash tashkilini mas'ul shaxsni tayinlash",
           "Xodimlarning shaxsiy ma'lumotlarga kirish huquqlarini ajratish",
@@ -644,15 +654,14 @@
           "Xodimlar bilan maxfiylik shartnomalarini tuzish",
           "Shaxsiy ma'lumotlar to'g'risidagi qonunchilik talablariga rioya qilish nazorati",
           "Shaxsiy ma'lumotlar himoya tizimining ichki auditlarini o'tkazish"
-        ],
-        "4": "8.4. Shaxsiy ma'lumotlarga kirish faqat Operatorning vakolatli xodimlari va pudratchilari uchun mavjud bo'lib, ularga bu ma'lumot xizmat vazifalarini bajarish uchun zarur.",
-        "5": "8.5. Barcha zarur xavfsizlik choralarini qo'llashga qaramay, Internet tarmoqining texnik cheklovlarini hisobga olgan holda, biz shaxsiy ma'lumotlarni barcha mumkin bo'lgan tahdidlardan mutlaqo himoya qilishni kafolatlay olmaymiz.",
-        "6": "8.6. Foydalanuvchi o'z hisob ma'lumotlari (telefon raqami, OTP-kod) maxfiyligini saqlash uchun javobgardir. Foydalanuvchi hisob qaydnomasidan foydalangan holda amalga oshirilgan har qanday harakatlar Foydalanuvchi tomonidan amalga oshirilgan deb hisoblanadi.",
-        "7": "8.7. Shaxsiy ma'lumotlar xavfsizligi buzilishi bilan bog'liq voqea aniqlanganda, Operator ta'sirlangan Foydalanuvchilarni va vakolatli davlat organini qonunchilikda belgilangan muddatlarda xabardor qilishga majburdir."
+        ]
       },
       "rights": {
-        "title": "9. SHAXSIY MA'LUMOTLAR SUB'EKTLARINING HUQUQLARI",
         "1": "9.1. O'zbekiston Respublikasi qonunchiligiga muvofiq Foydalanuvchilar o'z shaxsiy ma'lumotlariga nisbatan quyidagi huquqlarga egadirlar:",
+        "2": "9.2. O'z huquqlarini amalga oshirish uchun Foydalanuvchi quyidagilarni qilishi mumkin:",
+        "3": "9.3. Operator Foydalanuvchi so'rovini ko'rib chiqishga va so'rov olingan paytdan boshlab 30 (o'ttiz) kalendar kun ichida javob berishga majburdir.",
+        "4": "9.4. Operator shaxsiy ma'lumotlarni o'chirishdan bosh tortish huquqiga ega, agar ularni saqlash O'zbekiston Respublikasi qonunchiligida nazarda tutilgan bo'lsa (masalan, buxgalteriya hisobi maqsadlarida moliyaviy tranzaksiyalar).",
+        "title": "9. SHAXSIY MA'LUMOTLAR SUB'EKTLARINING HUQUQLARI",
         "1_1": "1) Kirish huquqi: Foydalanuvchi o'z shaxsiy ma'lumotlari qayta ishlanayotganligi haqida ma'lumot olish huquqiga ega va bunday shaxsiy ma'lumotlarga kirish huquqiga ega.",
         "1_2": "2) Aniqlashtirish huquqi: Foydalanuvchi noaniq yoki to'liqsiz shaxsiy ma'lumotlarni tuzatishni talab qilish huquqiga ega.",
         "1_3": "3) O'chirish huquqi: Foydalanuvchi o'z shaxsiy ma'lumotlarini o'chirishni talab qilish huquqiga ega, quyidagi holatlarda:",
@@ -670,25 +679,22 @@
         ],
         "1_5": "5) Rozilikni qaytarib olish huquqi: Foydalanuvchi istalgan vaqtda Ilovada hisob qaydnomasini o'chirish orqali shaxsiy ma'lumotlarni qayta ishlashga roziligini qaytarib olish huquqiga ega.",
         "1_6": "6) Shikoyat berish huquqi: Foydalanuvchi shaxsiy ma'lumotlar sub'ektlari huquqlarini himoya qilish bo'yicha vakolatli davlat organiga shikoyat berish huquqiga ega.",
-        "2": "9.2. O'z huquqlarini amalga oshirish uchun Foydalanuvchi quyidagilarni qilishi mumkin:",
         "2_list": [
           "Ilovadagi hisob qaydnomasi sozlamalaridan foydalanib ma'lumotlarni yangilash yoki o'chirish.",
           "Ilova funksiyasi orqali yoki ushbu Siyosatning 14-bo'limida ko'rsatilgan kontaktlar orqali qo'llab-quvvatlash xizmatiga murojaat qilish."
-        ],
-        "3": "9.3. Operator Foydalanuvchi so'rovini ko'rib chiqishga va so'rov olingan paytdan boshlab 30 (o'ttiz) kalendar kun ichida javob berishga majburdir.",
-        "4": "9.4. Operator shaxsiy ma'lumotlarni o'chirishdan bosh tortish huquqiga ega, agar ularni saqlash O'zbekiston Respublikasi qonunchiligida nazarda tutilgan bo'lsa (masalan, buxgalteriya hisobi maqsadlarida moliyaviy tranzaksiyalar)."
+        ]
       },
       "cookies": {
-        "title": "10. COOKIES VA KUZATUV TEXNOLOGIYALARI",
         "1": "10.1. Yo'ldosh ilovasi foydalanuvchi tajribasini yaxshilash va Ilovani ishlatishni tahlil qilish uchun cookies va shunga o'xshash kuzatuv texnologiyalaridan foydalanadi.",
         "2": "10.2. Cookies – Foydalanuvchi qurilmasida saqlanadigan va Ilovaga Foydalanuvchi harakatlari va afzalliklari haqidagi ma'lumotlarni eslab qolishga imkon beradigan kichik matn fayllari.",
         "3": "10.3. Biz quyidagi turdagi cookiesdan foydalanamiz:",
+        "4": "10.4. Foydalanuvchi o'z qurilmasi yoki brauzer sozlamalari orqali cookiesni boshqarishi mumkin. Biroq, zaruriy cookiesni o'chirish Ilova funksiyalariga ta'sir qilishi mumkin.",
+        "5": "10.5. Cookiesdan tashqari, biz quyidagi texnologiyalardan foydalanamiz:",
+        "title": "10. COOKIES VA KUZATUV TEXNOLOGIYALARI",
         "3_1": "1) Zaruriy cookies: Ilovaning asosiy funksiyalarini ta'minlaydi (avtorizatsiya, xavfsizlik). Bu cookies Ilovani ishlashi uchun zarur va o'chirilishi mumkin emas.",
         "3_2": "2) Funksional cookies: Ilovaga Foydalanuvchi tanlovini eslab qolishga imkon beradi (interfeys tili, ko'rsatish sozlamalari).",
         "3_3": "3) Analitik cookies: Foydalanuvchilar Ilovani qanday ishlatayotganligi haqidagi ma'lumotlarni yig'adi, bu bizga uning ishini yaxshilashga imkon beradi (Google Analytics, Firebase Analytics va boshqalar).",
         "3_4": "4) Reklama cookies: Tegishli reklamalarni ko'rsatish va reklama kampaniyalari samaradorligini baholash uchun ishlatiladi (hozirda ishlatilmaydi, lekin kelajakda joriy etilishi mumkin).",
-        "4": "10.4. Foydalanuvchi o'z qurilmasi yoki brauzer sozlamalari orqali cookiesni boshqarishi mumkin. Biroq, zaruriy cookiesni o'chirish Ilova funksiyalariga ta'sir qilishi mumkin.",
-        "5": "10.5. Cookiesdan tashqari, biz quyidagi texnologiyalardan foydalanamiz:",
         "5_list": [
           "Email-tarqatishlar samaradorligini tahlil qilish uchun kuzatuv piksellari (tracking pixels) (agar qo'llaniladigan bo'lsa).",
           "Analitika va xatolarni kuzatish uchun uchinchi shaxslar SDKlari (Firebase, Crashlytics va boshqalar).",
@@ -696,45 +702,45 @@
         ]
       },
       "minors": {
-        "title": "11. VOYAGA YETMAGANLAR MA'LUMOTLARINI QAYTA ISHLASHNING O'ZIGA XOS XUSUSIYATLARI",
         "1": "11.1. Yo'ldosh ilovasi 18 (o'n sakkiz) yoshga yetgan shaxslar uchun mo'ljallangan.",
         "2": "11.2. Biz 18 yoshga yetmagan shaxslarning shaxsiy ma'lumotlarini qasddan yig'maymiz.",
         "3": "11.3. Agar Operator 18 yoshga yetmagan shaxsdan ota-onalar yoki qonuniy vakillar roziligi bo'lmagan holda shaxsiy ma'lumotlar yig'ilganligi haqida xabardor bo'lsa, bunday ma'lumotlar darhol o'chiriladi.",
-        "4": "11.4. Agar siz biz 18 yoshga yetmagan shaxsdan shaxsiy ma'lumotlarni olishimiz mumkin deb hisoblasangiz, iltimos, ushbu Siyosatning 14-bo'limida ko'rsatilgan kontaktlar orqali biz bilan bog'laning."
+        "4": "11.4. Agar siz biz 18 yoshga yetmagan shaxsdan shaxsiy ma'lumotlarni olishimiz mumkin deb hisoblasangiz, iltimos, ushbu Siyosatning 14-bo'limida ko'rsatilgan kontaktlar orqali biz bilan bog'laning.",
+        "title": "11. VOYAGA YETMAGANLAR MA'LUMOTLARINI QAYTA ISHLASHNING O'ZIGA XOS XUSUSIYATLARI"
       },
       "changes": {
-        "title": "12. MAXFIYLIK SIYOSATIDAGI O'ZGARTIRISHLAR",
         "1": "12.1. Operator istalgan vaqtda ushbu Siyosatga o'zgartirishlar kiritish huquqini o'zida saqlab qoladi.",
         "2": "12.2. Siyosatning yangi tahriri Ilovada joylashtirilgan paytdan boshlab kuchga kiradi, agar Siyosatning yangi tahririda boshqacha nazarda tutilmagan bo'lsa.",
         "3": "12.3. Siyosatdagi jiddiy o'zgartirishlar haqida (qayta ishlash maqsadlari o'zgarishi, ma'lumotlarni yangi uchinchi shaxslarga uzatish, saqlash muddatlarini o'zgartirish) Foydalanuvchilar Ilova orqali (push-bildirishnoma, Ilovadagi xabar) o'zgartirishlar kuchga kirishidan kamida 7 (yetti) kalendar kun oldin xabardor qilinadi.",
         "4": "12.4. Siyosatning amaldagi tahriri doimo Ilova sozlamalari bo'limida va manzilda mavjud: [agar mavjud bo'lsa, veb-saytni ko'rsating].",
         "5": "12.5. Siyosatning yangi tahriri kuchga kirgandan keyin Ilovani ishlatishni davom ettirish Foydalanuvchining kiritilgan o'zgartirishlar bilan roziligini bildiradi.",
-        "6": "12.6. Siyosatning oxirgi yangilanish sanasi hujjat boshida ko'rsatiladi."
+        "6": "12.6. Siyosatning oxirgi yangilanish sanasi hujjat boshida ko'rsatiladi.",
+        "title": "12. MAXFIYLIK SIYOSATIDAGI O'ZGARTIRISHLAR"
       },
       "law": {
-        "title": "13. QO'LLANILADIGAN QONUNCHILIK",
         "1": "13.1. Ushbu Siyosat va u bilan bog'liq barcha masalalar O'zbekiston Respublikasi qonunchiligi bilan tartibga solinadi.",
         "2": "13.2. Shaxsiy ma'lumotlarni qayta ishlash bilan bog'liq barcha nizolar O'zbekiston Respublikasi qonunchiligiga muvofiq hal etiladi.",
-        "3": "13.3. Sudga murojaat qilishdan oldin da'vo tartibiga rioya qilish majburiydir. Da'voni ko'rib chiqish muddati – 10 (o'n) kalendar kun."
+        "3": "13.3. Sudga murojaat qilishdan oldin da'vo tartibiga rioya qilish majburiydir. Da'voni ko'rib chiqish muddati – 10 (o'n) kalendar kun.",
+        "title": "13. QO'LLANILADIGAN QONUNCHILIK"
       },
       "contact": {
-        "title": "14. ALOQA MA'LUMOTLARI",
         "1": "14.1. Agar sizda ushbu Siyosat yoki shaxsiy ma'lumotlaringizni qayta ishlash bo'yicha savollar, izohlar yoki so'rovlar bo'lsa, siz quyidagi usullar orqali biz bilan bog'lanishingiz mumkin:",
+        "2": "14.2. Biz sizning so'rovingizga uni olingan paytdan boshlab 10 (o'n) kalendar kun ichida javob berishga majburmiz.",
+        "3": "14.3. So'rovlarini qayta ishlash vaqtida maxfiyligingizni himoya qilish uchun biz sizdan shaxsingizni tasdiqlash uchun qo'shimcha ma'lumotlarni so'rashimiz mumkin.",
+        "title": "14. ALOQA MA'LUMOTLARI",
         "company": "«MILLIY YOLDOSH» MChJ",
         "address": "Yuridik manzil: Toshkent viloyati, Qibray tumani, Farovon MFY, BUSH \"NURAFSHON-2\" ko'chasi, 3-uy",
         "email": "Umumiy elektron pochta: info@yoldosh.uz",
         "phone": "Qo'llab-quvvatlash telefoni: +998 (94) 000-12-58",
         "telegram": "Telegram: @yoldosh_admin",
-        "workHours": "Qo'llab-quvvatlash xizmati ish vaqti: 11:00-20:00",
-        "2": "14.2. Biz sizning so'rovingizga uni olingan paytdan boshlab 10 (o'n) kalendar kun ichida javob berishga majburmiz.",
-        "3": "14.3. So'rovlarini qayta ishlash vaqtida maxfiyligingizni himoya qilish uchun biz sizdan shaxsingizni tasdiqlash uchun qo'shimcha ma'lumotlarni so'rashimiz mumkin."
+        "workHours": "Qo'llab-quvvatlash xizmati ish vaqti: 11:00-20:00"
       },
       "final": {
-        "title": "15. YAKUNIY QOIDALAR",
         "1": "15.1. Ushbu Siyosat Yo'ldosh Platformasiga kirishni ta'minlash xizmatlarini ko'rsatish bo'yicha ommaviy ofertaning ajralmas qismidir.",
         "2": "15.2. Agar ushbu Siyosatning biron bir qoidasi haqiqiy emas deb topilsa, bu qolgan qoidalarning haqiqiy emasligini keltirib chiqarmaydi.",
         "3": "15.3. Ushbu Siyosat rus va o'zbek tillarida tuzilgan. Qarama-qarshiliklar holida o'zbek tilidagi versiya ustunlikka ega.",
         "4": "15.4. Ushbu Siyosat shartlarini qabul qilish orqali Foydalanuvchi quyidagilarni tasdiqlaydi:",
+        "title": "15. YAKUNIY QOIDALAR",
         "4_list": [
           "Siyosat matnini to'liq o'qib chiqqan;",
           "o'z huquqlari va majburiyatlarini tushunadi;",
@@ -851,11 +857,11 @@
         }
       },
       "fraud": {
-        "title": "Ehtiyot bo'ling: firibgarlik",
-        "desc": "Quyidagi belgilarni ko'rsangiz, hushyor bo'ling:",
         "1": "Yo'lovchi 'sug'urta' yoki 'tasdiqlash' uchun havolaga o'tishni so'raydi.",
         "2": "Sizga Yo'ldosh yordami nomidan uchinchi tomon messenjerlarda yozishadi.",
         "3": "Sizdan safardan oldin oldindan to'lov qabul qilish yoki pul o'tkazish so'raladi.",
+        "title": "Ehtiyot bo'ling: firibgarlik",
+        "desc": "Quyidagi belgilarni ko'rsangiz, hushyor bo'ling:",
         "contact": "Shubhali narsa sezdingizmi? Foydalanuvchini bloklang va bizga yozing: help@yoldosh.uz yoki rasmiy Telegram kanalimiz."
       },
       "cta": {
@@ -999,7 +1005,11 @@
     "about": {
       "title": "Biz haqimizda — Yoldosh | O'zbekiston carpooling",
       "description": "Yoldosh — O'zbekiston bo'yicha yetakchi carpooling xizmati. Shaharlararo safarlarni xavfsiz va arzon qilamiz.",
-      "keywords": ["Yoldosh haqida", "carpooling O'zbekiston", "hamroh safar ilovasi"],
+      "keywords": [
+        "Yoldosh haqida",
+        "carpooling O'zbekiston",
+        "hamroh safar ilovasi"
+      ],
       "og": {
         "title": "Yoldosh haqida",
         "description": "O'zbekiston bo'yicha yetakchi carpooling xizmati.",
@@ -1028,7 +1038,10 @@
     "publicOffer": {
       "title": "Ommaviy taklif — Yoldosh",
       "description": "Yoldosh platformasidan foydalanish shartlari.",
-      "keywords": ["ommaviy taklif Yoldosh", "foydalanish shartlari"],
+      "keywords": [
+        "ommaviy taklif Yoldosh",
+        "foydalanish shartlari"
+      ],
       "og": {
         "title": "Yoldosh ommaviy taklifi",
         "description": "Yuridik ma'lumotlar.",
@@ -1038,7 +1051,10 @@
     "privacyPolicy": {
       "title": "Maxfiylik siyosati — Yoldosh",
       "description": "Yoldosh platformasining rasmiy maxfiylik siyosati.",
-      "keywords": ["maxfiylik siyosati Yoldosh", "shaxsiy ma'lumotlar"],
+      "keywords": [
+        "maxfiylik siyosati Yoldosh",
+        "shaxsiy ma'lumotlar"
+      ],
       "og": {
         "title": "Yoldosh maxfiylik siyosati",
         "description": "Shaxsiy ma'lumotlarni himoya qilish.",
@@ -1178,6 +1194,418 @@
         "intro": "Yoldoshdagi eng uzun yo'nalish — ~1100 km, ~12 soat. Uzoq safarda sezilarli tejash.",
         "faq": []
       }
+    }
+  },
+  "App": {
+    "LoadMore": "Yana ko'rsatish",
+    "Save": "Saqlash",
+    "Cancel": "Bekor qilish",
+    "Delete": "O'chirish",
+    "Send": "Yuborish",
+    "Copy": "Nusxalash",
+    "Copied": "Nusxalandi",
+    "Back": "Orqaga",
+    "Errors": {
+      "Generic": "Amalni bajarib bo'lmadi. Qayta urinib ko'ring."
+    },
+    "Role": {
+      "Passenger": "Yo'lovchi",
+      "Driver": "Haydovchi"
+    },
+    "TripStatus": {
+      "CREATED": "Rejalashtirilgan",
+      "IN_PROGRESS": "Yo'lda",
+      "COMPLETED": "Yakunlangan",
+      "CANCELED": "Bekor qilingan"
+    },
+    "BookingStatus": {
+      "PENDING": "Kutilmoqda",
+      "CONFIRMED": "Tasdiqlangan",
+      "FAILED": "Xatolik",
+      "CANCELLED": "Bekor qilingan"
+    },
+    "CarStatus": {
+      "WAITING_MYID": "MyID kutilmoqda",
+      "PENDING": "Tekshiruvda",
+      "VERIFIED": "Tasdiqlangan",
+      "REJECTED": "Rad etilgan"
+    },
+    "ParcelStatus": {
+      "PENDING": "Kutilmoqda",
+      "CONFIRMED": "Tasdiqlangan",
+      "REJECTED": "Rad etilgan",
+      "CANCELLED": "Bekor qilingan",
+      "PICKED_UP": "Olingan",
+      "DELIVERED": "Yetkazilgan"
+    },
+    "Nav": {
+      "Primary": "Asosiy navigatsiya",
+      "Greeting": "Salom,",
+      "Dashboard": "Bosh sahifa",
+      "Search": "Qidiruv",
+      "Publish": "Yaratish",
+      "MyTrips": "Safarlar",
+      "Parcels": "Pochta",
+      "Chats": "Chat",
+      "Wallet": "Hamyon",
+      "Notifications": "Bildirishnomalar",
+      "Profile": "Profil",
+      "Cars": "Avtomobillarim",
+      "Logout": "Chiqish",
+      "Back": "Orqaga",
+      "More": "Yana"
+    },
+    "Auth": {
+      "PhoneTitle": "Yo'ldosh'ga kirish",
+      "PhoneSubtitle": "Telefon raqamingizni kiriting — tasdiqlash kodi yuboriladi",
+      "PhoneLabel": "Telefon raqami",
+      "Continue": "Davom etish",
+      "Terms": "Davom etish orqali <offer>ommaviy oferta</offer> va <privacy>maxfiylik siyosati</privacy>ga rozilik bildirasiz",
+      "OtpTitle": "Kodni kiriting",
+      "OtpSubtitle": "Kod {phone} raqamiga yuborildi",
+      "Resend": "Kodni qayta yuborish",
+      "ResendIn": "{seconds} soniyadan so'ng qayta yuborish",
+      "ProfileTitle": "O'zingiz haqingizda",
+      "ProfileSubtitle": "Oxirgi qadam — va yo'lga chiqish mumkin",
+      "UploadAvatar": "Rasm yuklash",
+      "AvatarHint": "JPEG, PNG yoki WEBP, 5 MB gacha",
+      "FirstName": "Ism",
+      "ReferralCode": "Referal kod",
+      "Optional": "Ixtiyoriy",
+      "Finish": "Ro'yxatdan o'tishni yakunlash",
+      "Errors": {
+        "OtpRequest": "Kod yuborilmadi. Raqamni tekshiring.",
+        "OtpVerify": "Kod noto'g'ri. Qayta urinib ko'ring.",
+        "Profile": "Profilni saqlab bo'lmadi."
+      }
+    },
+    "Dashboard": {
+      "Title": "Salom, {name}!",
+      "Subtitle": "Safarlaringiz va tezkor amallar",
+      "Balance": "Balans",
+      "TopUp": "To'ldirish",
+      "Rating": "Reyting",
+      "Trips": "Jami safarlar",
+      "ViewAll": "Barchasini ko'rish",
+      "BecomeDriverTitle": "Haydovchi bo'ling",
+      "BecomeDriverText": "Avtomobil qo'shing, tekshiruvdan o'ting va o'z safarlaringizni e'lon qiling.",
+      "AddCar": "Avtomobil qo'shish",
+      "Upcoming": "Yaqin safarlar",
+      "NoUpcoming": "Hozircha safar yo'q",
+      "NoUpcomingText": "Hamroh toping yoki o'z safaringizni e'lon qiling."
+    },
+    "Search": {
+      "Title": "Safar qidirish",
+      "Subtitle": "Yo'nalish va sanani tanlang",
+      "From": "Qayerdan",
+      "FromPlaceholder": "Jo‘nash nuqtasi",
+      "To": "Qayerga",
+      "ToPlaceholder": "Borish nuqtasi",
+      "Date": "Sana",
+      "Seats": "Joylar",
+      "SeatsMinus": "Joyni kamaytirish",
+      "SeatsPlus": "Joy qo'shish",
+      "Filters": "Filtrlar",
+      "Sort": {
+        "cheapest": "Avval arzoni",
+        "expensive": "Avval qimmati",
+        "earliest": "Erta jo'nash",
+        "latest": "Kech jo'nash"
+      },
+      "Submit": "Safar topish",
+      "PickBothPoints": "Ikkala nuqtani takliflardan tanlang",
+      "Error": "Qidiruv bajarilmadi",
+      "NoResults": "Hech narsa topilmadi",
+      "NoResultsText": "Sanani o'zgartiring yoki filtrlarni olib tashlang.",
+      "Found": "Topilgan safarlar: {count}",
+      "HeroTitle": "Safaringizni hamrohlar bilan bo‘lishing",
+      "Swap": "O‘rin almashtirish",
+      "Today": "Bugun",
+      "Passengers": "Yo‘lovchilar",
+      "SeatsCount": "{count} yo‘lovchi",
+      "SortLabel": "Saralash",
+      "TopTrips": "Top safarlar"
+    },
+    "Trip": {
+      "NotFound": "Safar topilmadi",
+      "SeatsLeft": "Bo'sh joylar: {count}",
+      "SeatsCount": "Joylar: {count}",
+      "Departure": "Jo'nash",
+      "Seats": "Bo'sh joylar",
+      "Distance": "Masofa",
+      "Km": "km",
+      "Duration": "Yo'lda",
+      "HoursShort": "s",
+      "MinutesShort": "d",
+      "Price": "Narx",
+      "BookingType": "Bron turi",
+      "BookingTypes": {
+        "INSTANT": "Tezkor",
+        "REQUEST": "So'rov bo'yicha"
+      },
+      "Features": {
+        "conditioner": "Konditsioner",
+        "smoking_allowed": "Chekish mumkin",
+        "door_pickup": "Eshik oldiga kelish",
+        "food_stop": "Ovqatga to'xtash",
+        "max_two_back": "Orqada ko'pi bilan 2 kishi",
+        "parcels_allowed": "Pochta oladi"
+      },
+      "Garage": {
+        "FULL": "Bagaj band",
+        "HALF_EMPTY": "Bagaj yarim bo'sh",
+        "EMPTY": "Bagaj bo'sh"
+      },
+      "Message": "Yozish",
+      "Earnings": "Safar daromadi",
+      "Revenue": "Bronlardan jami",
+      "Commission": "Komissiya ({percent}%)",
+      "Payout": "To'lanadigan summa",
+      "SeatsToBook": "Nechta joy bron qilamiz",
+      "BookNow": "Bron qilish",
+      "RequestBooking": "So'rov yuborish",
+      "BookingConfirmed": "Bron tasdiqlandi",
+      "BookingRequested": "So'rov haydovchiga yuborildi",
+      "SendParcel": "Pochta yuborish — {price}",
+      "ParcelRequested": "Pochta so'rovi yuborildi",
+      "DriverTools": "Safarni boshqarish",
+      "Start": "Safarni boshlash",
+      "Complete": "Safarni yakunlash",
+      "Cancel": "Safarni bekor qilish",
+      "CancelReasonPrompt": "Bekor qilish sababini yozing",
+      "Passengers": "Yo'lovchilar",
+      "Report": "Safar ustidan shikoyat",
+      "ReportTitle": "Nima bo'ldi?",
+      "ReportPlaceholder": "Muammoni tasvirlang",
+      "ReportSent": "Shikoyat yuborildi",
+      "BackToTrips": "Barcha safarlarga",
+      "Title": "Safar tafsilotlari",
+      "Negotiable": "Kelishilgan",
+      "Currency": "UZS",
+      "ConfirmBooking": "Bronni tasdiqlash",
+      "RejectBooking": "Bronni rad etish"
+    },
+    "Publish": {
+      "Title": "Safar yaratish",
+      "Subtitle": "Yo'nalish, vaqt va shartlarni to'ldiring",
+      "NoCarTitle": "Safar e’lon qilish uchun avtomobil qo‘shing",
+      "NoCarText": "Hamroh topish uchun haydovchi bo‘lishingiz va avtomobilingizni qo‘shishingiz kerak",
+      "AddCar": "Avtomobil qo'shish",
+      "Car": "Avtomobil",
+      "Time": "Jo'nash vaqti",
+      "Seats": "Bo'sh joylar",
+      "PricePerSeat": "Bir joy narxi, UZS",
+      "PriceHint": "Ushbu yo'nalishda odatda: {min} — {max}, o'rtacha {avg}",
+      "BookingType": "Bron turi",
+      "Garage": "Bagaj",
+      "Options": "Safar shartlari",
+      "ParcelPrice": "Pochta narxi, UZS",
+      "ParcelPricePlaceholder": "Ko'rsatilmasa — joy narxi olinadi",
+      "Comment": "Izoh",
+      "CommentPlaceholder": "Masalan: metro yonidan jo'nayman",
+      "Submit": "Safarni e'lon qilish",
+      "Route": "Yo‘nalish",
+      "PickCar": "Avtomobilni tanlang",
+      "SeatsAndPrice": "Joylar va narx",
+      "BecomeDriver": "Haydovchi bo‘lish"
+    },
+    "MyTrips": {
+      "Title": "Safarlarim",
+      "Subtitle": "Faol safarlar va tarix",
+      "AsPassenger": "Yo'lovchi sifatida",
+      "AsDriver": "Haydovchi sifatida",
+      "Empty": "Bu yerda kelgusi safarlaringiz paydo bo‘ladi.",
+      "EmptyPassenger": "Safar toping va joy bron qiling.",
+      "EmptyDriver": "Birinchi safaringizni e'lon qiling va hamrohlar toping."
+    },
+    "Parcels": {
+      "Title": "Pochta",
+      "Subtitle": "Jo'natmalaringiz",
+      "Empty": "Hozircha pochta yo'q",
+      "EmptyText": "Haydovchi pochta oladigan safarni toping.",
+      "FindTrip": "Safar topish",
+      "ViewTrip": "Safarni ochish",
+      "CancelPrompt": "Bekor qilish sababini yozing",
+      "CancelPlaceholder": "Bekor qilish sababi"
+    },
+    "Chats": {
+      "Title": "Chatlar",
+      "Empty": "Bu yerda yo‘lovchi va haydovchilar bilan chatlaringiz paydo bo‘ladi.",
+      "EmptyText": "Chat safar bron qilingandan so'ng ochiladi.",
+      "Unknown": "Suhbatdosh",
+      "NoMessages": "Xabarlar yo'q",
+      "Thread": "Suhbat",
+      "Placeholder": "Xabar…",
+      "Details": "Batafsil"
+    },
+    "Wallet": {
+      "Title": "Hamyon",
+      "Balance": "Mavjud",
+      "Cards": "Kartalarim",
+      "NoCards": "Karta biriktirilmagan",
+      "AddCard": "Karta biriktirish",
+      "DeleteCard": "Kartani o'chirish",
+      "TopUp": "To'ldirish",
+      "Amount": "Summa, UZS",
+      "TopUpSubmit": "To'ldirish",
+      "PickCard": "To'ldirish uchun kartani tanlang",
+      "DepositStarted": "To'ldirish yaratildi — to'lovni tasdiqlang",
+      "History": "Amaliyotlar tarixi",
+      "NoTransactions": "Hozircha amaliyot yo'q",
+      "Types": {
+        "DEPOSIT": "To'ldirish",
+        "WITHDRAWAL": "Yechish",
+        "PAYMENT": "To'lov",
+        "REFUND": "Qaytarish",
+        "COMMISSION": "Komissiya",
+        "TRANSFER": "O'tkazma"
+      }
+    },
+    "Notifications": {
+      "Title": "Bildirishnomalar",
+      "Empty": "Hozircha bildirishnoma yo‘q",
+      "EmptyText": "Safarlaringiz bo'yicha yangiliklar shu yerda chiqadi.",
+      "TapToRead": "O'qilgan deb belgilash uchun bosing"
+    },
+    "Profile": {
+      "Title": "Profil",
+      "Settings": "Sozlamalar",
+      "ChangeAvatar": "Rasmni almashtirish",
+      "FirstName": "Ism",
+      "LastName": "Familiya",
+      "Bio": "O'zim haqimda",
+      "Gender": "Jins",
+      "Genders": {
+        "MALE": "Erkak",
+        "FEMALE": "Ayol",
+        "OTHER": "Boshqa"
+      },
+      "Edit": "Tahrirlash",
+      "Preferences": "Safar afzalliklari",
+      "Prefs": {
+        "talkative": "Suhbatni yoqtiraman",
+        "music_allowed": "Musiqa maqbul",
+        "pets_allowed": "Hayvon bilan mumkin"
+      },
+      "CarsCount": "Avtomobillar: {count}",
+      "Promocodes": "Promokodlar",
+      "PromoPlaceholder": "Promokodni kiriting",
+      "Activate": "Faollashtirish",
+      "Referral": "Referal kod",
+      "ReferredCount": "Taklif qilingan do'stlar: {count}",
+      "Reviews": "Siz haqingizdagi izohlar",
+      "TabAbout": "O‘zim haqimda",
+      "TabAccount": "Hisob",
+      "EditProfile": "Profilni tahrirlash",
+      "CompletionTitle": "Profilingizni to‘ldiring",
+      "CompletionText": "Bu ishonchni mustahkamlaydi va boshqalar siz bilan safar qilishga ko‘proq moyil bo‘ladi.",
+      "CompletionProgress": "{total} tadan {done} tasi to‘ldirildi",
+      "Checklist": {
+        "AddFirstName": "Ism qo‘shish",
+        "AddLastName": "Familiya qo‘shish",
+        "AddPhoto": "Rasm qo‘shish",
+        "AddBirthday": "Tug‘ilgan sanani qo‘shish",
+        "AddGender": "Jinsni ko‘rsatish",
+        "AddBio": "O‘zingiz haqingizda yozish",
+        "VerifyAccount": "Hisobni tasdiqlash"
+      },
+      "AddBioCta": "O‘zingiz haqingizda yozing",
+      "AddPrefsCta": "Afzalliklaringizni ayting",
+      "ChangePrefs": "Afzalliklarni o‘zgartirish",
+      "BecomeDriver": "Haydovchi bo‘lish",
+      "AddCar": "Avtomobil qo‘shish",
+      "PublicProfile": "Ommaviy profil",
+      "PersonalData": "Shaxsiy ma’lumotlar",
+      "Phone": "Telefon raqami",
+      "Birthday": "Tug‘ilgan sana",
+      "Saved": "O‘zgarishlar saqlandi",
+      "PromoActivated": "Promokod faollashtirildi",
+      "MyPromocodes": "Mening promokodlarim",
+      "PromoExpires": "{date} gacha amal qiladi",
+      "NoReviews": "Bu yerda siz haqingizdagi izohlar chiqadi.",
+      "Age": "Yosh",
+      "Years": "{count} yosh",
+      "NotSet": "Ko‘rsatilmagan",
+      "NoBio": "Biografiya yo‘q",
+      "DriverRating": "Haydovchi reytingi",
+      "PassengerRating": "Yo‘lovchi reytingi",
+      "ReviewCount": "{count} ta izoh",
+      "PrefValue": {
+        "talkative": {
+          "yes": "Suhbatni yoqtiraman",
+          "no": "Sukunatni afzal ko‘raman"
+        },
+        "music_allowed": {
+          "yes": "Musiqani yoqtiraman",
+          "no": "Sukunatni afzal ko‘raman"
+        },
+        "pets_allowed": {
+          "yes": "Hayvon bilan mumkin",
+          "no": "Olmayman"
+        }
+      }
+    },
+    "Cars": {
+      "Title": "Avtomobillarim",
+      "Subtitle": "Safar e'lon qilishdan oldin avtomobil tekshiruvdan o'tishi kerak",
+      "Add": "Qo'shish",
+      "Make": "Rusumi",
+      "Model": "Modeli",
+      "Year": "Ishlab chiqarilgan yili",
+      "Plate": "Davlat raqami",
+      "Color": "Rangi",
+      "ColorPlaceholder": "Oq",
+      "Seats": "Salondagi joylar",
+      "SeatsCount": "{count} joy",
+      "VerificationNote": "Qo'shilgandan so'ng avtomobil moderator tekshiruviga yuboriladi.",
+      "Empty": "Avtomobillar yo'q",
+      "EmptyText": "Haydovchi sifatida safar e'lon qilish uchun avtomobil qo'shing.",
+      "Rejected": "Tekshiruvdan o'tmadi — hujjatlarni qayta yuboring.",
+      "DeleteConfirm": "Avtomobil o'chirilsinmi?",
+      "AddTitle": "Avtomobil qo‘shish",
+      "UploadLicense": "Guvohnomani yuklang (.jpg .png):",
+      "UploadPassport": "Texpasportni yuklang (.jpg .png):",
+      "FrontSide": "Old tomoni:",
+      "BackSide": "Orqa tomoni:",
+      "SizeHint": "Hujjat hajmi: 10 MB dan kam",
+      "Submit": "Avtomobil qo‘shish"
+    },
+    "Settings": {
+      "Title": "Sozlamalar",
+      "Notifications": "Bildirishnomalar",
+      "NotificationTypes": {
+        "trips": "Safarlar",
+        "messages": "Xabarlar",
+        "promotionAndDiscounts": "Aksiya va chegirmalar",
+        "newsAndAgreement": "Yangiliklar va shartnomalar",
+        "general": "Umumiy"
+      },
+      "Navigator": "Standart navigator",
+      "Navigators": {
+        "YANDEX_NAVI": "Yandex Navigator",
+        "GOOGLE_MAPS": "Google Maps",
+        "NONE": "Tanlanmagan"
+      },
+      "BlockedUsers": "Bloklanganlar",
+      "NoBlocked": "Ro'yxat bo'sh",
+      "Unblock": "Blokdan chiqarish",
+      "Legal": "Hujjatlar",
+      "PublicOffer": "Ommaviy oferta",
+      "PrivacyPolicy": "Maxfiylik siyosati",
+      "DangerZone": "Xavfli hudud",
+      "DeleteText": "Hisobingiz va ma’lumotlaringizni butunlay o‘chiring. Ehtiyot bo‘ling.",
+      "DeleteAccount": "Hisobni o'chirish",
+      "DeleteConfirm": "Hisob butunlay o'chirilsinmi? Bu amalni qaytarib bo'lmaydi.",
+      "Language": "Til",
+      "Security": "Xavfsizlik",
+      "Promocodes": "Promokodlar",
+      "Help": "Yordam va qo‘llab-quvvatlash",
+      "RateUs": "Bizni baholang"
+    },
+    "Help": {
+      "Intro": "Savollaringiz bo‘lsa — biz doim yoningizdamiz",
+      "ContactSupport": "Qo‘llab-quvvatlashga yozish",
+      "Guide": "Foydalanish bo‘yicha qo‘llanma"
     }
   }
 }

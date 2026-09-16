@@ -47,6 +47,8 @@
 }
 
 :root {
+  /* Home-indicator inset, so the floating tab bar can offset against it. */
+  --sa-bottom: env(safe-area-inset-bottom, 0px);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -218,5 +220,165 @@
 
   .about-paragraph {
     @apply text-lg sm:text-xl indent-8 text-neutral-700 text-justify text-pretty;
+  }
+}
+
+/* =========================================================================
+   Yoldosh app design system
+   -------------------------------------------------------------------------
+   Tokens sampled straight off the mobile build: the brand green is a flat
+   #26BC4B across the hero, primary buttons and the active segmented tab, so
+   it is the single source for every accent in the signed-in app.
+   ========================================================================= */
+@theme {
+  --color-brand-50: #eaf8ee;
+  --color-brand-100: #d8f0de;
+  --color-brand-200: #a9e3b9;
+  --color-brand-300: #6fd08a;
+  --color-brand-400: #45c566;
+  --color-brand-500: #26bc4b;
+  --color-brand-600: #1fa341;
+  --color-brand-700: #188434;
+
+  --color-app-bg: #fafafa;
+  --color-ink: #1f1f1f;
+  --color-ink-muted: #8a8a8a;
+  --color-danger: #e5605c;
+  --color-star: #f5a623;
+  --color-chat-bg: #eaf8f2;
+
+  --radius-card: 1.25rem;
+}
+
+@layer components {
+  /*
+    The hero's bottom edge is a shallow arc, not a straight line. A border-radius
+    that wide reads as a single sweeping curve across the viewport — cheaper and
+    crisper than an SVG path, and it scales to any width.
+  */
+  .app-hero {
+    background: linear-gradient(105deg, #24b84a 0%, #2cbe50 45%, #3fc65f 100%);
+    border-bottom-left-radius: 50% 44px;
+    border-bottom-right-radius: 50% 44px;
+  }
+
+  .app-topbar {
+    background: linear-gradient(105deg, #24b84a 0%, #2cbe50 50%, #3fc65f 100%);
+  }
+
+  /*
+    Desktop drops the green entirely.
+
+    On a phone the filled bar is the top of the screen, so it reads as chrome.
+    Next to a floating sidebar it instead reads as a coloured panel boxed inside
+    the window — a frame around the content rather than the content itself. The
+    surface goes flat so pages sit directly on the page background, the way a
+    desktop app looks; the title colour is switched by `AppTopBar`.
+  */
+  @media (min-width: 1024px) {
+    .app-hero,
+    .app-topbar {
+      background: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  /* White card, ~20px radius, barely-there shadow — the app's base surface. */
+  .app-card {
+    @apply bg-white rounded-[var(--radius-card)] shadow-[0_2px_10px_-4px_rgba(0,0,0,0.10)];
+  }
+
+  /*
+    Profile sections carry a 4px green rail on their leading edge. Built from a
+    border so it follows the card's rounding instead of sitting on top of it.
+  */
+  .app-card-rail {
+    /* Spelled out rather than `@apply app-card` — Tailwind v4 cannot apply a
+       custom component class from inside the same layer. */
+    @apply bg-white rounded-[var(--radius-card)] shadow-[0_2px_10px_-4px_rgba(0,0,0,0.10)]
+           border-l-4 border-brand-500;
+  }
+
+  /* Tap target for settings-style rows: icon, label, chevron. */
+  .app-row {
+    @apply flex items-center gap-3 w-full bg-white rounded-2xl px-4 py-3.5 text-left
+           shadow-[0_2px_10px_-4px_rgba(0,0,0,0.10)] transition active:scale-[0.99];
+  }
+
+  .app-row-accent {
+    @apply flex items-center gap-3 w-full rounded-2xl px-4 py-3.5 text-left transition active:scale-[0.99]
+           bg-brand-500 text-white shadow-[0_4px_14px_-4px_rgba(38,188,75,0.5)];
+  }
+
+  /* Bottom bar clears the iOS home indicator. */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /*
+    Glass panel for the desktop sidebar: blurred, over-saturated backdrop with
+    a specular rim. The tab bar does its own, heavier version inline — it needs
+    layered backdrop-filters that cannot be expressed in one class.
+  */
+  .app-glass {
+    position: relative;
+    isolation: isolate;
+    /*
+      Deliberately thin. A heavier white fill turns the bar into a solid slab
+      and flattens the two things that make it glass: the page scrolling
+      visibly underneath, and the opaque white knob standing off the surface.
+      The blur does the legibility work instead of opacity.
+    */
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in oklab, white 46%, transparent),
+      color-mix(in oklab, white 30%, transparent)
+    );
+    -webkit-backdrop-filter: blur(26px) saturate(210%);
+    backdrop-filter: blur(26px) saturate(210%);
+    box-shadow:
+      inset 0 1.5px 0 -0.5px color-mix(in oklab, white 92%, transparent),
+      inset 0 -1.5px 0 -0.5px color-mix(in oklab, black 10%, transparent),
+      inset 1.5px 0 0 -0.5px color-mix(in oklab, white 55%, transparent),
+      inset -1.5px 0 0 -0.5px color-mix(in oklab, white 55%, transparent),
+      0 10px 34px -10px color-mix(in oklab, black 32%, transparent),
+      0 2px 8px -3px color-mix(in oklab, black 16%, transparent);
+  }
+
+  /* A soft highlight sweeping the upper half, like light caught in the lens. */
+  .app-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      160deg,
+      color-mix(in oklab, white 55%, transparent) 0%,
+      transparent 42%,
+      transparent 100%
+    );
+  }
+
+}
+
+@layer utilities {
+  /* Chip rails (filters, tabs) scroll without showing a scrollbar. */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .app-title {
+    @apply text-[17px] font-bold text-ink;
+  }
+
+  .app-muted {
+    @apply text-sm text-ink-muted;
   }
 }

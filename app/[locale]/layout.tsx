@@ -9,7 +9,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { getOrganizationJsonLd, getWebSiteJsonLd } from "@/app/lib/jsonld";
-import { Navbar } from "@/components/shared/widgets/Navbar";
+import { AuthProvider } from "@/hooks/useAuth";
 import { LayoutProps } from "@/types";
 import { routing } from "../i18n/routing";
 import { QueryProvider } from "./providers/QueryProvider";
@@ -167,17 +167,17 @@ export default async function RootLayout({ children, params }: LayoutProps) {
           </div>
         </noscript>
 
+        {/*
+          The chrome lives one level down, in the route groups: `(marketing)`
+          renders the public Navbar, `(app)` renders the signed-in shell
+          (sidebar + glass bottom bar). Keeping this layout to providers only
+          is what lets the two surfaces look nothing like each other while
+          still sharing fonts, analytics and the query cache.
+        */}
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
             <ThemeProviders>
-              <div className="flex flex-col min-h-screen">
-                <header className="shrink-0 mb-16">
-                  <Navbar />
-                </header>
-                <main className="flex-1" id="main-content" role="main">
-                  {children}
-                </main>
-              </div>
+              <AuthProvider>{children}</AuthProvider>
             </ThemeProviders>
           </NextIntlClientProvider>
         </QueryProvider>
