@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ArrowUpDown, CalendarDays, Loader2, Repeat2, SlidersHorizontal, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -8,7 +9,7 @@ import { Link } from "@/app/i18n/routing";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { TripCard } from "@/components/app/TripCard";
-import { ErrorNote, formatDate, Screen, SectionLabel, Spinner } from "@/components/app/kit";
+import { ErrorNote, formatDate, Screen, SectionLabel, Spinner, toDepartureDate } from "@/components/app/kit";
 import { CityAutocomplete } from "@/components/shared/trip/CityAutocomplete";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -32,13 +33,43 @@ type BoolFilter = (typeof BOOL_FILTERS)[number];
 
 const SEAT_OPTIONS = [1, 2, 3, 4, 5, 6];
 
+/** Reads a route handed over in the query string (see the landing's search). */
+const readSearchParams = (params: URLSearchParams) => {
+  const num = (key: string) => {
+    const value = Number(params.get(key));
+    return Number.isFinite(value) && value !== 0 ? value : undefined;
+  };
+
+  const from: Point = { name: params.get("from") ?? "", lat: num("from_lat"), lng: num("from_lon") };
+  const to: Point = { name: params.get("to") ?? "", lat: num("to_lat"), lng: num("to_lon") };
+
+  const rawDate = params.get("date");
+  const parsed = rawDate ? new Date(rawDate) : undefined;
+  const date = parsed && !Number.isNaN(parsed.getTime()) ? parsed : undefined;
+
+  const seats = Number(params.get("seats"));
+
+  return {
+    from,
+    to,
+    date,
+    seats: Number.isFinite(seats) && seats > 0 ? seats : 1,
+    complete: Boolean(from.lat && from.lng && to.lat && to.lng),
+  };
+};
+
 export const SearchScreen = () => {
   const t = useTranslations("App");
+  const searchParams = useSearchParams();
 
-  const [from, setFrom] = useState<Point>({ name: "" });
-  const [to, setTo] = useState<Point>({ name: "" });
-  const [date, setDate] = useState<Date | undefined>();
-  const [seats, setSeats] = useState(1);
+  // The landing hands its search over in the URL, so arriving from there (or
+  // from a shared link) lands on results rather than an empty form.
+  const initial = readSearchParams(searchParams);
+
+  const [from, setFrom] = useState<Point>(initial.from);
+  const [to, setTo] = useState<Point>(initial.to);
+  const [date, setDate] = useState<Date | undefined>(initial.date);
+  const [seats, setSeats] = useState(initial.seats);
   const [swapKey, setSwapKey] = useState(0);
 
   const [filters, setFilters] = useState<Partial<Record<BoolFilter, boolean>>>({});
@@ -50,6 +81,23 @@ export const SearchScreen = () => {
   const [query, setQuery] = useState<TripSearchQuery | null>(null);
 
   const { data, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage, error } = useAppTripSearch(query);
+
+  // Fire once on mount when the URL already carries a complete route.
+  useEffect(() => {
+    if (initial.complete) {
+      setQuery({
+        from_latitude: initial.from.lat!,
+        from_longitude: initial.from.lng!,
+        to_latitude: initial.to.lat!,
+        to_longitude: initial.to.lng!,
+        departure_date: toDepartureDate(initial.date),
+        requested_seats: initial.seats,
+        limit: 10,
+      });
+    }
+    // Deliberately mount-only: later edits go through the form.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const { data: popular } = usePopularTrips(!query);
 
   const ready = Boolean(from.lat && from.lng && to.lat && to.lng);
@@ -68,7 +116,7 @@ export const SearchScreen = () => {
       from_longitude: from.lng!,
       to_latitude: to.lat!,
       to_longitude: to.lng!,
-      departure_date: (date ?? new Date()).toISOString(),
+      departure_date: toDepartureDate(date),
       requested_seats: seats,
       // The API rejects sorting by price and time together.
       sort_by_price: sort === "cheapest" || sort === "expensive" ? sort : undefined,

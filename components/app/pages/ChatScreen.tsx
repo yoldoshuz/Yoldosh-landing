@@ -10,6 +10,7 @@ import { UserAvatar } from "@/components/app/UserAvatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useChatMessages, useSendMessage } from "@/hooks/api/useChat";
+import { useUsersByIds } from "@/hooks/api/useProfile";
 import { useAppTrip } from "@/hooks/api/useAppTrips";
 import { useAuth } from "@/hooks/useAuth";
 import { apiErrorMessage } from "@/lib/api";
@@ -30,7 +31,9 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
 
   const messages = data?.messages ?? [];
   const chat = data?.chat;
-  const other = chat?.participant1Id === user?.id ? chat?.participant2 : chat?.participant1;
+  const otherId = chat?.participant1Id === user?.id ? chat?.participant2Id : chat?.participant1Id;
+  const users = useUsersByIds([otherId]);
+  const other = (otherId ? users[otherId] : undefined) ?? (chat?.participant1Id === user?.id ? chat?.participant2 : chat?.participant1);
 
   // Keep the newest message in view as the poll brings new ones in.
   useEffect(() => {

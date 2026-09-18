@@ -241,6 +241,25 @@ export const formatDate = (value?: string | Date | null, locale = "ru-RU") => {
   return Number.isNaN(d.getTime()) ? "—" : d.toLocaleDateString(locale);
 };
 
+/**
+ * Turns a calendar day into a `departure_date` the search endpoint accepts.
+ *
+ * The API rejects anything not strictly in the future. A day picked from the
+ * calendar is local midnight, and Uzbekistan is UTC+5, so "today" serialises to
+ * 19:00 *yesterday* in UTC and comes back 400. Today therefore departs from
+ * right now; any later day departs from its own local midnight, which is still
+ * safely ahead.
+ */
+export const toDepartureDate = (day?: Date): string => {
+  const now = new Date();
+  if (!day) return now.toISOString();
+
+  const start = new Date(day);
+  start.setHours(0, 0, 0, 0);
+
+  return start.getTime() <= now.getTime() ? now.toISOString() : start.toISOString();
+};
+
 export const formatTime = (value?: string | Date | null, locale = "ru-RU") => {
   if (!value) return "—";
   const d = new Date(value);

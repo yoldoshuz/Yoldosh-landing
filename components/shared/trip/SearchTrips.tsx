@@ -68,8 +68,11 @@ export const SearchTrips = () => {
       params.set("date", date.toISOString());
     }
 
+    // Searching hands the visitor over to the signed-in app rather than the
+    // marketing results page — that is where booking actually happens. Guests
+    // get bounced through /login by the app's guard and land back here.
     router.push({
-      pathname: "/trips",
+      pathname: "/search",
       query: Object.fromEntries(params),
     });
   };

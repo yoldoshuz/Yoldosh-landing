@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, Plus, Trash2, Upload } from "lucide-react";
+import { Loader2, Plus, ScanLine, Trash2, Upload } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { EmptyState, ErrorNote, ILLUSTRATION, Screen, Spinner, StatusBadge } from "@/components/app/kit";
+import { EmptyState, ErrorNote, ILLUSTRATION, Screen, Spinner, StatusBadge, SuccessNote } from "@/components/app/kit";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,9 +20,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useCreateCar, useDeleteCar, useMyCars, type CreateCarPayload } from "@/hooks/api/useCars";
 import { apiErrorMessage } from "@/lib/api";
+import { readCarDocument } from "@/lib/ocr";
 import { cn } from "@/lib/utils";
 
 const EMPTY_CAR: CreateCarPayload = {
@@ -46,9 +48,40 @@ export const CarsScreen = () => {
   const [licenseFront, setLicenseFront] = useState<File | null>(null);
   const [passportFront, setPassportFront] = useState<File | null>(null);
   const [passportBack, setPassportBack] = useState<File | null>(null);
+  const [scanning, setScanning] = useState(false);
+  const [scanProgress, setScanProgress] = useState(0);
+  const [scanned, setScanned] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const ready = Boolean(form.make.trim() && form.model.trim() && form.plate_number.trim() && form.color.trim());
+
+  /**
+   * Reads a registration photo and fills in whatever it recognised. Existing
+   * values win: a field the driver already corrected is never overwritten by a
+   * later scan.
+   */
+  const scan = async (file: File) => {
+    setError(null);
+    setScanning(true);
+    setScanProgress(0);
+    try {
+      const result = await readCarDocument(file, setScanProgress);
+      setForm((f) => ({
+        ...f,
+        make: f.make || result.make || "",
+        model: f.model || result.model || "",
+        plate_number: f.plate_number || result.plate_number || "",
+        color: f.color || result.color || "",
+        year: f.year !== EMPTY_CAR.year ? f.year : (result.year ?? f.year),
+      }));
+      setScanned(true);
+    } catch (e) {
+      // A failed scan is not a failed upload — the driver can still type.
+      setError(apiErrorMessage(e, t("Cars.ScanFailed")));
+    } finally {
+      setScanning(false);
+    }
+  };
 
   const submit = async () => {
     if (!ready) return;
@@ -65,6 +98,7 @@ export const CarsScreen = () => {
       setLicenseFront(null);
       setPassportFront(null);
       setPassportBack(null);
+      setScanned(false);
       setAdding(false);
     } catch (e) {
       setError(apiErrorMessage(e, t("Errors.Generic")));
@@ -92,7 +126,68 @@ export const CarsScreen = () => {
             }}
             className="space-y-4"
           >
+            <p className="text-sm text-ink-muted">{t("Cars.ScanHint")}</p>
+
+            <div>
+              <h2 className="text-lg font-bold text-ink">
+                {t("Cars.UploadLicense")}
+                <span className="text-danger">*</span>
+              </h2>
+              <Dropzone
+                label={t("Cars.FrontSide")}
+                hint={t("Cars.SizeHint")}
+                file={licenseFront}
+                onFile={(file) => {
+                  setLicenseFront(file);
+                  if (file) void scan(file);
+                }}
+              />
+            </div>
+
+            <div>
+              <h2 className="text-lg font-bold text-ink">
+                {t("Cars.UploadPassport")}
+                <span className="text-danger">*</span>
+              </h2>
+              <Dropzone
+                label={t("Cars.FrontSide")}
+                hint={t("Cars.SizeHint")}
+                file={passportFront}
+                onFile={(file) => {
+                  setPassportFront(file);
+                  if (file) void scan(file);
+                }}
+              />
+              <Dropzone
+                label={t("Cars.BackSide")}
+                hint={t("Cars.SizeHint")}
+                file={passportBack}
+                onFile={setPassportBack}
+              />
+            </div>
+
+            {scanning && (
+              <div className="app-card space-y-2 p-4">
+                <p className="flex items-center gap-2 text-sm font-medium text-ink">
+                  <ScanLine className="size-4 animate-pulse text-brand-500" />
+                  {t("Cars.Scanning")}
+                </p>
+                <Progress value={Math.round(scanProgress * 100)} className="h-1.5" />
+              </div>
+            )}
+
+            <SuccessNote message={scanned && !scanning ? t("Cars.ScanDone") : null} />
+
+            {/*
+              Recognition is imperfect, so the extracted values stay editable —
+              they are shown for confirmation, not collected from scratch.
+            */}
             <div className="app-card grid gap-3 p-4 sm:grid-cols-2">
+              <div className="sm:col-span-2">
+                <h2 className="font-bold text-ink">{t("Cars.RecognisedTitle")}</h2>
+                <p className="mt-0.5 text-sm text-ink-muted">{t("Cars.RecognisedHint")}</p>
+              </div>
+
               <div>
                 <Label htmlFor="make" className="mb-1.5">
                   {t("Cars.Make")}
@@ -175,28 +270,11 @@ export const CarsScreen = () => {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-lg font-bold text-ink">
-                {t("Cars.UploadLicense")}
-                <span className="text-danger">*</span>
-              </h2>
-              <Dropzone label={t("Cars.FrontSide")} file={licenseFront} onFile={setLicenseFront} hint={t("Cars.SizeHint")} />
-            </div>
-
-            <div>
-              <h2 className="text-lg font-bold text-ink">
-                {t("Cars.UploadPassport")}
-                <span className="text-danger">*</span>
-              </h2>
-              <Dropzone label={t("Cars.FrontSide")} file={passportFront} onFile={setPassportFront} hint={t("Cars.SizeHint")} />
-              <Dropzone label={t("Cars.BackSide")} file={passportBack} onFile={setPassportBack} hint={t("Cars.SizeHint")} />
-            </div>
-
             {/*
               The documents are collected here to match the app's flow, but the
               current API creates the car from its fields only and takes the
               paperwork on the separate `/car/{id}/resubmit` step — so they are
-              not uploaded yet.
+              scanned locally and not uploaded yet.
             */}
             <p className="text-xs text-ink-muted">{t("Cars.VerificationNote")}</p>
 
@@ -204,7 +282,7 @@ export const CarsScreen = () => {
 
             <Button
               type="submit"
-              disabled={!ready || createCar.isPending}
+              disabled={!ready || createCar.isPending || scanning}
               className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600 disabled:bg-neutral-300 disabled:opacity-100"
             >
               {createCar.isPending ? <Loader2 className="size-5 animate-spin" /> : t("Cars.Submit")}
@@ -247,9 +325,9 @@ export const CarsScreen = () => {
             }
           />
         ) : (
-          <div className="space-y-3 sm:grid sm:grid-cols-2 sm:gap-3 sm:space-y-0">
+          <div className="flex w-full flex-col gap-3">
             {cars.map((car) => (
-              <div key={car.id} className="app-card p-4">
+              <div key={car.id} className="app-card w-full p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="font-bold text-ink">

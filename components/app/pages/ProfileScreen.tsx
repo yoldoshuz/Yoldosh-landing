@@ -75,7 +75,7 @@ export const ProfileScreen = () => {
       <AppTopBar title={t("Profile.Title")} />
       <Screen>
         <Tabs value={tab} onValueChange={setTab}>
-          <TabsList className="h-12 w-full rounded-full bg-neutral-100 p-1 lg:max-w-md">
+          <TabsList className="h-12 w-full rounded-full bg-neutral-100 p-1 lg:h-14">
             <TabsTrigger
               value="about"
               className="h-10 flex-1 rounded-full text-sm font-semibold data-[state=active]:bg-brand-500 data-[state=active]:text-white data-[state=active]:shadow-none"
@@ -91,130 +91,117 @@ export const ProfileScreen = () => {
           </TabsList>
 
           {/* ------------------------------------------------------- О себе */}
-          <TabsContent
-            value="about"
-            className="mt-4 space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-5 lg:space-y-0"
-          >
-            <div className="space-y-4">
-              <div className="app-card-rail overflow-hidden">
-                <Link
-                  href="/profile/edit"
-                  className="flex items-center gap-3 px-4 py-3.5 transition hover:bg-neutral-50"
-                >
-                  <UserAvatar src={current?.avatar} name={current?.firstName} className="size-12" />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-lg font-bold text-ink">
-                      {current?.firstName} {current?.lastName ?? ""}
-                    </span>
-                    <span className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-muted">
-                      <Phone className="size-3.5" />
-                      {current?.phoneNumber}
-                    </span>
+          <TabsContent value="about" className="mt-4 flex w-full flex-col gap-4">
+            <div className="app-card-rail w-full overflow-hidden">
+              <Link href="/profile/edit" className="flex items-center gap-3 px-4 py-3.5 transition hover:bg-neutral-50">
+                <UserAvatar src={current?.avatar} name={current?.firstName} className="size-12" />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-lg font-bold text-ink">
+                    {current?.firstName} {current?.lastName ?? ""}
                   </span>
-                  <ChevronRight className="size-5 shrink-0 text-ink-muted" />
-                </Link>
+                  <span className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-muted">
+                    <Phone className="size-3.5" />
+                    {current?.phoneNumber}
+                  </span>
+                </span>
+                <ChevronRight className="size-5 shrink-0 text-ink-muted" />
+              </Link>
+              <Link
+                href="/profile/edit"
+                className="flex items-center gap-3 border-t border-neutral-100 px-4 py-3.5 transition hover:bg-neutral-50"
+              >
+                <span className="flex-1 font-medium text-ink">{t("Profile.EditProfile")}</span>
+                <ChevronRight className="size-5 text-ink-muted" />
+              </Link>
+            </div>
+
+            <CompletionCard
+              title={t("Profile.CompletionTitle")}
+              description={t("Profile.CompletionText")}
+              done={doneCount}
+              total={checklist.length}
+              progressLabel={t("Profile.CompletionProgress", { done: doneCount, total: checklist.length })}
+              nextAction={
+                nextStep && (
+                  <Link href={nextStep.href as any} className="font-semibold text-brand-600 hover:text-brand-700">
+                    {t(`Profile.Checklist.${nextStep.labelKey}`)}
+                  </Link>
+                )
+              }
+            />
+
+            <div className="w-full">
+              <SectionLabel className="mt-0">{t("Profile.TabAbout")}</SectionLabel>
+              <div className="app-card-rail space-y-3 p-4">
+                {current?.bio ? (
+                  <p className="text-ink">{current.bio}</p>
+                ) : (
+                  <Link href="/profile/edit" className="flex items-center gap-2.5 text-brand-600">
+                    <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
+                    {t("Profile.AddBioCta")}
+                  </Link>
+                )}
+
+                {preferences.some((p) => p.on != null) ? (
+                  <div className="space-y-2">
+                    {preferences.map(({ key, icon: Icon, on }) => (
+                      <p
+                        key={key}
+                        // Green when the user is open to it, red when they'd rather not —
+                        // the colour carries the answer at a glance.
+                        className={cn("flex items-center gap-2.5", on ? "text-brand-600" : "text-danger")}
+                      >
+                        <Icon className="size-5 shrink-0" />
+                        {t(`Profile.PrefValue.${key}.${on ? "yes" : "no"}`)}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <Link href="/profile/edit" className="flex items-center gap-2.5 text-brand-600">
+                    <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
+                    {t("Profile.AddPrefsCta")}
+                  </Link>
+                )}
+
                 <Link
                   href="/profile/edit"
-                  className="flex items-center gap-3 border-t border-neutral-100 px-4 py-3.5 transition hover:bg-neutral-50"
+                  className="flex items-center gap-3 border-t border-neutral-100 pt-3 font-medium text-ink"
                 >
-                  <span className="flex-1 font-medium text-ink">{t("Profile.EditProfile")}</span>
+                  <span className="flex-1">{t("Profile.ChangePrefs")}</span>
                   <ChevronRight className="size-5 text-ink-muted" />
                 </Link>
               </div>
-
-              <CompletionCard
-                title={t("Profile.CompletionTitle")}
-                description={t("Profile.CompletionText")}
-                done={doneCount}
-                total={checklist.length}
-                progressLabel={t("Profile.CompletionProgress", { done: doneCount, total: checklist.length })}
-                nextAction={
-                  nextStep && (
-                    <Link href={nextStep.href as any} className="font-semibold text-brand-600 hover:text-brand-700">
-                      {t(`Profile.Checklist.${nextStep.labelKey}`)}
-                    </Link>
-                  )
-                }
-              />
             </div>
 
-            <div className="space-y-4">
-              <div>
-                <SectionLabel className="lg:mt-0">{t("Profile.TabAbout")}</SectionLabel>
-                <div className="app-card-rail space-y-3 p-4">
-                  {current?.bio ? (
-                    <p className="text-ink">{current.bio}</p>
-                  ) : (
-                    <Link href="/profile/edit" className="flex items-center gap-2.5 text-brand-600">
-                      <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
-                      {t("Profile.AddBioCta")}
-                    </Link>
-                  )}
+            <div>
+              <SectionLabel>{t("Profile.BecomeDriver")}</SectionLabel>
+              <Link
+                href="/profile/cars"
+                className="app-card-rail flex items-center gap-3 px-4 py-4 transition hover:bg-neutral-50"
+              >
+                <span className="flex-1 font-medium text-brand-600">{t("Profile.AddCar")}</span>
+                <Plus className="size-6 rounded-lg border border-brand-300 p-0.5 text-brand-500" />
+              </Link>
+            </div>
 
-                  {preferences.some((p) => p.on != null) ? (
-                    <div className="space-y-2">
-                      {preferences.map(({ key, icon: Icon, on }) => (
-                        <p
-                          key={key}
-                          // Green when the user is open to it, red when they'd rather not —
-                          // the colour carries the answer at a glance.
-                          className={cn("flex items-center gap-2.5", on ? "text-brand-600" : "text-danger")}
-                        >
-                          <Icon className="size-5 shrink-0" />
-                          {t(`Profile.PrefValue.${key}.${on ? "yes" : "no"}`)}
-                        </p>
-                      ))}
-                    </div>
-                  ) : (
-                    <Link href="/profile/edit" className="flex items-center gap-2.5 text-brand-600">
-                      <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
-                      {t("Profile.AddPrefsCta")}
-                    </Link>
-                  )}
-
-                  <Link
-                    href="/profile/edit"
-                    className="flex items-center gap-3 border-t border-neutral-100 pt-3 font-medium text-ink"
-                  >
-                    <span className="flex-1">{t("Profile.ChangePrefs")}</span>
-                    <ChevronRight className="size-5 text-ink-muted" />
-                  </Link>
-                </div>
-              </div>
-
-              <div>
-                <SectionLabel>{t("Profile.BecomeDriver")}</SectionLabel>
-                <Link
-                  href="/profile/cars"
-                  className="app-card-rail flex items-center gap-3 px-4 py-4 transition hover:bg-neutral-50"
-                >
-                  <span className="flex-1 font-medium text-brand-600">{t("Profile.AddCar")}</span>
-                  <Plus className="size-6 rounded-lg border border-brand-300 p-0.5 text-brand-500" />
-                </Link>
-              </div>
-
-              <div className="grid gap-2 sm:grid-cols-2">
-                <Row
-                  icon={Star}
-                  label={t("Profile.Reviews")}
-                  href="/profile/reviews"
-                  trailing={
-                    <span className="flex items-center gap-1.5 font-mono text-sm font-semibold text-star">
-                      <Star className="size-4 fill-star stroke-star" />
-                      {(current?.rating ?? 0).toFixed(1)}
-                    </span>
-                  }
-                />
-                <Row icon={CircleUserRound} label={t("Profile.PublicProfile")} href={`/users/${current?.id ?? ""}`} />
-              </div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <Row
+                icon={Star}
+                label={t("Profile.Reviews")}
+                href="/profile/reviews"
+                trailing={
+                  <span className="flex items-center gap-1.5 font-mono text-sm font-semibold text-star">
+                    <Star className="size-4 fill-star stroke-star" />
+                    {(current?.rating ?? 0).toFixed(1)}
+                  </span>
+                }
+              />
+              <Row icon={CircleUserRound} label={t("Profile.PublicProfile")} href={`/users/${current?.id ?? ""}`} />
             </div>
           </TabsContent>
 
           {/* ------------------------------------------------------ Аккаунт */}
-          <TabsContent
-            value="account"
-            className="mt-4 space-y-2 lg:grid lg:grid-cols-2 lg:gap-x-4 lg:gap-y-2 lg:space-y-0"
-          >
+          <TabsContent value="account" className="mt-4 flex w-full flex-col gap-2">
             <Row icon={Bell} label={t("Settings.Notifications")} href="/profile/notifications" />
             <Row icon={Globe} label={t("Settings.Language")} href="/profile/language" />
             <Row icon={ShieldCheck} label={t("Settings.Security")} href="/profile/security" />

@@ -8,12 +8,17 @@ import { AppTopBar } from "@/components/app/AppTopBar";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { EmptyState, formatTime, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
 import { useChats } from "@/hooks/api/useChat";
+import { useUsersByIds } from "@/hooks/api/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 export const ChatsScreen = () => {
   const t = useTranslations("App");
   const { user } = useAuth();
   const { data: chats, isLoading } = useChats();
+
+  // The API sends participant ids only, so resolve the other side separately.
+  const otherIds = (chats ?? []).map((c) => (c.participant1Id === user?.id ? c.participant2Id : c.participant1Id));
+  const users = useUsersByIds(otherIds);
 
   return (
     <>
@@ -30,7 +35,8 @@ export const ChatsScreen = () => {
           <div className="divide-y divide-neutral-100 bg-white lg:rounded-[var(--radius-card)] lg:shadow-[0_2px_10px_-4px_rgba(0,0,0,0.10)]">
             {chats.map((chat) => {
               // The API returns both participants; "the other one" is whichever isn't us.
-              const other = chat.participant1Id === user?.id ? chat.participant2 : chat.participant1;
+              const otherId = chat.participant1Id === user?.id ? chat.participant2Id : chat.participant1Id;
+              const other = users[otherId] ?? (chat.participant1Id === user?.id ? chat.participant2 : chat.participant1);
               const last = chat.messages?.[chat.messages.length - 1];
               const mine = last?.senderId === user?.id;
 

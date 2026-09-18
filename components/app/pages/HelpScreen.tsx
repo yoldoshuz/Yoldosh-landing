@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { Row, Screen } from "@/components/app/kit";
 
-const SUPPORT_TELEGRAM = "https://t.me/yoldosh_support";
+const SUPPORT_TELEGRAM = "https://t.me/yoldosh_admin";
 
 export const HelpScreen = () => {
   const t = useTranslations("App");

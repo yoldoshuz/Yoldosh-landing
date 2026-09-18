@@ -1564,7 +1564,13 @@
       "FrontSide": "Front side:",
       "BackSide": "Back side:",
       "SizeHint": "Document size: under 10 MB",
-      "Submit": "Add car"
+      "Submit": "Add car",
+      "ScanHint": "Upload photos of the documents — make, model, plate and colour are recognised automatically.",
+      "Scanning": "Reading the document…",
+      "ScanDone": "Details recognised. Check them and correct anything that is off.",
+      "ScanFailed": "Couldn't read the document. Please fill the fields in by hand.",
+      "RecognisedTitle": "Car details",
+      "RecognisedHint": "Filled in from your documents — check before submitting."
     },
     "Settings": {
       "Title": "Settings",

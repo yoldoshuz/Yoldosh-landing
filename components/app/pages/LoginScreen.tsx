@@ -156,7 +156,16 @@ export const LoginScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-4 py-10">
+      {/* Signing in is a detour, not a dead end — always offer the way back. */}
+      <Link
+        href="/"
+        className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-ink"
+      >
+        <ArrowLeft className="size-4" />
+        {tCommon("Back")}
+      </Link>
+
       <Link href="/" className="flex items-center gap-2 mb-8">
         <Image src="/assets/logo.svg" alt="Yoldosh" width={44} height={44} priority />
         <span className="text-2xl font-bold text-neutral-800">Yo&apos;ldosh</span>

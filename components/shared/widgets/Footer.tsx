@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Headset, Mail } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
@@ -38,13 +38,27 @@ export const Footer = () => {
               <p className="text-2xl font-bold text-neutral-800">Yo'ldosh</p>
             </Link>
             <div className="flex items-center gap-2 font-bold text-emerald-500">
-              <Headset aria-hidden="true" className="size-5" />
+              <Send aria-hidden="true" className="size-5" />
               <a
-                href="tel:+998940001258"
-                aria-label="Call support: +998 94 000 12 58"
+                href="https://t.me/yoldosh"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Yoldosh on Telegram: @yoldosh"
                 className="hover:text-emerald-700 transition duration-300 ease-in-out"
               >
-                +998 94 000 12 58
+                @yoldosh
+              </a>
+            </div>
+            <div className="flex items-center gap-2 font-bold text-emerald-500">
+              <Send aria-hidden="true" className="size-5" />
+              <a
+                href="https://t.me/yoldosh_admin"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Yoldosh support on Telegram: @yoldosh_admin"
+                className="hover:text-emerald-700 transition duration-300 ease-in-out"
+              >
+                @yoldosh_admin
               </a>
             </div>
             <div className="flex items-center gap-2 font-bold text-emerald-500">

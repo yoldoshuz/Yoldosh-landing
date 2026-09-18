@@ -1568,7 +1568,13 @@
       "FrontSide": "Old tomoni:",
       "BackSide": "Orqa tomoni:",
       "SizeHint": "Hujjat hajmi: 10 MB dan kam",
-      "Submit": "Avtomobil qo‘shish"
+      "Submit": "Avtomobil qo‘shish",
+      "ScanHint": "Hujjatlar rasmini yuklang — rusum, model, raqam va rangni avtomatik aniqlaymiz.",
+      "Scanning": "Hujjat o‘qilmoqda…",
+      "ScanDone": "Ma’lumotlar aniqlandi. Tekshiring va kerak bo‘lsa to‘g‘rilang.",
+      "ScanFailed": "Hujjatni o‘qib bo‘lmadi. Maydonlarni qo‘lda to‘ldiring.",
+      "RecognisedTitle": "Avtomobil ma’lumotlari",
+      "RecognisedHint": "Hujjatlardan to‘ldirildi — yuborishdan oldin tekshiring."
     },
     "Settings": {
       "Title": "Sozlamalar",

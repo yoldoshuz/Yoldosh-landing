@@ -1,4 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMemo } from "react";
+import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api, toList } from "@/lib/api";
 import type { AppPromocode, AppUser, NotificationPreferences, NavigatorPreference, Gender } from "@/types/api";
@@ -119,3 +120,34 @@ export const useReferral = () => useQuery({ queryKey: qk.referral, queryFn: prof
 export const useSearchHistory = () => useQuery({ queryKey: qk.searchHistory, queryFn: profileApi.searchHistory });
 
 export const useDeleteAccount = () => useMutation({ mutationFn: profileApi.deleteAccount });
+
+/**
+ * Resolves users by id.
+ *
+ * The chat endpoints only carry `participant1Id` / `participant2Id` — no nested
+ * user object — so the counterpart's name and avatar have to be fetched
+ * separately, or every thread renders as an anonymous placeholder.
+ */
+export const useUsersByIds = (ids: (string | undefined)[]) => {
+  const unique = Array.from(new Set(ids.filter(Boolean) as string[]));
+
+  const results = useQueries({
+    queries: unique.map((id) => ({
+      queryKey: ["app", "user", id] as const,
+      queryFn: () => profileApi.byId(id),
+      staleTime: 10 * 60 * 1000,
+      retry: false,
+    })),
+  });
+
+  return useMemo(() => {
+    const byId: Record<string, AppUser> = {};
+    unique.forEach((id, index) => {
+      const user = results[index]?.data;
+      if (user) byId[id] = user;
+    });
+    return byId;
+    // `results` is a fresh array each render; its data identity is what matters.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [unique.join(","), results.map((r) => r.data?.id ?? "").join(",")]);
+};
