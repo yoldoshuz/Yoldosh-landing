@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/app/i18n/routing";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { TripCard } from "@/components/app/TripCard";
-import { EmptyState, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
+import { EmptyState, formatLongDate, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMyActivity } from "@/hooks/api/useAppTrips";
@@ -72,11 +72,27 @@ const TripList = ({ role }: { role: Role }) => {
     );
   }
 
+  // One section per departure day, newest first — matches the app's list.
+  const groups = new Map<string, typeof trips>();
+  for (const trip of [...trips].sort(
+    (a, b) => new Date(b.departure_ts).getTime() - new Date(a.departure_ts).getTime()
+  )) {
+    const key = new Date(trip.departure_ts).toDateString();
+    groups.set(key, [...(groups.get(key) ?? []), trip]);
+  }
+
   return (
     <>
-      <div className="space-y-3 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0">
-        {trips.map((trip) => (
-          <TripCard key={trip.id} trip={trip} href={`/ride/${trip.id}`} />
+      <div className="space-y-6">
+        {[...groups.entries()].map(([day, dayTrips]) => (
+          <section key={day}>
+            <h2 className="mb-3 text-lg font-bold text-ink">{formatLongDate(day)}</h2>
+            <div className="space-y-3 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0">
+              {dayTrips.map((trip) => (
+                <TripCard key={trip.id} trip={trip} href={`/ride/${trip.id}`} />
+              ))}
+            </div>
+          </section>
         ))}
       </div>
 

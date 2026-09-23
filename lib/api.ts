@@ -109,6 +109,12 @@ export const toList = <T,>(payload: unknown): T[] => {
   return [];
 };
 
+/** Machine-readable failure reason, when the API supplies one. */
+export const apiErrorCode = (error: unknown): string | undefined => {
+  if (!axios.isAxiosError(error)) return undefined;
+  return (error.response?.data as { error_code?: string } | undefined)?.error_code;
+};
+
 /** Best-effort human-readable message out of an axios error. */
 export const apiErrorMessage = (error: unknown, fallback = "Something went wrong"): string => {
   if (axios.isAxiosError(error)) {

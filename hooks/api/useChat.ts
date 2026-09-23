@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api, toList } from "@/lib/api";
-import type { AppChat, AppMessage } from "@/types/api";
+import type { AppChat, AppMessage, ChatTripSummary } from "@/types/api";
 import { qk } from "./keys";
 
 export const chatApi = {
@@ -13,9 +13,17 @@ export const chatApi = {
     const { data } = await api.post("/chat", { tripId, participant2Id });
     return (data.data?.chat ?? data.data) as AppChat;
   },
+  /**
+   * Returns the thread plus a summary of the trip it belongs to. Note there is
+   * no chat object in this payload — the counterpart is resolved from the chats
+   * list, which does carry both participants expanded.
+   */
   messages: async (chatId: string, page = 1, limit = 50) => {
     const { data } = await api.get(`/chat/${chatId}/messages`, { params: { page, limit } });
-    return data.data as { messages: AppMessage[]; chat: AppChat };
+    return {
+      messages: toList<AppMessage>(data.data?.messages),
+      trip: (data.data?.trip ?? null) as ChatTripSummary | null,
+    };
   },
   send: async ({ chatId, content, mediaUrl }: { chatId: string; content: string; mediaUrl?: string }) => {
     const { data } = await api.post(`/chat/${chatId}/messages`, { content, ...(mediaUrl ? { mediaUrl } : {}) });

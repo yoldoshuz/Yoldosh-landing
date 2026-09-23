@@ -1277,6 +1277,19 @@
         "OtpRequest": "Kod yuborilmadi. Raqamni tekshiring.",
         "OtpVerify": "Kod noto'g'ri. Qayta urinib ko'ring.",
         "Profile": "Profilni saqlab bo'lmadi."
+      },
+      "Telegram": {
+        "SigningIn": "Telegram orqali kirmoqdamiz…",
+        "PhoneTitle": "Raqamingizni tasdiqlang",
+        "PhoneSubtitle": "Safarlar, bronlar va hamyon bitta hisobda bo‘lishi uchun raqamingiz kerak — ham Telegramda, ham saytda.",
+        "ShareContact": "Raqamni ulashish",
+        "EnterManually": "Raqamni qo‘lda kiritish",
+        "ContactDeclined": "Raqamni ulashmadingiz. Uni qo‘lda kiritishingiz mumkin.",
+        "LinkFailed": "Raqamni bog‘lab bo‘lmadi. Qayta urinib ko‘ring.",
+        "FailedTitle": "Avtomatik kirish amalga oshmadi",
+        "FailedText": "Nimadir noto‘g‘ri ketdi. Telefon raqami orqali kiring.",
+        "Reopen": "Ilovani yopib qaytadan oching — yoki telefon raqami orqali kiring.",
+        "UsePhone": "Raqam orqali kirish"
       }
     },
     "Dashboard": {
@@ -1436,7 +1449,9 @@
       "NoMessages": "Xabarlar yo'q",
       "Thread": "Suhbat",
       "Placeholder": "Xabar…",
-      "Details": "Batafsil"
+      "Details": "Batafsil",
+      "NoPassengers": "Yo‘lovchi yo‘q",
+      "PassengerCount": "{count} ta yo‘lovchi"
     },
     "Wallet": {
       "Title": "Hamyon",
@@ -1612,6 +1627,12 @@
       "Intro": "Savollaringiz bo‘lsa — biz doim yoningizdamiz",
       "ContactSupport": "Qo‘llab-quvvatlashga yozish",
       "Guide": "Foydalanish bo‘yicha qo‘llanma"
+    },
+    "BookingLabel": {
+      "PENDING": "Bron qilingan",
+      "CONFIRMED": "Tasdiqlangan",
+      "CANCELLED": "Bekor qilingan",
+      "FAILED": "To‘lov xatosi"
     }
   }
 }

@@ -6,19 +6,23 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/app/i18n/routing";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { UserAvatar } from "@/components/app/UserAvatar";
-import { EmptyState, formatTime, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
+import { EmptyState, formatShortDate, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
 import { useChats } from "@/hooks/api/useChat";
-import { useUsersByIds } from "@/hooks/api/useProfile";
 import { useAuth } from "@/hooks/useAuth";
+import { cn } from "@/lib/utils";
+import type { AppChat } from "@/types/api";
+
+/** The chat list expands both participants, so "the other one" is a lookup. */
+const counterpartOf = (chat: AppChat, meId?: string) =>
+  chat.participant1Id === meId ? chat.participant2 : chat.participant1;
+
+const unreadFor = (chat: AppChat, meId?: string) =>
+  (chat.participant1Id === meId ? chat.unreadCount1 : chat.unreadCount2) ?? 0;
 
 export const ChatsScreen = () => {
   const t = useTranslations("App");
   const { user } = useAuth();
   const { data: chats, isLoading } = useChats();
-
-  // The API sends participant ids only, so resolve the other side separately.
-  const otherIds = (chats ?? []).map((c) => (c.participant1Id === user?.id ? c.participant2Id : c.participant1Id));
-  const users = useUsersByIds(otherIds);
 
   return (
     <>
@@ -34,11 +38,10 @@ export const ChatsScreen = () => {
         <div className="mx-auto w-full max-w-2xl lg:max-w-5xl lg:px-8 lg:pt-4">
           <div className="divide-y divide-neutral-100 bg-white lg:rounded-[var(--radius-card)] lg:shadow-[0_2px_10px_-4px_rgba(0,0,0,0.10)]">
             {chats.map((chat) => {
-              // The API returns both participants; "the other one" is whichever isn't us.
-              const otherId = chat.participant1Id === user?.id ? chat.participant2Id : chat.participant1Id;
-              const other = users[otherId] ?? (chat.participant1Id === user?.id ? chat.participant2 : chat.participant1);
-              const last = chat.messages?.[chat.messages.length - 1];
+              const other = counterpartOf(chat, user?.id);
+              const last = chat.lastMessage;
               const mine = last?.senderId === user?.id;
+              const unread = unreadFor(chat, user?.id);
 
               return (
                 <Link
@@ -50,13 +53,27 @@ export const ChatsScreen = () => {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
-                      <p className="truncate font-bold text-ink">{other?.firstName ?? t("Chats.Unknown")}</p>
-                      <span className="shrink-0 text-xs text-ink-muted">{formatTime(chat.lastMessageAt)}</span>
+                      <p className="truncate font-bold text-ink">{other?.firstName?.trim() || t("Chats.Unknown")}</p>
+                      <span className="shrink-0 text-xs text-ink-muted">
+                        {formatShortDate(last?.createdAt ?? chat.updatedAt)}
+                      </span>
                     </div>
-                    <p className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-muted">
-                      {mine && <Check className="size-4 shrink-0 text-ink-muted" />}
-                      <span className="truncate">{last?.content ?? t("Chats.NoMessages")}</span>
-                    </p>
+
+                    <div className="mt-0.5 flex items-center gap-2">
+                      <p className="flex min-w-0 flex-1 items-center gap-1.5 text-sm text-ink-muted">
+                        {/* A tick marks our own last message, the way the app does. */}
+                        {mine && last && (
+                          <Check className={cn("size-4 shrink-0", last.isRead ? "text-brand-500" : "text-ink-muted")} />
+                        )}
+                        <span className="truncate">{last?.content ?? t("Chats.NoMessages")}</span>
+                      </p>
+
+                      {unread > 0 && (
+                        <span className="grid min-w-5 shrink-0 place-items-center rounded-full bg-brand-500 px-1.5 text-xs font-bold text-white">
+                          {unread > 99 ? "99+" : unread}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </Link>
               );

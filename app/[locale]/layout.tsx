@@ -9,6 +9,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { getOrganizationJsonLd, getWebSiteJsonLd } from "@/app/lib/jsonld";
+import { TelegramProvider } from "@/components/app/TelegramProvider";
 import { AuthProvider } from "@/hooks/useAuth";
 import { LayoutProps } from "@/types";
 import { routing } from "../i18n/routing";
@@ -177,7 +178,9 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
             <ThemeProviders>
-              <AuthProvider>{children}</AuthProvider>
+              <AuthProvider>
+                <TelegramProvider>{children}</TelegramProvider>
+              </AuthProvider>
             </ThemeProviders>
           </NextIntlClientProvider>
         </QueryProvider>

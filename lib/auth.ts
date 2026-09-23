@@ -71,3 +71,42 @@ export const clearTokens = () => {
 };
 
 export const isAuthenticated = () => Boolean(getAccessToken());
+
+/* ------------------------------------------------------------------ guest */
+
+export const GUEST_ID_KEY = "yoldosh.guestId";
+
+/**
+ * Every visitor gets a guest identity on first load, so traffic that never
+ * signs in still shows up in the product's own analytics — and so a visitor's
+ * pre-signup activity can be attributed to them once they do register (the OTP
+ * request carries this id back to the backend).
+ *
+ * It lives in `localStorage`, which means it survives reloads but is scoped to
+ * this browser: that is the whole point, it identifies a device, not a person.
+ */
+export const getGuestId = (): string | null => {
+  if (!isBrowser()) return null;
+  try {
+    return window.localStorage.getItem(GUEST_ID_KEY);
+  } catch {
+    return null;
+  }
+};
+
+export const setGuestId = (guestId: string) => {
+  if (!isBrowser()) return;
+  try {
+    window.localStorage.setItem(GUEST_ID_KEY, guestId);
+  } catch {
+    /* private mode — the guest simply is not remembered across reloads */
+  }
+};
+
+/** Stable per-device id; `randomUUID` needs a secure context, hence the fallback. */
+export const createGuestId = (): string => {
+  if (isBrowser() && typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `web-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+};

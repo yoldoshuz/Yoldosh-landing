@@ -45,6 +45,12 @@ export interface AppUser {
   pets_allowed?: boolean | null;
   preferred_navigator?: NavigatorPreference;
   isHavePromocode?: boolean;
+  /** Telegram id arrives as a string — it is a bigint server-side. */
+  telegramId?: string | null;
+  telegramUsername?: string | null;
+  telegramPhotoUrl?: string | null;
+  telegramLinkedAt?: string | null;
+  phoneVerifiedVia?: "otp" | "telegram" | "bot" | null;
   cars?: AppCar[];
   notificationPreferences?: NotificationPreferences;
   createdAt?: string;
@@ -97,6 +103,8 @@ export interface AppTrip {
   distance?: number;
   duration?: number;
   departure_ts: string;
+  /** Sent by the API; the card shows it rather than deriving from duration. */
+  arrival_ts?: string | null;
   seats_available: number;
   price?: TripPrice;
   price_per_person?: number;
@@ -187,6 +195,10 @@ export interface AppMessage {
   senderId: string;
   content: string;
   mediaUrl?: string | null;
+  isRead?: boolean;
+  /** Echoed back for optimistic sends, so a local bubble can be reconciled. */
+  clientId?: string | null;
+  sender?: Pick<AppUser, "id" | "firstName"> & { avatar?: string | null };
   createdAt: string;
 }
 
@@ -195,11 +207,34 @@ export interface AppChat {
   tripId: string;
   participant1Id: string;
   participant2Id: string;
-  participant1?: Partial<AppUser>;
-  participant2?: Partial<AppUser>;
+  /** Both sides come back expanded — no extra lookup needed for the list. */
+  participant1?: Partial<AppUser> & { registration_source?: string };
+  participant2?: Partial<AppUser> & { registration_source?: string };
+  unreadCount1?: number;
+  unreadCount2?: number;
+  lastMessage?: {
+    content: string;
+    createdAt: string;
+    isRead: boolean;
+    senderId: string;
+  } | null;
   isBlocked?: boolean;
   lastMessageAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
   messages?: AppMessage[];
+}
+
+/** Trip summary the messages endpoint returns alongside the thread. */
+export interface ChatTripSummary {
+  tripid: string;
+  from_address?: string;
+  to_address?: string;
+  from_city?: string;
+  to_city?: string;
+  date?: string;
+  passengerCount?: number;
+  driver?: Pick<AppUser, "id" | "firstName" | "lastName"> & { avatar?: string | null };
 }
 
 export interface AppRating {

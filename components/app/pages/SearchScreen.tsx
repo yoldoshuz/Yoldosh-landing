@@ -33,6 +33,9 @@ type BoolFilter = (typeof BOOL_FILTERS)[number];
 
 const SEAT_OPTIONS = [1, 2, 3, 4, 5, 6];
 
+/** The leaderboard is a teaser, not a listing — five rows is the whole point. */
+const TOP_TRIPS = 5;
+
 /** Reads a route handed over in the query string (see the landing's search). */
 const readSearchParams = (params: URLSearchParams) => {
   const num = (key: string) => {
@@ -336,30 +339,38 @@ export const SearchScreen = () => {
             <>
               <SectionLabel>{t("Search.TopTrips")}</SectionLabel>
               <div className="app-card divide-y divide-neutral-100 overflow-hidden">
-                {popularTrips.slice(0, 8).map((trip: any, index: number) => (
+                {popularTrips.slice(0, TOP_TRIPS).map((trip: any, index: number) => (
                   <Link
                     key={trip.id}
                     href={`/ride/${trip.id}` as any}
-                    className="flex items-center gap-3 px-4 py-3 transition hover:bg-neutral-50"
+                    className="flex items-center gap-3 px-3 py-3 transition hover:bg-neutral-50 sm:px-4"
                   >
-                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-500 text-sm font-semibold text-white">
+                    {/* The podium is filled, the rest outlined — rank at a glance. */}
+                    <span
+                      className={cn(
+                        "grid size-7 shrink-0 place-items-center rounded-full text-[13px] font-bold",
+                        index < 3 ? "bg-brand-500 text-white" : "bg-brand-50 text-brand-600"
+                      )}
+                    >
                       {index + 1}
                     </span>
-                    <UserAvatar src={trip.driver?.avatar} name={trip.driver?.firstName} className="size-11" />
+
+                    <UserAvatar src={trip.driver?.avatar} name={trip.driver?.firstName} className="size-10" />
+
+                    {/* `min-w-0` all the way down is what lets the two text rows
+                        truncate instead of forcing the price off the card. */}
                     <span className="min-w-0 flex-1">
                       <span className="block truncate font-semibold text-ink">
                         {trip.from_location?.city} - {trip.to_location?.city}
                       </span>
-                      {/* `min-w-0` + `truncate` on the name keeps a long driver
-                          title (they are often a whole taxi company) on one
-                          line instead of pushing the row three rows tall. */}
-                      <span className="flex min-w-0 items-center gap-1.5 text-sm text-ink-muted">
+                      <span className="flex min-w-0 items-center gap-1 text-sm text-ink-muted">
                         <Star className="size-3.5 shrink-0 fill-star stroke-star" />
                         <span className="shrink-0">{(trip.driver?.rating ?? 0).toFixed(1)}</span>
                         <span className="truncate">· {trip.driver?.firstName}</span>
                       </span>
                     </span>
-                    <span className="shrink-0 font-semibold text-brand-600">
+
+                    <span className="shrink-0 text-sm font-semibold text-brand-600">
                       {trip.price?.price_per_person === 1
                         ? t("Trip.Negotiable")
                         : `${Number(trip.price?.price_per_person ?? 0).toLocaleString("ru-RU")}`}

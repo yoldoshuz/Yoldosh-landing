@@ -260,6 +260,73 @@ export const toDepartureDate = (day?: Date): string => {
   return start.getTime() <= now.getTime() ? now.toISOString() : start.toISOString();
 };
 
+/**
+ * `24 февраля 2027` — the section heading above a day's trips.
+ *
+ * Built from parts because the Russian long-date format appends an era marker
+ * ("24 февраля 2027 г."), which the app does not show.
+ */
+export const formatLongDate = (value?: string | Date | null, locale = "ru-RU") => {
+  if (!value) return "";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric" })
+    .formatToParts(d)
+    .filter((part) => part.type !== "era" && !(part.type === "literal" && part.value.trim() === "г."))
+    .map((part) => part.value)
+    .join("")
+    .replace(/s*г.?$/, "")
+    .trim();
+};
+
+/**
+ * Trip clock times, read as wall-clock.
+ *
+ * Departure and arrival come back as UTC instants but the backend stores the
+ * local schedule in them — a 00:00Z departure is a midnight departure, not 05:00
+ * in Tashkent. Rendering them in the viewer's zone shifted every trip by the
+ * offset, so they are formatted in UTC to match what the driver entered.
+ */
+export const formatTripTime = (value?: string | Date | null, locale = "ru-RU") => {
+  if (!value) return "—";
+  const d = new Date(value);
+  return Number.isNaN(d.getTime())
+    ? "—"
+    : d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" });
+};
+
+/** `18.09.26` — the compact stamp the chat list shows on the right. */
+export const formatShortDate = (value?: string | Date | null, locale = "ru-RU") => {
+  if (!value) return "";
+  const d = new Date(value);
+  return Number.isNaN(d.getTime())
+    ? ""
+    : d.toLocaleDateString(locale, { day: "2-digit", month: "2-digit", year: "2-digit" });
+};
+
+/** Day separator inside a thread: "Сегодня", "Вчера", else "16 сентября". */
+export const formatDayLabel = (value?: string | Date | null, locale = "ru-RU") => {
+  if (!value) return "";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+
+  const startOf = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const days = Math.round((startOf(new Date()) - startOf(d)) / 86_400_000);
+
+  if (days === 0) return DAY_LABELS[locale]?.today ?? "Today";
+  if (days === 1) return DAY_LABELS[locale]?.yesterday ?? "Yesterday";
+
+  // Older days always carry the year, the way the notification feed shows it.
+  return formatLongDate(d, locale);
+};
+
+const DAY_LABELS: Record<string, { today: string; yesterday: string }> = {
+  "ru-RU": { today: "Сегодня", yesterday: "Вчера" },
+  "uz-UZ": { today: "Bugun", yesterday: "Kecha" },
+  "en-US": { today: "Today", yesterday: "Yesterday" },
+};
+
 export const formatTime = (value?: string | Date | null, locale = "ru-RU") => {
   if (!value) return "—";
   const d = new Date(value);

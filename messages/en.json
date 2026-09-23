@@ -1273,6 +1273,19 @@
         "OtpRequest": "Couldn't send the code. Check the number.",
         "OtpVerify": "Wrong code. Please try again.",
         "Profile": "Couldn't save your profile."
+      },
+      "Telegram": {
+        "SigningIn": "Signing you in via Telegram…",
+        "PhoneTitle": "Confirm your number",
+        "PhoneSubtitle": "We need your number so trips, bookings and your wallet stay in one account — in Telegram and on the site.",
+        "ShareContact": "Share my number",
+        "EnterManually": "Enter the number manually",
+        "ContactDeclined": "You didn't share your number. You can type it in instead.",
+        "LinkFailed": "Couldn't link the number. Please try again.",
+        "FailedTitle": "Automatic sign-in failed",
+        "FailedText": "Something went wrong. Sign in with your phone number.",
+        "Reopen": "Close and reopen the app — or sign in with your phone number.",
+        "UsePhone": "Sign in with a phone number"
       }
     },
     "Dashboard": {
@@ -1432,7 +1445,9 @@
       "NoMessages": "No messages",
       "Thread": "Conversation",
       "Placeholder": "Message…",
-      "Details": "Details"
+      "Details": "Details",
+      "NoPassengers": "No passengers",
+      "PassengerCount": "{count} passenger(s)"
     },
     "Wallet": {
       "Title": "Wallet",
@@ -1608,6 +1623,12 @@
       "Intro": "Got a question? We're always here",
       "ContactSupport": "Message support",
       "Guide": "How to use the app"
+    },
+    "BookingLabel": {
+      "PENDING": "Booked",
+      "CONFIRMED": "Confirmed",
+      "CANCELLED": "Cancelled",
+      "FAILED": "Payment failed"
     }
   }
 }

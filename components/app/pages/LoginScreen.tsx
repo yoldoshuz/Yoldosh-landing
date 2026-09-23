@@ -8,13 +8,16 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
 import { ErrorNote } from "@/components/app/kit";
+import { TelegramSignIn } from "@/components/app/TelegramSignIn";
+import { useTelegram } from "@/components/app/TelegramProvider";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useCompleteProfile, useRequestOtp, useVerifyOtp } from "@/hooks/api/useAuthApi";
+import { authApi, useCompleteProfile, useRequestOtp, useVerifyOtp } from "@/hooks/api/useAuthApi";
 import { useAuth } from "@/hooks/useAuth";
 import { apiErrorMessage } from "@/lib/api";
+import { getGuestId } from "@/lib/auth";
 
 type Step = "phone" | "otp" | "profile";
 
@@ -42,6 +45,15 @@ export const LoginScreen = () => {
   const router = useRawRouter();
   const searchParams = useSearchParams();
   const { login, isAuthenticated } = useAuth();
+  const { isTelegram, status: telegramStatus, linkToken, onLinked } = useTelegram();
+
+  /*
+    Inside Telegram the sign-in is automatic, so this screen only shows the
+    phone step when the backend asked for one. `manualPhone` is the user
+    choosing to type the number instead of sharing their contact.
+  */
+  const [manualPhone, setManualPhone] = useState(false);
+  const showTelegramStep = isTelegram && !manualPhone && telegramStatus !== "authorized";
 
   /**
    * `next` is attacker-controllable (it rides in the URL), so only same-site
@@ -103,7 +115,9 @@ export const LoginScreen = () => {
   const sendOtp = async () => {
     setError(null);
     try {
-      await requestOtp.mutateAsync({ phoneNumber });
+      // Hands this device's guest identity over, so everything the visitor did
+      // before signing up is attributed to the account they end up with.
+      await requestOtp.mutateAsync({ phoneNumber, guestId: getGuestId() ?? undefined });
       setStep("otp");
       setOtp("");
       setCooldown(RESEND_SECONDS);
@@ -115,6 +129,17 @@ export const LoginScreen = () => {
   const submitOtp = async (code: string) => {
     setError(null);
     try {
+      // Inside Telegram the code proves the number so it can be attached to
+      // this Telegram account — `/auth/verify-otp` would sign in without ever
+      // making that link, which is exactly how a second account appears.
+      if (isTelegram && linkToken) {
+        const session = await authApi.telegramLinkPhone({ linkToken, phoneNumber, otp: code });
+        login({ accessToken: session.accessToken, refreshToken: session.refreshToken, user: session.user });
+        onLinked();
+        goNext();
+        return;
+      }
+
       const result = await verifyOtp.mutateAsync({ phoneNumber, otp: code });
 
       // Step 2 either hands back a full session (returning user) or just a
@@ -157,14 +182,17 @@ export const LoginScreen = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center px-4 py-10">
-      {/* Signing in is a detour, not a dead end — always offer the way back. */}
-      <Link
-        href="/"
-        className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-ink"
-      >
-        <ArrowLeft className="size-4" />
-        {tCommon("Back")}
-      </Link>
+      {/* Signing in is a detour, not a dead end — always offer the way back.
+          Except in Telegram, where the site itself is out of reach. */}
+      {!isTelegram && (
+        <Link
+          href="/"
+          className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-ink"
+        >
+          <ArrowLeft className="size-4" />
+          {tCommon("Back")}
+        </Link>
+      )}
 
       <Link href="/" className="flex items-center gap-2 mb-8">
         <Image src="/assets/logo.svg" alt="Yoldosh" width={44} height={44} priority />
@@ -172,7 +200,9 @@ export const LoginScreen = () => {
       </Link>
 
       <div className="w-full max-w-sm app-card p-6">
-        {step !== "phone" && (
+        {showTelegramStep && <TelegramSignIn onEnterPhone={() => setManualPhone(true)} />}
+
+        {!showTelegramStep && step !== "phone" && (
           <button
             type="button"
             onClick={() => {
@@ -186,7 +216,7 @@ export const LoginScreen = () => {
           </button>
         )}
 
-        {step === "phone" && (
+        {!showTelegramStep && step === "phone" && (
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -239,7 +269,7 @@ export const LoginScreen = () => {
           </form>
         )}
 
-        {step === "otp" && (
+        {!showTelegramStep && step === "otp" && (
           <div className="space-y-4">
             <div>
               <h1 className="text-xl font-bold">{t("OtpTitle")}</h1>
@@ -282,7 +312,7 @@ export const LoginScreen = () => {
           </div>
         )}
 
-        {step === "profile" && (
+        {!showTelegramStep && step === "profile" && (
           <form
             onSubmit={(e) => {
               e.preventDefault();

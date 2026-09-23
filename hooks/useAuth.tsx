@@ -7,6 +7,7 @@ import { useRouter } from "@/app/i18n/routing";
 import { authApi, type AuthSession } from "@/hooks/api/useAuthApi";
 import { qk } from "@/hooks/api/keys";
 import { profileApi } from "@/hooks/api/useProfile";
+import { useGuestSession } from "@/hooks/useGuestSession";
 import { setUnauthorizedHandler } from "@/lib/api";
 import { clearTokens, getAccessToken, setTokens } from "@/lib/auth";
 import type { AppUser } from "@/types/api";
@@ -39,6 +40,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setHasToken(Boolean(getAccessToken()));
     setHydrated(true);
   }, []);
+
+  // Signed-out visitors are registered as guests so they show up in the
+  // product's traffic stats; signed-in ones already have a real account.
+  useGuestSession(hydrated && !hasToken);
 
   const {
     data: user,

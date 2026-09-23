@@ -42,10 +42,14 @@ export const PublicProfileScreen = ({ userId }: { userId: string }) => {
 
   return (
     <>
-      {/* Green panel with a curved base, the avatar straddling the seam. */}
-      <div className="app-hero relative pb-16">
+      {/*
+        The hero's bottom edge bulges downward at the centre, so its lowest
+        point is the box bottom — pulling the content up into it (as a negative
+        margin did) hid the name behind the curve on a phone.
+      */}
+      <div className="app-hero relative pb-10">
         <AppTopBar title={t("Profile.Title")} variant="hero" back className="bg-transparent pb-0" />
-        <div className="flex justify-center pt-2">
+        <div className="flex justify-center pt-1">
           <UserAvatar
             src={user?.avatar}
             name={user?.firstName}
@@ -55,8 +59,8 @@ export const PublicProfileScreen = ({ userId }: { userId: string }) => {
         </div>
       </div>
 
-      <Screen className="-mt-4 space-y-3">
-        <div className="pb-2 text-center">
+      <Screen className="space-y-3 pt-5">
+        <div className="pb-1 text-center">
           <p className="text-2xl font-bold text-brand-600">
             {user?.firstName} {user?.lastName ?? ""}
           </p>
