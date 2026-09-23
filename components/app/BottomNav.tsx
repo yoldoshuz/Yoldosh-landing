@@ -219,6 +219,7 @@ export const BottomNav = () => {
 
   return (
     <nav
+      data-app-bar
       className="fixed bottom-[calc(0.75rem+var(--sa-bottom))] left-0 right-0 z-50 flex justify-center px-3 lg:hidden"
       aria-label={t("Primary")}
     >

@@ -13,6 +13,7 @@ export interface TelegramWebApp {
   isExpanded: boolean;
   platform: string;
   colorScheme: "light" | "dark";
+  viewportHeight: number;
   viewportStableHeight: number;
   initData: string;
   initDataUnsafe?: {
@@ -30,6 +31,8 @@ export interface TelegramWebApp {
   setHeaderColor?: (color: string) => void;
   setBackgroundColor?: (color: string) => void;
   BackButton?: { show: () => void; hide: () => void; onClick: (cb: () => void) => void };
+  onEvent?: (event: string, handler: () => void) => void;
+  offEvent?: (event: string, handler: () => void) => void;
 }
 
 declare global {
@@ -54,7 +57,13 @@ export const isTelegramWebApp = (): boolean => {
   return Boolean(webApp.initData) || (webApp.platform !== "unknown" && Boolean(webApp.platform));
 };
 
-const BRAND_GREEN = "#26bc4b";
+/*
+  Telegram picks the header's title colour itself, from the YIQ brightness of
+  the colour we hand it: above 128 it draws black text. Our #26BC4B lands at
+  130 — just over the line, which is why the title came out black on green.
+  brand-600 sits at 112 and flips it to white.
+*/
+const HEADER_GREEN = "#1fa341";
 const APP_BG = "#fafafa";
 
 /**
@@ -75,8 +84,31 @@ export const initTelegramWebApp = () => {
 
   // Older clients simply lack these; calling them is best-effort.
   webApp.disableVerticalSwipes?.();
-  webApp.setHeaderColor?.(BRAND_GREEN);
+  webApp.setHeaderColor?.(HEADER_GREEN);
   webApp.setBackgroundColor?.(APP_BG);
+
+  syncViewportHeight(webApp);
+};
+
+/**
+ * Publishes Telegram's visible height as a CSS variable.
+ *
+ * `100vh` is wrong inside a mini app: the client reserves room for its own
+ * header and the keyboard, so the document ends up taller than what the user
+ * can see. Anything pinned to the bottom then sits below the fold and the page
+ * scrolls to reach it. `viewportStableHeight` is the height that ignores
+ * transient overlays, which is what a layout should be sized against.
+ */
+export const syncViewportHeight = (webApp: TelegramWebApp) => {
+  const apply = () => {
+    const stable = webApp.viewportStableHeight || webApp.viewportHeight;
+    if (!stable) return;
+    document.documentElement.style.setProperty("--tg-viewport-height", `${stable}px`);
+  };
+
+  apply();
+  webApp.onEvent?.("viewportChanged", apply);
+  return () => webApp.offEvent?.("viewportChanged", apply);
 };
 
 /**

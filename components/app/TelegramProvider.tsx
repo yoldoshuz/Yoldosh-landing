@@ -8,7 +8,7 @@ import { authApi } from "@/hooks/api/useAuthApi";
 import { useAuth } from "@/hooks/useAuth";
 import { apiErrorCode } from "@/lib/api";
 import { getGuestId } from "@/lib/auth";
-import { getWebApp, initTelegramWebApp, isTelegramWebApp } from "@/lib/telegram";
+import { getWebApp, initTelegramWebApp, isTelegramWebApp, syncViewportHeight } from "@/lib/telegram";
 
 /** Where the mini app's automatic sign-in got to. */
 export type TelegramAuthStatus = "idle" | "authenticating" | "phone_required" | "authorized" | "failed";
@@ -127,18 +127,23 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
     router.replace(isAuthenticated ? "/search" : "/login");
   }, [isTelegram, isLoading, isAuthenticated, pathname, router]);
 
-  // Telegram's own scroll-to-dismiss is disabled in `initTelegramWebApp`; this
-  // stops the page itself from rubber-banding, which is what makes the gesture
-  // reachable in the first place.
+  /*
+    Switches the document into mini-app framing: exact viewport height, no page
+    scroll, only the content column scrolls (see `html.tg-app` in globals.css).
+    The height itself comes from Telegram and changes when the keyboard opens,
+    so it is kept in sync rather than read once.
+  */
   useEffect(() => {
     if (!isTelegram) return;
-    const { documentElement, body } = document;
-    const previous = documentElement.style.overscrollBehaviorY;
-    documentElement.style.overscrollBehaviorY = "none";
-    body.style.overscrollBehaviorY = "none";
+
+    document.documentElement.classList.add("tg-app");
+    const webApp = getWebApp();
+    const stopSync = webApp ? syncViewportHeight(webApp) : undefined;
+
     return () => {
-      documentElement.style.overscrollBehaviorY = previous;
-      body.style.overscrollBehaviorY = "";
+      stopSync?.();
+      document.documentElement.classList.remove("tg-app");
+      document.documentElement.style.removeProperty("--tg-viewport-height");
     };
   }, [isTelegram]);
 
