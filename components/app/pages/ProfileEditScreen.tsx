@@ -1,30 +1,47 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Pencil } from "lucide-react";
+import { CalendarDays, Loader2, Pencil } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { AppTopBar } from "@/components/app/AppTopBar";
+import { ErrorNote, formatDate, Screen, Spinner, SuccessNote } from "@/components/app/kit";
 import { UserAvatar } from "@/components/app/UserAvatar";
-import { ErrorNote, Screen, SectionLabel, Spinner, SuccessNote } from "@/components/app/kit";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { useFullProfile, useUpdateAvatar, useUpdateProfile } from "@/hooks/api/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 import { apiErrorMessage } from "@/lib/api";
-import type { Gender, NavigatorPreference } from "@/types/api";
+import { cn } from "@/lib/utils";
+import type { Gender } from "@/types/api";
 
-const PREFERENCES = ["talkative", "music_allowed", "pets_allowed"] as const;
-const NAVIGATORS: NavigatorPreference[] = ["YANDEX_NAVI", "GOOGLE_MAPS", "NONE"];
 const BIO_MAX = 128;
 
-/** `YYYY-MM-DD` for the API, which is also what `<input type="date">` speaks. */
-const toDateInput = (value?: string | null) => (value ? new Date(value).toISOString().slice(0, 10) : "");
+/** `YYYY-MM-DD` is what the API takes; built locally so the day cannot shift. */
+const toApiDate = (date?: Date) => {
+  if (!date) return undefined;
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+};
 
+const parseDate = (value?: string | null) => {
+  if (!value) return undefined;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? undefined : d;
+};
+
+/**
+ * "Личные данные" — who the user is, and nothing else.
+ *
+ * Ride preferences used to live here as switches; they have their own sheet on
+ * the profile (where the rest of the app reads them from), and the navigator
+ * setting is not part of this product's account screen at all.
+ */
 export const ProfileEditScreen = () => {
   const t = useTranslations("App");
   const { user } = useAuth();
@@ -39,11 +56,7 @@ export const ProfileEditScreen = () => {
     lastName: "",
     bio: "",
     gender: undefined as Gender | undefined,
-    birthday: "",
-    navigator: undefined as NavigatorPreference | undefined,
-    talkative: false,
-    music_allowed: false,
-    pets_allowed: false,
+    birthday: undefined as Date | undefined,
   });
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
@@ -59,11 +72,7 @@ export const ProfileEditScreen = () => {
       lastName: current.lastName ?? "",
       bio: current.bio ?? "",
       gender: current.gender,
-      birthday: toDateInput(current.date_of__birthday),
-      navigator: current.preferred_navigator,
-      talkative: Boolean(current.talkative),
-      music_allowed: Boolean(current.music_allowed),
-      pets_allowed: Boolean(current.pets_allowed),
+      birthday: parseDate(current.date_of__birthday),
     });
   }, [current?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -76,11 +85,7 @@ export const ProfileEditScreen = () => {
         lastName: form.lastName.trim() || null,
         bio: form.bio.trim() || null,
         gender: form.gender,
-        date_of__birthday: form.birthday || undefined,
-        preferred_navigator: form.navigator,
-        talkative: form.talkative,
-        music_allowed: form.music_allowed,
-        pets_allowed: form.pets_allowed,
+        date_of__birthday: toApiDate(form.birthday),
       });
       setSaved(true);
     } catch (e) {
@@ -155,14 +160,38 @@ export const ProfileEditScreen = () => {
               />
             </Field>
 
-            <Field label={t("Profile.Birthday")} htmlFor="birthday">
-              <Input
-                id="birthday"
-                type="date"
-                value={form.birthday}
-                onChange={(e) => setForm((f) => ({ ...f, birthday: e.target.value }))}
-                className="h-14 rounded-2xl border-neutral-300 px-4"
-              />
+            {/*
+              Our own calendar rather than `<input type="date">`: the native
+              picker is a different control on every platform and none of them
+              look like the app.
+            */}
+            <Field label={t("Profile.Birthday")}>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="h-14 w-full justify-between rounded-2xl border-neutral-300 px-4 text-base font-normal"
+                  >
+                    <span className={cn(!form.birthday && "text-ink-muted")}>
+                      {form.birthday ? formatDate(form.birthday) : t("Profile.PickDate")}
+                    </span>
+                    <CalendarDays className="size-5 text-brand-500" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={form.birthday}
+                    onSelect={(date) => setForm((f) => ({ ...f, birthday: date }))}
+                    captionLayout="dropdown"
+                    startMonth={new Date(1940, 0)}
+                    endMonth={new Date()}
+                    defaultMonth={form.birthday ?? new Date(1995, 0)}
+                    disabled={{ after: new Date() }}
+                  />
+                </PopoverContent>
+              </Popover>
             </Field>
 
             <Field label={t("Profile.Gender")}>
@@ -203,44 +232,6 @@ export const ProfileEditScreen = () => {
                 {form.bio.length}/{BIO_MAX}
               </p>
             </Field>
-          </div>
-
-          <div>
-            <SectionLabel>{t("Profile.Preferences")}</SectionLabel>
-            <div className="app-card divide-y divide-neutral-100 px-4">
-              {PREFERENCES.map((key) => (
-                <div key={key} className="flex items-center justify-between gap-3 py-3.5">
-                  <Label htmlFor={`pref-${key}`} className="cursor-pointer font-normal">
-                    {t(`Profile.Prefs.${key}`)}
-                  </Label>
-                  <Switch
-                    id={`pref-${key}`}
-                    checked={form[key]}
-                    onCheckedChange={(v) => setForm((f) => ({ ...f, [key]: v }))}
-                    className="data-[state=checked]:bg-brand-500"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <SectionLabel>{t("Settings.Navigator")}</SectionLabel>
-            <Select
-              value={form.navigator ?? ""}
-              onValueChange={(v) => setForm((f) => ({ ...f, navigator: v as NavigatorPreference }))}
-            >
-              <SelectTrigger className="h-14! w-full rounded-2xl border-neutral-300 bg-white px-4">
-                <SelectValue placeholder={t("Settings.Navigator")} />
-              </SelectTrigger>
-              <SelectContent>
-                {NAVIGATORS.map((n) => (
-                  <SelectItem key={n} value={n}>
-                    {t(`Settings.Navigators.${n}`)}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
           </div>
 
           <ErrorNote message={error} />

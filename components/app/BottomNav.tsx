@@ -17,7 +17,7 @@ const INACTIVE_LABEL = "rgba(31,31,31,0.38)";
  * would only cover their controls. next-intl's `usePathname` returns the route
  * template, so a dynamic segment matches by pattern rather than by id.
  */
-const FULLSCREEN_ROUTES = ["/chats/[chatId]"];
+const FULLSCREEN_ROUTES = ["/chats/[chatId]", "/ride/[tripId]"];
 
 /* ───────────────────────────────────────────── */
 /* LIQUID GLASS                                  */

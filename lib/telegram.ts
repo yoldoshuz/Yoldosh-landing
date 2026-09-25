@@ -142,3 +142,42 @@ export const requestTelegramContact = (): Promise<string | null> =>
     // without this the sign-in screen would sit disabled forever.
     setTimeout(() => settle(null), 60_000);
   });
+
+/* ------------------------------------------------------------ sign-out */
+
+const SIGNED_OUT_KEY = "yoldosh.telegram.signedOut";
+
+/**
+ * Remembers that the user signed out *on purpose* inside the mini app.
+ *
+ * Without it, logging out is a no-op there: the page reloads, `initData` is
+ * still sitting in the launch parameters, and the app signs straight back in —
+ * or, because that string is single-use, fails with a replay error. The flag
+ * lives in `sessionStorage`, so it lasts exactly as long as this mini-app
+ * session: closing and reopening from the bot signs the user in again, which
+ * is the behaviour people expect from Telegram.
+ */
+export const markTelegramSignedOut = () => {
+  try {
+    window.sessionStorage.setItem(SIGNED_OUT_KEY, "1");
+  } catch {
+    /* storage unavailable — the sign-out is still local, just not remembered */
+  }
+};
+
+export const clearTelegramSignedOut = () => {
+  try {
+    window.sessionStorage.removeItem(SIGNED_OUT_KEY);
+  } catch {
+    /* ignore */
+  }
+};
+
+export const isTelegramSignedOut = (): boolean => {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.sessionStorage.getItem(SIGNED_OUT_KEY) === "1";
+  } catch {
+    return false;
+  }
+};

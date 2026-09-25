@@ -1,15 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { CreditCard, Loader2, Plus, Trash2 } from "lucide-react";
+import { CreditCard, Loader2, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { EmptyState, ErrorNote, formatDateTime, formatMoney, ILLUSTRATION, Screen, SectionLabel, Spinner, SuccessNote } from "@/components/app/kit";
+import {
+  EmptyState,
+  ErrorNote,
+  formatDateTime,
+  formatMoney,
+  ILLUSTRATION,
+  Screen,
+  SectionLabel,
+  Spinner,
+  SuccessNote,
+} from "@/components/app/kit";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useCards, useCreateCard, useDeleteCard, useDeposit, useTransactions, useWallet } from "@/hooks/api/useWallet";
+import { useCards, useDeleteCard, useDeposit, useTransactions, useWallet } from "@/hooks/api/useWallet";
 import { apiErrorMessage } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +40,6 @@ export const WalletScreen = () => {
   const { data: cards } = useCards();
 
   const deposit = useDeposit();
-  const createCard = useCreateCard();
   const deleteCard = useDeleteCard();
 
   const [amount, setAmount] = useState("");
@@ -48,18 +57,6 @@ export const WalletScreen = () => {
       await deposit.mutateAsync({ amount: Number(amount), userCardId: selectedCard });
       setAmount("");
       setNotice(t("Wallet.DepositStarted"));
-    } catch (e) {
-      setError(apiErrorMessage(e, t("Errors.Generic")));
-    }
-  };
-
-  const addCard = async () => {
-    setError(null);
-    try {
-      const { tokenizeUrl } = await createCard.mutateAsync();
-      // IPAK YOLI hosts the card form — hand the user off rather than ever
-      // touching card data ourselves.
-      if (tokenizeUrl) window.location.href = tokenizeUrl;
     } catch (e) {
       setError(apiErrorMessage(e, t("Errors.Generic")));
     }
@@ -121,15 +118,12 @@ export const WalletScreen = () => {
               ))
             )}
 
-            <Button
-              variant="outline"
-              onClick={() => void addCard()}
-              disabled={createCard.isPending}
-              className="h-12 w-full rounded-full"
-            >
-              {createCard.isPending ? <Loader2 className="size-4 animate-spin" /> : <Plus className="size-4" />}
-              {t("Wallet.AddCard")}
-            </Button>
+            {/*
+              Card linking is switched off for now: it hands the user to the
+              acquirer's tokenisation page, and that flow is not part of this
+              release. Cards already on the account still work for top-ups.
+            */}
+            <p className="px-1 text-xs text-ink-muted">{t("Wallet.CardsDisabled")}</p>
           </div>
         </div>
 

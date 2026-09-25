@@ -13,7 +13,9 @@ import type { BookingStatus, CarStatus, ParcelStatus, TripStatus } from "@/types
 
 /** Page body: phone-width column on mobile, roomier and centred on desktop. */
 export const Screen = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <div className={cn("mx-auto w-full max-w-2xl px-4 pb-6 pt-1 lg:max-w-5xl lg:px-8 lg:pt-2", className)}>{children}</div>
+  <div className={cn("mx-auto w-full max-w-2xl px-4 pb-6 pt-1 lg:max-w-5xl lg:px-8 lg:pt-2", className)}>
+    {children}
+  </div>
 );
 
 export const SectionLabel = ({ children, className }: { children: ReactNode; className?: string }) => (
@@ -41,7 +43,17 @@ interface RowProps {
  * on what it was given, so it never produces an interactive element with
  * nothing to do.
  */
-export const Row = ({ icon: Icon, label, description, href, onClick, accent, danger, trailing, disabled }: RowProps) => {
+export const Row = ({
+  icon: Icon,
+  label,
+  description,
+  href,
+  onClick,
+  accent,
+  danger,
+  trailing,
+  disabled,
+}: RowProps) => {
   const body = (
     <>
       {Icon && (
@@ -86,17 +98,22 @@ export const Row = ({ icon: Icon, label, description, href, onClick, accent, dan
 /* ------------------------------------------------------------- empty state */
 
 /**
- * Illustration-led empty state, matching the mobile build: artwork, then a
- * bold centred sentence, then an optional action.
+ * Empty state, matching the mobile build: artwork, then a bold centred
+ * sentence, then an optional action.
+ *
+ * Screens with no illustration of their own pass an `icon` instead, which is
+ * drawn on a pale green disc — the notifications screen is the one that does.
  */
 export const EmptyState = ({
   illustration,
+  icon: Icon,
   title,
   description,
   action,
   className,
 }: {
-  illustration: string;
+  illustration?: string;
+  icon?: LucideIcon;
   title: string;
   description?: string;
   action?: ReactNode;
@@ -105,14 +122,22 @@ export const EmptyState = ({
   // Self-centres inside whatever it is dropped into, so a caller only has to
   // give it room rather than arrange it.
   <div className={cn("mx-auto flex w-full max-w-md flex-col items-center px-6 py-10 text-center", className)}>
-    <Image
-      src={illustration}
-      alt=""
-      width={320}
-      height={220}
-      className="mb-6 h-auto w-full max-w-[280px] object-contain"
-      priority={false}
-    />
+    {illustration ? (
+      <Image
+        src={illustration}
+        alt=""
+        width={320}
+        height={220}
+        className="mb-6 h-auto w-full max-w-[280px] object-contain"
+        priority={false}
+      />
+    ) : (
+      Icon && (
+        <span className="mb-6 grid size-[7.5rem] place-items-center rounded-full bg-brand-50">
+          <Icon className="size-12 text-brand-500" strokeWidth={1.6} />
+        </span>
+      )
+    )}
     <p className="text-xl font-bold text-ink lg:text-2xl">{title}</p>
     {description && <p className="mt-2 text-ink-muted">{description}</p>}
     {action && <div className="mt-6 w-full max-w-xs">{action}</div>}
@@ -244,20 +269,24 @@ export const formatDate = (value?: string | Date | null, locale = "ru-RU") => {
 /**
  * Turns a calendar day into a `departure_date` the search endpoint accepts.
  *
- * The API rejects anything not strictly in the future. A day picked from the
- * calendar is local midnight, and Uzbekistan is UTC+5, so "today" serialises to
- * 19:00 *yesterday* in UTC and comes back 400. Today therefore departs from
- * right now; any later day departs from its own local midnight, which is still
- * safely ahead.
+ * Two constraints pull in opposite directions. The API rejects anything not
+ * strictly in the future, and it reads the day off the *UTC* date — while
+ * Uzbekistan runs at UTC+5, so local midnight on the 26th is 19:00 on the 25th
+ * in UTC. Sending local midnight therefore searched the wrong day: picking
+ * "Завтра" returned today's trips.
+ *
+ * Midday local (07:00Z) lands on the intended date in both zones with hours to
+ * spare on either side. Today is the exception — midday may already be past,
+ * so it departs from right now.
  */
 export const toDepartureDate = (day?: Date): string => {
   const now = new Date();
   if (!day) return now.toISOString();
 
-  const start = new Date(day);
-  start.setHours(0, 0, 0, 0);
+  const noon = new Date(day);
+  noon.setHours(12, 0, 0, 0);
 
-  return start.getTime() <= now.getTime() ? now.toISOString() : start.toISOString();
+  return noon.getTime() <= now.getTime() ? now.toISOString() : noon.toISOString();
 };
 
 /**
@@ -330,5 +359,15 @@ const DAY_LABELS: Record<string, { today: string; yesterday: string }> = {
 export const formatTime = (value?: string | Date | null, locale = "ru-RU") => {
   if (!value) return "—";
   const d = new Date(value);
-  return Number.isNaN(d.getTime()) ? "—" : d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", hour12: false });
+  return Number.isNaN(d.getTime())
+    ? "—"
+    : d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", hour12: false });
 };
+
+/**
+ * The backend stores "ask me" trips as a price of 1 сум, and a handful of
+ * older rows carry no price at all. Neither is a number worth showing, so both
+ * render as "Договорная" — the card, the list and the details screen all ask
+ * this rather than each re-deriving it.
+ */
+export const isNegotiablePrice = (value?: number | null) => value == null || value <= 1;

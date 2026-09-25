@@ -2,14 +2,16 @@
 
 import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useLocale } from "next-intl";
 
 import { useRouter } from "@/app/i18n/routing";
-import { authApi, type AuthSession } from "@/hooks/api/useAuthApi";
 import { qk } from "@/hooks/api/keys";
+import { authApi, type AuthSession } from "@/hooks/api/useAuthApi";
 import { profileApi } from "@/hooks/api/useProfile";
 import { useGuestSession } from "@/hooks/useGuestSession";
 import { setUnauthorizedHandler } from "@/lib/api";
 import { clearTokens, getAccessToken, setTokens } from "@/lib/auth";
+import { clearTelegramSignedOut, markTelegramSignedOut } from "@/lib/telegram";
 import type { AppUser } from "@/types/api";
 
 interface AuthContextValue {
@@ -28,6 +30,7 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
+  const locale = useLocale();
   const queryClient = useQueryClient();
 
   // Tokens live in localStorage, which is unavailable during SSR — `hydrated`
@@ -61,22 +64,44 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     (session: AuthSession) => {
       setTokens(session);
       setHasToken(true);
+      // A fresh session cancels a deliberate sign-out inside the mini app.
+      clearTelegramSignedOut();
       queryClient.setQueryData(qk.me, session.user);
     },
     [queryClient]
   );
 
+  /**
+   * Signing out is a local act first.
+   *
+   * It used to `await` `/auth/logout` before touching anything, so a slow,
+   * hanging or 401-ing call (the last of which drags the interceptor through a
+   * refresh attempt) left the user sitting on their profile still signed in.
+   * The session is now torn down synchronously and the server is told
+   * afterwards — revoking the refresh token is worth doing, but it is not what
+   * the button promises.
+   */
   const logout = useCallback(async () => {
-    try {
-      await authApi.logout();
-    } catch {
-      // A dead/expired session still has to log out locally.
-    }
     clearTokens();
     setHasToken(false);
     queryClient.clear();
+    // Lets the mini app fall back to the phone screen instead of silently
+    // restoring the session it just discarded.
+    markTelegramSignedOut();
+
+    void authApi.logout().catch(() => {
+      /* already gone locally; a dead session cannot be revoked anyway */
+    });
+
+    // A hard replace rather than the client router: it guarantees every
+    // provider (auth, Telegram, react-query) restarts from a signed-out state,
+    // with no stale subscription able to put a token back.
+    if (typeof window !== "undefined") {
+      window.location.replace(`/${locale}/login`);
+      return;
+    }
     router.replace("/login");
-  }, [queryClient, router]);
+  }, [queryClient, router, locale]);
 
   // A 401 that survives the refresh attempt means the session is gone for good.
   useEffect(() => {

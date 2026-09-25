@@ -1285,7 +1285,8 @@
         "FailedTitle": "Automatic sign-in failed",
         "FailedText": "Something went wrong. Sign in with your phone number.",
         "Reopen": "Close and reopen the app — or sign in with your phone number.",
-        "UsePhone": "Sign in with a phone number"
+        "UsePhone": "Sign in with a phone number",
+        "ForeignNumber": "For now we only work with Uzbek numbers (+998). Please enter a number manually."
       }
     },
     "Dashboard": {
@@ -1333,7 +1334,24 @@
       "Passengers": "Passengers",
       "SeatsCount": "{count} passenger",
       "SortLabel": "Sort by",
-      "TopTrips": "Top trips"
+      "TopTrips": "Top trips",
+      "ResultsTitle": "Trip search",
+      "Tomorrow": "Tomorrow",
+      "UseMyLocation": "Use my location",
+      "LocationFailed": "Could not determine your location",
+      "Back": "Back",
+      "Clear": "Clear",
+      "Close": "Close",
+      "Filter": {
+        "Sorting": "Sorting",
+        "ByTime": "By time",
+        "ByPrice": "By price",
+        "Amenities": "Amenities",
+        "Luggage": "Luggage",
+        "Preferences": "Preferences",
+        "Submit": "Find a trip"
+      },
+      "EndOfList": "That is every trip for the selected day"
     },
     "Trip": {
       "NotFound": "Trip not found",
@@ -1392,7 +1410,18 @@
       "Negotiable": "Negotiable",
       "Currency": "UZS",
       "ConfirmBooking": "Confirm booking",
-      "RejectBooking": "Reject booking"
+      "RejectBooking": "Reject booking",
+      "More": "More",
+      "Map": "Map",
+      "RatingLabel": "Rating: {value}",
+      "SendMessage": "Send a message...",
+      "DriverComment": "Driver notes",
+      "Car": "Car",
+      "NotSpecified": "Not specified",
+      "PassengersLabel": "Passengers:",
+      "NoPassengers": "No passengers",
+      "PriceLabel": "Price:",
+      "ReportSubtitle": "Tell us what went wrong and we will look into it."
     },
     "Publish": {
       "Title": "Publish a trip",
@@ -1470,12 +1499,13 @@
         "REFUND": "Refund",
         "COMMISSION": "Commission",
         "TRANSFER": "Transfer"
-      }
+      },
+      "CardsDisabled": "Linking a card is temporarily unavailable."
     },
     "Notifications": {
       "Title": "Notifications",
       "Empty": "No notifications yet",
-      "EmptyText": "Updates about your trips will show up here.",
+      "EmptyText": "As soon as something happens, you will see it here",
       "TapToRead": "Tap to mark as read"
     },
     "Profile": {
@@ -1494,9 +1524,9 @@
       "Edit": "Edit",
       "Preferences": "Ride preferences",
       "Prefs": {
-        "talkative": "I like to chat",
-        "music_allowed": "Music is fine",
-        "pets_allowed": "Pets welcome"
+        "talkative": "Conversation during the ride",
+        "music_allowed": "Music",
+        "pets_allowed": "Pets"
       },
       "CarsCount": "Cars: {count}",
       "Promocodes": "Promo codes",
@@ -1514,11 +1544,13 @@
       "Checklist": {
         "AddFirstName": "Add your first name",
         "AddLastName": "Add your last name",
-        "AddPhoto": "Add a photo",
+        "AddPhoto": "Add a profile photo",
         "AddBirthday": "Add your date of birth",
         "AddGender": "Set your gender",
-        "AddBio": "Tell us about yourself",
-        "VerifyAccount": "Verify your account"
+        "AddBio": "Add a bio",
+        "VerifyAccount": "Verify your account",
+        "AddPrefs": "Set your preferences",
+        "FirstTrip": "Take your first trip"
       },
       "AddBioCta": "Tell us about yourself",
       "AddPrefsCta": "Share your preferences",
@@ -1543,18 +1575,25 @@
       "ReviewCount": "{count} reviews",
       "PrefValue": {
         "talkative": {
-          "yes": "I like to chat",
+          "yes": "Happy to chat",
           "no": "I prefer quiet"
         },
         "music_allowed": {
-          "yes": "I like music",
+          "yes": "We can listen to music",
           "no": "I prefer quiet"
         },
         "pets_allowed": {
           "yes": "Pets welcome",
           "no": "No pets"
         }
-      }
+      },
+      "PickOne": "Choose one of the options",
+      "BioSheetTitle": "What would you like to tell other travellers about yourself?",
+      "PreferencesSheetTitle": "Travel preferences",
+      "PickDate": "Pick a date",
+      "BlockUser": "Block this user",
+      "Blocked": "User blocked",
+      "BlockConfirm": "Block {name}? You will stop receiving messages from them."
     },
     "Cars": {
       "Title": "My cars",

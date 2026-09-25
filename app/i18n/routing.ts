@@ -31,6 +31,7 @@ export const routing = defineRouting({
     "/login": "/login",
     // The five tabs of the mobile build, in its order.
     "/search": "/search",
+    "/search/results": "/search/results",
     "/publish": "/publish",
     "/my-trips": "/my-trips",
     "/chats": "/chats",

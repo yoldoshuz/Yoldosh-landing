@@ -1,10 +1,10 @@
 "use client";
 
-import { Bell, CarFront, Gift, MessageCircle, Megaphone, type LucideIcon } from "lucide-react";
+import { Bell, CarFront, Gift, Megaphone, MessageCircle, type LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { EmptyState, formatDayLabel, formatTime, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
+import { EmptyState, formatDayLabel, formatTime, Screen, Spinner } from "@/components/app/kit";
 import { useMarkNotificationRead, useNotifications } from "@/hooks/api/useNotifications";
 import { cn } from "@/lib/utils";
 import type { AppNotification, NotificationType } from "@/types/api";
@@ -53,11 +53,7 @@ export const NotificationsScreen = () => {
         <Spinner />
       ) : groups.length === 0 ? (
         <Screen className="flex flex-1 items-center justify-center">
-          <EmptyState
-            illustration={ILLUSTRATION.waiting}
-            title={t("Notifications.Empty")}
-            description={t("Notifications.EmptyText")}
-          />
+          <EmptyState icon={Bell} title={t("Notifications.Empty")} description={t("Notifications.EmptyText")} />
         </Screen>
       ) : (
         <Screen className="space-y-6">
@@ -87,9 +83,7 @@ export const NotificationsScreen = () => {
 
                       <span className="min-w-0 flex-1">
                         <span className="block text-[17px] font-bold leading-snug text-ink">{n.title}</span>
-                        {body && (
-                          <span className="mt-1 block text-[15px] leading-snug text-neutral-500">{body}</span>
-                        )}
+                        {body && <span className="mt-1 block text-[15px] leading-snug text-neutral-500">{body}</span>}
                         <span className="mt-2.5 block text-xs text-neutral-400">{formatTime(n.createdAt)}</span>
                       </span>
 

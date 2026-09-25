@@ -13,15 +13,14 @@ import { apiErrorCode, apiErrorMessage } from "@/lib/api";
 import { requestTelegramContact } from "@/lib/telegram";
 
 /** Failures the user can act on; anything else gets the generic message. */
-const RECOVERABLE = new Set([
-  "AUTH_TELEGRAM_REPLAY",
-  "AUTH_TELEGRAM_EXPIRED",
-  "AUTH_TELEGRAM_LINK_TOKEN_INVALID",
-]);
+const RECOVERABLE = new Set(["AUTH_TELEGRAM_REPLAY", "AUTH_TELEGRAM_EXPIRED", "AUTH_TELEGRAM_LINK_TOKEN_INVALID"]);
 
 interface TelegramSignInProps {
-  /** Drops to the ordinary phone + OTP screen, which finishes the linking. */
-  onEnterPhone: () => void;
+  /**
+   * Drops to the ordinary phone + OTP screen, which finishes the linking.
+   * `notice` is shown there — it is how the user learns *why* they were moved.
+   */
+  onEnterPhone: (notice?: string) => void;
 }
 
 /**
@@ -60,9 +59,14 @@ export const TelegramSignIn = ({ onEnterPhone }: TelegramSignInProps) => {
     } catch (e) {
       const code = apiErrorCode(e);
 
-      // A non-Uzbek Telegram number cannot be used; typing one is the only way on.
+      /*
+        The shared contact is not an Uzbek number. Nothing happened on screen
+        before this: the request succeeded, the backend refused, and the sheet
+        simply closed again. Say what the rule is and move the user on to the
+        one route that can still work — typing a +998 number.
+      */
       if (code === "AUTH_TELEGRAM_PHONE_UNSUPPORTED") {
-        onEnterPhone();
+        onEnterPhone(t("Telegram.ForeignNumber"));
         return;
       }
       setError(apiErrorMessage(e, t("Telegram.LinkFailed")));
@@ -90,7 +94,7 @@ export const TelegramSignIn = ({ onEnterPhone }: TelegramSignInProps) => {
             {errorCode && RECOVERABLE.has(errorCode) ? t("Telegram.Reopen") : t("Telegram.FailedText")}
           </p>
         </div>
-        <Button variant="outline" onClick={onEnterPhone} className="h-12 w-full rounded-full">
+        <Button variant="outline" onClick={() => onEnterPhone()} className="h-12 w-full rounded-full">
           {t("Telegram.UsePhone")}
         </Button>
       </div>
@@ -123,7 +127,7 @@ export const TelegramSignIn = ({ onEnterPhone }: TelegramSignInProps) => {
 
       <button
         type="button"
-        onClick={onEnterPhone}
+        onClick={() => onEnterPhone()}
         className="w-full cursor-pointer text-sm font-medium text-ink-muted transition hover:text-ink"
       >
         {t("Telegram.EnterManually")}

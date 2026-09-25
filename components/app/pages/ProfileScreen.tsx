@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Bell,
   ChevronRight,
@@ -9,9 +9,6 @@ import {
   Globe,
   Heart,
   LogOut,
-  MessageSquare,
-  Music,
-  PawPrint,
   Phone,
   Plus,
   ScrollText,
@@ -22,20 +19,36 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Link } from "@/app/i18n/routing";
+import { Link, useRouter } from "@/app/i18n/routing";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { CompletionCard, Row, Screen, SectionLabel, Spinner } from "@/components/app/kit";
+import { CompletionCard, ErrorNote, Row, Screen, SectionLabel, Spinner } from "@/components/app/kit";
+import { LegalSheet, type LegalDocument } from "@/components/app/sheets/LegalSheet";
+import { PREFERENCE_ICON, PREFERENCE_KEYS } from "@/components/app/sheets/PreferencePicker";
+import { ProfileStepSheet, type ProfileStep } from "@/components/app/sheets/ProfileStepSheet";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useFullProfile } from "@/hooks/api/useProfile";
+import { useMyActivity } from "@/hooks/api/useAppTrips";
+import { useFullProfile, useUpdateAvatar } from "@/hooks/api/useProfile";
 import { useAuth } from "@/hooks/useAuth";
+import { apiErrorMessage } from "@/lib/api";
 import { cn } from "@/lib/utils";
+
+/** A checklist entry either opens a sheet, picks a file, or goes somewhere. */
+type ChecklistAction = { sheet: ProfileStep } | { avatar: true } | { href: string };
 
 export const ProfileScreen = () => {
   const t = useTranslations("App");
   const { user, logout } = useAuth();
   const { data: profile, isLoading } = useFullProfile();
+  const { data: activity } = useMyActivity("passenger");
+  const updateAvatar = useUpdateAvatar();
+  const router = useRouter();
+
   const [tab, setTab] = useState("about");
+  const [sheet, setSheet] = useState<ProfileStep | null>(null);
+  const [legal, setLegal] = useState<LegalDocument | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const avatarRef = useRef<HTMLInputElement>(null);
 
   const current = profile ?? user;
 
@@ -48,32 +61,49 @@ export const ProfileScreen = () => {
     );
   }
 
+  const prefsSet = PREFERENCE_KEYS.every((key) => current?.[key] != null);
+  const hasTrips = (activity?.pages[0]?.total ?? 0) > 0;
+
   /**
-   * The mobile build scores the profile out of seven fields and nudges toward
-   * the first unfinished one — same checklist here so the number matches.
+   * Seven steps, in the mobile build's order, each nudging the user straight
+   * into the thing it is missing rather than into the full edit form.
    */
-  const checklist = [
-    { done: Boolean(current?.firstName), labelKey: "AddFirstName", href: "/profile/edit" },
-    { done: Boolean(current?.lastName), labelKey: "AddLastName", href: "/profile/edit" },
-    { done: Boolean(current?.avatar), labelKey: "AddPhoto", href: "/profile/edit" },
-    { done: Boolean(current?.date_of__birthday), labelKey: "AddBirthday", href: "/profile/edit" },
-    { done: Boolean(current?.gender), labelKey: "AddGender", href: "/profile/edit" },
-    { done: Boolean(current?.bio), labelKey: "AddBio", href: "/profile/edit" },
-    { done: Boolean(current?.verified), labelKey: "VerifyAccount", href: "/profile/edit" },
+  const checklist: { done: boolean; labelKey: string; action: ChecklistAction }[] = [
+    { done: Boolean(current?.firstName), labelKey: "AddFirstName", action: { sheet: "firstName" } },
+    { done: Boolean(current?.lastName), labelKey: "AddLastName", action: { sheet: "lastName" } },
+    { done: Boolean(current?.avatar), labelKey: "AddPhoto", action: { avatar: true } },
+    { done: Boolean(current?.bio), labelKey: "AddBio", action: { sheet: "bio" } },
+    { done: Boolean(current?.gender), labelKey: "AddGender", action: { sheet: "gender" } },
+    { done: prefsSet, labelKey: "AddPrefs", action: { sheet: "preferences" } },
+    { done: hasTrips, labelKey: "FirstTrip", action: { href: "/search" } },
   ];
   const doneCount = checklist.filter((c) => c.done).length;
   const nextStep = checklist.find((c) => !c.done);
 
-  const preferences = [
-    { key: "talkative", icon: MessageSquare, on: current?.talkative },
-    { key: "pets_allowed", icon: PawPrint, on: current?.pets_allowed },
-    { key: "music_allowed", icon: Music, on: current?.music_allowed },
-  ] as const;
+  const runAction = (action: ChecklistAction) => {
+    if ("sheet" in action) setSheet(action.sheet);
+    else if ("avatar" in action) avatarRef.current?.click();
+    else router.push(action.href as never);
+  };
+
+  const pickAvatar = (file?: File) => {
+    if (!file) return;
+    setError(null);
+    void updateAvatar.mutateAsync(file).catch((e) => setError(apiErrorMessage(e, t("Errors.Generic"))));
+  };
 
   return (
     <>
       <AppTopBar title={t("Profile.Title")} />
       <Screen>
+        <input
+          ref={avatarRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          className="hidden"
+          onChange={(e) => pickAvatar(e.target.files?.[0])}
+        />
+
         <Tabs value={tab} onValueChange={setTab}>
           <TabsList className="h-12 w-full rounded-full bg-neutral-100 p-1 lg:h-14">
             <TabsTrigger
@@ -92,8 +122,18 @@ export const ProfileScreen = () => {
 
           {/* ------------------------------------------------------- О себе */}
           <TabsContent value="about" className="mt-4 flex w-full flex-col gap-4">
+            <ErrorNote message={error} />
+
             <div className="app-card-rail w-full overflow-hidden">
-              <Link href="/profile/edit" className="flex items-center gap-3 px-4 py-3.5 transition hover:bg-neutral-50">
+              {/*
+                The name row is the person, so it opens how everyone else sees
+                them; editing is the row below it. Both used to land on the
+                edit form, which left the public profile unreachable.
+              */}
+              <Link
+                href={`/users/${current?.id ?? ""}` as never}
+                className="flex items-center gap-3 px-4 py-3.5 transition hover:bg-neutral-50"
+              >
                 <UserAvatar src={current?.avatar} name={current?.firstName} className="size-12" />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-lg font-bold text-ink">
@@ -115,20 +155,24 @@ export const ProfileScreen = () => {
               </Link>
             </div>
 
-            <CompletionCard
-              title={t("Profile.CompletionTitle")}
-              description={t("Profile.CompletionText")}
-              done={doneCount}
-              total={checklist.length}
-              progressLabel={t("Profile.CompletionProgress", { done: doneCount, total: checklist.length })}
-              nextAction={
-                nextStep && (
-                  <Link href={nextStep.href as any} className="font-semibold text-brand-600 hover:text-brand-700">
+            {nextStep && (
+              <CompletionCard
+                title={t("Profile.CompletionTitle")}
+                description={t("Profile.CompletionText")}
+                done={doneCount}
+                total={checklist.length}
+                progressLabel={t("Profile.CompletionProgress", { done: doneCount, total: checklist.length })}
+                nextAction={
+                  <button
+                    type="button"
+                    onClick={() => runAction(nextStep.action)}
+                    className="cursor-pointer font-semibold text-brand-600 transition hover:text-brand-700"
+                  >
                     {t(`Profile.Checklist.${nextStep.labelKey}`)}
-                  </Link>
-                )
-              }
-            />
+                  </button>
+                }
+              />
+            )}
 
             <div className="w-full">
               <SectionLabel className="mt-0">{t("Profile.TabAbout")}</SectionLabel>
@@ -136,47 +180,51 @@ export const ProfileScreen = () => {
                 {current?.bio ? (
                   <p className="text-ink">{current.bio}</p>
                 ) : (
-                  <Link href="/profile/edit" className="flex items-center gap-2.5 text-brand-600">
-                    <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
-                    {t("Profile.AddBioCta")}
-                  </Link>
+                  <AddLink label={t("Profile.AddBioCta")} onClick={() => setSheet("bio")} />
                 )}
 
-                {preferences.some((p) => p.on != null) ? (
+                {prefsSet ? (
                   <div className="space-y-2">
-                    {preferences.map(({ key, icon: Icon, on }) => (
-                      <p
-                        key={key}
-                        // Green when the user is open to it, red when they'd rather not —
-                        // the colour carries the answer at a glance.
-                        className={cn("flex items-center gap-2.5", on ? "text-brand-600" : "text-danger")}
-                      >
-                        <Icon className="size-5 shrink-0" />
-                        {t(`Profile.PrefValue.${key}.${on ? "yes" : "no"}`)}
-                      </p>
-                    ))}
+                    {PREFERENCE_KEYS.map((key) => {
+                      const Icon = PREFERENCE_ICON[key];
+                      const on = current?.[key];
+                      return (
+                        <p
+                          key={key}
+                          // Green when the user is open to it, red when they would
+                          // rather not — the colour carries the answer at a glance.
+                          className={cn("flex items-center gap-2.5", on ? "text-brand-600" : "text-danger")}
+                        >
+                          <Icon className="size-5 shrink-0" strokeWidth={1.8} />
+                          {t(`Profile.PrefValue.${key}.${on ? "yes" : "no"}`)}
+                        </p>
+                      );
+                    })}
                   </div>
                 ) : (
-                  <Link href="/profile/edit" className="flex items-center gap-2.5 text-brand-600">
-                    <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
-                    {t("Profile.AddPrefsCta")}
-                  </Link>
+                  <AddLink label={t("Profile.AddPrefsCta")} onClick={() => setSheet("preferences")} />
                 )}
 
-                <Link
-                  href="/profile/edit"
-                  className="flex items-center gap-3 border-t border-neutral-100 pt-3 font-medium text-ink"
+                <button
+                  type="button"
+                  onClick={() => setSheet("preferences")}
+                  className="flex w-full cursor-pointer items-center gap-3 border-t border-neutral-100 pt-3 text-left font-medium text-ink"
                 >
                   <span className="flex-1">{t("Profile.ChangePrefs")}</span>
                   <ChevronRight className="size-5 text-ink-muted" />
-                </Link>
+                </button>
               </div>
             </div>
 
             <div>
               <SectionLabel>{t("Profile.BecomeDriver")}</SectionLabel>
+              {/*
+                Straight into the form. The garage list in between was a dead
+                step: a driver with no car saw an empty page and had to press
+                "add" a second time.
+              */}
               <Link
-                href="/profile/cars"
+                href={{ pathname: "/profile/cars", query: { add: "1" } }}
                 className="app-card-rail flex items-center gap-3 px-4 py-4 transition hover:bg-neutral-50"
               >
                 <span className="flex-1 font-medium text-brand-600">{t("Profile.AddCar")}</span>
@@ -211,13 +259,25 @@ export const ProfileScreen = () => {
             <Row icon={Heart} label={t("Settings.Help")} href="/profile/help" accent />
             <Row icon={Star} label={t("Settings.RateUs")} href="/profile/help" accent />
 
-            <Row icon={ScrollText} label={t("Settings.PublicOffer")} href="/public-offer" />
-            <Row icon={FileText} label={t("Settings.PrivacyPolicy")} href="/privacy-policy" />
+            {/* Opened in place: inside Telegram the landing is unreachable. */}
+            <Row icon={ScrollText} label={t("Settings.PublicOffer")} onClick={() => setLegal("offer")} />
+            <Row icon={FileText} label={t("Settings.PrivacyPolicy")} onClick={() => setLegal("privacy")} />
 
             <Row icon={LogOut} label={t("Nav.Logout")} danger onClick={() => void logout()} />
           </TabsContent>
         </Tabs>
       </Screen>
+
+      <ProfileStepSheet step={sheet} onClose={() => setSheet(null)} user={current} />
+      <LegalSheet document={legal} onClose={() => setLegal(null)} />
     </>
   );
 };
+
+/** "+ Расскажите о себе" — the pale green prompt inside the О себе card. */
+const AddLink = ({ label, onClick }: { label: string; onClick: () => void }) => (
+  <button type="button" onClick={onClick} className="flex cursor-pointer items-center gap-2.5 text-left text-brand-600">
+    <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
+    {label}
+  </button>
+);

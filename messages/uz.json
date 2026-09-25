@@ -1289,7 +1289,8 @@
         "FailedTitle": "Avtomatik kirish amalga oshmadi",
         "FailedText": "Nimadir noto‘g‘ri ketdi. Telefon raqami orqali kiring.",
         "Reopen": "Ilovani yopib qaytadan oching — yoki telefon raqami orqali kiring.",
-        "UsePhone": "Raqam orqali kirish"
+        "UsePhone": "Raqam orqali kirish",
+        "ForeignNumber": "Hozircha faqat Oʻzbekiston raqamlari (+998) bilan ishlaymiz. Raqamni qoʻlda kiriting."
       }
     },
     "Dashboard": {
@@ -1337,7 +1338,24 @@
       "Passengers": "Yo‘lovchilar",
       "SeatsCount": "{count} yo‘lovchi",
       "SortLabel": "Saralash",
-      "TopTrips": "Top safarlar"
+      "TopTrips": "Top safarlar",
+      "ResultsTitle": "Safar qidiruvi",
+      "Tomorrow": "Ertaga",
+      "UseMyLocation": "Mening joylashuvimdan foydalanish",
+      "LocationFailed": "Joylashuvni aniqlab boʻlmadi",
+      "Back": "Orqaga",
+      "Clear": "Tozalash",
+      "Close": "Yopish",
+      "Filter": {
+        "Sorting": "Saralash",
+        "ByTime": "Vaqt boʻyicha",
+        "ByPrice": "Narx boʻyicha",
+        "Amenities": "Qulayliklar",
+        "Luggage": "Yuk",
+        "Preferences": "Afzalliklar",
+        "Submit": "Safarni topish"
+      },
+      "EndOfList": "Tanlangan kun uchun barcha safarlar shu"
     },
     "Trip": {
       "NotFound": "Safar topilmadi",
@@ -1396,7 +1414,18 @@
       "Negotiable": "Kelishilgan",
       "Currency": "UZS",
       "ConfirmBooking": "Bronni tasdiqlash",
-      "RejectBooking": "Bronni rad etish"
+      "RejectBooking": "Bronni rad etish",
+      "More": "Yana",
+      "Map": "Xarita",
+      "RatingLabel": "Reyting: {value}",
+      "SendMessage": "Xabar yuborish...",
+      "DriverComment": "Haydovchi izohlari",
+      "Car": "Mashina",
+      "NotSpecified": "Koʻrsatilmagan",
+      "PassengersLabel": "Yoʻlovchilar:",
+      "NoPassengers": "Yoʻlovchilar yoʻq",
+      "PriceLabel": "Narxi:",
+      "ReportSubtitle": "Nima notoʻgʻri boʻlganini yozing — biz koʻrib chiqamiz."
     },
     "Publish": {
       "Title": "Safar yaratish",
@@ -1474,12 +1503,13 @@
         "REFUND": "Qaytarish",
         "COMMISSION": "Komissiya",
         "TRANSFER": "O'tkazma"
-      }
+      },
+      "CardsDisabled": "Karta biriktirish vaqtincha ishlamaydi."
     },
     "Notifications": {
       "Title": "Bildirishnomalar",
-      "Empty": "Hozircha bildirishnoma yo‘q",
-      "EmptyText": "Safarlaringiz bo'yicha yangiliklar shu yerda chiqadi.",
+      "Empty": "Hozircha bildirishnomalar yoʻq",
+      "EmptyText": "Biror narsa yuz bersa, shu yerda koʻrasiz",
       "TapToRead": "O'qilgan deb belgilash uchun bosing"
     },
     "Profile": {
@@ -1498,9 +1528,9 @@
       "Edit": "Tahrirlash",
       "Preferences": "Safar afzalliklari",
       "Prefs": {
-        "talkative": "Suhbatni yoqtiraman",
-        "music_allowed": "Musiqa maqbul",
-        "pets_allowed": "Hayvon bilan mumkin"
+        "talkative": "Safar davomida suhbat",
+        "music_allowed": "Musiqa",
+        "pets_allowed": "Hayvonlar"
       },
       "CarsCount": "Avtomobillar: {count}",
       "Promocodes": "Promokodlar",
@@ -1518,11 +1548,13 @@
       "Checklist": {
         "AddFirstName": "Ism qo‘shish",
         "AddLastName": "Familiya qo‘shish",
-        "AddPhoto": "Rasm qo‘shish",
+        "AddPhoto": "Profil rasmini qoʻshish",
         "AddBirthday": "Tug‘ilgan sanani qo‘shish",
         "AddGender": "Jinsni ko‘rsatish",
-        "AddBio": "O‘zingiz haqingizda yozish",
-        "VerifyAccount": "Hisobni tasdiqlash"
+        "AddBio": "Biografiya qoʻshish",
+        "VerifyAccount": "Hisobni tasdiqlash",
+        "AddPrefs": "Afzalliklarni koʻrsatish",
+        "FirstTrip": "Birinchi safarni amalga oshirish"
       },
       "AddBioCta": "O‘zingiz haqingizda yozing",
       "AddPrefsCta": "Afzalliklaringizni ayting",
@@ -1547,18 +1579,25 @@
       "ReviewCount": "{count} ta izoh",
       "PrefValue": {
         "talkative": {
-          "yes": "Suhbatni yoqtiraman",
-          "no": "Sukunatni afzal ko‘raman"
+          "yes": "Suhbatlashsa boʻladi",
+          "no": "Sukunatni afzal koʻraman"
         },
         "music_allowed": {
-          "yes": "Musiqani yoqtiraman",
-          "no": "Sukunatni afzal ko‘raman"
+          "yes": "Musiqa tinglasak boʻladi",
+          "no": "Sukunatni afzal koʻraman"
         },
         "pets_allowed": {
-          "yes": "Hayvon bilan mumkin",
+          "yes": "Olaman",
           "no": "Olmayman"
         }
-      }
+      },
+      "PickOne": "Variantlardan birini tanlang",
+      "BioSheetTitle": "Hamrohlaringizga oʻzingiz haqingizda nima aytmoqchisiz?",
+      "PreferencesSheetTitle": "Safar afzalliklari",
+      "PickDate": "Sanani tanlang",
+      "BlockUser": "Foydalanuvchini bloklash",
+      "Blocked": "Foydalanuvchi bloklandi",
+      "BlockConfirm": "{name} bloklansinmi? Undan xabarlar kelmaydi."
     },
     "Cars": {
       "Title": "Avtomobillarim",

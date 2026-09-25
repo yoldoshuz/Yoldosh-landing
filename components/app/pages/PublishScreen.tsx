@@ -1,12 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { CarFront, CalendarDays, Loader2 } from "lucide-react";
+import { CalendarDays, CarFront, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { EmptyState, ErrorNote, formatDate, formatMoney, ILLUSTRATION, Screen, SectionLabel, Spinner } from "@/components/app/kit";
+import {
+  EmptyState,
+  ErrorNote,
+  formatDate,
+  formatMoney,
+  ILLUSTRATION,
+  Screen,
+  SectionLabel,
+  Spinner,
+} from "@/components/app/kit";
 import { CityAutocomplete } from "@/components/shared/trip/CityAutocomplete";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -28,7 +37,14 @@ interface Point {
   lng?: number;
 }
 
-const TOGGLES = ["conditioner", "smoking_allowed", "door_pickup", "food_stop", "max_two_back", "parcels_allowed"] as const;
+const TOGGLES = [
+  "conditioner",
+  "smoking_allowed",
+  "door_pickup",
+  "food_stop",
+  "max_two_back",
+  "parcels_allowed",
+] as const;
 type Toggle = (typeof TOGGLES)[number];
 
 export const PublishScreen = () => {
@@ -109,8 +125,13 @@ export const PublishScreen = () => {
               title={t("Publish.NoCarTitle")}
               description={t("Publish.NoCarText")}
               action={
-                <Button asChild className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600">
-                  <Link href="/profile/cars">
+                <Button
+                  asChild
+                  className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600"
+                >
+                  {/* Straight into the form — the garage list in between is
+                      empty by definition for anyone seeing this screen. */}
+                  <Link href={{ pathname: "/profile/cars", query: { add: "1" } }}>
                     {t("Publish.BecomeDriver")}
                     <CarFront className="size-5" />
                   </Link>
@@ -182,12 +203,20 @@ export const PublishScreen = () => {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="outline" className="h-12 w-full justify-between rounded-2xl px-4 font-normal">
-                        <span className={cn(!date && "text-ink-muted")}>{date ? formatDate(date) : t("Search.Today")}</span>
+                        <span className={cn(!date && "text-ink-muted")}>
+                          {date ? formatDate(date) : t("Search.Today")}
+                        </span>
                         <CalendarDays className="size-5 text-ink-muted" />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar mode="single" selected={date} onSelect={setDate} captionLayout="dropdown" disabled={{ before: new Date() }} />
+                      <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
+                        captionLayout="dropdown"
+                        disabled={{ before: new Date() }}
+                      />
                     </PopoverContent>
                   </Popover>
                 </div>
@@ -195,7 +224,13 @@ export const PublishScreen = () => {
                   <Label htmlFor="time" className="mb-1.5">
                     {t("Publish.Time")}
                   </Label>
-                  <Input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className="h-12 rounded-2xl" />
+                  <Input
+                    id="time"
+                    type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="h-12 rounded-2xl"
+                  />
                 </div>
               </div>
             </div>
@@ -258,7 +293,9 @@ export const PublishScreen = () => {
                       onClick={() => setBookingType(bt)}
                       className={cn(
                         "cursor-pointer rounded-2xl border px-3 py-2.5 text-sm font-medium transition",
-                        bookingType === bt ? "border-brand-500 bg-brand-50 text-brand-700" : "border-neutral-200 hover:border-neutral-300"
+                        bookingType === bt
+                          ? "border-brand-500 bg-brand-50 text-brand-700"
+                          : "border-neutral-200 hover:border-neutral-300"
                       )}
                     >
                       {t(`Trip.BookingTypes.${bt}`)}

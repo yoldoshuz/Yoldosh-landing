@@ -5,9 +5,17 @@ import { clearTokens, getAccessToken, getRefreshToken, setTokens } from "./auth"
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000";
 
+/**
+ * Generous by web standards, and deliberately so: the geo trip search runs a
+ * radius query across every trip for a day and regularly takes longer than ten
+ * seconds. At the old limit axios aborted a request the server was still
+ * happily answering, and the screen blamed the search for "неизвестная ошибка".
+ */
+const REQUEST_TIMEOUT_MS = 45_000;
+
 export const api = axios.create({
   baseURL: API_URL,
-  timeout: 10000,
+  timeout: REQUEST_TIMEOUT_MS,
   // The backend issues the refresh token as an httpOnly cookie; sending
   // credentials lets `/auth/refresh-token` work without us holding the value.
   withCredentials: true,
@@ -89,7 +97,7 @@ api.interceptors.response.use(
 );
 
 /** Unwraps the `{ success, status_code, message, data }` envelope the API uses. */
-export const unwrap = <T = any,>(response: { data: { data?: T } }): T => response.data.data as T;
+export const unwrap = <T = any>(response: { data: { data?: T } }): T => response.data.data as T;
 
 /**
  * Coerces a list payload to an array.
@@ -100,7 +108,7 @@ export const unwrap = <T = any,>(response: { data: { data?: T } }): T => respons
  * Rendering code should never have to care, and it must never be handed
  * something without `.map`.
  */
-export const toList = <T,>(payload: unknown): T[] => {
+export const toList = <T>(payload: unknown): T[] => {
   if (Array.isArray(payload)) return payload as T[];
   if (payload && typeof payload === "object") {
     const nested = Object.values(payload as Record<string, unknown>).find(Array.isArray);
@@ -121,8 +129,26 @@ export const apiErrorMessage = (error: unknown, fallback = "Something went wrong
     const data = error.response?.data as { message?: string; errors?: string[] } | undefined;
     if (data?.errors?.length) return data.errors.join(", ");
     if (data?.message) return data.message;
+
+    /*
+      No response at all — a timeout or a dropped connection. The fallback
+      would describe it as a failure of whatever the user was doing, which
+      sends them to retry the same slow request; say what actually happened.
+    */
+    if (error.code === "ECONNABORTED" || error.code === "ETIMEDOUT") return NETWORK_MESSAGE.timeout;
+    if (!error.response) return NETWORK_MESSAGE.offline;
   }
   return fallback;
+};
+
+/*
+  Not routed through next-intl: this is reached from plain modules with no
+  React context, and the app is Russian-first. Worth revisiting if the error
+  surface grows.
+*/
+const NETWORK_MESSAGE = {
+  timeout: "Сервер долго не отвечает. Попробуйте ещё раз.",
+  offline: "Нет связи с сервером. Проверьте интернет.",
 };
 
 /**

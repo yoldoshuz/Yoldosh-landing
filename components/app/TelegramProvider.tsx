@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import Script from "next/script";
 
 import { usePathname, useRouter } from "@/app/i18n/routing";
@@ -8,10 +8,23 @@ import { authApi } from "@/hooks/api/useAuthApi";
 import { useAuth } from "@/hooks/useAuth";
 import { apiErrorCode } from "@/lib/api";
 import { getGuestId } from "@/lib/auth";
-import { getWebApp, initTelegramWebApp, isTelegramWebApp, syncViewportHeight } from "@/lib/telegram";
+import {
+  getWebApp,
+  initTelegramWebApp,
+  isTelegramSignedOut,
+  isTelegramWebApp,
+  syncViewportHeight,
+} from "@/lib/telegram";
 
 /** Where the mini app's automatic sign-in got to. */
-export type TelegramAuthStatus = "idle" | "authenticating" | "phone_required" | "authorized" | "failed";
+export type TelegramAuthStatus =
+  | "idle"
+  | "authenticating"
+  | "phone_required"
+  | "authorized"
+  | "failed"
+  /** The user signed out here; do not put them straight back in. */
+  | "signed_out";
 
 interface TelegramContextValue {
   isTelegram: boolean;
@@ -88,6 +101,13 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
     }
 
     if (telegramExchangeStarted) return;
+
+    // Signing out has to mean something inside Telegram too, so a deliberate
+    // one suppresses the automatic exchange for the rest of this session.
+    if (isTelegramSignedOut()) {
+      setStatus("signed_out");
+      return;
+    }
 
     const initData = getWebApp()?.initData;
     if (!initData) return;

@@ -8,8 +8,9 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
 import { ErrorNote } from "@/components/app/kit";
-import { TelegramSignIn } from "@/components/app/TelegramSignIn";
+import { LegalSheet, type LegalDocument } from "@/components/app/sheets/LegalSheet";
 import { useTelegram } from "@/components/app/TelegramProvider";
+import { TelegramSignIn } from "@/components/app/TelegramSignIn";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,7 +46,7 @@ export const LoginScreen = () => {
   const router = useRawRouter();
   const searchParams = useSearchParams();
   const { login, isAuthenticated } = useAuth();
-  const { isTelegram, status: telegramStatus, linkToken, onLinked } = useTelegram();
+  const { isTelegram, status: telegramStatus, linkToken, errorCode: telegramError, onLinked } = useTelegram();
 
   /*
     Inside Telegram the sign-in is automatic, so this screen only shows the
@@ -53,7 +54,10 @@ export const LoginScreen = () => {
     choosing to type the number instead of sharing their contact.
   */
   const [manualPhone, setManualPhone] = useState(false);
-  const showTelegramStep = isTelegram && !manualPhone && telegramStatus !== "authorized";
+  // "signed_out" means they chose to leave; putting the Telegram button back in
+  // front of them would just sign them in again.
+  const showTelegramStep =
+    isTelegram && !manualPhone && telegramStatus !== "authorized" && telegramStatus !== "signed_out";
 
   /**
    * `next` is attacker-controllable (it rides in the URL), so only same-site
@@ -81,12 +85,29 @@ export const LoginScreen = () => {
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [cooldown, setCooldown] = useState(0);
+  const [legal, setLegal] = useState<LegalDocument | null>(null);
 
   const fileRef = useRef<HTMLInputElement>(null);
 
   const requestOtp = useRequestOtp();
   const verifyOtp = useVerifyOtp();
   const completeProfile = useCompleteProfile();
+
+  /** Leaves the Telegram branch for the phone form, saying why if there is a why. */
+  const enterPhoneManually = useCallback((notice?: string) => {
+    setManualPhone(true);
+    setStep("phone");
+    setError(notice ?? null);
+  }, []);
+
+  /*
+    A Telegram account whose number is not Uzbek cannot be linked at all, so
+    the exchange fails before any button is pressed. Without this the screen
+    just sat there — which is exactly what was reported.
+  */
+  useEffect(() => {
+    if (telegramError === "AUTH_TELEGRAM_PHONE_UNSUPPORTED") enterPhoneManually(t("Telegram.ForeignNumber"));
+  }, [telegramError, enterPhoneManually, t]);
 
   const phoneNumber = `+998${digits}`;
   const phoneValid = digits.length === 9;
@@ -200,7 +221,7 @@ export const LoginScreen = () => {
       </Link>
 
       <div className="w-full max-w-sm app-card p-6">
-        {showTelegramStep && <TelegramSignIn onEnterPhone={() => setManualPhone(true)} />}
+        {showTelegramStep && <TelegramSignIn onEnterPhone={enterPhoneManually} />}
 
         {!showTelegramStep && step !== "phone" && (
           <button
@@ -247,22 +268,31 @@ export const LoginScreen = () => {
 
             <ErrorNote message={error} />
 
-            <Button type="submit" disabled={!phoneValid || requestOtp.isPending} className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600 disabled:bg-neutral-300 disabled:opacity-100">
+            <Button
+              type="submit"
+              disabled={!phoneValid || requestOtp.isPending}
+              className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600 disabled:bg-neutral-300 disabled:opacity-100"
+            >
               {requestOtp.isPending ? <Loader2 className="size-4 animate-spin" /> : t("Continue")}
               {!requestOtp.isPending && <ArrowRight className="size-4" />}
             </Button>
 
+            {/*
+              Opened in place rather than linked. Inside Telegram the marketing
+              site is unreachable, so following these links left the user on a
+              blank redirect with no way back into the form they were filling.
+            */}
             <p className="text-xs text-center text-muted-foreground">
               {t.rich("Terms", {
                 offer: (chunks) => (
-                  <Link href="/public-offer" className="link">
+                  <button type="button" onClick={() => setLegal("offer")} className="link cursor-pointer">
                     {chunks}
-                  </Link>
+                  </button>
                 ),
                 privacy: (chunks) => (
-                  <Link href="/privacy-policy" className="link">
+                  <button type="button" onClick={() => setLegal("privacy")} className="link cursor-pointer">
                     {chunks}
-                  </Link>
+                  </button>
                 ),
               })}
             </p>
@@ -377,6 +407,8 @@ export const LoginScreen = () => {
           </form>
         )}
       </div>
+
+      <LegalSheet document={legal} onClose={() => setLegal(null)} />
     </div>
   );
 };

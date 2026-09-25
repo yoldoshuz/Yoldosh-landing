@@ -12,13 +12,12 @@ import { useAuth } from "@/hooks/useAuth";
 import { apiErrorMessage } from "@/lib/api";
 import type { NotificationPreferences } from "@/types/api";
 
-const KEYS: (keyof NotificationPreferences)[] = [
-  "trips",
-  "newsAndAgreement",
-  "promotionAndDiscounts",
-  "messages",
-  "general",
-];
+/**
+ * Four switches, in the mobile build order. A fifth, general, exists on the
+ * API but is not offered here: it is a catch-all the app never explains, and a
+ * toggle whose effect nobody can describe is worse than no toggle at all.
+ */
+const KEYS: (keyof NotificationPreferences)[] = ["trips", "newsAndAgreement", "promotionAndDiscounts", "messages"];
 
 export const NotificationSettingsScreen = () => {
   const t = useTranslations("App");

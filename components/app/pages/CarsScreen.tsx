@@ -55,6 +55,18 @@ export const CarsScreen = () => {
 
   const ready = Boolean(form.make.trim() && form.model.trim() && form.plate_number.trim() && form.color.trim());
 
+  /*
+    "Стать водителем" on the profile opens this screen with `?add=1`, and the
+    form is what that means: landing on an empty garage and having to press
+    "add" a second time was a step with nothing in it.
+
+    Read off `location` rather than `useSearchParams`, which would opt every
+    route under the app shell out of static prerendering.
+  */
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("add") === "1") setAdding(true);
+  }, []);
+
   /**
    * Reads a registration photo and fills in whatever it recognised. Existing
    * values win: a field the driver already corrected is never overwritten by a
