@@ -8,6 +8,7 @@ export const qk = {
   trip: (id: string) => ["app", "trips", id] as const,
   tripBookings: (id: string, status?: string) => ["app", "trips", id, "bookings", status ?? "all"] as const,
   myActivity: (role: string) => ["app", "trips", "activity", role] as const,
+  bestTrips: (limit: number) => ["app", "trips", "best", limit] as const,
   priceHint: (from: string, to: string) => ["app", "trips", "price-hint", from, to] as const,
   booking: (id: string) => ["app", "bookings", id] as const,
   parcels: ["app", "parcels"] as const,

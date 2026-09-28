@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
+import { AppFont } from "./AppFont";
 import { AppSidebar } from "./AppSidebar";
 import { AuthGuard } from "./AuthGuard";
 import { BottomNav } from "./BottomNav";
@@ -10,7 +11,8 @@ import { BottomNav } from "./BottomNav";
 export const AppShell = ({ children }: { children: ReactNode }) => {
   return (
     <AuthGuard>
-      <div data-app-root className="min-h-screen bg-app-bg">
+      <div data-app-root className="font-app min-h-screen bg-app-bg">
+        <AppFont />
         <AppSidebar />
 
         {/* `lg:pl-72` clears the fixed sidebar; the bottom padding clears the

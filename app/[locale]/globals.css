@@ -311,9 +311,53 @@
            bg-brand-500 text-white shadow-[0_4px_14px_-4px_rgba(38,188,75,0.5)];
   }
 
+  /*
+    Inter for the whole signed-in surface. Set on the shell rather than on
+    `body` so the marketing pages keep their own face.
+  */
+  .font-app,
+  .font-app input,
+  .font-app textarea,
+  .font-app select,
+  .font-app button {
+    font-family: var(--font-app), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
   /* Bottom bar clears the iOS home indicator. */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /*
+    The tab bar's dock: always 12px off the bottom edge, plus the home
+    indicator where the browser reports one.
+
+    Written as a plain value first and only then upgraded inside `@supports`,
+    so a client that does not understand `env()` still gets a valid
+    `padding-bottom` instead of dropping the declaration.
+  */
+  .app-tabbar-dock {
+    padding-bottom: 0.75rem;
+  }
+
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .app-tabbar-dock {
+      padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  /*
+    The bar is mostly transparent because a blurred backdrop is doing the
+    legibility work. Where `backdrop-filter` is unavailable — some Android
+    WebViews, and any client with GPU rasterisation off — that leaves a 28%
+    white pill on a #FAFAFA page, which is to say nothing at all. This paints
+    a real surface in exactly those cases.
+  */
+  @supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+    .app-tabbar {
+      background: rgba(255, 255, 255, 0.94) !important;
+      border-color: rgba(0, 0, 0, 0.06) !important;
+    }
   }
 
   /*

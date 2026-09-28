@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   BadgeCheck,
   Ban,
@@ -56,7 +57,6 @@ import { useCreateParcel } from "@/hooks/api/useParcels";
 import { useAuth } from "@/hooks/useAuth";
 import { useOpenChat } from "@/hooks/useOpenChat";
 import { apiErrorMessage } from "@/lib/api";
-import { cn } from "@/lib/utils";
 import type { GeoPoint } from "@/types/api";
 
 /** Opens the point on a map — the "Карта" link beside each stop. */
@@ -539,11 +539,14 @@ const Stop = ({
   <div className="flex items-stretch gap-3 px-4 py-3.5">
     <div className="flex min-w-0 flex-1 items-center gap-3">
       <span className="w-11 shrink-0 font-mono text-sm text-ink-muted">{time}</span>
-      <span
-        className={cn(
-          "size-3.5 shrink-0 rounded-full border-[3px]",
-          tone === "start" ? "border-brand-500" : "border-danger"
-        )}
+      {/* The map pin the rest of the product uses, not a bare ring. */}
+      <Image
+        src={tone === "start" ? "/assets/location-green.svg" : "/assets/location-red.svg"}
+        alt=""
+        width={20}
+        height={24}
+        aria-hidden
+        className="h-6 w-5 shrink-0 object-contain"
       />
       <span className="min-w-0">
         <span className="block truncate text-lg font-bold text-ink">{city ?? "—"}</span>

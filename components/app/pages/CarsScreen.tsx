@@ -192,14 +192,11 @@ export const CarsScreen = () => {
 
             {/*
               Recognition is imperfect, so the extracted values stay editable —
-              they are shown for confirmation, not collected from scratch.
+              they are shown for confirmation, not collected from scratch. The
+              heading that said as much is gone: the fields arrive pre-filled
+              right after the upload, which makes the point on its own.
             */}
             <div className="app-card grid gap-3 p-4 sm:grid-cols-2">
-              <div className="sm:col-span-2">
-                <h2 className="font-bold text-ink">{t("Cars.RecognisedTitle")}</h2>
-                <p className="mt-0.5 text-sm text-ink-muted">{t("Cars.RecognisedHint")}</p>
-              </div>
-
               <div>
                 <Label htmlFor="make" className="mb-1.5">
                   {t("Cars.Make")}
@@ -286,10 +283,9 @@ export const CarsScreen = () => {
               The documents are collected here to match the app's flow, but the
               current API creates the car from its fields only and takes the
               paperwork on the separate `/car/{id}/resubmit` step — so they are
-              scanned locally and not uploaded yet.
+              scanned locally and not uploaded yet. The line that announced the
+              moderation step has been dropped from the form.
             */}
-            <p className="text-xs text-ink-muted">{t("Cars.VerificationNote")}</p>
-
             <ErrorNote message={error} />
 
             <Button
@@ -307,20 +303,13 @@ export const CarsScreen = () => {
 
   return (
     <>
-      <AppTopBar
-        title={t("Cars.Title")}
-        back="/profile"
-        trailing={
-          <Button
-            size="icon"
-            aria-label={t("Cars.Add")}
-            onClick={() => setAdding(true)}
-            className="ml-auto size-9 shrink-0 rounded-full bg-brand-500 hover:bg-brand-600"
-          >
-            <Plus className="size-5" />
-          </Button>
-        }
-      />
+      {/*
+        No "+" in the bar: the empty state has its own button, the garage is
+        reached from the profile's "Добавить машину" (which opens the form
+        directly), and a second corner control for the same action only
+        competed with them.
+      */}
+      <AppTopBar title={t("Cars.Title")} back="/profile" />
       <Screen>
         {!cars || cars.length === 0 ? (
           <EmptyState
@@ -381,6 +370,16 @@ export const CarsScreen = () => {
                 </AlertDialog>
               </div>
             ))}
+
+            {/* Adding a second car still has to be possible from here. */}
+            <Button
+              variant="outline"
+              onClick={() => setAdding(true)}
+              className="h-13 w-full rounded-full border-brand-400 text-base font-semibold text-brand-600 hover:bg-brand-50 hover:text-brand-700"
+            >
+              <Plus className="size-5" />
+              {t("Cars.Add")}
+            </Button>
           </div>
         )}
       </Screen>

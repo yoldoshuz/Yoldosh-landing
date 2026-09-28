@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api, toList } from "@/lib/api";
 import type { AppBooking, AppTrip, CreateTripPayload, TripSearchQuery } from "@/types/api";
@@ -18,6 +18,16 @@ export const appTripsApi = {
   search: async (params: TripSearchQuery & { page?: number }) => {
     const { data } = await api.get("/trip/search", { params: stripEmpty(params) });
     return { ...data.data, trips: toList<AppTrip>(data.data?.trips) } as TripPage;
+  },
+  /**
+   * Public, cached (5 min) shortlist for the home screen: upcoming trips with
+   * seats left, cheapest first, drivers from the app before drivers from the
+   * bot. No auth, and it may return fewer than asked once expired trips are
+   * filtered out of the cached page.
+   */
+  best: async (limit = 5) => {
+    const { data } = await api.get("/trip/best", { params: { limit } });
+    return toList<AppTrip>(data.data?.trips ?? data.data);
   },
   details: async (tripId: string) => {
     const { data } = await api.get(`/trip/${tripId}`);
@@ -58,6 +68,22 @@ export const useAppTripSearch = (params: TripSearchQuery | null) =>
     getNextPageParam: (last) =>
       last.currentPage && last.totalPages && last.currentPage < last.totalPages ? last.currentPage + 1 : undefined,
     retry: false,
+    /*
+      The endpoint is a geo query and is not always quick. Holding the
+      previous day on screen while the next one loads keeps switching dates
+      from blanking the list back to a spinner, and five minutes of freshness
+      means stepping back to a day already seen is instant.
+    */
+    placeholderData: keepPreviousData,
+    staleTime: 5 * 60 * 1000,
+  });
+
+/** Home-screen shortlist. Cached hard — the endpoint is cached server-side too. */
+export const useBestTrips = (limit = 5) =>
+  useQuery({
+    queryKey: qk.bestTrips(limit),
+    queryFn: () => appTripsApi.best(limit),
+    staleTime: 5 * 60 * 1000,
   });
 
 export const useAppTrip = (tripId?: string) =>
@@ -87,7 +113,7 @@ export const usePriceHint = (from?: string, to?: string) =>
     retry: false,
   });
 
-const useTripMutation = <TVars,>(mutationFn: (vars: TVars) => Promise<unknown>) => {
+const useTripMutation = <TVars>(mutationFn: (vars: TVars) => Promise<unknown>) => {
   const qc = useQueryClient();
   return useMutation({
     mutationFn,

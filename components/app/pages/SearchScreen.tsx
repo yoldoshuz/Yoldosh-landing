@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { usePopularTrips } from "@/hooks/useTrips";
+import { useBestTrips } from "@/hooks/api/useAppTrips";
 import type { Place } from "@/lib/places";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ const toDayParam = (date?: Date) => {
 };
 
 /**
- * The search form and the popular-routes teaser.
+ * The search form and the best-trips teaser.
  *
  * Results are no longer spliced in underneath: submitting opens its own
  * screen, so the form is never pushed off the top and a search can be shared
@@ -48,8 +48,7 @@ export const SearchScreen = () => {
   const [seats, setSeats] = useState(1);
   const [picking, setPicking] = useState<"from" | "to" | null>(null);
 
-  const { data: popular } = usePopularTrips(true);
-  const popularTrips = popular?.pages.flatMap((p: any) => p?.data?.trips ?? []) ?? [];
+  const { data: bestTrips } = useBestTrips(TOP_TRIPS);
 
   const ready = Boolean(from?.lat && from?.lng && to?.lat && to?.lng);
 
@@ -173,11 +172,11 @@ export const SearchScreen = () => {
       </AppTopBar>
 
       <Screen className="pt-6">
-        {popularTrips.length > 0 && (
+        {bestTrips && bestTrips.length > 0 && (
           <>
             <SectionLabel>{t("Search.TopTrips")}</SectionLabel>
             <div className="app-card divide-y divide-neutral-100 overflow-hidden">
-              {popularTrips.slice(0, TOP_TRIPS).map((trip: any, index: number) => (
+              {bestTrips.map((trip, index) => (
                 <Link
                   key={trip.id}
                   href={`/ride/${trip.id}` as never}
@@ -199,7 +198,8 @@ export const SearchScreen = () => {
                       truncate instead of forcing the price off the card. */}
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold text-ink">
-                      {trip.from_location?.city} - {trip.to_location?.city}
+                      {trip.from_location?.city || trip.from_city || "—"} -{" "}
+                      {trip.to_location?.city || trip.to_city || "—"}
                     </span>
                     <span className="flex min-w-0 items-center gap-1 text-sm text-ink-muted">
                       <Star className="size-3.5 shrink-0 fill-star stroke-star" />
@@ -208,10 +208,12 @@ export const SearchScreen = () => {
                     </span>
                   </span>
 
+                  {/* Read from the price object: the root price_per_person
+                      comes back as a DECIMAL string, not a number. */}
                   <span className="shrink-0 text-sm font-semibold text-brand-600">
-                    {isNegotiablePrice(trip.price?.price_per_person)
+                    {isNegotiablePrice(trip.price?.final_price ?? trip.price?.price_per_person)
                       ? t("Trip.Negotiable")
-                      : Number(trip.price?.price_per_person).toLocaleString("ru-RU")}
+                      : Number(trip.price?.final_price ?? trip.price?.price_per_person).toLocaleString("ru-RU")}
                   </span>
                 </Link>
               ))}

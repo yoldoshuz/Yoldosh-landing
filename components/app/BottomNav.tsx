@@ -140,8 +140,12 @@ const activePillStyle: CSSProperties = {
   borderRadius: 999,
   // Flat, single-tone fill — no top-bright / bottom-dark gradient.
   background: "white",
-  backdropFilter: "blur(12px) saturate(160%)",
-  WebkitBackdropFilter: "blur(12px) saturate(160%)",
+  /*
+    No `backdrop-filter` here. The fill above it is opaque white, so nothing
+    of the blur was ever visible — but it still made the browser re-sample and
+    blur the backdrop behind the pill on every frame the bar moved or the page
+    scrolled underneath it, which is exactly the work a phone can least afford.
+  */
   overflow: "hidden",
 };
 
@@ -218,15 +222,25 @@ export const BottomNav = () => {
   };
 
   return (
+    /*
+      Pinned to `bottom: 0` and lifted by padding rather than by
+      `bottom: calc(0.75rem + var(--sa-bottom))`.
+
+      That calc was a single point of failure: `--sa-bottom` holds an `env()`,
+      and where that does not resolve the whole declaration is invalid at
+      computed-value time, so `bottom` falls back to `auto` and the bar drops
+      to its static position — off-screen. Splitting it means a missing safe
+      area costs a few pixels of padding, never the position.
+    */
     <nav
       data-app-bar
-      className="fixed bottom-[calc(0.75rem+var(--sa-bottom))] left-0 right-0 z-50 flex justify-center px-3 lg:hidden"
+      className="app-tabbar-dock fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 lg:hidden"
       aria-label={t("Primary")}
     >
       {/* One continuous bar: every tab shares the same glass, so the active
           pill can slide the whole width via `layoutId`. */}
       <div
-        className="flex h-14 w-full max-w-sm items-center justify-around"
+        className="app-tabbar flex h-14 w-full max-w-sm items-center justify-around"
         style={{ ...glassBase, borderRadius: 999 }}
       >
         <LiquidGlass radius={999} />

@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import {
   Bell,
   ChevronRight,
-  CircleUserRound,
   FileText,
   Globe,
   Heart,
@@ -232,20 +231,12 @@ export const ProfileScreen = () => {
               </Link>
             </div>
 
-            <div className="grid gap-2 sm:grid-cols-2">
-              <Row
-                icon={Star}
-                label={t("Profile.Reviews")}
-                href="/profile/reviews"
-                trailing={
-                  <span className="flex items-center gap-1.5 font-mono text-sm font-semibold text-star">
-                    <Star className="size-4 fill-star stroke-star" />
-                    {(current?.rating ?? 0).toFixed(1)}
-                  </span>
-                }
-              />
-              <Row icon={CircleUserRound} label={t("Profile.PublicProfile")} href={`/users/${current?.id ?? ""}`} />
-            </div>
+            {/*
+              "Отзывы о вас" and "Публичный профиль" used to sit here. Both are
+              already reachable — the name row at the top opens the public
+              profile, and the rating with its reviews is a card inside it — so
+              the pair was a second way to the same two screens.
+            */}
           </TabsContent>
 
           {/* ------------------------------------------------------ Аккаунт */}

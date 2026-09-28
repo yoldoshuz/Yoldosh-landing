@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import {
   BadgeCheck,
   Briefcase,
@@ -78,7 +79,7 @@ interface TripCardProps {
   variant?: "activity" | "search";
 }
 
-export const TripCard = ({ trip, href, variant = "activity" }: TripCardProps) => {
+const TripCardBase = ({ trip, href, variant = "activity" }: TripCardProps) => {
   const t = useTranslations("App");
 
   const from = trip.from_location?.city ?? trip.from_city ?? "—";
@@ -193,3 +194,10 @@ export const TripCard = ({ trip, href, variant = "activity" }: TripCardProps) =>
     body
   );
 };
+
+/*
+  Memoised: the results list re-renders on every page that arrives and on
+  every day switch, and without this each of those re-rendered every card —
+  five icons and an avatar apiece — for rows whose data had not changed.
+*/
+export const TripCard = memo(TripCardBase);

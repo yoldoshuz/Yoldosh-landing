@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
+import { AppFont } from "@/components/app/AppFont";
+
 export const metadata: Metadata = {
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
 };
@@ -10,7 +12,8 @@ export const metadata: Metadata = {
  * visitor is allowed to reach.
  */
 const AuthLayout = ({ children }: { children: ReactNode }) => (
-  <main data-app-root data-app-scroll id="main-content" role="main" className="min-h-screen bg-neutral-50">
+  <main data-app-root data-app-scroll id="main-content" role="main" className="font-app min-h-screen bg-neutral-50">
+    <AppFont />
     {children}
   </main>
 );

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import YandexMetrika from "@/components/functional/YandexMetrika";
 
 import { Metadata } from "next";
-import { Chiron_GoRound_TC } from "next/font/google";
+import { Chiron_GoRound_TC, Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -20,6 +20,19 @@ import "./globals.css";
 
 const font = Chiron_GoRound_TC({
   variable: "--font-font",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+  preload: true,
+});
+
+/**
+ * The signed-in app and the mini app run on Inter instead of the marketing
+ * face: it is what the native builds use, and the two sitting side by side
+ * inside Telegram read as two different products. Exposed as a variable and
+ * applied by `.font-app` on the app shells, so the landing is untouched.
+ */
+const appFont = Inter({
+  variable: "--font-app",
   subsets: ["latin", "cyrillic"],
   display: "swap",
   preload: true,
@@ -106,7 +119,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebSiteJsonLd()) }}
         />
       </head>
-      <body className={`${font.className} antialiased`}>
+      <body className={`${font.className} ${appFont.variable} antialiased`}>
         <Suspense fallback={null}>
           <YandexMetrika />
         </Suspense>
