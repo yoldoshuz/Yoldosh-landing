@@ -19,7 +19,7 @@ export const AppShell = ({ children }: { children: ReactNode }) => {
             floating tab bar plus the iOS home indicator. */}
         <div
           data-app-scroll
-          className="flex min-h-screen flex-col pb-28 lg:pb-10 lg:pl-72 has-[[data-fullscreen]]:pb-0"
+          className="flex min-h-screen flex-col pb-32 lg:pb-10 lg:pl-72 has-[[data-fullscreen]]:pb-0"
         >
           {children}
         </div>

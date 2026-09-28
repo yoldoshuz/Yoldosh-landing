@@ -329,20 +329,22 @@
   }
 
   /*
-    The tab bar's dock: always 12px off the bottom edge, plus the home
-    indicator where the browser reports one.
+    The tab bar's dock: 20px off the bottom edge, plus the home indicator
+    where the browser reports one. Inside Telegram it sits higher still — the
+    client keeps its own gesture strip below the web view, and a bar resting
+    on the very edge reads as falling off the screen.
 
     Written as a plain value first and only then upgraded inside `@supports`,
     so a client that does not understand `env()` still gets a valid
     `padding-bottom` instead of dropping the declaration.
   */
   .app-tabbar-dock {
-    padding-bottom: 0.75rem;
+    padding-bottom: 1.25rem;
   }
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     .app-tabbar-dock {
-      padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+      padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
     }
   }
 
@@ -509,7 +511,7 @@ html.tg-app [data-app-scroll]:not(:has([data-app-topbar])) {
 }
 
 html.tg-app .app-tabbar-dock {
-  padding-bottom: calc(0.75rem + var(--tg-safe-bottom, 0px));
+  padding-bottom: calc(1.75rem + var(--tg-safe-bottom, 0px));
 }
 
 /*
@@ -518,7 +520,7 @@ html.tg-app .app-tabbar-dock {
   keep their own `pb-0`.
 */
 html.tg-app [data-app-scroll]:not(:has([data-fullscreen])) {
-  padding-bottom: calc(7rem + var(--tg-safe-bottom, 0px));
+  padding-bottom: calc(8rem + var(--tg-safe-bottom, 0px));
 }
 
 /* Any other bar pinned to the bottom edge — the trip's booking bar, the chat
