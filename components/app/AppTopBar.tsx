@@ -55,6 +55,7 @@ export const AppTopBar = ({
 
   return (
     <header
+      data-app-topbar
       className={cn(
         variant === "hero" ? "app-hero pb-8 lg:pb-4" : variant === "green" ? "app-topbar" : "bg-app-bg",
         variant !== "hero" && "sticky top-0 z-30",

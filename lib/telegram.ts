@@ -6,6 +6,13 @@
  * undefined and every helper is a no-op.
  */
 
+export interface TelegramInsets {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
 export interface TelegramWebApp {
   ready: () => void;
   expand: () => void;
@@ -21,6 +28,14 @@ export interface TelegramWebApp {
   };
   /** Added in Bot API 7.7; absent on older clients. */
   disableVerticalSwipes?: () => void;
+  /**
+   * Bot API 8.0. `safeAreaInset` is the device's own unsafe area (status bar,
+   * notch, gesture bar); `contentSafeAreaInset` additionally clears Telegram's
+   * chrome — the header with "Закрыть" and the ⋮ menu. Both are absent on
+   * older clients, where the app simply is not drawn under either.
+   */
+  safeAreaInset?: TelegramInsets;
+  contentSafeAreaInset?: TelegramInsets;
   /**
    * Bot API 6.9+. The callback's second argument carries `response` — the
    * signed string the backend validates. `responseUnsafe` is the parsed copy
@@ -180,4 +195,50 @@ export const isTelegramSignedOut = (): boolean => {
   } catch {
     return false;
   }
+};
+
+/* ------------------------------------------------------- safe areas */
+
+/**
+ * Publishes Telegram's safe areas as CSS variables.
+ *
+ * In the client's expanded layout the mini app is drawn *under* both the
+ * device status bar and Telegram's own header — the row with "Закрыть" and the
+ * ⋮ menu. Nothing in the page knows that, so the first heading ends up behind
+ * the client's title and the tab bar ends up under the gesture bar.
+ *
+ * `contentSafeAreaInset` is the one to pad content against at the top: it is
+ * measured from the app's own edge and already accounts for the header.
+ * `safeAreaInset.bottom` is the gesture bar, which the tab bar has to clear.
+ * Both are Bot API 8.0 — on older clients they are absent, the app is not
+ * drawn under anything, and the variables stay at 0.
+ */
+export const syncSafeAreaInsets = (webApp: TelegramWebApp) => {
+  const root = document.documentElement;
+
+  const apply = () => {
+    const safe = webApp.safeAreaInset;
+    const content = webApp.contentSafeAreaInset;
+
+    // The two stack: the content inset is measured inside the safe one.
+    const top = (safe?.top ?? 0) + (content?.top ?? 0);
+    const bottom = (safe?.bottom ?? 0) + (content?.bottom ?? 0);
+
+    root.style.setProperty("--tg-safe-top", `${top}px`);
+    root.style.setProperty("--tg-safe-bottom", `${bottom}px`);
+  };
+
+  apply();
+  webApp.onEvent?.("safeAreaChanged", apply);
+  webApp.onEvent?.("contentSafeAreaChanged", apply);
+  // A rotation or a switch in and out of fullscreen changes both.
+  webApp.onEvent?.("viewportChanged", apply);
+
+  return () => {
+    webApp.offEvent?.("safeAreaChanged", apply);
+    webApp.offEvent?.("contentSafeAreaChanged", apply);
+    webApp.offEvent?.("viewportChanged", apply);
+    root.style.removeProperty("--tg-safe-top");
+    root.style.removeProperty("--tg-safe-bottom");
+  };
 };

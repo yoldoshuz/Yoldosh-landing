@@ -13,6 +13,7 @@ import {
   initTelegramWebApp,
   isTelegramSignedOut,
   isTelegramWebApp,
+  syncSafeAreaInsets,
   syncViewportHeight,
 } from "@/lib/telegram";
 
@@ -158,10 +159,14 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
 
     document.documentElement.classList.add("tg-app");
     const webApp = getWebApp();
-    const stopSync = webApp ? syncViewportHeight(webApp) : undefined;
+    const stopViewportSync = webApp ? syncViewportHeight(webApp) : undefined;
+    // Telegram draws the app under its own header and the gesture bar; these
+    // publish how much room that leaves.
+    const stopInsetSync = webApp ? syncSafeAreaInsets(webApp) : undefined;
 
     return () => {
-      stopSync?.();
+      stopViewportSync?.();
+      stopInsetSync?.();
       document.documentElement.classList.remove("tg-app");
       document.documentElement.style.removeProperty("--tg-viewport-height");
     };

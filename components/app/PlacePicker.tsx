@@ -102,7 +102,7 @@ export const PlacePicker = ({
   return (
     // Above the tab bar and the sheets: while this is open it *is* the screen.
     <div className="fixed inset-0 z-[60] flex flex-col bg-app-bg">
-      <div className="app-topbar shrink-0 px-4 py-3">
+      <div data-app-topbar className="app-topbar shrink-0 px-4 py-3">
         <div className="mx-auto flex w-full max-w-2xl items-center gap-2 lg:max-w-5xl">
           <button
             type="button"

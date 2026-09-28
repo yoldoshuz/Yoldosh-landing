@@ -5,8 +5,8 @@ import { ArrowLeft, Check, ChevronRight, Loader2, MoveRight, SendHorizontal, Smi
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
+import { ErrorNote, formatDate, formatDayLabel, formatTime, Spinner } from "@/components/app/kit";
 import { UserAvatar } from "@/components/app/UserAvatar";
-import { ErrorNote, formatDayLabel, formatDate, formatTime, Spinner } from "@/components/app/kit";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useChatMessages, useChats, useSendMessage } from "@/hooks/api/useChat";
@@ -59,7 +59,7 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
 
   return (
     <div data-fullscreen className="flex min-h-screen flex-col">
-      <header className="app-topbar sticky top-0 z-30 lg:border-b lg:border-neutral-200">
+      <header data-app-topbar className="app-topbar sticky top-0 z-30 lg:border-b lg:border-neutral-200">
         <div className="mx-auto flex h-14 w-full max-w-2xl items-center gap-3 px-4 lg:max-w-5xl lg:px-8">
           <button
             type="button"

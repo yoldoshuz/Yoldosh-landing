@@ -18,10 +18,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useCreateCar, useDeleteCar, useMyCars, type CreateCarPayload } from "@/hooks/api/useCars";
 import { apiErrorMessage } from "@/lib/api";
 import { readCarDocument } from "@/lib/ocr";
@@ -189,95 +186,6 @@ export const CarsScreen = () => {
             )}
 
             <SuccessNote message={scanned && !scanning ? t("Cars.ScanDone") : null} />
-
-            {/*
-              Recognition is imperfect, so the extracted values stay editable —
-              they are shown for confirmation, not collected from scratch. The
-              heading that said as much is gone: the fields arrive pre-filled
-              right after the upload, which makes the point on its own.
-            */}
-            <div className="app-card grid gap-3 p-4 sm:grid-cols-2">
-              <div>
-                <Label htmlFor="make" className="mb-1.5">
-                  {t("Cars.Make")}
-                </Label>
-                <Input
-                  id="make"
-                  value={form.make}
-                  onChange={(e) => setForm((f) => ({ ...f, make: e.target.value }))}
-                  placeholder="Chevrolet"
-                  className="h-12 rounded-2xl"
-                />
-              </div>
-              <div>
-                <Label htmlFor="model" className="mb-1.5">
-                  {t("Cars.Model")}
-                </Label>
-                <Input
-                  id="model"
-                  value={form.model}
-                  onChange={(e) => setForm((f) => ({ ...f, model: e.target.value }))}
-                  placeholder="Cobalt"
-                  className="h-12 rounded-2xl"
-                />
-              </div>
-              <div>
-                <Label htmlFor="year" className="mb-1.5">
-                  {t("Cars.Year")}
-                </Label>
-                <Input
-                  id="year"
-                  type="number"
-                  min={1980}
-                  max={new Date().getFullYear() + 1}
-                  value={form.year}
-                  onChange={(e) => setForm((f) => ({ ...f, year: Number(e.target.value) }))}
-                  className="h-12 rounded-2xl"
-                />
-              </div>
-              <div>
-                <Label htmlFor="plate" className="mb-1.5">
-                  {t("Cars.Plate")}
-                </Label>
-                <Input
-                  id="plate"
-                  value={form.plate_number}
-                  onChange={(e) => setForm((f) => ({ ...f, plate_number: e.target.value.toUpperCase() }))}
-                  placeholder="01A123BC"
-                  className="h-12 rounded-2xl"
-                />
-              </div>
-              <div>
-                <Label htmlFor="color" className="mb-1.5">
-                  {t("Cars.Color")}
-                </Label>
-                <Input
-                  id="color"
-                  value={form.color}
-                  onChange={(e) => setForm((f) => ({ ...f, color: e.target.value }))}
-                  placeholder={t("Cars.ColorPlaceholder")}
-                  className="h-12 rounded-2xl"
-                />
-              </div>
-              <div>
-                <Label className="mb-1.5">{t("Cars.Seats")}</Label>
-                <Select
-                  value={String(form.seats_standard)}
-                  onValueChange={(v) => setForm((f) => ({ ...f, seats_standard: Number(v) }))}
-                >
-                  <SelectTrigger className="h-12! w-full rounded-2xl">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {[2, 3, 4, 5, 6, 7, 8].map((n) => (
-                      <SelectItem key={n} value={String(n)}>
-                        {n}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
 
             {/*
               The documents are collected here to match the app's flow, but the

@@ -476,3 +476,53 @@ html.tg-app [data-app-root] {
 html.tg-app [data-app-bar] {
   position: absolute;
 }
+
+/* =========================================================================
+   Telegram safe areas
+   -------------------------------------------------------------------------
+   In the client's expanded layout the mini app is painted under the device
+   status bar and under Telegram's own header — the row carrying "Закрыть" and
+   the ⋮ menu. Nothing about the page changes, so a screen title lands behind
+   the client's title and the tab bar lands under the gesture bar.
+
+   `--tg-safe-top` / `--tg-safe-bottom` come from the SDK (see
+   `syncSafeAreaInsets`). They are 0 outside Telegram and on clients older than
+   Bot API 8.0, where the app is not drawn under anything — so these rules cost
+   nothing there.
+   ========================================================================= */
+
+/*
+  The bar keeps its full-bleed background and grows downward instead: the
+  green still runs to the very top of the screen, behind Telegram's chrome,
+  while the title and the back arrow sit below it.
+*/
+html.tg-app [data-app-topbar] {
+  padding-top: var(--tg-safe-top, 0px);
+}
+
+/*
+  Screens with no bar of their own still need the room — otherwise their first
+  card starts under the client's header.
+*/
+html.tg-app [data-app-scroll]:not(:has([data-app-topbar])) {
+  padding-top: var(--tg-safe-top, 0px);
+}
+
+html.tg-app .app-tabbar-dock {
+  padding-bottom: calc(0.75rem + var(--tg-safe-bottom, 0px));
+}
+
+/*
+  The column clears the tab bar by `pb-28`, which the gesture bar then eats
+  into — the last row of a list ended up under the bar. Full-height screens
+  keep their own `pb-0`.
+*/
+html.tg-app [data-app-scroll]:not(:has([data-fullscreen])) {
+  padding-bottom: calc(7rem + var(--tg-safe-bottom, 0px));
+}
+
+/* Any other bar pinned to the bottom edge — the trip's booking bar, the chat
+   composer — clears the gesture bar the same way. */
+html.tg-app .safe-bottom {
+  padding-bottom: var(--tg-safe-bottom, 0px);
+}
