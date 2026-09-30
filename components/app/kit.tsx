@@ -103,6 +103,12 @@ export const Row = ({
  *
  * Screens with no illustration of their own pass an `icon` instead, which is
  * drawn on a pale green disc — the notifications screen is the one that does.
+ *
+ * `bleed` is for the scene artwork drawn at phone width (the car on "Мои
+ * поездки", the chats scene): in the native build it runs edge to edge, the
+ * car cut off by the right side of the screen, and boxed into the text column
+ * it read as a thumbnail. Centred overflow does the breaking out, so no
+ * negative margins have to track the column's padding.
  */
 export const EmptyState = ({
   illustration,
@@ -110,9 +116,11 @@ export const EmptyState = ({
   title,
   description,
   action,
+  bleed,
   className,
 }: {
   illustration?: string;
+  bleed?: boolean;
   icon?: LucideIcon;
   title: string;
   description?: string;
@@ -128,7 +136,10 @@ export const EmptyState = ({
         alt=""
         width={320}
         height={220}
-        className="mb-6 h-auto w-full max-w-[280px] object-contain"
+        className={cn(
+          "mb-6 h-auto object-contain",
+          bleed ? "w-screen max-w-[30rem] shrink-0 lg:w-full lg:max-w-[360px]" : "w-full max-w-[280px]"
+        )}
         priority={false}
       />
     ) : (

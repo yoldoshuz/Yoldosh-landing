@@ -14,7 +14,6 @@ import {
   isTelegramSignedOut,
   isTelegramWebApp,
   syncSafeAreaInsets,
-  syncViewportHeight,
 } from "@/lib/telegram";
 
 /** Where the mini app's automatic sign-in got to. */
@@ -149,26 +148,22 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
   }, [isTelegram, isLoading, isAuthenticated, pathname, router]);
 
   /*
-    Switches the document into mini-app framing: exact viewport height, no page
-    scroll, only the content column scrolls (see `html.tg-app` in globals.css).
-    The height itself comes from Telegram and changes when the keyboard opens,
-    so it is kept in sync rather than read once.
+    Switches the document into mini-app framing: the app is a frame pinned to
+    the web view, the page itself never scrolls, only the content column does
+    (see `html.tg-app` in globals.css).
   */
   useEffect(() => {
     if (!isTelegram) return;
 
     document.documentElement.classList.add("tg-app");
-    const webApp = getWebApp();
-    const stopViewportSync = webApp ? syncViewportHeight(webApp) : undefined;
     // Telegram draws the app under its own header and the gesture bar; these
     // publish how much room that leaves.
+    const webApp = getWebApp();
     const stopInsetSync = webApp ? syncSafeAreaInsets(webApp) : undefined;
 
     return () => {
-      stopViewportSync?.();
       stopInsetSync?.();
       document.documentElement.classList.remove("tg-app");
-      document.documentElement.style.removeProperty("--tg-viewport-height");
     };
   }, [isTelegram]);
 

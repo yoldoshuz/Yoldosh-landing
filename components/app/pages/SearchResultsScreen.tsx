@@ -219,7 +219,10 @@ export const SearchResultsScreen = () => {
         phone it is the control people reach for most, and keeping it in reach
         means never scrolling back to the top to change the date.
       */}
-      <div data-app-bar className="pointer-events-none fixed inset-x-0 bottom-0 z-20 pb-[5.5rem] lg:static lg:pb-0">
+      <div
+        data-app-bar
+        className="app-above-tabbar pointer-events-none fixed inset-x-0 bottom-0 z-20 lg:static lg:pb-0"
+      >
         <div className="mx-auto w-full max-w-2xl px-4 lg:max-w-5xl lg:px-8 lg:pb-6">
           <div className="pointer-events-auto flex gap-2 overflow-x-auto rounded-full bg-white/95 p-1.5 shadow-[0_6px_24px_-8px_rgba(0,0,0,0.25)] backdrop-blur-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {days.map((date, index) => {

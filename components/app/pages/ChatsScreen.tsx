@@ -32,7 +32,7 @@ export const ChatsScreen = () => {
         <Spinner />
       ) : !chats || chats.length === 0 ? (
         <Screen className="flex flex-1 items-center justify-center">
-          <EmptyState illustration={ILLUSTRATION.noChats} title={t("Chats.Empty")} />
+          <EmptyState bleed illustration={ILLUSTRATION.noChats} title={t("Chats.Empty")} />
         </Screen>
       ) : (
         <div className="mx-auto w-full max-w-2xl lg:max-w-5xl lg:px-8 lg:pt-4">

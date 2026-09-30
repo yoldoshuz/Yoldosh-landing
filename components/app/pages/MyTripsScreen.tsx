@@ -60,6 +60,7 @@ const TripList = ({ role }: { role: Role }) => {
       <EmptyState
         className="py-16"
         illustration={ILLUSTRATION.noTrips}
+        bleed
         title={t("MyTrips.Empty")}
         action={
           <Button asChild className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600">

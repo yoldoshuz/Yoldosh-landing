@@ -28,6 +28,14 @@ export interface TelegramWebApp {
   };
   /** Added in Bot API 7.7; absent on older clients. */
   disableVerticalSwipes?: () => void;
+  /** Bot API 6.1+. The SDK logs an error for any method newer than the client. */
+  isVersionAtLeast?: (version: string) => boolean;
+  /**
+   * Bot API 8.0. Fullscreen draws the app edge to edge, under the status bar
+   * and Telegram's header; the other launch modes put it below that header.
+   */
+  isFullscreen?: boolean;
+  requestFullscreen?: () => void;
   /**
    * Bot API 8.0. `safeAreaInset` is the device's own unsafe area (status bar,
    * notch, gesture bar); `contentSafeAreaInset` additionally clears Telegram's
@@ -81,18 +89,29 @@ export const isTelegramWebApp = (): boolean => {
 const HEADER_GREEN = "#1fa341";
 const APP_BG = "#fafafa";
 
+/** Phones, where fullscreen is the posture the app is laid out for. */
+const MOBILE_PLATFORMS = new Set(["ios", "android", "android_x"]);
+
+let telegramInitialised = false;
+
 /**
- * Puts the mini app into its native posture: full height, no accidental
- * dismissal, and chrome coloured like the app rather than the default.
+ * Puts the mini app into its native posture: fullscreen on a phone, no
+ * accidental dismissal, and chrome coloured like the app rather than the
+ * default.
  *
  * Vertical swipes are what close a Telegram mini app, and they fire on any
  * downward drag — including one that was meant to scroll a list. Disabling them
  * is the difference between "a website in a sheet" and something that feels
  * built for the client.
+ *
+ * Runs once: detection fires both on mount and from the SDK's onLoad, and a
+ * second `requestFullscreen` on a client already in fullscreen only earns a
+ * `fullscreenFailed` event.
  */
 export const initTelegramWebApp = () => {
   const webApp = getWebApp();
-  if (!webApp) return;
+  if (!webApp || telegramInitialised) return;
+  telegramInitialised = true;
 
   webApp.ready();
   if (!webApp.isExpanded) webApp.expand();
@@ -102,28 +121,24 @@ export const initTelegramWebApp = () => {
   webApp.setHeaderColor?.(HEADER_GREEN);
   webApp.setBackgroundColor?.(APP_BG);
 
-  syncViewportHeight(webApp);
-};
-
-/**
- * Publishes Telegram's visible height as a CSS variable.
- *
- * `100vh` is wrong inside a mini app: the client reserves room for its own
- * header and the keyboard, so the document ends up taller than what the user
- * can see. Anything pinned to the bottom then sits below the fold and the page
- * scrolls to reach it. `viewportStableHeight` is the height that ignores
- * transient overlays, which is what a layout should be sized against.
- */
-export const syncViewportHeight = (webApp: TelegramWebApp) => {
-  const apply = () => {
-    const stable = webApp.viewportStableHeight || webApp.viewportHeight;
-    if (!stable) return;
-    document.documentElement.style.setProperty("--tg-viewport-height", `${stable}px`);
-  };
-
-  apply();
-  webApp.onEvent?.("viewportChanged", apply);
-  return () => webApp.offEvent?.("viewportChanged", apply);
+  /*
+    The launch mode depends on where the app was opened from, not on us. The
+    chat-list button opens it fullscreen; the menu button and inline buttons
+    inside a dialog open it "fullsize" — below Telegram's own header, as a
+    sheet. The screens are built for the first: a green bar running under the
+    status bar, a floating tab bar over the gesture strip. Asking for
+    fullscreen on every phone launch leaves one posture to design for instead
+    of two. Desktop clients are left alone — fullscreen there takes over the
+    whole monitor.
+  */
+  const supportsFullscreen = webApp.isVersionAtLeast?.("8.0") ?? false;
+  if (supportsFullscreen && !webApp.isFullscreen && MOBILE_PLATFORMS.has(webApp.platform)) {
+    try {
+      webApp.requestFullscreen?.();
+    } catch {
+      /* the fullsize layout works too — see `html.tg-app` in globals.css */
+    }
+  }
 };
 
 /**
@@ -220,8 +235,14 @@ export const syncSafeAreaInsets = (webApp: TelegramWebApp) => {
     const safe = webApp.safeAreaInset;
     const content = webApp.contentSafeAreaInset;
 
-    // The two stack: the content inset is measured inside the safe one.
-    const top = (safe?.top ?? 0) + (content?.top ?? 0);
+    /*
+      The two stack: the content inset is measured inside the safe one. The
+      top only applies in fullscreen — in every other mode the web view starts
+      below Telegram's header and is never under the status bar, yet a client
+      may still report the device's top inset there, which would push every
+      screen down by a status bar's worth of empty green.
+    */
+    const top = webApp.isFullscreen === false ? 0 : (safe?.top ?? 0) + (content?.top ?? 0);
     const bottom = (safe?.bottom ?? 0) + (content?.bottom ?? 0);
 
     root.style.setProperty("--tg-safe-top", `${top}px`);
@@ -233,11 +254,13 @@ export const syncSafeAreaInsets = (webApp: TelegramWebApp) => {
   webApp.onEvent?.("contentSafeAreaChanged", apply);
   // A rotation or a switch in and out of fullscreen changes both.
   webApp.onEvent?.("viewportChanged", apply);
+  webApp.onEvent?.("fullscreenChanged", apply);
 
   return () => {
     webApp.offEvent?.("safeAreaChanged", apply);
     webApp.offEvent?.("contentSafeAreaChanged", apply);
     webApp.offEvent?.("viewportChanged", apply);
+    webApp.offEvent?.("fullscreenChanged", apply);
     root.style.removeProperty("--tg-safe-top");
     root.style.removeProperty("--tg-safe-bottom");
   };

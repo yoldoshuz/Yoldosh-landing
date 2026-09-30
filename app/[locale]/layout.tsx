@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import YandexMetrika from "@/components/functional/YandexMetrika";
 
 import { Metadata } from "next";
-import { Chiron_GoRound_TC, Inter } from "next/font/google";
+import { Chiron_GoRound_TC, Roboto_Flex } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -26,12 +26,13 @@ const font = Chiron_GoRound_TC({
 });
 
 /**
- * The signed-in app and the mini app run on Inter instead of the marketing
- * face: it is what the native builds use, and the two sitting side by side
- * inside Telegram read as two different products. Exposed as a variable and
- * applied by `.font-app` on the app shells, so the landing is untouched.
+ * The signed-in app and the mini app run on Roboto Flex instead of the
+ * marketing face: it is the typeface of the Figma screens, and the two sitting
+ * side by side inside Telegram read as two different products. Exposed as a
+ * variable and applied by `.font-app` on the app shells, so the landing is
+ * untouched.
  */
-const appFont = Inter({
+const appFont = Roboto_Flex({
   variable: "--font-app",
   subsets: ["latin", "cyrillic"],
   display: "swap",

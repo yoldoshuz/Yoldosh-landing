@@ -312,7 +312,7 @@
   }
 
   /*
-    Inter for the whole signed-in surface. Set on the shell rather than on
+    Roboto Flex for the whole signed-in surface. Set on the shell rather than on
     `body` so the marketing pages keep their own face.
   */
   .font-app,
@@ -345,6 +345,22 @@
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     .app-tabbar-dock {
       padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  /*
+    For controls floating over the list just above the tab bar — the search
+    day strip. Derived from the dock: its padding, the bar's 3.5rem, then a
+    0.75rem gap, so the two move together wherever the dock does (see the
+    Telegram override further down).
+  */
+  .app-above-tabbar {
+    padding-bottom: 5.5rem;
+  }
+
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .app-above-tabbar {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
     }
   }
 
@@ -441,13 +457,33 @@
    ========================================================================= */
 html.tg-app,
 html.tg-app body {
-  height: var(--tg-viewport-height, 100dvh);
+  height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
 }
 
+/*
+  The frame is pinned to the web view itself rather than sized by a height
+  Telegram reports.
+
+  It used to be `height: var(--tg-viewport-height)` on html and body. The SDK
+  writes that variable itself — after firing `viewportChanged`, so it always
+  won over ours — and in the "fullsize" mode (opened from inside a dialog)
+  the height it reports runs past the bottom of the web view. The frame came
+  out taller than the screen, and with the page locked the overflow was simply
+  unreachable: the tab bar sat below the fold and the last rows of every list
+  could not be scrolled to.
+
+  A fixed box with `inset: 0` is exactly the web view in every mode. The one
+  time the client shows less than that — a sheet not yet fully expanded — its
+  stable height is the smaller one, hence the `min()`.
+*/
 html.tg-app [data-app-root] {
-  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: min(100%, var(--tg-viewport-stable-height, 100%));
   min-height: 0;
 }
 
@@ -466,15 +502,9 @@ html.tg-app [data-fullscreen] {
 }
 
 /*
-  A `fixed` element anchors to the browser viewport, which inside Telegram is
-  taller than the part the user can see — that is how the tab bar ended up
-  floating in the middle of the screen. Anchoring it to the frame instead puts
-  it back on the bottom edge.
+  Bars pinned to the bottom anchor to the frame rather than to the viewport,
+  so they always share its bottom edge.
 */
-html.tg-app [data-app-root] {
-  position: relative;
-}
-
 html.tg-app [data-app-bar] {
   position: absolute;
 }
@@ -510,8 +540,28 @@ html.tg-app [data-app-scroll]:not(:has([data-app-topbar])) {
   padding-top: var(--tg-safe-top, 0px);
 }
 
+/*
+  The dock clears the gesture strip by 0.75rem, but never sits closer than
+  1.75rem to the edge: some clients report no bottom inset at all, and a bar
+  resting on the very edge reads as falling off the screen.
+
+  This used to be a flat 1.75rem on top of the inset, which only looked right
+  because the frame was taller than the web view and the excess hid the bar's
+  bottom margin. With the frame now exact, that would float it too high.
+*/
+html.tg-app {
+  --app-dock-gap: max(1.75rem, calc(0.75rem + var(--tg-safe-bottom, 0px)));
+}
+
 html.tg-app .app-tabbar-dock {
-  padding-bottom: calc(1.75rem + var(--tg-safe-bottom, 0px));
+  padding-bottom: var(--app-dock-gap);
+}
+
+/* Unlayered, so it would beat `lg:pb-0` — kept to the widths with a tab bar. */
+@media (max-width: 1023.98px) {
+  html.tg-app .app-above-tabbar {
+    padding-bottom: calc(var(--app-dock-gap) + 4.25rem);
+  }
 }
 
 /*
