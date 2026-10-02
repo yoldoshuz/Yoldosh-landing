@@ -1,20 +1,20 @@
 "use client";
 
-import { Bell, CarFront, Gift, Megaphone, MessageCircle, type LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon, type AppIconName } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { EmptyState, formatDayLabel, formatTime, Screen, Spinner } from "@/components/app/kit";
 import { useMarkNotificationRead, useNotifications } from "@/hooks/api/useNotifications";
 import { cn } from "@/lib/utils";
 import type { AppNotification, NotificationType } from "@/types/api";
 
-const TYPE_STYLE: Record<NotificationType, { icon: LucideIcon; tone: string }> = {
-  trips: { icon: CarFront, tone: "bg-brand-50 text-brand-600" },
-  messages: { icon: MessageCircle, tone: "bg-brand-50 text-brand-600" },
-  promotionAndDiscounts: { icon: Gift, tone: "bg-neutral-100 text-neutral-500" },
-  newsAndAgreement: { icon: Megaphone, tone: "bg-neutral-100 text-neutral-500" },
-  general: { icon: Bell, tone: "bg-neutral-100 text-neutral-500" },
+const TYPE_STYLE: Record<NotificationType, { icon: AppIconName; tone: string }> = {
+  trips: { icon: "ic_small_car", tone: "bg-brand-50 text-brand-600" },
+  messages: { icon: "chat", tone: "bg-brand-50 text-brand-600" },
+  promotionAndDiscounts: { icon: "discount", tone: "bg-neutral-100 text-neutral-500" },
+  newsAndAgreement: { icon: "notification", tone: "bg-neutral-100 text-neutral-500" },
+  general: { icon: "notification", tone: "bg-neutral-100 text-neutral-500" },
 };
 
 /**
@@ -53,7 +53,7 @@ export const NotificationsScreen = () => {
         <Spinner />
       ) : groups.length === 0 ? (
         <Screen className="flex flex-1 items-center justify-center">
-          <EmptyState icon={Bell} title={t("Notifications.Empty")} description={t("Notifications.EmptyText")} />
+          <EmptyState icon="notification" title={t("Notifications.Empty")} description={t("Notifications.EmptyText")} />
         </Screen>
       ) : (
         <Screen className="space-y-6">
@@ -63,7 +63,7 @@ export const NotificationsScreen = () => {
 
               <div className="space-y-2.5">
                 {items.map((n) => {
-                  const { icon: Icon, tone } = TYPE_STYLE[n.type] ?? TYPE_STYLE.general;
+                  const { icon, tone } = TYPE_STYLE[n.type] ?? TYPE_STYLE.general;
                   const body = bodyOf(n);
 
                   return (
@@ -78,7 +78,7 @@ export const NotificationsScreen = () => {
                       )}
                     >
                       <span className={cn("grid size-11 shrink-0 place-items-center rounded-full", tone)}>
-                        <Icon className="size-5" strokeWidth={1.8} />
+                        <AppIcon name={icon} className="size-[22px]" />
                       </span>
 
                       <span className="min-w-0 flex-1">

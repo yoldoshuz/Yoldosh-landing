@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ChevronRight, Clock, Crosshair, Loader2, Search, X } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { ErrorNote } from "@/components/app/kit";
 import {
   currentPosition,
@@ -110,11 +111,11 @@ export const PlacePicker = ({
             aria-label={t("Back")}
             className="-ml-2 shrink-0 cursor-pointer rounded-full p-2 text-white transition hover:bg-white/15 lg:text-ink lg:hover:bg-neutral-200/60"
           >
-            <ArrowLeft className="size-5" />
+            <AppIcon name="ic_back" className="size-5" />
           </button>
 
           <div className="flex h-12 min-w-0 flex-1 items-center gap-3 rounded-full bg-white px-4 shadow-sm">
-            <Search className="size-5 shrink-0 text-neutral-400" />
+            <AppIcon name="search" className="size-5 shrink-0 text-neutral-400" />
             <input
               ref={inputRef}
               value={query}
@@ -130,7 +131,7 @@ export const PlacePicker = ({
                 aria-label={t("Clear")}
                 className="shrink-0 cursor-pointer text-neutral-400 transition hover:text-ink"
               >
-                <X className="size-5" />
+                <AppIcon name="close" className="size-5" />
               </button>
             )}
           </div>
@@ -148,10 +149,10 @@ export const PlacePicker = ({
             {locating ? (
               <Loader2 className="size-5 shrink-0 animate-spin text-brand-500" />
             ) : (
-              <Crosshair className="size-5 shrink-0 text-ink" />
+              <AppIcon name="location" className="size-5 shrink-0 text-ink" />
             )}
             <span className="min-w-0 flex-1 text-[17px] font-bold text-ink">{t("UseMyLocation")}</span>
-            <ChevronRight className="size-5 shrink-0 text-ink-muted" />
+            <AppIcon name="right2" className="size-5 shrink-0 text-ink-muted" />
           </button>
 
           <ErrorNote message={error} />
@@ -166,12 +167,12 @@ export const PlacePicker = ({
               className="flex w-full cursor-pointer items-center gap-4 border-t border-neutral-100 px-4 py-4 text-left transition hover:bg-neutral-50"
             >
               {/* Recents keep the clock; live results stand on their own. */}
-              {!query.trim() && <Clock className="size-5 shrink-0 text-neutral-400" />}
+              {!query.trim() && <AppIcon name="ic_time_circle" className="size-5 shrink-0 text-neutral-400" />}
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[17px] text-ink">{item.name}</span>
                 {item.detail && <span className="mt-0.5 block truncate text-sm text-ink-muted">{item.detail}</span>}
               </span>
-              <ChevronRight className="size-5 shrink-0 text-ink-muted" />
+              <AppIcon name="right2" className="size-5 shrink-0 text-ink-muted" />
             </button>
           ))}
         </div>

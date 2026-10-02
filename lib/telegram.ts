@@ -54,6 +54,8 @@ export interface TelegramWebApp {
   setHeaderColor?: (color: string) => void;
   setBackgroundColor?: (color: string) => void;
   BackButton?: { show: () => void; hide: () => void; onClick: (cb: () => void) => void };
+  /** Opens a t.me link inside the client — the share sheet among them. */
+  openTelegramLink?: (url: string) => void;
   onEvent?: (event: string, handler: () => void) => void;
   offEvent?: (event: string, handler: () => void) => void;
 }

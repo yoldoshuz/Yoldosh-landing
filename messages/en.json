@@ -1351,7 +1351,9 @@
         "Preferences": "Preferences",
         "Submit": "Find a trip"
       },
-      "EndOfList": "That is every trip for the selected day"
+      "EndOfList": "That is every trip for the selected day",
+      "PickDate": "Choose the travel date",
+      "PickSeats": "Choose passengers"
     },
     "Trip": {
       "NotFound": "Trip not found",
@@ -1421,7 +1423,40 @@
       "PassengersLabel": "Passengers:",
       "NoPassengers": "No passengers",
       "PriceLabel": "Price:",
-      "ReportSubtitle": "Tell us what went wrong and we will look into it."
+      "ReportSubtitle": "Tell us what went wrong and we will look into it.",
+      "Amenity": {
+        "garage": "Luggage",
+        "conditioner": "Air conditioning",
+        "food_stop": "Food stop",
+        "door_pickup": "Home pickup",
+        "smoking_allowed": "Smoking in the car"
+      },
+      "AmenityValue": {
+        "garage": {
+          "EMPTY": "Empty",
+          "HALF_EMPTY": "Half full",
+          "FULL": "Full"
+        },
+        "conditioner": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "food_stop": {
+          "yes": "Possible",
+          "no": "Not possible"
+        },
+        "door_pickup": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "smoking_allowed": {
+          "yes": "Allowed",
+          "no": "Not allowed"
+        }
+      },
+      "Share": "Share this trip",
+      "LinkCopied": "Link copied",
+      "Verified": "Verified"
     },
     "Publish": {
       "Title": "Publish a trip",
@@ -1593,7 +1628,9 @@
       "PickDate": "Pick a date",
       "BlockUser": "Block this user",
       "Blocked": "User blocked",
-      "BlockConfirm": "Block {name}? You will stop receiving messages from them."
+      "BlockConfirm": "Block {name}? You will stop receiving messages from them.",
+      "BalanceLabel": "Balance",
+      "TopUp": "Top up"
     },
     "Cars": {
       "Title": "My cars",

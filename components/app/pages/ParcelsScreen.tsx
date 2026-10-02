@@ -1,12 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { MoveRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { EmptyState, ErrorNote, formatDateTime, formatMoney, ILLUSTRATION, Screen, Spinner, StatusBadge } from "@/components/app/kit";
+import {
+  EmptyState,
+  ErrorNote,
+  formatDateTime,
+  formatMoney,
+  ILLUSTRATION,
+  Screen,
+  Spinner,
+  StatusBadge,
+} from "@/components/app/kit";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -56,7 +65,10 @@ export const ParcelsScreen = () => {
             title={t("Parcels.Empty")}
             description={t("Parcels.EmptyText")}
             action={
-              <Button asChild className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600">
+              <Button
+                asChild
+                className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600"
+              >
                 <Link href="/search">{t("Parcels.FindTrip")}</Link>
               </Button>
             }
@@ -71,7 +83,7 @@ export const ParcelsScreen = () => {
               <div className="flex items-start justify-between gap-3">
                 <p className="flex min-w-0 items-center gap-2 font-bold text-ink">
                   <span className="truncate">{parcel.pickup_location?.city ?? "—"}</span>
-                  <MoveRight className="size-4 shrink-0 text-brand-500" />
+                  <AppIcon name="arrow_right" className="size-4 shrink-0 text-brand-500" />
                   <span className="truncate">{parcel.dropoff_location?.city ?? "—"}</span>
                 </p>
                 <StatusBadge status={parcel.status} label={t(`ParcelStatus.${parcel.status}`)} />

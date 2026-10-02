@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { CreditCard, Loader2, Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import {
   EmptyState,
@@ -102,7 +103,7 @@ export const WalletScreen = () => {
                     onClick={() => setSelectedCard(String(card.id))}
                     className="flex flex-1 cursor-pointer items-center gap-3 text-left"
                   >
-                    <CreditCard className="size-5 shrink-0 text-ink-muted" />
+                    <AppIcon name="wallet" className="size-5 shrink-0 text-ink-muted" />
                     <span className="font-medium text-ink">{card.cardNumber}</span>
                   </button>
                   <Button

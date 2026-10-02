@@ -1355,7 +1355,9 @@
         "Preferences": "Afzalliklar",
         "Submit": "Safarni topish"
       },
-      "EndOfList": "Tanlangan kun uchun barcha safarlar shu"
+      "EndOfList": "Tanlangan kun uchun barcha safarlar shu",
+      "PickDate": "Sayohat sanasini tanlang",
+      "PickSeats": "Yo'lovchilarni tanlang"
     },
     "Trip": {
       "NotFound": "Safar topilmadi",
@@ -1412,7 +1414,7 @@
       "BackToTrips": "Barcha safarlarga",
       "Title": "Safar tafsilotlari",
       "Negotiable": "Kelishilgan",
-      "Currency": "UZS",
+      "Currency": "so'm",
       "ConfirmBooking": "Bronni tasdiqlash",
       "RejectBooking": "Bronni rad etish",
       "More": "Yana",
@@ -1425,7 +1427,40 @@
       "PassengersLabel": "Yoʻlovchilar:",
       "NoPassengers": "Yoʻlovchilar yoʻq",
       "PriceLabel": "Narxi:",
-      "ReportSubtitle": "Nima notoʻgʻri boʻlganini yozing — biz koʻrib chiqamiz."
+      "ReportSubtitle": "Nima notoʻgʻri boʻlganini yozing — biz koʻrib chiqamiz.",
+      "Amenity": {
+        "garage": "Bagaj",
+        "conditioner": "Konditsioner",
+        "food_stop": "Ovqatlanish uchun to'xtash",
+        "door_pickup": "Uydan olib ketish",
+        "smoking_allowed": "Mashinada chekish"
+      },
+      "AmenityValue": {
+        "garage": {
+          "EMPTY": "Bo'sh",
+          "HALF_EMPTY": "Yarim bo'sh",
+          "FULL": "Band"
+        },
+        "conditioner": {
+          "yes": "Bor",
+          "no": "Yo'q"
+        },
+        "food_stop": {
+          "yes": "Mumkin",
+          "no": "Mumkin emas"
+        },
+        "door_pickup": {
+          "yes": "Ha",
+          "no": "Yo'q"
+        },
+        "smoking_allowed": {
+          "yes": "Mumkin",
+          "no": "Mumkin emas"
+        }
+      },
+      "Share": "Sayohatni ulashish",
+      "LinkCopied": "Havola nusxalandi",
+      "Verified": "Tasdiqlangan"
     },
     "Publish": {
       "Title": "Safar yaratish",
@@ -1597,7 +1632,9 @@
       "PickDate": "Sanani tanlang",
       "BlockUser": "Foydalanuvchini bloklash",
       "Blocked": "Foydalanuvchi bloklandi",
-      "BlockConfirm": "{name} bloklansinmi? Undan xabarlar kelmaydi."
+      "BlockConfirm": "{name} bloklansinmi? Undan xabarlar kelmaydi.",
+      "BalanceLabel": "Balans",
+      "TopUp": "To'ldirish"
     },
     "Cars": {
       "Title": "Avtomobillarim",

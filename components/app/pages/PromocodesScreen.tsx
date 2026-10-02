@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Gift, Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { ErrorNote, formatDate, Screen, SectionLabel, SuccessNote } from "@/components/app/kit";
 import { Button } from "@/components/ui/button";
@@ -80,7 +81,9 @@ export const PromocodesScreen = () => {
                   <div className="min-w-0">
                     <p className="font-mono font-bold text-ink">{promo.code}</p>
                     {promo.expiresAt && (
-                      <p className="text-xs text-ink-muted">{t("Profile.PromoExpires", { date: formatDate(promo.expiresAt) })}</p>
+                      <p className="text-xs text-ink-muted">
+                        {t("Profile.PromoExpires", { date: formatDate(promo.expiresAt) })}
+                      </p>
                     )}
                   </div>
                   <span className="shrink-0 rounded-full bg-brand-50 px-3 py-1 font-bold text-brand-600">
@@ -98,11 +101,16 @@ export const PromocodesScreen = () => {
             <div className="app-card p-4">
               <div className="flex items-center justify-between gap-3">
                 <span className="flex min-w-0 items-center gap-2">
-                  <Gift className="size-5 shrink-0 text-brand-500" />
+                  <AppIcon name="promocode_ic" className="size-5 shrink-0 text-brand-500" />
                   <span className="truncate font-mono text-lg font-bold text-ink">{referral.referralCode}</span>
                 </span>
-                <Button variant="outline" size="sm" className="shrink-0 rounded-full" onClick={() => void copyReferral()}>
-                  {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="shrink-0 rounded-full"
+                  onClick={() => void copyReferral()}
+                >
+                  {copied ? <Check className="size-4" /> : <AppIcon name="copy_ic" className="size-4" />}
                   {t(copied ? "Copied" : "Copy")}
                 </Button>
               </div>

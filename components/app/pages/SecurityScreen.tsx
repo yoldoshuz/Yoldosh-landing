@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, Loader2, UserX } from "lucide-react";
+import { Loader2, UserX } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { UserAvatar } from "@/components/app/UserAvatar";
 import { ErrorNote, Screen, SectionLabel } from "@/components/app/kit";
+import { UserAvatar } from "@/components/app/UserAvatar";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -57,9 +58,11 @@ export const SecurityScreen = () => {
             >
               <span className="min-w-0 flex-1">
                 <span className="block text-lg font-bold text-danger">{t("Settings.DeleteAccount")}</span>
-                <span className="mt-0.5 block text-sm leading-relaxed text-neutral-600">{t("Settings.DeleteText")}</span>
+                <span className="mt-0.5 block text-sm leading-relaxed text-neutral-600">
+                  {t("Settings.DeleteText")}
+                </span>
               </span>
-              <ChevronRight className="mt-1 size-5 shrink-0 text-ink-muted" />
+              <AppIcon name="right2" className="mt-1 size-5 shrink-0 text-ink-muted" />
             </button>
           </AlertDialogTrigger>
           <AlertDialogContent className="rounded-3xl">
@@ -90,7 +93,7 @@ export const SecurityScreen = () => {
                       src={b.avatar}
                       name={b.firstName}
                       className="size-10"
-                      fallbackClassName="bg-neutral-300"
+                      fallbackClassName="text-neutral-300"
                     />
                     <span className="truncate font-medium text-ink">
                       {b.firstName} {b.lastName ?? ""}

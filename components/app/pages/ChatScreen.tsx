@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Check, ChevronRight, Loader2, MoveRight, SendHorizontal, Smile } from "lucide-react";
+import { Check, Loader2, Smile } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { ErrorNote, formatDate, formatDayLabel, formatTime, Spinner } from "@/components/app/kit";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { Button } from "@/components/ui/button";
@@ -67,13 +68,13 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
             aria-label={t("Nav.Back")}
             className="-ml-2 cursor-pointer rounded-full p-2 text-white transition hover:bg-white/15 lg:text-ink lg:hover:bg-neutral-200/60"
           >
-            <ArrowLeft className="size-5" />
+            <AppIcon name="ic_back" className="size-5" />
           </button>
           <UserAvatar
             src={other?.avatar}
             name={other?.firstName}
             className="size-9"
-            fallbackClassName="bg-white/25 lg:bg-brand-400"
+            fallbackClassName="text-white/25 lg:text-[#41B06E]"
           />
           <p className="min-w-0 flex-1 truncate font-bold text-white lg:text-lg lg:text-ink">
             {other?.firstName?.trim() || t("Chats.Unknown")}
@@ -88,7 +89,7 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
             <div className="min-w-0 flex-1">
               <p className="flex items-center gap-2 truncate text-[15px] font-medium text-ink">
                 <span className="truncate">{trip.from_city}</span>
-                <MoveRight className="size-4 shrink-0" />
+                <AppIcon name="arrow_right" className="size-4 shrink-0" />
                 <span className="truncate">{trip.to_city}</span>
               </p>
               <p className="mt-0.5 text-xs text-ink-muted">
@@ -103,7 +104,7 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
               className="flex shrink-0 items-center gap-1 text-sm font-semibold text-ink"
             >
               {t("Chats.Details")}
-              <ChevronRight className="size-4" />
+              <AppIcon name="right2" className="size-4" />
             </Link>
           </div>
         </div>
@@ -192,7 +193,7 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
               {sendMessage.isPending ? (
                 <Loader2 className="size-5 animate-spin" />
               ) : (
-                <SendHorizontal className="size-5" />
+                <AppIcon name="send" className="size-5" />
               )}
             </Button>
           </form>

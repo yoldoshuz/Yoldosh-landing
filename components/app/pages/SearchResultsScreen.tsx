@@ -1,17 +1,21 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Loader2, MoveRight, SlidersHorizontal } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { Loader2 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { ErrorNote, formatDate, formatLongDate, Screen, Spinner, toDepartureDate } from "@/components/app/kit";
+import { searchResultsUrl } from "@/components/app/pages/SearchScreen";
+import type { SearchValue } from "@/components/app/SearchFields";
 import {
   countFilters,
   EMPTY_FILTERS,
   SearchFilterSheet,
   type SearchFilters,
 } from "@/components/app/sheets/SearchFilterSheet";
+import { SearchSheet } from "@/components/app/sheets/SearchSheet";
 import { TripCard } from "@/components/app/TripCard";
 import { useAppTripSearch } from "@/hooks/api/useAppTrips";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
@@ -64,6 +68,24 @@ const readRoute = (params: URLSearchParams): Route | null => {
   };
 };
 
+const toSearchValue = (route: Route | null, day?: Date): SearchValue => ({
+  from: route ? { name: route.from, lat: route.fromLat, lng: route.fromLon } : null,
+  to: route ? { name: route.to, lat: route.toLat, lng: route.toLon } : null,
+  date: day,
+  seats: route?.seats ?? 1,
+});
+
+const toRoute = (value: SearchValue): Route => ({
+  from: value.from!.name,
+  to: value.to!.name,
+  fromLat: value.from!.lat!,
+  fromLon: value.from!.lng!,
+  toLat: value.to!.lat!,
+  toLon: value.to!.lng!,
+  seats: value.seats,
+  date: value.date,
+});
+
 /**
  * Search results as their own screen.
  *
@@ -73,11 +95,13 @@ const readRoute = (params: URLSearchParams): Route | null => {
  */
 export const SearchResultsScreen = () => {
   const t = useTranslations("App");
+  const locale = useLocale();
 
   const [route, setRoute] = useState<Route | null>(null);
   const [day, setDay] = useState<Date | undefined>();
   const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   // Read off `location` rather than `useSearchParams`, which would opt every
   // route under the app shell out of static prerendering.
@@ -86,6 +110,17 @@ export const SearchResultsScreen = () => {
     setRoute(parsed);
     setDay(parsed?.date ?? new Date());
   }, []);
+
+  /**
+   * A new search from the sheet replaces this one in place. The URL follows
+   * along — so a reload or a share still lands on what is shown — without a
+   * navigation that would remount the screen and drop the filters.
+   */
+  const changeSearch = (next: SearchValue) => {
+    setRoute(toRoute(next));
+    setDay(next.date ?? new Date());
+    window.history.replaceState(null, "", searchResultsUrl(locale, next));
+  };
 
   const query = useMemo<TripSearchQuery | null>(() => {
     if (!route) return null;
@@ -108,7 +143,9 @@ export const SearchResultsScreen = () => {
       food_stop: amenities.food_stop,
       // The one flag the endpoint takes as a string rather than a boolean.
       parcels_allowed: amenities.parcels_allowed ? "true" : undefined,
-      limit: 10,
+      // Larger than a screenful: forecast trips are dropped from each page
+      // (see `realTrips`), so a page can shrink well below what was asked.
+      limit: 20,
     };
   }, [route, day, filters]);
 
@@ -116,6 +153,17 @@ export const SearchResultsScreen = () => {
 
   const trips = data?.pages.flatMap((p) => p.trips) ?? [];
   const activeFilters = countFilters(filters);
+
+  /*
+    A page that was nothing but forecast trips arrives empty. The sentinel
+    below the list is then still on screen, but an IntersectionObserver only
+    reports *changes*, so it would never ask for the next page — the list
+    would stop at a blank page with real trips still behind it.
+  */
+  const lastPage = data?.pages.at(-1);
+  useEffect(() => {
+    if (lastPage && lastPage.trips.length === 0 && hasNextPage && !isFetchingNextPage) void fetchNextPage();
+  }, [lastPage, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const sentinelRef = useInfiniteScroll({
     hasNextPage,
@@ -134,24 +182,35 @@ export const SearchResultsScreen = () => {
     return date.toLocaleDateString("ru-RU", { day: "numeric", month: "short" });
   };
 
+  // Stable between renders: the sheet re-seeds its draft whenever this changes.
+  const searchValue = useMemo(() => toSearchValue(route, day), [route, day]);
+
+  // Still walking past empty pages counts as loading, not as "nothing found".
+  const searching = isLoading || (trips.length === 0 && (hasNextPage || isFetchingNextPage));
+
   return (
     <>
-      <AppTopBar title={t("Search.ResultsTitle")} variant="green" back="/search" />
+      <AppTopBar title={t("Search.ResultsTitle")} variant="green" back="/search" titleAlign="start" />
 
-      {/* What was searched for, and the way to narrow it. */}
+      {/* What was searched for — tap it to change the search, or narrow it with filters. */}
       <div className="border-b border-neutral-100 bg-white">
         <div className="mx-auto flex w-full max-w-2xl items-center gap-3 px-4 py-3 lg:max-w-5xl lg:px-8">
-          <div className="min-w-0 flex-1">
-            <p className="flex min-w-0 items-center gap-2 truncate text-[15px] text-ink">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            disabled={!route}
+            className="min-w-0 flex-1 cursor-pointer text-left"
+          >
+            <span className="flex min-w-0 items-center gap-2 text-[15px] text-ink">
               <span className="truncate">{route?.from || "—"}</span>
-              <MoveRight className="size-4 shrink-0 text-ink-muted" />
+              <AppIcon name="arrow_right" className="size-4 text-ink" />
               <span className="truncate">{route?.to || "—"}</span>
-            </p>
-            <p className="mt-0.5 text-xs text-ink-muted">
+            </span>
+            <span className="mt-0.5 block text-xs text-ink-muted">
               {day ? formatDate(day) : ""}
               {route ? `, ${t("Search.SeatsCount", { count: route.seats })}` : ""}
-            </p>
-          </div>
+            </span>
+          </button>
 
           <button
             type="button"
@@ -159,7 +218,7 @@ export const SearchResultsScreen = () => {
             aria-label={t("Search.Filters")}
             className="relative shrink-0 cursor-pointer rounded-full p-2 text-ink transition hover:bg-neutral-100"
           >
-            <SlidersHorizontal className="size-6" />
+            <AppIcon name="filter" className="size-7" />
             {activeFilters > 0 && (
               <span className="absolute right-0.5 top-0.5 grid size-4 place-items-center rounded-full bg-brand-500 text-[10px] font-bold text-white">
                 {activeFilters}
@@ -175,7 +234,7 @@ export const SearchResultsScreen = () => {
 
         {!route ? (
           <p className="py-16 text-center text-ink-muted">{t("Search.PickBothPoints")}</p>
-        ) : isLoading ? (
+        ) : searching ? (
           <Spinner />
         ) : trips.length === 0 ? (
           <div className="app-card p-8 text-center">
@@ -217,14 +276,12 @@ export const SearchResultsScreen = () => {
       {/*
         The day strip floats over the list rather than sitting above it: on a
         phone it is the control people reach for most, and keeping it in reach
-        means never scrolling back to the top to change the date.
+        means never scrolling back to the top to change the date. The tab bar
+        is hidden here, as in the mobile build, so the strip takes its place.
       */}
-      <div
-        data-app-bar
-        className="app-above-tabbar pointer-events-none fixed inset-x-0 bottom-0 z-20 lg:static lg:pb-0"
-      >
+      <div data-app-bar className="app-tabbar-dock pointer-events-none fixed inset-x-0 bottom-0 z-20 lg:static lg:pb-0">
         <div className="mx-auto w-full max-w-2xl px-4 lg:max-w-5xl lg:px-8 lg:pb-6">
-          <div className="pointer-events-auto flex gap-2 overflow-x-auto rounded-full bg-white/95 p-1.5 shadow-[0_6px_24px_-8px_rgba(0,0,0,0.25)] backdrop-blur-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="pointer-events-auto flex gap-2 overflow-x-auto rounded-full bg-white p-1.5 shadow-[0_6px_24px_-8px_rgba(0,0,0,0.25)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {days.map((date, index) => {
               const active = day ? sameDay(day, date) : false;
               return (
@@ -233,8 +290,8 @@ export const SearchResultsScreen = () => {
                   type="button"
                   onClick={() => setDay(date)}
                   className={cn(
-                    "shrink-0 cursor-pointer rounded-full px-5 py-2.5 text-sm font-semibold transition",
-                    active ? "bg-brand-500 text-white" : "bg-white text-ink hover:bg-neutral-100"
+                    "min-w-[5.5rem] shrink-0 cursor-pointer rounded-full px-5 py-3 text-sm font-semibold transition",
+                    active ? "bg-brand-500 text-white" : "bg-neutral-100 text-ink hover:bg-neutral-200"
                   )}
                 >
                   {dayLabel(date, index)}
@@ -246,6 +303,7 @@ export const SearchResultsScreen = () => {
       </div>
 
       <SearchFilterSheet open={filtersOpen} value={filters} onOpenChange={setFiltersOpen} onApply={setFilters} />
+      <SearchSheet open={searchOpen} value={searchValue} onClose={() => setSearchOpen(false)} onSubmit={changeSearch} />
     </>
   );
 };

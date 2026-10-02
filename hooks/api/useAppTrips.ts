@@ -11,13 +11,20 @@ interface TripPage {
   totalPages: number;
 }
 
+/**
+ * Drops the forecast's guesses. The search mixes them in with real trips —
+ * for days ahead they are often all it returns — and each one looks like a
+ * driver with a seat to offer when there is no such trip to book.
+ */
+const realTrips = (trips: AppTrip[]) => trips.filter((trip) => !trip.is_predicted);
+
 const stripEmpty = (params: object) =>
   Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== ""));
 
 export const appTripsApi = {
   search: async (params: TripSearchQuery & { page?: number }) => {
     const { data } = await api.get("/trip/search", { params: stripEmpty(params) });
-    return { ...data.data, trips: toList<AppTrip>(data.data?.trips) } as TripPage;
+    return { ...data.data, trips: realTrips(toList<AppTrip>(data.data?.trips)) } as TripPage;
   },
   /**
    * Public, cached (5 min) shortlist for the home screen: upcoming trips with
@@ -27,7 +34,7 @@ export const appTripsApi = {
    */
   best: async (limit = 5) => {
     const { data } = await api.get("/trip/best", { params: { limit } });
-    return toList<AppTrip>(data.data?.trips ?? data.data);
+    return realTrips(toList<AppTrip>(data.data?.trips ?? data.data));
   },
   details: async (tripId: string) => {
     const { data } = await api.get(`/trip/${tripId}`);
@@ -134,4 +141,3 @@ export const useUpdateTrip = () => useTripMutation(appTripsApi.update);
 export const useCancelTrip = () => useTripMutation(appTripsApi.cancel);
 export const useStartTrip = () => useTripMutation(appTripsApi.start);
 export const useCompleteTrip = () => useTripMutation(appTripsApi.complete);
-export const useReportTrip = () => useMutation({ mutationFn: appTripsApi.report });

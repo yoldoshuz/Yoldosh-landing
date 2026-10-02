@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CalendarDays, Loader2, Pencil } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { ErrorNote, formatDate, Screen, Spinner, SuccessNote } from "@/components/app/kit";
 import { UserAvatar } from "@/components/app/UserAvatar";
@@ -133,7 +134,11 @@ export const ProfileEditScreen = () => {
                 onClick={() => fileRef.current?.click()}
                 className="absolute bottom-1 right-0 size-8 rounded-lg bg-brand-500 hover:bg-brand-600"
               >
-                {updateAvatar.isPending ? <Loader2 className="size-4 animate-spin" /> : <Pencil className="size-4" />}
+                {updateAvatar.isPending ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <AppIcon name="edit_icon" className="size-4" />
+                )}
               </Button>
             </div>
           </div>
@@ -176,7 +181,7 @@ export const ProfileEditScreen = () => {
                     <span className={cn(!form.birthday && "text-ink-muted")}>
                       {form.birthday ? formatDate(form.birthday) : t("Profile.PickDate")}
                     </span>
-                    <CalendarDays className="size-5 text-brand-500" />
+                    <AppIcon name="ic_calendar" className="size-5 text-brand-500" />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">

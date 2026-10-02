@@ -1,28 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import {
-  BadgeCheck,
-  Ban,
-  Check,
-  ChevronRight,
-  Flag,
-  Loader2,
-  MessageCircle,
-  MoreVertical,
-  Package,
-  PlayCircle,
-  X,
-} from "lucide-react";
-import { useTranslations } from "next-intl";
+import { Check, Loader2, MoreVertical } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 import { useRouter } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import {
   ErrorNote,
+  formatLongDate,
   formatMoney,
   formatTripTime,
+  fullName,
   isNegotiablePrice,
   Screen,
   SectionLabel,
@@ -30,7 +21,7 @@ import {
   StatusBadge,
   SuccessNote,
 } from "@/components/app/kit";
-import { ReportSheet } from "@/components/app/sheets/ReportSheet";
+import { AMENITIES, amenityState, isVerifiedDriver } from "@/components/app/TripCard";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import {
   AlertDialog,
@@ -57,7 +48,11 @@ import { useCreateParcel } from "@/hooks/api/useParcels";
 import { useAuth } from "@/hooks/useAuth";
 import { useOpenChat } from "@/hooks/useOpenChat";
 import { apiErrorMessage } from "@/lib/api";
+import { shareLink } from "@/lib/share";
+import { cn } from "@/lib/utils";
 import type { GeoPoint } from "@/types/api";
+
+const INTL_LOCALE: Record<string, string> = { ru: "ru-RU", uz: "uz-Latn-UZ", en: "en-GB" };
 
 /** Opens the point on a map — the "Карта" link beside each stop. */
 const mapHref = (point?: GeoPoint) =>
@@ -67,6 +62,7 @@ const mapHref = (point?: GeoPoint) =>
 
 export const RideScreen = ({ tripId }: { tripId: string }) => {
   const t = useTranslations("App");
+  const locale = useLocale();
   const router = useRouter();
   const { user } = useAuth();
   const openChat = useOpenChat();
@@ -93,7 +89,6 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
 
   const [seats, setSeats] = useState("1");
   const [cancelReason, setCancelReason] = useState("");
-  const [reporting, setReporting] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -181,6 +176,17 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
       });
     }, "Trip.ParcelRequested");
 
+  /*
+    The mobile build's one menu item. The link is the public trip page, which
+    opens for anyone — a recipient without the app or outside Telegram still
+    sees the trip rather than a sign-in wall.
+  */
+  const share = async () => {
+    const route = `${from?.city ?? trip.from_city ?? ""} → ${to?.city ?? trip.to_city ?? ""}`;
+    const outcome = await shareLink(`${window.location.origin}/${locale}/trips/${tripId}`, route);
+    if (outcome === "copied") toast.success(t("Trip.LinkCopied"));
+  };
+
   const message = () =>
     run(async () => {
       const participantId = isDriver ? (passengers[0]?.passengerId ?? passengers[0]?.passenger?.id) : driverId;
@@ -199,22 +205,25 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
               <button
                 type="button"
                 aria-label={t("Trip.More")}
-                className="ml-auto shrink-0 cursor-pointer rounded-full p-2 text-ink transition hover:bg-neutral-200/60"
+                className="-mr-2 ml-auto shrink-0 cursor-pointer rounded-full p-2 text-ink transition hover:bg-neutral-200/60"
               >
-                <MoreVertical className="size-5" />
+                <MoreVertical className="size-6" strokeWidth={2.4} />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="rounded-2xl">
-              <DropdownMenuItem onSelect={() => setReporting(true)} className="cursor-pointer text-danger">
-                <Flag className="size-4" />
-                {t("Trip.Report")}
+            <DropdownMenuContent align="end" className="min-w-64 rounded-2xl p-1.5">
+              <DropdownMenuItem
+                onSelect={() => void share()}
+                className="cursor-pointer gap-3 rounded-xl px-3 py-3 text-base text-brand-600 focus:text-brand-700"
+              >
+                <AppIcon name="share_icon" className="size-6" />
+                {t("Trip.Share")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         }
       />
 
-      {/* The action bar is fixed to the bottom, so the column ends above it. */}
+      {/* The booking button is fixed to the bottom, so the column ends above it. */}
       <Screen className="space-y-4 pb-32">
         {trip.status !== "CREATED" && (
           <div className="flex justify-end">
@@ -223,54 +232,60 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
         )}
 
         {/* ------------------------------------------------------- маршрут */}
-        <div className="app-card overflow-hidden">
-          <Stop
-            time={formatTripTime(trip.departure_ts)}
-            city={from?.city ?? trip.from_city}
-            address={from?.address}
-            href={mapHref(from)}
-            mapLabel={t("Trip.Map")}
-            tone="start"
-          />
-          <div className="mx-4 border-t border-neutral-200" />
-          <Stop
-            time={formatTripTime(arrival)}
-            city={to?.city ?? trip.to_city}
-            address={to?.address}
-            href={mapHref(to)}
-            mapLabel={t("Trip.Map")}
-            tone="end"
-          />
+        <div>
+          <SectionLabel className="mt-0">{formatLongDate(trip.departure_ts, INTL_LOCALE[locale])}</SectionLabel>
+          <div className="app-card overflow-hidden rounded-[26px]">
+            <Stop
+              time={formatTripTime(trip.departure_ts)}
+              city={from?.city ?? trip.from_city}
+              address={from?.address}
+              href={mapHref(from)}
+              mapLabel={t("Trip.Map")}
+              tone="start"
+            />
+            {/* Indented to the place names, so the rule reads as theirs. */}
+            <div className="ml-[6.5rem] mr-4 border-t border-neutral-300" />
+            <Stop
+              time={formatTripTime(arrival)}
+              city={to?.city ?? trip.to_city}
+              address={to?.address}
+              href={mapHref(to)}
+              mapLabel={t("Trip.Map")}
+              tone="end"
+            />
+          </div>
         </div>
 
         {/* -------------------------------------------------------- водитель */}
         {trip.driver && !isDriver && (
-          <div className="app-card p-4">
+          <div className="app-card rounded-[26px] p-4">
             <button
               type="button"
               onClick={() => router.push(`/users/${trip.driver?.id}` as never)}
-              className="flex w-full cursor-pointer items-center gap-3 text-left"
+              className="flex w-full cursor-pointer items-center gap-4 text-left"
             >
               <UserAvatar src={trip.driver.avatar} name={trip.driver.firstName} className="size-14" />
               <span className="min-w-0 flex-1">
-                <span className="flex min-w-0 items-center gap-1.5 text-lg font-bold text-ink">
-                  <span className="truncate">{trip.driver.firstName ?? "—"}</span>
-                  {trip.driver.verified && <BadgeCheck className="size-4 shrink-0 fill-blue-500 text-white" />}
+                <span className="flex min-w-0 items-center gap-1.5 text-[17px] text-ink">
+                  <span className="truncate">{fullName(trip.driver) || "—"}</span>
+                  {isVerifiedDriver(trip.driver) && (
+                    <AppIcon name="verified" className="size-[18px]" label={t("Trip.Verified")} />
+                  )}
                 </span>
-                <span className="mt-0.5 block text-sm text-ink-muted">
-                  {t("Trip.RatingLabel", { value: (trip.driver.rating ?? 0).toFixed(1) })}
+                <span className="mt-1 block text-sm text-ink-muted">
+                  {t("Trip.RatingLabel", { value: Number((trip.driver.rating ?? 0).toFixed(1)) })}
                 </span>
               </span>
-              <ChevronRight className="size-5 shrink-0 text-ink-muted" />
+              <AppIcon name="right2" className="size-6 text-ink" />
             </button>
 
             <Button
               variant="outline"
               onClick={() => void message()}
               disabled={busy}
-              className="mt-4 h-13 w-full rounded-2xl border-brand-400 text-base font-normal text-brand-600 hover:bg-brand-50 hover:text-brand-700"
+              className="mt-4 h-13 w-full rounded-full border-2 border-[#41B06E] text-base font-normal text-[#2f8a54] hover:bg-brand-50 hover:text-[#2f8a54]"
             >
-              <MessageCircle className="size-5" />
+              <AppIcon name="talkative" className="size-6" />
               {t("Trip.SendMessage")}
             </Button>
           </div>
@@ -298,9 +313,9 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
         {/* ------------------------------------------------------ пассажиры */}
         <div>
           <SectionLabel className="mt-0">{t("Trip.PassengersLabel")}</SectionLabel>
-          <div className="app-card p-4">
+          <div className="app-card rounded-[26px] p-4">
             {passengers.length === 0 ? (
-              <p className="py-2 text-center text-ink-muted">{t("Trip.NoPassengers")}</p>
+              <p className="py-5 text-center text-lg text-ink">{t("Trip.NoPassengers")}</p>
             ) : (
               <div className="divide-y divide-neutral-100">
                 {passengers.map((booking) => (
@@ -339,7 +354,7 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
                           disabled={rejectBooking.isPending}
                           onClick={() => void run(() => rejectBooking.mutateAsync({ bookingId: booking.id }))}
                         >
-                          <X className="size-4" />
+                          <AppIcon name="close" className="size-3.5" />
                         </Button>
                       </div>
                     ) : (
@@ -349,7 +364,29 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
                 ))}
               </div>
             )}
+
+            {/* The price closes the passengers card, as in the mobile build. */}
+            <div className="mt-4 flex items-baseline justify-between gap-3 pt-2">
+              <span className="text-lg text-ink-muted">{t("Trip.PriceLabel")}</span>
+              <span className="text-lg text-ink">
+                {negotiable ? t("Trip.Negotiable") : formatMoney(price, t("Trip.Currency"))}
+              </span>
+            </div>
           </div>
+        </div>
+
+        {/* ------------------------------------------------------- удобства */}
+        <div className="app-card space-y-3.5 rounded-[26px] p-4">
+          {AMENITIES.map(({ key, icon }) => {
+            const state = amenityState(trip, key);
+            return (
+              <div key={key} className="flex items-center gap-3">
+                <AppIcon name={icon} className={cn("size-6", state.tone)} />
+                <span className="min-w-0 flex-1 text-[15px] text-ink-muted">{t(`Trip.Amenity.${key}`)}</span>
+                <span className={cn("shrink-0 text-[15px]", state.tone)}>{t(state.valueKey)}</span>
+              </div>
+            );
+          })}
         </div>
 
         {/* ---------------------------------------------- заработок водителя */}
@@ -386,7 +423,7 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
                   disabled={startTrip.isPending}
                   className="rounded-full bg-brand-500 hover:bg-brand-600"
                 >
-                  <PlayCircle className="size-4" />
+                  <AppIcon name="in_progress" className="size-4" />
                   {t("Trip.Start")}
                 </Button>
               )}
@@ -404,7 +441,7 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <Button variant="outline" className="rounded-full text-danger hover:text-danger">
-                      <Ban className="size-4" />
+                      <AppIcon name="cancel" className="size-4" />
                       {t("Trip.Cancel")}
                     </Button>
                   </AlertDialogTrigger>
@@ -441,7 +478,7 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
                 disabled={busy}
                 className="h-12 w-full rounded-full"
               >
-                <MessageCircle className="size-4" />
+                <AppIcon name="talkative" className="size-5" />
                 {t("Trip.SendMessage")}
               </Button>
             )}
@@ -477,29 +514,28 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
             disabled={createParcel.isPending}
             className="h-12 w-full rounded-full"
           >
-            <Package className="size-4" />
+            <AppIcon name="suitcase" className="size-4" />
             {t("Trip.SendParcel", { price: formatMoney(trip.parcel_price ?? price) })}
           </Button>
         )}
       </Screen>
 
-      {/* ----------------------------------------- price + primary action */}
+      {/*
+        The primary action, floating over the end of the page. The price used
+        to ride along in a white bar here; it now closes the passengers card,
+        which is where the mobile build puts it, and the bar's empty band
+        above the button went with it.
+      */}
       {!isDriver && canAct && (
         <div
           data-app-bar
-          className="fixed inset-x-0 bottom-0 z-20 border-t border-neutral-200 bg-white/95 backdrop-blur-sm lg:static lg:border-0 lg:bg-transparent lg:backdrop-blur-none"
+          className="pointer-events-none fixed inset-x-0 bottom-0 z-20 bg-gradient-to-t from-app-bg via-app-bg/90 to-transparent pt-6 lg:static lg:bg-none lg:pt-0"
         >
-          <div className="mx-auto w-full max-w-2xl px-4 pb-4 pt-3 safe-bottom lg:max-w-5xl lg:px-8 lg:pb-8">
-            <div className="flex items-baseline justify-between gap-3 pb-2.5">
-              <span className="text-ink-muted">{t("Trip.PriceLabel")}</span>
-              <span className="text-lg font-bold text-ink">
-                {negotiable ? t("Trip.Negotiable") : formatMoney(price, trip.price?.currency ?? t("Trip.Currency"))}
-              </span>
-            </div>
+          <div className="pointer-events-auto mx-auto w-full max-w-2xl px-4 pb-4 safe-bottom lg:max-w-5xl lg:px-8 lg:pb-8">
             <Button
               onClick={() => void book()}
               disabled={createBooking.isPending || trip.seats_available < 1}
-              className="h-13 w-full rounded-2xl bg-brand-500 text-base font-semibold hover:bg-brand-600 disabled:bg-neutral-300 disabled:opacity-100"
+              className="h-13 w-full rounded-full bg-gradient-to-r from-brand-500 to-[#41B06E] text-base font-semibold hover:from-brand-600 hover:to-brand-600 disabled:from-neutral-300 disabled:to-neutral-300 disabled:opacity-100"
             >
               {createBooking.isPending ? (
                 <Loader2 className="size-5 animate-spin" />
@@ -510,8 +546,6 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
           </div>
         </div>
       )}
-
-      <ReportSheet tripId={tripId} open={reporting} onClose={() => setReporting(false)} />
     </>
   );
 };
@@ -536,20 +570,26 @@ const Stop = ({
   mapLabel: string;
   tone: "start" | "end";
 }) => (
-  <div className="flex items-stretch gap-3 px-4 py-3.5">
-    <div className="flex min-w-0 flex-1 items-center gap-3">
-      <span className="w-11 shrink-0 font-mono text-sm text-ink-muted">{time}</span>
-      {/* The map pin the rest of the product uses, not a bare ring. */}
-      <Image
-        src={tone === "start" ? "/assets/location-green.svg" : "/assets/location-red.svg"}
-        alt=""
-        width={20}
-        height={24}
-        aria-hidden
-        className="h-6 w-5 shrink-0 object-contain"
-      />
+  <div className="flex items-stretch gap-3 px-4">
+    <div className="flex min-w-0 flex-1 items-center gap-3 py-4">
+      <span className="w-11 shrink-0 text-sm text-ink">{time}</span>
+      {/*
+        The pin, and half of the dashed run joining it to the other stop:
+        down from the departure pin, up into the arrival one. Drawn per stop
+        so the run always meets the pins, whatever height the rows end up.
+      */}
+      <span className="relative flex w-5 shrink-0 items-center justify-center self-stretch">
+        <span
+          aria-hidden
+          className={cn(
+            "absolute left-1/2 -ml-px border-l-2 border-dashed border-neutral-300",
+            tone === "start" ? "-bottom-4 top-1/2" : "-top-4 bottom-1/2"
+          )}
+        />
+        <AppIcon name={tone === "start" ? "location_iconG" : "location_iconR"} className="relative h-6 w-5" />
+      </span>
       <span className="min-w-0">
-        <span className="block truncate text-lg font-bold text-ink">{city ?? "—"}</span>
+        <span className="block truncate text-[19px] text-ink">{city ?? "—"}</span>
         {address && <span className="mt-0.5 block truncate text-xs text-ink-muted">{address}</span>}
       </span>
     </div>

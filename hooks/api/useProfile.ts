@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { api, toList } from "@/lib/api";
-import type { AppPromocode, AppUser, NotificationPreferences, NavigatorPreference, Gender } from "@/types/api";
+import type { AppPromocode, AppUser, Gender, NavigatorPreference, NotificationPreferences } from "@/types/api";
 import { qk } from "./keys";
 
 export interface UpdateProfilePayload {
@@ -38,9 +38,15 @@ export const profileApi = {
     });
     return (data.data?.user ?? data.data) as AppUser;
   },
+  /**
+   * Someone else's public profile. The payload is wrapped one level deeper
+   * than `/user/me` — `data.user`, not `data` — and reading it flat left
+   * every field undefined: no name on the screen, and every driver shown as a
+   * passenger because the role fell back to the default.
+   */
   byId: async (userId: string) => {
     const { data } = await api.get(`/user/${userId}`);
-    return data.data as AppUser;
+    return (data.data?.user ?? data.data) as AppUser & { ratingCount?: number };
   },
   blockedUsers: async () => {
     const { data } = await api.get("/user/blocked-users");
@@ -69,8 +75,7 @@ export const profileApi = {
   },
 };
 
-export const useFullProfile = () =>
-  useQuery({ queryKey: qk.profile, queryFn: profileApi.fullProfile });
+export const useFullProfile = () => useQuery({ queryKey: qk.profile, queryFn: profileApi.fullProfile });
 
 export const useUpdateProfile = () => {
   const qc = useQueryClient();
@@ -119,4 +124,3 @@ export const useReferral = () => useQuery({ queryKey: qk.referral, queryFn: prof
 export const useSearchHistory = () => useQuery({ queryKey: qk.searchHistory, queryFn: profileApi.searchHistory });
 
 export const useDeleteAccount = () => useMutation({ mutationFn: profileApi.deleteAccount });
-

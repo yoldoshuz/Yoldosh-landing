@@ -2,9 +2,10 @@
 
 import { ReactNode } from "react";
 import Image from "next/image";
-import { ChevronRight, Loader2, type LucideIcon } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import { Link } from "@/app/i18n/routing";
+import { AppIcon, type AppIconName } from "@/components/app/AppIcon";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import type { BookingStatus, CarStatus, ParcelStatus, TripStatus } from "@/types/api";
@@ -25,7 +26,7 @@ export const SectionLabel = ({ children, className }: { children: ReactNode; cla
 /* ------------------------------------------------------------------- rows */
 
 interface RowProps {
-  icon?: LucideIcon;
+  icon?: AppIconName;
   label: ReactNode;
   description?: ReactNode;
   href?: string;
@@ -43,23 +44,13 @@ interface RowProps {
  * on what it was given, so it never produces an interactive element with
  * nothing to do.
  */
-export const Row = ({
-  icon: Icon,
-  label,
-  description,
-  href,
-  onClick,
-  accent,
-  danger,
-  trailing,
-  disabled,
-}: RowProps) => {
+export const Row = ({ icon, label, description, href, onClick, accent, danger, trailing, disabled }: RowProps) => {
   const body = (
     <>
-      {Icon && (
-        <Icon
-          className={cn("size-5 shrink-0", accent ? "text-white" : danger ? "text-danger" : "text-ink")}
-          strokeWidth={1.8}
+      {icon && (
+        <AppIcon
+          name={icon}
+          className={cn("size-[22px]", accent ? "text-white" : danger ? "text-danger" : "text-ink")}
         />
       )}
       <span className="min-w-0 flex-1">
@@ -69,8 +60,9 @@ export const Row = ({
         )}
       </span>
       {trailing ?? (
-        <ChevronRight
-          className={cn("size-5 shrink-0", accent ? "text-white" : danger ? "text-danger" : "text-ink-muted")}
+        <AppIcon
+          name="right2"
+          className={cn("size-[22px]", accent ? "text-white" : danger ? "text-danger" : "text-ink-muted")}
         />
       )}
     </>
@@ -112,7 +104,7 @@ export const Row = ({
  */
 export const EmptyState = ({
   illustration,
-  icon: Icon,
+  icon,
   title,
   description,
   action,
@@ -121,7 +113,7 @@ export const EmptyState = ({
 }: {
   illustration?: string;
   bleed?: boolean;
-  icon?: LucideIcon;
+  icon?: AppIconName;
   title: string;
   description?: string;
   action?: ReactNode;
@@ -143,9 +135,9 @@ export const EmptyState = ({
         priority={false}
       />
     ) : (
-      Icon && (
+      icon && (
         <span className="mb-6 grid size-[7.5rem] place-items-center rounded-full bg-brand-50">
-          <Icon className="size-12 text-brand-500" strokeWidth={1.6} />
+          <AppIcon name={icon} className="size-12 text-brand-500" />
         </span>
       )
     )}
@@ -259,6 +251,16 @@ export const CompletionCard = ({
 );
 
 /* ------------------------------------------------------------- formatting */
+
+/**
+ * "Имя Фамилия", or just the first name when the surname is blank — the API
+ * sends `null` for some accounts and `""` for others.
+ */
+export const fullName = (person?: { firstName?: string | null; lastName?: string | null } | null) =>
+  [person?.firstName, person?.lastName]
+    .map((part) => part?.trim())
+    .filter(Boolean)
+    .join(" ");
 
 export const formatMoney = (value?: number | null, currency = "UZS") =>
   value == null ? "—" : `${Math.round(value).toLocaleString("ru-RU")} ${currency}`;

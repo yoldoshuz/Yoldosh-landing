@@ -2,10 +2,10 @@
 
 import { ReactNode } from "react";
 import Image from "next/image";
-import { ArrowLeft, Bell } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { useNotifications } from "@/hooks/api/useNotifications";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,11 @@ interface AppTopBarProps {
   onBack?: () => void;
   showLogo?: boolean;
   showBell?: boolean;
+  /**
+   * `center` is the phone default; `start` puts the title right after the back
+   * arrow, the way the mobile build heads its search results.
+   */
+  titleAlign?: "center" | "start";
   leading?: ReactNode;
   trailing?: ReactNode;
   children?: ReactNode;
@@ -36,6 +41,7 @@ export const AppTopBar = ({
   onBack,
   showLogo,
   showBell,
+  titleAlign = "center",
   leading,
   trailing,
   children,
@@ -53,6 +59,26 @@ export const AppTopBar = ({
   const onGreen = green ? "text-white lg:text-ink" : "text-ink";
   const onGreenHover = green ? "hover:bg-white/15 lg:hover:bg-neutral-200/60" : "hover:bg-neutral-200/60";
 
+  /*
+    A centred title is only centred if both sides weigh the same. With a back
+    arrow and nothing on the right, the title was centred in what was left
+    and sat visibly right of the screen's middle — and on the public profile
+    the avatar below, centred on the screen, no longer lined up with it. The
+    empty side gets a stand-in of the other side's width instead.
+  */
+  const hasStart = Boolean(back || onBack || (showLogo && !back) || leading);
+  const hasEnd = Boolean(trailing || showBell);
+  const balance = title && titleAlign === "center" && hasStart !== hasEnd;
+  const spacer = <span aria-hidden className="w-7 shrink-0 lg:hidden" />;
+
+  /*
+    On the home hero the bell is the row's only occupant. Inside Telegram the
+    row also sits below the client's own header, so it stacked a third band of
+    empty green above the headline. With nothing else to place, the bell
+    floats in the headline's corner instead and the row takes no height.
+  */
+  const bellOnly = variant === "hero" && showBell && !title && !hasStart && !trailing;
+
   return (
     <header
       data-app-topbar
@@ -64,7 +90,12 @@ export const AppTopBar = ({
         className
       )}
     >
-      <div className="mx-auto flex w-full max-w-2xl items-center gap-2 px-4 py-3 lg:h-20 lg:max-w-5xl lg:px-8">
+      <div
+        className={cn(
+          "mx-auto flex w-full max-w-2xl items-center gap-2 px-4 lg:h-20 lg:max-w-5xl lg:px-8",
+          bellOnly ? "relative h-0 justify-end lg:hidden" : "py-3"
+        )}
+      >
         {(back || onBack) && (
           <button
             type="button"
@@ -72,7 +103,7 @@ export const AppTopBar = ({
             onClick={() => (onBack ? onBack() : typeof back === "string" ? router.push(back as any) : router.back())}
             className={cn("-ml-2 shrink-0 cursor-pointer rounded-full p-2 transition", onGreen, onGreenHover)}
           >
-            <ArrowLeft className="size-5 lg:size-6" />
+            <AppIcon name="ic_back" className="size-6 lg:size-7" />
           </button>
         )}
 
@@ -84,13 +115,16 @@ export const AppTopBar = ({
 
         {leading}
 
+        {balance && !hasStart && spacer}
+
         {title && (
           <h1
             className={cn(
               // Centred on phones to match the app; left-aligned and much
               // larger on desktop, where a centred 17px title looks lost
               // against a wide content column.
-              "min-w-0 flex-1 truncate text-center text-[17px] font-bold lg:text-left lg:text-3xl",
+              "min-w-0 flex-1 truncate text-[17px] font-bold lg:text-left lg:text-3xl",
+              titleAlign === "center" ? "text-center" : "text-left text-xl",
               onGreen,
               !back && !onBack && !showLogo && !leading && !showBell && !trailing && "px-2"
             )}
@@ -98,6 +132,8 @@ export const AppTopBar = ({
             {title}
           </h1>
         )}
+
+        {balance && !hasEnd && spacer}
 
         {trailing}
 
@@ -107,9 +143,14 @@ export const AppTopBar = ({
             aria-label={t("Notifications")}
             // Desktop already has Notifications in the sidebar, with the same
             // unread badge — a second entry point in the corner is noise.
-            className={cn("relative ml-auto shrink-0 rounded-full p-2 transition lg:hidden", onGreen, onGreenHover)}
+            className={cn(
+              "relative ml-auto shrink-0 rounded-full p-2 transition lg:hidden",
+              bellOnly && "absolute right-2 top-1.5 z-10",
+              onGreen,
+              onGreenHover
+            )}
           >
-            <Bell className="size-[22px] lg:size-6" />
+            <AppIcon name="notification" className="size-6" />
             {unread > 0 && (
               <span
                 className={cn(

@@ -1,39 +1,58 @@
 "use client";
 
 import { memo } from "react";
-import {
-  BadgeCheck,
-  Briefcase,
-  Cigarette,
-  DoorOpen,
-  History,
-  Snowflake,
-  Utensils,
-  type LucideIcon,
-} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
+import { AppIcon, type AppIconName } from "@/components/app/AppIcon";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { cn } from "@/lib/utils";
 import type { AppTrip } from "@/types/api";
-import { formatTripTime, isNegotiablePrice } from "./kit";
+import { formatTripTime, fullName, isNegotiablePrice } from "./kit";
 
 const priceOf = (trip: AppTrip) =>
   trip.price?.final_price ?? trip.price?.driver_base_price ?? trip.price?.price_per_person ?? trip.price_per_person;
 
+export type AmenityKey = "garage" | "conditioner" | "food_stop" | "door_pickup" | "smoking_allowed";
+
 /**
- * Every amenity is always shown, in a fixed order — the row reads as a legend
- * of the trip's conditions, so a missing icon would be ambiguous (not offered,
- * or just not rendered?). Colour carries the answer: green yes, red no.
+ * The trip's conditions in the mobile build's order and with its icons. The
+ * suitcase is the trunk — how much room is left for luggage — not parcels.
  */
-const AMENITIES: { key: keyof AppTrip; icon: LucideIcon }[] = [
-  { key: "parcels_allowed", icon: Briefcase },
-  { key: "conditioner", icon: Snowflake },
-  { key: "food_stop", icon: Utensils },
-  { key: "door_pickup", icon: DoorOpen },
-  { key: "smoking_allowed", icon: Cigarette },
+export const AMENITIES: { key: AmenityKey; icon: AppIconName }[] = [
+  { key: "garage", icon: "suitcase" },
+  { key: "conditioner", icon: "conditioner" },
+  { key: "food_stop", icon: "food" },
+  { key: "door_pickup", icon: "door" },
+  { key: "smoking_allowed", icon: "smoke" },
 ];
+
+/**
+ * Green is a yes, red a no; the trunk has a middle state, in amber. Returns
+ * the message key of the answer as well, for the spelled-out list on the
+ * trip screen.
+ */
+export const amenityState = (trip: AppTrip, key: AmenityKey) => {
+  if (key === "garage") {
+    const garage = trip.garage ?? "EMPTY";
+    return {
+      tone: garage === "EMPTY" ? "text-brand-500" : garage === "HALF_EMPTY" ? "text-amber-500" : "text-danger",
+      valueKey: `Trip.AmenityValue.garage.${garage}`,
+    };
+  }
+  const on = Boolean(trip[key]);
+  return { tone: on ? "text-brand-500" : "text-danger", valueKey: `Trip.AmenityValue.${key}.${on ? "yes" : "no"}` };
+};
+
+/**
+ * The verified tick next to a driver's name.
+ *
+ * Every driver reaches the app through a confirmed phone number, and the
+ * mobile build marks all of them — the trip endpoints do not even send a
+ * `verified` flag. So the tick shows unless the API explicitly says otherwise.
+ */
+export const isVerifiedDriver = (driver?: { verified?: boolean } | null) =>
+  Boolean(driver) && driver?.verified !== false;
 
 /**
  * What the card announces at the top.
@@ -99,22 +118,22 @@ const TripCardBase = ({ trip, href, variant = "activity" }: TripCardProps) => {
 
   const amenities = (
     <div className="flex items-center gap-3">
-      {AMENITIES.map(({ key, icon: Icon }) => (
-        <Icon
+      {AMENITIES.map(({ key, icon }) => (
+        <AppIcon
           key={key}
-          className={cn("size-[19px]", trip[key] ? "text-brand-500" : "text-danger/80")}
-          strokeWidth={1.7}
-          aria-label={t(`Trip.Features.${key}`)}
+          name={icon}
+          className={cn("size-6", amenityState(trip, key).tone)}
+          label={t(`Trip.Amenity.${key}`)}
         />
       ))}
     </div>
   );
 
   const body = (
-    <div className="rounded-[var(--radius-card)] border border-neutral-200 bg-white p-4 transition hover:border-brand-300 hover:shadow-[0_6px_20px_-8px_rgba(0,0,0,0.18)]">
+    <div className="rounded-[26px] bg-white p-4 shadow-[0_2px_14px_-6px_rgba(0,0,0,0.14)] transition hover:shadow-[0_8px_24px_-10px_rgba(0,0,0,0.22)]">
       {!isSearch && (
         <p className={cn("mb-3 flex items-center gap-2 text-[15px] font-bold", status.tone)}>
-          <History className="size-[18px]" strokeWidth={2.2} />
+          <AppIcon name="in_progress" className="size-[18px]" />
           {t(status.key)}
         </p>
       )}
@@ -125,7 +144,7 @@ const TripCardBase = ({ trip, href, variant = "activity" }: TripCardProps) => {
           {rating != null && (
             // Sits on the avatar rather than beside the name: the design reads
             // the driver as one object — face, score, badge.
-            <span className="absolute -bottom-0.5 -right-0.5 rounded-full bg-brand-500 px-1.5 py-px text-[11px] font-bold text-white ring-2 ring-white">
+            <span className="absolute -bottom-1 -right-1 rounded-full bg-[#41B06E] px-1.5 py-px text-[11px] text-white ring-2 ring-white">
               {rating.toFixed(1)}
             </span>
           )}
@@ -133,12 +152,14 @@ const TripCardBase = ({ trip, href, variant = "activity" }: TripCardProps) => {
 
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <p className="flex min-w-0 items-center gap-1 text-[17px] font-bold text-ink">
-              <span className="truncate">{trip.driver?.firstName ?? "—"}</span>
-              {trip.driver?.verified && <BadgeCheck className="size-4 shrink-0 fill-blue-500 text-white" />}
+            <p className="flex min-w-0 items-center gap-1.5 pt-1 text-[16px] text-ink">
+              <span className="truncate">{fullName(trip.driver) || "—"}</span>
+              {isVerifiedDriver(trip.driver) && (
+                <AppIcon name="verified" className="size-[18px]" label={t("Trip.Verified")} />
+              )}
             </p>
             {/* Black, not green: it is a fact about the trip, not a call to act. */}
-            <p className="shrink-0 text-[17px] font-bold text-ink">
+            <p className="shrink-0 text-[19px] font-bold text-ink">
               {isNegotiablePrice(price)
                 ? t("Trip.Negotiable")
                 : `${Math.round(price).toLocaleString("ru-RU")} ${t("Trip.Currency")}`}
@@ -149,7 +170,7 @@ const TripCardBase = ({ trip, href, variant = "activity" }: TripCardProps) => {
             <p className="truncate text-sm text-ink-muted">{`${trip.car.make ?? ""} ${trip.car.model ?? ""}`.trim()}</p>
           )}
 
-          {isSearch && <div className="mt-2 flex justify-end">{amenities}</div>}
+          {isSearch && <div className="mt-3 flex justify-end">{amenities}</div>}
         </div>
       </div>
 
@@ -159,21 +180,19 @@ const TripCardBase = ({ trip, href, variant = "activity" }: TripCardProps) => {
           isSearch ? "mt-3" : "mt-3 border-t border-neutral-100 pt-3"
         )}
       >
-        {/* Route as a timeline: times on the left, pins joined by a dotted run. */}
-        <div className="min-w-0">
-          <div className="flex items-center gap-2.5">
-            <span className="w-11 shrink-0 font-mono text-sm text-ink-muted">{formatTripTime(trip.departure_ts)}</span>
-            <span className="size-3 shrink-0 rounded-full border-[3px] border-brand-500" />
-            <span className="truncate text-[17px] font-medium text-ink">{from}</span>
-          </div>
+        {/* Route as a timeline: times on the left, pins joined by a dashed run. */}
+        <div className="grid min-w-0 grid-cols-[auto_auto_1fr] items-center gap-x-2.5">
+          <span className="text-sm text-ink">{formatTripTime(trip.departure_ts)}</span>
+          <AppIcon name="location_iconG" className="h-[18px] w-4" />
+          <span className="truncate text-[19px] text-ink">{from}</span>
 
-          <span aria-hidden className="ml-[3.6rem] block h-4 border-l-2 border-dotted border-neutral-300" />
+          <span aria-hidden />
+          <span aria-hidden className="mx-auto block h-4 border-l border-dashed border-neutral-400" />
+          <span aria-hidden />
 
-          <div className="flex items-center gap-2.5">
-            <span className="w-11 shrink-0 font-mono text-sm text-ink-muted">{formatTripTime(arrival)}</span>
-            <span className="size-3 shrink-0 rounded-full border-[3px] border-danger" />
-            <span className="truncate text-[17px] font-medium text-ink">{to}</span>
-          </div>
+          <span className="text-sm text-ink">{formatTripTime(arrival)}</span>
+          <AppIcon name="location_iconR" className="h-[18px] w-4" />
+          <span className="truncate text-[19px] text-ink">{to}</span>
         </div>
 
         {!isSearch && (

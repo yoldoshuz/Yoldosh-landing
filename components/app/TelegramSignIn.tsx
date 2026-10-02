@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, RefreshCw, Send } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { ErrorNote } from "@/components/app/kit";
 import { useTelegram } from "@/components/app/TelegramProvider";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,7 @@ export const TelegramSignIn = ({ onEnterPhone }: TelegramSignInProps) => {
   if (status === "failed") {
     return (
       <div className="space-y-4 text-center">
-        <RefreshCw className="mx-auto size-8 text-ink-muted" />
+        <AppIcon name="refresh_in_ic" className="mx-auto size-8 text-ink-muted" />
         <div>
           <h1 className="text-xl font-bold">{t("Telegram.FailedTitle")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -119,7 +120,7 @@ export const TelegramSignIn = ({ onEnterPhone }: TelegramSignInProps) => {
           <Loader2 className="size-5 animate-spin" />
         ) : (
           <>
-            <Send className="size-5" />
+            <AppIcon name="send" className="size-5" />
             {t("Telegram.ShareContact")}
           </>
         )}

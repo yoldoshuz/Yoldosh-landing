@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { ChevronRight, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppSheet } from "@/components/app/AppSheet";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { ErrorNote, formatDate, Screen, Spinner } from "@/components/app/kit";
+import { ErrorNote, formatDate, fullName, Screen, Spinner } from "@/components/app/kit";
 import { PREFERENCE_ICON, PREFERENCE_KEYS } from "@/components/app/sheets/PreferencePicker";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import {
@@ -75,47 +75,48 @@ export const PublicProfileScreen = ({ userId }: { userId: string }) => {
   return (
     <>
       {/*
-        The hero's bottom edge bulges downward at the centre, so its lowest
-        point is the box bottom — pulling the content up into it (as a negative
-        margin did) hid the name behind the curve on a phone.
+        The mobile build's header: its own artwork, green with a wave rising
+        to the right, stretched to whatever height the bar and the avatar
+        need (inside Telegram the bar is taller by the client's header). The
+        avatar sits on the wave's crest, half over the green and half over
+        the page — which is why it is drawn, not built from a border-radius.
       */}
-      <div className="app-hero relative pb-10">
-        <AppTopBar title={t("Profile.Title")} variant="hero" back className="bg-transparent pb-0" />
-        <div className="flex justify-center pt-1">
+      <div className="bg-[url('/assets/images/profile_back.png')] bg-[length:100%_100%] bg-no-repeat pb-8 lg:bg-none lg:pb-0">
+        <AppTopBar title={t("Profile.Title")} variant="hero" back className="bg-none! pb-0" />
+        <div className="flex justify-center pt-2">
           <UserAvatar
             src={user?.avatar}
             name={user?.firstName}
-            className="size-28 border-4 border-white/25 lg:border-neutral-200"
-            fallbackClassName="bg-white/25 lg:bg-brand-400"
+            className="size-28"
+            fallbackClassName="text-white/20 lg:text-[#41B06E]"
           />
         </div>
       </div>
 
-      <Screen className="space-y-3 pt-5">
+      <Screen className="space-y-4 pt-3">
         <div className="pb-1 text-center">
-          <p className="text-2xl font-bold text-brand-600">
-            {user?.firstName} {user?.lastName ?? ""}
-          </p>
-          <p className="text-brand-500">{t(`Role.${user?.role ?? "Passenger"}`)}</p>
+          <p className="text-[28px] font-bold leading-tight text-[#41B06E]">{fullName(user) || "—"}</p>
+          <p className="mt-1 text-lg text-[#41B06E]">{t(`Role.${user?.role ?? "Passenger"}`)}</p>
         </div>
 
         <Card title={t("Profile.Age")}>
-          <p className="mt-1 text-ink-muted">{age ? t("Profile.Years", { count: age }) : t("Profile.NotSet")}</p>
+          <p className="mt-2 text-ink">{age ? t("Profile.Years", { count: age }) : t("Profile.NotSet")}</p>
         </Card>
 
         <Card title={t("Profile.Bio")}>
-          <p className="mt-1 whitespace-pre-wrap text-ink-muted">{user?.bio || t("Profile.NoBio")}</p>
+          <p className={cn("mt-2 whitespace-pre-wrap", user?.bio ? "text-ink" : "text-ink-muted")}>
+            {user?.bio || t("Profile.NoBio")}
+          </p>
         </Card>
 
         {prefsSet && (
           <Card title={t("Profile.PreferencesSheetTitle")}>
             <div className="mt-2 space-y-2">
               {PREFERENCE_KEYS.filter((key) => user?.[key] != null).map((key) => {
-                const Icon = PREFERENCE_ICON[key];
                 const on = user?.[key];
                 return (
                   <p key={key} className={cn("flex items-center gap-2.5", on ? "text-brand-600" : "text-danger")}>
-                    <Icon className="size-5 shrink-0" strokeWidth={1.8} />
+                    <AppIcon name={PREFERENCE_ICON[key]} className="size-5" />
                     {t(`Profile.PrefValue.${key}.${on ? "yes" : "no"}`)}
                   </p>
                 );
@@ -127,21 +128,21 @@ export const PublicProfileScreen = ({ userId }: { userId: string }) => {
         <button
           type="button"
           onClick={() => setReviewsOpen(true)}
-          className="app-card flex w-full cursor-pointer items-center gap-3 p-4 text-left"
+          className="app-card flex w-full cursor-pointer items-center gap-3 rounded-[26px] p-4 text-left"
         >
           <span className="min-w-0 flex-1">
-            <span className="block font-bold text-ink">
+            <span className="block text-lg font-bold text-ink">
               {t(user?.role === "Driver" ? "Profile.DriverRating" : "Profile.PassengerRating")}
             </span>
-            <span className="mt-0.5 block text-xs text-ink-muted">
-              {t("Profile.ReviewCount", { count: ratings?.length ?? 0 })}
+            <span className="mt-1 block text-xs text-ink">
+              {t("Profile.ReviewCount", { count: user?.ratingCount ?? ratings?.length ?? 0 })}
             </span>
           </span>
-          <span className="flex shrink-0 items-center gap-1.5 font-semibold text-ink">
-            <Star className="size-5 fill-star stroke-star" />
-            {(user?.rating ?? 0).toFixed(1)}
+          <span className="flex shrink-0 items-center gap-2 text-lg text-ink">
+            <AppIcon name="fill_star_ic" className="size-6" />
+            {Number((user?.rating ?? 0).toFixed(1))}
           </span>
-          <ChevronRight className="size-5 shrink-0 text-ink-muted" />
+          <AppIcon name="right2" className="size-7 text-ink" />
         </button>
 
         <ErrorNote message={error} />
@@ -173,10 +174,7 @@ export const PublicProfileScreen = ({ userId }: { userId: string }) => {
                 <div className="flex items-center justify-between gap-3">
                   <span className="flex items-center gap-0.5">
                     {Array.from({ length: 5 }, (_, i) => (
-                      <Star
-                        key={i}
-                        className={cn("size-4", i < rating.rating ? "fill-star stroke-star" : "stroke-neutral-300")}
-                      />
+                      <AppIcon key={i} name={i < rating.rating ? "fill_star_ic" : "empty_star_ic"} className="size-4" />
                     ))}
                   </span>
                   <span className="text-xs text-ink-muted">{formatDate(rating.createdAt)}</span>
@@ -209,8 +207,8 @@ export const PublicProfileScreen = ({ userId }: { userId: string }) => {
 };
 
 const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="app-card p-4">
-    <p className="font-bold text-ink">{title}</p>
+  <div className="app-card rounded-[26px] p-4">
+    <p className="text-lg font-bold text-ink">{title}</p>
     {children}
   </div>
 );

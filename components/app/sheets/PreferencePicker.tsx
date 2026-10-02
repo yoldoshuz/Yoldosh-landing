@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, MessageCircleMore, Music, PawPrint, type LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon, type AppIconName } from "@/components/app/AppIcon";
 import { cn } from "@/lib/utils";
 
 /** The three ride preferences, in the order the mobile build lists them. */
 export const PREFERENCE_KEYS = ["talkative", "music_allowed", "pets_allowed"] as const;
 export type PreferenceKey = (typeof PREFERENCE_KEYS)[number];
 
-export const PREFERENCE_ICON: Record<PreferenceKey, LucideIcon> = {
-  talkative: MessageCircleMore,
-  music_allowed: Music,
-  pets_allowed: PawPrint,
+export const PREFERENCE_ICON: Record<PreferenceKey, AppIconName> = {
+  talkative: "talkative",
+  music_allowed: "music_icon",
+  pets_allowed: "pets_icon",
 };
 
 export type PreferenceValues = Partial<Record<PreferenceKey, boolean>>;
@@ -37,7 +37,7 @@ export const PreferenceField = ({
 }) => {
   const t = useTranslations("App.Profile");
   const [open, setOpen] = useState(false);
-  const Icon = PREFERENCE_ICON[name];
+  const icon = PREFERENCE_ICON[name];
 
   const pick = (next: boolean) => {
     onChange(next);
@@ -53,21 +53,14 @@ export const PreferenceField = ({
         onClick={() => setOpen((o) => !o)}
         className="flex w-full cursor-pointer items-center gap-3 py-2.5 text-left"
       >
-        <Icon
-          className={cn(
-            "size-6 shrink-0",
-            value == null ? "text-neutral-300" : value ? "text-brand-500" : "text-danger"
-          )}
-          strokeWidth={1.8}
+        <AppIcon
+          name={icon}
+          className={cn("size-6", value == null ? "text-neutral-300" : value ? "text-brand-500" : "text-danger")}
         />
         <span className={cn("min-w-0 flex-1 truncate", value == null ? "text-ink-muted" : "text-ink")}>
           {value == null ? t("PickOne") : t(`PrefValue.${name}.${value ? "yes" : "no"}`)}
         </span>
-        {open ? (
-          <ChevronUp className="size-5 shrink-0 text-ink" />
-        ) : (
-          <ChevronDown className="size-5 shrink-0 text-ink" />
-        )}
+        <AppIcon name="arrow_down" className={cn("size-5 text-ink transition-transform", open && "rotate-180")} />
       </button>
 
       {open && (
@@ -82,7 +75,7 @@ export const PreferenceField = ({
               <span className="min-w-0 flex-1 truncate font-bold text-ink">
                 {t(`PrefValue.${name}.${option ? "yes" : "no"}`)}
               </span>
-              <Icon className={cn("size-6 shrink-0", option ? "text-brand-500" : "text-danger")} strokeWidth={1.8} />
+              <AppIcon name={icon} className={cn("size-6", option ? "text-brand-500" : "text-danger")} />
             </button>
           ))}
         </div>

@@ -1,23 +1,11 @@
-import {
-  ArrowRight,
-  Bell,
-  CarFront,
-  MessageCircle,
-  Package,
-  Plus,
-  Search,
-  User,
-  Wallet,
-  type LucideIcon,
-} from "lucide-react";
-
 import type { Pathnames } from "@/app/i18n/routing";
+import type { AppIconName } from "./AppIcon";
 
 export interface AppNavItem {
   href: Pathnames;
   /** Key inside the `App.Nav` message namespace. */
   labelKey: string;
-  icon: LucideIcon;
+  icon: AppIconName;
 }
 
 /**
@@ -26,19 +14,19 @@ export interface AppNavItem {
  * carries across, then adds what the phone hides behind Профиль.
  */
 export const primaryNavItems: AppNavItem[] = [
-  { href: "/search", labelKey: "Search", icon: Search },
-  { href: "/publish", labelKey: "Publish", icon: Plus },
-  { href: "/my-trips", labelKey: "MyTrips", icon: ArrowRight },
-  { href: "/chats", labelKey: "Chats", icon: MessageCircle },
-  { href: "/profile", labelKey: "Profile", icon: User },
+  { href: "/search", labelKey: "Search", icon: "search" },
+  { href: "/publish", labelKey: "Publish", icon: "vector" },
+  { href: "/my-trips", labelKey: "MyTrips", icon: "arrow_right" },
+  { href: "/chats", labelKey: "Chats", icon: "chat" },
+  { href: "/profile", labelKey: "Profile", icon: "group" },
 ];
 
 /** Desktop-only extras — on mobile these live inside the Профиль tab. */
 export const secondaryNavItems: AppNavItem[] = [
-  { href: "/parcels", labelKey: "Parcels", icon: Package },
-  { href: "/wallet", labelKey: "Wallet", icon: Wallet },
-  { href: "/notifications", labelKey: "Notifications", icon: Bell },
-  { href: "/profile/cars", labelKey: "Cars", icon: CarFront },
+  { href: "/parcels", labelKey: "Parcels", icon: "suitcase" },
+  { href: "/wallet", labelKey: "Wallet", icon: "wallet" },
+  { href: "/notifications", labelKey: "Notifications", icon: "notification" },
+  { href: "/profile/cars", labelKey: "Cars", icon: "ic_small_car" },
 ];
 
 export const bottomNavItems = primaryNavItems;

@@ -119,6 +119,12 @@ export interface AppTrip {
   booking_type?: BookingType;
   comment?: string | null;
   status: TripStatus;
+  /**
+   * Set on trips the backend's forecast invented from a driver's history
+   * rather than one the driver published. Nobody is behind them to book with.
+   */
+  is_predicted?: boolean;
+  prediction_confidence?: number | null;
   driver?: Partial<AppUser>;
   car?: Partial<AppCar> & { gov_number?: string };
   bookings?: AppBooking[];

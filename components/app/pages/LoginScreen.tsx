@@ -3,10 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter as useRawRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, ArrowRight, Loader2, Upload } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { ErrorNote } from "@/components/app/kit";
 import { LegalSheet, type LegalDocument } from "@/components/app/sheets/LegalSheet";
 import { useTelegram } from "@/components/app/TelegramProvider";
@@ -210,7 +211,7 @@ export const LoginScreen = () => {
           href="/"
           className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 hover:text-ink"
         >
-          <ArrowLeft className="size-4" />
+          <AppIcon name="ic_back" className="size-4" />
           {tCommon("Back")}
         </Link>
       )}
@@ -232,7 +233,7 @@ export const LoginScreen = () => {
             }}
             className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-800 smooth mb-4 cursor-pointer"
           >
-            <ArrowLeft className="size-4" />
+            <AppIcon name="ic_back" className="size-4" />
             {tCommon("Back")}
           </button>
         )}
@@ -274,7 +275,7 @@ export const LoginScreen = () => {
               className="h-13 w-full rounded-full bg-brand-500 text-base font-semibold hover:bg-brand-600 disabled:bg-neutral-300 disabled:opacity-100"
             >
               {requestOtp.isPending ? <Loader2 className="size-4 animate-spin" /> : t("Continue")}
-              {!requestOtp.isPending && <ArrowRight className="size-4" />}
+              {!requestOtp.isPending && <AppIcon name="arrow_right" className="size-4" />}
             </Button>
 
             {/*
@@ -366,7 +367,7 @@ export const LoginScreen = () => {
                   onChange={(e) => setAvatar(e.target.files?.[0] ?? null)}
                 />
                 <Button type="button" variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
-                  <Upload className="size-4" />
+                  <AppIcon name="ic_upload" className="size-4" />
                   {t("UploadAvatar")}
                 </Button>
                 <p className="text-[11px] text-muted-foreground mt-1">{t("AvatarHint")}</p>

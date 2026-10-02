@@ -1,13 +1,12 @@
 "use client";
 
-import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { EmptyState, formatDate, ILLUSTRATION, Screen, Spinner } from "@/components/app/kit";
 import { useUserRatings } from "@/hooks/api/useRatings";
 import { useAuth } from "@/hooks/useAuth";
-import { cn } from "@/lib/utils";
 
 export const ReviewsScreen = () => {
   const t = useTranslations("App");
@@ -31,10 +30,7 @@ export const ReviewsScreen = () => {
               <div className="flex items-center justify-between gap-3">
                 <span className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }, (_, i) => (
-                    <Star
-                      key={i}
-                      className={cn("size-4", i < rating.rating ? "fill-star stroke-star" : "stroke-neutral-300")}
-                    />
+                    <AppIcon key={i} name={i < rating.rating ? "fill_star_ic" : "empty_star_ic"} className="size-4" />
                   ))}
                 </span>
                 <span className="text-xs text-ink-muted">{formatDate(rating.createdAt)}</span>

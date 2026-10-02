@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, Plus, ScanLine, Trash2, Upload } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { EmptyState, ErrorNote, ILLUSTRATION, Screen, Spinner, StatusBadge, SuccessNote } from "@/components/app/kit";
 import {
@@ -178,7 +179,7 @@ export const CarsScreen = () => {
             {scanning && (
               <div className="app-card space-y-2 p-4">
                 <p className="flex items-center gap-2 text-sm font-medium text-ink">
-                  <ScanLine className="size-4 animate-pulse text-brand-500" />
+                  <AppIcon name="scan" className="size-4 animate-pulse text-brand-500" />
                   {t("Cars.Scanning")}
                 </p>
                 <Progress value={Math.round(scanProgress * 100)} className="h-1.5" />
@@ -285,7 +286,7 @@ export const CarsScreen = () => {
               onClick={() => setAdding(true)}
               className="h-13 w-full rounded-full border-brand-400 text-base font-semibold text-brand-600 hover:bg-brand-50 hover:text-brand-700"
             >
-              <Plus className="size-5" />
+              <AppIcon name="vector" className="size-5" />
               {t("Cars.Add")}
             </Button>
           </div>
@@ -339,7 +340,7 @@ const Dropzone = ({
           <img src={preview} alt="" className="h-24 rounded-xl object-contain" />
         ) : (
           <>
-            <Upload className="size-7 text-neutral-400" strokeWidth={1.6} />
+            <AppIcon name="ic_upload" className="size-7 text-neutral-400" />
             <span className="text-sm text-ink-muted">{hint}</span>
           </>
         )}

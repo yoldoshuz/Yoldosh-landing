@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarDays, CarFront, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import {
   EmptyState,
@@ -133,7 +134,7 @@ export const PublishScreen = () => {
                       empty by definition for anyone seeing this screen. */}
                   <Link href={{ pathname: "/profile/cars", query: { add: "1" } }}>
                     {t("Publish.BecomeDriver")}
-                    <CarFront className="size-5" />
+                    <AppIcon name="ic_small_car" className="size-5" />
                   </Link>
                 </Button>
               }
@@ -206,7 +207,7 @@ export const PublishScreen = () => {
                         <span className={cn(!date && "text-ink-muted")}>
                           {date ? formatDate(date) : t("Search.Today")}
                         </span>
-                        <CalendarDays className="size-5 text-ink-muted" />
+                        <AppIcon name="ic_calendar" className="size-5 text-ink-muted" />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0" align="start">

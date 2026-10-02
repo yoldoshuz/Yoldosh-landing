@@ -2,12 +2,12 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { ChevronRight, LogOut, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/app/i18n/routing";
-import { Button } from "@/components/ui/button";
+import { AppIcon } from "@/components/app/AppIcon";
 import { UserAvatar } from "@/components/app/UserAvatar";
+import { Button } from "@/components/ui/button";
 import { useNotifications } from "@/hooks/api/useNotifications";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
@@ -48,7 +48,7 @@ export const AppSidebar = () => {
               : "font-medium text-neutral-600 hover:bg-neutral-100 hover:text-ink"
           )}
         >
-          <item.icon className="size-5 shrink-0" strokeWidth={active ? 2.3 : 1.9} />
+          <AppIcon name={item.icon} className="size-[22px]" />
           <span className="min-w-0 flex-1 truncate">{t(item.labelKey)}</span>
           {item.href === "/notifications" && unread > 0 && (
             <span
@@ -92,11 +92,11 @@ export const AppSidebar = () => {
                   {user?.firstName} {user?.lastName ?? ""}
                 </span>
                 <span className="flex items-center gap-1 font-mono text-xs text-star">
-                  <Star className="size-3 fill-star stroke-star" />
+                  <AppIcon name="fill_star_ic" className="size-3" />
                   {(user?.rating ?? 0).toFixed(1)}
                 </span>
               </span>
-              <ChevronRight className="size-4 shrink-0 text-ink-muted" />
+              <AppIcon name="right2" className="size-[18px] text-ink-muted" />
             </Link>
 
             <Button
@@ -107,7 +107,7 @@ export const AppSidebar = () => {
               onClick={() => void logout()}
               className="size-8 shrink-0 text-neutral-400 hover:bg-red-50 hover:text-danger"
             >
-              <LogOut className="size-4" />
+              <AppIcon name="logout" className="size-[18px]" />
             </Button>
           </div>
         </div>

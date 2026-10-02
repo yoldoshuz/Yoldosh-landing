@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { AppIcon } from "@/components/app/AppIcon";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
@@ -78,7 +78,7 @@ export const SearchFilterSheet = ({
               aria-label={t("Close")}
               className="absolute left-4 cursor-pointer rounded-full p-1 text-ink transition hover:bg-neutral-100"
             >
-              <X className="size-6" />
+              <AppIcon name="close" className="size-6" />
             </button>
             <SheetTitle className="text-[22px] font-bold text-ink">{t("Filters")}</SheetTitle>
             <SheetDescription className="sr-only">{t("Filters")}</SheetDescription>

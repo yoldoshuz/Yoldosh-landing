@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/app/i18n/routing";
 import { useHaptic } from "@/hooks/useHaptic";
+import { AppIcon } from "./AppIcon";
 import { bottomNavItems } from "./nav-items";
 
 const ACCENT = "#26bc4b";
@@ -17,7 +18,7 @@ const INACTIVE_LABEL = "rgba(31,31,31,0.38)";
  * would only cover their controls. next-intl's `usePathname` returns the route
  * template, so a dynamic segment matches by pattern rather than by id.
  */
-const FULLSCREEN_ROUTES = ["/chats/[chatId]", "/ride/[tripId]"];
+const FULLSCREEN_ROUTES = ["/chats/[chatId]", "/ride/[tripId]", "/search/results"];
 
 /* ───────────────────────────────────────────── */
 /* LIQUID GLASS                                  */
@@ -170,7 +171,6 @@ export const BottomNav = () => {
 
   const renderTab = (item: (typeof bottomNavItems)[number]) => {
     const active = isActive(item.href);
-    const Icon = item.icon;
 
     return (
       <Link
@@ -200,7 +200,7 @@ export const BottomNav = () => {
           transition={active ? popScale : springIn}
           style={{ position: "relative", zIndex: 10, display: "flex" }}
         >
-          <Icon size={20} color={active ? ACCENT : INACTIVE_ICON} fill="none" strokeWidth={2} />
+          <AppIcon name={item.icon} className="size-[22px]" style={{ color: active ? ACCENT : INACTIVE_ICON }} />
         </motion.span>
 
         <motion.span

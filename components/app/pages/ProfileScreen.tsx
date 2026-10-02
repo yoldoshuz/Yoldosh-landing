@@ -1,26 +1,21 @@
 "use client";
 
 import { useRef, useState } from "react";
-import {
-  Bell,
-  ChevronRight,
-  FileText,
-  Globe,
-  Heart,
-  LogOut,
-  Phone,
-  Plus,
-  ScrollText,
-  ShieldCheck,
-  Star,
-  Ticket,
-  Wallet,
-} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, useRouter } from "@/app/i18n/routing";
+import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
-import { CompletionCard, ErrorNote, Row, Screen, SectionLabel, Spinner } from "@/components/app/kit";
+import {
+  CompletionCard,
+  ErrorNote,
+  formatMoney,
+  fullName,
+  Row,
+  Screen,
+  SectionLabel,
+  Spinner,
+} from "@/components/app/kit";
 import { LegalSheet, type LegalDocument } from "@/components/app/sheets/LegalSheet";
 import { PREFERENCE_ICON, PREFERENCE_KEYS } from "@/components/app/sheets/PreferencePicker";
 import { ProfileStepSheet, type ProfileStep } from "@/components/app/sheets/ProfileStepSheet";
@@ -28,6 +23,7 @@ import { UserAvatar } from "@/components/app/UserAvatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useMyActivity } from "@/hooks/api/useAppTrips";
 import { useFullProfile, useUpdateAvatar } from "@/hooks/api/useProfile";
+import { useWallet } from "@/hooks/api/useWallet";
 import { useAuth } from "@/hooks/useAuth";
 import { apiErrorMessage } from "@/lib/api";
 import { cn } from "@/lib/utils";
@@ -40,6 +36,7 @@ export const ProfileScreen = () => {
   const { user, logout } = useAuth();
   const { data: profile, isLoading } = useFullProfile();
   const { data: activity } = useMyActivity("passenger");
+  const { data: wallet } = useWallet();
   const updateAvatar = useUpdateAvatar();
   const router = useRouter();
 
@@ -51,10 +48,19 @@ export const ProfileScreen = () => {
 
   const current = profile ?? user;
 
+  /*
+    The mobile build opens straight onto the two tabs — no "Профиль" heading
+    above them, which only repeated the tab bar's label. The bar stays for its
+    spacing (and, inside Telegram, for clearing the client's header); the
+    heading itself is kept for desktop, where there is no tab bar to name the
+    page.
+  */
+  const topBar = <AppTopBar title={t("Profile.Title")} className="[&_h1]:hidden lg:[&_h1]:block" />;
+
   if (isLoading && !user) {
     return (
       <>
-        <AppTopBar title={t("Profile.Title")} />
+        {topBar}
         <Spinner />
       </>
     );
@@ -93,7 +99,7 @@ export const ProfileScreen = () => {
 
   return (
     <>
-      <AppTopBar title={t("Profile.Title")} />
+      {topBar}
       <Screen>
         <input
           ref={avatarRef}
@@ -133,24 +139,39 @@ export const ProfileScreen = () => {
                 href={`/users/${current?.id ?? ""}` as never}
                 className="flex items-center gap-3 px-4 py-3.5 transition hover:bg-neutral-50"
               >
-                <UserAvatar src={current?.avatar} name={current?.firstName} className="size-12" />
+                <UserAvatar src={current?.avatar} name={current?.firstName} className="size-14" />
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-lg font-bold text-ink">
-                    {current?.firstName} {current?.lastName ?? ""}
-                  </span>
-                  <span className="mt-0.5 flex items-center gap-1.5 text-sm text-ink-muted">
-                    <Phone className="size-3.5" />
+                  <span className="block truncate text-xl text-ink">{fullName(current) || "—"}</span>
+                  <span className="mt-1 flex items-center gap-1.5 text-[15px] text-ink-muted">
+                    <AppIcon name="phone_icon" className="size-4" />
                     {current?.phoneNumber}
                   </span>
                 </span>
-                <ChevronRight className="size-5 shrink-0 text-ink-muted" />
+                <AppIcon name="right2" className="size-6 text-ink" />
               </Link>
-              <Link
-                href="/profile/edit"
-                className="flex items-center gap-3 border-t border-neutral-100 px-4 py-3.5 transition hover:bg-neutral-50"
-              >
-                <span className="flex-1 font-medium text-ink">{t("Profile.EditProfile")}</span>
-                <ChevronRight className="size-5 text-ink-muted" />
+
+              {/* The balance sits with the person, as in the mobile build. */}
+              <div className="mx-4 flex items-center gap-4 border-t border-neutral-200 py-3.5">
+                <span className="grid size-14 shrink-0 place-items-center rounded-full border border-neutral-200">
+                  <AppIcon name="wallet" className="size-7 text-[#41B06E]" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-xl text-ink">
+                    {formatMoney(wallet?.balance ?? 0, t("Trip.Currency"))}
+                  </span>
+                  <span className="block text-sm text-ink-muted">{t("Profile.BalanceLabel")}</span>
+                </span>
+                <Link
+                  href="/wallet"
+                  className="shrink-0 rounded-full bg-brand-500 px-5 py-2.5 text-[15px] font-medium text-white transition hover:bg-brand-600"
+                >
+                  {t("Profile.TopUp")}
+                </Link>
+              </div>
+
+              <Link href="/profile/edit" className="flex items-center gap-3 px-4 py-3.5 transition hover:bg-neutral-50">
+                <span className="flex-1 text-lg text-ink">{t("Profile.EditProfile")}</span>
+                <AppIcon name="right2" className="size-6 text-ink" />
               </Link>
             </div>
 
@@ -175,43 +196,50 @@ export const ProfileScreen = () => {
 
             <div className="w-full">
               <SectionLabel className="mt-0">{t("Profile.TabAbout")}</SectionLabel>
-              <div className="app-card-rail space-y-3 p-4">
+              {/*
+                Each line is its own way in: a "+" prompt while the field is
+                empty, the stored answer once it is filled — tapping either
+                opens the same sheet. The separate "Изменить предпочтения" row
+                that closed the card was a third way to that sheet, and not in
+                the mobile build.
+              */}
+              <div className="app-card-rail space-y-4 p-4">
                 {current?.bio ? (
-                  <p className="text-ink">{current.bio}</p>
+                  <button
+                    type="button"
+                    onClick={() => setSheet("bio")}
+                    className="block w-full cursor-pointer whitespace-pre-wrap text-left text-ink"
+                  >
+                    {current.bio}
+                  </button>
                 ) : (
                   <AddLink label={t("Profile.AddBioCta")} onClick={() => setSheet("bio")} />
                 )}
 
                 {prefsSet ? (
-                  <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => setSheet("preferences")}
+                    className="block w-full cursor-pointer space-y-2 text-left"
+                  >
                     {PREFERENCE_KEYS.map((key) => {
-                      const Icon = PREFERENCE_ICON[key];
                       const on = current?.[key];
                       return (
-                        <p
+                        <span
                           key={key}
                           // Green when the user is open to it, red when they would
                           // rather not — the colour carries the answer at a glance.
                           className={cn("flex items-center gap-2.5", on ? "text-brand-600" : "text-danger")}
                         >
-                          <Icon className="size-5 shrink-0" strokeWidth={1.8} />
+                          <AppIcon name={PREFERENCE_ICON[key]} className="size-5" />
                           {t(`Profile.PrefValue.${key}.${on ? "yes" : "no"}`)}
-                        </p>
+                        </span>
                       );
                     })}
-                  </div>
+                  </button>
                 ) : (
                   <AddLink label={t("Profile.AddPrefsCta")} onClick={() => setSheet("preferences")} />
                 )}
-
-                <button
-                  type="button"
-                  onClick={() => setSheet("preferences")}
-                  className="flex w-full cursor-pointer items-center gap-3 border-t border-neutral-100 pt-3 text-left font-medium text-ink"
-                >
-                  <span className="flex-1">{t("Profile.ChangePrefs")}</span>
-                  <ChevronRight className="size-5 text-ink-muted" />
-                </button>
               </div>
             </div>
 
@@ -226,8 +254,8 @@ export const ProfileScreen = () => {
                 href={{ pathname: "/profile/cars", query: { add: "1" } }}
                 className="app-card-rail flex items-center gap-3 px-4 py-4 transition hover:bg-neutral-50"
               >
-                <span className="flex-1 font-medium text-brand-600">{t("Profile.AddCar")}</span>
-                <Plus className="size-6 rounded-lg border border-brand-300 p-0.5 text-brand-500" />
+                <span className="flex-1 text-xl text-brand-600">{t("Profile.AddCar")}</span>
+                <AppIcon name="add_ic_square" className="size-8 text-brand-500" />
               </Link>
             </div>
 
@@ -241,20 +269,20 @@ export const ProfileScreen = () => {
 
           {/* ------------------------------------------------------ Аккаунт */}
           <TabsContent value="account" className="mt-4 flex w-full flex-col gap-2">
-            <Row icon={Bell} label={t("Settings.Notifications")} href="/profile/notifications" />
-            <Row icon={Globe} label={t("Settings.Language")} href="/profile/language" />
-            <Row icon={ShieldCheck} label={t("Settings.Security")} href="/profile/security" />
-            <Row icon={Ticket} label={t("Settings.Promocodes")} href="/profile/promocodes" />
-            <Row icon={Wallet} label={t("Nav.Wallet")} href="/wallet" />
+            <Row icon="notification" label={t("Settings.Notifications")} href="/profile/notifications" />
+            <Row icon="language" label={t("Settings.Language")} href="/profile/language" />
+            <Row icon="shield" label={t("Settings.Security")} href="/profile/security" />
+            <Row icon="promocode_ic" label={t("Settings.Promocodes")} href="/profile/promocodes" />
+            <Row icon="wallet" label={t("Nav.Wallet")} href="/wallet" />
 
-            <Row icon={Heart} label={t("Settings.Help")} href="/profile/help" accent />
-            <Row icon={Star} label={t("Settings.RateUs")} href="/profile/help" accent />
+            <Row icon="heart" label={t("Settings.Help")} href="/profile/help" accent />
+            <Row icon="star" label={t("Settings.RateUs")} href="/profile/help" accent />
 
             {/* Opened in place: inside Telegram the landing is unreachable. */}
-            <Row icon={ScrollText} label={t("Settings.PublicOffer")} onClick={() => setLegal("offer")} />
-            <Row icon={FileText} label={t("Settings.PrivacyPolicy")} onClick={() => setLegal("privacy")} />
+            <Row icon="public_offer_ic" label={t("Settings.PublicOffer")} onClick={() => setLegal("offer")} />
+            <Row icon="privacy_conf_ic" label={t("Settings.PrivacyPolicy")} onClick={() => setLegal("privacy")} />
 
-            <Row icon={LogOut} label={t("Nav.Logout")} danger onClick={() => void logout()} />
+            <Row icon="logout" label={t("Nav.Logout")} danger onClick={() => void logout()} />
           </TabsContent>
         </Tabs>
       </Screen>
@@ -267,8 +295,12 @@ export const ProfileScreen = () => {
 
 /** "+ Расскажите о себе" — the pale green prompt inside the О себе card. */
 const AddLink = ({ label, onClick }: { label: string; onClick: () => void }) => (
-  <button type="button" onClick={onClick} className="flex cursor-pointer items-center gap-2.5 text-left text-brand-600">
-    <Plus className="size-5 rounded-md border border-brand-300 p-0.5" />
+  <button
+    type="button"
+    onClick={onClick}
+    className="flex cursor-pointer items-center gap-3 text-left text-lg text-brand-600"
+  >
+    <AppIcon name="add_ic_square" className="size-7 text-brand-500" />
     {label}
   </button>
 );
