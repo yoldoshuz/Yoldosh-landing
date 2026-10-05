@@ -40,7 +40,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAppTrip, useCancelTrip, useCompleteTrip, useStartTrip, useTripBookings } from "@/hooks/api/useAppTrips";
 import { useConfirmBooking, useCreateBooking, useRejectBooking } from "@/hooks/api/useBookings";
@@ -87,7 +86,6 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
   const completeTrip = useCompleteTrip();
   const cancelTrip = useCancelTrip();
 
-  const [seats, setSeats] = useState("1");
   const [cancelReason, setCancelReason] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -158,7 +156,8 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
           pickup_longitude: from.coordinates.longitude,
           dropoff_latitude: to.coordinates.latitude,
           dropoff_longitude: to.coordinates.longitude,
-          seatsBooked: Number(seats),
+          // One seat, as in the mobile build — there is no picker on this screen.
+          seatsBooked: 1,
         });
       },
       trip.booking_type === "REQUEST" ? "Trip.BookingRequested" : "Trip.BookingConfirmed"
@@ -487,25 +486,6 @@ export const RideScreen = ({ tripId }: { tripId: string }) => {
 
         <ErrorNote message={error} />
         <SuccessNote message={notice} />
-
-        {/* Seats are only a choice while the trip can still be booked. */}
-        {!isDriver && canAct && trip.seats_available > 1 && (
-          <div className="app-card flex items-center justify-between gap-3 p-4">
-            <span className="font-medium text-ink">{t("Trip.SeatsToBook")}</span>
-            <Select value={seats} onValueChange={setSeats}>
-              <SelectTrigger className="h-11! w-28 rounded-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: Math.max(1, trip.seats_available) }, (_, i) => i + 1).map((n) => (
-                  <SelectItem key={n} value={String(n)}>
-                    {n}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        )}
 
         {!isDriver && canAct && trip.parcels_allowed && (
           <Button

@@ -20,6 +20,11 @@ interface AuthContextValue {
   isAuthenticated: boolean;
   /** True while the session is being restored from storage or revalidated. */
   isLoading: boolean;
+  /**
+   * True only until storage has been read. Screens can render as soon as this
+   * clears — the token is known by then — without waiting on `/user/me`.
+   */
+  isRestoring: boolean;
   isDriver: boolean;
   login: (session: AuthSession) => void;
   logout: () => Promise<void>;
@@ -119,6 +124,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       user: user ?? null,
       isAuthenticated: hasToken,
       isLoading: !hydrated || (hasToken && isUserLoading),
+      isRestoring: !hydrated,
       isDriver: user?.role === "Driver" || Boolean(user?.cars?.length),
       login,
       logout,

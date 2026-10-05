@@ -2,46 +2,23 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/app/i18n/routing";
 import { AppIcon } from "@/components/app/AppIcon";
 import { AppTopBar } from "@/components/app/AppTopBar";
 import { isNegotiablePrice, Screen, SectionLabel } from "@/components/app/kit";
+import { buildTripQuery, searchResultsUrl, toRoute } from "@/components/app/search-query";
 import { isSearchReady, SearchFields, type SearchValue } from "@/components/app/SearchFields";
+import { EMPTY_FILTERS } from "@/components/app/sheets/SearchFilterSheet";
 import { UserAvatar } from "@/components/app/UserAvatar";
 import { Button } from "@/components/ui/button";
-import { useBestTrips } from "@/hooks/api/useAppTrips";
+import { prefetchTripSearch, useBestTrips } from "@/hooks/api/useAppTrips";
 import { cn } from "@/lib/utils";
 
 /** The leaderboard is a teaser, not a listing — five rows is the whole point. */
 const TOP_TRIPS = 5;
-
-/** `YYYY-MM-DD`, built locally so the day cannot slide across a timezone. */
-export const toDayParam = (date?: Date) => {
-  if (!date) return undefined;
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-};
-
-/** The results screen's URL for a search — shared with the "change search" sheet there. */
-export const searchResultsUrl = (locale: string, value: SearchValue) => {
-  const params = new URLSearchParams({
-    from: value.from!.name,
-    from_lat: String(value.from!.lat),
-    from_lon: String(value.from!.lng),
-    to: value.to!.name,
-    to_lat: String(value.to!.lat),
-    to_lon: String(value.to!.lng),
-    seats: String(value.seats),
-  });
-  const day = toDayParam(value.date);
-  if (day) params.set("date", day);
-
-  // A filled-in path the localized router cannot resolve through `pathnames`,
-  // so the locale is prefixed by hand.
-  return `/${locale}/search/results?${params.toString()}`;
-};
 
 /**
  * The search form and the best-trips teaser.
@@ -58,7 +35,16 @@ export const SearchScreen = () => {
   const [search, setSearch] = useState<SearchValue>({ from: null, to: null, seats: 1 });
   const { data: bestTrips } = useBestTrips(TOP_TRIPS);
 
+  const queryClient = useQueryClient();
   const ready = isSearchReady(search);
+
+  // The request leaves with the tap, not once the results screen has loaded
+  // and mounted — by the time it renders, the answer is usually in.
+  const submit = () => {
+    if (!ready) return;
+    void prefetchTripSearch(queryClient, buildTripQuery(toRoute(search), search.date ?? new Date(), EMPTY_FILTERS));
+    router.push(searchResultsUrl(locale, search));
+  };
 
   return (
     <>
@@ -75,7 +61,7 @@ export const SearchScreen = () => {
 
           {/* Filters belong to the results, where there is something to filter. */}
           <Button
-            onClick={() => ready && router.push(searchResultsUrl(locale, search))}
+            onClick={submit}
             disabled={!ready}
             className="mt-4 h-13 w-full rounded-full bg-white text-base font-semibold text-brand-600 shadow-none hover:bg-white/90 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:opacity-100 lg:bg-brand-500 lg:text-white lg:hover:bg-brand-600 lg:disabled:bg-neutral-200"
           >

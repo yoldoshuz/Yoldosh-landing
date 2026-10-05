@@ -64,7 +64,11 @@ export const ChatScreen = ({ chatId }: { chatId: string }) => {
         <div className="mx-auto flex h-14 w-full max-w-2xl items-center gap-3 px-4 lg:max-w-5xl lg:px-8">
           <button
             type="button"
-            onClick={() => router.push("/chats")}
+            // Back to wherever the thread was opened from — the trip screen's
+            // "Отправить сообщение" as much as the chat list. Only a thread
+            // opened cold (a shared link, a reload) has no history to return
+            // to, and falls back to the list.
+            onClick={() => (window.history.length > 1 ? router.back() : router.push("/chats"))}
             aria-label={t("Nav.Back")}
             className="-ml-2 cursor-pointer rounded-full p-2 text-white transition hover:bg-white/15 lg:text-ink lg:hover:bg-neutral-200/60"
           >

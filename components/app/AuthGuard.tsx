@@ -2,8 +2,8 @@
 
 import { ReactNode, useEffect } from "react";
 import { usePathname as useRawPathname } from "next/navigation";
-import { useLocale } from "next-intl";
 import { Loader2 } from "lucide-react";
+import { useLocale } from "next-intl";
 
 import { useRouter } from "@/app/i18n/routing";
 import { useAuth } from "@/hooks/useAuth";
@@ -15,7 +15,14 @@ import { useAuth } from "@/hooks/useAuth";
  * leak while this resolves.
  */
 export const AuthGuard = ({ children }: { children: ReactNode }) => {
-  const { isAuthenticated, isLoading } = useAuth();
+  /*
+    Gated on reading the token, not on `/user/me` coming back. Waiting for the
+    profile put a full round trip — two when the token needed refreshing — in
+    front of every screen's own requests: a search sat on a spinner for the
+    profile before it even asked for trips. A dead token still lands on
+    /login, through the 401 handler, a moment later.
+  */
+  const { isAuthenticated, isRestoring: isLoading } = useAuth();
   const router = useRouter();
   const locale = useLocale();
   // next-intl's `usePathname` hands back the *template* (`/ride/[tripId]`),

@@ -293,7 +293,10 @@ export const formatDate = (value?: string | Date | null, locale = "ru-RU") => {
  * so it departs from right now.
  */
 export const toDepartureDate = (day?: Date): string => {
-  const now = new Date();
+  // Rounded up to the next whole minute: still in the future, and stable for
+  // a minute, so the prefetch fired by "Найти" and the results screen that
+  // follows build the same query key instead of differing by milliseconds.
+  const now = new Date(Math.ceil(Date.now() / 60_000) * 60_000);
   if (!day) return now.toISOString();
 
   const noon = new Date(day);

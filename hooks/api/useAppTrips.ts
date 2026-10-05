@@ -1,4 +1,11 @@
-import { keepPreviousData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+  type QueryClient,
+} from "@tanstack/react-query";
 
 import { api, toList } from "@/lib/api";
 import type { AppBooking, AppTrip, CreateTripPayload, TripSearchQuery } from "@/types/api";
@@ -9,6 +16,8 @@ interface TripPage {
   total: number;
   currentPage: number;
   totalPages: number;
+  /** The page ran into the forecast's trips; everything after it is forecast too. */
+  exhausted?: boolean;
 }
 
 /**
@@ -24,7 +33,18 @@ const stripEmpty = (params: object) =>
 export const appTripsApi = {
   search: async (params: TripSearchQuery & { page?: number }) => {
     const { data } = await api.get("/trip/search", { params: stripEmpty(params) });
-    return { ...data.data, trips: realTrips(toList<AppTrip>(data.data?.trips)) } as TripPage;
+    const trips = toList<AppTrip>(data.data?.trips);
+    /*
+      The forecast's trips are appended after the real ones, whatever the
+      sort. Once a page ends on one, the rest of the listing is forecast —
+      eleven pages of it for a day ahead — and paging on only to filter each
+      page out cost a second per page while the screen sat on a spinner.
+    */
+    return {
+      ...data.data,
+      trips: realTrips(trips),
+      exhausted: trips.length > 0 && Boolean(trips.at(-1)?.is_predicted),
+    } as TripPage;
   },
   /**
    * Public, cached (5 min) shortlist for the home screen: upcoming trips with
@@ -66,14 +86,32 @@ export const appTripsApi = {
   },
 };
 
+const nextSearchPage = (last: TripPage) =>
+  !last.exhausted && last.currentPage && last.totalPages && last.currentPage < last.totalPages
+    ? last.currentPage + 1
+    : undefined;
+
+/**
+ * Starts a search before its screen exists — fired from the "Найти" button so
+ * the request is already in flight while the results route loads. Shares the
+ * query key with `useAppTripSearch`, which then picks the response up.
+ */
+export const prefetchTripSearch = (queryClient: QueryClient, params: TripSearchQuery) =>
+  queryClient.prefetchInfiniteQuery({
+    queryKey: qk.tripSearch(params),
+    initialPageParam: 1,
+    queryFn: ({ pageParam }) => appTripsApi.search({ ...params, page: pageParam as number }),
+    getNextPageParam: nextSearchPage,
+    staleTime: 5 * 60 * 1000,
+  });
+
 export const useAppTripSearch = (params: TripSearchQuery | null) =>
   useInfiniteQuery({
     queryKey: qk.tripSearch(params),
     enabled: Boolean(params),
     initialPageParam: 1,
     queryFn: ({ pageParam }) => appTripsApi.search({ ...(params as TripSearchQuery), page: pageParam }),
-    getNextPageParam: (last) =>
-      last.currentPage && last.totalPages && last.currentPage < last.totalPages ? last.currentPage + 1 : undefined,
+    getNextPageParam: nextSearchPage,
     retry: false,
     /*
       The endpoint is a geo query and is not always quick. Holding the
