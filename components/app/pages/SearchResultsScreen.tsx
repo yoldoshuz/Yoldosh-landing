@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -75,22 +75,27 @@ export const SearchResultsScreen = () => {
   const t = useTranslations("App");
   const locale = useLocale();
 
-  /*
-    Read off `location` rather than `useSearchParams`, which would opt every
-    route under the app shell out of static prerendering — and read on the
-    first render, not in an effect: the shell only mounts screens in the
-    browser (see `AuthGuard`), so `window` is there, and the request goes out
-    one render sooner. With the "Найти" button prefetching under the same key,
-    it is usually already answered by now.
-  */
-  const [route, setRoute] = useState<SearchRoute | null>(() =>
-    typeof window === "undefined" ? null : readRoute(new URLSearchParams(window.location.search))
-  );
-  const [day, setDay] = useState<Date | undefined>(() => route?.date ?? new Date());
+  const [route, setRoute] = useState<SearchRoute | null>(null);
+  const [day, setDay] = useState<Date | undefined>();
   const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const queryClient = useQueryClient();
+
+  /*
+    Read off `location` rather than `useSearchParams`, which would opt every
+    route under the app shell out of static prerendering. In an effect, not
+    during render: on a client-side navigation — the "Найти" button — the
+    router commits the new URL only after the new screen has rendered, so a
+    first-render read still saw `/search` and the screen came up empty. The
+    request is not delayed by it: "Найти" has already prefetched it under the
+    same key.
+  */
+  useEffect(() => {
+    const parsed = readRoute(new URLSearchParams(window.location.search));
+    setRoute(parsed);
+    setDay(parsed?.date ?? new Date());
+  }, []);
 
   /**
    * A new search from the sheet replaces this one in place. The URL follows
