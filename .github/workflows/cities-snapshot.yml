@@ -1,0 +1,36 @@
+# Daily refresh of app/lib/city-snapshot.json + route-snapshot.json.
+# Both are append-only: once a city pair had a trip, its /routes page stays
+# in sitemap-trips.xml forever. A commit here triggers a Vercel redeploy.
+name: Cities snapshot
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # 06:00 Tashkent
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node scripts/snapshot-cities.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- app/lib/city-snapshot.json app/lib/route-snapshot.json; then
+            echo "No new cities or routes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add app/lib/city-snapshot.json app/lib/route-snapshot.json
+          git commit -m "chore(seo): обновить снапшот городов и маршрутов"
+          git push
