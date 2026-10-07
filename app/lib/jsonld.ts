@@ -173,8 +173,7 @@ export function getPageJsonLd({
 /**
  * Trip schema builder for the rare cases an indexable, evergreen trip
  * surface needs structured data (e.g. a route landing page that lists
- * a representative offer). The per-trip detail page itself is noindexed
- * because trips expire — this helper is kept for /routes/[slug] usage.
+ * a representative offer) — kept for /routes/[slug] usage.
  */
 export function generateTripJsonLd(trip: {
   from: string;

@@ -1,3 +1,4 @@
+import { fetchAllTrips } from "@/app/lib/city-catalog";
 import { buildRouteSlug, listPopularRouteSlugs, resolveCity } from "@/app/lib/route-resolver";
 
 // /sitemap-trips.xml — exposes every indexable city-pair landing page.
@@ -14,28 +15,10 @@ import { buildRouteSlug, listPopularRouteSlugs, resolveCity } from "@/app/lib/ro
 const LOCALES = ["ru", "uz", "en"] as const;
 const DEFAULT_LOCALE = "ru";
 const BASE_URL = "https://yoldosh.uz";
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.yoldosh.uz/api/v1";
-
-const PAGE_COUNT = 10;
-const PAGE_SIZE = 500;
-
 interface ApiTrip {
   updatedAt?: string;
   from_location?: { city?: string };
   to_location?: { city?: string };
-}
-
-async function fetchTripsPage(page: number): Promise<ApiTrip[]> {
-  try {
-    const res = await fetch(`${API_URL}/public/trips/popular?page=${page}&limit=${PAGE_SIZE}`, {
-      next: { revalidate: 86400 },
-    });
-    if (!res.ok) return [];
-    const json = await res.json();
-    return json?.data?.trips ?? [];
-  } catch {
-    return [];
-  }
 }
 
 function xmlEscape(value: string): string {
@@ -61,25 +44,21 @@ export async function GET() {
   const routeMap = new Map<string, { lastmod: string }>();
 
   try {
-    const tripPages = await Promise.all(Array.from({ length: PAGE_COUNT }, (_, i) => fetchTripsPage(i + 1)));
+    for (const trip of await fetchAllTrips<ApiTrip>()) {
+      const fromCityName = trip.from_location?.city;
+      const toCityName = trip.to_location?.city;
+      if (!fromCityName || !toCityName) continue;
 
-    for (const page of tripPages) {
-      for (const trip of page) {
-        const fromCityName = trip.from_location?.city;
-        const toCityName = trip.to_location?.city;
-        if (!fromCityName || !toCityName) continue;
+      // Async catalog lookup — seed first, falls through to the live
+      // catalog populated from the same API surface.
+      const [from, to] = await Promise.all([resolveCity(fromCityName), resolveCity(toCityName)]);
+      if (!from || !to || from.key === to.key) continue;
 
-        // Async catalog lookup — seed first, falls through to the live
-        // catalog populated from the same API surface.
-        const [from, to] = await Promise.all([resolveCity(fromCityName), resolveCity(toCityName)]);
-        if (!from || !to || from.key === to.key) continue;
-
-        const slug = buildRouteSlug(from, to);
-        const lastmod = trip.updatedAt || new Date().toISOString();
-        const existing = routeMap.get(slug);
-        if (!existing || existing.lastmod < lastmod) {
-          routeMap.set(slug, { lastmod });
-        }
+      const slug = buildRouteSlug(from, to);
+      const lastmod = trip.updatedAt || new Date().toISOString();
+      const existing = routeMap.get(slug);
+      if (!existing || existing.lastmod < lastmod) {
+        routeMap.set(slug, { lastmod });
       }
     }
   } catch (err) {

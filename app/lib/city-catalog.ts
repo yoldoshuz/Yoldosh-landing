@@ -10,13 +10,15 @@
 import { unstable_cache } from "next/cache";
 
 import { City, normalizeForLookup, CITIES as SEED_CITIES } from "./cities";
+import CITY_SNAPSHOT from "./city-snapshot.json";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.yoldosh.uz/api/v1";
 
-// Cap the scan window. 10 × 500 = 5000 trips → enough to discover every
-// active city without blowing the build budget. Stops early when API runs out.
-const MAX_PAGES = 10;
-const PAGE_SIZE = 500;
+// The API caps `limit` at 100 — a larger value returns 400 and the whole
+// catalog silently collapses to the seed list (every long-tail /routes URL
+// then 404s). Scan up to 50 × 100 = 5000 trips, bounded by totalPages.
+const MAX_PAGES = 50;
+const PAGE_SIZE = 100;
 
 export interface CityHint {
   id: string;
@@ -43,17 +45,26 @@ interface ApiResponse {
   };
 }
 
-async function fetchTripsPage(page: number): Promise<ApiTrip[] | null> {
+async function fetchTripsPage(page: number): Promise<ApiResponse["data"] | null> {
   try {
     const res = await fetch(`${API_URL}/public/trips/popular?page=${page}&limit=${PAGE_SIZE}`, {
       next: { revalidate: 86400 },
     });
     if (!res.ok) return null;
     const json: ApiResponse = await res.json();
-    return json?.data?.trips ?? [];
+    return json?.data ?? null;
   } catch {
     return null;
   }
+}
+
+/** Every upcoming trip from the public API: page 1 first, the rest in parallel. */
+export async function fetchAllTrips<T = ApiTrip>(): Promise<T[]> {
+  const first = await fetchTripsPage(1);
+  if (!first?.trips?.length) return [];
+  const totalPages = Math.min(first.totalPages ?? 1, MAX_PAGES);
+  const rest = await Promise.all(Array.from({ length: totalPages - 1 }, (_, i) => fetchTripsPage(i + 2)));
+  return [first, ...rest].flatMap((p) => (p?.trips ?? []) as T[]);
 }
 
 /**
@@ -64,24 +75,24 @@ async function fetchTripsPage(page: number): Promise<ApiTrip[] | null> {
 async function gatherCityHints(): Promise<CityHint[]> {
   const hints = new Map<string, CityHint>();
 
-  for (let page = 1; page <= MAX_PAGES; page++) {
-    const trips = await fetchTripsPage(page);
-    if (!trips || trips.length === 0) break;
+  // Snapshot first (scripts/snapshot-cities.mjs): cities that once had trips
+  // stay resolvable after their last trip departs, so /routes URLs Google
+  // already crawled keep returning 200 instead of 404.
+  for (const c of CITY_SNAPSHOT) hints.set(c.id, c);
 
-    for (const trip of trips) {
-      const sides: ("from" | "to")[] = ["from", "to"];
-      for (const side of sides) {
-        const id = trip[`${side}_city_id`];
-        const loc = trip[`${side}_location`];
-        if (!id || !loc?.city || !loc?.coordinates) continue;
-        if (hints.has(id)) continue;
-        hints.set(id, {
-          id,
-          name: loc.city.trim(),
-          lat: loc.coordinates.latitude,
-          lon: loc.coordinates.longitude,
-        });
-      }
+  for (const trip of await fetchAllTrips()) {
+    const sides: ("from" | "to")[] = ["from", "to"];
+    for (const side of sides) {
+      const id = trip[`${side}_city_id`];
+      const loc = trip[`${side}_location`];
+      if (!id || !loc?.city || !loc?.coordinates) continue;
+      if (hints.has(id)) continue;
+      hints.set(id, {
+        id,
+        name: loc.city.trim(),
+        lat: loc.coordinates.latitude,
+        lon: loc.coordinates.longitude,
+      });
     }
   }
 
@@ -90,7 +101,7 @@ async function gatherCityHints(): Promise<CityHint[]> {
 
 // 24h cache via Next's data cache. Survives ISR revalidations and module
 // reloads, so the catalog is shared across requests in production.
-const gatherCityHintsCached = unstable_cache(gatherCityHints, ["yoldosh-city-hints-v1"], {
+const gatherCityHintsCached = unstable_cache(gatherCityHints, ["yoldosh-city-hints-v2"], {
   revalidate: 86400,
   tags: ["city-catalog"],
 });

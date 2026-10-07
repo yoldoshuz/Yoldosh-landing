@@ -61,12 +61,13 @@ export const useSearchTrips = (params: SearchParams, enabled: boolean) => {
   });
 };
 
-export const useTripDetails = (tripId: string) => {
+export const useTripDetails = (tripId: string, initialData?: unknown) => {
   return useQuery({
     queryKey: ["trips", "details", tripId],
     queryFn: () => tripsApi.getTripDetails(tripId),
     staleTime: 10 * 60 * 1000,
     enabled: !!tripId,
+    initialData,
   });
 };
 

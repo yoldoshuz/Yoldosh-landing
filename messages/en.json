@@ -243,6 +243,10 @@
       "Negotiable": "Negotiable",
       "Error": "Error loading trips. Please try again.",
       "Details": {
+        "FinishedTitle": "This trip has already taken place",
+        "FinishedText": "Booking is closed, but new rides on this route are posted regularly.",
+        "SimilarRoute": "Rides {from} — {to}",
+        "FindTrips": "Find other trips",
         "Back": "Back",
         "Title": "Trip Details",
         "Description": "Review the trip information before booking",

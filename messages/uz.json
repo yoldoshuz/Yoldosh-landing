@@ -243,6 +243,10 @@
       "Negotiable": "Kelishiladi",
       "Error": "Sayohatlarni yuklashda xatolik. Qayta urinib ko‘ring.",
       "Details": {
+        "FinishedTitle": "Bu safar allaqachon bo‘lib o‘tgan",
+        "FinishedText": "Bron yopilgan, lekin bu yo‘nalishda muntazam ravishda yangi safarlar e’lon qilinadi.",
+        "SimilarRoute": "{from} — {to} safarlari",
+        "FindTrips": "Boshqa safarlarni topish",
         "Back": "Orqaga",
         "Title": "Sayohat tafsilotlari",
         "Description": "Bron qilishdan oldin sayohat haqida ma’lumot bilan tanishib chiqing",

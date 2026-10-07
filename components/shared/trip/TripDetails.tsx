@@ -26,9 +26,11 @@ import { BASE_URL } from "@/lib/api";
 
 interface TripDetailsProps {
   trip: any;
+  /** Departed / closed trip: shown read-only, booking button hidden. */
+  finished?: boolean;
 }
 
-export const TripDetails = ({ trip }: TripDetailsProps) => {
+export const TripDetails = ({ trip, finished = false }: TripDetailsProps) => {
   const t = useTranslations("Pages.Trips.Details");
   const router = useRouter();
   const pathname = usePathname();
@@ -288,14 +290,16 @@ export const TripDetails = ({ trip }: TripDetailsProps) => {
               ready to book — instead of on a generic home screen with no memory
               of what they were doing.
             */}
-            <Button
-              onClick={() => {
-                router.push({ pathname: "/login", query: { next: `/ride/${trip.id}` } });
-              }}
-              className="btn-primary"
-            >
-              {t("Book")}
-            </Button>
+            {!finished && (
+              <Button
+                onClick={() => {
+                  router.push({ pathname: "/login", query: { next: `/ride/${trip.id}` } });
+                }}
+                className="btn-primary"
+              >
+                {t("Book")}
+              </Button>
+            )}
           </div>
         </div>
       </Card>

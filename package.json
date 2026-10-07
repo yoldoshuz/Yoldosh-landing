@@ -9,7 +9,8 @@
     "lint": "eslint \"./**/*.+(ts|tsx)\"",
     "lint:fix": "eslint \"./**/*.+(ts|tsx)\" --fix",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "cities:snapshot": "node scripts/snapshot-cities.mjs"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",

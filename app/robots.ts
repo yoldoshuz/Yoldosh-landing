@@ -7,11 +7,9 @@ const BASE_URL = "https://yoldosh.uz";
 // Strategy:
 //   - Explicitly allow the canonical crawl surface (homepage, trips,
 //     routes, content pages, blog).
-//   - Disallow API endpoints and account-management flows. The per-trip
-//     detail pages under each locale's /trips/<id> path are ephemeral and
-//     now ship with `noindex, follow` metadata directly from the page —
-//     we don't block them in robots.txt because that would prevent
-//     Googlebot from reading the meta robots directive.
+//   - Disallow API endpoints and account-management flows. Per-trip
+//     detail pages (/<locale>/trips/<id>) are indexable and stay 200 after
+//     departure — finished trips render with links to similar rides.
 //   - Mirror Googlebot's policy to all known LLM / AI search crawlers so
 //     Yoldosh stays eligible for AI Overview citations, ChatGPT search
 //     attributions, and Perplexity answers — an increasingly meaningful

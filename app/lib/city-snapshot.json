@@ -1,0 +1,716 @@
+[
+  {
+    "id": "b0bbf0bf-9aa9-43a6-9f83-2a2aa64adc66",
+    "name": "Andijon",
+    "lat": 40.773945,
+    "lon": 72.343377
+  },
+  {
+    "id": "3106ed69-fd94-4c11-b210-615682ea4f65",
+    "name": "Angor",
+    "lat": 37.462416,
+    "lon": 67.151757
+  },
+  {
+    "id": "c3fade4d-d30e-4c43-ad81-d6669df1e6e8",
+    "name": "Angren",
+    "lat": 41.019199,
+    "lon": 70.08594
+  },
+  {
+    "id": "5b0d1766-4295-4495-a2c0-843019f6de91",
+    "name": "Asaka",
+    "lat": 40.650257,
+    "lon": 72.240012
+  },
+  {
+    "id": "6d615967-ffe9-4f27-a066-b1cc601a85cf",
+    "name": "Bag'dod",
+    "lat": 40.461027,
+    "lon": 71.212184
+  },
+  {
+    "id": "1ef20b91-9a6e-4d00-aaaf-2248bb2a2b86",
+    "name": "Balandchaqir",
+    "lat": 39.895742,
+    "lon": 68.789477
+  },
+  {
+    "id": "c240c197-ab42-4195-997c-3b9877ad1e6f",
+    "name": "Baliqchi",
+    "lat": 40.901728,
+    "lon": 71.841643
+  },
+  {
+    "id": "e642ba26-68d3-4984-92c1-35543087dfeb",
+    "name": "Bandixon",
+    "lat": 37.860828,
+    "lon": 67.388346
+  },
+  {
+    "id": "87424f47-7920-4eb7-8662-998e11ce9a2c",
+    "name": "Bekobod",
+    "lat": 40.221589,
+    "lon": 69.26328
+  },
+  {
+    "id": "baa2cc7e-e3eb-40fb-889f-4d9a7dbe89fe",
+    "name": "Beshariq",
+    "lat": 40.43658,
+    "lon": 70.609415
+  },
+  {
+    "id": "6765eac6-4e43-4833-926c-169998d76900",
+    "name": "Beshkent",
+    "lat": 38.820288,
+    "lon": 65.652465
+  },
+  {
+    "id": "bda7f616-1210-40dc-b1ef-e51e1bd3e628",
+    "name": "Bo'ka",
+    "lat": 40.813478,
+    "lon": 69.200532
+  },
+  {
+    "id": "bb33b4fc-8167-4a84-9096-de27cf2b89c2",
+    "name": "Bog'ot",
+    "lat": 41.351729,
+    "lon": 60.808427
+  },
+  {
+    "id": "3975fb71-e0ef-4759-b684-4b37f81bb00a",
+    "name": "Boston",
+    "lat": 41.845217,
+    "lon": 60.917345
+  },
+  {
+    "id": "04f2badb-11a1-44ec-bd02-7884ee60612c",
+    "name": "Boysun",
+    "lat": 38.202627,
+    "lon": 67.203965
+  },
+  {
+    "id": "76ddefc2-add5-4bba-8ecd-e60d202de1d3",
+    "name": "Buloqboshi",
+    "lat": 40.629141,
+    "lon": 72.501412
+  },
+  {
+    "id": "fe30b32f-62bb-4b41-9f83-239e14ae770c",
+    "name": "Buvayda",
+    "lat": 40.63826,
+    "lon": 71.089013
+  },
+  {
+    "id": "78384ed3-bcce-49e3-825a-81483be0d534",
+    "name": "Buxoro",
+    "lat": 39.774797,
+    "lon": 64.440242
+  },
+  {
+    "id": "8bf94b84-b620-4d12-86e9-e6f5b4ec94e7",
+    "name": "Chinoz",
+    "lat": 40.937556,
+    "lon": 68.769501
+  },
+  {
+    "id": "b18d9568-a51f-42ce-a5ec-b775ab8f3dcf",
+    "name": "Chirchiq",
+    "lat": 41.47006,
+    "lon": 69.577939
+  },
+  {
+    "id": "73169289-838c-4434-bd44-ab495c048c29",
+    "name": "Chortoq",
+    "lat": 41.072199,
+    "lon": 71.816104
+  },
+  {
+    "id": "74f6a1d1-5181-4e27-942f-50d944f4d0f7",
+    "name": "Chust",
+    "lat": 41.001101,
+    "lon": 71.23163
+  },
+  {
+    "id": "d5d686f5-1563-4880-b49c-81be3941dbed",
+    "name": "Dangara",
+    "lat": 40.580011,
+    "lon": 70.916724
+  },
+  {
+    "id": "548e22ea-3a30-44dd-9cea-cf7a8ae4d453",
+    "name": "Dashtobod",
+    "lat": 40.125918,
+    "lon": 68.488808
+  },
+  {
+    "id": "64c1c09e-bf74-4c1d-8ff2-f71e63b9b5d3",
+    "name": "Dehqonobod",
+    "lat": 40.532542,
+    "lon": 69.031731
+  },
+  {
+    "id": "03c00633-dca5-4460-956d-2523956c65fb",
+    "name": "Denov",
+    "lat": 38.270935,
+    "lon": 67.904732
+  },
+  {
+    "id": "e51a4160-7675-4e5d-be7a-9b68162046fb",
+    "name": "Do'stlik",
+    "lat": 41.255099,
+    "lon": 69.436489
+  },
+  {
+    "id": "7ae81e36-1f41-4402-b99a-34d91e9a2a7f",
+    "name": "Ellikqal'a",
+    "lat": 41.824882,
+    "lon": 60.927536
+  },
+  {
+    "id": "c7b39860-ff5b-4959-ad41-3cbe4174f576",
+    "name": "Farg'ona",
+    "lat": 40.39903,
+    "lon": 71.785996
+  },
+  {
+    "id": "777d07ff-9d14-4b7f-8cd3-9e104f496bc5",
+    "name": "G'ijduvon",
+    "lat": 40.09758,
+    "lon": 64.678657
+  },
+  {
+    "id": "2a907bfa-7e50-42ca-93d7-e444f6695094",
+    "name": "G'uliston",
+    "lat": 40.513768,
+    "lon": 68.771284
+  },
+  {
+    "id": "ec5dc8c8-6456-418d-9fb8-308fe70f5e2c",
+    "name": "G'uzor",
+    "lat": 38.626395,
+    "lon": 66.251408
+  },
+  {
+    "id": "2dfba1f0-dc96-4716-b51d-311222e9cac0",
+    "name": "Gagarin",
+    "lat": 40.66486,
+    "lon": 68.169403
+  },
+  {
+    "id": "4532e4a1-2013-4ae9-8edc-30f6703211aa",
+    "name": "Gurlan",
+    "lat": 41.839103,
+    "lon": 60.393406
+  },
+  {
+    "id": "manual-ishtixon",
+    "name": "Ishtixon",
+    "lat": 39.9667,
+    "lon": 66.4861
+  },
+  {
+    "id": "9d595ebe-cf7d-4b58-9f90-476a839140f4",
+    "name": "Izboskan",
+    "lat": 41.033517,
+    "lon": 72.344818
+  },
+  {
+    "id": "c27ce77e-a854-4b72-8dea-178ad6040b7b",
+    "name": "Jalaquduq",
+    "lat": 40.717126,
+    "lon": 72.644805
+  },
+  {
+    "id": "1b45747a-8b01-479d-bd6e-7a754712e82b",
+    "name": "Jarqo'rg'on",
+    "lat": 37.514479,
+    "lon": 67.41602
+  },
+  {
+    "id": "62a1aa1b-10ff-4ccf-bcf0-23343e1d7eb4",
+    "name": "Jizzax",
+    "lat": 40.124269,
+    "lon": 67.840429
+  },
+  {
+    "id": "ad27ca45-f92c-4ebc-adf4-756e5dabb2ea",
+    "name": "Juma",
+    "lat": 39.717686,
+    "lon": 66.659164
+  },
+  {
+    "id": "f3b8f0f1-5875-4075-9036-838c197ed14a",
+    "name": "Kamashi",
+    "lat": 38.815647,
+    "lon": 66.466564
+  },
+  {
+    "id": "7125d405-d1ef-4a5e-8b19-526bf1560f57",
+    "name": "Kattaqo'rg'on",
+    "lat": 39.904036,
+    "lon": 66.266932
+  },
+  {
+    "id": "0abc082e-c03c-4b75-a87e-e60660bacdc3",
+    "name": "Keles",
+    "lat": 41.406105,
+    "lon": 69.207769
+  },
+  {
+    "id": "2fbdd973-2735-4e05-a6ee-8235eecf59e0",
+    "name": "Kitob",
+    "lat": 39.123699,
+    "lon": 66.879337
+  },
+  {
+    "id": "manual-konimex",
+    "name": "Konimex",
+    "lat": 40.2697,
+    "lon": 65.1528
+  },
+  {
+    "id": "91edb554-443a-4206-b4bf-fc1a09169429",
+    "name": "Koson",
+    "lat": 39.038476,
+    "lon": 65.580469
+  },
+  {
+    "id": "a945380b-5106-4b60-99ab-5db028c1f260",
+    "name": "Kosonsoy",
+    "lat": 41.24023,
+    "lon": 71.539605
+  },
+  {
+    "id": "0c830a43-43c3-4e95-bb3d-e4843b0ec807",
+    "name": "Loyish",
+    "lat": 39.879745,
+    "lon": 66.753542
+  },
+  {
+    "id": "4cd218c3-796f-4c5a-a2ae-e5527e30ade2",
+    "name": "Mang'it",
+    "lat": 42.113288,
+    "lon": 60.065486
+  },
+  {
+    "id": "8b10a78a-9679-41b5-a006-2b5137cebe1d",
+    "name": "Marg'ilon",
+    "lat": 40.473502,
+    "lon": 71.72413
+  },
+  {
+    "id": "7a69cebb-5614-4c7d-9585-98ff82de4b01",
+    "name": "Marhamat",
+    "lat": 40.489524,
+    "lon": 72.325979
+  },
+  {
+    "id": "590035e4-5a76-475d-ba21-95e904422cf2",
+    "name": "Mitan",
+    "lat": 40.006662,
+    "lon": 66.553007
+  },
+  {
+    "id": "1e3d97a9-30c9-4a14-ac61-25dbf3957897",
+    "name": "Namangan",
+    "lat": 41.027328,
+    "lon": 71.639189
+  },
+  {
+    "id": "31c6f71c-1e18-4bbe-a14a-8db58b08acea",
+    "name": "Navoiy",
+    "lat": 40.099749,
+    "lon": 65.346721
+  },
+  {
+    "id": "35486dda-fe0a-493d-9d67-4b4aa8cdd7a5",
+    "name": "Nukus",
+    "lat": 42.45469,
+    "lon": 59.622215
+  },
+  {
+    "id": "5a081e8a-1c6c-438d-8fe0-4cdf17f622a1",
+    "name": "Nurobod",
+    "lat": 39.61038,
+    "lon": 66.294582
+  },
+  {
+    "id": "165b674d-62b8-4eb9-a3c2-504a3f5592b0",
+    "name": "Nurota",
+    "lat": 40.56278,
+    "lon": 65.690362
+  },
+  {
+    "id": "a7372952-238c-44a7-8fd0-87c44f7b405d",
+    "name": "Ohangaron",
+    "lat": 40.910622,
+    "lon": 69.645156
+  },
+  {
+    "id": "8dd108bd-10f6-4faf-8a44-0d641a090f5c",
+    "name": "Olmaliq",
+    "lat": 40.842682,
+    "lon": 69.593
+  },
+  {
+    "id": "76d773b1-37b9-4f0c-9842-5145da7d4981",
+    "name": "Oltiariq",
+    "lat": 40.386938,
+    "lon": 71.479514
+  },
+  {
+    "id": "f412995b-6681-49c1-bd4f-9b89c2429bbe",
+    "name": "Oltinko'l",
+    "lat": 40.798261,
+    "lon": 72.160316
+  },
+  {
+    "id": "85baa934-3c0a-4c32-9b8e-a69444e5e927",
+    "name": "Oltinsoy",
+    "lat": 40.041891,
+    "lon": 66.327682
+  },
+  {
+    "id": "43858c89-97ff-4288-92c8-00e246c48131",
+    "name": "Paxtakor",
+    "lat": 40.313201,
+    "lon": 67.965936
+  },
+  {
+    "id": "433ffd48-de29-437f-b629-21f6dd0df1fe",
+    "name": "Paxtaobod",
+    "lat": 40.924089,
+    "lon": 72.513207
+  },
+  {
+    "id": "e8e41940-1029-4305-8edf-774d8cf61c35",
+    "name": "Piskent",
+    "lat": 40.897335,
+    "lon": 69.342386
+  },
+  {
+    "id": "59db594e-2556-473b-a2bc-f2f7856a7b28",
+    "name": "Pitnak",
+    "lat": 41.218581,
+    "lon": 61.31002
+  },
+  {
+    "id": "af4e7654-d332-4e2d-82e9-fed1f9230a8b",
+    "name": "Pop",
+    "lat": 40.875552,
+    "lon": 71.102296
+  },
+  {
+    "id": "42838806-72a1-4bf1-8f9d-86ce56b19f38",
+    "name": "Poytug",
+    "lat": 40.896511,
+    "lon": 72.240793
+  },
+  {
+    "id": "614a7cda-cb6a-432e-a58d-37f34ddccf44",
+    "name": "Qarshi",
+    "lat": 38.842504,
+    "lon": 65.79616
+  },
+  {
+    "id": "f988868b-06ea-4c31-88e1-1c70cb8986db",
+    "name": "Qiziltepa",
+    "lat": 40.038665,
+    "lon": 64.845757
+  },
+  {
+    "id": "c9f4eab1-6800-412d-aa60-adc23f7a35b3",
+    "name": "Qo'ng'irot",
+    "lat": 43.048412,
+    "lon": 58.849087
+  },
+  {
+    "id": "7c1df0c8-8c36-4470-bfb6-7da890b546b9",
+    "name": "Qo'qon",
+    "lat": 40.532853,
+    "lon": 70.938873
+  },
+  {
+    "id": "50d7daba-7232-49a3-ae95-1e76058c0757",
+    "name": "Qo'rg'ontepa",
+    "lat": 40.728633,
+    "lon": 72.761133
+  },
+  {
+    "id": "ecd9f254-81ee-4aa9-bb16-fd1513bd2663",
+    "name": "Qorasuv",
+    "lat": 40.731501,
+    "lon": 72.882041
+  },
+  {
+    "id": "c60ca433-f0c5-477f-b019-1e1e8778d305",
+    "name": "Qumqo'rg'on",
+    "lat": 37.82654,
+    "lon": 67.584449
+  },
+  {
+    "id": "72fc67a5-e39a-471f-b922-fafea371a0c4",
+    "name": "Quva",
+    "lat": 40.534555,
+    "lon": 72.071587
+  },
+  {
+    "id": "cbc6fec2-b1e6-4713-8e16-2e7fd70efa7d",
+    "name": "Quvasoy",
+    "lat": 40.293537,
+    "lon": 71.994288
+  },
+  {
+    "id": "f4374956-323b-45ec-b7d1-94b7e5ea7a67",
+    "name": "Rishton",
+    "lat": 40.358357,
+    "lon": 71.274048
+  },
+  {
+    "id": "5a6fe155-f1c5-4ab0-8cdd-3b0e9760c85e",
+    "name": "Samarqand",
+    "lat": 39.665985,
+    "lon": 66.951379
+  },
+  {
+    "id": "c92872f8-f4b2-4322-8be0-5352ac5f3939",
+    "name": "Sariosiyo",
+    "lat": 38.413054,
+    "lon": 67.956941
+  },
+  {
+    "id": "fed1fe73-32d7-4f98-b023-dca49e41263d",
+    "name": "Shahrisabz",
+    "lat": 39.052582,
+    "lon": 66.827864
+  },
+  {
+    "id": "26dbc7f9-5b5b-46a7-bbc2-53d92cbba163",
+    "name": "Shahrixon",
+    "lat": 40.710826,
+    "lon": 72.053755
+  },
+  {
+    "id": "d2fbf000-168a-4876-bf8b-640b7de7d12a",
+    "name": "Shargun",
+    "lat": 38.465759,
+    "lon": 67.965504
+  },
+  {
+    "id": "6699c3e1-8cc8-404e-b070-f4505e03c589",
+    "name": "Sherobod",
+    "lat": 37.665853,
+    "lon": 67.013013
+  },
+  {
+    "id": "3cb3f068-054c-4aae-bb94-658c0aca9c87",
+    "name": "Shirin",
+    "lat": 40.230299,
+    "lon": 69.126309
+  },
+  {
+    "id": "0f64c7f4-e523-44d2-a4dc-c016fd32cdde",
+    "name": "Sho'rchi",
+    "lat": 38.01202,
+    "lon": 67.790183
+  },
+  {
+    "id": "a70adf8c-b149-4419-bffe-08aa4e5c04cb",
+    "name": "Shofirkon",
+    "lat": 40.118484,
+    "lon": 64.505323
+  },
+  {
+    "id": "bed887a0-dc48-44f5-bf30-feee13a74d15",
+    "name": "Sirdaryo",
+    "lat": 40.838229,
+    "lon": 68.662432
+  },
+  {
+    "id": "ebb7a682-3bd5-4920-ad72-c6da7b05415b",
+    "name": "Talimarjon",
+    "lat": 38.301615,
+    "lon": 65.552026
+  },
+  {
+    "id": "edf51999-80f5-4809-8411-b87a7c382a42",
+    "name": "Termiz",
+    "lat": 37.229942,
+    "lon": 67.282451
+  },
+  {
+    "id": "aa0a27bf-8ff2-4964-b19d-31166cb0122c",
+    "name": "To'raqo'rg'on",
+    "lat": 40.998265,
+    "lon": 71.509113
+  },
+  {
+    "id": "6753eb30-316f-4bf0-94e9-995f3a0c0378",
+    "name": "To'rtko'l",
+    "lat": 41.558058,
+    "lon": 60.996056
+  },
+  {
+    "id": "c9c98b27-c810-43ff-a60b-7e0a2824f6a1",
+    "name": "Toshkent",
+    "lat": 41.270289,
+    "lon": 69.326739
+  },
+  {
+    "id": "6602c854-fe0e-41be-9651-56aaeff0b864",
+    "name": "Uchkoprik",
+    "lat": 40.546541,
+    "lon": 71.05471
+  },
+  {
+    "id": "28e39850-9554-40b2-b182-546480431846",
+    "name": "Uchqo'rg'on",
+    "lat": 41.117234,
+    "lon": 72.086192
+  },
+  {
+    "id": "7e927b4d-eee1-4ff6-83de-f0e6f1efc4cf",
+    "name": "Uchquduq",
+    "lat": 42.152907,
+    "lon": 63.561423
+  },
+  {
+    "id": "ccbfa24a-6bc5-4433-9a93-2e91e5339f0f",
+    "name": "Uchtepa",
+    "lat": 40.21295,
+    "lon": 67.912219
+  },
+  {
+    "id": "1371bf0d-016c-474b-86a4-0c7042ed23a8",
+    "name": "Urganch",
+    "lat": 41.553625,
+    "lon": 60.631693
+  },
+  {
+    "id": "57ea8a62-315d-429d-9e7e-a3c70692adad",
+    "name": "Uychi",
+    "lat": 41.030285,
+    "lon": 71.853089
+  },
+  {
+    "id": "f7a21a43-2b23-4555-bb75-d2df02ee4fb9",
+    "name": "Uzun",
+    "lat": 38.364303,
+    "lon": 68.005633
+  },
+  {
+    "id": "e2bf1da2-b104-4747-9b5f-7cbf354c3f4b",
+    "name": "Vobkent",
+    "lat": 40.026349,
+    "lon": 64.519799
+  },
+  {
+    "id": "81033a28-3100-49dd-8118-0c0cc010ba6c",
+    "name": "Xaqqulobod",
+    "lat": 40.919319,
+    "lon": 72.113352
+  },
+  {
+    "id": "9fc0a13e-494f-4054-be14-9278f566cde8",
+    "name": "Xazorasp",
+    "lat": 41.316514,
+    "lon": 61.085527
+  },
+  {
+    "id": "f36252b5-9a51-4f98-ae76-389b2e1e4744",
+    "name": "Xiva",
+    "lat": 41.392249,
+    "lon": 60.351454
+  },
+  {
+    "id": "32108529-8c8a-44da-a135-db07ec4e0089",
+    "name": "Xo'jaobod",
+    "lat": 40.666947,
+    "lon": 72.565325
+  },
+  {
+    "id": "de0fbe0a-869c-4b47-9222-9fe154cc69bb",
+    "name": "Xo'jayli",
+    "lat": 42.41246,
+    "lon": 59.453969
+  },
+  {
+    "id": "268e7ec1-ff9c-49b8-87cb-c2a0b4775b7c",
+    "name": "Xonobod",
+    "lat": 40.805105,
+    "lon": 72.987064
+  },
+  {
+    "id": "d008c57c-73f3-4ebf-92c8-512a0790b389",
+    "name": "Xovos",
+    "lat": 40.22172,
+    "lon": 68.831113
+  },
+  {
+    "id": "23b374ee-1511-4297-920e-07e8622f5905",
+    "name": "Yakkabog'",
+    "lat": 38.976903,
+    "lon": 66.686358
+  },
+  {
+    "id": "d57736f3-fdea-4516-82d8-c8aa77d40f64",
+    "name": "Yangi Nishon",
+    "lat": 38.649051,
+    "lon": 65.692992
+  },
+  {
+    "id": "fc61a6b2-a7ad-4ca0-a8c0-56a098472a75",
+    "name": "Yangibozor",
+    "lat": 41.314889,
+    "lon": 69.521909
+  },
+  {
+    "id": "23cfbc6c-6618-4ca2-9946-13c32c9bbb6a",
+    "name": "Yangiqishloq",
+    "lat": 40.416168,
+    "lon": 70.616231
+  },
+  {
+    "id": "77ebc5b0-a2f0-49f4-83ff-c39bfcfa6bb9",
+    "name": "Yangiqo'rg'on",
+    "lat": 40.559648,
+    "lon": 71.139491
+  },
+  {
+    "id": "12a7e7af-4b21-40e7-89f2-3087634abc92",
+    "name": "Yangiyer",
+    "lat": 40.277041,
+    "lon": 68.815869
+  },
+  {
+    "id": "3e47f8eb-3dd3-40e6-bf6c-1f038aedf950",
+    "name": "Yaypan",
+    "lat": 40.376395,
+    "lon": 70.814599
+  },
+  {
+    "id": "dc7a8b1f-2aff-4de6-acec-88210b4a8b75",
+    "name": "Yozyovon",
+    "lat": 40.652398,
+    "lon": 71.734434
+  },
+  {
+    "id": "a216a19f-1ac0-48aa-90f2-a25f46763da5",
+    "name": "Zaamin",
+    "lat": 39.969951,
+    "lon": 68.412377
+  },
+  {
+    "id": "de729f12-ab20-48bd-86b0-e1ac79b8e535",
+    "name": "Zarafshon",
+    "lat": 41.57408,
+    "lon": 64.194608
+  },
+  {
+    "id": "cd139e90-4b35-4a0f-bcad-9f165292f2d3",
+    "name": "Ziyovuddin",
+    "lat": 40.030439,
+    "lon": 65.667243
+  }
+]
