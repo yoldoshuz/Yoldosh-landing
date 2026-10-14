@@ -408,6 +408,12 @@
     "lon": 66.553007
   },
   {
+    "id": "0698dc46-2db1-45e0-9a1a-aa53d4c26bd9",
+    "name": "Muglon",
+    "lat": 38.923585,
+    "lon": 65.402606
+  },
+  {
     "id": "1e3d97a9-30c9-4a14-ac61-25dbf3957897",
     "name": "Namangan",
     "lat": 41.027328,
@@ -448,6 +454,12 @@
     "name": "Olmaliq",
     "lat": 40.842682,
     "lon": 69.593
+  },
+  {
+    "id": "e9f09be9-0da2-4e35-9310-5f5f1c6a4fb8",
+    "name": "Olot",
+    "lat": 39.411705,
+    "lon": 63.80174
   },
   {
     "id": "76d773b1-37b9-4f0c-9842-5145da7d4981",
@@ -666,6 +678,12 @@
     "lon": 64.505323
   },
   {
+    "id": "475d6c4d-e69b-4773-abde-9eda1e68f2e8",
+    "name": "Shorsuv",
+    "lat": 40.283957,
+    "lon": 70.801082
+  },
+  {
     "id": "9435ecbf-e640-4a35-82e0-a82fc4dfe381",
     "name": "Shovot",
     "lat": 41.655681,
@@ -840,6 +858,12 @@
     "lon": 66.686358
   },
   {
+    "id": "aeee2cd0-e5df-4525-8c92-f71c8e8fc673",
+    "name": "Yangi Mirishkor",
+    "lat": 38.850214,
+    "lon": 65.271147
+  },
+  {
     "id": "d57736f3-fdea-4516-82d8-c8aa77d40f64",
     "name": "Yangi Nishon",
     "lat": 38.649051,
@@ -850,6 +874,12 @@
     "name": "Yangibozor",
     "lat": 41.314889,
     "lon": 69.521909
+  },
+  {
+    "id": "0179d2f9-59a1-4a2e-a63c-869a947adfc2",
+    "name": "Yangiobod",
+    "lat": 41.121076,
+    "lon": 70.094939
   },
   {
     "id": "23cfbc6c-6618-4ca2-9946-13c32c9bbb6a",
