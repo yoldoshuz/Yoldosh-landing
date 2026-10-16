@@ -282,6 +282,12 @@
     "lon": 66.4861
   },
   {
+    "id": "c7e93ec7-57d8-4e59-b2aa-4a26af96dd74",
+    "name": "Iskandar",
+    "lat": 41.562321,
+    "lon": 69.71242
+  },
+  {
     "id": "9d595ebe-cf7d-4b58-9f90-476a839140f4",
     "name": "Izboskan",
     "lat": 41.033517,
@@ -654,6 +660,12 @@
     "lon": 67.956941
   },
   {
+    "id": "9851f9ca-139c-4010-b34e-df2509dfe4d3",
+    "name": "Sariq",
+    "lat": 37.6701,
+    "lon": 67.235777
+  },
+  {
     "id": "fed1fe73-32d7-4f98-b023-dca49e41263d",
     "name": "Shahrisabz",
     "lat": 39.052582,
@@ -892,6 +904,12 @@
     "name": "Yangi Nishon",
     "lat": 38.649051,
     "lon": 65.692992
+  },
+  {
+    "id": "29a35982-ccc9-42b6-808c-8c5ecb9e1d5d",
+    "name": "Yangiariq",
+    "lat": 41.366011,
+    "lon": 60.607884
   },
   {
     "id": "fc61a6b2-a7ad-4ca0-a8c0-56a098472a75",
